@@ -57,5 +57,12 @@ module Uktt
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Generator config
+    config.generators do |g|
+      g.orm             false
+      g.template_engine :slim
+      g.test_framework  false
+    end
   end
 end
