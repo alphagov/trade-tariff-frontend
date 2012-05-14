@@ -2,8 +2,7 @@ class SectionsController < ApplicationController
   def index
     Section.search do
       query { all }
-      sort { by '_id' }
-    end
+    end.results
   end
 
   def show
