@@ -27,3 +27,7 @@ sections.each do |sec|
   Section.create(sec)
 end
 
+Spreadsheet.client_encoding = 'UTF-8'
+book = Spreadsheet.open Rails.root.join('db/goods-nomenclature.xls')
+sheet1 = book.worksheet 0
+p "#{sheet1.count} rows loaded"
