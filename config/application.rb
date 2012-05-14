@@ -61,7 +61,7 @@ module Uktt
     # Generator config
     config.generators do |g|
       g.orm             false
-      g.template_engine :slim
+      g.template_engine :erb
       g.test_framework  false
     end
   end

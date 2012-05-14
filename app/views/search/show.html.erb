@@ -1,0 +1,26 @@
+<h1>UK Trade Tariff</h1>
+
+<p>
+  The UK Trade Tariff helps you find commodity codes to classify goods for export and import. Commodity codes are used to find import duties, taxes, tax rebates, reliefs, licenses and special conditions such as prohibitions that may apply to particular goods. Users must read our terms and conditions - Opens in a new window before using the UK Trade Tariff.
+</p>
+
+<p>
+  You can use the "Explore", "Search" or "Look Up" tools on this page to find commodity codes and Tariff information. You can read our guide to find out more about how to use the UK Trade Tariff in the right-hand column.
+</p>
+
+<%= simple_form_for :look_up do |f| %>
+  <h2>Look Up</h2>
+  <p>If you know a commodity code, or part of a code, look it up here</p>
+  <%= f.input :commodity_code, required: false %>
+  <%= f.input :date, require: false %>
+  <%= f.collection_radio_buttons :export, [[true, 'Export'] ,[false, 'Import']], :first, :last %>
+  <%= f.button :submit, 'Look Up' %>
+<% end %>
+
+<%= simple_form_for :search do |f| %>
+  <h2>Search</h2>
+  <p>Search commodity descriptions</p>
+  <%= f.input :description, required: false %>
+  <%= f.input :date, require: false %>
+  <%= f.button :submit, 'Search' %>
+<% end %>
