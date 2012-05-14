@@ -1,6 +1,7 @@
 class Section
   include Tire::Model::Persistence
 
-  property :code, analyzer: 'keyword'
-  property :title, analyzer: 'snowball'
+  property :number, analyzer: 'keyword'
+  property :section, analyzer: 'snowball'
+  property :chapters,       class: Chapter
 end
