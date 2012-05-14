@@ -8,19 +8,13 @@
   You can use the "Explore", "Search" or "Look Up" tools on this page to find commodity codes and Tariff information. You can read our guide to find out more about how to use the UK Trade Tariff in the right-hand column.
 </p>
 
-<%= simple_form_for :look_up do |f| %>
-  <h2>Look Up</h2>
-  <p>If you know a commodity code, or part of a code, look it up here</p>
-  <%= f.input :commodity_code, required: false %>
-  <%= f.input :date, require: false %>
-  <%= f.collection_radio_buttons :export, [[true, 'Export'] ,[false, 'Import']], :first, :last %>
-  <%= f.button :submit, 'Look Up' %>
-<% end %>
-
-<%= simple_form_for :search do |f| %>
+<%= simple_form_for @search, url: perform_search_path do |f| %>
   <h2>Search</h2>
-  <p>Search commodity descriptions</p>
+  <p>If you know a commodity code, or part of a code, look it up here.</p>
+  <%= f.input :commodity_code, required: false %>
   <%= f.input :description, required: false %>
   <%= f.input :date, require: false %>
+  <%= f.collection_radio_buttons :export, [[true, 'Export'] ,[false, 'Import']], :first, :last %>
+  <br />
   <%= f.button :submit, 'Search' %>
 <% end %>
