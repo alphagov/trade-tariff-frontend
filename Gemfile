@@ -6,6 +6,8 @@ gem 'simple_form'
 
 gem 'tire'
 
+gem 'spreadsheet'
+
 gem 'unicorn'
 
 group :development do

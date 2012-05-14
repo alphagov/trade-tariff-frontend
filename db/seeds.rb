@@ -1,3 +1,4 @@
+Section.index.delete
 puts "Loading Sections"
 sections = [
   {id: 1, section_roman: 'I',   section_title: "SECTION I - Live animals; animal products (chapter 1 - 5)"},
