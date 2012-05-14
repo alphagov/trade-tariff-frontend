@@ -16,7 +16,7 @@ sections = [
   {number: 'XIV', section: "SECTION XIV - Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal and articles thereof; imitation jewellery; coins (chapter 71)"},
   {number: 'XV', section: "SECTION XV - Base metals and articles of base metal (chapter 72 - 83)"},
   {number: 'XVI', section: "SECTION XVI - Machinery and mechanical appliances; electrical equipment; parts thereof, sound recordes and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles (chapter 84 - 85)"},
-  {number: 'XVII', section: "SECTION XVII - Vehicles, aircraft, vessels and associated transport equipment (chapter 86 - 89) "},
+  {number: 'XVII', section: "SECTION XVII - Vehicles, aircraft, vessels and associated transport equipment (chapter 86 - 89)"},
   {number: 'XVIII', section: "SECTION XVIII - Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; clocks and watches; musical instruments; parts and accessories thereof (chapter 90 - 92)"},
   {number: 'XIX', section: "SECTION XIX - Arms and ammunition; parts and accessories thereof (chapter 93)"},
   {number: 'XX', section: "SECTION XX - Miscellaneous manufactured articles (chapter 94 - 96)"},
