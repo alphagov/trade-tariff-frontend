@@ -1,0 +1,2 @@
+class CommoditiesController < ApplicationController
+end
