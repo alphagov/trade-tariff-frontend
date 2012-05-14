@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <td colspan="2">
+        <strong>Sections</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>No</strong>
+      </td>
+      <td>
+        <strong>Sections</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td>
+          <%= section.section_roman %>
+        </td>
+        <td>
+          <%= section.section_title %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
