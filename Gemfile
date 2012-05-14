@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-gem 'slim'
 gem 'simple_form'
 
 gem 'tire'
