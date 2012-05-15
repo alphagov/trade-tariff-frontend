@@ -2,6 +2,9 @@ class Chapter < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
+  has_many :commodities
+  belongs_to :section
+
   tire do
     mapping do
       indexes :id,           index: :not_analyzed

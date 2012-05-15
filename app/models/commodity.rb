@@ -2,6 +2,8 @@ class Commodity < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
+  belongs_to :chapter
+
   tire do
     mapping do
       indexes :id,           index: :not_analyzed
