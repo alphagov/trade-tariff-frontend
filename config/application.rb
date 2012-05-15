@@ -58,7 +58,7 @@ module Uktt
 
     # Generator config
     config.generators do |g|
-      g.orm             false
+      g.orm             :active_record
       g.template_engine :erb
       g.test_framework  false
     end
