@@ -15,15 +15,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @sections.each do |section| %>
-      <tr>
-        <td>
-          <%= section.section_roman %>
-        </td>
-        <td>
-          <%= section.section_title %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render @sections %>
   </tbody>
 </table>
