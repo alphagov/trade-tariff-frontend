@@ -34,4 +34,7 @@ Uktt::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Slimmer config
+  config.middleware.use Slimmer::App, asset_host: "http://static.preview.alphagov.co.uk"
 end

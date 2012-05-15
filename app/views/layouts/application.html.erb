@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Uktt</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag 'tariff' %>
 
-<ul>
-  <li>
-    <%= link_to "Search", root_path %>
-  </li>
-  <li>
-    <%= link_to "Explore", sections_path %>
-  </li>
-</ul>
+<div id='wrapper'>
+  <div class='inner group'>
+    <ul>
+      <li>
+        <%= link_to "Search", root_path %>
+      </li>
+      <li>
+        <%= link_to "Explore", sections_path %>
+      </li>
+    </ul>
+  </div>
 
-<%= yield %>
-
-</body>
-</html>
+  <div class='inner group'>
+    <%= yield %>
+  </div>
+</div>
