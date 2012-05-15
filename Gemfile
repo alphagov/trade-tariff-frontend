@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 
 gem 'simple_form'
 
+gem 'pg'
 gem 'tire'
 
 gem 'spreadsheet'
