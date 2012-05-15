@@ -1,0 +1,37 @@
+<strong>Section</strong>: <%= link_to @section, section_chapters_path(@section) %>
+<br/>
+<strong>Chapter</strong>: <%= link_to @chapter, section_chapter_commodities_path(@section, @chapter) %>
+<br/>
+<strong>Heading</strong>:
+<br/>
+<h2>Commodities in this heading</h2>
+
+<table>
+  <thead>
+    <tr>
+      <td colspan="5">
+        <strong>Commodities</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Code</strong>
+      </td>
+      <td>
+        <strong>Description</strong>
+      </td>
+      <td>
+        <strong>Basic duty rate</strong>
+      </td>
+      <td>
+        <strong>Footnotes</strong>
+      </td>
+      <td>
+        <strong>Your Notes</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @commodities %>
+  </tbody>
+</table>

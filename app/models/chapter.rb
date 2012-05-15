@@ -5,6 +5,10 @@ class Chapter < ActiveRecord::Base
   has_many :commodities
   belongs_to :section
 
+  def to_s
+    description
+  end
+
   tire do
     mapping do
       indexes :id,           index: :not_analyzed
