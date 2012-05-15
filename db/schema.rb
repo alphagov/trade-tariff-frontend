@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515114537) do
+ActiveRecord::Schema.define(:version => 20120515161543) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "section_id"
-    t.integer  "number"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "code"
   end
 
   create_table "commodities", :force => true do |t|
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20120515114537) do
     t.integer  "hier_pos"
     t.string   "substring"
     t.string   "code"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "heading",     :default => false
   end
 
   create_table "sections", :force => true do |t|

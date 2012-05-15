@@ -1,5 +1,3 @@
-
-puts "Loading Sections"
 sections = [
   {number: 1, numeral: 'I',   title: "SECTION I - Live animals; animal products (chapter 1 - 5)"},
   {number: 2, numeral: 'II', title: "SECTION II - Vegetable products (chapter 6 - 14)"},
@@ -23,9 +21,10 @@ sections = [
   {number: 20, numeral: 'XX', title: "SECTION XX - Miscellaneous manufactured articles (chapter 94 - 96)"},
   {number: 21, numeral: 'XXI', title: "SECTION XXI - Works of art, collectors' pieces and antiques (chapter 97 - 99)"}
 ]
-sections.each do |sec|
-  Section.create(sec)
-end
+# puts "Loading Sections"
+# sections.each do |sec|
+#   Section.create(sec)
+# end
 
 module XlsImporter
   def process_substr(x)
@@ -35,31 +34,47 @@ module XlsImporter
   def process_id(x)
     x.gsub(" ", '')
   end
+
+  def get_chapter(str)
+    str[0..1]
+  end
+
+  def get_heading(str)
+    str[0..3]
+  end
+
+  def build_attrs(row)
+    { code: process_id(row[0]), description: row[6], hier_pos: row[4], substring: (process_substr(row[5])) }
+  end
+
+  def is_chapter?(attrs)
+    attrs[:hier_pos] == 2 && attrs[:substring] == 0
+  end
+
+  def is_heading?(attrs)
+    attrs[:hier_pos] == 4 && attrs[:substring] == 0
+  end
+
+  def create_objects(obj)
+    if is_chapter?(obj)
+      obj.delete(:hier_pos)
+      obj.delete(:substring)
+      Chapter.create(obj)
+    elsif is_heading?(obj)
+      Commodity.create(obj.merge({heading: true}))
+    else
+      Commodity.create(obj)
+    end
+  end
 end
 include XlsImporter
 
 Spreadsheet.client_encoding = 'UTF-8'
 book = Spreadsheet.open Rails.root.join('db/goods-nomenclature.xls')
 sheet1 = book.worksheet 0
-# p "#{sheet1.count} rows loaded"
-# # sheet1.each 1 do |row|
-# #     # do something interesting with a row
-# #   p row.inspect
-# #   row[0] #id
-# #   row[4] #heir
-# #   row[5] #substr
-# #   row[6] #desc
-# # end
-row = sheet1.row(4)
-p row[0]
-p row[4]
-p process_substr(row[5])
-p row[6]
-
-row = sheet1.row(1)
-p row[0]
-p row[4]
-p process_substr(row[5])
-p row[6]
-
-
+p "#{sheet1.count} rows loaded"
+sheet1.each 1 do |row|
+  x = build_attrs(row)
+  # p x
+  create_objects(x)
+end
