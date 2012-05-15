@@ -1,3 +1,4 @@
 class Chapter < ActiveRecord::Base
-  # attr_accessible :title, :body
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
 end

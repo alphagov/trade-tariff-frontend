@@ -6,6 +6,7 @@ gem 'simple_form'
 
 gem 'pg'
 gem 'tire'
+gem 'kaminari'
 
 gem 'spreadsheet'
 
