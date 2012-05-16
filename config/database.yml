@@ -14,7 +14,7 @@ development:
 test:
   <<: *defaults
   database: tariff_test
-  user: tariff
+  username: tariff
   password: tariff
 
 production:
