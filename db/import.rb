@@ -83,13 +83,14 @@ module XlsImporter
       chapter = Chapter.new(attrs)
       chapter.section = Section.find_by_position(section_pos)
       chapter.save
-      # puts chapter.inspect
     elsif is_heading?(attrs)
       chapter = Chapter.where("code LIKE ?", get_chapter(attrs[:code])+'%').first
-      Commodity.create(attrs.merge({heading: true, chapter: chapter}))
+      Commodity.create(attrs.merge({is_heading: true, chapter: chapter}))
     else
-      # heading = Commodity.where("heading = TRUE AND code LIKE ?", get_heading(attrs[:code])+'%')
-      Commodity.create(attrs)
+      heading = Commodity.where("heading = TRUE AND code LIKE ?", get_heading(attrs[:code])+'%')
+      commodity = Commodity.new(attrs)
+      commodity.heading = heading
+      commodity.save
     end
   end
 end

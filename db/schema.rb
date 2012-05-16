@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516085045) do
+ActiveRecord::Schema.define(:version => 20120516151323) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "section_id"
@@ -26,11 +26,14 @@ ActiveRecord::Schema.define(:version => 20120516085045) do
     t.integer  "hier_pos"
     t.string   "substring"
     t.string   "code"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "heading",     :default => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.text     "description"
+    t.boolean  "is_heading"
+    t.integer  "heading_id"
   end
+
+  add_index "commodities", ["heading_id"], :name => "index_commodities_on_heading_id"
 
   create_table "sections", :force => true do |t|
     t.integer  "position"

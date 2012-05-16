@@ -3,6 +3,8 @@ class Commodity < ActiveRecord::Base
   include Tire::Model::Callbacks
 
   belongs_to :chapter
+  has_many   :commodities, foreign_key: 'heading_id'
+  belongs_to :heading, class_name: 'Commodity', foreign_key: 'heading_id'
 
   tire do
     mapping do
