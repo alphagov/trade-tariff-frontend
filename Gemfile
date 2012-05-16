@@ -33,6 +33,7 @@ gem 'unicorn'
 group :development do
   gem 'capistrano'
   gem 'debugger'
+  gem 'progressbar'
 end
 
 group :test do

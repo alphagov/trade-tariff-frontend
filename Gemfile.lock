@@ -107,6 +107,7 @@ GEM
     plek (0.1.21)
       builder
     polyglot (0.3.3)
+    progressbar (0.11.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -218,6 +219,7 @@ DEPENDENCIES
   kaminari
   mysql2
   plek
+  progressbar
   rails (= 3.2.3)
   rspec-rails
   sass-rails (~> 3.2.3)
