@@ -8,13 +8,12 @@
         <hgroup>
           <h1>
             <span>Section</span>
-            Tariff App
+            UK Trade Tariff
           </h1>
         </hgroup>
       </header>
-      <h1>UK Trade Tariff</h1>
       <div class="browse-sections core-content group">
-        <%= simple_form_for :search do |f| %>
+        <%= simple_form_for @search, url: perform_search_path do |f| %>
           <fieldset>
             <%= f.input :q, required: false, label: 'Search' %>
 

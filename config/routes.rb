@@ -7,5 +7,5 @@ Uktt::Application.routes.draw do
     end
   end
 
-  root to: 'search#show'
+  root to: 'sections#index'
 end
