@@ -2,6 +2,25 @@
 <%= stylesheet_link_tag 'tariff' %>
 
 <div id='wrapper'>
+  <section id="content" role="main" class="group ancillary section-page">
+    <div class="section-container">
+      <header class="page-header group">
+        <hgroup>
+          <h1>
+            <span>Section</span>
+            Tariff App
+          </h1>
+        </hgroup>
+      </header>
+      <div class="browse-sections core-content group">
+        <%= simple_form_for :search do |f| %>
+          <fieldset>
+            <%= f.input :description %>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </section>
   <div class='inner group'>
     <ul>
       <li>

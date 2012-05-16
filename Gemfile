@@ -9,6 +9,10 @@ gem 'mysql2'
 gem 'tire'
 gem 'kaminari'
 gem 'plek'
+gem 'simplecov'
+gem 'simplecov-rcov'
+gem 'ci_reporter'
+gem 'test-unit'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
@@ -43,6 +47,5 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
-  gem 'bootstrap-sass'
   gem 'shoulda-matchers'
 end
