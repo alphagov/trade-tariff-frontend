@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(:version => 20120516151323) do
     t.integer  "hier_pos"
     t.string   "substring"
     t.string   "code"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.text     "description"
-    t.boolean  "is_heading"
+    t.boolean  "is_heading",  :default => false
     t.integer  "heading_id"
   end
 

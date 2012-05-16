@@ -1,7 +1,7 @@
 class AddParentAndChildrenToCommodities < ActiveRecord::Migration
   def up
     remove_column :commodities, :heading
-    add_column :commodities, :is_heading, :boolean
+    add_column :commodities, :is_heading, :boolean, :default => false
     add_column :commodities, :heading_id, :integer
 
     add_index :commodities, :heading_id
