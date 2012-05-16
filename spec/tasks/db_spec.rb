@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'common rails tasks should pass', :slow do
+describe 'common rails tasks should pass' do
   before { Uktt::Application.load_tasks }
 
   # TODO keep this out for a while, too slow
