@@ -1,0 +1,24 @@
+defaults: &defaults
+  adapter: mysql2
+  pool: 5
+  user: root
+  password:
+  encoding: utf8
+  host: localhost
+
+development:
+  <<: *defaults
+  database: tariffs_development
+  password:
+
+test:
+  <<: *defaults
+  database: tariff_test
+  user: tariff
+  password: tariff
+
+production:
+  <<: *defaults
+  database: tariffs_production
+  username:
+  password:
