@@ -41,6 +41,7 @@ group :test do
   gem 'forgery'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'fakeweb'
 end
 
 group :assets do

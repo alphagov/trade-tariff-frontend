@@ -23,6 +23,10 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+
+    # TODO probably move these to run based on some tag
+    FakeWeb.allow_net_connect = false
+    FakeWeb.register_uri(:any, %r|\Ahttp://localhost:9200|, :body => "{}")
   end
 
   config.before(:each) do
