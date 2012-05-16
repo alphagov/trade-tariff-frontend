@@ -61,10 +61,10 @@ module XlsImporter
       obj.delete(:substring)
       Chapter.create(obj)
     elsif is_heading?(obj)
-      chapter = Chapter.where("code LIKE '?'", get_chapter(obj[:code])+'%').first
+      chapter = Chapter.where("code LIKE ?", get_chapter(obj[:code])+'%').first
       Commodity.create(obj.merge({heading: true, chapter: chapter}))
     else
-      # heading = Commodity.where("heading = TRUE AND code LIKE '?'", get_heading(obj[:code])+'%')
+      # heading = Commodity.where("heading = TRUE AND code LIKE ?", get_heading(obj[:code])+'%')
       Commodity.create(obj)
     end
   end
