@@ -35,6 +35,7 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'forgery'
+  gem 'database_cleaner'
 end
 
 group :assets do

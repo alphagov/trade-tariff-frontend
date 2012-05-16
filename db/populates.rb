@@ -1,6 +1,6 @@
 require 'forgery'
 require 'factory_girl'
-require File.join(Rails.root, 'spec', 'factories.rb') unless FactoryGirl.factories.registered?(:system_admin)
+require File.join(Rails.root, 'spec', 'factories.rb') unless FactoryGirl.factories.registered?(:section)
 
 3.times do
   section = FactoryGirl.create :section
