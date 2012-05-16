@@ -12,25 +12,18 @@
           </h1>
         </hgroup>
       </header>
+      <h1>UK Trade Tariff</h1>
       <div class="browse-sections core-content group">
         <%= simple_form_for :search do |f| %>
           <fieldset>
-            <%= f.input :description %>
+            <%= f.input :q, required: false, label: 'Search' %>
+
+            <%= f.button :submit, 'Search' %>
           </fieldset>
         <% end %>
       </div>
     </div>
   </section>
-  <div class='inner group'>
-    <ul>
-      <li>
-        <%= link_to "Search", root_path %>
-      </li>
-      <li>
-        <%= link_to "Explore", sections_path %>
-      </li>
-    </ul>
-  </div>
 
   <div class='inner group'>
     <%= yield %>

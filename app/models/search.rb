@@ -1,5 +1,5 @@
 class Search
-  ATTRIBUTES = [:commodity_code, :description, :date, :export]
+  ATTRIBUTES = [:commodity_code, :description, :date, :export, :q]
 
   include ActiveModel::Validations
   include ActiveModel::Conversion
