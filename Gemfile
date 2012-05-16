@@ -5,7 +5,7 @@ gem 'rails', '3.2.3'
 
 gem 'simple_form'
 
-gem 'pg'
+gem 'mysql2'
 gem 'tire'
 gem 'kaminari'
 gem 'plek'

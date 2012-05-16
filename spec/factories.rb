@@ -7,7 +7,7 @@ FactoryGirl.define do
   factory :chapter do
     section
     description { Forgery(:basic).text }
-    number      { Forgery(:basic).number }
+    code        { Forgery(:basic).number }
   end
 
   factory :commodity do

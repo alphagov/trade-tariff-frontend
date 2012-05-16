@@ -15,13 +15,13 @@ A web application front end for use with the UK Trade Tariff API
     ```
     git clone git@github.com:alphagov/slimmer.git
     ```
-    
+
 3. Clone gds-api-adapters:
 
     ```
     git clone git@github.com:alphagov/gds-api-adapters.git
     ```
-    
+
 4. Run TariffWebApp:
 
     ```
@@ -32,3 +32,4 @@ A web application front end for use with the UK Trade Tariff API
 ## Notes
 
 * Missing indexes on chapters (section_id) and commodities (chapter_id)
+* No exception notification utility in here yet.
