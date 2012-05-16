@@ -40,6 +40,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'forgery'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :assets do
@@ -47,5 +48,5 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
-  gem 'shoulda-matchers'
+  gem "therubyracer"
 end
