@@ -11,6 +11,17 @@ hit_url = base_url + export + date + obj_id
 page = agent.get(hit_url)
 
 noko_body = page.at("//body")
-noko_body.css('table').each do |el|
-  puts el.text
-end
+tables = noko_body.css('table')
+
+#fields: Measure Type, Duty rates / prohibitions, Additional codes, Conditions, Exclusions, Legal Act Footnote
+"Third country measures"
+
+#fields: Country, Measure Type,  Duty rates / prohibitions, Additional codes,  Conditions,  Exclusions,  Legal Act, Footnotes
+"Measures for specific countries and country groups"
+
+#DUplicated data
+#fields: code, description, duty
+"Additional code"
+
+#fields: Code, Description
+"Footnotes"
