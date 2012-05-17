@@ -8,3 +8,26 @@ nav .beta-notice, nav ol {
     padding-top: 40px;
   }
 }
+
+form.tariff-search {
+  div.string {
+    input {
+      font-size: 1.9em;
+      height: 40px;
+    }
+  }
+
+  input.button {
+    height: 45px;
+  }
+
+  .control-group, input.button {
+    display: block;
+    float: left;
+  }
+
+  .control-group {
+    margin-right: 10px;
+    width: 750px;
+  }
+}

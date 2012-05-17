@@ -13,15 +13,16 @@
         </hgroup>
       </header>
       <div class="browse-sections core-content group">
-        <%= simple_form_for @search, url: perform_search_path do |f| %>
+        <%= simple_form_for @search, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
           <fieldset>
-            <%= f.input :q, required: false, label: 'Search' %>
+            <%= f.input :q, required: false, label: false, input_html: { size: 40, placeholder: 'Search for commodity description or code' } %>
 
-            <%= f.button :submit, 'Search' %>
+            <%= f.button :submit, 'Search', class: 'button' %>
           </fieldset>
         <% end %>
       </div>
     </div>
+    <hr />
     <article>
       <%= yield %>
     </article>

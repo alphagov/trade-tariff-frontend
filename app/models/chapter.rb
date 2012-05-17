@@ -6,7 +6,7 @@ class Chapter < ActiveRecord::Base
   belongs_to :section
 
   def to_s
-    description
+    "CHAPTER #{code.first(2)} - #{description}"
   end
 
   tire do

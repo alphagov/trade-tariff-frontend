@@ -1,6 +1,8 @@
 <tr>
   <td>
-    <strong><%= commodity.code %></strong>
+    <strong>
+      <%= link_to commodity.code, section_chapter_heading_commodity_path(@section, @chapter, @heading, commodity) %>
+    </strong>
   </td>
   <td>
     <span style='font-weight: bold'>

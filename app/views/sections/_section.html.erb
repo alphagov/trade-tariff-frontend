@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= section.numeral %>
+    <%= link_to section.numeral, section_chapters_path(section) %>
   </td>
   <td>
     <%= link_to section.title, section_chapters_path(section) %>
