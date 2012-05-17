@@ -1,13 +1,57 @@
 <div class='browse-sections core-content group'>
-  <strong>Section</strong>: <%= link_to @section, section_chapters_path(@section) %>
-  <br/>
-  <strong>Chapter</strong>: <%= link_to @chapter, section_chapter_headings_path(@section, @chapter) %>
-  <br/>
-  <strong>Heading</strong>: <%= link_to @heading, section_chapter_heading_commodities_path(@section, @chapter, @heading) %>
-  <br/>
-  <hr/>
+  <nav>
+    <ul>
+      <li>
+        <strong>Section</strong>:
+        <%= link_to @section, section_chapters_path(@section) %>
+      </li>
+      <li>
+        <strong>Chapter</strong>:
+        <%= link_to @chapter, section_chapter_headings_path(@section, @chapter) %>
+      </li>
+      <li>
+        <strong>Heading</strong>:
+        <%= link_to @heading, section_chapter_heading_commodities_path(@section, @chapter, @heading) %>
+      </li>
+    </ul>
+  </nav>
+
   <div class='commodity'>
-    <h2>Commodity code <%= @commodity.code %></h2>
+    <h3>Commodity code <%= @commodity.code %></h3>
     <strong><%= @commodity %></strong>
   </div>
+
+  <hr/>
+
+  <h2>Third country measures</h2>
+  <table>
+    <thead>
+      <tr>
+        <td>Measure Type</td>
+        <td>Duty rates / prohibitions</td>
+        <td>Additional codes</td>
+        <td>Conditions</td>
+        <td>Exclusions</td>
+        <td>Legal Act</td>
+        <td>Footnote</td>
+      </tr>
+    </thead>
+  </table>
+
+  <hr/>
+
+  <h2>Measures for specific countries and country groups</h2>
+  <table>
+    <thead>
+      <tr>
+        <td>Measure Type</td>
+        <td>Duty rates / prohibitions</td>
+        <td>Additional codes</td>
+        <td>Conditions</td>
+        <td>Exclusions</td>
+        <td>Legal Act</td>
+        <td>Footnote</td>
+      </tr>
+    </thead>
+  </table>
 </div>
