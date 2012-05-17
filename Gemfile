@@ -34,6 +34,7 @@ group :development do
   gem 'capistrano'
   gem 'debugger'
   gem 'progressbar'
+  gem 'mechanize'
 end
 
 group :test do
