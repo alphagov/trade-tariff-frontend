@@ -10,6 +10,12 @@ FactoryGirl.define do
     code        { Forgery(:basic).number }
   end
 
+  factory :heading, class: Commodity do
+    chapter
+    description { Forgery(:basic).text }
+    is_heading  { true }
+  end
+
   factory :commodity do
     chapter
     description { Forgery(:basic).text }

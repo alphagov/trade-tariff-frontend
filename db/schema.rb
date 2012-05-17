@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516151323) do
+ActiveRecord::Schema.define(:version => 20120517133358) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "section_id"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20120516151323) do
   create_table "commodities", :force => true do |t|
     t.integer  "chapter_id"
     t.integer  "hier_pos"
-    t.string   "substring"
+    t.integer  "substring"
     t.string   "code"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false

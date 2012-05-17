@@ -1,6 +1,8 @@
 <tr>
   <td>
-    <%= link_to chapter.code, section_chapter_commodities_path(@section, chapter) %>
+    <strong>
+      <%= link_to chapter.code, section_chapter_headings_path(@section, chapter) %>
+    </strong>
   </td>
   <td>
     <%= chapter.description %>

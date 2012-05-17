@@ -14,4 +14,12 @@ class Commodity < ActiveRecord::Base
       indexes :description,  analyzer: 'snowball'
     end
   end
+
+  def to_s
+    description
+  end
+
+  def to_partial_path
+    is_heading? ? "headings/heading" : "commodities/commodity"
+  end
 end

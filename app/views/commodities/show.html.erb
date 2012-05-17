@@ -1,0 +1,13 @@
+<div class='browse-sections core-content group'>
+  <strong>Section</strong>: <%= link_to @section, section_chapters_path(@section) %>
+  <br/>
+  <strong>Chapter</strong>: <%= link_to @chapter, section_chapter_headings_path(@section, @chapter) %>
+  <br/>
+  <strong>Heading</strong>: <%= link_to @heading, section_chapter_heading_commodities_path(@section, @chapter, @heading) %>
+  <br/>
+  <hr/>
+  <div class='commodity'>
+    <h2>Commodity code <%= @commodity.code %></h2>
+    <strong><%= @commodity %></strong>
+  </div>
+</div>

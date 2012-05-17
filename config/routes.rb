@@ -3,7 +3,9 @@ Uktt::Application.routes.draw do
 
   resources :sections, only: [:index]  do
     resources :chapters, only: [:index] do
-      resources :commodities, only: [:index]
+      resources :headings, only: [:index] do
+        resources :commodities, only: [:index, :show]
+      end
     end
   end
 

@@ -3,7 +3,10 @@
     <strong><%= commodity.code %></strong>
   </td>
   <td>
-    <%= commodity.description %>
+    <span style='font-weight: bold'>
+      <%= "-" * commodity.substring %>
+    </span>
+    <%= link_to commodity.description, section_chapter_heading_commodity_path(@section, @chapter, @heading, commodity) %>
   </td>
   <td>
     <strong></strong>
