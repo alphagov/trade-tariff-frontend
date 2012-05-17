@@ -2,8 +2,7 @@ class Chapter < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  has_many   :commodities
-  has_many   :headings, class_name: 'Commodity', conditions: { is_heading: true }
+  has_many   :headings
   belongs_to :section
 
   def to_s

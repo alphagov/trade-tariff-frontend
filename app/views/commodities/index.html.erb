@@ -1,10 +1,21 @@
-<div class='browse-sections core-content group'>
-  <strong>Section</strong>: <%= link_to @section, section_chapters_path(@section) %>
-  <br/>
-  <strong>Chapter</strong>: <%= link_to @chapter, section_chapter_headings_path(@section, @chapter) %>
-  <br/>
-  <strong>Heading</strong>: <%= link_to @heading, section_chapter_heading_commodities_path(@section, @chapter, @heading) %>
-  <br/>
+<div class='browse-sections core-content group ancillary'>
+  <nav>
+    <ul>
+      <li>
+        <strong>Section</strong>:
+        <%= link_to @section, section_chapters_path(@section) %>
+      </li>
+      <li>
+        <strong>Chapter</strong>:
+        <%= link_to @chapter, section_chapter_headings_path(@section, @chapter) %>
+      </li>
+      <li>
+        <strong>Heading</strong>:
+        <%= link_to @heading, section_chapter_heading_commodities_path(@section, @chapter, @heading) %>
+      </li>
+    </ul>
+  </nav>
+
   <h2>Commodities in this heading</h2>
 
   <table>

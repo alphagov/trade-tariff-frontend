@@ -1,6 +1,13 @@
 <div class='browse-sections core-content group'>
-  <strong>Section</strong>: <%= link_to @section, section_chapters_path(@section) %>
-  <br/>
+  <nav>
+    <ul>
+      <li>
+        <strong>Section</strong>:
+        <%= link_to @section, section_chapters_path(@section) %>
+      </li>
+    </ul>
+  </nav>
+
   <h2>Chapters in the section</h2>
 
   <table>
