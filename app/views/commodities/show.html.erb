@@ -2,6 +2,10 @@
   <nav>
     <ul>
       <li>
+        <strong>Back to</strong>:
+        <%= link_to "All Sections", sections_path %>
+      </li>
+      <li>
         <strong>Section</strong>:
         <%= link_to @section, section_path(@section) %>
       </li>

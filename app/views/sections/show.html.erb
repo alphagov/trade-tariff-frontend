@@ -2,22 +2,22 @@
   <nav>
     <ul>
       <li>
-        <strong>Chapters in</strong>:
-        <%= link_to @section, section_path(@section) %>
+        <strong>Back to</strong>:
+        <%= link_to "All Sections", sections_path %>
       </li>
     </ul>
   </nav>
 
-  <h2>Chapters in this section</h2>
+  <h2>Chapters in <%= @section %></h2>
 
   <table>
     <thead>
       <tr>
         <td>
-          <strong>No</strong>
+          <strong>Chapter</strong>
         </td>
         <td>
-          <strong>Chapter</strong>
+          <strong>Description</strong>
         </td>
         <td>
           <strong>Footnotes</strong>

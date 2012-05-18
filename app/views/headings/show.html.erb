@@ -2,6 +2,10 @@
   <nav>
     <ul>
       <li>
+        <strong>Back to</strong>:
+        <%= link_to "All Sections", sections_path %>
+      </li>
+      <li>
         <strong>Section</strong>:
         <%= link_to @heading.chapter.section, section_path(@heading.chapter.section) %>
       </li>
@@ -12,13 +16,13 @@
     </ul>
   </nav>
 
-  <h2>Commodities in this heading</h2>
+  <h2>Commodities in this <%= @heading %></h2>
 
   <table>
     <thead>
       <tr>
         <td>
-          <strong>Code</strong>
+          <strong>Commodity Code</strong>
         </td>
         <td>
           <strong>Description</strong>

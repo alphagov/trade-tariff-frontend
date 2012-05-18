@@ -2,23 +2,23 @@
   <nav>
     <ul>
       <li>
-        <strong>Section</strong>:
-        <%= link_to @chapter.section, section_path(@chapter.section) %>
+        <strong>Back to</strong>:
+        <%= link_to "All Sections", sections_path %>
       </li>
       <li>
-        <strong>Headings in</strong>:
-        <%= link_to @chapter, chapter_path(@chapter.section, @chapter) %>
+        <strong>Section</strong>:
+        <%= link_to @chapter.section, section_path(@chapter.section) %>
       </li>
     </ul>
   </nav>
 
-  <h2>Headings in this chapter</h2>
+  <h2>Headings in <%= @chapter %></h2>
 
   <table>
     <thead>
       <tr>
         <td>
-          <strong>No</strong>
+          <strong>Heading</strong>
         </td>
         <td>
           <strong>Description</strong>
