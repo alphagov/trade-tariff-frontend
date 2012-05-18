@@ -26,6 +26,12 @@ class Commodity < ActiveRecord::Base
         indexes :description,             analyzer: 'snowball'
         indexes :code,                    analyzer: 'snowball'
       end
+
+      indexes :section do
+        indexes :id,                      index: :not_analyzed
+        indexes :title,                   analyzer: 'snowball'
+        indexes :numeral,                 index: :not_analyzed
+      end
     end
   end
 
@@ -48,7 +54,8 @@ class Commodity < ActiveRecord::Base
       },
       section: {
         id: section.id,
-        title: section.title
+        title: section.title,
+        numeral: section.numeral
       }
     }.to_json
   end
