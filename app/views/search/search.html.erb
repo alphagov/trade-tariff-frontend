@@ -1,0 +1,35 @@
+<div class='browse-sections core-content group'>
+  <h1>Search results</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <td>Section</td>
+        <td>Chapter</td>
+        <td>Heading</td>
+        <td>Commodity</td>
+        <td>Description</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |commodity| %>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <%= commodity.code %>
+          </td>
+          <td>
+            <pre>
+              <%= commodity.description %>
+            </pre>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

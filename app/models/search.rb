@@ -1,5 +1,5 @@
 class Search
-  ATTRIBUTES = [:commodity_code, :description, :date, :export, :q]
+  ATTRIBUTES = [:q]
 
   include ActiveModel::Validations
   include ActiveModel::Conversion
@@ -14,6 +14,10 @@ class Search
         send(:"#{name}=", value)
       end
     end if attributes.present?
+  end
+
+  def perform
+    Commodity.search(q.presence || "").results
   end
 
   def persisted?

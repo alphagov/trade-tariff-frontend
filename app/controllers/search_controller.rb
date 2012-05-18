@@ -1,10 +1,6 @@
 class SearchController < ApplicationController
-  # GET /show.html
-  def show
-  end
-
   # POST /search.html
   def search
-    render action: 'show'
+    @results = Search.new(params[:search]).perform
   end
 end

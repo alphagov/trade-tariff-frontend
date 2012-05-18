@@ -5,6 +5,8 @@ class Heading < Commodity
   belongs_to :chapter
   has_many   :commodities, foreign_key: 'heading_id'
 
+  default_scope where(is_heading: true)
+
   def to_s
     "HEADING #{code.first(4)} - #{description}"
   end
