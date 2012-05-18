@@ -18,7 +18,9 @@ A web application front end for use with the UK Trade Tariff API
     git clone git@github.com:alphagov/TariffWebApp.git
     ```
 
-2. Setup the database:
+2. Review database configuration (config/database.yml), create the users.
+
+3. Setup the database:
 
     ```
     cd TariffWebApp
@@ -26,7 +28,7 @@ A web application front end for use with the UK Trade Tariff API
     bundle exec rake db:import
     ```
 
-3. Run TariffWebApp:
+4. Run TariffWebApp:
 
     ```
     bundle exec rails s
