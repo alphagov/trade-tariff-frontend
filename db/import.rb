@@ -88,9 +88,15 @@ module XlsImporter
       Commodity.create(attrs.merge({is_heading: true, chapter: chapter}))
     else
       heading = Commodity.where("is_heading = TRUE AND code LIKE ?", get_heading(attrs[:code])+'%').first
-      commodity = Commodity.new(attrs)
-      commodity.heading = heading
-      commodity.save
+      if heading
+        commodity = Commodity.new(attrs)
+        commodity.heading = heading
+        commodity.save
+      else
+        #Errors in xls - no heading for a subheading treat as heading
+        chapter = Chapter.where("code LIKE ?", get_chapter(attrs[:code])+'%').first
+        Commodity.create(attrs.merge({is_heading: true, chapter: chapter}))
+      end
     end
   end
 end
