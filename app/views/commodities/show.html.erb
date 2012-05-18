@@ -3,22 +3,22 @@
     <ul>
       <li>
         <strong>Section</strong>:
-        <%= link_to @section, section_chapters_path(@section) %>
+        <%= link_to @section, section_path(@section) %>
       </li>
       <li>
         <strong>Chapter</strong>:
-        <%= link_to @chapter, section_chapter_headings_path(@section, @chapter) %>
+        <%= link_to @chapter, chapter_path(@chapter) %>
       </li>
       <li>
         <strong>Heading</strong>:
-        <%= link_to @heading, section_chapter_heading_commodities_path(@section, @chapter, @heading) %>
+        <%= link_to @heading, heading_path(@heading) %>
       </li>
     </ul>
   </nav>
 
   <div class='commodity'>
     <h3>Commodity code <%= @commodity %></h3>
-    <strong><%= @commodity.description %></strong>
+    <pre><%= @commodity.description %></pre>
   </div>
 
   <hr/>

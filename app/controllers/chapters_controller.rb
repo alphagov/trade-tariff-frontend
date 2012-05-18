@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
-  def index
-    @section = Section.find(params[:section_id])
-    @chapters = @section.chapters
+  def show
+    @chapter = Chapter.find(params[:id])
+    @headings = @chapter.headings
   end
 end

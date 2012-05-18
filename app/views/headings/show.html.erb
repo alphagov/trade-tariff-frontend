@@ -1,27 +1,30 @@
-<div class='browse-sections core-content group'>
+<div class='browse-sections core-content group ancillary'>
   <nav>
     <ul>
       <li>
         <strong>Section</strong>:
-        <%= link_to @section, section_chapters_path(@section) %>
+        <%= link_to @heading.chapter.section, section_path(@heading.chapter.section) %>
       </li>
       <li>
-        <strong>Headings in</strong>:
-        <%= link_to @chapter, section_chapter_headings_path(@section, @chapter) %>
+        <strong>Chapter</strong>:
+        <%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
       </li>
     </ul>
   </nav>
 
-  <h2>Headings in this chapter</h2>
+  <h2>Commodities in this heading</h2>
 
   <table>
     <thead>
       <tr>
         <td>
-          <strong>No</strong>
+          <strong>Code</strong>
         </td>
         <td>
           <strong>Description</strong>
+        </td>
+        <td>
+          <strong>Basic duty rate</strong>
         </td>
         <td>
           <strong>Footnotes</strong>
@@ -32,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= render @headings %>
+      <%= render @commodities %>
     </tbody>
   </table>
 </div>

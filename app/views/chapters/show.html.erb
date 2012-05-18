@@ -2,13 +2,17 @@
   <nav>
     <ul>
       <li>
-        <strong>Chapters in</strong>:
-        <%= link_to @section, section_chapters_path(@section) %>
+        <strong>Section</strong>:
+        <%= link_to @chapter.section, section_path(@chapter.section) %>
+      </li>
+      <li>
+        <strong>Headings in</strong>:
+        <%= link_to @chapter, chapter_path(@chapter.section, @chapter) %>
       </li>
     </ul>
   </nav>
 
-  <h2>Chapters in this section</h2>
+  <h2>Headings in this chapter</h2>
 
   <table>
     <thead>
@@ -17,7 +21,7 @@
           <strong>No</strong>
         </td>
         <td>
-          <strong>Chapter</strong>
+          <strong>Description</strong>
         </td>
         <td>
           <strong>Footnotes</strong>
@@ -28,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= render @chapters %>
+      <%= render @headings %>
     </tbody>
   </table>
 </div>

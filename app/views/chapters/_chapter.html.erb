@@ -1,11 +1,11 @@
 <tr>
   <td>
     <strong>
-      <%= link_to chapter.code.first(2), section_chapter_headings_path(@section, chapter) %>
+      <%= link_to chapter.code.first(2), chapter_path(chapter) %>
     </strong>
   </td>
   <td>
-    <%= link_to chapter.description, section_chapter_headings_path(@section, chapter) %>
+    <%= link_to chapter.description, chapter_path(chapter) %>
   </td>
   <td>
   </td>

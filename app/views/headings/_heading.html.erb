@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <strong><%= link_to heading.code.first(4), section_chapter_heading_commodities_path(@section, @chapter, heading) %></strong>
+    <strong><%= link_to heading.code.first(4), heading_path(heading) %></strong>
   </td>
   <td>
-    <%= link_to heading.description, section_chapter_heading_commodities_path(@section, @chapter, heading) %>
+    <%= link_to heading.description, heading_path(heading) %>
   </td>
   <td>
     <strong></strong>

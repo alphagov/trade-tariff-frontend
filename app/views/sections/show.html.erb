@@ -1,0 +1,34 @@
+<div class='browse-sections core-content group'>
+  <nav>
+    <ul>
+      <li>
+        <strong>Chapters in</strong>:
+        <%= link_to @section, section_path(@section) %>
+      </li>
+    </ul>
+  </nav>
+
+  <h2>Chapters in this section</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <td>
+          <strong>No</strong>
+        </td>
+        <td>
+          <strong>Chapter</strong>
+        </td>
+        <td>
+          <strong>Footnotes</strong>
+        </td>
+        <td>
+          <strong>Your Notes</strong>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @chapters %>
+    </tbody>
+  </table>
+</div>

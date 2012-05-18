@@ -5,6 +5,10 @@ class Heading < ActiveRecord::Base
   belongs_to :chapter
   has_many   :commodities
 
+  def short_code
+    code.first(4)
+  end
+
   def to_s
     "HEADING #{code.first(4)} - #{description}"
   end

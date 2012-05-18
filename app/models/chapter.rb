@@ -5,6 +5,10 @@ class Chapter < ActiveRecord::Base
   has_many   :headings
   belongs_to :section
 
+  def short_code
+    code.first(2)
+  end
+
   def to_s
     "CHAPTER #{code.first(2)} - #{description}"
   end

@@ -4,5 +4,7 @@ class SectionsController < ApplicationController
   end
 
   def show
+    @section = Section.find(params[:id])
+    @chapters = @section.chapters
   end
 end

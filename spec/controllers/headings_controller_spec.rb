@@ -1,16 +1,15 @@
 require 'spec_helper'
 
-describe HeadingsController, "GET to #index" do
+describe HeadingsController, "GET to #show" do
   let!(:section) { create :section }
   let!(:chapter) { create :chapter, section: section }
+  let!(:heading) { create :heading, chapter: chapter }
 
   before(:each) do
-    get :index, section_id: section.id,
-                chapter_id: chapter.id
+    get :show, id: heading.id
   end
 
   it { should respond_with(:success) }
-  it { should assign_to(:section) }
-  it { should assign_to(:chapter) }
-  it { should assign_to(:headings) }
+  it { should assign_to(:heading) }
+  it { should assign_to(:commodities) }
 end
