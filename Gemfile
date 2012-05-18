@@ -29,8 +29,6 @@ end
 
 gem 'spreadsheet'
 
-gem 'unicorn'
-
 group :development do
   gem 'capistrano'
   gem 'debugger'
