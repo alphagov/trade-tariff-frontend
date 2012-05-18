@@ -1,5 +1,5 @@
 class Search
-  ATTRIBUTES = [:q]
+  ATTRIBUTES = [:q, :page]
 
   include ActiveModel::Validations
   include ActiveModel::Conversion
@@ -17,7 +17,8 @@ class Search
   end
 
   def perform
-    Commodity.search(q.presence || "").results
+    Commodity.search(q.presence || "", page: page || 1,
+                                       per_page: 25)
   end
 
   def persisted?

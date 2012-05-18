@@ -27,12 +27,12 @@
             <%= link_to commodity.code, commodity_path(commodity.id) %>
           </td>
           <td>
-            <pre>
               <%= commodity.description %>
-            </pre>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <%= paginate @results %>
 </div>

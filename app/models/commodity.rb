@@ -4,8 +4,6 @@ class Commodity < ActiveRecord::Base
 
   belongs_to :heading
 
-  paginates_per 100
-
   tire do
     mapping do
       indexes :id,                      index: :not_analyzed
