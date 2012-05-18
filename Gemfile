@@ -15,25 +15,15 @@ gem 'ci_reporter'
 gem 'test-unit'
 gem 'friendly_id'
 
-if ENV['SLIMMER_DEV']
-  gem 'slimmer', path: '../slimmer'
-else
-  gem 'slimmer', '~> 1.1'
-end
-
-if ENV['API_DEV']
-  gem 'gds-api-adapters', path: '../gds-api-adapters'
-else
-  gem 'gds-api-adapters', '~> 0.0.43'
-end
-
-gem 'spreadsheet'
+gem 'slimmer', '~> 1.1'
+gem 'gds-api-adapters', '~> 0.0.43'
 
 group :development do
   gem 'capistrano'
   gem 'debugger'
   gem 'progressbar'
   gem 'mechanize'
+  gem 'spreadsheet'
 end
 
 group :test do
