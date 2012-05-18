@@ -2,6 +2,14 @@
 
 A web application front end for use with the UK Trade Tariff API
 
+## Dependencies
+
+1. ElasticSearch (Mac OS X using Homebrew):
+
+    ```
+    brew install elasticsearch
+    ```
+
 ## Local install/run instructions
 
 1. Clone repo:
@@ -22,11 +30,18 @@ A web application front end for use with the UK Trade Tariff API
     git clone git@github.com:alphagov/gds-api-adapters.git
     ```
 
-4. Run TariffWebApp:
+4. Setup the database:
 
     ```
     cd TariffWebApp
-    API_DEV=1 SLIMMER_DEV=1 be rails s
+    bundle exec rake db:setup
+    bundle exec rake db:import
+    ``` 
+
+4. Run TariffWebApp:
+
+    ```
+    bundle exec rails s
     ```
 
 ## Notes
