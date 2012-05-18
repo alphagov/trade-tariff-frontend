@@ -9,7 +9,11 @@ require File.join(Rails.root, 'spec', 'factories.rb') unless FactoryGirl.factori
     chapter = FactoryGirl.create(:chapter, section: section)
 
     3.times do
-      commodity = FactoryGirl.create(:commodity, chapter: chapter)
+      heading = FactoryGirl.create(:heading, chapter: chapter)
+
+      3.times do
+        commodity = FactoryGirl.create(:commodity, heading: heading)
+      end
     end
   end
 end

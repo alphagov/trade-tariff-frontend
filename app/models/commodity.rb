@@ -2,10 +2,7 @@ class Commodity < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  belongs_to :chapter
-  belongs_to :heading, conditions: { is_heading: true }
-
-  default_scope where(is_heading: false)
+  belongs_to :heading
 
   paginates_per 100
 

@@ -44,6 +44,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'fakeweb'
+  gem 'mocha'
 end
 
 group :assets do

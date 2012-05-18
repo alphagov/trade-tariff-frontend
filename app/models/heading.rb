@@ -1,11 +1,9 @@
-class Heading < Commodity
+class Heading < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
   belongs_to :chapter
-  has_many   :commodities, foreign_key: 'heading_id'
-
-  default_scope where(is_heading: true)
+  has_many   :commodities
 
   def to_s
     "HEADING #{code.first(4)} - #{description}"

@@ -22,7 +22,7 @@ describe CommoditiesController, "GET to #show" do
   let!(:section)   { create :section }
   let!(:chapter)   { create :chapter, section: section }
   let!(:heading)   { create :heading, chapter: chapter }
-  let!(:commodity) { create :commodity, chapter: chapter, heading: heading }
+  let!(:commodity) { create :commodity, heading: heading }
 
   before(:each) do
     get :show, section_id: section.id,
