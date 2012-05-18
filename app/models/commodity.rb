@@ -1,6 +1,10 @@
 class Commodity < ActiveRecord::Base
+  extend FriendlyId
+
   include Tire::Model::Search
   include Tire::Model::Callbacks
+
+  friendly_id :code
 
   belongs_to :heading
 
@@ -53,6 +57,10 @@ class Commodity < ActiveRecord::Base
         numeral: section.numeral
       }
     }.to_json
+  end
+
+  def to_param
+    code
   end
 
   def to_s

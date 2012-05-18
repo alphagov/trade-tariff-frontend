@@ -13,6 +13,7 @@ gem 'simplecov'
 gem 'simplecov-rcov'
 gem 'ci_reporter'
 gem 'test-unit'
+gem 'friendly_id'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', path: '../slimmer'
