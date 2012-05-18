@@ -6,7 +6,7 @@ describe SearchController, "POST to #search" do
   before(:each) do
     Commodity.expects(:search).returns(results)
 
-    post :search, { search: { q: "test" } }
+    get :search, { search: { q: "test" } }
   end
 
   it { should respond_with(:success) }

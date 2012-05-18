@@ -1,5 +1,5 @@
 Uktt::Application.routes.draw do
-  match "/search" => "search#search", via: :post, as: :perform_search
+  match "/search" => "search#search", via: :get, as: :perform_search
 
   resources :sections, only: [:index, :show]
   resources :chapters, only: [:index, :show]

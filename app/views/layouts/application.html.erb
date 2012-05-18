@@ -13,7 +13,7 @@
         </hgroup>
       </header>
       <div class="browse-sections core-content group">
-        <%= simple_form_for @search, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
+        <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
           <fieldset>
             <%= f.input :q, required: false, label: false, input_html: { size: 40, placeholder: 'Search for commodity description or code' } %>
 
