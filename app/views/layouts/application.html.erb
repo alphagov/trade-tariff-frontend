@@ -1,32 +1,43 @@
-<%= csrf_meta_tags %>
-<%= stylesheet_link_tag 'tariff' %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield :title %> | GOV.UK</title>
+    <%= stylesheet_link_tag 'tariff' %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application", defer: true %>
+    <%= yield :section_meta_tags %>
+    <%= yield :head %>
+  </head>
+  <body class="citizen">
+    <div id="wrapper" class="tariff">
+      <section id="content" role="main" class="group ancillary section-page">
+        <div class="section-container">
+          <header class="page-header group">
+            <hgroup>
+              <h1>
+                <span>Section</span>
+                <%= link_to "UK Trade Tariff", root_path %>
+              </h1>
+            </hgroup>
+          </header>
+          <div class="browse-sections core-content group">
+            <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
+              <fieldset>
+                <%= f.input :q, required: false, label: false,
+                            input_html: { size: 40,
+                                          name: 'q',
+                                          placeholder: 'Search for commodity by description or code' } %>
 
-<div id='wrapper'>
-  <section id="content" role="main" class="group ancillary section-page">
-    <div class="section-container">
-      <header class="page-header group">
-        <hgroup>
-          <h1>
-            <span>Section</span>
-            <%= link_to "UK Trade Tariff", root_path %>
-          </h1>
-        </hgroup>
-      </header>
-      <div class="browse-sections core-content group">
-        <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
-          <fieldset>
-            <%= f.input :q, required: false, label: false, input_html: { size: 40,
-                                                                         name: 'q',
-                                                                         placeholder: 'Search for commodity by description or code' } %>
-
-            <%= f.button :submit, 'Search', class: 'button' %>
-          </fieldset>
-        <% end %>
-      </div>
+                <%= f.button :submit, 'Search', class: 'button' %>
+              </fieldset>
+            <% end %>
+          </div>
+        </div>
+        <hr />
+        <article>
+          <%= yield %>
+        </article>
+      </section>
     </div>
-    <hr />
-    <article>
-      <%= yield %>
-    </article>
-  </section>
-</div>
+  </body>
+</html>
