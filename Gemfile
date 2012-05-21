@@ -24,6 +24,7 @@ group :development do
   gem 'progressbar'
   gem 'mechanize'
   gem 'spreadsheet'
+  gem 'pry-rails'
 end
 
 group :test do
