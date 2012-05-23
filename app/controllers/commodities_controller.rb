@@ -6,7 +6,7 @@ class CommoditiesController < ApplicationController
   def show
     @commodity = Commodity.find(params[:id])
     @heading = @commodity.heading
-    @chapter = @heading.chapter
-    @section = @chapter.section
+    @chapter = @commodity.chapter
+    @section = @commodity.section
   end
 end

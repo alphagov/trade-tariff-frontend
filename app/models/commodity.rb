@@ -1,69 +1,23 @@
-class Commodity < ActiveRecord::Base
-  extend FriendlyId
+require 'api_entity'
 
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+class Commodity
+  include ApiEntity
 
-  friendly_id :code
+  attr_accessor :id, :code, :description, :substring, :hier_pos
 
-  belongs_to :heading
+  has_one :section
+  has_one :heading
+  has_one :chapter
 
-  tire do
-    mapping do
-      indexes :id,                      index: :not_analyzed
-      indexes :description,             analyzer: 'snowball'
-      indexes :code,                    analyzer: 'snowball'
-
-      indexes :heading do
-        indexes :id,                      index: :not_analyzed
-        indexes :description,             analyzer: 'snowball'
-        indexes :code,                    analyzer: 'snowball'
-      end
-
-      indexes :chapter do
-        indexes :id,                      index: :not_analyzed
-        indexes :description,             analyzer: 'snowball'
-        indexes :code,                    analyzer: 'snowball'
-      end
-
-      indexes :section do
-        indexes :id,                      index: :not_analyzed
-        indexes :title,                   analyzer: 'snowball'
-        indexes :numeral,                 index: :not_analyzed
-      end
-    end
+  def substring=(substring)
+    @substring ||= substring.to_i
   end
 
-  def to_indexed_json
-    chapter = heading.chapter
-    section = chapter.section
-
-    {
-      code: code,
-      description: description,
-      heading: {
-        id: heading.id,
-        code: heading.code,
-        description: heading.description
-      },
-      chapter: {
-        id: chapter.id,
-        code: chapter.code,
-        description: chapter.description
-      },
-      section: {
-        id: section.id,
-        title: section.title,
-        numeral: section.numeral
-      }
-    }.to_json
-  end
-
-  def to_param
-    code
+  def self.find(id)
+    new(get("/commodities/#{id}"))
   end
 
   def to_s
-    code
+    description
   end
 end

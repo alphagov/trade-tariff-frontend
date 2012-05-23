@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   private
 
   def initialize_search
-    @search = Search.new(params)
+    @search = CommoditySearch.new(params)
   end
 end

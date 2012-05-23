@@ -1,23 +1,23 @@
-class Heading < ActiveRecord::Base
-  extend FriendlyId
+require 'api_entity'
 
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+class Heading
+  include ApiEntity
 
-  friendly_id :code
+  attr_accessor :id, :description, :code, :commodities
 
-  belongs_to :chapter
-  has_many   :commodities
+  has_one :chapter
+  has_one :section
+  has_many :commodities
+
+  def self.find(id)
+    new(get("/headings/#{id}"))
+  end
 
   def short_code
     code.first(4)
   end
 
-  def to_param
-    code
-  end
-
   def to_s
-    "HEADING #{code.first(4)} - #{description}"
+    "HEADING #{short_code} - #{description}"
   end
 end

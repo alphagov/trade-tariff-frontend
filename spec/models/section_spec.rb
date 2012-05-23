@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe Section do
-  it { should have_many(:chapters) }
+  # it { should have_many(:chapters) }
 end

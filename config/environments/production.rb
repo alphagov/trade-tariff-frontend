@@ -67,4 +67,7 @@ Uktt::Application.configure do
 
   config.action_controller.asset_host = Plek.current.find('assets')
   config.slimmer.asset_host = Plek.current.find('assets')
+
+  # Host for Trade Tariff API endpoint
+  config.api_host = "CHANGE ME"
 end

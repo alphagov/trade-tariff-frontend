@@ -1,0 +1,51 @@
+{
+  id: "4fbb5fc12b200f0f5e000001",
+  code: "030000000080",
+  description: "FISH AND CRUSTACEANS, MOLLUSCS AND OTHER AQUATIC INVERTEBRATES",
+  headings: [
+    {
+      id: "4fbb5fce2b200f0f5e0002c5",
+      description: "Live fish",
+      code: "030100000080"
+    },
+    {
+      id: "4fbb5fce2b200f0f5e0002e9",
+      description: "Fish, fresh or chilled, excluding fish fillets and other fish meat of heading|0304",
+      code: "030200000080"
+    },
+    {
+      id: "4fbb5fd02b200f0f5e00037e",
+      description: "Fish, frozen, excluding fish fillets and other fish meat of heading|0304",
+      code: "030300000080"
+    },
+    {
+      id: "4fbb5fd32b200f0f5e000438",
+      description: "Fish fillets and other fish meat (whether or not minced), fresh, chilled or frozen",
+      code: "030400000080"
+    },
+    {
+      id: "4fbb5fd62b200f0f5e000545",
+      description: "Fish, dried, salted or in brine; smoked fish, whether or not cooked before or during the smoking process; flours, meals and pellets of fish, fit for human consumption",
+      code: "030500000080"
+    },
+    {
+      id: "4fbb5fd82b200f0f5e00060b",
+      description: "Crustaceans, whether in shell or not, live, fresh, chilled, frozen, dried, salted or in brine; smoked crustaceans, whether in shell or not, whether or not cooked before or during the smoking process; crustaceans, in shell, cooked by steaming or by boiling in water, whether or not chilled, frozen, dried, salted or in brine; flours, meals and pellets of crustaceans, fit for human consumption",
+      code: "030600000080"
+    },
+    {
+      id: "4fbb5fd92b200f0f5e000679",
+      description: "Molluscs, whether in shell or not, live, fresh, chilled, frozen, dried, salted or in brine; smoked molluscs, whether in shell or not, whether or not cooked before or during the smoking process; flours, meals and pellets of molluscs, fit for human consumption",
+      code: "030700000080"
+    },
+    {
+      id: "4fbb5fda2b200f0f5e0006dc",
+      description: "Aquatic invertebrates other than crustaceans and molluscs, live, fresh, chilled, frozen, dried, salted or in brine; smoked aquatic invertebrates other than crustaceans and molluscs, whether or not cooked before or during the smoking process; flours, meals and pellets of aquatic invertebrates other than crustaceans and molluscs, fit for human consumption",
+      code: "030800000080"
+    }
+  ],
+  section: {
+    id: "4fbb5fc12b200f0f5e000001",
+    title: "Live animals; animal products (chapter 1 - 5)"
+  }
+}

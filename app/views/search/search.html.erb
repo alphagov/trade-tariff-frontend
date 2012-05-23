@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @results.each do |commodity| %>
+      <% @results.entries.each do |commodity| %>
         <tr>
           <td>
             <%= link_to commodity.section.numeral, section_path(commodity.section.id) %>

@@ -37,4 +37,7 @@ Uktt::Application.configure do
 
   # Slimmer config
   config.middleware.use Slimmer::App, asset_host: "http://static.preview.alphagov.co.uk"
+
+  # Host for Trade Tariff API endpoint
+  config.api_host = "http://www.example.com/api"
 end

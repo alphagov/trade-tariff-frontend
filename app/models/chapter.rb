@@ -1,24 +1,27 @@
-class Chapter < ActiveRecord::Base
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+require 'api_entity'
 
-  has_many   :headings
-  belongs_to :section
+class Chapter
+  include ApiEntity
 
-  def short_code
-    code.first(2)
+  attr_accessor :id, :code, :description, :headings
+
+  has_one :section
+  has_many :headings
+
+  def self.find(id)
+    new(get("/chapters/#{id}"))
   end
 
   def to_s
-    "CHAPTER #{code.first(2)} - #{description}"
+    puts "-"*100
+    puts id
+    puts description
+    puts code
+    puts "!" * 100
+    "CHAPTER #{short_code} - #{description}"
   end
 
-  tire do
-    mapping do
-      indexes :id,           index: :not_analyzed
-      indexes :section_id,   index: :not_analyzed # not sure this will be needed yet
-      indexes :number
-      indexes :description,  analyzer: 'snowball'
-    end
+  def short_code
+    code.first(2)
   end
 end
