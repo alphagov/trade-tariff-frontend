@@ -1,16 +1,15 @@
 require 'spec_helper'
 
-describe CommoditiesController, "GET to #show" do
-  let!(:section)   { create :section }
-  let!(:chapter)   { create :chapter, section: section }
-  let!(:heading)   { create :heading, chapter: chapter }
-  let!(:commodity) { create :commodity, heading: heading }
+describe CommoditiesController, "GET to #show", :webmock do
+  let!(:commodity) { attributes_for :commodity }
 
   before(:each) do
-    get :show, section_id: section.id,
-               chapter_id: chapter.id,
-               heading_id: heading.id,
-               id: commodity.id
+    stub_request(:get, "http://www.example.com/api/commodities/#{commodity[:id]}").
+           to_return(status: 200,
+                     body: File.read("spec/fixtures/responses/commodities_show.json"),
+                     headers: { content_type: 'application/json' })
+
+    get :show, id: commodity[:id]
   end
 
   it { should respond_with(:success) }

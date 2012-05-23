@@ -1,0 +1,14 @@
+{
+  "id":"4fbb5fc72b200f0f5e000018",
+  "code":"010121000010",
+  "description":"Horses",
+  "heading":{
+    "id":"4fbb5fc72b200f0f5e000017",
+    "code":"010100000080",
+    "description":"Live horses, asses, mules and hinnies"
+  },
+  "chapter":{
+    "id":"4fbb5fc72b200f0f5e000016",
+    "description":""
+  }
+}

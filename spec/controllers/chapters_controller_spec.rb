@@ -6,7 +6,10 @@ describe ChaptersController, "GET to #show", :webmock do
 
   before(:each) do
     stub_request(:get, "http://www.example.com/api/chapters/#{chapter[:id]}").
-           to_return(status: 200, body: File.new(Rails.root + "spec/fixtures/responses/chapters_show.json"))
+           to_return(status: 200,
+                     body: File.read("spec/fixtures/responses/chapters_show.json"),
+                     headers: { content_type: 'application/json' })
+
     get :show, id: chapter[:id]
   end
 

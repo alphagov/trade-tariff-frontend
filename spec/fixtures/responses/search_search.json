@@ -1,0 +1,21 @@
+{
+  "current_page": 1,
+  "entries": [
+    {
+      "_explanation": null,
+      "_index": "commodities",
+      "_score": 1.1044405,
+      "_type": "commodity",
+      "_version": null,
+      "chapter": {
+        "code": "290000000080",
+        "description": "ORGANIC CHEMICALS",
+        "id": "4fbb60262b200f0f5e001bcd"
+      }
+    }
+  ],
+  "offset": 0,
+  "per_page": 25,
+  "total_entries": 1,
+  "total_pages": 1
+}

@@ -1,10 +1,13 @@
 require 'spec_helper'
 
-describe SearchController, "POST to #search" do
+describe SearchController, "POST to #search", :webmock do
   let(:results) { stub(results: []) }
 
   before(:each) do
-    Commodity.expects(:search).returns(results)
+    stub_request(:post, "http://www.example.com/api/search").
+           to_return(status: 200,
+                     body: File.read("spec/fixtures/responses/search_search.json"),
+                     headers: { content_type: 'application/json' })
 
     get :search, { q: "test" }
   end

@@ -1,12 +1,15 @@
 require 'spec_helper'
 
-describe HeadingsController, "GET to #show" do
-  let!(:section) { create :section }
-  let!(:chapter) { create :chapter, section: section }
-  let!(:heading) { create :heading, chapter: chapter }
+describe HeadingsController, "GET to #show", :webmock do
+  let!(:heading) { attributes_for :heading }
 
   before(:each) do
-    get :show, id: heading.id
+    stub_request(:get, "http://www.example.com/api/headings/#{heading[:id]}").
+           to_return(status: 200,
+                     body: File.read("spec/fixtures/responses/headings_show.json"),
+                     headers: { content_type: 'application/json' })
+
+    get :show, id: heading[:id]
   end
 
   it { should respond_with(:success) }
