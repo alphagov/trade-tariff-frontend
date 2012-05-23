@@ -13,7 +13,7 @@ class Chapter
   end
 
   def to_s
-    "CHAPTER" # #{short_code} - #{description}"
+    "CHAPTER #{short_code} - #{description}"
   end
 
   def short_code

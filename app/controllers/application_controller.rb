@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :initialize_search
 
+  layout :set_layout
+
   rescue_from Errno::ECONNREFUSED do |e|
     render text: '', status: :error
   end
@@ -11,5 +13,14 @@ class ApplicationController < ActionController::Base
 
   def initialize_search
     @search = CommoditySearch.new(params)
+  end
+
+  def set_layout
+    if request.headers['X-PJAX']
+      response.headers[Slimmer::SKIP_HEADER] = "true"
+      "pjax"
+    else
+      "application"
+    end
   end
 end

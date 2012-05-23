@@ -9,30 +9,10 @@
     <%= yield :head %>
   </head>
   <body class="citizen">
-    <div id="wrapper" class="tariff">
+    <div id="wrapper" class="tariff" data-pjax-container="true">
       <section id="content" role="main" class="group ancillary section-page">
-        <div class="section-container">
-          <header class="page-header group">
-            <hgroup>
-              <h1>
-                <span>Section</span>
-                <%= link_to "UK Trade Tariff", root_path %>
-              </h1>
-            </hgroup>
-          </header>
-          <div class="browse-sections core-content group">
-            <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
-              <fieldset>
-                <%= f.input :q, required: false, label: false,
-                            input_html: { size: 40,
-                                          name: 'q',
-                                          placeholder: 'Search for commodity by description or code' } %>
+        <%= render 'shared/header' %>
 
-                <%= f.button :submit, 'Search', class: 'button' %>
-              </fieldset>
-            <% end %>
-          </div>
-        </div>
         <hr />
         <article>
           <%= yield %>
