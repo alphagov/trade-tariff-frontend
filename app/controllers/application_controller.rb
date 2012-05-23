@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :initialize_search
 
+  rescue_from Errno::ECONNREFUSED do |e|
+    render text: '', status: :error
+  end
+
   private
 
   def initialize_search
