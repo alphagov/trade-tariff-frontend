@@ -20,4 +20,8 @@ class Commodity
   def to_s
     description
   end
+
+  def long_desc
+    "#{code}: #{description}"
+  end
 end

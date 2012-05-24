@@ -18,6 +18,10 @@ class Heading
   end
 
   def to_s
+    description
+  end
+
+  def long_desc
     "HEADING #{short_code} - #{description}"
   end
 end

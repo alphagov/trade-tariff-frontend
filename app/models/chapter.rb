@@ -13,6 +13,10 @@ class Chapter
   end
 
   def to_s
+    description
+  end
+
+  def long_desc
     "CHAPTER #{short_code} - #{description}"
   end
 
