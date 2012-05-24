@@ -17,6 +17,7 @@ gem 'slimmer', '~> 1.1'
 gem 'gds-api-adapters', '~> 0.0.43'
 
 group :development do
+  gem 'puma'
   gem 'capistrano'
   gem 'debugger'
   gem 'awesome_print'

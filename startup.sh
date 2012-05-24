@@ -1,4 +1,4 @@
 #!/bin/bash
 
 bundle install
-bundle exec rails s -p 3017
+bundle exec rails s puma -p 3017
