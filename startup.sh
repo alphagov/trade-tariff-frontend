@@ -1,4 +1,4 @@
 #!/bin/bash
 
 bundle install
-bundle exec rails s -p 4000
+bundle exec rails s -p 3017
