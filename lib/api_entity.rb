@@ -38,12 +38,14 @@ module ApiEntity
       METHODS
     end
 
-    def has_many(associations)
-      attr_accessor associations.to_s.singularize.to_sym
+    def has_many(associations, opts = {})
+      options = opts.reverse_merge({ class_name: associations.to_s.singularize.classify })
+
+      attr_accessor associations.to_sym
 
       class_eval <<-METHODS
         def #{associations}=(data)
-          @#{associations} ||= data.map { |record| #{associations.to_s.singularize.classify}.new(record) }
+          @#{associations} = data.map { |record| #{options[:class_name]}.new(record) }
         end
       METHODS
     end
