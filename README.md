@@ -19,5 +19,11 @@ A web application front end for use with the UK Trade Tariff API
 3. Run TariffWebApp:
 
     ```
-    bundle exec rails s
+    ./startup.sh
+    ```
+
+4. Modify development.rb (if running without puppet)
+
+    ```
+    config.api_host = "localhost:3016"
     ```
