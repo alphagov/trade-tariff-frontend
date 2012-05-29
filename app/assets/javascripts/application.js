@@ -1,8 +1,11 @@
 //= require jquery.pjax
+//= require bootstrap-tooltip
+//= require bootstrap-popover
+//= require bootstrap-modal
 //= require_tree .
 
 $(function(){
-  $('#wrapper a').live('click', function(event) {
+  $('#wrapper a:not(.no-pjax)').live('click', function(event) {
     event.preventDefault();
 
     if (event.which > 1 || event.metaKey || event.ctrlKey) {
@@ -14,5 +17,13 @@ $(function(){
         timeout: 2000
        });
     }
+  });
+
+  $("a[ref='popover']").each(function(){
+    $(this).popover();
+
+    $(this).click(function(e){
+      e.preventDefault();
+    });
   });
 });
