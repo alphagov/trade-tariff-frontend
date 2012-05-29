@@ -17,6 +17,10 @@ class Section
     end
   end
 
+  def to_param
+    position
+  end
+
   def to_s
     title
   end

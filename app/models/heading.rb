@@ -3,7 +3,7 @@ require 'api_entity'
 class Heading
   include ApiEntity
 
-  attr_accessor :id, :description, :code, :commodities
+  attr_accessor :id, :description, :code, :commodities, :short_code
 
   has_one :chapter
   has_one :section
@@ -13,8 +13,8 @@ class Heading
     new(get("/headings/#{id}"))
   end
 
-  def short_code
-    code.first(4)
+  def to_param
+    short_code
   end
 
   def to_s

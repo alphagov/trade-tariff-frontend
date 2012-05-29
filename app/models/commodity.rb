@@ -22,6 +22,14 @@ class Commodity
     self.class.put("/commodities/#{id}", :query => params)
   end
 
+  def short_code
+    code.first(10)
+  end
+
+  def to_param
+    short_code
+  end
+
   def to_s
     description
   end

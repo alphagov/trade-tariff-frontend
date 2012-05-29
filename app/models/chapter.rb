@@ -3,7 +3,7 @@ require 'api_entity'
 class Chapter
   include ApiEntity
 
-  attr_accessor :id, :code, :description, :headings
+  attr_accessor :id, :code, :description, :headings, :short_code
 
   has_one :section
   has_many :headings
@@ -20,7 +20,7 @@ class Chapter
     "CHAPTER #{short_code} - #{description}"
   end
 
-  def short_code
-    code.first(2)
+  def to_param
+    short_code
   end
 end
