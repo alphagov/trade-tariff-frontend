@@ -3,7 +3,7 @@ require 'api_entity'
 class Commodity
   include ApiEntity
 
-  attr_accessor :id, :code, :description, :substring, :hier_pos
+  attr_accessor :id, :code, :description, :substring, :hier_pos, :synonyms
 
   has_one :section
   has_one :heading
@@ -16,6 +16,10 @@ class Commodity
 
   def self.find(id)
     new(get("/commodities/#{id}"))
+  end
+
+  def update_attrs(params)
+    self.class.put("/commodities/#{id}", :query => params)
   end
 
   def to_s

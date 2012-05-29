@@ -40,4 +40,5 @@ Uktt::Application.configure do
 
   # Host for Trade Tariff API endpoint
   config.api_host = "tariff-api.dev.gov.uk"
+  # config.api_host = "localhost:3016"
 end

@@ -1,0 +1,5 @@
+<%= simple_form_for :commodity, url: commodity_path(@commodity), method: :put do |f| %>
+  <%= f.input :synonyms %>
+
+  <%= f.button :submit %>
+<% end %>
