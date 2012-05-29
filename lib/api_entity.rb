@@ -45,7 +45,11 @@ module ApiEntity
 
       class_eval <<-METHODS
         def #{associations}=(data)
-          @#{associations} = data.map { |record| #{options[:class_name]}.new(record) }
+          @#{associations} ||= data.map { |record| #{options[:class_name]}.new(record) }
+        end
+
+        def #{associations}
+          @#{associations}.presence || []
         end
       METHODS
     end

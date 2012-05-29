@@ -83,7 +83,7 @@
           <td><%= link_to measure.legal_act.code, measure.legal_act.url if measure.legal_act.present? %></td>
           <td>
             <% measure.footnotes.each do |footnote| %>
-              <a href='' ref='popover' data-placement='left' title='<%= footnote.code %>' data-content="<%= footnote.description %>" class='region'>
+              <a href='' ref='popover' data-placement='left' title='<%= footnote.code %>' data-content="<%= footnote.description %>" class='no-pjax region'>
                 <%= footnote.code %>
               </a>
             <% end %>
@@ -114,7 +114,7 @@
         <tr>
           <td>
             <% if measure.region.country_group?  %>
-              <a href='' ref='popover' title='<%= measure.region.description %>' data-content="<%= measure.region.country_names %>" class='region'>
+              <a href='' ref='popover' title='<%= measure.region.description %>' data-content="<%= measure.region.country_names %>" class='no-pjax region'>
                 <%= measure.region %>
               </a>
             <% else %>
@@ -129,7 +129,7 @@
           <td><%= link_to measure.legal_act.code, measure.legal_act.url if measure.legal_act.present? %></td>
           <td>
             <% measure.footnotes.each do |footnote| %>
-              <a href='' ref='popover' data-placement='left' title='<%= footnote.code %>' data-content="<%= footnote.description %>" class='region'>
+              <a href='' ref='popover' data-placement='left' title='<%= footnote.code %>' data-content="<%= footnote.description %>" class='region no-pjax'>
                 <%= footnote.code %>
               </a>
             <% end %>
