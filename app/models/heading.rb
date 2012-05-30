@@ -10,7 +10,7 @@ class Heading
   has_many :commodities
 
   def self.find(id)
-    new(get("/headings/#{to_param}"))
+    new(get("/headings/#{id}"))
   end
 
   def to_param

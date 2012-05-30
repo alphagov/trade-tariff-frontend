@@ -16,7 +16,7 @@ class Commodity
   end
 
   def self.find(id)
-    new(get("/commodities/#{to_param}"))
+    new(get("/commodities/#{id}"))
   end
 
   def update_attrs(params)

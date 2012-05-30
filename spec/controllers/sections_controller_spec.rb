@@ -20,12 +20,12 @@ describe SectionsController, "GET to #show", :webmock do
   let!(:section) { attributes_for :section }
 
   before(:each) do
-    stub_request(:get, "http://www.example.com/api/sections/#{section[:id]}").
+    stub_request(:get, "http://www.example.com/api/sections/#{section[:position]}").
            to_return(status: 200,
                      body: File.read("spec/fixtures/responses/sections_show.json"),
                      headers: { content_type: 'application/json' })
 
-    get :show, id: section[:id]
+    get :show, id: section[:position]
   end
 
   it { should respond_with(:success) }

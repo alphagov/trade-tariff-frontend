@@ -4,12 +4,12 @@ describe CommoditiesController, "GET to #show", :webmock do
   let!(:commodity) { attributes_for :commodity }
 
   before(:each) do
-    stub_request(:get, "http://www.example.com/api/commodities/#{commodity[:id]}").
+    stub_request(:get, "http://www.example.com/api/commodities/#{commodity[:short_code]}").
            to_return(status: 200,
                      body: File.read("spec/fixtures/responses/commodities_show.json"),
                      headers: { content_type: 'application/json' })
 
-    get :show, id: commodity[:id]
+    get :show, id: commodity[:short_code]
   end
 
   it { should respond_with(:success) }
