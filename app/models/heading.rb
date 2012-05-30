@@ -3,7 +3,7 @@ require 'api_entity'
 class Heading
   include ApiEntity
 
-  attr_accessor :id, :description, :code, :commodities, :short_code,
+  attr_accessor :description, :code, :commodities, :short_code,
                 :import_measures, :export_measures
 
   has_one :chapter
