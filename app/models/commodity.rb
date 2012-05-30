@@ -8,7 +8,8 @@ class Commodity
   has_one :section
   has_one :heading
   has_one :chapter
-  has_many :measures
+  has_many :import_measures, class_name: 'Measure'
+  has_many :export_measures, class_name: 'Measure'
 
   def substring=(substring)
     @substring ||= substring.to_i

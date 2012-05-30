@@ -1,6 +1,7 @@
 //= require jquery.pjax
 //= require bootstrap-tooltip
 //= require bootstrap-popover
+//= require bootstrap-tab
 //= require bootstrap-modal
 //= require_tree .
 

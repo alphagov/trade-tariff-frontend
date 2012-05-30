@@ -25,75 +25,25 @@
   </div>
 
   <ul class="nav nav-tabs">
-    <li><a href="#import" data-toggle="tab">Import</a></li>
-    <li><a href="#export" data-toggle="tab">Export</a></li>
+    <li class='active'>
+      <a href="#import" data-toggle="tab" data-skip-pjax>Import</a>
+    </li>
+    <li>
+      <a href="#export" data-toggle="tab" data-skip-pjax>Export</a>
+    </li>
   </ul>
 
-  <h2>Third country measures</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Measure Type</th>
-        <th>Duty rates / prohibitions</th>
-        <th>Additional codes</th>
-        <th>Conditions</th>
-        <th>Exclusions</th>
-        <th>Legal Act</th>
-        <th>Footnote</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @commodity.measures.select{|m| m.region.present? }.each do |measure| %>
-        <tr>
-          <td><%= measure.measure_type %></td>
-          <td><%= measure.duty_rates %></td>
-          <td><%= measure.additional_codes.map(&:code).join(", ") %></td>
-          <td><%= render measure.conditions %></td>
-          <td><%= measure.excluded_countries.map(&:name).join(", ") %></td>
-          <td><%= link_to measure.legal_act.code, measure.legal_act.url if measure.legal_act.present? %></td>
-          <td><%= render measure.footnotes %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class='tab-content'>
+    <div class='tab-pane active' id='import'>
+      <%= render partial: 'third_country_measures', locals: { measure_type: :import_measures } %>
+      <hr/>
+      <%= render partial: 'specific_country_measures', locals: { measure_type: :import_measures } %>
+    </div>
+    <div class='tab-pane' id='export'>
+      <%= render partial: 'third_country_measures', locals: { measure_type: :export_measures } %>
+      <hr/>
+      <%= render partial: 'specific_country_measures', locals: { measure_type: :export_measures } %>
+    </div>
+  </div>
 
-  <hr/>
-
-  <h2>Measures for specific countries and country groups</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Country</th>
-        <th>Measure Type</th>
-        <th>Duty rates / prohibitions</th>
-        <th>Additional codes</th>
-        <th>Conditions</th>
-        <th>Exclusions</th>
-        <th>Legal Act</th>
-        <th>Footnote</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @commodity.measures.select{|m| m.region.blank? }.each do |measure| %>
-        <tr>
-          <td>
-            <% if measure.region.country_group?  %>
-              <a href='' ref='popover' title='<%= measure.region.description %>' data-content="<%= measure.region.country_names %>" class='no-pjax region'>
-                <%= measure.region %>
-              </a>
-            <% else %>
-              <%= measure.region %>
-            <% end %>
-          </td>
-          <td><%= measure.measure_type %></td>
-          <td><%= measure.duty_rates %></td>
-          <td><%= measure.additional_codes.map(&:code).join(", ") %></td>
-          <td><%= render measure.conditions %></td>
-          <td><%= measure.excluded_countries.map(&:name).join(", ") %></td>
-          <td><%= link_to measure.legal_act.code, measure.legal_act.url if measure.legal_act.present? %></td>
-          <td><%= render measure.footnotes %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
