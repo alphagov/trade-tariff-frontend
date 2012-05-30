@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs">
+  <li class='active'>
+    <a href="#import" data-toggle="tab" data-skip-pjax>Import</a>
+  </li>
+  <li>
+    <a href="#export" data-toggle="tab" data-skip-pjax>Export</a>
+  </li>
+</ul>
+
+<div class='tab-content'>
+  <div class='tab-pane active' id='import'>
+    <%= render partial: 'measures/third_country', locals: { measure_type: :import_measures, measurable: measurable } %>
+    <hr/>
+    <%= render partial: 'measures/specific_country', locals: { measure_type: :import_measures, measurable: measurable } %>
+  </div>
+  <div class='tab-pane' id='export'>
+    <%= render partial: 'measures/third_country', locals: { measure_type: :export_measures, measurable: measurable } %>
+    <hr/>
+    <%= render partial: 'measures/specific_country', locals: { measure_type: :export_measures, measurable: measurable } %>
+  </div>
+</div>

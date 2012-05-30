@@ -18,25 +18,29 @@
 
   <h2><%= @heading %></h2>
 
-  <table>
-    <thead>
-      <tr>
-        <td>
-          <strong>Commodity Code</strong>
-        </td>
-        <td>
-          <strong>Description</strong>
-        </td>
-        <td>
-          <strong>Basic duty rate</strong>
-        </td>
-        <td>
-          <strong>Footnotes</strong>
-        </td>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @commodities %>
-    </tbody>
-  </table>
+  <% if @heading.has_measures? %>
+    <%= render 'measures/measures', measurable: @heading %>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <td>
+            <strong>Commodity Code</strong>
+          </td>
+          <td>
+            <strong>Description</strong>
+          </td>
+          <td>
+            <strong>Basic duty rate</strong>
+          </td>
+          <td>
+            <strong>Footnotes</strong>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @commodities %>
+      </tbody>
+    </table>
+  <% end %>
 </div>

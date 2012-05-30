@@ -24,26 +24,5 @@
     <h3><%= @commodity.long_desc %></h3>
   </div>
 
-  <ul class="nav nav-tabs">
-    <li class='active'>
-      <a href="#import" data-toggle="tab" data-skip-pjax>Import</a>
-    </li>
-    <li>
-      <a href="#export" data-toggle="tab" data-skip-pjax>Export</a>
-    </li>
-  </ul>
-
-  <div class='tab-content'>
-    <div class='tab-pane active' id='import'>
-      <%= render partial: 'third_country_measures', locals: { measure_type: :import_measures } %>
-      <hr/>
-      <%= render partial: 'specific_country_measures', locals: { measure_type: :import_measures } %>
-    </div>
-    <div class='tab-pane' id='export'>
-      <%= render partial: 'third_country_measures', locals: { measure_type: :export_measures } %>
-      <hr/>
-      <%= render partial: 'specific_country_measures', locals: { measure_type: :export_measures } %>
-    </div>
-  </div>
-
+  <%= render 'measures/measures', measurable: @commodity %>
 </div>

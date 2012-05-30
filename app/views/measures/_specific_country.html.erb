@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @commodity.send(measure_type).select{|m| m.region.blank? }.each do |measure| %>
+      <% measurable.send(measure_type).select{|m| m.region.blank? }.each do |measure| %>
         <tr>
           <td>
             <% if measure.region.country_group?  %>
