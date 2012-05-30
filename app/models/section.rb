@@ -13,7 +13,7 @@ class Section
     end
 
     def find(id)
-      new(get("/sections/#{id}"))
+      new(get("/sections/#{to_param}"))
     end
   end
 

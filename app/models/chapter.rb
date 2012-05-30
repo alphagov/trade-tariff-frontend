@@ -9,7 +9,7 @@ class Chapter
   has_many :headings
 
   def self.find(id)
-    new(get("/chapters/#{id}"))
+    new(get("/chapters/#{to_param}"))
   end
 
   def to_s
