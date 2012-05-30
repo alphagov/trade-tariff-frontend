@@ -1,0 +1,31 @@
+<div id='condition-<%= condition.id %>' class='modal hide'>
+  <div class="modal-header">
+    <a href='' class="close no-pjax" data-dismiss="modal" data-skip-pjax>×</a>
+    <h3><%= condition.document_code %></h3>
+  </div>
+  <div class="modal-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Action</th>
+          <th>Requirement</th>
+          <th>Duty Expression</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= condition.document_code %></td>
+          <td><%= condition.action %></td>
+          <td><%= condition.requirement %></td>
+          <td><%= condition.duty_expression %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <a href="#" data-dismiss="modal" class="btn no-pjax" data-skip-pjax>Close</a>
+  </div>
+</div>
+
+<%= link_to condition.document_code, '', 'class' => 'no-pjax', 'data-toggle' => 'modal', 'data-backdrop' => 'false', 'data-target' => "#condition-#{condition.id}", 'data-skip-pjax' => true %>
