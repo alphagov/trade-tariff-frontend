@@ -15,16 +15,16 @@
       <% @results.entries.each do |commodity| %>
         <tr>
           <td>
-            <%= commodity.section.numeral %>
+            <%= link_to commodity.section.numeral, section_path(commodity.section) %>
           </td>
           <td>
-            <%= commodity.chapter.code.first(2) %>
+            <%= link_to commodity.chapter.code.first(2), chapter_path(commodity.chapter) %>
           </td>
           <td>
-            <%= commodity.heading.code.first(4) %>
+            <%= link_to commodity.heading.code.first(4), heading_path(commodity.heading) %>
           </td>
           <td>
-            <%= link_to commodity.code, commodity_path(commodity.to_param) %>
+            <%= link_to commodity.code, commodity_path(commodity) %>
           </td>
           <td>
               <%= commodity.description %>
