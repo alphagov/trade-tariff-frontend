@@ -15,7 +15,7 @@
       <% @results.entries.each do |commodity| %>
         <tr>
           <td>
-            <%= link_to commodity.section.numeral, section_path(commodity.section.to_param) %>
+            <%= commodity.section.numeral %>
           </td>
           <td>
             <%= link_to commodity.chapter.code.first(2), chapter_path(commodity.chapter.to_param) %>
