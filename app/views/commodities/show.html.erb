@@ -17,12 +17,12 @@
         <strong>Heading</strong>:
         <%= link_to @heading, heading_path(@heading) %>
       </li>
+      <li>
+        <strong>Commodity</strong>:
+        <%= @commodity.description %> (<%= @commodity.short_code %>)
+      </li>
     </ul>
   </nav>
-
-  <div class='commodity'>
-    <h3><%= @commodity.long_desc %></h3>
-  </div>
 
   <%= render 'measures/measures', measurable: @commodity %>
 </div>

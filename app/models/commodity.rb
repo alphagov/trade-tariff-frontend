@@ -24,7 +24,7 @@ class Commodity
   end
 
   def to_param
-    short_code
+    code
   end
 
   def to_s
