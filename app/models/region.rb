@@ -20,6 +20,6 @@ class Region
   end
 
   def blank?
-    id.present?
+    name.present?
   end
 end
