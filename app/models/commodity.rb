@@ -3,8 +3,8 @@ require 'api_entity'
 class Commodity
   include ApiEntity
 
-  attr_accessor :short_code, :code, :description,
-                :substring, :hier_pos, :synonyms, :uk_vat_rate, :third_country_duty
+  attr_accessor :short_code, :code, :description, :substring, :hier_pos,
+    :synonyms, :uk_vat_rate_cache, :third_country_duty_cache
 
   has_one :section
   has_one :heading
