@@ -39,6 +39,9 @@ Uktt::Application.configure do
   config.slimmer.asset_host = ENV["STATIC_DEV"] || Plek.new("preview").find("assets")
 
   # Host for Trade Tariff API endpoint
-  config.api_host = "tariff-api.dev.gov.uk"
-  # config.api_host = "localhost:3016"
+  if ENV['FACTER_govuk_class']
+    config.api_host = "http://tariff-api.dev.gov.uk"
+  else
+    config.api_host = "http://localhost:3016"
+  end
 end
