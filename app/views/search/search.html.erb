@@ -18,10 +18,10 @@
             <%= commodity.section.numeral %>
           </td>
           <td>
-            <%= link_to commodity.chapter.code.first(2), chapter_path(commodity.chapter.to_param) %>
+            <%= commodity.chapter.code.first(2) %>
           </td>
           <td>
-            <%= link_to commodity.heading.code.first(4), heading_path(commodity.heading.to_param) %>
+            <%= commodity.heading.code.first(4) %>
           </td>
           <td>
             <%= link_to commodity.code, commodity_path(commodity.to_param) %>
