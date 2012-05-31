@@ -69,5 +69,6 @@ Uktt::Application.configure do
   config.slimmer.asset_host = Plek.current.find('assets')
 
   # Host for Trade Tariff API endpoint
+  # TODO: externalize this lookup via Plek?
   config.api_host = "https://tariff-api.preview.alphagov.co.uk"
 end
