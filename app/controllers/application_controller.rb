@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
     if request.headers['X-PJAX']
       response.headers[Slimmer::SKIP_HEADER] = "true"
       "pjax"
+    elsif request.headers['X-AJAX']
+      response.headers[Slimmer::SKIP_HEADER] = "true"
+      false
     else
       "application"
     end

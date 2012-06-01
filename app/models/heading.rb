@@ -4,20 +4,22 @@ class Heading
   include ApiEntity
 
   attr_accessor :description, :code, :commodities, :short_code,
-                :import_measures, :export_measures
+                :import_measures, :export_measures, :has_measures
 
   has_one :chapter
   has_one :section
   has_many :commodities
-  has_many :import_measures, class_name: 'Measure'
-  has_many :export_measures, class_name: 'Measure'
 
   def self.find(id)
     new(get("/headings/#{id}"))
   end
 
-  def has_measures?
-    import_measures.present? || export_measures.present?
+  def import_measures
+    @import_measures ||= Measure.all(heading_id: self.to_param, type: :import_measures)
+  end
+
+  def export_measures
+    @export_measures ||= Measure.all(heading_id: self.to_param, type: :export_measures)
   end
 
   def to_param
