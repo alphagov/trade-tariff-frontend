@@ -16,6 +16,8 @@ gem 'ci_reporter'
 gem 'slimmer', '~> 1.1'
 gem 'gds-api-adapters', '~> 0.0.43'
 
+gem 'airbrake'
+
 group :development do
   gem 'puma'
   gem 'capistrano'
