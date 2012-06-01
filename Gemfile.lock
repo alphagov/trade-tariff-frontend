@@ -111,7 +111,7 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.2)
     null_logger (0.0.1)
-    plek (0.1.22)
+    plek (0.1.23)
       builder
     polyglot (0.3.3)
     pry (0.9.9.6)
