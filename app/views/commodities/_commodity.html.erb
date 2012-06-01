@@ -1,14 +1,22 @@
 <tr>
   <td>
     <strong>
-      <%= link_to commodity.short_code, commodity_path(commodity) %>
+      <% if commodity.leaf? %>
+        <%= link_to commodity.short_code, commodity_path(commodity) %>
+      <% else %>
+        <%= commodity.short_code %>
+      <% end %>
     </strong>
   </td>
   <td>
     <span style='font-weight: bold'>
       <%= "-" * commodity.substring %>
     </span>
-    <%= link_to commodity.description, commodity_path(commodity) %>
+    <% if commodity.leaf? %>
+      <%= link_to commodity.description, commodity_path(commodity) %>
+    <% else %>
+      <%= commodity.description %>
+    <% end %>
   </td>
   <td>
     <strong><%= commodity.third_country_duty_cache %></strong>

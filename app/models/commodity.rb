@@ -4,7 +4,7 @@ class Commodity
   include ApiEntity
 
   attr_accessor :short_code, :code, :description, :substring, :hier_pos,
-    :synonyms, :uk_vat_rate_cache, :third_country_duty_cache
+    :synonyms, :uk_vat_rate_cache, :third_country_duty_cache, :leaf
 
   has_one :section
   has_one :heading
@@ -20,6 +20,10 @@ class Commodity
 
   def update_attrs(params)
     self.class.put("/commodities/#{to_param}", :query => params)
+  end
+
+  def leaf?
+    leaf
   end
 
   def to_param
