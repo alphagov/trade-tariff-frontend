@@ -9,8 +9,6 @@ class Commodity
   has_one :section
   has_one :heading
   has_one :chapter
-  has_many :import_measures, class_name: 'Measure'
-  has_many :export_measures, class_name: 'Measure'
 
   def substring=(substring)
     @substring ||= substring.to_i
@@ -34,5 +32,13 @@ class Commodity
 
   def long_desc
     "#{code}: #{description}"
+  end
+
+  def import_measures
+    Measure.all(commodity_id: self.to_param, type: :import_measures)
+  end
+
+  def export_measures
+    Measure.all(commodity_id: self.to_param, type: :export_measures)
   end
 end

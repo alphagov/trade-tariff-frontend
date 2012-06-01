@@ -6,8 +6,8 @@
 //= require_tree .
 
 $(function(){
-$('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])')
-  .pjax('[data-pjax-container]');
+  $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])')
+    .pjax('[data-pjax-container]');
   $("a[ref='popover']").each(function(){
     $(this).popover();
 
@@ -15,4 +15,5 @@ $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])')
       e.preventDefault();
     });
   });
+  loadMeasures();
 });

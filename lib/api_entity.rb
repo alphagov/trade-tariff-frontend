@@ -7,6 +7,7 @@ module ApiEntity
 
     include HTTParty
     base_uri Rails.application.config.api_host
+    debug_output
 
     class_eval do
       def to_param

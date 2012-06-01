@@ -1,4 +1,4 @@
-<div class="<%= measure_type %>">
+<div class="">
   <h2>Measures for specific countries and country groups</h2>
   <table>
     <thead>
@@ -14,10 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      <% measurable.send(measure_type).select{|m| m.region.blank? }.each do |measure| %>
+        <% measures.each do |measure| %>
         <tr>
           <td>
-            <% if measure.region.country_group?  %>
+            <% if false || measure.region.country_group?  %>
               <a href='' ref='popover' title="<%= measure.region.description %>" data-content="<%= measure.region.country_names %>" class='no-pjax region'>
                 <%= measure.region %>
               </a>
