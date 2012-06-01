@@ -65,8 +65,8 @@ Uktt::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_controller.asset_host = Plek.current.find('pattern')
-  config.slimmer.asset_host = Plek.current.find('pattern')
+  config.action_controller.asset_host = Plek.current.find('tariff')
+  config.slimmer.asset_host = Plek.current.find('tariff')
 
   # Host for Trade Tariff API endpoint
   # TODO: externalize this lookup via Plek?
