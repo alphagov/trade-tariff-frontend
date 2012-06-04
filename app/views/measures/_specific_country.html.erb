@@ -18,7 +18,7 @@
         <tr>
           <td>
             <% if false || measure.region.country_group?  %>
-              <a href='' ref='popover' title="<%= measure.region.description %>" data-content="<%= measure.region.country_names %>" class='no-pjax region'>
+              <a href='' ref='popover' title="<%= measure.region.description %>" data-content="<%= measure.region.country_names %>" class='no-pjax region' data-skip-pjax>
                 <%= measure.region %>
               </a>
             <% else %>
