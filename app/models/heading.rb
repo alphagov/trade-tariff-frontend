@@ -4,7 +4,8 @@ class Heading
   include ApiEntity
 
   attr_accessor :description, :code, :commodities, :short_code,
-                :import_measures, :export_measures, :has_measures
+                :import_measures, :export_measures, :has_measures,
+                :has_commodities
 
   has_one :chapter
   has_one :section
@@ -20,6 +21,10 @@ class Heading
 
   def export_measures
     @export_measures ||= Measure.all(heading_id: self.to_param, type: :export_measures)
+  end
+
+  def commodity_code
+    code.first(10)
   end
 
   def to_param

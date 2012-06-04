@@ -1,6 +1,11 @@
 <tr>
   <td>
-    <strong><%= link_to heading.short_code, heading_path(heading) %></strong>
+    <strong>
+      <% if heading.has_commodities %>
+        <%= link_to heading.short_code, heading_path(heading) %></strong>
+      <% else %>
+        <%= link_to heading.commodity_code, heading_path(heading) %></strong>
+      <% end %>
   </td>
   <td>
     <%= link_to heading.description, heading_path(heading) %>
