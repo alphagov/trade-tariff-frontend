@@ -25,7 +25,9 @@
       </li>
       <li>
         <strong>Commodity</strong>:
-        <%= @commodity.description %> (<%= @commodity.short_code %>)
+        <ul>
+          <%= commodity_tree(@commodity.ancestors << @commodity).html_safe %>
+        </ul>
       </li>
     </ul>
   </nav>
