@@ -4,31 +4,48 @@
   <table>
     <thead>
       <tr>
-        <td>Section</td>
-        <td>Chapter</td>
-        <td>Heading</td>
-        <td>Commodity</td>
-        <td>Description</td>
+        <th class="p20"></th>
+        <th class="p80">Description</th>
       </tr>
     </thead>
     <tbody>
       <% @results.entries.each do |commodity| %>
         <tr>
           <td>
-            <%= link_to commodity.section.numeral, section_path(commodity.section) %>
+            <%= link_to "Section: #{commodity.section.numeral}", section_path(commodity.section) %>
           </td>
           <td>
-            <%= link_to commodity.chapter.code.first(2), chapter_path(commodity.chapter) %>
+            <%= commodity.section.title %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to "Chapter: #{commodity.chapter.short_code}", chapter_path(commodity.chapter) %>
           </td>
           <td>
-            <%= link_to commodity.heading.code.first(4), heading_path(commodity.heading) %>
+            <%= commodity.chapter.description %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to "Heading: #{commodity.heading.short_code}", heading_path(commodity.heading) %>
           </td>
           <td>
-            <%= link_to commodity.code, commodity_path(commodity) %>
+            <%= commodity.heading.description %>
+          </td>
+        <tr>
+          <td>
+            <%= link_to "Commodity: #{commodity.short_code}", commodity_path(commodity) %>
           </td>
           <td>
-              <%= commodity.description %>
+            <% if commodity.parents.any? %>
+              <%= commodity.parents.join(" - ") %>:
+            <% end %>
+            <strong><%= commodity.description %></strong>
           </td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
         </tr>
       <% end %>
     </tbody>
