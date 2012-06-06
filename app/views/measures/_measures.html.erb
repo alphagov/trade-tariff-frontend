@@ -1,5 +1,8 @@
 <ul class="nav nav-tabs">
   <li class='active'>
+    <a href="#overview" data-toggle="tab" data-skip-pjax>Overview</a>
+  </li>
+  <li>
     <a href="#import" data-toggle="tab" data-skip-pjax>Import</a>
   </li>
   <li>
@@ -8,7 +11,14 @@
 </ul>
 
 <div id="measures-js" class='tab-content'>
-  <div class='tab-pane active' id='import'>
+  <div class='tab-pane active' id='overview'>
+    <article class="inner">
+    <h1>Overview</h1>
+    <h2>Import</h2>
+    <h2>Export</h2>
+    </article>
+  </div>
+  <div class='tab-pane' id='import'>
     <div id="import-measures" class="js" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>"></div>
   </div>
   <div class='tab-pane' id='export'>
