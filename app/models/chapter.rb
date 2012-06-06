@@ -16,10 +16,6 @@ class Chapter
     description
   end
 
-  def long_desc
-    "CHAPTER #{short_code} - #{description}"
-  end
-
   def to_param
     short_code
   end

@@ -3,7 +3,9 @@ require 'api_entity'
 class Region
   include ApiEntity
 
-  attr_accessor :id, :name, :iso_code, :description, :type, :countries
+  TYPES = %w(Country CountryGroup)
+
+  attr_accessor :id, :name, :iso_code, :description, :type
 
   has_many :countries
 
@@ -20,6 +22,6 @@ class Region
   end
 
   def blank?
-    name.present?
+    name.blank?
   end
 end

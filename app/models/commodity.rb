@@ -35,10 +35,6 @@ class Commodity
     description
   end
 
-  def long_desc
-    "#{code}: #{description}"
-  end
-
   def import_measures
     Measure.all(commodity_id: self.to_param, type: :import_measures)
   end
