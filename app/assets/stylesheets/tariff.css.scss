@@ -1,38 +1,50 @@
-nav .beta-notice, nav ol {
-  display: none !important;
+nav.header-context{
+  padding-top: 8px;
 }
+header.page-header {
+  padding-bottom: 0;
+  margin: 0;
+  border-bottom: 0;
+}
+header.page-header hgroup {
+  margin:0;
+}
+
+article.tariff {
+  // border-top: solid 1px #C9D0D0;
+  min-height: 40em;
+  // width: auto;
+}
+
+article.tariff .inner {
+  padding: 1em 2.5em 1em 2.5em;
+}
+
 
 .hide {
   display: none;
 }
 
-#wrapper {
-  .group {
-    max-width: 1280px;
-    padding-top: 40px;
-  }
-}
-
 form.tariff-search {
-  div.string {
-    input {
-      font-size: 1.9em;
-      height: 40px;
-    }
+
+  #commodity_search_q{
+    float:left;
+    font-size:30px;
+    width:90%;
   }
 
   input.button {
-    height: 45px;
-  }
-
-  .control-group, input.button {
-    display: block;
-    float: left;
+    height: 41px;
   }
 
   .control-group {
     margin-right: 10px;
-    width: 750px;
+  }
+
+  .button.right{
+    float:right;
+    padding-left:15px;
+    padding-right:15px;
   }
 }
 

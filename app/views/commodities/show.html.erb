@@ -1,36 +1,37 @@
+<article class="tariff commodity">
+  <div class="inner">
+    <nav>
+      <ul>
+        <li>
+          <strong>Back to</strong>:
+          <%= link_to "All Sections", sections_path %>
+        </li>
+        <li>
+          <strong>Section</strong>:
+          <%= link_to @section, section_path(@section) %>
+        </li>
+        <li>
+          <strong>Chapter</strong>:
+          <%= link_to @chapter, chapter_path(@chapter) %>
+        </li>
+        <li>
+          <strong>Heading</strong>:
+          <%= link_to @heading, heading_path(@heading) %>
+        </li>
+        <li>
+          <strong>Commodity</strong>:
+          <ul>
+            <%= commodity_tree(@commodity.ancestors << @commodity).html_safe %>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <%= render 'measures/measures', measurable: @commodity %>
+</article>
+
 <script type="text/javascript">
   $(function(){
     loadMeasures();
   });
 </script>
-
-<div class='browse-sections core-content group'>
-  <nav>
-    <ul>
-      <li>
-        <strong>Back to</strong>:
-        <%= link_to "All Sections", sections_path %>
-      </li>
-      <li>
-        <strong>Section</strong>:
-        <%= link_to @section, section_path(@section) %>
-      </li>
-      <li>
-        <strong>Chapter</strong>:
-        <%= link_to @chapter, chapter_path(@chapter) %>
-      </li>
-      <li>
-        <strong>Heading</strong>:
-        <%= link_to @heading, heading_path(@heading) %>
-      </li>
-      <li>
-        <strong>Commodity</strong>:
-        <ul>
-          <%= commodity_tree(@commodity.ancestors << @commodity).html_safe %>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-
-  <%= render 'measures/measures', measurable: @commodity %>
-</div>

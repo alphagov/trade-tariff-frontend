@@ -9,13 +9,12 @@
     <%= yield :head %>
   </head>
   <body class="citizen">
-    <div id="wrapper" class="tariff" data-pjax-container>
+    <div id="wrapper" class="tariff">
       <section id="content" role="main" class="smart-answer-questions group">
         <%= render 'shared/header' %>
-
-        <article>
+        <div data-pjax-container>
           <%= yield %>
-        </article>
+        </div>
       </section>
     </div>
   </body>

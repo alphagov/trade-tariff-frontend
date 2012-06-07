@@ -1,32 +1,34 @@
-<div class='browse-sections core-content group'>
-  <nav>
-    <ul>
-      <li>
-        <strong>Back to</strong>:
-        <%= link_to "All Sections", sections_path %>
-      </li>
-      <li>
-        <strong>Section</strong>:
-        <%= link_to @chapter.section, section_path(@chapter.section) %>
-      </li>
-    </ul>
-  </nav>
+<article class="tariff heading">
+  <div class="inner">
+    <nav>
+      <ul>
+        <li>
+          <strong>Back to</strong>:
+          <%= link_to "All Sections", sections_path %>
+        </li>
+        <li>
+          <strong>Section</strong>:
+          <%= link_to @chapter.section, section_path(@chapter.section) %>
+        </li>
+      </ul>
+    </nav>
 
-  <h2><%= @chapter %></h2>
+    <h2><%= @chapter %></h2>
 
-  <table>
-    <thead>
-      <tr>
-        <td>
-          <strong>Heading</strong>
-        </td>
-        <td>
-          <strong>Description</strong>
-        </td>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @headings %>
-    </tbody>
-  </table>
-</div>
+    <table>
+      <thead>
+        <tr>
+          <td>
+            <strong>Heading</strong>
+          </td>
+          <td>
+            <strong>Description</strong>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @headings %>
+      </tbody>
+    </table>
+  </div>
+</article>

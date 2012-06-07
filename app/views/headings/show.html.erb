@@ -1,48 +1,50 @@
-<div class='browse-sections core-content group ancillary'>
-  <nav>
-    <ul>
-      <li>
-        <strong>Back to</strong>:
-        <%= link_to "All Sections", sections_path %>
-      </li>
-      <li>
-        <strong>Section</strong>:
-        <%= link_to @heading.section, section_path(@heading.section) %>
-      </li>
-      <li>
-        <strong>Chapter</strong>:
-        <%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
-      </li>
-    </ul>
-  </nav>
+<article class="tariff heading">
+  <div class="inner">
+    <nav>
+      <ul>
+        <li>
+          <strong>Back to</strong>:
+          <%= link_to "All Sections", sections_path %>
+        </li>
+        <li>
+          <strong>Section</strong>:
+          <%= link_to @heading.section, section_path(@heading.section) %>
+        </li>
+        <li>
+          <strong>Chapter</strong>:
+          <%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
+        </li>
+      </ul>
+    </nav>
 
-  <h2><%= @heading %></h2>
+    <h2><%= @heading %></h2>
 
-  <% if @heading.has_measures %>
-    <%= render 'measures/measures', measurable: @heading %>
-    <script type="text/javascript">
-      $(function(){
-        loadMeasures();
-      });
-    </script>
-  <% else %>
-    <table>
-      <thead>
-        <tr>
-          <td>
-            <strong>Commodity Code</strong>
-          </td>
-          <td>
-            <strong>Description</strong>
-          </td>
-          <td>
-            <strong>Basic duty rate</strong>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @commodities %>
-      </tbody>
-    </table>
-  <% end %>
-</div>
+    <% if @heading.has_measures %>
+      <%= render 'measures/measures', measurable: @heading %>
+      <script type="text/javascript">
+        $(function(){
+          loadMeasures();
+        });
+      </script>
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <strong>Commodity Code</strong>
+            </td>
+            <td>
+              <strong>Description</strong>
+            </td>
+            <td>
+              <strong>Basic duty rate</strong>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @commodities %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</article>
