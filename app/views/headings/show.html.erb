@@ -21,7 +21,9 @@
   <% if @heading.has_measures %>
     <%= render 'measures/measures', measurable: @heading %>
     <script type="text/javascript">
-      loadMeasures();
+      $(function(){
+        loadMeasures();
+      });
     </script>
   <% else %>
     <table>
