@@ -12,10 +12,19 @@
 
 <div id="measures-js" class='tab-content'>
   <div class='tab-pane active' id='overview'>
-    <article class="inner">
-    <h1>Overview</h1>
-    <h2>Import</h2>
-    <h2>Export</h2>
+    <article class="tariff overview">
+      <div class="inner">
+        <h1>Overview</h1>
+        <h2>Import</h2>
+        <p>Importing from outside the EU is subject to a third country duty of <%= measurable.third_country_duty_cache %>.</p>
+        <p> Goods are also subject to VAT standard rate of <%= measurable.uk_vat_rate_cache %>.</p>
+        <!-- <h2>Export</h2>
+        TODO: send count of export measures in the commoidity to do the check here
+ -->
+        <div class="help-notice">
+          <p> See import and export tables for country-specific measures and restrictions.</p>
+        </div>
+      </div>
     </article>
   </div>
   <div class='tab-pane' id='import'>
