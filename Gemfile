@@ -42,3 +42,7 @@ group :assets do
   gem 'therubyracer'
   gem 'bootstrap-sass'
 end
+
+group :router do
+  gem 'router-client', '~> 3.0.1', :require => 'router'
+end
