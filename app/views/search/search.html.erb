@@ -1,57 +1,59 @@
 <article class="tariff chapters">
   <div class="inner">
-    <h1>Search results</h1>
+    <% if @results.entries.any? %>
+      <table>
+        <thead>
+          <tr>
+            <th class="p20"></th>
+            <th class="p80">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.entries.each do |commodity| %>
+            <tr>
+              <td>
+                <%= link_to "Section: #{commodity.section.numeral}", section_path(commodity.section) %>
+              </td>
+              <td>
+                <%= commodity.section.title %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= link_to "Chapter: #{commodity.chapter.short_code}", chapter_path(commodity.chapter) %>
+              </td>
+              <td>
+                <%= commodity.chapter.description %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= link_to "Heading: #{commodity.heading.short_code}", heading_path(commodity.heading) %>
+              </td>
+              <td>
+                <%= commodity.heading.description %>
+              </td>
+            <tr>
+              <td>
+                <%= link_to "Commodity: #{commodity.short_code}", commodity_path(commodity) %>
+              </td>
+              <td>
+                <% if commodity.parents && commodity.parents.any? %>
+                  <%= commodity.parents.join(" - ") %>:
+                <% end %>
+                <strong><%= commodity.description %></strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-    <table>
-      <thead>
-        <tr>
-          <th class="p20"></th>
-          <th class="p80">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @results.entries.each do |commodity| %>
-          <tr>
-            <td>
-              <%= link_to "Section: #{commodity.section.numeral}", section_path(commodity.section) %>
-            </td>
-            <td>
-              <%= commodity.section.title %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= link_to "Chapter: #{commodity.chapter.short_code}", chapter_path(commodity.chapter) %>
-            </td>
-            <td>
-              <%= commodity.chapter.description %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= link_to "Heading: #{commodity.heading.short_code}", heading_path(commodity.heading) %>
-            </td>
-            <td>
-              <%= commodity.heading.description %>
-            </td>
-          <tr>
-            <td>
-              <%= link_to "Commodity: #{commodity.short_code}", commodity_path(commodity) %>
-            </td>
-            <td>
-              <% if commodity.parents && commodity.parents.any? %>
-                <%= commodity.parents.join(" - ") %>:
-              <% end %>
-              <strong><%= commodity.description %></strong>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">&nbsp;</td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <%= paginate @results %>
+      <%= paginate @results, remote: true %>
+    <% else %>
+      <p>Sorry no results found for that search term, please try again or browse the <%= link_to "tariffs by section", root_url %>.</p>
+    <% end %>
   </div>
 </article>
