@@ -17,7 +17,9 @@ class CommoditySearch
     end
 
     def entries=(entry_data)
-      @entries ||= entry_data.map { |ed| Commodity.new(ed) }
+      @entries ||= entry_data.map { |entry_data|
+        (entry_data['_type'] == 'commodity') ? Commodity.new(entry_data) : Heading.new(entry_data)
+      }
     end
 
     alias :limit_value  :per_page

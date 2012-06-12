@@ -19,7 +19,7 @@
 
     <h2><%= @heading %></h2>
 
-    <% if @heading.has_measures %>
+    <% if @heading.declarative? %>
       <%= render 'measures/measures', measurable: @heading %>
       <script type="text/javascript">
         $(function(){

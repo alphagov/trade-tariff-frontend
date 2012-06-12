@@ -5,11 +5,13 @@ class Heading
 
   attr_accessor :description, :code, :commodities, :short_code,
                 :import_measures, :export_measures, :has_measures,
-                :has_commodities, :third_country_duty_cache, :uk_vat_rate_cache
+                :declarative, :third_country_duty_cache, :uk_vat_rate_cache
 
   has_one :chapter
   has_one :section
   has_many :commodities
+
+  alias :declarative? :declarative
 
   def self.find(id)
     new(get("/headings/#{id}"))
@@ -29,6 +31,7 @@ class Heading
 
   def to_param
     short_code
+    # declarative? ? code : short_code
   end
 
   def to_s

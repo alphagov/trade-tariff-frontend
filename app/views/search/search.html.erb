@@ -9,41 +9,51 @@
           </tr>
         </thead>
         <tbody>
-          <% @results.entries.each do |commodity| %>
+          <% @results.entries.each do |result| %>
             <tr>
               <td>
-                <%= link_to "Section: #{commodity.section.numeral}", section_path(commodity.section) %>
+                <%= link_to "Section: #{result.section.numeral}", section_path(result.section) %>
               </td>
               <td>
-                <%= commodity.section.title %>
+                <%= result.section.title %>
               </td>
             </tr>
             <tr>
               <td>
-                <%= link_to "Chapter: #{commodity.chapter.short_code}", chapter_path(commodity.chapter) %>
+                <%= link_to "Chapter: #{result.chapter.short_code}", chapter_path(result.chapter) %>
               </td>
               <td>
-                <%= commodity.chapter.description %>
+                <%= result.chapter.description %>
               </td>
             </tr>
-            <tr>
-              <td>
-                <%= link_to "Heading: #{commodity.heading.short_code}", heading_path(commodity.heading) %>
-              </td>
-              <td>
-                <%= commodity.heading.description %>
-              </td>
-            <tr>
-              <td>
-                <%= link_to "Commodity: #{commodity.short_code}", commodity_path(commodity) %>
-              </td>
-              <td>
-                <% if commodity.parents && commodity.parents.any? %>
-                  <%= commodity.parents.join(" - ") %>:
-                <% end %>
-                <strong><%= commodity.description %></strong>
-              </td>
-            </tr>
+            <% if result.is_a?(Commodity) %>
+              <tr>
+                <td>
+                  <%= link_to "Heading: #{result.heading.short_code}", heading_path(result.heading) %>
+                </td>
+                <td>
+                  <%= result.heading.description %>
+                </td>
+              <tr>
+                <td>
+                  <%= link_to "Result: #{result.short_code}", commodity_path(result) %>
+                </td>
+                <td>
+                  <% if result.parents && result.parents.any? %>
+                    <%= result.parents.join(" - ") %>:
+                  <% end %>
+                  <strong><%= result.description %></strong>
+                </td>
+              </tr>
+            <% elsif result.is_a?(Heading) %>
+              <tr>
+                <td>
+                  <%= link_to "Result: #{result.short_code}", heading_path(result) %>
+                </td>
+                <td>
+                  <%= result.description %>
+                </td>
+            <% end %>
             <tr>
               <td colspan="2">&nbsp;</td>
             </tr>
