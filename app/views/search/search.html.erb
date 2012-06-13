@@ -1,6 +1,6 @@
 <article class="tariff chapters">
   <div class="inner">
-    <% if @results.entries.any? %>
+    <% if @results.present? && @results.entries.any? %>
       <table>
         <thead>
           <tr>

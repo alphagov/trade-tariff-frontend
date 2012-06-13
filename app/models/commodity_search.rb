@@ -11,8 +11,8 @@ class CommoditySearch
 
     def entries=(entry_data)
       @entries ||= entry_data.map { |entry_data|
-        (entry_data['_type'] == 'commodity') ? Commodity.new(entry_data) : Heading.new(entry_data)
-      }
+                     (entry_data['_type'] == 'commodity') ? Commodity.new(entry_data) : Heading.new(entry_data)
+                   }
     end
 
     alias :limit_value  :per_page
@@ -28,7 +28,9 @@ class CommoditySearch
   end
 
   def perform
-    ResultCollection.new(self.class.post("/search", body: { q: q, page: page }))
+    response = self.class.post("/search", body: { q: q, page: page })
+
+    ResultCollection.new(response) unless response.code == 500
   end
 
 end
