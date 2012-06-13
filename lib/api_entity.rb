@@ -11,6 +11,7 @@ module ApiEntity
     include HTTParty
     base_uri Rails.application.config.api_host
     debug_output if Rails.env.development?
+    headers 'authorization' => ActionController::HttpAuthentication::Token.encode_credentials("86c337686edc492184c5e9869c27a0b1")
 
     class_eval do
       def to_param
