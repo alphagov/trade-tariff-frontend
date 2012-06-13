@@ -5,7 +5,7 @@ class Commodity
 
   attr_accessor :short_code, :code, :description, :substring, :hier_pos,
                 :synonyms, :uk_vat_rate_cache, :third_country_duty_cache,
-                :leaf, :parents
+                :leaf, :parents, :synonyms
 
   has_one :section
   has_one :heading

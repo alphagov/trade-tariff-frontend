@@ -23,14 +23,14 @@ describe Commodity do
     let(:commodity) { Commodity.new(attributes_for :commodity) }
 
     before {
-      stub_request(:put, "http://www.example.com/api/commodities/#{commodity.to_param}?").
+      stub_request(:put, "http://www.example.com/api/commodities/#{commodity.to_param}").
              to_return(status: 200)
     }
 
     it 'send request to the API to update records attributes' do
       commodity.update_attrs({})
 
-      a_request(:put, "www.example.com/api/commodities/#{commodity.to_param}?").should have_been_made
+      a_request(:put, "www.example.com/api/commodities/#{commodity.to_param}").should have_been_made
     end
   end
 end
