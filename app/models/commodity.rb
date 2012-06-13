@@ -16,10 +16,6 @@ class Commodity
     @substring ||= substring.to_i
   end
 
-  def self.find(id)
-    new(get("/commodities/#{id}"))
-  end
-
   def update_attrs(params)
     self.class.put("/commodities/#{to_param}", :query => params)
   end

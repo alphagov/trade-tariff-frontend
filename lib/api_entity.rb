@@ -1,4 +1,7 @@
 module ApiEntity
+  class NotFound < StandardError; end
+  class Error < StandardError; end
+
   extend ActiveSupport::Concern
 
   included do
@@ -7,7 +10,7 @@ module ApiEntity
 
     include HTTParty
     base_uri Rails.application.config.api_host
-    # debug_output
+    debug_output if Rails.env.development?
 
     class_eval do
       def to_param
@@ -29,6 +32,17 @@ module ApiEntity
   end
 
   module ClassMethods
+    def find(id)
+      resp = get("/#{self.name.pluralize.parameterize}/#{id}")
+      case resp.code
+      when 404
+        raise ApiEntity::NotFound
+      when 500
+        raise ApiEntity::Error.new resp['error']
+      end
+      new(resp)
+    end
+
     def has_one(association)
       attr_accessor association.to_sym
 

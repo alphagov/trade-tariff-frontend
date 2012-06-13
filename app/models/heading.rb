@@ -13,10 +13,6 @@ class Heading
 
   alias :declarative? :declarative
 
-  def self.find(id)
-    new(get("/headings/#{id}"))
-  end
-
   def import_measures
     @import_measures ||= Measure.all(heading_id: self.to_param, type: :import_measures)
   end

@@ -9,11 +9,14 @@ class Section
 
   class << self
     def all
-      get("/sections").map { |entry_data| new(entry_data) }
-    end
-
-    def find(id)
-      new(get("/sections/#{id}"))
+      resp = get("/sections")
+      case resp.code
+      when 404
+        raise ApiEntity::NotFound.new resp['error']
+      when 500
+        raise ApiEntity::Error.new resp['error']
+      end
+      resp.map { |entry_data| new(entry_data) }
     end
   end
 
