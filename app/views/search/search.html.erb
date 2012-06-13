@@ -42,7 +42,12 @@
                   <% if result.parents && result.parents.any? %>
                     <%= result.parents.join(" - ") %>:
                   <% end %>
+
                   <strong><%= result.description %></strong>
+                  <% if result.synonyms.present? %>
+                    <br/>
+                    <%== render_synonyms(result.synonyms) %>
+                  <% end %>
                 </td>
               </tr>
             <% elsif result.is_a?(Heading) %>
@@ -52,6 +57,11 @@
                 </td>
                 <td>
                   <%= result.description %>
+
+                  <% if result.synonyms.present? %>
+                    <br/>
+                    <%== render_synonyms(result.synonyms) %>
+                  <% end %>
                 </td>
             <% end %>
             <tr>

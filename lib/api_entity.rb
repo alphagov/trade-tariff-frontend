@@ -22,7 +22,7 @@ module ApiEntity
   def initialize(attributes = {})
     attributes.each do |name, value|
       if self.respond_to?(:"#{name}=")
-        send(:"#{name}=", value)
+        send(:"#{name}=", (value.is_a?(String) && value == "null") ? nil : value)
       end
     end if attributes.present?
   end
