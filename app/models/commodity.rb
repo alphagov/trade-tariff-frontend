@@ -17,7 +17,7 @@ class Commodity
   end
 
   def update_attrs(params)
-    self.class.put("/commodities/#{to_param}", :query => params)
+    self.class.put("/commodities/#{to_param}", body: params)
   end
 
   def leaf?
