@@ -17,6 +17,8 @@ gem 'slimmer', '~> 1.1'
 gem 'gds-api-adapters', '~> 0.0.43'
 
 gem 'airbrake'
+gem 'newrelic_rpm'
+
 
 group :development do
   gem 'puma'
