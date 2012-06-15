@@ -33,7 +33,7 @@ common: &default_settings
   # "All UI" then specify a semicolon-separated list of up to three
   # distinct names.  If you comment this out, it defaults to the 
   # capitalized RAILS_ENV (i.e., Production, Staging, etc)
-  app_name: My Application
+  app_name: TariffWeb
 
   # When "true", the agent collects performance data about your 
   # application and reports this data to the New Relic service at
@@ -98,7 +98,7 @@ common: &default_settings
   # Java: create a config setting called "ignored_params" and set it to
   #     a comma separated list of HTTP parameter names.
   #     ex: ignored_params: credit_card, ssn, password 
-  capture_params: false
+  capture_params: true
 
   # Transaction tracer captures deep information about slow
   # transactions and sends this to the New Relic service once a
@@ -147,7 +147,7 @@ common: &default_settings
     # Error collector is enabled by default. Set this to false to turn
     # it off. This feature is only available at the Professional
     # product level.
-    enabled: true
+    enabled: false
     
     # Rails Only - tells error collector whether or not to capture a 
     # source snippet around the place of the error when errors are View 
