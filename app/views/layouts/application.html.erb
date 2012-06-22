@@ -16,6 +16,7 @@
           <%= yield %>
         </div>
         <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
+          <%= link_to "View all Sections", sections_path %>
           <%= f.input :q, required: false, label: "Search the tariff",
                       input_html: {
                         name: 'q',
