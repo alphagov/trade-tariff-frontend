@@ -12,9 +12,17 @@
     <div id="wrapper" class="tariff">
       <section id="content" role="main" class="group">
         <%= render 'shared/header' %>
-        <div data-pjax-container>
+        <div data-pjax-container class="article-container group">
           <%= yield %>
         </div>
+        <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
+          <%= f.input :q, required: false, label: "Search the tariff",
+                      input_html: {
+                        name: 'q',
+                        size: 15 } %>
+
+          <%= f.button :submit, 'Search', class: 'button right' %>
+        <% end %>
       </section>
     </div>
   </body>
