@@ -1,10 +1,2 @@
-<tr>
-  <td>
-    <strong>
-      <%= link_to chapter.short_code, chapter_path(chapter) %>
-    </strong>
-  </td>
-  <td>
-    <%= link_to chapter.description, chapter_path(chapter) %>
-  </td>
-</tr>
+<dt class="tariff-fragment"><%= chapter.short_code %></dt>
+<dd class="tariff-name"><%= chapter.description %></dd>
