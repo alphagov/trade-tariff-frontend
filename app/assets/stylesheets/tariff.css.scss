@@ -1,3 +1,12 @@
+header.page-header hgroup h1 {
+  padding-left: 0;
+
+  span {
+    color: #10370D;
+  }
+
+}
+
 .hide {
   display: none;
 }
@@ -5,19 +14,20 @@
 nav.header-context{
   padding-top: 8px;
 }
+
 header.page-header {
   padding-bottom: 0;
   margin: 0;
   border-bottom: 0;
-}
-header.page-header hgroup {
-  margin:0;
+
+  hgroup {
+    margin:0;
+    border-top-color: #7FB299;
+  }
 }
 
 article.tariff {
-  // border-top: solid 1px #C9D0D0;
   min-height: 40em;
-  // width: auto;
 }
 
 article.tariff .inner {
