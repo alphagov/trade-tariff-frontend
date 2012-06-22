@@ -1,20 +1,16 @@
-<tr>
-  <td>
-      <% if heading.declarative? %>
-        <strong>
-          <%= link_to heading.commodity_code, heading_path(heading) %>
-        </strong>
-      <% else %>
-        <strong>
-          <%= link_to heading.short_code, heading_path(heading) %>
-        </strong>
-      <% end %>
-  </td>
-  <td>
+<li>
+    <% if heading.declarative? %>
+      <strong>
+        <%= link_to heading.commodity_code, heading_path(heading) %>
+      </strong>
+    <% else %>
+      <strong>
+        <%= link_to heading.short_code, heading_path(heading) %>
+      </strong>
+    <% end %>
     <% if heading.declarative? %>
       <%= link_to heading.description, heading_path(heading) %>
     <% else %>
       <%= link_to heading.description, heading_path(heading) %>
     <% end %>
-  </td>
-</tr>
+</li>

@@ -39,3 +39,22 @@ header.page-header {
 #index {
   list-style-type:upper-roman
 }
+
+dt.tariff-fragment {
+  float: left;
+  width: 5%;
+  background: #CCE0D6;
+  border-top: solid 1px #7FB299;
+  border-right: solid 1px #7FB299;
+  clear: left;
+  text-align: center;
+  display: block;
+}
+
+dd.tariff-name {
+  float: left;
+  display: block;
+  margin: 0;
+  padding-left: 0.5em;
+  width: 90%;
+}

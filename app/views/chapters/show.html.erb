@@ -1,34 +1,17 @@
 <article class="tariff heading">
   <div class="inner">
-    <nav>
-      <ul>
-        <li>
-          <strong>Back to</strong>:
-          <%= link_to "All Sections", sections_path %>
-        </li>
-        <li>
-          <strong>Section</strong>:
-          <%= link_to @chapter.section, section_path(@chapter.section) %>
-        </li>
-      </ul>
-    </nav>
-
-    <h2><%= @chapter %></h2>
-
-    <table>
-      <thead>
-        <tr>
-          <td>
-            <strong>Heading</strong>
-          </td>
-          <td>
-            <strong>Description</strong>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @headings %>
-      </tbody>
-    </table>
+    <dl>
+      <dt class="tariff-fragment"><%= @chapter.section.numeral %></dt>
+      <dd class="tariff-name"><%= @chapter.section.title %>
+        <dl>
+          <dt class="tariff-fragment"><%= @chapter.short_code %></dt>
+          <dd class="tariff-name"><%= @chapter.description.downcase.titleize %>
+            <ol>
+              <%= render @headings %>
+            </ol>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
   </div>
 </article>
