@@ -1,50 +1,22 @@
 <article class="tariff">
   <div class="inner">
-    <nav>
-      <ul>
-        <li>
-          <strong>Back to</strong>:
-          <%= link_to "All Sections", sections_path %>
-        </li>
-        <li>
-          <strong>Section</strong>:
-          <%= link_to @heading.section, section_path(@heading.section) %>
-        </li>
-        <li>
-          <strong>Chapter</strong>:
-          <%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
-        </li>
-      </ul>
-    </nav>
-
-    <h2><%= @heading %></h2>
-
-    <% if @heading.declarative? %>
-      <%= render 'measures/measures', measurable: @heading %>
-      <script type="text/javascript">
-        $(function(){
-          loadMeasures();
-        });
-      </script>
-    <% else %>
-      <table>
-        <thead>
-          <tr>
-            <td>
-              <strong>Commodity Code</strong>
-            </td>
-            <td>
-              <strong>Description</strong>
-            </td>
-            <td>
-              <strong>Basic duty rate</strong>
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render @commodities %>
-        </tbody>
-      </table>
-    <% end %>
+    <dl>
+      <dt><%= @heading.section.numeral %></dt>
+      <dd><%= @heading.section.title %>
+        <dl class="tariff-fragments">
+          <dt><%= @heading.chapter.short_code %></dt>
+          <dd><%= @heading.chapter.description.downcase.titleize %>
+            <dl>
+              <dt><%= @heading.declarative? ? @heading.commodity_code : @heading.short_code %></dt>
+              <dd><h1><%= @heading.description %></h1>
+                <ol class="commodities">
+                  <%= render @commodities %>
+                </ol>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
   </div>
 </article>
