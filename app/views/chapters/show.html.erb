@@ -8,9 +8,9 @@
         <dl class="tariff-fragments">
           <dt><%= @chapter.short_code %></dt>
           <dd><h1><%= @chapter.description.downcase.titleize %></h1>
-            <ol>
+            <dl>
               <%= render @headings %>
-            </ol>
+            </dl>
           </dd>
         </dl>
       </dd>

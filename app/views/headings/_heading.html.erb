@@ -1,16 +1,2 @@
-<li>
-    <% if heading.declarative? %>
-      <strong>
-        <%= link_to heading.commodity_code, heading_path(heading) %>
-      </strong>
-    <% else %>
-      <strong>
-        <%= link_to heading.short_code, heading_path(heading) %>
-      </strong>
-    <% end %>
-    <% if heading.declarative? %>
-      <%= link_to heading.description, heading_path(heading) %>
-    <% else %>
-      <%= link_to heading.description, heading_path(heading) %>
-    <% end %>
-</li>
+<dt><% if heading.declarative? %><%= heading.commodity_code %><% else %><%= heading.short_code %><% end %></dt>
+<dd><%= link_to heading.description, heading_path(heading) %></dd>

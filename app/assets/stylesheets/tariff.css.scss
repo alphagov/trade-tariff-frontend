@@ -46,7 +46,7 @@ dl dl {
 
 dt {
   float: left;
-  width: 5%;
+  width: 1.8em; // fix this, relative widths aren't going to work
   clear: left;
   text-align: center;
   display: block;
