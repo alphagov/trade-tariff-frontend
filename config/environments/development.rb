@@ -42,6 +42,6 @@ Uktt::Application.configure do
   if ENV['FACTER_govuk_class']
     config.api_host = "http://tariff-api.dev.gov.uk"
   else
-    config.api_host = "http://localhost:3016"
+    config.api_host = "http://localhost:3018"
   end
 end
