@@ -52,10 +52,14 @@ dt {
   display: block;
 }
 
-dl.tariff-fragments dt {
+@mixin identifier {
   background: #CCE0D6;
   border-top: solid 1px #7FB299;
   border-right: solid 1px #7FB299;
+}
+
+dl.tariff-fragments dt {
+  @include identifier;
 }
 
 dd {
@@ -73,4 +77,22 @@ dl h1 {
   margin: 0;
   line-height: 1.5em;
   color: #333;
+}
+
+ul.commodities {
+  list-style: none;
+
+  li {
+    display: block;
+    border-bottom: solid 1px #EEE;
+
+    span, abbr {
+      font-size: 0.85em;
+    }
+
+    abbr {
+      border: none;
+      @include identifier;
+    }
+  }
 }

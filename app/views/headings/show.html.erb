@@ -11,9 +11,9 @@
             <dl>
               <dt><%= @heading.declarative? ? @heading.commodity_code : @heading.display_short_code %></dt>
               <dd><h1><%= @heading.description %></h1>
-                <ol class="commodities">
+                <ul class="commodities">
                   <%= render @commodities %>
-                </ol>
+                </ul>
               </dd>
             </dl>
           </dd>
