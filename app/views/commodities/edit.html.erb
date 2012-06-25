@@ -1,9 +1,10 @@
 <article class="tariff commodity">
   <div class="inner">
-<h1>Editing <%= @commodity %></h1>
-<%= simple_form_for :commodity, url: commodity_path(@commodity), method: :put do |f| %>
-  <%= f.input :synonyms %>
+    <h1>Synonms for <%= @commodity %></h1>
+    <%= simple_form_for :commodity, url: commodity_path(@commodity), method: :put do |f| %>
+      <%= f.input :synonyms %>
 
-  <%= f.button :submit %>
-<% end %>
-</div></article>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</article>
