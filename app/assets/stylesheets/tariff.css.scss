@@ -40,21 +40,37 @@ header.page-header {
   list-style-type:upper-roman
 }
 
-dt.tariff-fragment {
+dl dl {
+  margin-top: 0;
+}
+
+dt {
   float: left;
   width: 5%;
-  background: #CCE0D6;
-  border-top: solid 1px #7FB299;
-  border-right: solid 1px #7FB299;
   clear: left;
   text-align: center;
   display: block;
 }
 
-dd.tariff-name {
+dt.tariff-fragment {
+  background: #CCE0D6;
+  border-top: solid 1px #7FB299;
+  border-right: solid 1px #7FB299;
+}
+
+dd {
   float: left;
   display: block;
   margin: 0;
   padding-left: 0.5em;
   width: 90%;
+}
+
+// this H1 is nested inside the DL for structural purposes
+dl h1 {
+  font-size: 100%;
+  font-weight: normal;
+  margin: 0;
+  line-height: 1.5em;
+  color: #333;
 }
