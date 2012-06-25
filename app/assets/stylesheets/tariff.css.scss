@@ -52,14 +52,14 @@ dt {
   display: block;
 }
 
-@mixin identifier {
+@mixin tariff-identifier {
   background: #CCE0D6;
   border-top: solid 1px #7FB299;
   border-right: solid 1px #7FB299;
 }
 
 dl.tariff-fragments dt {
-  @include identifier;
+  @include tariff-identifier;
 }
 
 dd {
@@ -92,7 +92,7 @@ ul.commodities {
 
     abbr {
       border: none;
-      @include identifier;
+      @include tariff-identifier;
     }
   }
 }
