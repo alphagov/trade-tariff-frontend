@@ -2,7 +2,7 @@
   <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>"><% end %>
   <span class="description"><%= commodity.description %></span>
   <% if commodity.short_code %>
-    <abbr title="" class="identifier"><%= commodity.display_short_code %> / <%= commodity.short_code %></abbr>
+    <abbr title="" class="identifier"><%= commodity.display_short_code %></abbr>
     <span class="rate"><%= commodity.third_country_duty_cache %></span>
   <% end %>
   <% if commodity.leaf? %></a><% end %>
