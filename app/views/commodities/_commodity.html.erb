@@ -1,4 +1,4 @@
-<li>
+<li<% if ! commodity.leaf? %> class="has_children"<% end %>>
   <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>"><% end %>
   <span class="description"><%= commodity.description %></span>
   <% if commodity.short_code %>
