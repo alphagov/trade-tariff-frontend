@@ -21,6 +21,7 @@ class Commodity
   end
 
   def leaf?
+    # TODO: is this right?
     commodities.length == 0
   end
 
