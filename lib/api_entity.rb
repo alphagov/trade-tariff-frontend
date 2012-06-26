@@ -21,6 +21,16 @@ module ApiEntity
   end
 
   def initialize(attributes = {})
+    class_name = self.class.name.downcase
+
+    if attributes.has_key?(class_name)
+      self.attributes = attributes[class_name]
+    else
+      self.attributes = attributes
+    end
+  end
+
+  def attributes=(attributes={})
     attributes.each do |name, value|
       if self.respond_to?(:"#{name}=")
         send(:"#{name}=", (value.is_a?(String) && value == "null") ? nil : value)
