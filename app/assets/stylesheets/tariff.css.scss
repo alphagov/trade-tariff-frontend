@@ -85,6 +85,7 @@ ul.commodities {
   li {
     display: block;
     border-bottom: solid 1px #EEE;
+    margin: 0;
 
     span, abbr {
       font-size: 0.85em;
@@ -94,5 +95,13 @@ ul.commodities {
       border: none;
       @include tariff-identifier;
     }
+  }
+
+  li:last-child {
+    border-bottom: 0;
+  }
+
+  ul {
+    margin: 0;
   }
 }
