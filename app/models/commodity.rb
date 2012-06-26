@@ -21,7 +21,7 @@ class Commodity
   end
 
   def leaf?
-    leaf
+    commodities.length == 0
   end
 
   def to_param

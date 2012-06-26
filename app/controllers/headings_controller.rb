@@ -1,7 +1,8 @@
 class HeadingsController < ApplicationController
   def show
     @heading = Heading.find(params[:id])
-    @commodities = @heading.commodities
+    # FIXME: this should be fixed in the model/API
+    @commodities = @heading.commodities.select { |x| x if x.commodities.length > 0 }
   end
   def import_measures
     @measurable = Heading.find(params[:id])
