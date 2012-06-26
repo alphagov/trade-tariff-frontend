@@ -10,7 +10,7 @@ class Heading
 
   has_one :chapter
   has_one :section
-  has_many :commodities
+  has_many :commodities, class_name: 'Commodity'
 
   alias :declarative? :declarative
 
