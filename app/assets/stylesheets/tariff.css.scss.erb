@@ -105,3 +105,15 @@ ul.commodities {
     margin: 0;
   }
 }
+
+.js-enabled li.has_children {
+  background-image: url(<%= asset_path "expand-collapse-arrow.png" %>);
+  background-position: 0 4px;
+  background-repeat: no-repeat;
+  margin-left: -0.5em;
+  padding-left: 0.5em;
+}
+
+.js-enabled li.open {
+  background-position: 0 -100px;
+}
