@@ -4,7 +4,7 @@
   <div class="inner">
     <dl>
       <dt><%= @heading.section.numeral %></dt>
-      <dd><a href="<%= section_path(@heading.section) %>"><%= @heading.section.numeral %> <%= @heading.section.title %></a>
+      <dd class="section-heading"><a href="<%= section_path(@heading.section) %>"><%= @heading.section.title %></a>
         <dl class="tariff-fragments">
           <dt><%= @heading.chapter.short_code %></dt>
           <dd><%= link_to @heading.chapter.description.downcase.titleize, chapter_path(@heading.chapter) %>

@@ -70,6 +70,14 @@ dd {
   width: 90%;
 }
 
+// this is so the children of this are cleared out left as the
+// internal content is pushed over by the float
+dd.section-heading {
+  width: auto;
+  float: none;
+  padding-left: 0;
+}
+
 // this H1 is nested inside the DL for structural purposes
 dl h1 {
   font-size: 100%;
