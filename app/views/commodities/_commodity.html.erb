@@ -1,8 +1,8 @@
 <li<% if ! commodity.leaf? %> class="has_children"<% end %>>
   <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>"><% end %>
-  <span class="description"><%= commodity.description %></span>
+  <span class="description" id="commodity-<%= commodity.short_code %>"><%= commodity.description %></span>
   <% if commodity.short_code %>
-    <abbr title="Full tariff code: <%= commodity.short_code %>" class="identifier"><%= commodity.display_short_code %></abbr>
+    <span title="Full tariff code: <%= commodity.short_code %>" class="identifier" aria-describedby="commodity-<%= commodity.short_code %>"><%= commodity.display_short_code %></span>
     <span class="rate"><%= commodity.third_country_duty_cache %></span>
   <% end %>
   <% if commodity.commodities.length > 0 %><ul><%= render commodity.commodities %></ul><% end %>
