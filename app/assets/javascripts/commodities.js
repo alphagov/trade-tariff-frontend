@@ -6,15 +6,15 @@ $(function() {
     // hide all child lists
     $('ul.commodities .has_children > ul').addClass('visuallyhidden');
     // allow expansion based on clicking
-    $('li.has_children').on('click', function(e) {
+    $('li.has_children>span').on('click', function(e) {
         e.stopPropagation();
-        var child = $('>ul', this);
-        if (child.is('.visuallyhidden')) {
-            child.removeClass('visuallyhidden');
+        var childList = $(this).siblings('ul');
+        if (childList.is('.visuallyhidden')) {
+            childList.removeClass('visuallyhidden');
             $(this).addClass('open');
         }
         else {
-            child.addClass('visuallyhidden');
+            childList.addClass('visuallyhidden');
             $(this).removeClass('open');
         }
     });
