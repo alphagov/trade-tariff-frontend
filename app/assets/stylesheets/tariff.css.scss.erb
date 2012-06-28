@@ -84,17 +84,16 @@ dd {
   margin: 0;
   padding-left: 0.5em;
   width: 90%;
+
+  // this is so the children of this are cleared out left as the
+  // internal content is pushed over by the float
+  &.section-heading {
+    width: auto;
+    float: none;
+    padding-left: 0;
+  }
 }
 
-// this is so the children of this are cleared out left as the
-// internal content is pushed over by the float
-dd.section-heading {
-  width: auto;
-  float: none;
-  padding-left: 0;
-}
-
-// this H1 is nested inside the DL for structural purposes
 dl h1 {
   font-size: 100%;
   margin: 0;
@@ -119,14 +118,14 @@ ul.commodities {
       font-size: 0.85em;
       float: left;
       display: block;
-    }
 
-    span.identifier {
-      @include tariff-identifier;
-      float: right;
-      border: 0;
-      width: 4.0em;
-      padding-left: 0.25em;
+      &.identifier {
+        @include tariff-identifier;
+        float: right;
+        border: 0;
+        width: 4.0em;
+        padding-left: 0.25em;
+      }
     }
 
     a {
@@ -145,14 +144,16 @@ ul.commodities {
   }
 }
 
-.js-enabled li.has_children {
-  background-image: url(<%= asset_path "expand-collapse-arrow.png" %>);
-  background-position: 0 4px;
-  background-repeat: no-repeat;
-  margin-left: -0.5em;
-  padding-left: 0.5em;
-}
+.js-enabled {
+  li.has_children {
+    background-image: url(<%= asset_path "expand-collapse-arrow.png" %>);
+    background-position: 0 4px;
+    background-repeat: no-repeat;
+    margin-left: -0.5em;
+    padding-left: 0.5em;
+  }
 
-.js-enabled li.open {
-  background-position: 0 -100px;
+  li.open {
+    background-position: 0 -100px;
+  }
 }
