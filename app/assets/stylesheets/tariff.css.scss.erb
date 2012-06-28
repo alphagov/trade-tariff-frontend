@@ -77,9 +77,21 @@ dt {
   border-right: solid 1px #7FB299;
 }
 
-dl.tariff-fragments dt {
-  @include tariff-identifier;
-  font-size: 1em;
+dl.tariff-fragments {
+  position: relative;
+
+  dt {
+    @include tariff-identifier;
+    font-size: 1em;
+    position: absolutely;
+    left: 0;
+    width: 25px;
+  }
+
+  dd {
+    float: none;
+    padding-left: 30px;
+  }
 }
 
 dd {
