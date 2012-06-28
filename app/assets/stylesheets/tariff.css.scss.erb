@@ -1,3 +1,15 @@
+@mixin contain-float {
+  zoom: 1;
+
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
 .tariff .inner {
   padding: 0;
 }
@@ -93,13 +105,14 @@ dl h1 {
 
 ul.commodities {
   list-style: none;
+  margin-left: 0; // remove negative left margin
+  padding-left: 0;
 
   li {
     display: block;
     border-bottom: solid 1px #EEE;
     margin: 0;
-    overflow: hidden;
-    zoom: 1;
+    @include contain-float;
     padding: 0;
 
     span {
@@ -118,7 +131,7 @@ ul.commodities {
 
     a {
       display: block;
-      overflow: hidden;
+      @include contain-float;
     }
   }
 
