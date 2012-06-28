@@ -11,7 +11,7 @@
 }
 
 .tariff .inner {
-  padding: 0;
+  padding: 0 0.5em;
   font-size: 87.5%; // current 14, given base size of 16
 }
 
@@ -59,6 +59,8 @@ header.page-header {
 
 dl dl {
   margin-top: 0;
+  padding-top: 5px;
+  @include contain-float;
 }
 
 dt {
@@ -142,6 +144,7 @@ ul.commodities {
 
   ul {
     margin: 0;
+    padding-left: 2em;
     clear: both;
   }
 }
