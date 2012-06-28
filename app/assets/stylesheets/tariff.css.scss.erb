@@ -1,3 +1,7 @@
+.tariff .inner {
+  padding: 0;
+}
+
 header.page-header hgroup h1 {
   padding-left: 0;
 
@@ -81,8 +85,8 @@ dd.section-heading {
 // this H1 is nested inside the DL for structural purposes
 dl h1 {
   font-size: 100%;
-  font-weight: normal;
   margin: 0;
+  font-weight: normal;
   line-height: 1.5em;
   color: #333;
 }
@@ -94,13 +98,27 @@ ul.commodities {
     display: block;
     border-bottom: solid 1px #EEE;
     margin: 0;
+    overflow: hidden;
+    zoom: 1;
+    padding: 0;
 
     span {
       font-size: 0.85em;
+      float: left;
+      display: block;
     }
 
     span.identifier {
       @include tariff-identifier;
+      float: right;
+      border: 0;
+      width: 4.0em;
+      padding-left: 0.25em;
+    }
+
+    a {
+      display: block;
+      overflow: hidden;
     }
   }
 
@@ -110,6 +128,7 @@ ul.commodities {
 
   ul {
     margin: 0;
+    clear: both;
   }
 }
 
