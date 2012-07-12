@@ -22,8 +22,7 @@ class Commodity
   end
 
   def leaf?
-    # TODO: is this right?
-    commodities.length == 0
+    children.none?
   end
 
   def to_param
