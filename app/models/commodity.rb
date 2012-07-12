@@ -5,7 +5,7 @@ class Commodity
 
   attr_accessor :short_code, :code, :description, :substring, :hier_pos,
                 :synonyms, :uk_vat_rate_cache, :third_country_duty_cache,
-                :leaf, :parents, :synonyms, :display_short_code
+                :leaf, :parents, :synonyms, :display_short_code, :producline_suffix
 
   has_one :section
   has_one :heading
@@ -27,7 +27,7 @@ class Commodity
   end
 
   def to_param
-    code
+    "#{code}#{producline_suffix}"
   end
 
   def to_s
