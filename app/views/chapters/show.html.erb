@@ -4,11 +4,11 @@
   <div class="inner">
     <dl>
       <dt><%= @chapter.section.numeral %></dt>
-      <dd><%= @chapter.section.title %>
+      <dd class="section-heading"><%= @chapter.section.title %>
         <dl class="tariff-fragments">
           <dt><%= @chapter.short_code %></dt>
           <dd><h1><%= @chapter.description.downcase.titleize %></h1>
-            <dl>
+            <dl class="chapter-headings">
               <%= render @headings %>
             </dl>
           </dd>

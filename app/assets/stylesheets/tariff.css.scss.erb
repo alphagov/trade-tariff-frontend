@@ -1,3 +1,14 @@
+/* global variables */
+
+$token-width: 26px; /* 25px width + 1px border */
+$token-padding: 5px;
+$token-space: $token-width + $token-padding; /* Uses above values */
+$top-level-padding: 10px;
+
+/* end global variables */
+
+/* mixins */
+
 @mixin contain-float {
   zoom: 1;
 
@@ -10,6 +21,32 @@
   }
 }
 
+// selected sections have consistent styling except for their spacing from the left-side
+// this is therefore left as a variable value
+
+@mixin selected-section($side-padding) {
+  margin: 0 (-1 * $top-level-padding) 0 (-1 * $side-padding);
+  padding: $top-level-padding $top-level-padding $top-level-padding $side-padding;
+  background: #fff;
+  
+  li,
+  dd {
+    padding-top:0px;
+    border-top:1px solid #eee;
+  }
+  
+  li:first-child,
+  dd:nth-child(2) {
+    padding-top:1px;
+    border-top:none;
+  }
+}
+
+/* end mixins */
+
+.tariff p {
+  font-size:1em;
+}
 .tariff .inner {
   padding: 0;
 }
@@ -57,27 +94,28 @@ header.page-header {
 }
 
 article dl {
-  padding: 10px 10px 0 10px; // FIXME
+  padding: $top-level-padding $top-level-padding 0 $top-level-padding;
   margin: 0;
   background: #e1e8e8;
   position: relative;
 }
 
 article dl dl {
-  padding: 5px 5px 0 5px;
   @include contain-float;
+  margin-left:$token-width - $top-level-padding;
+  padding-top:0px;
 }
 
 article dt {
   float: left;
-  width: 1.8em; // fix this, relative widths aren't going to work
+  width: $token-width;
   clear: left;
   text-align: center;
   display: block;
   font-size: 1em;
   position: absolute;
   left: 0;
-  width: 25px;
+  margin-bottom:0; /* reset of static */
 }
 
 @mixin tariff-identifier {
@@ -86,9 +124,13 @@ article dt {
   border-right: solid 1px #7FB299;
 }
 
+article.tariff {
+  padding-bottom:2em;
+}
+
 dl.tariff-fragments {
   padding: 0;
-  margin-left: -30px;
+  margin-left: -1 * $token-space;
 
   dt {
     @include tariff-identifier;
@@ -96,12 +138,15 @@ dl.tariff-fragments {
 
   dd {
     float: none;
-    padding-left: 30px;
+    padding-left: $token-space;
+    padding-top:1px; /* offset the border-bottom on the token */
     margin: 0;
   }
 
   dl {
     position: relative;
+    margin-left:-1 * $token-padding;
+    padding:0;
   }
 }
 
@@ -109,8 +154,7 @@ article dd {
   float: left;
   display: block;
   margin: 0;
-  padding-left: 30px;
-  width: 90%;
+  padding-left: $token-space - $top-level-padding;
 
   // this is so the children of this are cleared out left as the
   // internal content is pushed over by the float
@@ -128,19 +172,64 @@ dl h1 {
   color: #333;
 }
 
-ul.commodities {
-  list-style: none;
-  margin: 0 0 0 -75px; //FIXME how does 75 work?
-  width: 720px - 75px - 10px; //FIXME
-  padding: 10px 10px 10px 75px;
-  background: #fff;
+/* sections */
 
+p.sections-intro {
+  padding-left:0.5em;
+  padding-right:1em;
+}
+
+dl.sections {
+  background:#fff;
+}
+
+dl.sections dt {
+  position:static;
+  width:15%;
+  padding-left:10%;
+  text-align:left;
+}
+
+dl.sections dd {
+  width:75%;
+  padding-left:0px;
+}
+
+/* chapters and chapter headings */
+
+dl.tariff-fragments dl.chapter-headings,
+dl.chapters,
+p.chapters-intro {
+  margin-left:-1 * $token-space;
+  @include selected-section($token-space);
+}
+
+dl.chapter-headings dt,
+dl.chapters dt {
+  left:$token-space;
+}
+
+/* variables local to commodities */
+
+$commodity-padding: ((2 * $token-width) + $token-padding);
+$expand-arrow-width: 9px;
+$expand-arrow-space: 9px + $token-padding;
+
+/* end variables local to commodities */
+
+ul.commodities,
+ul.commodities ul {
+  list-style:none;
+}
+
+ul.commodities {  
+  @include selected-section($commodity-padding);
+  
   li {
     display: block;
-    border-bottom: solid 1px #EEE;
     margin: 0;
     @include contain-float;
-    padding: 0;
+    padding: 0;    
 
     span {
       font-size: 0.85em;
@@ -175,14 +264,26 @@ ul.commodities {
 
 .js-enabled {
   li.has_children {
-    background-image: url(<%= asset_path "expand-collapse-arrow.png" %>);
-    background-position: 0 4px;
-    background-repeat: no-repeat;
-    margin-left: -0.5em;
-    padding-left: 0.5em;
+    
   }
 
   li.open {
     background-position: 0 -100px;
+  }
+  
+  li.has_children .description {
+    padding-left: $expand-arrow-space;
+    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+    background-position: 0 7px;
+    background-repeat: no-repeat;
+  }
+  
+  li.has_children .open {
+    background-position:0 -84px;
+  }
+  
+  li.has_children a .description {
+    padding-left:0;
+    background:none;
   }
 }

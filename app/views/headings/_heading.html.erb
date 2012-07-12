@@ -1,2 +1,8 @@
-<dt><% if heading.declarative? %><%= heading.commodity_code %><% else %><%= heading.display_short_code %><% end %></dt>
+<dt>
+  <% if heading.declarative? %>
+    <%= heading.commodity_code %>
+  <% else %>
+    <%= heading.display_short_code %>
+  <% end %>
+</dt>
 <dd><%= link_to heading.description, heading_path(heading) %></dd>

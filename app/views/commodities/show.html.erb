@@ -1,30 +1,26 @@
 <article class="tariff commodity">
   <div class="inner">
-    <nav>
-      <ul>
-        <li>
-          <strong>Back to</strong>:
-          <%= link_to "All Sections", sections_path %>
-        </li>
-        <li>
-          <strong>Section</strong>:
-          <%= link_to @section, section_path(@section) %>
-        </li>
-        <li>
-          <strong>Chapter</strong>:
-          <%= link_to @chapter, chapter_path(@chapter) %>
-        </li>
-        <li>
-          <strong>Heading</strong>:
-          <%= link_to @heading, heading_path(@heading) %>
-        </li>
-        <li>
-          <strong>Commodity</strong>:
-          <ul>
-            <%= commodity_tree(@commodity.ancestors << @commodity).html_safe %>
-          </ul>
-        </li>
-      </ul>
+    <nav>    
+      <dl>
+        <dt><%= @section.position %></dt>
+        <dd class="section-heading tariff-fragments"><%= link_to @section, section_path(@section) %>
+          <dl class="tariff-fragments">
+            <dt><%= @chapter.short_code %></dt>
+            <dd><%= link_to @chapter, chapter_path(@chapter) %>
+              <dl>
+                <dt><%= @heading.display_short_code %></dt>
+                <dd><%= link_to @heading, heading_path(@heading) %>
+                  <dl></dl>
+                </dd>
+              </dl>
+            </dd>            
+            <strong>Commodity</strong>:
+            <ul>
+              <%= commodity_tree(@commodity.ancestors << @commodity).html_safe %>
+            </ul>
+          </dl>
+        </dd>
+      </dl>
     </nav>
   </div>
   <%= render 'measures/measures', measurable: @commodity %>

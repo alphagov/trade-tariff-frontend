@@ -2,9 +2,15 @@
 
 <article class="tariff chapters">
   <div class="inner">
-    <h1><%= @section %></h1>
-    <ol id="chapters">
-      <%= render @chapters %>
-    </ol>
+    <dl>
+      <dt><%= @section.numeral %></dt>
+      <dd class="section-heading">
+        <h1><%= @section %></h1>
+        <p class="chapters-intro">Microcopy about what chapters are goes here.</p>
+        <dl class="tariff-fragments chapters">
+        <%= render @chapters %>
+        </dl>
+      </dd>
+    </dl>
   </div>
 </article>
