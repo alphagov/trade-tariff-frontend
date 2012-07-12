@@ -23,6 +23,8 @@ $top-section-grey: #f8f7ee;
   }
 }
 
+/* Styles inherited from static */
+
 @mixin table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -163,11 +165,35 @@ $top-section-grey: #f8f7ee;
   }
 }
 
+/* Mixins specific to tariff */
+
+@mixin tariff-identifier {
+  background: #CCE0D6;
+  border-top: solid 1px #7FB299;
+  border-right: solid 1px #7FB299;
+}
+
+@mixin tariff-identifier-reset {
+  background: none;
+  border-top: none;
+  border-right: none;
+}
+
 /* end mixins */
+
+.tariff a {
+  color:#333;
+}
+
+.tariff a:hover,
+.tariff a:focus {
+  color:#2e8aca
+}
 
 .tariff p {
   font-size:1em;
 }
+
 .tariff .inner {
   padding: 0;
 }
@@ -236,19 +262,8 @@ article dt {
   font-size: 1em;
   position: absolute;
   left: 0;
+  font-weight:normal;
   margin-bottom:0; /* reset of static */
-}
-
-@mixin tariff-identifier {
-  background: #CCE0D6;
-  border-top: solid 1px #7FB299;
-  border-right: solid 1px #7FB299;
-}
-
-@mixin tariff-identifier-reset {
-  background: none;
-  border-top: none;
-  border-right: none;
 }
 
 article.tariff {
@@ -294,7 +309,7 @@ article dd {
 
 dl h1 {
   font-size: 100%;
-  margin: 0;
+  margin-top: 0;
   line-height: 1.5em;
   color: #333;
 }
@@ -315,6 +330,7 @@ dl.sections dt {
   width:15%;
   padding-left:10%;
   text-align:left;
+  font-weight:normal;
 }
 
 dl.sections dd {
@@ -323,6 +339,16 @@ dl.sections dd {
 }
 
 /* chapters and chapter headings */
+
+article.chapters dt {
+  position:static;
+  width:auto;
+  margin-right:$token-padding;
+}
+
+article.chapters dl.tariff-fragments dt {
+  width:$token-width;
+}
 
 dl.tariff-fragments dl.chapter-headings,
 dl.chapters,
