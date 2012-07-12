@@ -18,4 +18,36 @@ $(function() {
             $(this).removeClass('open');
         }
     });
+    
+    var $tabs = $('.nav-tabs a'),
+        $tabWrappers = $tabs.closest('li'),
+        $tabPanes = $('.tab-pane');
+        
+    $tabPanes.not('.active').hide();
+    
+    // tabs
+    $tabs.each(function (idx) {
+        var $this = $(this);
+        
+        $this.on('click', function(e) {
+            var tabId = this.href.match(/#\w+$/),
+                $tabWrapper = $tabWrappers.eq(idx);
+            
+            if ($tabWrapper.hasClass('active')) {
+                return;
+            }
+            
+            if (tabId) {
+                $tabWrappers.removeClass('active');
+                $tabWrapper.addClass('active');
+                
+                
+                $tabPanes.hide();
+                $(tabId[0]).show();
+            }
+            
+            return false;
+        });
+    });
+    
 });

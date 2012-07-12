@@ -5,6 +5,8 @@ $token-padding: 5px;
 $token-space: $token-width + $token-padding; /* Uses above values */
 $top-level-padding: 10px;
 
+$top-section-grey: #f8f7ee;
+
 /* end global variables */
 
 /* mixins */
@@ -18,6 +20,125 @@ $top-level-padding: 10px;
     height: 0;
     clear: both;
     visibility: hidden;
+  }
+}
+
+@mixin table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  
+  caption {
+    text-align:left;
+    font-weight: 300;
+    margin-bottom: 0.5em;
+    font-size:1.16em; /* 19px */
+    padding-left:1em;
+  }
+  
+  th,
+  td {
+    vertical-align: top;
+    line-height: 1.3em;
+    padding: 0.7em 0.5em 0.7em 1em;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #fff;
+  }
+  
+  td {
+    background: #fafafa;
+    border:dotted 1px #bbb;
+  }
+  
+  th {  
+    line-height:1.25em;
+    text-align: left;
+    color:#000;
+    font-weight:normal;
+    background-color: #e1e8e8;
+    border:solid 1px #bbb;
+  }
+  td small{
+    font-size:1em;
+  }
+}
+
+// the tab panes associated with these tabs require the following styles:
+// border-top:solid 1px #C9D0D0;
+
+@mixin tabs($side-padding) {
+    padding: 0 0 0 $side-padding;
+    position: relative;
+  
+  ol,
+  ul {
+    background-color: #C9D0D0;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 5;
+  }
+  .lte-ie8 & ol,
+  .lte-ie8 & ul {
+    _overflow: hidden;
+    _padding: 1px 1px 0 0;
+  }
+  
+  ol li,
+  ul li {
+    float: left;
+  }
+  .lte-ie8 & ol li,
+  .lte-ie8 & ul li {
+    _width: 7.5em;
+  }
+  
+  li a {
+    background-color: #E1E8E8;
+    display: block;
+    height: 2.25em;
+    line-height: 2.25em;
+    margin-left: 1px;
+    padding: 0 1em 0 0.75em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+  }
+  .lte-ie8 & li a {
+    _background-image: none;
+    _padding: 0 0.5em;
+  }
+  
+  li:first-child a {
+    border-left: solid 1px #E1E8E8;
+    margin-left: 0;
+  }
+  
+  li a:hover {
+    background-color: #97C5E5;
+    color: inherit;
+  }
+  
+  li.active a {
+    background-color: #fff;
+    border: solid 1px #C9D0D0;
+    border-bottom: solid 1px #fff;
+    color: #000;
+    margin: -1px -1px -1px 0;
+    position: relative;
+    z-index: 5;
+  }
+  .lte-ie8 & li.active a {
+    _bottom: -1px;
+  }
+  
+  li.active a:hover {
+    background-color: #fff;
+    color: #2E8ACA;
   }
 }
 
@@ -96,7 +217,7 @@ header.page-header {
 article dl {
   padding: $top-level-padding $top-level-padding 0 $top-level-padding;
   margin: 0;
-  background: #e1e8e8;
+  background: $top-section-grey;
   position: relative;
 }
 
@@ -122,6 +243,12 @@ article dt {
   background: #CCE0D6;
   border-top: solid 1px #7FB299;
   border-right: solid 1px #7FB299;
+}
+
+@mixin tariff-identifier-reset {
+  background: none;
+  border-top: none;
+  border-right: none;
 }
 
 article.tariff {
@@ -260,6 +387,71 @@ ul.commodities {
     padding-left: 2em;
     clear: both;
   }
+}
+
+dl.tariff-fragments dl.commodities {
+  margin-left:0;
+  padding-bottom:$top-level-padding;
+  
+  dt {
+    @include tariff-identifier-reset;
+    width:auto;
+    float:none;
+    position:static;
+    text-align:left;
+    font-weight:normal;
+  }
+  
+  span {
+    float: left;
+    display: block;
+
+    &.identifier {
+      @include tariff-identifier;
+      padding: 0 0.25em;
+      margin-right:5px;
+      font-weight:bold;
+    }
+  }
+  
+  strong {
+    font-weight:normal;
+  }
+}
+
+.nav-tabs {
+  @include contain-float;
+  background:$top-section-grey;
+  @include tabs($token-width);
+  
+  li {
+    padding:0;
+    margin:0;
+    font-size:1em;
+  }
+}
+
+.tab-content {
+  border-top:solid 1px #C9D0D0;
+}
+
+.tab-content .inner {
+  padding:0em 2.5em 1em;
+}
+
+.tab-content p {
+  font-size:1.1875em; /* 19px */
+}
+
+.tab-content table {
+  @include table;
+  width:auto; /* override for static styles */
+  margin:2em -0.875em 0; /* override for static styles - 14px */  
+}
+
+.tab-content table thead,
+.tab-content table tbody {
+  font-size:0.875em; /* 14px */
 }
 
 .js-enabled {

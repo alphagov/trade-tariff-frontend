@@ -10,14 +10,23 @@
               <dl>
                 <dt><%= @heading.display_short_code %></dt>
                 <dd><%= link_to @heading, heading_path(@heading) %>
-                  <dl></dl>
+                  <dl class="commodities">
+                    <dt>Horses</dt>
+                    <dd>
+                      <dl>
+                        <dt>Other</dt>
+                        <dd>
+                          <strong>
+                            <span title="Full tariff code: 0101210000" class="identifier" aria-describedby="commodity-0101210000">21&nbsp;00&nbsp;00</span>
+                            <span class="description" id="commodity-0101210000">For slaughter</span>
+                          </strong>
+                        </dd>
+                      </dl>
+                    </dd>
+                  </dl>
                 </dd>
               </dl>
             </dd>
-            <strong>Commodity</strong>:
-            <ul>
-              <%= commodity_tree(@commodity.ancestors << @commodity).html_safe %>
-            </ul>
           </dl>
         </dd>
       </dl>

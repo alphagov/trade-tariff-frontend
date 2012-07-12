@@ -1,14 +1,16 @@
-<ul class="nav nav-tabs">
-  <li class='active'>
-    <a href="#overview" data-toggle="tab" data-skip-pjax>Overview</a>
-  </li>
-  <li>
-    <a href="#import" data-toggle="tab" data-skip-pjax>Import</a>
-  </li>
-  <li>
-    <a href="#export" data-toggle="tab" data-skip-pjax>Export</a>
-  </li>
-</ul>
+<nav class="nav-tabs" role="navigation">
+  <ul>
+    <li class='active'>
+      <a href="#overview" data-toggle="tab" data-skip-pjax role="tab" aria-selected="true" tabindex="-1">Overview</a>
+    </li>
+    <li>
+      <a href="#import" data-toggle="tab" data-skip-pjax role="tab" aria-selected="false" tabindex="0">Import</a>
+    </li>
+    <li>
+      <a href="#export" data-toggle="tab" data-skip-pjax role="tab" aria-selected="false" tabindex="0">Export</a>
+    </li>
+  </ul> 
+</nav>
 
 <div id="measures-js" class='tab-content'>
   <div class='tab-pane active' id='overview'>
@@ -16,8 +18,11 @@
       <div class="inner">
         <h1>Overview</h1>
         <h2>Import</h2>
-        <p>Importing from outside the EU is subject to a third country duty of <%= measurable.third_country_duty_cache %>.</p>
-        <p> Goods are also subject to VAT standard rate of <%= measurable.uk_vat_rate_cache %>.</p>
+        <p>Importing from outside the EU is subject to a third country duty of <em><%= measurable.third_country_duty_cache %></em>.</p>
+        <p> Goods are also subject to VAT standard rate of <em><%= measurable.uk_vat_rate_cache %></em>.</p>
+        <h2>Export</h2>
+        <p>Importing from outside the EU is subject to a third country duty of <em><%= measurable.third_country_duty_cache %></em>.</p>
+        <p> Goods are also subject to VAT standard rate of <em><%= measurable.uk_vat_rate_cache %></em>.</p>
         <!-- <h2>Export</h2>
         TODO: send count of export measures in the commoidity to do the check here
  -->
@@ -28,9 +33,247 @@
     </article>
   </div>
   <div class='tab-pane' id='import'>
-    <div id="import-measures" class="js" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>"></div>
+    <div id="import-measures" class="js" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
+      <div class="inner">        
+        <table cellspacing="0">
+          <caption>Third country measures</caption>
+          <thead>
+            <tr>
+              <th scope="col">Measure Type</th>
+              <th scope="col">Duty rates / prohibitions</th>
+              <th scope="col">Additional codes</th>
+              <th scope="col">Conditions</th>
+              <th scope="col">Exclusions</th>
+              <th scope="col">Legal Act</th>
+              <th scope="col">Footnote</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>        
+              <td>
+                Third country duty
+              </td>
+              <td>4.70%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">R1549/06</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Import control on cat and dog fur          
+              </td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">View condition</a>
+              </td>
+              <td>    
+                <a href="#">R1523/07</a>
+              </td>
+              <td>
+                <a href="#">CD568</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>VAT standard rate</td>
+              <td>20.00%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">03020</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+                
+        <table cellspacing="0">
+          <caption>Measures for specific countries and country groups</caption>
+          <thead>
+            <tr>
+              <th scope="col">Measure Type</th>
+              <th scope="col">Duty rates / prohibitions</th>
+              <th scope="col">Additional codes</th>
+              <th scope="col">Conditions</th>
+              <th scope="col">Exclusions</th>
+              <th scope="col">Legal Act</th>
+              <th scope="col">Footnote</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>        
+              <td>
+                Third country duty
+              </td>
+              <td>4.70%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">R1549/06</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Import control on cat and dog fur          
+              </td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">View condition</a>
+              </td>
+              <td>    
+                <a href="#">R1523/07</a>
+              </td>
+              <td>
+                <a href="#">CD568</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>VAT standard rate</td>
+              <td>20.00%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">03020</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <div class='tab-pane' id='export'>
-    <div id="export-measures" clas="js" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>"></div>
+    <div id="export-measures" clas="js" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
+      <div class="inner">
+        
+        <table cellspacing="0">
+          <caption>Third country measures</caption>
+          <thead>
+            <tr>
+              <th scope="col">Measure Type</th>
+              <th scope="col">Duty rates / prohibitions</th>
+              <th scope="col">Additional codes</th>
+              <th scope="col">Conditions</th>
+              <th scope="col">Exclusions</th>
+              <th scope="col">Legal Act</th>
+              <th scope="col">Footnote</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>        
+              <td>
+                Third country duty
+              </td>
+              <td>4.70%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">R1549/06</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Import control on cat and dog fur          
+              </td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">View condition</a>
+              </td>
+              <td>    
+                <a href="#">R1523/07</a>
+              </td>
+              <td>
+                <a href="#">CD568</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>VAT standard rate</td>
+              <td>20.00%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">03020</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+                
+        <table cellspacing="0">
+          <caption>Measures for specific countries and country groups</caption>
+          <thead>
+            <tr>
+              <th scope="col">Measure Type</th>
+              <th scope="col">Duty rates / prohibitions</th>
+              <th scope="col">Additional codes</th>
+              <th scope="col">Conditions</th>
+              <th scope="col">Exclusions</th>
+              <th scope="col">Legal Act</th>
+              <th scope="col">Footnote</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>        
+              <td>
+                Third country duty
+              </td>
+              <td>4.70%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">R1549/06</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Import control on cat and dog fur          
+              </td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">View condition</a>
+              </td>
+              <td>    
+                <a href="#">R1523/07</a>
+              </td>
+              <td>
+                <a href="#">CD568</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>VAT standard rate</td>
+              <td>20.00%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#">03020</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>        
+    </div>
   </div>
 </div>
