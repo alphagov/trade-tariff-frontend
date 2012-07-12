@@ -6,6 +6,10 @@
     <span class="rate"><%= commodity.
 third_country_duty_cache %></span>
   <% end %>
-  <% if commodity.commodities.length > 0 %><ul><%= render commodity.commodities %></ul><% end %>
-  <% if commodity.leaf? %></a><% end %>
+  <% if commodity.commodities.any? %>
+    <ul><%= render commodity.commodities %></ul>
+  <% end %>
+  <% if commodity.leaf? %>
+    </a>
+  <% end %>
 </li>
