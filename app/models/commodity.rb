@@ -10,7 +10,7 @@ class Commodity
   has_one :section
   has_one :heading
   has_one :chapter
-  has_many :commodities, class_name: 'Commodity'
+  has_many :children, class_name: 'Commodity'
   has_many :ancestors, class_name: 'Commodity'
 
   def substring=(substring)

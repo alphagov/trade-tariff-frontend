@@ -7,7 +7,7 @@
 third_country_duty_cache %></span>
   <% end %>
   <% if commodity.commodities.any? %>
-    <ul><%= render commodity.commodities %></ul>
+    <ul><%= render commodity.children %></ul>
   <% end %>
   <% if commodity.leaf? %>
     </a>
