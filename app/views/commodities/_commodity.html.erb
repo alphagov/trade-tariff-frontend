@@ -6,7 +6,7 @@
     <span class="rate"><%= commodity.
 third_country_duty_cache %></span>
   <% end %>
-  <% if commodity.commodities.any? %>
+  <% if commodity.children.any? %>
     <ul><%= render commodity.children %></ul>
   <% end %>
   <% if commodity.leaf? %>
