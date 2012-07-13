@@ -9,6 +9,9 @@
     <li>
       <a href="#export" data-toggle="tab" data-skip-pjax role="tab" aria-selected="false" tabindex="0">Export</a>
     </li>
+    <li>
+      <a href="#footnotes" data-toggle="tab" data-skip-pjax role="tab" aria-selected="false" tabindex="0">Footnotes</a>
+    </li>
   </ul> 
 </nav>
 
@@ -58,7 +61,7 @@
               <td></td>
               <td></td>
               <td>
-                <a href="#">R1549/06</a>
+                <a href="#" class="reference">R1549/06</a>
               </td>
               <td></td>
             </tr>
@@ -92,7 +95,7 @@
             </tr>
           </tbody>
         </table>
-                
+
         <table cellspacing="0">
           <caption>Measures for specific countries and country groups</caption>
           <thead>
@@ -150,130 +153,449 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
+      </div><!-- end .inner -->
+    </div><!-- end #import-measures -->
+  </div><!-- end .tab-pane -->
   <div class='tab-pane' id='export'>
-    <div id="export-measures" clas="js" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
+    <div id="export-measures" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
+      <div class="inner">        
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Measure Type</th>
+              <th scope="col">Duty rates / prohibitions</th>
+              <th scope="col">Additional codes</th>
+              <th scope="col">Conditions</th>
+              <th scope="col">Exclusions</th>
+              <th scope="col">Legal Act</th>
+              <th scope="col">Footnote</th>
+            </tr>
+          </thead>      
+          <tbody>
+            <tr>
+              <td colspan="7">There are no EU third country measures for this
+              commodity on this date</td>        
+            </tr>
+            <tr>
+              <td colspan="7">No VAT or Excise measures were found for this commodity on
+              this date</td>        
+            </tr>          
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+                <th>Country</th>
+                <th>Measure Type</th>
+                <th>Duty rates / prohibitions</th>
+                <th>Additional codes</th>
+                <th>Conditions</th>
+                <th>Exclusions</th>
+                <th>Legal Act</th>
+                <th>Footnotes</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr>
+
+                   <td>
+                          <a
+                          href="/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008&amp;geographicalAreaDescription=All
+                          third countries" title="" target="bgPopup"
+                          onclick="p=window.open('/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008',
+                          'bgPopup', 'scrollbars=yes, resizable=yes, toolbar=no,
+                          menubar=0, height=680, width=560');p.focus();">
+                                   All third countries
+                                 </a>
+
+                    </td> <td>
+                      Export authorization (prior surveillance)
+
+                    </td>
+                      <td></td> <td>
+
+                               <a
+                               href="/tariff-bl/export/additionalcode.html?additionalCode=049&amp;from=commodityCode&amp;geographicalAreaCode=1008&amp;measureType=467&amp;from=list&amp;export=true&amp;commodityCode=9503
+                               00 21&amp;simulationDate=21/05/12" target="bgPopup"
+                               title="This page will open in a new window"
+                               onclick="p=window.open('/tariff-bl/export/additionalcode.html?additionalCode=049&amp;from=commodityCode&amp;geographicalAreaCode=1008&amp;measureType=467&amp;from=list&amp;export=true&amp;commodityCode=9503
+                               00 21&amp;simulationDate=21/05/12', 'bgPopup',
+                               'scrollbars=yes,resizable=yes,toolbar=no,
+                               menubar=0,height=589,width=642');p.focus();">
+                      4049
+                    </a>
+
+                      </td>
+                     <td>
+
+                              &nbsp;
+
+              </td>
+                      <td>
+
+                    &nbsp;
+
+                      </td> <td>
+
+                                <a
+                                href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32003R1210:en:HTML"
+                                title="" target="bgPopup"
+                                onclick="p=window.open('http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32003R1210:en:HTML',
+                                'bgPopup', 'scrollbars=yes, resizable=yes,
+                                toolbar=no, menubar=0, height=680,
+                                width=800');p.focus();">
+                                    R1210/03
+                                </a>
+
+              </td>
+                      <td>
+
+                    <a
+                    href="/tariff-bl/export/footnote.html?from=commodityCode&amp;export=true&amp;headingId=9503
+                    00 21&amp;footnoteCodes=TM571 &amp;simulationDate=21/05/12"
+                    title="" target="bgPopup"
+                    onclick="p=window.open('/tariff-bl/export/footnote.html?from=commodityCode&amp;export=true&amp;headingId=9503
+                    00 21&amp;footnoteCodes=TM571 &amp;simulationDate=21/05/12',
+                    'bgPopup', 'scrollbars=yes, resizable=yes, toolbar=no,
+                    menubar=0, height=580, width=660');p.focus();">
+                                  TM571
+                              </a>
+
+                    </td>
+                </tr>
+
+                <tr>
+
+                   <td>
+
+                          <a
+                          href="/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008&amp;geographicalAreaDescription=All
+                          third countries" title="" target="bgPopup"
+                          onclick="p=window.open('/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008',
+                          'bgPopup', 'scrollbars=yes, resizable=yes, toolbar=no,
+                          menubar=0, height=680, width=560');p.focus();">
+                                   All third countries
+                                 </a>
+
+                    </td> <td>
+                      Export authorization (prior surveillance)
+
+                    </td>
+                      <td></td> <td>
+
+                               <a
+                               href="/tariff-bl/export/additionalcode.html?additionalCode=099&amp;from=commodityCode&amp;geographicalAreaCode=1008&amp;measureType=467&amp;from=list&amp;export=true&amp;commodityCode=9503
+                               00 21&amp;simulationDate=21/05/12" target="bgPopup"
+                               title="This page will open in a new window"
+                               onclick="p=window.open('/tariff-bl/export/additionalcode.html?additionalCode=099&amp;from=commodityCode&amp;geographicalAreaCode=1008&amp;measureType=467&amp;from=list&amp;export=true&amp;commodityCode=9503
+                               00 21&amp;simulationDate=21/05/12', 'bgPopup',
+                               'scrollbars=yes,resizable=yes,toolbar=no,
+                               menubar=0,height=589,width=642');p.focus();">
+                      4099
+                    </a>
+
+                      </td>
+                     <td>
+
+                              &nbsp;
+
+              </td>
+                      <td>
+
+                    &nbsp;
+
+                      </td> <td>
+
+                                <a
+                                href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32003R1210:en:HTML"
+                                title="" target="bgPopup"
+                                onclick="p=window.open('http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32003R1210:en:HTML',
+                                'bgPopup', 'scrollbars=yes, resizable=yes,
+                                toolbar=no, menubar=0, height=680,
+                                width=800');p.focus();">
+                                    R1210/03
+                                </a>
+
+              </td>
+                      <td>
+
+                    &nbsp;
+
+                    </td>
+                </tr>
+
+                <tr>
+
+                   <td>
+
+                          <a
+                          href="/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008&amp;geographicalAreaDescription=All
+                          third countries" title="" target="bgPopup"
+                          onclick="p=window.open('/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008',
+                          'bgPopup', 'scrollbars=yes, resizable=yes, toolbar=no,
+                          menubar=0, height=680, width=560');p.focus();">
+                                   All third countries
+                                 </a>
+
+                    </td> <td>
+                      Export control on cultural goods
+
+                    </td>
+                      <td></td> <td>
+
+                              &nbsp;
+
+                      </td>
+                     <td>
+
+                  <a
+                  href="/tariff-bl/export/conditions.html?geographicalAreaCode=1008&amp;measureType=735&amp;from=list&amp;export=true&amp;commodityCode=9503
+                  00 21&amp;simulationDate=21/05/12" target="bgPopup" title="This
+                  page will open in a new window"
+                  onclick="p=window.open('/tariff-bl/export/conditions.html?geographicalAreaCode=1008&amp;measureType=735&amp;from=list&amp;export=true&amp;commodityCode=9503
+                  00 21&amp;simulationDate=21/05/12', 'bgPopup',
+                  'scrollbars=yes,resizable=yes,toolbar=no,
+                  menubar=0,height=589,width=642');p.focus();">
+                      View condition
+                  </a>
+
+              </td>
+                      <td>
+
+                    &nbsp;
+
+                      </td> <td>
+
+                                <a
+                                href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32009R0116:en:HTML"
+                                title="" target="bgPopup"
+                                onclick="p=window.open('http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32009R0116:en:HTML',
+                                'bgPopup', 'scrollbars=yes, resizable=yes,
+                                toolbar=no, menubar=0, height=680,
+                                width=800');p.focus();">
+                                    R0116/09
+                                </a>
+
+              </td>
+                      <td>
+
+                    <a
+                    href="/tariff-bl/export/footnote.html?from=commodityCode&amp;export=true&amp;headingId=9503
+                    00 21&amp;footnoteCodes=CG024, CD483
+                    &amp;simulationDate=21/05/12" title="" target="bgPopup"
+                    onclick="p=window.open('/tariff-bl/export/footnote.html?from=commodityCode&amp;export=true&amp;headingId=9503
+                    00 21&amp;footnoteCodes=CG024, CD483
+                    &amp;simulationDate=21/05/12', 'bgPopup', 'scrollbars=yes,
+                    resizable=yes, toolbar=no, menubar=0, height=580,
+                    width=660');p.focus();">
+                                  CG024, CD483
+                              </a>
+
+                    </td>
+                </tr>
+
+                <tr>
+
+                   <td>
+
+                          <a
+                          href="/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008&amp;geographicalAreaDescription=All
+                          third countries" title="" target="bgPopup"
+                          onclick="p=window.open('/tariff-bl/export/country.html?from=list&amp;export=true&amp;simulationDate=21/05/12&amp;geographicalAreaId=1008',
+                          'bgPopup', 'scrollbars=yes, resizable=yes, toolbar=no,
+                          menubar=0, height=680, width=560');p.focus();">
+                                   All third countries
+                                 </a>
+
+                    </td> <td>
+                      Export control on cat and dog fur
+
+                    </td>
+                      <td></td> <td>
+
+                              &nbsp;
+
+                      </td>
+                     <td>
+
+                  <a
+                  href="/tariff-bl/export/conditions.html?geographicalAreaCode=1008&amp;measureType=740&amp;from=list&amp;export=true&amp;commodityCode=9503
+                  00 21&amp;simulationDate=21/05/12" target="bgPopup" title="This
+                  page will open in a new window"
+                  onclick="p=window.open('/tariff-bl/export/conditions.html?geographicalAreaCode=1008&amp;measureType=740&amp;from=list&amp;export=true&amp;commodityCode=9503
+                  00 21&amp;simulationDate=21/05/12', 'bgPopup',
+                  'scrollbars=yes,resizable=yes,toolbar=no,
+                  menubar=0,height=589,width=642');p.focus();">
+                      View condition
+                  </a>
+
+              </td>
+                      <td>
+
+                    &nbsp;
+
+                      </td> <td>
+
+                                <a
+                                href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32007R1523:en:HTML"
+                                title="" target="bgPopup"
+                                onclick="p=window.open('http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32007R1523:en:HTML',
+                                'bgPopup', 'scrollbars=yes, resizable=yes,
+                                toolbar=no, menubar=0, height=680,
+                                width=800');p.focus();">
+                                    R1523/07
+                                </a>
+
+              </td>
+                      <td>
+
+                    <a
+                    href="/tariff-bl/export/footnote.html?from=commodityCode&amp;export=true&amp;headingId=9503
+                    00 21&amp;footnoteCodes=CD568 &amp;simulationDate=21/05/12"
+                    title="" target="bgPopup"
+                    onclick="p=window.open('/tariff-bl/export/footnote.html?from=commodityCode&amp;export=true&amp;headingId=9503
+                    00 21&amp;footnoteCodes=CD568 &amp;simulationDate=21/05/12',
+                    'bgPopup', 'scrollbars=yes, resizable=yes, toolbar=no,
+                    menubar=0, height=580, width=660');p.focus();">
+                                  CD568
+                              </a>
+
+                    </td>
+                </tr>
+
+          </tbody>
+      </table>
+      </div><!-- end .inner -->
+    </div><!-- end #export-measures -->
+  </div><!-- end .tab-pane -->
+  <div class='tab-pane' id='footnotes'>
+    <div id="commodity-footnotes" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
       <div class="inner">
-        
-        <table cellspacing="0">
-          <caption>Third country measures</caption>
+        <table cellspacing="0">       
           <thead>
-            <tr>
-              <th scope="col">Measure Type</th>
-              <th scope="col">Duty rates / prohibitions</th>
-              <th scope="col">Additional codes</th>
-              <th scope="col">Conditions</th>
-              <th scope="col">Exclusions</th>
-              <th scope="col">Legal Act</th>
-              <th scope="col">Footnote</th>
-            </tr>
+              <tr>
+                  <th>Code</th> <th>Description</th>
+              </tr>
           </thead>
           <tbody>
-            <tr>        
-              <td>
-                Third country duty
-              </td>
-              <td>4.70%</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="#">R1549/06</a>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                Import control on cat and dog fur          
-              </td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="#">View condition</a>
-              </td>
-              <td>    
-                <a href="#">R1523/07</a>
-              </td>
-              <td>
-                <a href="#">CD568</a>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>VAT standard rate</td>
-              <td>20.00%</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="#">03020</a>
-              </td>
-            </tr>
+              <tr>
+                  <td>
+                      CD500
+                  </td>
+                  <td>
+                       Eligibility to benefit from this preference is subject to
+                       the presentation of a proof of origin stating the community
+                       origin of the goods, in the context of the agreement
+                       between the European Economic Community and the Swiss
+                       Confederation.
+
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      03020
+                  </td> <td>
+                       UK VAT standard rate
+
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      TM570
+                  </td> <td>
+                       The following shall be prohibited:<br>a) the import of or
+                       the introduction into the territory of the Community of,
+                       and<br>b) the dealing in, Iraqi cultural property and other
+                       items of archaeological, historical, cultural, rare
+                       scientific and religious importance, if they have been
+                       illegally removed from locations in Iraq, in particular,
+                       if:<br>i) the items form an integral part of either the
+                       public collections listed in the inventories of Iraqi
+                       museums, archives or libraries' conservation collection, or
+                       the inventories of Iraqi religious institutions, or<br>ii)
+                       there exists reasonable suspicion that the goods have been
+                       removed from Iraq without the consent of their legitimate
+                       owner or have been removed in breach of Iraq's laws and
+                       regulations.<br>These prohibitions shall not apply if it is
+                       shown that either:<br>a) the cultural items were exported
+                       from Iraq prior to 6 August 1990; or<br>b) the cultural
+                       items are being returned to Iraqi institutions in
+                       accordance with the objective of safe return as set out in
+                       paragraph 7 of UNSC Resolution 1483 (2003).
+
+                  </td>
+              </tr> <tr>
+                  <td>
+                      CD303
+                  </td> <td>
+                       The relief from or reduction of customs duties shall be
+                       subject to the specific request expressed by the declarant
+                       in box 44 "Additional information/Documents
+                       produced/Certificates and authorisations", of the Single
+                       Administrative Document (SAD)
+
+                  </td>
+              </tr> <tr>
+                  <td>
+                      TM571
+                  </td> <td>
+                       The following shall be prohibited:<br>a) the export of or
+                       removal from the territory of the Community of, and<br>b)
+                       the dealing in, Iraqi cultural property and other items of
+                       archaeological, historical, cultural, rare scientific and
+                       religious importance, if they have been illegally removed
+                       from locations in Iraq, in particular, if:<br>i) the items
+                       form an integral part of either the public collections
+                       listed in the inventories of Iraqi museums, archives or
+                       libraries' conservation collection, or the inventories of
+                       Iraqi religious institutions, or<br>ii) there exists
+                       reasonable suspicion that the goods have been removed from
+                       Iraq without the consent of their legitimate owner or have
+                       been removed in breach of Iraq's laws and
+                       regulations.<br>These prohibitions shall not apply if it is
+                       shown that either:<br>a) the cultural items were exported
+                       from Iraq prior to 6 August 1990; or<br>b) the cultural
+                       items are being returned to Iraqi institutions in
+                       accordance with the objective of safe return as set out in
+                       paragraph 7 of UNSC Resolution 1483 (2003).
+
+                  </td>
+              </tr>
+
+              <tr>
+                  <td>
+                      CD483
+                  </td> <td>
+                       If the declared goods are described in the "CG" footnotes
+                       linked to the measure, an export licence must be presented
+
+                  </td>
+              </tr>
+
+              <tr>
+                  <td>
+                      CG024
+                  </td>
+                  <td>
+                       Between 50 and 100 years old, with a value corresponding to
+                       or exceeding 50000 Euro
+                  </td>
+              </tr>
+             <tr>
+                  <td>
+                      CD568
+                  </td>
+                  <td>
+                       The placing on the market and the import to, or export
+                       from, the Community of cat and dog fur, and products
+                       containing such fur is prohibited. (see Art. 3 Regulation
+                       (EC) No 1523/2007).
+                  </td>
+              </tr>
           </tbody>
-        </table>
-                
-        <table cellspacing="0">
-          <caption>Measures for specific countries and country groups</caption>
-          <thead>
-            <tr>
-              <th scope="col">Measure Type</th>
-              <th scope="col">Duty rates / prohibitions</th>
-              <th scope="col">Additional codes</th>
-              <th scope="col">Conditions</th>
-              <th scope="col">Exclusions</th>
-              <th scope="col">Legal Act</th>
-              <th scope="col">Footnote</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>        
-              <td>
-                Third country duty
-              </td>
-              <td>4.70%</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="#">R1549/06</a>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                Import control on cat and dog fur          
-              </td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="#">View condition</a>
-              </td>
-              <td>    
-                <a href="#">R1523/07</a>
-              </td>
-              <td>
-                <a href="#">CD568</a>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>VAT standard rate</td>
-              <td>20.00%</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="#">03020</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        
-      </div>        
-    </div>
-  </div>
-</div>
+        </table >
+      </div><!-- end .inner -->
+    </div><!-- end #commodity-footnotes -->
+  </div><!-- end .tab-pane -->
+</div><!-- end .tab-content -->

@@ -40,64 +40,71 @@ var commodities = {
                 }
             });
         }
-    },    
-    tabs : (function () {
-        //var tabset = function (context) {
-        //    var that = this;
-        //    
-        //    this.$tabs = $('.nav-tabs a', context);
-        //    this.$tabWrappers = $tabs.closest('li');
-        //    this.$tabPanes = $('.tab-pane', context);
-        //        
-        //    this.$tabPanes.not('.active').hide();
-        //    
-        //    // tabs
-        //    this.$tabs.each(function (idx) {
-        //        var $this = $(this);
-        //        
-        //        $this.on('click', function(e) {
-        //            var tabId = this.href.match(/#\w+$/);
-        //            
-        //            if (that.$tabWrappers.eq(idx).hasClass('active')) {
-        //                return;
-        //            }
-        //            
-        //            if (tabId) {
-        //                that.open(idx, tabId[0]);
-        //            }
-        //            
-        //            return false;
-        //        });
-        //    });
-        //};
-        //
-        //tabset.prototype = {
-        //    open : function (idx, id) {
-        //        this.$tabWrappers.removeClass('active');
-        //        this.$tabWrapper
-        //            .eq(idx)
-        //            .addClass('active');
-        //        
-        //        
-        //        this.$tabPanes.hide();
-        //        $(id).show();
-        //    }
-        //}
-        
-        // object that will be assigned to commodities.tabs
-        return {
-            initialize : function () {
-                //$('.tab-content').each(function () {
-                //    new tabset(this);    
-                //});
-                $('div.tariff').tabs();
-            }    
+    },
+    /**
+      @name commodities.tabs
+      @object
+      @description Tabbing behaviours
+    */
+    tabs : {
+        /**
+          @name commodities.tabs.initialize
+          @function
+          @description adds tabbing behaviour
+          @requires jquery.tabs.js
+        */
+        initialize : function () {
+            $('div.tariff').tabs();
         }
-        
-    }()),
+    },
+    /**
+      @name commodities.tablePopup
+      @object
+      @description Adds popup behaviour to tariff table cells
+    */
+    tablePopup : {
+        html : ['<div class="info-content"><h2>',
+                '</h2>' +
+                        '<p class="close"><a href="#">Close</a></p>' +
+                        '<div class="info-inner">' +
+                            '<p>Test content</p>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>'],
+        /**
+          @name commodities.tablePopup.adapt
+          @function
+          @description adapts the disclaimer popup for reuse
+        */
+        adapt : function () {
+            
+        },
+        /**
+          @name commodities.tablePopup.initialize
+          @function
+          @description initializes the popup behaviour
+        */
+        initialize : function () {
+            var that = this;
+            
+            $('table td a.reference').on('click', function (e) {
+                var title = that.html[0] + $(this).text() + that.html[1];
+                BetaPopup.popup(title, 'tariff-info');
+                that.adapt();
+                
+                return false;
+            });
+        }
+    },
+    /**
+      @name initialize
+      @function
+      @description initializes namespace
+    */
     initialize : function () {
         this.tree.initialize();
         this.tabs.initialize();
+        this.tablePopup.initialize();
     }
 };
     

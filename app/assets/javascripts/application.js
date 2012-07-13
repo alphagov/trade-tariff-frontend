@@ -1,8 +1,6 @@
 //= require jquery.pjax
-//= require bootstrap-tooltip
-//= require bootstrap-popover
-//= require bootstrap-tab
-//= require bootstrap-modal
+//= require jquery.tabs
+//= require jquery.history
 //= require_tree .
 
 $(function(){
