@@ -224,15 +224,33 @@ header.page-header {
 #new_commodity_search {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 4.27em; /* 58px */
   background: #fff;
   width: 174px;
   padding: 5px 13px;
   font-size: 0.85em;
 
+  a,
+  .btn {
+    margin-bottom:1em;
+  }
+  
+  a,
+  label {
+    display:block;
+  }
+  
+  .control-group {
+    margin-bottom:0.75em;
+  }
+  
+  input {
+    margin-left:0;
+  }
+  
   .btn {
     background-color: #28a197;
-    border-color: #28a197;
+    border-color: #28a197;    
   }
 }
 
@@ -443,10 +461,6 @@ dl.tariff-fragments dl.commodities {
       font-weight:bold;
     }
   }
-  
-  strong {
-    font-weight:normal;
-  }
 }
 
 .nav-tabs {
@@ -492,6 +506,8 @@ dl.tariff-fragments dl.commodities {
   margin:0;
 }
 
+/* Expanding table-cell content */
+
 .tab-content table dl {
   padding:0;
 }
@@ -533,6 +549,8 @@ dl.tariff-fragments dl.commodities {
 .tab-content nav {
   margin:1em -1.375em 0; /* override for static styles - 16px 22px */
 }
+
+/* Popup lightbox */
 
 #popup.tariff-info {
   top: 12px;
