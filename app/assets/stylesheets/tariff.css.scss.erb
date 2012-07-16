@@ -198,6 +198,10 @@ $top-section-grey: #f8f7ee;
   padding: 0;
 }
 
+.help-notice {
+  padding:0.25em 1em 0.25em 1em;
+}
+
 header.page-header {
   padding-bottom: 0;
   margin: 0;
@@ -457,8 +461,9 @@ dl.tariff-fragments dl.commodities {
   }
 }
 
-.tab-content {
+.tab-content .tab-pane {
   border-top:solid 1px #C9D0D0;
+  clear:both;
 }
 
 .tab-content .inner {
@@ -472,12 +477,61 @@ dl.tariff-fragments dl.commodities {
 .tab-content table {
   @include table;
   width:auto; /* override for static styles */
-  margin:2em -0.875em 0; /* override for static styles - 14px */  
+  margin:2em -1.375em 0; /* override for static styles - 32px 22px */
 }
 
+/* ignore caption */
 .tab-content table thead,
 .tab-content table tbody {
-  font-size:0.875em; /* 14px */
+  font-size:0.75em; /* 12px */
+}
+
+.tab-content table p {
+  font-size:1em; /* 12px */
+  width:55.4166664em; /* 665px */
+  margin:0;
+}
+
+.tab-content table dl {
+  padding:0;
+}
+
+.tab-content table dt {
+  @include tariff-identifier-reset;
+  width:auto;
+  position:static;
+  float:none;
+  text-align:left;
+}
+
+.tab-content table dd {
+  float:none;
+  padding-left:0;
+}
+
+.tab-content dt.has_children {
+  padding-left: $expand-arrow-space;
+  margin-left:-6px;
+  background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+  background-position: 0px 2px;
+  background-repeat: no-repeat;
+}
+  
+.tab-content dt.open {
+  background-position:0 -89px;
+}
+
+.tab-content table ul {
+  list-style:none;
+}
+
+.tab-content table li {
+  font-size:1em;
+  padding-left:0;
+}
+
+.tab-content nav {
+  margin:1em -1.375em 0; /* override for static styles - 16px 22px */
 }
 
 #popup.tariff-info {
@@ -534,5 +588,9 @@ dl.tariff-fragments dl.commodities {
   li.has_children a .description {
     padding-left:0;
     background:none;
+  }
+  
+  .return-to-top {
+    display:none;
   }
 }

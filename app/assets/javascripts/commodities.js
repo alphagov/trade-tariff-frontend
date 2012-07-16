@@ -24,20 +24,37 @@ var commodities = {
           @description expands/collapses nodes in a tree
         */
         initialize : function () {
-            // hide all child lists
-            $('ul.commodities .has_children > ul').addClass('visuallyhidden');
-            // allow expansion based on clicking
-            $('li.has_children>span').on('click', function(e) {
-                e.stopPropagation();
-                var childList = $(this).siblings('ul');
-                if (childList.is('.visuallyhidden')) {
-                    childList.removeClass('visuallyhidden');
-                    $(this).addClass('open');
+            var $parentNodes = $('.has_children');
+                
+            if (!$parentNodes.length) { return; }
+            
+            $parentNodes.each(function (idx) {
+                var $parentNode = $(this),
+                    $childList;
+                
+                if ($parentNode[0].nodeName.toLowerCase() === 'dt') {                
+                    $childList = $parentNode.siblings('dd').find('ul');
+                } else {
+                    $parentNode = $parentNode.children('span');
+                    $childList = $parentNode.siblings('ul');
                 }
-                else {
-                    childList.addClass('visuallyhidden');
-                    $(this).removeClass('open');
-                }
+                
+                // hide all child lists
+                $childList.addClass('visuallyhidden');
+                // allow expansion based on clicking
+                $parentNode.on('click', function(e) {
+                    e.stopPropagation();
+                    if ($childList.is('.visuallyhidden')) {
+                        $childList.removeClass('visuallyhidden');
+                        $(this).addClass('open');
+                    }
+                    else {
+                        $childList.addClass('visuallyhidden');
+                        $(this).removeClass('open');
+                    }
+                    
+                    return false;
+                }); 
             });
         }
     },
@@ -54,7 +71,11 @@ var commodities = {
           @requires jquery.tabs.js
         */
         initialize : function () {
-            $('div.tariff').tabs();
+            var $container = $('div.tariff');
+            
+            if ($container.find('.nav-tabs').length) {
+                $container.tabs();    
+            }            
         }
     },
     /**
@@ -75,9 +96,30 @@ var commodities = {
           @name commodities.tablePopup.adapt
           @function
           @description adapts the disclaimer popup for reuse
+          @param {Object} $this jQuery-wrapped link that fired the popup
         */
-        adapt : function () {
+        adapt : function ($linkElm) {
+            var url = $linkElm.attr('href'),
+                $popupInner = $('#popup div.info-inner'),
+                loader = '<img src="" alt="Content is loading" class="loader" />'
+                onSuccess,
+                onFail;
+                
+            onSuccess = function (data) {
+                $popupInner.html(data);
+            };
             
+            onFail = function (jqXHR, txtStatus, errorThrown) {
+                // to do
+            };
+            
+            //$popupInner.html(loader);
+            
+            $.ajax({
+                url : url,
+                success : onSuccess,
+                error : onSuccess
+            });
         },
         /**
           @name commodities.tablePopup.initialize
@@ -88,9 +130,11 @@ var commodities = {
             var that = this;
             
             $('table td a.reference').on('click', function (e) {
-                var title = that.html[0] + $(this).text() + that.html[1];
+                var $this = $(this),
+                    title = that.html[0] + 'Conditions' + that.html[1];
+                    
                 BetaPopup.popup(title, 'tariff-info');
-                that.adapt();
+                //that.adapt($this);
                 
                 return false;
             });

@@ -32,6 +32,9 @@
         <div class="help-notice">
           <p> See import and export tables for country-specific measures and restrictions.</p>
         </div>
+        <nav class="part-pagination return-to-top">
+          <a href="#wrapper">Return to top &uarr;</a>
+        </nav>
       </div>
     </article>
   </div>
@@ -39,6 +42,7 @@
     <div id="import-measures" class="js" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
       <div class="inner">        
         <table>
+          <caption>Third country measures:</caption>
           <thead>
             <tr>
               <th scope="col">Measure Type</th>
@@ -81,7 +85,9 @@
       
               <td></td>
       
-              <td><a href="#">View condition</a></td>
+              <td>
+                <a href="#" title="Import control on cat and dog fur" class="reference">View condition</a>
+              </td>
       
               <td></td>
       
@@ -109,6 +115,7 @@
         </table>
 
         <table>
+          <caption>Measures for specific countries and country groups:</caption>
           <thead>
             <tr>
               <th>Country</th>
@@ -133,8 +140,7 @@
             <tr>
               <td>
                 <dl>
-                  <dt><a href="#">CARIFORUM</a></dt>
-      
+                  <dt class="has_children">CARIFORUM</dt>
                 <dd>
                   <ul>
                     <li>AG Antigua and Barbuda</li>
@@ -194,7 +200,9 @@
       
               <td></td>
       
-              <td class="contains-conditions"><a href="#">View condition</a></td>
+              <td class="contains-conditions">
+                <a href="#" title="EU-Switzerland agreement:re-imported goods" class="reference">View condition</a>
+              </td>
       
               <td></td>
       
@@ -212,7 +220,7 @@
       
               <td></td>
       
-              <td><a href="#">View condition</a></td>
+              <td><a href="#" title="EUROPEAN ECONOMIC AREA" class="reference">View condition</a></td>
       
               <td></td>
       
@@ -501,7 +509,7 @@
       
               <td></td>
       
-              <td><a href="#">View condition</a></td>
+              <td><a href="#" title="Iran" class="reference">View condition</a></td>
       
               <td></td>
       
@@ -682,7 +690,7 @@
       
               <td></td>
       
-              <td><a href="#">View condition</a></td>
+              <td><a href="#" title="North Korea" class="reference">View condition</a></td>
       
               <td></td>
       
@@ -872,6 +880,9 @@
             </tr>
           </tbody>
         </table>
+        <nav class="part-pagination return-to-top">
+          <a href="#wrapper">Return to top &uarr;</a>
+        </nav>
       </div><!-- end .inner -->
     </div><!-- end #import-measures -->
   </div><!-- end .tab-pane -->
@@ -879,6 +890,7 @@
     <div id="export-measures" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
       <div class="inner">        
         <table>
+          <caption>Third country measures:</caption>
           <thead>
             <tr>
               <th scope="col">Measure Type</th>
@@ -899,11 +911,11 @@
       
           <tbody>
             <tr>
-              <td colspan="7">There are no EU third country measures for this commodity on this date</td>
+              <td colspan="7"><p>There are no EU third country measures for this commodity on this date</p></td>
             </tr>
       
             <tr>
-              <td colspan="7">No VAT or Excise measures were found for this commodity on this date</td>
+              <td colspan="7"><p>No VAT or Excise measures were found for this commodity on this date</p></td>
             </tr>
           </tbody>
         </table>
@@ -975,7 +987,7 @@
       
               <td></td>
       
-              <td><a href="#">View condition</a></td>
+              <td><a href="#" title="All third countries" class="reference">View condition</a></td>
       
               <td></td>
       
@@ -993,7 +1005,7 @@
       
               <td></td>
       
-              <td><a href="#">View condition</a></td>
+              <td><a href="#" title="All third countries" class="reference">View condition</a></td>
       
               <td></td>
       
@@ -1003,6 +1015,9 @@
             </tr>
           </tbody>
         </table>
+        <nav class="part-pagination return-to-top">
+          <a href="#wrapper">Return to top &uarr;</a>
+        </nav>
       </div><!-- end .inner -->
     </div><!-- end #export-measures -->
   </div><!-- end .tab-pane -->
@@ -1010,6 +1025,7 @@
     <div id="commodity-footnotes" data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
       <div class="inner">
         <table>
+          <caption>Measures for specific countries and country groups:</caption>
           <thead>
             <tr>
               <th>Code</th>
@@ -1082,6 +1098,9 @@
             </tr>
           </tbody>
         </table>
+        <nav class="part-pagination return-to-top">
+          <a href="#wrapper">Return to top &uarr;</a>
+        </nav>
       </div><!-- end .inner -->
     </div><!-- end #commodity-footnotes -->
   </div><!-- end .tab-pane -->
