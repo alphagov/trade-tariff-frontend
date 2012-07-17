@@ -2,9 +2,8 @@
   <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>"><% end %>
   <span class="description" id="commodity-<%= commodity.short_code %>"><%= commodity.description %></span>
   <% if commodity.short_code && commodity.leaf? %>
-    <span title="Full tariff code: <%= commodity.short_code %>" class="identifier" aria-describedby="commodity-<%= commodity.short_code %>"><%= format_commodity_code commodity %></span>
-    <span class="rate"><%= commodity.
-third_country_duty_cache %></span>
+    <span class="rate"><%= commodity.third_country_duty_cache %></span>
+    <span title="Full tariff code: <%= commodity.short_code %>" class="identifier" aria-describedby="commodity-<%= commodity.short_code %>"><%= format_commodity_code commodity %></span>    
   <% end %>
   <% if commodity.children.any? %>
     <ul><%= render commodity.children %></ul>
