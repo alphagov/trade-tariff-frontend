@@ -11,8 +11,8 @@ $top-section-grey: #f8f7ee;
 
 /* conversion functions */
 
-@function em($target, $current) {
-  @return $target * (1 / $current) * 1em;
+@function em($target-px, $current-px) {
+  @return $target-px * (1 / $current-px) * 1em;
 }
 
 @function px($value) {
@@ -156,27 +156,6 @@ $top-section-grey: #f8f7ee;
   }
 }
 
-// selected sections have consistent styling except for their spacing from the left-side
-// this is therefore left as a variable value
-
-@mixin selected-section($side-padding) {
-  margin: 0 px(-1 * $top-level-padding) 0 px(-1 * $side-padding);
-  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding);
-  background: #fff;
-  
-  li,
-  dd {
-    padding-top:0px;
-    border-top:1px solid #eee;
-  }
-  
-  li:first-child,
-  dd:nth-child(2) {
-    padding-top:1px;
-    border-top:none;
-  }
-}
-
 /* Mixins specific to tariff */
 
 @mixin tariff-identifier {
@@ -191,8 +170,44 @@ $top-section-grey: #f8f7ee;
   border-right: none;
 }
 
+@mixin underlined-primary-item {
+  border-top:1px solid #eee;
+  
+  &:nth-child(1) {
+    border-top:none;
+    padding-top:1px;
+  }
+}
+
+@mixin underlined-secondary-item {
+  border-top:1px solid #eee;
+  
+  &:nth-child(2) {
+    border-top:none;
+    padding-top:1px;
+  }
+}
+
+// selected sections have consistent styling except for their spacing from the left-side
+// this is therefore left as a variable value
+
+@mixin selected-section($side-padding) {
+  margin: 0 px(-1 * $top-level-padding) 0 px(-1 * $side-padding);
+  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding);
+  background: #fff;
+  
+  li {
+    @include underlined-primary-item;
+  }
+}
+
 /* end mixins */
 
+mark {
+  color:inherit;
+  background:none;
+}
+  
 article.tariff {
   font-size:0.875em; /* 14px */
   padding-bottom:2em;
@@ -320,6 +335,7 @@ dl.tariff-fragments {
     padding-left: px($token-space);
     padding-top:1px; /* offset the border-bottom on the token */
     margin: 0;
+    @include underlined-secondary-item; 
   }
 
   dl {
@@ -359,20 +375,22 @@ p.sections-intro {
 }
 
 dl.sections {
-  background:#fff;
+  background:#fff;  
   
   dt {
     position:static;
     width:15%;
-    padding-left:10%;
+    margin-left:10%;
     text-align:left;
     font-weight:normal;
+    @include underlined-primary-item;
   }
 }
 
 dl.sections dd {
   width:75%;
   padding-left:0px;
+  @include underlined-secondary-item;
 }
 
 /* chapters and chapter headings */
@@ -457,13 +475,22 @@ ul.commodities {
       font-size: 0.85em;
       float: left;
       display: block;
-
+      
+      &.identifier,
+      &.rate {
+        float: right;
+      }
+      
       &.identifier {
         @include tariff-identifier;
         float: right;
         border: 0;
         width: 4.5em;
         padding: 0 0.25em;
+      }
+      
+      &.rate {
+        padding:0 px($token-padding) 0 1em;
       }
     }
 
@@ -660,6 +687,7 @@ h1.search-heading {
 
 article.search-results {
   font-size:em(14, 16);
+  padding-bottom:2em;
   
   h2 {
     clear:both;
@@ -682,20 +710,10 @@ article.search-results {
     @include tariff-identifier;
   }
   
-  dd,
-  li {
-    border-top:1px solid #eee;
-  }
-  
   dd {
     padding-left:px($token-space);
     float:none;
-  }
-  
-  dd:nth-child(2),
-  li:nth-child(1) {
-    border-top:none;
-    padding-top:1px;
+    @include underlined-secondary-item;
   }
   
   dd a {
@@ -707,13 +725,10 @@ article.search-results {
     margin-left:0;
   }
   
-  dd dd {
-    
-  }
-  
   li {
     font-size:1em; /* 14px */
     list-style:none;
+    @include underlined-primary-item;
   }
 }
 

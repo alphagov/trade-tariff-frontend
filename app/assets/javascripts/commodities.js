@@ -86,10 +86,9 @@ var commodities = {
     tablePopup : {
         html : ['<div class="info-content"><h2>',
                 '</h2>' +
-                        '<p class="close"><a href="#">Close</a></p>' +
-                        '<div class="info-inner">' +
-                            '<p>Test content</p>' +
-                        '</div>' +
+                    '<p class="close"><a href="#">Close</a></p>' +
+                    '<div class="info-inner">' +
+                        '<p>Test content</p>' +
                     '</div>' +
                 '</div>'],
         /**
@@ -130,7 +129,7 @@ var commodities = {
             var that = this;
             
             $('table td a.reference').on('click', function (e) {
-                var $this = $(this),
+                var $this = $(this),                    
                     title = that.html[0] + 'Conditions' + that.html[1];
                     
                 BetaPopup.popup(title, 'tariff-info');
