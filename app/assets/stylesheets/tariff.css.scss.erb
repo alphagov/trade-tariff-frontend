@@ -1,13 +1,25 @@
 /* global variables */
 
-$token-width: 26px; /* 25px width + 1px border */
-$token-padding: 5px;
+$token-width: 26; /* 25px width + 1px border */
+$token-padding: 5;
 $token-space: $token-width + $token-padding; /* Uses above values */
-$top-level-padding: 10px;
+$top-level-padding: 10;
 
 $top-section-grey: #f8f7ee;
 
 /* end global variables */
+
+/* conversion functions */
+
+@function em($target, $current) {
+  @return $target * (1 / $current) * 1em;
+}
+
+@function px($value) {
+  @return $value * 1px;
+}
+
+/* end conversion functions */
 
 /* mixins */
 
@@ -148,8 +160,8 @@ $top-section-grey: #f8f7ee;
 // this is therefore left as a variable value
 
 @mixin selected-section($side-padding) {
-  margin: 0 (-1 * $top-level-padding) 0 (-1 * $side-padding);
-  padding: $top-level-padding $top-level-padding $top-level-padding $side-padding;
+  margin: 0 px(-1 * $top-level-padding) 0 px(-1 * $side-padding);
+  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding);
   background: #fff;
   
   li,
@@ -181,21 +193,28 @@ $top-section-grey: #f8f7ee;
 
 /* end mixins */
 
-.tariff a {
-  color:#333;
+article.tariff {
+  font-size:0.875em; /* 14px */
+  padding-bottom:2em;
 }
 
-.tariff a:hover,
-.tariff a:focus {
-  color:#2e8aca
-}
+.tariff {
+  a {
+    color:#333;
+    
+    &:hover,
+    &:focus {
+      color:#2e8aca
+    }
+  }
 
-.tariff p {
-  font-size:1em;
-}
+  p {
+    font-size:1em;
+  }
 
-.tariff .inner {
-  padding: 0;
+  .inner {
+    padding: 0;
+  }
 }
 
 .help-notice {
@@ -263,21 +282,21 @@ header.page-header {
 }
 
 article dl {
-  padding: $top-level-padding $top-level-padding 0 $top-level-padding;
+  padding: px($top-level-padding) px($top-level-padding) 0 px($top-level-padding);
   margin: 0;
   background: $top-section-grey;
   position: relative;
-}
-
-article dl dl {
-  @include contain-float;
-  margin-left:$token-width - $top-level-padding;
-  padding-top:0px;
+  
+  dl {
+    @include contain-float;
+    margin-left:px($token-width - $top-level-padding);
+    padding-top:0px;
+  }
 }
 
 article dt {
   float: left;
-  width: $token-width;
+  width: px($token-width);
   clear: left;
   text-align: center;
   display: block;
@@ -288,13 +307,9 @@ article dt {
   margin-bottom:0; /* reset of static */
 }
 
-article.tariff {
-  padding-bottom:2em;
-}
-
 dl.tariff-fragments {
   padding: 0;
-  margin-left: -1 * $token-space;
+  margin-left: -1px * $token-space;
 
   dt {
     @include tariff-identifier;
@@ -302,7 +317,7 @@ dl.tariff-fragments {
 
   dd {
     float: none;
-    padding-left: $token-space;
+    padding-left: px($token-space);
     padding-top:1px; /* offset the border-bottom on the token */
     margin: 0;
   }
@@ -318,7 +333,7 @@ article dd {
   float: left;
   display: block;
   margin: 0;
-  padding-left: $token-space - $top-level-padding;
+  padding-left: px($token-space - $top-level-padding);
 
   // this is so the children of this are cleared out left as the
   // internal content is pushed over by the float
@@ -345,14 +360,14 @@ p.sections-intro {
 
 dl.sections {
   background:#fff;
-}
-
-dl.sections dt {
-  position:static;
-  width:15%;
-  padding-left:10%;
-  text-align:left;
-  font-weight:normal;
+  
+  dt {
+    position:static;
+    width:15%;
+    padding-left:10%;
+    text-align:left;
+    font-weight:normal;
+  }
 }
 
 dl.sections dd {
@@ -365,30 +380,62 @@ dl.sections dd {
 article.chapters dt {
   position:static;
   width:auto;
-  margin-right:$token-padding;
+  margin-right:px($token-padding);
 }
 
 article.chapters dl.tariff-fragments dt {
-  width:$token-width;
+  width:px($token-width);
 }
 
 dl.tariff-fragments dl.chapter-headings,
 dl.chapters,
 p.chapters-intro {
-  margin-left:-1 * $token-space;
+  margin-left:-1px * $token-space;
   @include selected-section($token-space);
 }
 
 dl.chapter-headings dt,
 dl.chapters dt {
-  left:$token-space;
+  left:px($token-space);
+}
+
+.chapter-notes {
+  padding:0 px($top-level-padding) 0;
+  width:auto;
+  font-size:1em; /* 14px */
+  
+  h2,
+  li {
+    font-size:1em; /* 14px */
+    margin-bottom:1em;
+  }
+  
+  ol {
+    list-style-type:decimal;
+    margin-left:0;
+    padding-left:em(($token-space - $top-level-padding), 14);
+  }
+  
+  ol li {
+    padding-left:0;
+    margin-bottom:1em;
+  }
+  
+  ol ol {
+    padding-left:0;
+    margin-top:1em;
+  }
+  
+  ol ol li {
+    list-style-type:lower-alpha;
+  }
 }
 
 /* variables local to commodities */
 
-$commodity-padding: ((2 * $token-width) + $token-padding);
-$expand-arrow-width: 9px;
-$expand-arrow-space: 9px + $token-padding;
+$commodity-padding: ((2 * $token-space) + $token-padding) + $top-level-padding;
+$expand-arrow-width: 9;
+$expand-arrow-space: 9 + $token-padding;
 
 /* end variables local to commodities */
 
@@ -439,7 +486,7 @@ ul.commodities {
 
 dl.tariff-fragments dl.commodities {
   margin-left:0;
-  padding-bottom:$top-level-padding;
+  padding-bottom:px($top-level-padding);
   
   dt {
     @include tariff-identifier-reset;
@@ -463,6 +510,11 @@ dl.tariff-fragments dl.commodities {
   }
 }
 
+.nav-tabs,
+.tab-content {
+  font-size:em(16, 14); /* 14px */
+}
+
 .nav-tabs {
   @include contain-float;
   background:$top-section-grey;
@@ -475,79 +527,81 @@ dl.tariff-fragments dl.commodities {
   }
 }
 
-.tab-content .tab-pane {
-  border-top:solid 1px #C9D0D0;
-  clear:both;
-}
+.tab-content {
+  .tab-pane {
+    border-top:solid 1px #C9D0D0;
+    clear:both;
+  }
 
-.tab-content .inner {
-  padding:0em 2.5em 1em;
-}
+  .inner {
+    padding:0em 2.5em 1em;
+  }
 
-.tab-content p {
-  font-size:1.1875em; /* 19px */
-}
+  p {
+    font-size:1.1875em; /* 19px */
+  }
 
-.tab-content table {
-  @include table;
-  width:auto; /* override for static styles */
-  margin:2em -1.375em 0; /* override for static styles - 32px 22px */
-}
-
-/* ignore caption */
-.tab-content table thead,
-.tab-content table tbody {
-  font-size:0.75em; /* 12px */
-}
-
-.tab-content table p {
-  font-size:1em; /* 12px */
-  width:55.4166664em; /* 665px */
-  margin:0;
-}
-
-/* Expanding table-cell content */
-
-.tab-content table dl {
-  padding:0;
-}
-
-.tab-content table dt {
-  @include tariff-identifier-reset;
-  width:auto;
-  position:static;
-  float:none;
-  text-align:left;
-}
-
-.tab-content table dd {
-  float:none;
-  padding-left:0;
-}
-
-.tab-content dt.has_children {
-  padding-left: $expand-arrow-space;
-  margin-left:-6px;
-  background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
-  background-position: 0px 2px;
-  background-repeat: no-repeat;
-}
+  table {
+    @include table;
+    width:auto; /* override for static styles */
+    margin:2em -1.375em 0; /* override for static styles - 32px 22px */
+  }
   
-.tab-content dt.open {
-  background-position:0 -89px;
-}
+  /* ignore caption */
+  table thead,
+  table tbody {
+    font-size:0.75em; /* 12px */
+  }
+  
+  table p {
+    font-size:1em; /* 12px */
+    width:55.4166664em; /* 665px */
+    margin:0;
+  }
+  
+  /* Expanding table-cell content */
 
-.tab-content table ul {
-  list-style:none;
-}
-
-.tab-content table li {
-  font-size:1em;
-  padding-left:0;
-}
-
-.tab-content nav {
-  margin:1em -1.375em 0; /* override for static styles - 16px 22px */
+  table dl {
+    padding:0;
+  }
+  
+  table dt {
+    @include tariff-identifier-reset;
+    width:auto;
+    position:static;
+    float:none;
+    text-align:left;
+  }
+  
+  table dd {
+    float:none;
+    padding-left:0;
+  }
+  
+  dt.has_children {
+    padding-left: px($expand-arrow-space);
+    margin-left:-6px;
+    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+    background-position: 0px 2px;
+    background-repeat: no-repeat;
+  }
+  
+  dt.open {
+    background-position:0 -89px;
+  }
+  
+  table ul {
+    list-style:none;
+  }
+  
+  table li {
+    font-size:1em;
+    padding-left:0;
+  }
+  
+  nav {
+    margin:1em -1.375em 0; /* override for static styles - 16px 22px */
+  }
 }
 
 /* Popup lightbox */
@@ -557,30 +611,110 @@ dl.tariff-fragments dl.commodities {
   width: 560px;
   box-shadow: -0.5em 0.5em 0 rgba(0,0,0,0.3);
   padding:0;
+  
+  .info-content {
+    background-color: #F27820;
+    padding: 0 5px 5px 5px;
+  }
+  
+  .info-inner {
+    background-color: #FDE4D2;
+    color: #000;
+    padding: 1em 2em;
+  }
+  
+  .close {
+    right: 0.5em;
+    top: 1.5em;
+  }
+  
+  h2 {
+    font-size: 2em;
+    font-weight: normal;
+    text-transform:uppercase;
+    padding:0.2em 0 0 0.5em;
+    color:#000;
+  }
 }
 
-#popup.tariff-info .info-content {
-  background-color: #F27820;
-  padding: 0 5px 5px 5px;
+/* Search */
+
+/* variables specific to search */
+
+$results-padding: ((2 * $token-space) + $token-padding) + $top-level-padding;
+
+/* end variables specific to search */
+
+h1.search-heading,
+article.search-results {
+  padding: px($top-level-padding);
+  width:auto;
 }
 
-#popup.tariff-info .info-inner {
-  background-color: #FDE4D2;
-  color: #000;
-  padding: 1em 2em;
-}
-
-#popup.tariff-info .close {
-  right: 0.5em;
-  top: 1.5em;
-}
-
-#popup.tariff-info h2 {
-  font-size: 2em;
-  font-weight: normal;
-  text-transform:uppercase;
-  padding:0.2em 0 0 0.5em;
+h1.search-heading {
+  background: $top-section-grey;
   color:#000;
+  font-size:1em;
+  font-weight:normal;
+}
+
+article.search-results {
+  font-size:em(14, 16);
+  
+  h2 {
+    clear:both;
+    font-size:em(20, 16);
+    margin-left:px($results-padding);
+  }
+  
+  dl {
+    position:relative;
+    background:none;
+    padding:0;
+  }
+  
+  .results-subset {
+    margin-left:px($results-padding);
+    border-bottom:1px solid #eee;
+  }
+  
+  dt {
+    @include tariff-identifier;
+  }
+  
+  dd,
+  li {
+    border-top:1px solid #eee;
+  }
+  
+  dd {
+    padding-left:px($token-space);
+    float:none;
+  }
+  
+  dd:nth-child(2),
+  li:nth-child(1) {
+    border-top:none;
+    padding-top:1px;
+  }
+  
+  dd a {
+    text-decoration:none;
+    display:block;
+  }
+  
+  dl dl {
+    margin-left:0;
+  }
+  
+  dd dd {
+    
+  }
+  
+  li {
+    font-size:1em; /* 14px */
+    list-style:none;
+  }
 }
 
 .js-enabled {
@@ -593,7 +727,7 @@ dl.tariff-fragments dl.commodities {
   }
   
   li.has_children .description {
-    padding-left: $expand-arrow-space;
+    padding-left: px($expand-arrow-space);
     background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
     background-position: 0 7px;
     background-repeat: no-repeat;
