@@ -3,5 +3,5 @@ require 'api_entity'
 class LegalAct
   include ApiEntity
 
-  attr_accessor :id, :code, :url
+  attr_accessor :generating_regulation_code, :url
 end

@@ -23,7 +23,7 @@ module ApiEntity
   def initialize(attributes = {})
     class_name = self.class.name.downcase
 
-    if attributes.has_key?(class_name)
+    if attributes.present? && attributes.has_key?(class_name)
       self.attributes = attributes[class_name]
     else
       self.attributes = attributes

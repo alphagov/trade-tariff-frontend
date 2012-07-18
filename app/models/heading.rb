@@ -5,7 +5,7 @@ class Heading
 
   attr_accessor :description, :code, :commodities, :short_code,
                 :import_measures, :export_measures, :has_measures,
-                :declarative, :third_country_duty_rate, :uk_vat_rate_rate,
+                :declarative, :third_country_duty_rate, :uk_vat_rate,
                 :synonyms
 
   has_one :chapter

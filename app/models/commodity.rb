@@ -4,7 +4,7 @@ class Commodity
   include ApiEntity
 
   attr_accessor :short_code, :code, :description, :substring, :hier_pos,
-                :synonyms, :uk_vat_rate_rate, :third_country_duty_rate,
+                :synonyms, :uk_vat_rate, :third_country_duty_rate,
                 :leaf, :parents, :synonyms, :producline_suffix
 
   has_one :section
@@ -29,6 +29,10 @@ class Commodity
 
   def to_param
     "#{code}#{producline_suffix}"
+  end
+
+  def footnotes
+    [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
   end
 
   def to_s
