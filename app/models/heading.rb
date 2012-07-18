@@ -5,7 +5,7 @@ class Heading
 
   attr_accessor :description, :code, :commodities, :short_code,
                 :import_measures, :export_measures, :has_measures,
-                :declarative, :third_country_duty_cache, :uk_vat_rate_cache,
+                :declarative, :third_country_duty_rate, :uk_vat_rate_rate,
                 :synonyms
 
   has_one :chapter
@@ -25,9 +25,9 @@ class Heading
   def commodity_code
     code.first(10)
   end
-  
+
   def display_short_code
-    code[2..3]  
+    code[2..3]
   end
 
   def to_param
