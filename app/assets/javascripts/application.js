@@ -5,5 +5,7 @@
 
 $(function(){
   $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])')
-    .pjax('[data-pjax-container]');
+    .pjax('[data-pjax-container]', { success : function () { commodities.initialize(); } });
+    
+  commodities.initialize();
 });

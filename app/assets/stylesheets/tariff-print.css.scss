@@ -1,0 +1,29 @@
+caption {
+	margin: 0 0 2em;
+}
+table {
+	margin-bottom:2em;
+}
+tr {
+	page-break-inside: avoid;
+}
+.tariff-search {
+	display:none !important;
+}
+nav.trail {
+	display:block !important;
+	margin-bottom:1em;
+	border-bottom:black 1px solid;
+}
+article dd a {
+	margin-top:-1.5em;
+	display:block;
+}
+article dd ul a {
+	margin-top:0;
+}
+.has_children ul.visuallyhidden {
+	position:static;
+	left:auto;
+	display:block;
+}

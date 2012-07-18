@@ -150,8 +150,3 @@ var commodities = {
         this.tablePopup.initialize();
     }
 };
-    
-// run scripts on DOMReady
-$(function() {
-    commodities.initialize();
-});

@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= javascript_include_tag "application", defer: true %>
+    <link rel="stylesheet" type="text/css" href="/assets/tariff-print.css.scss" media="print" />
     <%= yield :section_meta_tags %>
     <%= yield :head %>
   </head>
@@ -17,12 +18,14 @@
         </div>
         <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
           <%= link_to "View all Sections", sections_path %>
+          <a href="#">A-Z index</a>
           <%= f.input :q, required: false, label: "Search the tariff",
                       input_html: {
                         name: 'q',
                         size: 15 } %>
 
           <%= f.button :submit, 'Search', class: 'button right' %>
+          <a href="#">How to use the trade tariff</a>
         <% end %>
       </section>
     </div>

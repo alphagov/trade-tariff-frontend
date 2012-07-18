@@ -1,8 +1,9 @@
 /* global variables */
 
-$token-width: 26; /* 25px width + 1px border */
+$token-width: 26;
+$token-outer-width: $token-width + 1;
 $token-padding: 5;
-$token-space: $token-width + $token-padding; /* Uses above values */
+$token-space: $token-outer-width + $token-padding; /* Uses above values */
 $top-level-padding: 10;
 
 $top-section-grey: #f8f7ee;
@@ -82,7 +83,7 @@ $top-section-grey: #f8f7ee;
 // border-top:solid 1px #C9D0D0;
 
 @mixin tabs($side-padding) {
-    padding: 0 0 0 $side-padding;
+    padding: 0 0 0 px($side-padding);
     position: relative;
   
   ol,
@@ -304,7 +305,7 @@ article dl {
   
   dl {
     @include contain-float;
-    margin-left:px($token-width - $top-level-padding);
+    margin-left:px($token-outer-width - $top-level-padding);
     padding-top:0px;
   }
 }
@@ -340,7 +341,7 @@ dl.tariff-fragments {
 
   dl {
     position: relative;
-    margin-left:-1 * $token-padding;
+    margin-left:px(-1 * $token-padding);
     padding:0;
   }
 }
@@ -451,7 +452,7 @@ dl.chapters dt {
 
 /* variables local to commodities */
 
-$commodity-padding: ((2 * $token-space) + $token-padding) + $top-level-padding;
+$commodity-padding: ((2 * $token-outer-width) + $token-padding);
 $expand-arrow-width: 9;
 $expand-arrow-space: 9 + $token-padding;
 
@@ -532,7 +533,6 @@ dl.tariff-fragments dl.commodities {
       @include tariff-identifier;
       padding: 0 0.25em;
       margin-right:5px;
-      font-weight:bold;
     }
   }
 }
@@ -545,7 +545,7 @@ dl.tariff-fragments dl.commodities {
 .nav-tabs {
   @include contain-float;
   background:$top-section-grey;
-  @include tabs($token-width);
+  @include tabs($token-outer-width);
   
   li {
     padding:0;
