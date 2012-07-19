@@ -16,17 +16,29 @@
         <div data-pjax-container class="article-container group">
           <%= yield %>
         </div>
-        <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
-          <%= link_to "View all Sections", sections_path %>
-          <a href="#">A-Z index</a>
-          <%= f.input :q, required: false, label: "Search the tariff",
-                      input_html: {
-                        name: 'q',
-                        size: 15 } %>
-
-          <%= f.button :submit, 'Search', class: 'button right' %>
-          <a href="#">How to use the trade tariff</a>
-        <% end %>
+        <div id="search-controls">
+          <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
+            <%= link_to "View all Sections", sections_path %>
+            <a href="#">A-Z index</a>
+            <%= f.input :q, required: false, label: "Search the tariff",
+                        input_html: {
+                          name: 'q',
+                          size: 15 } %>
+  
+            <%= f.button :submit, 'Search', class: 'button right' %>          
+            <a href="#">How to use the trade tariff</a>
+          <% end %>
+        
+          <form accept-charset="UTF-8" action="/search" class="simple_form date-filter" id="date-filter" method="get" novalidate="novalidate">
+            <h2>This tariff applies today</h2>
+            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value=""></div>
+            <div class="control-group string optional">
+              <label class="string optional control-label visuallyhidden" for="commodity_search_r">Date of results</label>
+              <input class="string optional date" id="commodity_search_r" name="r" size="15" type="text" value="20/07/2012" />
+            </div>
+            <input class="btn button right" name="commit" type="submit" value="Change">
+          </form>
+        </div>
       </section>
     </div>
   </body>

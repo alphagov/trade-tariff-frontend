@@ -1,19 +1,21 @@
 <tr>
   <% if measure_group == "specific_country" %>
     <td>
+      <% if measure.geographical_area.children_geographical_areas.any? %>
       <dl>
-        <dt class="<% if measure.geographical_area.children_geographical_areas.any? %>has_children<% end %>">
+        <dt class="has_children">
           <%= measure.geographical_area.description %>
         </dt>
-      <dd>
-        <% if measure.geographical_area.children_geographical_areas.any? %>
-          <ul>
-            <% measure.geographical_area.children_geographical_areas.each do |children_geographical_area| %>
-              <li><%= children_geographical_area.iso_code %> <%= children_geographical_area.description %></li>
-            <% end %>
-          </ul>
-        <% end %>
+      <dd>      
+        <ul>
+          <% measure.geographical_area.children_geographical_areas.each do |children_geographical_area| %>
+            <li><%= children_geographical_area.iso_code %> <%= children_geographical_area.description %></li>
+          <% end %>
+        </ul>        
       </dd>
+        <% else %>
+          <%= measure.geographical_area.description %>
+        <% end %>
     </td>
   <% end %>
 
@@ -25,7 +27,7 @@
 
   <td>
     <% if measure.measure_conditions.any? %>
-      <%= link_to "View Conditions", "#", class: 'reference' %>
+      <%= link_to "View Conditions", "#", class: 'reference', title: 'Opens in a popup' %>
     <% end %>
   </td>
 

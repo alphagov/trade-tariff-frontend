@@ -10,6 +10,14 @@ $top-section-grey: #f8f7ee;
 
 /* end global variables */
 
+/* variables local to commodities */
+
+$commodity-padding: ((2 * $token-outer-width) + $token-padding);
+$expand-arrow-width: 9;
+$expand-arrow-space: 9 + $token-padding;
+
+/* end variables local to commodities */
+
 /* conversion functions */
 
 @function em($target-px, $current-px) {
@@ -46,7 +54,7 @@ $top-section-grey: #f8f7ee;
     text-align:left;
     font-weight: 300;
     margin-bottom: 0.5em;
-    font-size:1.16em; /* 19px */
+    font-size:em(19, 16);
     padding-left:1em;
   }
   
@@ -204,13 +212,78 @@ $top-section-grey: #f8f7ee;
 
 /* end mixins */
 
+.visuallyhidden {
+  height:1px;
+  width:1px;
+  overflow:hidden;
+}
+
 mark {
   color:inherit;
   background:none;
 }
+
+article table {
+    @include table;
+    width:auto; /* override for static styles */
+    margin:em(32, 16) (-1 * em(22, 16)) 0; /* override for static styles */
   
+  /* ignore caption */
+  thead,
+  tbody {
+    font-size:em(12, 16);
+  }
+  
+  .tab-content & p {
+    margin:0;
+    font-size:1em;
+  }
+  
+  /* Expanding table-cell content */
+
+  dl {
+    padding:0;
+    background:none;
+  }
+  
+  dt {
+    @include tariff-identifier-reset;
+    width:auto;
+    position:static;
+    float:none;
+    text-align:left;
+    cursor:pointer;
+  }
+  
+  dd {
+    float:none;
+    padding-left:0;
+  }
+  
+  dt.has_children {
+    padding-left: px($expand-arrow-space);
+    margin-left:-6px;
+    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+    background-position: 0px 2px;
+    background-repeat: no-repeat;
+  }
+  
+  dt.open {
+    background-position:0 -89px;
+  }
+  
+  ul {
+    list-style:none;
+  }
+  
+  li {
+    font-size:1em;
+    padding-left:0;
+  }
+}
+
 article.tariff {
-  font-size:0.875em; /* 14px */
+  font-size:em(14, 16);
   padding-bottom:2em;
 }
 
@@ -256,41 +329,97 @@ header.page-header {
   }
 }
 
-#new_commodity_search {
+#search-controls {
   position: absolute;
   right: 0;
-  top: 4.27em; /* 58px */
-  background: #fff;
-  width: 174px;
-  padding: 5px 13px;
-  font-size: 0.85em;
-
-  a,
-  .btn {
-    margin-bottom:1em;
-  }
+  top: 4.27em;
+  width: 192px;
   
-  a,
-  label {
-    display:block;
-  }
-  
-  .control-group {
-    margin-bottom:0.75em;
-  }
-  
-  input {
-    margin-left:0;
-  }
-  
-  .btn {
-    background-color: #28a197;
-    border-color: #28a197;    
+  form {
+    background: #fff;
+    font-size: 0.85em;
+    padding: 5px 13px;
+    margin-bottom:2em;
+    
+    h2 {
+      font-size:em(19, 14);
+    }
+    
+    a,
+    .btn {
+      margin-bottom:1em;
+    }
+    
+    a,
+    label {
+      display:block;
+    }
+    
+    .control-group {
+      margin-bottom:0.75em;
+    }
+    
+    input {
+      margin-left:0;
+    }
+    
+    .btn {
+      background-color: #28a197;
+      border-color: #28a197;    
+    }
   }
 }
 
 #commodity_search_q {
   width: 8em;
+}
+
+/* Some styles for date-filter are in the .js-enabled section */
+#date-filter {
+  input.date:before {
+    content: '(';    
+  }
+  
+  input.date:after {
+    content: ')';
+  }
+  
+  &.editMode input.date:before,
+  &.editMode input.date:after {
+    content: '';
+  }
+}
+
+.ui-datepicker {
+  background:#fff;
+  font-size:em(14, 16);
+  padding:px($top-level-padding);
+  
+  .ui-datepicker-header {
+    padding:0 px($token-padding + 16);
+  }
+  
+  .ui-datepicker-header a {
+    position:absolute;
+    top:10px;
+  }
+  
+  .ui-datepicker-prev {
+    left:10px;
+  }
+  
+  .ui-datepicker-next {
+    right:10px;
+  }
+  
+  td {
+    text-align:center;
+  }
+  
+  td .ui-state-default {
+    background:none;
+    text-decoration:none;
+  }
 }
 
 #index {
@@ -450,35 +579,35 @@ dl.chapters dt {
   }
 }
 
-/* variables local to commodities */
-
-$commodity-padding: ((2 * $token-outer-width) + $token-padding);
-$expand-arrow-width: 9;
-$expand-arrow-space: 9 + $token-padding;
-
-/* end variables local to commodities */
-
-ul.commodities,
-ul.commodities ul {
+.tariff ul,
+.tariff li,
+.tariff ul ul {
   list-style:none;
+  list-style-image:none;
 }
 
 ul.commodities {  
   @include selected-section($commodity-padding);
+  @include contain-float;
   
   li {
     display: block;
-    margin: 0;
+    margin: 0;    
+    padding: 0;
+    position:relative;
     @include contain-float;
-    padding: 0;    
+    
+    a {
+      margin:0 em($token-padding + 60, 16) 0 0;
+      text-decoration:none; 
+    }
 
     span {
       font-size: 0.85em;
       float: left;
       display: block;
       
-      &.identifier,
-      &.rate {
+      &.identifier {
         float: right;
       }
       
@@ -486,12 +615,17 @@ ul.commodities {
         @include tariff-identifier;
         float: right;
         border: 0;
-        width: 4.5em;
-        padding: 0 0.25em;
+        width: em(63, 14);
+        padding: 0 em($token-padding, 14);
       }
       
       &.rate {
-        padding:0 px($token-padding) 0 1em;
+        padding-right:em($token-padding, 14);
+        width:em(60, 14);
+        text-align:right;
+        position:absolute;
+        right:0;
+        top:0;
       }
     }
 
@@ -513,7 +647,7 @@ ul.commodities {
 }
 
 dl.tariff-fragments dl.commodities {
-  margin-left:0;
+  margin-left:px($token-outer-width);
   padding-bottom:px($top-level-padding);
   
   dt {
@@ -539,7 +673,7 @@ dl.tariff-fragments dl.commodities {
 
 .nav-tabs,
 .tab-content {
-  font-size:em(16, 14); /* 14px */
+  font-size:em(16, 14);
 }
 
 .nav-tabs {
@@ -565,69 +699,16 @@ dl.tariff-fragments dl.commodities {
   }
 
   p {
-    font-size:1.1875em; /* 19px */
-  }
-
-  table {
-    @include table;
-    width:auto; /* override for static styles */
-    margin:2em -1.375em 0; /* override for static styles - 32px 22px */
+    font-size:em(19, 16);
   }
   
-  /* ignore caption */
-  table thead,
-  table tbody {
-    font-size:0.75em; /* 12px */
-  }
-  
-  table p {
-    font-size:1em; /* 12px */
-    width:55.4166664em; /* 665px */
-    margin:0;
-  }
-  
-  /* Expanding table-cell content */
-
-  table dl {
-    padding:0;
-  }
-  
-  table dt {
-    @include tariff-identifier-reset;
-    width:auto;
-    position:static;
-    float:none;
-    text-align:left;
-  }
-  
-  table dd {
-    float:none;
-    padding-left:0;
-  }
-  
-  dt.has_children {
-    padding-left: px($expand-arrow-space);
-    margin-left:-6px;
-    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
-    background-position: 0px 2px;
-    background-repeat: no-repeat;
-  }
-  
-  dt.open {
-    background-position:0 -89px;
-  }
-  
-  table ul {
-    list-style:none;
-  }
-  
-  table li {
-    font-size:1em;
-    padding-left:0;
+  em {
+    font-style:normal;
+    font-weight:bold;
   }
   
   nav {
-    margin:1em -1.375em 0; /* override for static styles - 16px 22px */
+    margin:1em (-1 * em(22, 16)) 0; /* override for static styles */
   }
 }
 
@@ -635,32 +716,44 @@ dl.tariff-fragments dl.commodities {
 
 #popup.tariff-info {
   top: 12px;
-  width: 560px;
-  box-shadow: -0.5em 0.5em 0 rgba(0,0,0,0.3);
+  max-width: 720px;
   padding:0;
   
-  .info-content {
-    background-color: #F27820;
-    padding: 0 5px 5px 5px;
+  .info-content,
+  article {
+    padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
   }
   
-  .info-inner {
-    background-color: #FDE4D2;
-    color: #000;
-    padding: 1em 2em;
+  .info-content {
+    background-color: #f2f2f2;
+    padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
+  }
+  
+  /* resets for article styles */
+  article {
+    float:none;
+    margin:0;
+    width:auto;
+    min-height:0;
+    
+    padding-bottom:3em;
+    overflow:hidden;
   }
   
   .close {
-    right: 0.5em;
-    top: 1.5em;
+    position:static;
+    padding:0.2em 0 0.2em 0.5em;
+    text-align:right;
+    
+    a {
+      display:inline-block;
+      text-indent:99999px;
+    }
   }
   
-  h2 {
-    font-size: 2em;
-    font-weight: normal;
-    text-transform:uppercase;
-    padding:0.2em 0 0 0.5em;
-    color:#000;
+  table {
+    margin-left:0;
+    margin-right:0;
   }
 }
 
@@ -758,6 +851,18 @@ article.search-results {
   }
   
   .return-to-top {
+    display:none;
+  }
+  
+  #date-filter input.date {
+    border:none;
+  }
+  
+  #date-filter.editMode input.date {
+    border:1px solid #BBB;
+  }
+  
+  #date-filter input.button {
     display:none;
   }
 }
