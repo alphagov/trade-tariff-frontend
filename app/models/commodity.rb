@@ -27,6 +27,10 @@ class Commodity
     children.none?
   end
 
+  def display_short_code
+    code.first(6)
+  end
+
   def to_param
     "#{code}#{producline_suffix}"
   end
