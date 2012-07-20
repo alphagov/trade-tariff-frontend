@@ -6,12 +6,12 @@
         <dt class="has_children">
           <%= measure.geographical_area.description %>
         </dt>
-      <dd>      
+      <dd>
         <ul>
           <% measure.geographical_area.children_geographical_areas.each do |children_geographical_area| %>
             <li><%= children_geographical_area.iso_code %> <%= children_geographical_area.description %></li>
           <% end %>
-        </ul>        
+        </ul>
       </dd>
         <% else %>
           <%= measure.geographical_area.description %>
@@ -27,7 +27,26 @@
 
   <td>
     <% if measure.measure_conditions.any? %>
-      <%= link_to "View Conditions", "#", class: 'reference', title: 'Opens in a popup' %>
+      <%= link_to "View Conditions", "#", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "conditions-#{measure.id}" %>
+      <div class='hidden' data-popup='conditions-<%= measure.id %>'>
+        <article>
+          <table>
+            <caption><%= measure.measure_type_description %> for <%= measure.geographical_area.description %>:</caption>
+            <thead>
+              <tr>
+                <th>Condition</th>
+                <th>Document code</th>
+                <th>Requirement</th>
+                <th>Action</th>
+                <th>Duty expression</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render measure.measure_conditions %>
+            </tbody>
+          </table>
+        </article>
+      </div>
     <% end %>
   </td>
 
@@ -37,7 +56,23 @@
 
   <td>
     <% measure.footnotes.each do |footnote| %>
-      <%= link_to footnote.code, "#" %>&nbsp;
+      <%= link_to footnote.code, "#", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "footnote-#{footnote.id}" %>&nbsp;
+      <div class='popup hidden' data-popup='footnote-<%= footnote.id %>'>
+        <article>
+          <table>
+            <caption>Footnote for commodity:</caption>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render footnote %>
+            </tbody>
+          </table>
+        </article>
+      </div>
     <% end %>
   </td>
 </tr>

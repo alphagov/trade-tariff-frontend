@@ -13,6 +13,10 @@ class Measure
   has_many :measure_conditions
   has_many :footnotes
 
+  def id
+    @id ||= SecureRandom.hex(16)
+  end
+
   def duty_expression
     measure_components.map(&:duty_expression).join(" & ")
   end

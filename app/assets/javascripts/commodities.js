@@ -10,14 +10,14 @@
 */
 
 "use strict";
-    
+
 var GOVUK = GOVUK || {};
 
 GOVUK.tariff = {
     /**
       @name GOVUK.tariff.tree
       @object
-      @description Behaviours for expandable trees    
+      @description Behaviours for expandable trees
     */
     tree : {
         /**
@@ -27,20 +27,20 @@ GOVUK.tariff = {
         */
         initialize : function () {
             var $parentNodes = $('.has_children');
-                
+
             if (!$parentNodes.length) { return; }
-            
+
             $parentNodes.each(function (idx) {
                 var $parentNode = $(this),
                     $childList;
-                
-                if ($parentNode[0].nodeName.toLowerCase() === 'dt') {                
+
+                if ($parentNode[0].nodeName.toLowerCase() === 'dt') {
                     $childList = $parentNode.siblings('dd').find('ul');
                 } else {
                     $parentNode = $parentNode.children('span');
                     $childList = $parentNode.siblings('ul');
                 }
-                
+
                 // hide all child lists
                 $childList.addClass('visuallyhidden');
                 // allow expansion based on clicking
@@ -54,9 +54,9 @@ GOVUK.tariff = {
                         $childList.addClass('visuallyhidden');
                         $(this).removeClass('open');
                     }
-                    
+
                     return false;
-                }); 
+                });
             });
         }
     },
@@ -74,10 +74,10 @@ GOVUK.tariff = {
         */
         initialize : function () {
             var $container = $('div.tariff');
-            
+
             if ($container.find('.nav-tabs').length) {
-                $container.tabs();    
-            }            
+                $container.tabs();
+            }
         }
     },
     /**
@@ -109,56 +109,26 @@ GOVUK.tariff = {
                 htmlContent,
                 onSuccess,
                 onFail;
-                
+
             onSuccess = function (data) {
                 $popupInner.html(data);
             };
-            
+
             onFail = function (jqXHR, txtStatus, errorThrown) {
                 // to do
             };
-            
-            htmlContent = '<article>' +
-            '<table>' +
-                '<caption>Veterinary control for ERGA OMNES:</caption>' +
-                '<thead>' + 
-                  '<tr>' +
-                    '<th>Condition</th>' +
-                    '<th>Document code</th>' +
-                    '<th>Requirement</th>' +
-                    '<th>Action</th>' +
-                    '<th>Duty expression</th>' +
-                  '</tr>' +
-                '</thead>' +        
-                '<tbody>' +
-                '<tr>' +
-                    '<td>Presentation of a certificate/licence/document</td>' +
-                    '<td>C640</td>' +
-                    '<td>Presentation of a document:  Other certificates : Common veterinary entry document (CVED) in accordance with Commission Regulation (EC) No. 282/2004, used for veterinary checks on live animals.</td>' +
-                    '<td>Import/export allowed after control</td>' +
-                    '<td></td>' +
-                '</tr>' +
-                '<tr>' +
-                    '<td>Presentation of a certificate/licence/document</td>' +
-                    '<td></td>' +
-                    '<td></td>' +
-                    '<td>Import/export not allowed after control</td>' +
-                    '<td></td>' +
-                '</tr>' +
-                '</tbody>' +
-              '</table>' +
-            '</article>';
-            
+
             //$popupInner.html(loader);
-            
+
             //$.ajax({
             //    url : url,
             //    success : onSuccess,
             //    error : onSuccess
             //});
-            
+
+            htmlContent = $("[data-popup=" + $linkElm.data('popup-ref') + "]").html();
             $popupInner.html(htmlContent);
-            
+
             // reset the tabindex of the heading
             $dialogTitle
                 .attr('tabindex', 0)
@@ -168,36 +138,36 @@ GOVUK.tariff = {
                     'tabindex' : -1,
                     'role' : 'dialog',
                     'aria-labelledby' : 'dialog-title'
-                });                
-            
+                });
+
             // return focus to the trigger link when the lightbox closes
             $closeBtn.on('click', function (e) {
                 $linkElm.focus()
             });
-            
+
             // dialogs need focus to be retained until closed so control tabbing
             $popup.on('keydown', function (e) {
                 if (e.which == 9){
-                    
+
                     // cancel tabbing from the close button (assumed this is the last link)
                     if (e.target.nodeName.toLowerCase() === 'a') {
                         if (!event.shiftKey) {
                             return false;
                         }
                     } else {
-                        
+
                         // popup removes tabindex from the title by default so re-apply it
-                        if (e.target.nodeName.toLowerCase() === 'h2') {                            
-                            e.target.tabIndex = 0;                            
+                        if (e.target.nodeName.toLowerCase() === 'h2') {
+                            e.target.tabIndex = 0;
                         }
-                        
+
                         // cancel reverse-tabbing out of the popup
                         if (event.shiftKey) {
                             return false;
                         }
-                    }                    
+                    }
                 }
-                
+
                 return true;
             });
         },
@@ -208,15 +178,15 @@ GOVUK.tariff = {
         */
         initialize : function () {
             var that = this;
-            
+
             $('table td a.reference').on('click', function (e) {
-                var $this = $(this),                    
+                var $this = $(this),
                     title = that.html[0] + 'Conditions' + that.html[1];
-                
+
                 BetaPopup.maskOpacity = 0.2;
                 BetaPopup.popup(title, 'tariff-info');
                 that.adapt($this);
-                
+
                 return false;
             });
         }
@@ -237,29 +207,29 @@ GOVUK.tariff = {
                 $input = $form.find('input.date'),
                 $btn = $form.find('input.button'),
                 $changeLink = $('<a href="#">Change date</a>');
-                
+
             // if form has already been initialised, quit
             if ($form.find('a').length) {
                 return;
             }
-            
+
             $input.datepicker({
                 dateFormat : 'dd/mm/yy'
             });
-            
+
             // datepicker is allowing clicks on date anchors to pass through so prevent this
             $('#ui-datepicker-div').on('click', function (e) {
                 return false;
             });
-            
+
             $form.append($changeLink);
-            
+
             $changeLink.on('click', function (e) {
                 $form.addClass('editMode');
                 $input.focus();
                 $(this).remove();
                 $btn.show();
-                
+
                 return false;
             });
         }
@@ -271,7 +241,7 @@ GOVUK.tariff = {
     */
     initialize : function () {
         var that = this;
-        
+
         this.tree.initialize();
         this.tabs.initialize();
         this.tablePopup.initialize();
