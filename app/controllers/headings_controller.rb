@@ -3,6 +3,7 @@ class HeadingsController < ApplicationController
     @heading = Heading.find(params[:id])
     @commodities = @heading.commodities
   end
+
   def import_measures
     @measurable = Heading.find(params[:id])
     @import_measures = @measurable.import_measures

@@ -1,10 +1,2 @@
-<tr>
-  <td>
-    <strong>
-      <%= link_to chapter.short_code, chapter_path(chapter) %>
-    </strong>
-  </td>
-  <td>
-    <%= link_to chapter.description, chapter_path(chapter) %>
-  </td>
-</tr>
+<dt><%= chapter.short_code %></dt>
+<dd><%= link_to chapter.description.downcase.titleize, chapter_path(chapter) %></dd>

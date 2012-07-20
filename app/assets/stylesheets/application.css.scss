@@ -1,21 +1,4 @@
 /*
  *= require 'tariff'
  *= require_self
- *= require_tree .
 */
-
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-
-// Base CSS
-@import "bootstrap/type";
-@import "bootstrap/code";
-// @import "bootstrap/forms";
-@import "bootstrap/tables";
-
-// Components: Popovers
-@import "bootstrap/tooltip";
-@import "bootstrap/popovers";
-@import "bootstrap/modals";
-@import "bootstrap/navs";
-@import "bootstrap/labels-badges";

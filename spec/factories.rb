@@ -27,7 +27,15 @@ FactoryGirl.define do
     description { Forgery(:basic).text }
     code        { Forgery(:basic).number }
     short_code  { Forgery(:basic).number }
-    leaf        { [true, false].sample }
+    producline_suffix { ["10", "20", "80"].sample }
+
+    trait :with_children do
+      children { [attributes_for(:commodity)] }
+    end
+
+    trait :without_children do
+      children { [] }
+    end
   end
 
   factory :region do

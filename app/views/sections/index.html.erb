@@ -1,19 +1,8 @@
 <article class="tariff sections">
-  <div class="inner">
-    <table>
-      <thead>
-        <tr>
-          <td>
-            <strong>Section</strong>
-          </td>
-          <td>
-            <strong>Description</strong>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @sections %>
-      </tbody>
-    </table>
+  <p class="sections-intro">Microcopy about what the tariff is goes here. How to use it. All of that. Look, there's search over there. Maybe some links too. To classification guides. And other things.</p>
+  <div class="inner">    
+    <dl class="sections">
+      <%= render @sections %>
+    </dl>
   </div>
 </article>

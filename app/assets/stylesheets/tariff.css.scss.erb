@@ -1,0 +1,869 @@
+/* global variables */
+
+$token-width: 26;
+$token-outer-width: $token-width + 1;
+$token-padding: 5;
+$token-space: $token-outer-width + $token-padding; /* Uses above values */
+$top-level-padding: 10;
+
+$top-section-grey: #f8f7ee;
+
+/* end global variables */
+
+/* variables local to commodities */
+
+$commodity-padding: ((2 * $token-outer-width) + $token-padding);
+$expand-arrow-width: 9;
+$expand-arrow-space: 9 + $token-padding;
+
+/* end variables local to commodities */
+
+/* conversion functions */
+
+@function em($target-px, $current-px) {
+  @return $target-px * (1 / $current-px) * 1em;
+}
+
+@function px($value) {
+  @return $value * 1px;
+}
+
+/* end conversion functions */
+
+/* mixins */
+
+@mixin contain-float {
+  zoom: 1;
+
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+/* Styles inherited from static */
+
+@mixin table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  
+  caption {
+    text-align:left;
+    font-weight: 300;
+    margin-bottom: 0.5em;
+    font-size:em(19, 16);
+    padding-left:1em;
+  }
+  
+  th,
+  td {
+    vertical-align: top;
+    line-height: 1.3em;
+    padding: 0.7em 0.5em 0.7em 1em;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #fff;
+  }
+  
+  td {
+    background: #fafafa;
+    border:dotted 1px #bbb;
+  }
+  
+  th {  
+    line-height:1.25em;
+    text-align: left;
+    color:#000;
+    font-weight:normal;
+    background-color: #e1e8e8;
+    border:solid 1px #bbb;
+  }
+  td small{
+    font-size:1em;
+  }
+}
+
+// the tab panes associated with these tabs require the following styles:
+// border-top:solid 1px #C9D0D0;
+
+@mixin tabs($side-padding) {
+    padding: 0 0 0 px($side-padding);
+    position: relative;
+  
+  ol,
+  ul {
+    background-color: #C9D0D0;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 5;
+  }
+  .lte-ie8 & ol,
+  .lte-ie8 & ul {
+    _overflow: hidden;
+    _padding: 1px 1px 0 0;
+  }
+  
+  ol li,
+  ul li {
+    float: left;
+  }
+  .lte-ie8 & ol li,
+  .lte-ie8 & ul li {
+    _width: 7.5em;
+  }
+  
+  li a {
+    background-color: #E1E8E8;
+    display: block;
+    height: 2.25em;
+    line-height: 2.25em;
+    margin-left: 1px;
+    padding: 0 1em 0 0.75em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+  }
+  .lte-ie8 & li a {
+    _background-image: none;
+    _padding: 0 0.5em;
+  }
+  
+  li:first-child a {
+    border-left: solid 1px #E1E8E8;
+    margin-left: 0;
+  }
+  
+  li a:hover {
+    background-color: #97C5E5;
+    color: inherit;
+  }
+  
+  li.active a {
+    background-color: #fff;
+    border: solid 1px #C9D0D0;
+    border-bottom: solid 1px #fff;
+    color: #000;
+    margin: -1px -1px -1px 0;
+    position: relative;
+    z-index: 5;
+  }
+  .lte-ie8 & li.active a {
+    _bottom: -1px;
+  }
+  
+  li.active a:hover {
+    background-color: #fff;
+    color: #2E8ACA;
+  }
+}
+
+/* Mixins specific to tariff */
+
+@mixin tariff-identifier {
+  background: #CCE0D6;
+  border-top: solid 1px #7FB299;
+  border-right: solid 1px #7FB299;
+}
+
+@mixin tariff-identifier-reset {
+  background: none;
+  border-top: none;
+  border-right: none;
+}
+
+@mixin underlined-primary-item {
+  border-top:1px solid #eee;
+  
+  &:nth-child(1) {
+    border-top:none;
+    padding-top:1px;
+  }
+}
+
+@mixin underlined-secondary-item {
+  border-top:1px solid #eee;
+  
+  &:nth-child(2) {
+    border-top:none;
+    padding-top:1px;
+  }
+}
+
+// selected sections have consistent styling except for their spacing from the left-side
+// this is therefore left as a variable value
+
+@mixin selected-section($side-padding) {
+  margin: 0 px(-1 * $top-level-padding) 0 px(-1 * $side-padding);
+  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding);
+  background: #fff;
+  
+  li {
+    @include underlined-primary-item;
+  }
+}
+
+/* end mixins */
+
+.visuallyhidden {
+  height:1px;
+  width:1px;
+  overflow:hidden;
+}
+
+mark {
+  color:inherit;
+  background:none;
+}
+
+article table {
+    @include table;
+    width:auto; /* override for static styles */
+    margin:em(32, 16) (-1 * em(22, 16)) 0; /* override for static styles */
+  
+  /* ignore caption */
+  thead,
+  tbody {
+    font-size:em(12, 16);
+  }
+  
+  .tab-content & p {
+    margin:0;
+    font-size:1em;
+  }
+  
+  /* Expanding table-cell content */
+
+  dl {
+    padding:0;
+    background:none;
+  }
+  
+  dt {
+    @include tariff-identifier-reset;
+    width:auto;
+    position:static;
+    float:none;
+    text-align:left;
+    cursor:pointer;
+  }
+  
+  dd {
+    float:none;
+    padding-left:0;
+  }
+  
+  dt.has_children {
+    padding-left: px($expand-arrow-space);
+    margin-left:-6px;
+    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+    background-position: 0px 2px;
+    background-repeat: no-repeat;
+  }
+  
+  dt.open {
+    background-position:0 -89px;
+  }
+  
+  ul {
+    list-style:none;
+  }
+  
+  li {
+    font-size:1em;
+    padding-left:0;
+  }
+}
+
+article.tariff {
+  font-size:em(14, 16);
+  padding-bottom:2em;
+}
+
+.tariff {
+  a {
+    color:#333;
+    
+    &:hover,
+    &:focus {
+      color:#2e8aca
+    }
+  }
+
+  p {
+    font-size:1em;
+  }
+
+  .inner {
+    padding: 0;
+  }
+}
+
+.help-notice {
+  padding:0.25em 1em 0.25em 1em;
+}
+
+header.page-header {
+  padding-bottom: 0;
+  margin: 0;
+  border-bottom: 0;
+
+  hgroup {
+    border-top-color: #7FB299;
+    padding-bottom: 0;
+
+    h1 {
+      padding-left: 0;
+
+      span {
+        color: #10370D;
+      }
+    }
+  }
+}
+
+#search-controls {
+  position: absolute;
+  right: 0;
+  top: 4.27em;
+  width: 192px;
+  
+  form {
+    background: #fff;
+    font-size: 0.85em;
+    padding: 5px 13px;
+    margin-bottom:2em;
+    
+    h2 {
+      font-size:em(19, 14);
+    }
+    
+    a,
+    .btn {
+      margin-bottom:1em;
+    }
+    
+    a,
+    label {
+      display:block;
+    }
+    
+    .control-group {
+      margin-bottom:0.75em;
+    }
+    
+    input {
+      margin-left:0;
+    }
+    
+    .btn {
+      background-color: #28a197;
+      border-color: #28a197;    
+    }
+  }
+}
+
+#commodity_search_q {
+  width: 8em;
+}
+
+/* Some styles for date-filter are in the .js-enabled section */
+#date-filter {
+  input.date:before {
+    content: '(';    
+  }
+  
+  input.date:after {
+    content: ')';
+  }
+  
+  &.editMode input.date:before,
+  &.editMode input.date:after {
+    content: '';
+  }
+}
+
+.ui-datepicker {
+  background:#fff;
+  font-size:em(14, 16);
+  padding:px($top-level-padding);
+  
+  .ui-datepicker-header {
+    padding:0 px($token-padding + 16);
+  }
+  
+  .ui-datepicker-header a {
+    position:absolute;
+    top:10px;
+  }
+  
+  .ui-datepicker-prev {
+    left:10px;
+  }
+  
+  .ui-datepicker-next {
+    right:10px;
+  }
+  
+  td {
+    text-align:center;
+  }
+  
+  td .ui-state-default {
+    background:none;
+    text-decoration:none;
+  }
+}
+
+#index {
+  list-style-type:upper-roman
+}
+
+article dl {
+  padding: px($top-level-padding) px($top-level-padding) 0 px($top-level-padding);
+  margin: 0;
+  background: $top-section-grey;
+  position: relative;
+  
+  dl {
+    @include contain-float;
+    margin-left:px($token-outer-width - $top-level-padding);
+    padding-top:0px;
+  }
+}
+
+article dt {
+  float: left;
+  width: px($token-width);
+  clear: left;
+  text-align: center;
+  display: block;
+  font-size: 1em;
+  position: absolute;
+  left: 0;
+  font-weight:normal;
+  margin-bottom:0; /* reset of static */
+}
+
+dl.tariff-fragments {
+  padding: 0;
+  margin-left: -1px * $token-space;
+
+  dt {
+    @include tariff-identifier;
+  }
+
+  dd {
+    float: none;
+    padding-left: px($token-space);
+    padding-top:1px; /* offset the border-bottom on the token */
+    margin: 0;
+    @include underlined-secondary-item; 
+  }
+
+  dl {
+    position: relative;
+    margin-left:px(-1 * $token-padding);
+    padding:0;
+  }
+}
+
+article dd {
+  float: left;
+  display: block;
+  margin: 0;
+  padding-left: px($token-space - $top-level-padding);
+
+  // this is so the children of this are cleared out left as the
+  // internal content is pushed over by the float
+  &.section-heading {
+    width: auto;
+    float: none;
+    margin-bottom: 0;
+  }
+}
+
+dl h1 {
+  font-size: 100%;
+  margin-top: 0;
+  line-height: 1.5em;
+  color: #333;
+}
+
+/* sections */
+
+p.sections-intro {
+  padding-left:0.5em;
+  padding-right:1em;
+}
+
+dl.sections {
+  background:#fff;  
+  
+  dt {
+    position:static;
+    width:15%;
+    margin-left:10%;
+    text-align:left;
+    font-weight:normal;
+    @include underlined-primary-item;
+  }
+}
+
+dl.sections dd {
+  width:75%;
+  padding-left:0px;
+  @include underlined-secondary-item;
+}
+
+/* chapters and chapter headings */
+
+article.chapters dt {
+  position:static;
+  width:auto;
+  margin-right:px($token-padding);
+}
+
+article.chapters dl.tariff-fragments dt {
+  width:px($token-width);
+}
+
+dl.tariff-fragments dl.chapter-headings,
+dl.chapters,
+p.chapters-intro {
+  margin-left:-1px * $token-space;
+  @include selected-section($token-space);
+}
+
+dl.chapter-headings dt,
+dl.chapters dt {
+  left:px($token-space);
+}
+
+.chapter-notes {
+  padding:0 px($top-level-padding) 0;
+  width:auto;
+  font-size:1em; /* 14px */
+  
+  h2,
+  li {
+    font-size:1em; /* 14px */
+    margin-bottom:1em;
+  }
+  
+  ol {    
+    margin-left:0;
+    padding-left:em(($token-space - $top-level-padding), 14);
+  }
+  
+  ol li {
+    list-style-type:decimal;
+    padding-left:0;
+    margin-bottom:1em;
+  }
+  
+  ol ol {
+    padding-left:0;
+    margin-top:1em;
+  }
+  
+  ol ol li {
+    list-style-type:lower-alpha;
+  }
+}
+
+.tariff ul,
+.tariff li,
+.tariff ul ul {
+  list-style:none;
+  list-style-image:none;
+}
+
+ul.commodities {  
+  @include selected-section($commodity-padding);
+  @include contain-float;
+  
+  li {
+    display: block;
+    margin: 0;    
+    padding: 0;
+    position:relative;
+    @include contain-float;
+    
+    a {
+      margin:0 em($token-padding + 60, 16) 0 0;
+      text-decoration:none; 
+    }
+
+    span {
+      font-size: 0.85em;
+      float: left;
+      display: block;
+      
+      &.identifier {
+        float: right;
+      }
+      
+      &.identifier {
+        @include tariff-identifier;
+        float: right;
+        border: 0;
+        width: em(63, 14);
+        padding: 0 em($token-padding, 14);
+      }
+      
+      &.rate {
+        padding-right:em($token-padding, 14);
+        width:em(60, 14);
+        text-align:right;
+        position:absolute;
+        right:0;
+        top:0;
+      }
+    }
+
+    a {
+      display: block;
+      @include contain-float;
+    }
+  }
+
+  li:last-child {
+    border-bottom: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 2em;
+    clear: both;
+  }
+}
+
+dl.tariff-fragments dl.commodities {
+  margin-left:px($token-outer-width);
+  padding-bottom:px($top-level-padding);
+  
+  dt {
+    @include tariff-identifier-reset;
+    width:auto;
+    float:none;
+    position:static;
+    text-align:left;
+    font-weight:normal;
+  }
+  
+  span {
+    float: left;
+    display: block;
+
+    &.identifier {
+      @include tariff-identifier;
+      padding: 0 0.25em;
+      margin-right:5px;
+    }
+  }
+}
+
+.nav-tabs,
+.tab-content {
+  font-size:em(16, 14);
+}
+
+.nav-tabs {
+  @include contain-float;
+  background:$top-section-grey;
+  @include tabs($token-outer-width);
+  
+  li {
+    padding:0;
+    margin:0;
+    font-size:1em;
+  }
+}
+
+.tab-content {
+  .tab-pane {
+    border-top:solid 1px #C9D0D0;
+    clear:both;
+  }
+
+  .inner {
+    padding:0em 2.5em 1em;
+  }
+
+  p {
+    font-size:em(19, 16);
+  }
+  
+  em {
+    font-style:normal;
+    font-weight:bold;
+  }
+  
+  nav {
+    margin:1em (-1 * em(22, 16)) 0; /* override for static styles */
+  }
+}
+
+/* Popup lightbox */
+
+#popup.tariff-info {
+  top: 12px;
+  max-width: 720px;
+  padding:0;
+  
+  .info-content,
+  article {
+    padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
+  }
+  
+  .info-content {
+    background-color: #f2f2f2;
+    padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
+  }
+  
+  /* resets for article styles */
+  article {
+    float:none;
+    margin:0;
+    width:auto;
+    min-height:0;
+    
+    padding-bottom:3em;
+    overflow:hidden;
+  }
+  
+  .close {
+    position:static;
+    padding:0.2em 0 0.2em 0.5em;
+    text-align:right;
+    
+    a {
+      display:inline-block;
+      text-indent:99999px;
+    }
+  }
+  
+  table {
+    margin-left:0;
+    margin-right:0;
+  }
+}
+
+/* Search */
+
+/* variables specific to search */
+
+$results-padding: ((2 * $token-space) + $token-padding) + $top-level-padding;
+
+/* end variables specific to search */
+
+h1.search-heading,
+article.search-results {
+  padding: px($top-level-padding);
+  width:auto;
+}
+
+h1.search-heading {
+  background: $top-section-grey;
+  color:#000;
+  font-size:1em;
+  font-weight:normal;
+}
+
+article.search-results {
+  font-size:em(14, 16);
+  padding-bottom:2em;
+  
+  h2 {
+    clear:both;
+    font-size:em(20, 16);
+    margin-left:px($results-padding);
+  }
+  
+  dl {
+    position:relative;
+    background:none;
+    padding:0;
+  }
+  
+  .results-subset {
+    margin-left:px($results-padding);
+    border-bottom:1px solid #eee;
+  }
+  
+  dt {
+    @include tariff-identifier;
+  }
+  
+  dd {
+    padding-left:px($token-space);
+    float:none;
+    @include underlined-secondary-item;
+  }
+  
+  dd a {
+    text-decoration:none;
+    display:block;
+  }
+  
+  dl dl {
+    margin-left:0;
+  }
+  
+  li {
+    font-size:1em; /* 14px */
+    list-style:none;
+    @include underlined-primary-item;
+  }
+}
+
+.js-enabled {
+  li.has_children {
+    
+  }
+
+  li.open {
+    background-position: 0 -100px;
+  }
+  
+  li.has_children .description {
+    padding-left: px($expand-arrow-space);
+    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+    background-position: 0 7px;
+    background-repeat: no-repeat;
+    cursor:pointer;
+  }
+  
+  li.has_children .open {
+    background-position:0 -84px;
+  }
+  
+  li.has_children a .description {
+    padding-left:0;
+    background:none;    
+  }
+  
+  .return-to-top {
+    display:none;
+  }
+  
+  #date-filter input.date {
+    border:none;
+  }
+  
+  #date-filter.editMode input.date {
+    border:1px solid #BBB;
+  }
+  
+  #date-filter input.button {
+    display:none;
+  }
+}

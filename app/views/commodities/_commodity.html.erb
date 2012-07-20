@@ -1,24 +1,14 @@
-<tr>
-  <td>
-    <strong>
-      <% if commodity.leaf? %>
-        <%= link_to commodity.short_code, commodity_path(commodity) %>
-      <% else %>
-        <%= commodity.short_code %>
-      <% end %>
-    </strong>
-  </td>
-  <td>
-    <span style='font-weight: bold'>
-      <%= "-" * commodity.substring %>
-    </span>
-    <% if commodity.leaf? %>
-      <%= link_to commodity.description, commodity_path(commodity) %>
-    <% else %>
-      <%= commodity.description %>
-    <% end %>
-  </td>
-  <td>
-    <strong><%= commodity.third_country_duty_cache %></strong>
-  </td>
-</tr>
+<li<% if ! commodity.leaf? %> class="has_children"<% end %>>
+  <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>"><% end %>
+  <span class="description" id="commodity-<%= commodity.short_code %>"><%= commodity.description %></span>
+  <% if commodity.leaf? %>    
+    <span title="Full tariff code: <%= commodity.code %>" class="identifier" aria-describedby="commodity-<%= commodity.short_code %>"><%= format_commodity_code commodity %></span>
+  <% end %>
+  <% if commodity.children.any? %>
+    <ul><%= render commodity.children %></ul>
+  <% end %>
+  <% if commodity.leaf? %>
+    </a>
+    <span class="rate"><%= commodity.third_country_duty_rate %></span>
+  <% end %>
+</li>

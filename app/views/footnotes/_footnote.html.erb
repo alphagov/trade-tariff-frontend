@@ -1,14 +1,4 @@
-<div id='footnote-<%= footnote.id %>' class='modal hide'>
-  <div class="modal-header">
-    <a href='' class="close no-pjax" data-dismiss="modal" data-skip-pjax>×</a>
-    <h3><%= footnote.code %></h3>
-  </div>
-  <div class="modal-body">
-    <%= footnote.description %>
-  </div>
-  <div class="modal-footer">
-    <a href="#" data-dismiss="modal" class="btn no-pjax" data-skip-pjax>Close</a>
-  </div>
-</div>
-
-<%= link_to footnote.code, '', 'class' => 'no-pjax', 'data-toggle' => 'modal', 'data-backdrop' => 'false', 'data-target' => "#footnote-#{footnote.id}", 'data-skip-pjax' => true %>
+<tr>
+  <td><%= footnote.code %></td>
+  <td><%= simple_format footnote.description %></td>
+</tr>

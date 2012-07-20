@@ -36,7 +36,7 @@ Uktt::Application.configure do
   config.assets.debug = true
 
   # Slimmer config
-  config.slimmer.asset_host = ENV["STATIC_DEV"] || Plek.new("preview").find("assets")
+  config.slimmer.asset_host = ENV["STATIC_DEV"] || "http://static.dev.gov.uk"
 
   # Host for Trade Tariff API endpoint
   if ENV['FACTER_govuk_class']

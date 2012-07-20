@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
   def initialize_search
-    @search = CommoditySearch.new(params)
+    @search = Search.new(params)
   end
 
   def set_layout

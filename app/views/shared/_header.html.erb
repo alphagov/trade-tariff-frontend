@@ -2,16 +2,6 @@
   <hgroup>
     <h1>
       <span>UK Trade Tariff</span>
-      Trade Tariff
     </h1>
   </hgroup>
 </header>
-<%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search' } do |f| %>
-  <fieldset>
-    <%= f.input :q, required: false, label: false,
-                input_html: { name: 'q',
-                placeholder: 'Search for a commodity its code or description' } %>
-
-    <%= f.button :submit, 'Search', class: 'button right' %>
- </fieldset>
-<% end %>
