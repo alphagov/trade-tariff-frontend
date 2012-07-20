@@ -87,9 +87,9 @@ describe CommoditiesController, "GET to #import_measures", :webmock do
     a_request(:get, /http:\/\/www.example.com\/api\/commodities\/\d+$/).should have_been_made
   end
 
-  it "makes request to fetch commodity import measures" do
-    a_request(:get, /http:\/\/www.example.com\/api\/commodities\/\S+\/import_measures$/).should have_been_made
-  end
+  # it "makes request to fetch commodity import measures" do
+  #   a_request(:get, /http:\/\/www.example.com\/api\/commodities\/\S+\/import_measures$/).should have_been_made
+  # end
 end
 
 describe CommoditiesController, "GET to #export_measures", :webmock do
@@ -115,7 +115,7 @@ describe CommoditiesController, "GET to #export_measures", :webmock do
     a_request(:get, /http:\/\/www.example.com\/api\/commodities\/\d+$/).should have_been_made
   end
 
-  it "makes request to fetch commodity export measures" do
-    a_request(:get, /http:\/\/www.example.com\/api\/commodities\/\S+\/export_measures$/).should have_been_made
-  end
+  # it "makes request to fetch commodity export measures" do
+  #   a_request(:get, /http:\/\/www.example.com\/api\/commodities\/\S+\/export_measures$/).should have_been_made
+  # end
 end

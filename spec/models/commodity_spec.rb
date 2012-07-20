@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Commodity do
   describe "#leaf?" do
-    let(:commodity_non_leaf) { Commodity.new(attributes_for :commodity, leaf: false) }
-    let(:commodity_leaf) { Commodity.new(attributes_for :commodity, leaf: true) }
+    let(:commodity_non_leaf) { Commodity.new(attributes_for :commodity, :with_children) }
+    let(:commodity_leaf) { Commodity.new(attributes_for :commodity, :without_children) }
 
     it 'returns true if it is a left and false otherwise' do
       commodity_non_leaf.leaf?.should be_false
@@ -15,7 +15,7 @@ describe Commodity do
     let(:commodity) { Commodity.new(attributes_for :commodity) }
 
     it 'returns commodity code as param' do
-      commodity.to_param.should == commodity.code
+      commodity.to_param.should == "#{commodity.code}#{commodity.producline_suffix}"
     end
   end
 

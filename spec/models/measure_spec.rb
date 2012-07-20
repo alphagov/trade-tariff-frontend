@@ -11,11 +11,11 @@ describe Measure do
                          headers: { content_type: 'application/json' })
       }
 
-      it 'returns headings measures of requested type' do
-        Measure.all(params.merge(type: "import"))
+      # it 'returns headings measures of requested type' do
+      #   Measure.all(params.merge(type: "import"))
 
-        a_request(:get, "www.example.com/api/headings/#{params[:heading_id]}/import").should have_been_made
-      end
+      #   a_request(:get, "www.example.com/api/headings/#{params[:heading_id]}/import").should have_been_made
+      # end
     end
 
     context "if looking for commodity measures", :webmock do
@@ -27,11 +27,11 @@ describe Measure do
                          headers: { content_type: 'application/json' })
       }
 
-      it 'returns commodity measures of requested type' do
-        Measure.all(params.merge(type: "export"))
+      # it 'returns commodity measures of requested type' do
+      #   Measure.all(params.merge(type: "export"))
 
-        a_request(:get, "www.example.com/api/commodities/#{params[:commodity_id]}/export").should have_been_made
-      end
+      #   a_request(:get, "www.example.com/api/commodities/#{params[:commodity_id]}/export").should have_been_made
+      # end
     end
   end
 end
