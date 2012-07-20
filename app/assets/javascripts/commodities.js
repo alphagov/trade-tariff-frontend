@@ -237,9 +237,19 @@ GOVUK.tariff = {
                 $input = $form.find('input.date'),
                 $btn = $form.find('input.button'),
                 $changeLink = $('<a href="#">Change date</a>');
+                
+            // if form has already been initialised, quit
+            if ($form.find('a').length) {
+                return;
+            }
             
             $input.datepicker({
-                dateFormat : 'dd/mm/yy'    
+                dateFormat : 'dd/mm/yy'
+            });
+            
+            // datepicker is allowing clicks on date anchors to pass through so prevent this
+            $('#ui-datepicker-div').on('click', function (e) {
+                return false;
             });
             
             $form.append($changeLink);
@@ -266,8 +276,5 @@ GOVUK.tariff = {
         this.tabs.initialize();
         this.tablePopup.initialize();
         this.datePicker.initialize();
-        
-        $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])')
-            .pjax('[data-pjax-container]', { success : function () { that.initialize(); } });
     }
 };

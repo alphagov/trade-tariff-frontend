@@ -558,13 +558,13 @@ dl.chapters dt {
     margin-bottom:1em;
   }
   
-  ol {
-    list-style-type:decimal;
+  ol {    
     margin-left:0;
     padding-left:em(($token-space - $top-level-padding), 14);
   }
   
   ol li {
+    list-style-type:decimal;
     padding-left:0;
     margin-bottom:1em;
   }
@@ -839,6 +839,7 @@ article.search-results {
     background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
     background-position: 0 7px;
     background-repeat: no-repeat;
+    cursor:pointer;
   }
   
   li.has_children .open {
@@ -847,7 +848,7 @@ article.search-results {
   
   li.has_children a .description {
     padding-left:0;
-    background:none;
+    background:none;    
   }
   
   .return-to-top {
