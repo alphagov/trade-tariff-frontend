@@ -10,20 +10,7 @@
               <dl>
                 <dt><%= @heading.display_short_code %></dt>
                 <dd><%= link_to @heading, heading_path(@heading) %>
-                  <dl class="commodities">
-                    <dt>Horses</dt>
-                    <dd>
-                      <dl>
-                        <dt>Other</dt>
-                        <dd>
-                          <h1>
-                            <span title="Full tariff code: 0101210000" class="identifier" aria-describedby="commodity-0101210000">21&nbsp;00&nbsp;00</span>
-                            <span class="description" id="commodity-0101210000">For slaughter</span>
-                          </h1>
-                        </dd>
-                      </dl>
-                    </dd>
-                  </dl>
+                    <%= commodity_tree(@commodity, @commodity.ancestors) %>
                 </dd>
               </dl>
             </dd>

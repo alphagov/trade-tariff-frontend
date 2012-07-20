@@ -5,7 +5,7 @@ class Commodity
 
   attr_accessor :short_code, :code, :description, :substring, :hier_pos,
                 :synonyms, :uk_vat_rate, :third_country_duty_rate,
-                :leaf, :parents, :synonyms, :producline_suffix
+                :leaf, :parents, :synonyms, :producline_suffix, :number_indents
 
   has_one :section
   has_one :heading
