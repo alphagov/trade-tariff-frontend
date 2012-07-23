@@ -5,6 +5,8 @@ gem 'rails', '3.2.5'
 
 gem 'simple_form'
 
+gem 'oj'
+
 gem 'httparty'
 
 gem 'kaminari'
