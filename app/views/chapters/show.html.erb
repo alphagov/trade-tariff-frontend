@@ -4,10 +4,10 @@
   <div class="inner">
     <dl>
       <dt><%= @chapter.section.numeral %></dt>
-      <dd class="section-heading"><%= link_to @chapter.section, @chapter.section %>
+      <dd class="section-heading"><%= link_to @chapter.section, section_path(@chapter.section) %>
         <dl class="tariff-fragments">
           <dt><%= @chapter.short_code %></dt>
-          <dd><h1><%= link_to  @chapter.description.downcase.titleize, @chapter %></h1>
+          <dd><h1><%= link_to  @chapter, chapter_path(@chapter) %></h1>
             <dl class="chapter-headings">
               <%= render @headings %>
             </dl>

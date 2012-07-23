@@ -9,7 +9,7 @@ class Chapter
   has_many :headings
 
   def to_s
-    description
+    description.downcase.titleize
   end
 
   def to_param
