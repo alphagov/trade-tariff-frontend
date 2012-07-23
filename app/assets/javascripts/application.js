@@ -8,5 +8,6 @@ $(function(){
   GOVUK.tariff.initialize();
   
   $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])')
-            .pjax('[data-pjax-container]', { success : function () { GOVUK.tariff.initialize(); } });
+      .pjax('[data-pjax-container]', { timeout: 2000,
+        success: function () { GOVUK.tariff.initialize(); } });
 });
