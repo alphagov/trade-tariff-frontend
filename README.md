@@ -1,10 +1,12 @@
 # TariffWebApp
 
-A web application front end for use with the UK Trade Tariff API
+A web application front end for use with the UK Trade Tariff API.
+Please ensure the API running and properly configured in the 
+enviroments files.
 
-## Local install/run instructions
+Assumes the GDS development envrioment is setup via puppet.
 
-1. Run TariffWebApp:
+## Run TariffWebApp
 
     ```
     ./startup.sh
