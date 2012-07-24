@@ -9,7 +9,7 @@
           <dt><%= @heading.chapter.short_code %></dt>
           <dd><%= link_to @heading.chapter.description.downcase.titleize, chapter_path(@heading.chapter) %>
             <dl>
-              <dt><%= @heading.declarative? ? @heading.commodity_code : @heading.display_short_code %></dt>
+              <dt><%= @heading.display_short_code %></dt>
               <dd><h1><%= @heading.description %></h1>
                 <ul class="commodities">
                   <%= render @commodities %>

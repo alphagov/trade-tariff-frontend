@@ -32,7 +32,6 @@ class Heading
 
   def to_param
     short_code
-    # declarative? ? code : short_code
   end
 
   def to_s
