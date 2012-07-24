@@ -13,6 +13,8 @@ class Measure
   has_many :measure_conditions
   has_many :footnotes
 
+  delegate :type, :description, to: :geographical_area, prefix: true
+
   def id
     @id ||= SecureRandom.hex(16)
   end
