@@ -1,4 +1,4 @@
-Uktt::Application.routes.draw do
+TariffWeb::Application.routes.draw do
   match "/search" => "search#search", via: :get, as: :perform_search
 
   resources :sections, only: [:index, :show]
