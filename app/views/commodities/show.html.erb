@@ -1,23 +1,2 @@
-<article class="tariff commodity">
-  <div class="inner">
-    <nav class="trail">
-      <dl>
-        <dt><%= @section.numeral %></dt>
-        <dd class="section-heading tariff-fragments"><%= link_to @section, section_path(@section) %>
-          <dl class="tariff-fragments">
-            <dt><%= @chapter.short_code %></dt>
-            <dd><%= link_to @chapter, chapter_path(@chapter) %>
-              <dl>
-                <dt><%= @heading.display_short_code %></dt>
-                <dd><%= link_to @heading, heading_path(@heading) %>
-                    <%= commodity_tree(@commodity, @commodity.ancestors) %>
-                </dd>
-              </dl>
-            </dd>
-          </dl>
-        </dd>
-      </dl>
-    </nav>
-  </div>
-  <%= render 'measures/measures', measurable: @commodity %>
-</article>
+<%= render 'declarables/declarable', declarable: @commodity,
+                                     with_commodity_tree: true %>

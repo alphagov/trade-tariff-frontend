@@ -35,11 +35,11 @@ class Commodity
     "#{code}#{producline_suffix}"
   end
 
-  def footnotes
-    [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
-  end
-
   def to_s
     description
+  end
+
+  def footnotes
+    [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
   end
 end

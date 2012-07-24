@@ -1,4 +1,10 @@
 <dt>
   <%= heading.display_short_code %>
 </dt>
-<dd><%= link_to heading.description, heading_path(heading) %></dd>
+<dd>
+  <% if heading.declarable? %>
+    <strong><%= link_to heading.description, heading_path(heading) %></strong>
+  <% else %>
+    <%= link_to heading.description, heading_path(heading) %>
+  <% end %>
+</dd>
