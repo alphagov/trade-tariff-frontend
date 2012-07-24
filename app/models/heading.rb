@@ -14,14 +14,6 @@ class Heading
 
   alias :declarative? :declarative
 
-  def import_measures
-    @import_measures ||= Measure.all(heading_id: self.to_param, type: :import_measures)
-  end
-
-  def export_measures
-    @export_measures ||= Measure.all(heading_id: self.to_param, type: :export_measures)
-  end
-
   def commodity_code
     code.first(10)
   end
