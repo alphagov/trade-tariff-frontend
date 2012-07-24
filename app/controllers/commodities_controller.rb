@@ -15,16 +15,4 @@ class CommoditiesController < ApplicationController
     @commodity.update_attrs(params)
     redirect_to edit_commodity_path(@commodity)
   end
-
-  def import_measures
-    @measurable = Commodity.find(params[:id])
-    @import_measures = @measurable.import_measures
-    render "measures/import"
-  end
-
-  def export_measures
-    @measurable = Commodity.find(params[:id])
-    @export_measures = @measurable.export_measures
-    render "measures/export"
-  end
 end
