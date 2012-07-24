@@ -6,7 +6,9 @@ module CommoditiesHelper
         content_tag(:dd, tree_node(main_commodity, commodities, commodities.first.number_indents))
       end
     else
-      commodity_heading(main_commodity)
+      content_tag(:dl, class: 'commodities') do
+        content_tag(:dt, commodity_heading(main_commodity))
+      end
     end
   end
 
