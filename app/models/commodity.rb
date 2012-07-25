@@ -28,7 +28,7 @@ class Commodity
   end
 
   def display_short_code
-    code.first(6)
+    code[4..-1]
   end
 
   def to_param
