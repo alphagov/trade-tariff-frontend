@@ -289,7 +289,7 @@ article.tariff {
 
 .tariff {
   a {
-    color:#333;
+    text-decoration:none;
     
     &:hover,
     &:focus {
@@ -394,6 +394,7 @@ header.page-header {
   background:#fff;
   font-size:em(14, 16);
   padding:px($top-level-padding);
+  display:none;
   
   .ui-datepicker-header {
     padding:0 px($token-padding + 16);
@@ -514,6 +515,7 @@ dl.sections {
     text-align:left;
     font-weight:normal;
     @include underlined-primary-item;
+    text-decoration:underline;
   }
 }
 
