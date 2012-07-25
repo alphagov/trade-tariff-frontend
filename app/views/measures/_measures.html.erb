@@ -86,7 +86,7 @@
         </thead>
 
         <tbody>
-          <% measurable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).to_a.reverse.each do |group, measures| %>
+          <% measurable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
             <%= render partial: "measures/measure", collection: measures.sort_by(&:geographical_area_description), locals: { measure_group: "specific_country" } %>
           <% end %>
         </tbody>
@@ -119,7 +119,9 @@
         </thead>
 
         <tbody>
-          <%= render partial: "measures/measure", collection: measurable.export_measures.select(&:third_country).sort_by(&:measure_type_description), locals: { measure_group: "third_country" } %>
+          <% measurable.import_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
+            <%= render partial: "measures/measure", collection: measures.sort_by(&:third_country).sort_by(&:geographical_area_description), locals: { measure_group: "specific_country" } %>
+          <% end %>
         </tbody>
       </table>
 
