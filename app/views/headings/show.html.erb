@@ -1,4 +1,4 @@
-<% content_for :title, "#{@heading.description} | Trade Tariff | GOV.UK" %>
+<% content_for :title, "#{@heading} | Trade Tariff | GOV.UK" %>
 
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading,
@@ -11,10 +11,10 @@
         <dd class="section-heading"><a href="<%= section_path(@heading.section) %>"><%= @heading.section.title %></a>
           <dl class="tariff-fragments">
             <dt><%= @heading.chapter.short_code %></dt>
-            <dd><%= link_to @heading.chapter.description.downcase.titleize, chapter_path(@heading.chapter) %>
+            <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
               <dl>
                 <dt><%= @heading.display_short_code %></dt>
-                <dd><h1><%= @heading.description %></h1>
+                <dd><h1><%= @heading %></h1>
                   <ul class="commodities">
                     <%= render @commodities %>
                   </ul>

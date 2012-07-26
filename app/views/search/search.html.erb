@@ -23,7 +23,7 @@
                 <%= link_to "Chapter: #{result.chapter.short_code}", chapter_path(result.chapter) %>
               </td>
               <td>
-                <%= result.chapter.description %>
+                <%= result.chapter %>
               </td>
             </tr>
             <% if result.is_a?(Commodity) %>
@@ -32,7 +32,7 @@
                   <%= link_to "Heading: #{result.heading.short_code}", heading_path(result.heading) %>
                 </td>
                 <td>
-                  <%= result.heading.description %>
+                  <%= result.heading %>
                 </td>
               <tr>
                 <td>
@@ -43,7 +43,7 @@
                     <%= result.parents.join(" - ") %>:
                   <% end %>
 
-                  <strong><%= result.description %></strong>
+                  <strong><%= result %></strong>
                   <% if result.synonyms.present? %>
                     <br/>
                     <%== render_synonyms(result.synonyms) %>
@@ -56,7 +56,7 @@
                   <%= link_to "Result: #{result.short_code}", heading_path(result) %>
                 </td>
                 <td>
-                  <%= result.description %>
+                  <%= result %>
 
                   <% if result.synonyms.present? %>
                     <br/>

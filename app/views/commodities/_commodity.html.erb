@@ -1,6 +1,6 @@
 <li<% if ! commodity.leaf? %> class="has_children"<% end %>>
   <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>"><% end %>
-  <span class="description" id="commodity-<%= commodity.short_code %>"><%= commodity.description %></span>
+  <span class="description" id="commodity-<%= commodity.short_code %>"><%= commodity %></span>
   <% if commodity.leaf? %>    
     <span class="identifier" aria-describedby="commodity-<%= commodity.short_code %>"><%= commodity.code %></span>
   <% end %>
