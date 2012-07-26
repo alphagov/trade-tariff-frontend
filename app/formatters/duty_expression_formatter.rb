@@ -3,14 +3,14 @@ class DutyExpressionFormatter
     @formatted = case duty_expression_id
                  when "01"
                    if monetary_unit.present? && measurement_unit.present?
-                     sprintf("%.2f %s/%s", duty_amount, monetary_unit, measurement_unit.description)
+                     sprintf("%.2f %s/%s", duty_amount, monetary_unit, measurement_unit)
                    else
                      sprintf("%.2f%", duty_amount)
                    end
                  when "04"
                    sprintf("+ %.2f %s/%s", duty_amount,
                                            monetary_unit,
-                                           measurement_unit.description)
+                                           measurement_unit)
                  when "12"
                    "+ EA"
                  when "14"
@@ -18,14 +18,14 @@ class DutyExpressionFormatter
                  when "15"
                    sprintf("min %.2f %s/(%s/%s)", duty_amount,
                                                   monetary_unit,
-                                                  measurement_unit.description,
-                                                  measurement_unit_qualifier.description)
+                                                  measurement_unit,
+                                                  measurement_unit_qualifier)
                  when "17"
                    sprintf("max %.2f%", duty_amount)
                  when "19"
                    sprintf("+ %.2f %s/%s", duty_amount,
                                            monetary_unit,
-                                           measurement_unit.description)
+                                           measurement_unit)
                  when "21"
                    "+ AD S/Z"
                  when "25"
@@ -37,7 +37,7 @@ class DutyExpressionFormatter
                  when "35"
                    sprintf("max %.2f %s/%s", duty_amount,
                                              monetary_unit,
-                                             measurement_unit.description)
+                                             measurement_unit)
                  when "36"
                    # TODO CIF
                  when "37"
@@ -53,7 +53,7 @@ class DutyExpressionFormatter
                  when "44"
                    # TODO Empty, check 21050099 for export
                  when "99"
-                   measurement_unit.description
+                   measurement_unit
                  end
   end
 end
