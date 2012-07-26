@@ -202,6 +202,8 @@ GOVUK.tariff = {
 
                 return true;
             });
+
+            $popup.css('left', ($(document).width() - $popup.innerWidth()) / 2 + 'px');
         },
         /**
           @name GOVUK.tariff.tablePopup.initialize
