@@ -171,7 +171,7 @@ $expand-arrow-space: 9 + $token-padding;
   background: #CCE0D6;
   border-top: solid 1px #7FB299;
   border-right: solid 1px #7FB299;
-	font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 @mixin tariff-identifier-reset {
@@ -617,7 +617,6 @@ ul.commodities {
         @include tariff-identifier;
         float: right;
         border: 0;
-        width: em(63, 14);
         padding: 0 em($token-padding, 14);
       }
       
@@ -712,6 +711,17 @@ dl.tariff-fragments dl.commodities {
   nav {
     margin:1em (-1 * em(22, 16)) 0; /* override for static styles */
   }
+}
+
+ul.tree-controls {
+  font-size:0.85em;
+  margin-left:px($top-level-padding);
+  padding:0;
+}
+
+ul.tree-controls li {
+  display:inline;
+  padding-right:px($top-level-padding);
 }
 
 /* Popup lightbox */

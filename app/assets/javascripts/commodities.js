@@ -26,7 +26,10 @@ GOVUK.tariff = {
           @description expands/collapses nodes in a tree
         */
         initialize : function () {
-            var $parentNodes = $('.has_children');
+            var $parentNodes = $('.has_children'),
+                isCommodityTree = false,
+                $controls,
+                effectAll;
 
             if (!$parentNodes.length) { return; }
 
@@ -37,6 +40,7 @@ GOVUK.tariff = {
                 if ($parentNode[0].nodeName.toLowerCase() === 'dt') {
                     $childList = $parentNode.siblings('dd').find('ul');
                 } else {
+                    isCommodityTree = true;
                     $parentNode = $parentNode.children('span');
                     $childList = $parentNode.siblings('ul');
                 }
@@ -58,6 +62,34 @@ GOVUK.tariff = {
                     return false;
                 });
             });
+
+            if (isCommodityTree) {
+                $controls = '<ul class="tree-controls">' +
+                                '<li><a href="#">open all</a></li>' +
+                                '<li><a href="#">close all</a></li>' +
+                            '</ul>';
+                effectAll = function (ctrlIdx) {
+                    $parentNodes.each(function (idx) {
+                        var $this = $(this);
+                 
+                        if (ctrlIdx === 0) {
+                          $this.children('span').addClass('open');
+                          $this.children('ul').removeClass('visuallyhidden');
+                        } else {
+                          $this.children('span').removeClass('open');
+                          $this.children('ul').addClass('visuallyhidden');
+                        } 
+                    });
+                };
+        
+                $parentNodes.closest('div.inner').append($controls);
+                $('ul.tree-controls a').each(function (idx) {
+                    $(this).on('click', function () {
+                        effectAll(idx);
+                        return false;
+                    });
+                });
+            }
         }
     },
     /**
