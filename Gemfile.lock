@@ -86,7 +86,7 @@ GEM
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
-    json (1.7.3)
+    json (1.7.4)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -240,7 +240,7 @@ DEPENDENCIES
   simple_form
   simplecov
   simplecov-rcov
-  slimmer (~> 1.1)
+  slimmer
   therubyracer
   uglifier (>= 1.0.3)
   webmock
