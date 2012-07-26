@@ -36,7 +36,7 @@ class Commodity
   end
 
   def to_param
-    "#{code}#{producline_suffix}"
+    code
   end
 
   def to_s

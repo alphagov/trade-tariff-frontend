@@ -24,6 +24,10 @@ class Heading
     code[2..3]
   end
 
+  def display_export_code
+    code[0..-3]
+  end
+
   def to_param
     short_code
   end
