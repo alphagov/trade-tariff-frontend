@@ -71,4 +71,6 @@ TariffWeb::Application.configure do
   # Host for Trade Tariff API endpoint
   # TODO: externalize this lookup via Plek?
   config.api_host = "https://tariff-api.preview.alphagov.co.uk"
+
+  config.lograge.enabled = true
 end
