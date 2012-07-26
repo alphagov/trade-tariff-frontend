@@ -15,7 +15,7 @@ describe Commodity do
     let(:commodity) { Commodity.new(attributes_for :commodity) }
 
     it 'returns commodity code as param' do
-      commodity.to_param.should == "#{commodity.code}#{commodity.producline_suffix}"
+      commodity.to_param.should == commodity.code
     end
   end
 
