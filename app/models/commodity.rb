@@ -31,6 +31,10 @@ class Commodity
     code[4..-1]
   end
 
+  def display_export_code
+    code[0..-3]
+  end
+
   def to_param
     "#{code}#{producline_suffix}"
   end

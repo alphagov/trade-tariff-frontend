@@ -20,16 +20,18 @@
     <div class="inner">
       <h1>Overview</h1>
       <h2>Import</h2>
+			<p>The commodity code for importing is <em><%= measurable.code %></em>.</p>
       <p>Importing from outside the EU is subject to a third country duty of <em><%= measurable.third_country_duty_rate %></em>.</p>
       <p> Goods are also subject to VAT standard rate of <em><%= measurable.uk_vat_rate %></em>.</p>
       <h2>Export</h2>
+			<p>The commodity code for exporting and intrastat reporting is <em><%= measurable.display_export_code %></em>.</p>
       <p>Importing from outside the EU is subject to a third country duty of <em><%= measurable.third_country_duty_rate %></em>.</p>
       <p> Goods are also subject to VAT standard rate of <em><%= measurable.uk_vat_rate %></em>.</p>
       <!-- <h2>Export</h2>
       TODO: send count of export measures in the commoidity to do the check here
 -->
       <div class="help-notice">
-        <p> See import and export tables for country-specific measures and restrictions.</p>
+        <p> See <a href="#import">import</a> and <a href="#export">export</a> tables for country-specific measures and restrictions.</p>
       </div>
       <nav class="part-pagination return-to-top">
         <a href="#wrapper">Return to top &uarr;</a>
@@ -120,7 +122,7 @@
 
         <tbody>
           <% measurable.import_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:third_country).sort_by(&:geographical_area_description), locals: { measure_group: "specific_country" } %>
+            <%= render partial: "measures/measure", collection: measures.sort_by(&:third_country).sort_by(&:geographical_area_description), locals: { measure_group: "third_country" } %>
           <% end %>
         </tbody>
       </table>
