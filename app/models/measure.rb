@@ -39,12 +39,23 @@ class Measure
     geographical_area.description != "ERGA OMNES"
   end
 
+
   def is_first_measure_condition?(condition)
-    measure_conditions.map(&:requirement)
-    # measure_conditions.map(&:requirement).min(&:sequence_number) == condition.requirement['sequence_number']
+    measure_conditions.select(&:has_duty_expression_based_requirement?)
+                      .map(&:requirement)
+                      .map(&:sequence_number)
+                      .min  == condition.requirement.sequence_number
   end
 
   def is_last_measure_condition?(condition)
-    # measure_conditions.map(&:requirement).max(&:sequence_number) == condition.requirement['sequence_number']
+    measure_conditions.select(&:has_duty_expression_based_requirement?)
+                      .map(&:requirement)
+                      .map(&:sequence_number)
+                      .max  == condition.requirement.sequence_number
+  end
+
+  def previous_condition_for(condition)
+    measure_conditions.select(&:has_duty_expression_based_requirement?)
+                      .detect{|mc| mc.requirement.sequence_number == condition.requirement.sequence_number - 1 }
   end
 end

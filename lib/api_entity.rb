@@ -54,12 +54,14 @@ module ApiEntity
       new(resp)
     end
 
-    def has_one(association)
+    def has_one(association, opts = {})
+      options = opts.reverse_merge({ class_name: association.to_s.singularize.classify })
+
       attr_accessor association.to_sym
 
       class_eval <<-METHODS
         def #{association}=(data)
-          @#{association} ||= #{association.to_s.classify}.new(data)
+          @#{association} ||= #{options[:class_name]}.new(data)
         end
       METHODS
     end
