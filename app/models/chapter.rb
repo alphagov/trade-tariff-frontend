@@ -9,7 +9,7 @@ class Chapter
   has_many :headings
 
   def to_s
-    DecriptionFormatter.format(description.titlecase)
+    DecriptionFormatter.format(description.downcase.titlecase)
   end
 
   def to_param
