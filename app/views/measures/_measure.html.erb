@@ -75,7 +75,7 @@
 
   <td><%= measure.excluded_country_list %></td>
 
-  <td><%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url %></td>
+  <td><%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external' %></td>
 
   <td>
     <% measure.footnotes.each do |footnote| %>
