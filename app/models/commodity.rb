@@ -40,7 +40,7 @@ class Commodity
   end
 
   def to_s
-    description
+    DecriptionFormatter.format(description)
   end
 
   def footnotes

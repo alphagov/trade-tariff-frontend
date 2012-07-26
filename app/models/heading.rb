@@ -33,7 +33,7 @@ class Heading
   end
 
   def to_s
-    description
+    DecriptionFormatter.format(description)
   end
 
   def heading
