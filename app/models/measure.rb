@@ -38,4 +38,13 @@ class Measure
   def for_specific_countries
     geographical_area.description != "ERGA OMNES"
   end
+
+  def is_first_measure_condition?(condition)
+    measure_conditions.map(&:requirement)
+    # measure_conditions.map(&:requirement).min(&:sequence_number) == condition.requirement['sequence_number']
+  end
+
+  def is_last_measure_condition?(condition)
+    # measure_conditions.map(&:requirement).max(&:sequence_number) == condition.requirement['sequence_number']
+  end
 end

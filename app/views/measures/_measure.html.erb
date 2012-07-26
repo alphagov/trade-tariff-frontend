@@ -42,7 +42,18 @@
               </tr>
             </thead>
             <tbody>
-              <%= render measure.measure_conditions %>
+              <% measure.measure_conditions.each_with_index do |measure_condition, index| %>
+                <tr>
+                  <td><%= measure_condition.condition %></td>
+                  <td><%= measure_condition.document_code %></td>
+                  <td>
+                  </td>
+                  <td><%= measure_condition.action %></td>
+                  <td>
+                    <%= measure_condition.duty_expression %>
+                  </td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </article>

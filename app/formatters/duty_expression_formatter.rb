@@ -39,7 +39,7 @@ class DutyExpressionFormatter
                                              monetary_unit,
                                              measurement_unit)
                  when "36"
-                   # TODO CIF
+                   sprintf("- %.2f %% CIF", duty_amount)
                  when "37"
                    # Empty
                  when "40"
