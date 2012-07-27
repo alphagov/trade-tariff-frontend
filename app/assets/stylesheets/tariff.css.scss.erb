@@ -433,6 +433,7 @@ article dl {
   margin: 0;
   background: $top-section-grey;
   position: relative;
+  zoom:1;
   
   dl {
     @include contain-float;
@@ -517,6 +518,7 @@ dl.sections {
   
   dt {
     position:static;
+    display:inline;
     width:15%;
     margin-left:10%;
     text-align:left;
@@ -735,8 +737,11 @@ ul.tree-controls li {
 
 #popup.tariff-info {
   top: 12px;
+  height:400px;
+  _width:720px;
   max-width: 720px;
   padding:0;
+  zoom:1;
   
   .info-content,
   article {
@@ -745,7 +750,7 @@ ul.tree-controls li {
   
   .info-content {
     background-color: #f2f2f2;
-    padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
+    padding: 2.4em px($top-level-padding) px($top-level-padding) px($top-level-padding);
   }
   
   /* resets for article styles */
@@ -753,6 +758,7 @@ ul.tree-controls li {
     float:none;
     margin:0;
     width:auto;
+    height:auto;
     min-height:0;
     
     padding-bottom:3em;
@@ -760,13 +766,14 @@ ul.tree-controls li {
   }
   
   .close {
-    position:static;
-    padding:0.2em 0 0.2em 0.5em;
+    padding:0.2em px($top-level-padding) 0.2em 0.5em;
     text-align:right;
     
     a {
+      background-position:0.6875em 0.6875em;
       display:inline-block;
       text-indent:99999px;
+      overflow:hidden;
     }
   }
   
