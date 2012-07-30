@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
 
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.7'
 
 gem 'simple_form'
 
@@ -15,7 +15,7 @@ gem 'simplecov'
 gem 'simplecov-rcov'
 gem 'ci_reporter'
 
-gem 'slimmer' 
+gem 'slimmer'
 gem 'gds-api-adapters', '~> 0.0.43'
 
 gem 'airbrake'
