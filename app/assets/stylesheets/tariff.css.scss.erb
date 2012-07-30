@@ -206,7 +206,7 @@ $expand-arrow-space: 9 + $token-padding;
 
 @mixin selected-section($side-padding) {
   margin: 0 px(-1 * $top-level-padding) 0 px(-1 * $side-padding);
-  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding);
+  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding + $token-outer-width);
   background: #fff;
   
   li {
@@ -662,7 +662,7 @@ ul.commodities {
 
   ul {
     margin: 0;
-    padding-left: 2em;
+    padding-left: em($token-outer-width, 14);
     clear: both;
   }
 }
@@ -874,14 +874,18 @@ article.search-results {
   
   li.has_children .description {
     padding-left: px($expand-arrow-space);
+    margin-left: -1 * px($expand-arrow-space);
     background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
-    background-position: 0 7px;
+    background-position: 0 6px;
     background-repeat: no-repeat;
     cursor:pointer;
   }
   
+  li.has_children a .description {
+    margin-left: 0;
+  }
   li.has_children .open {
-    background-position:0 -84px;
+    background-position:0 -385px;
   }
   
   li.has_children a .description {
