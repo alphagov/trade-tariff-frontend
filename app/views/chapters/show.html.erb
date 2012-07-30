@@ -3,8 +3,8 @@
 <article class="tariff">
   <div class="inner">
     <dl>
-      <dt class="section-heading">Section <%= @chapter.section.numeral %></dt>
-      <dd class="section-heading"><%= link_to @chapter.section, section_path(@chapter.section) %>
+      <dt class="section-number">Section <%= @chapter.section.numeral %></dt>
+      <dd class="section-title"><%= link_to @chapter.section, section_path(@chapter.section) %>
         <dl class="tariff-fragments">
           <dt><%= @chapter.short_code %></dt>
           <dd><h1><%= link_to  @chapter, chapter_path(@chapter) %></h1>

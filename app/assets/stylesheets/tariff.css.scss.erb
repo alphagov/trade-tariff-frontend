@@ -1,9 +1,8 @@
 /* global variables */
 
-$token-width: 26;
-$token-outer-width: $token-width + 1;
+$token-width: 27;
 $token-padding: 5;
-$token-space: $token-outer-width + $token-padding; /* Uses above values */
+$token-space: $token-width + $token-padding; /* Uses above values */
 $top-level-padding: 10;
 
 $top-section-grey: #f8f7ee;
@@ -12,7 +11,7 @@ $top-section-grey: #f8f7ee;
 
 /* variables local to commodities */
 
-$commodity-padding: ((2 * $token-outer-width) + $token-padding);
+$commodity-padding: $token-width;
 $expand-arrow-width: 9;
 $expand-arrow-space: 9 + $token-padding;
 
@@ -171,16 +170,13 @@ $expand-arrow-space: 9 + $token-padding;
 /* Mixins specific to tariff */
 
 @mixin tariff-identifier {
-  background: #CCE0D6;
-  border-top: solid 1px #7FB299;
-  border-right: solid 1px #7FB299;
+  color:#fff;
   font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 @mixin tariff-identifier-reset {
-  background: none;
-  border-top: none;
-  border-right: none;
+  color:#333;
+  font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 @mixin underlined-primary-item {
@@ -197,7 +193,6 @@ $expand-arrow-space: 9 + $token-padding;
   
   &:nth-child(2) {
     border-top:none;
-    padding-top:1px;
   }
 }
 
@@ -205,8 +200,8 @@ $expand-arrow-space: 9 + $token-padding;
 // this is therefore left as a variable value
 
 @mixin selected-section($side-padding) {
-  margin: 0 px(-1 * $top-level-padding) 0 px(-1 * $side-padding);
-  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding + $token-outer-width);
+  margin: 0 px(-1 * $top-level-padding) 0 px(-1 * ($side-padding + $token-width + $token-padding));
+  padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding + $token-width + $token-padding);
   background: #fff;
   
   li {
@@ -331,10 +326,6 @@ header.page-header {
 
     h1 {
       padding-left: 0;
-
-      span {
-        color: #10370D;
-      }
     }
   }
 }
@@ -446,7 +437,7 @@ article dl {
   
   dl {
     @include contain-float;
-    margin-left:px($token-outer-width - $top-level-padding);
+    margin-left:px($token-width - $top-level-padding);
     padding-top:0px;
   }
 }
@@ -463,7 +454,7 @@ article dt {
   font-weight:normal;
   margin-bottom:0; /* reset of static */
 
-  &.section-heading {
+  &.section-number {
     position:static;
     width:auto;
     margin-right:px($token-padding);
@@ -476,6 +467,14 @@ dl.tariff-fragments {
 
   dt {
     @include tariff-identifier;
+  }
+  
+  dt.chapter-code {
+    background:#80B9DC;
+  }
+
+  dt.heading-code {
+    background:#55A2D0;
   }
 
   dd {
@@ -501,7 +500,7 @@ article dd {
 
   // this is so the children of this are cleared out left as the
   // internal content is pushed over by the float
-  &.section-heading {
+  &.section-title {
     width: auto;
     float: none;
     margin-bottom: 0;
@@ -560,8 +559,7 @@ article.chapters dl.tariff-fragments dt {
 dl.tariff-fragments dl.chapter-headings,
 dl.chapters,
 p.chapters-intro {
-  margin-left:-1px * $token-space;
-  @include selected-section($token-space);
+  @include selected-section(0);
 }
 
 dl.chapter-headings dt,
@@ -630,14 +628,11 @@ ul.commodities {
       display: block;
       
       &.identifier {
-        float: right;
-      }
-      
-      &.identifier {
         @include tariff-identifier;
         float: right;
         border: 0;
         padding: 0 em($token-padding, 14);
+        background:#2B8BC4;
       }
       
       &.rate {
@@ -662,13 +657,13 @@ ul.commodities {
 
   ul {
     margin: 0;
-    padding-left: em($token-outer-width, 14);
+    padding-left: em($token-width, 14);
     clear: both;
   }
 }
 
 dl.tariff-fragments dl.commodities {
-  margin-left:px($token-outer-width);
+  margin-left:px($token-width);
   padding-bottom:px($top-level-padding);
   
   dt {
@@ -689,6 +684,7 @@ dl.tariff-fragments dl.commodities {
       @include tariff-identifier;
       padding: 0 0.25em;
       margin-right:5px;
+      background:#2B8BC4;
     }
   }
 }
@@ -701,7 +697,7 @@ dl.tariff-fragments dl.commodities {
 .nav-tabs {
   @include contain-float;
   background:$top-section-grey;
-  @include tabs($token-outer-width);
+  @include tabs($token-width);
   
   li {
     padding:0;
@@ -718,6 +714,10 @@ dl.tariff-fragments dl.commodities {
 
   .inner {
     padding:0em 2.5em 1em;
+  }
+
+  h1.visuallyhidden + h2 {
+    margin-top:2em;
   }
 
   p {

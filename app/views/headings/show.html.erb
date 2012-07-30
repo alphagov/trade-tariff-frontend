@@ -7,13 +7,13 @@
   <article class="tariff">
     <div class="inner">
       <dl>
-        <dt class="section-heading">Section <%= @heading.section.numeral %></dt>
-        <dd class="section-heading"><a href="<%= section_path(@heading.section) %>"><%= @heading.section.title %></a>
+        <dt class="section-number">Section <%= @heading.section.numeral %></dt>
+        <dd class="section-title"><a href="<%= section_path(@heading.section) %>"><%= @heading.section.title %></a>
           <dl class="tariff-fragments">
-            <dt><%= @heading.chapter.short_code %></dt>
+            <dt class="chapter-code"><%= @heading.chapter.short_code %></dt>
             <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
               <dl>
-                <dt><%= @heading.display_short_code %></dt>
+                <dt class="heading-code"><%= @heading.display_short_code %></dt>
                 <dd><h1><%= @heading %></h1>
                   <ul class="commodities">
                     <%= render @commodities %>
