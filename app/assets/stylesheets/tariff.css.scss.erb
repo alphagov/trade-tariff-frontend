@@ -222,6 +222,14 @@ mark {
   background:none;
 }
 
+.chapter-code {
+  background:#80B9DC;
+}
+
+.heading-code {
+  background:#55A2D0;
+}
+
 article table {
     @include table;
     width:auto; /* override for static styles */
@@ -468,14 +476,6 @@ dl.tariff-fragments {
   dt {
     @include tariff-identifier;
   }
-  
-  dt.chapter-code {
-    background:#80B9DC;
-  }
-
-  dt.heading-code {
-    background:#55A2D0;
-  }
 
   dd {
     float: none;
@@ -629,10 +629,20 @@ ul.commodities {
       
       &.identifier {
         @include tariff-identifier;
+        font-weight:normal;
         float: right;
         border: 0;
-        padding: 0 em($token-padding, 14);
+        padding: 0 em(7, 14) 0 0;
         background:#2B8BC4;
+        
+        span {
+          font-size:1em;
+          padding:0 em(5, 12) 0 em(7, 14);
+        }
+
+        .heading-code {
+          margin-right:em(7, 14);
+        }
       }
       
       &.rate {
@@ -682,7 +692,7 @@ dl.tariff-fragments dl.commodities {
 
     &.identifier {
       @include tariff-identifier;
-      padding: 0 0.25em;
+      padding: 0 em(5, 14) 0 em(7, 14);
       margin-right:5px;
       background:#2B8BC4;
     }

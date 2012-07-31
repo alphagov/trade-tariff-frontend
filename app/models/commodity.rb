@@ -35,6 +35,14 @@ class Commodity
     code[0..-3]
   end
 
+  def chapter_code
+    code[0..1]
+  end
+
+  def heading_code
+    code[2..3]
+  end
+
   def to_param
     code
   end
