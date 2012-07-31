@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :initialize_modules
+  before_filter :cache_all_the_things
 
   layout :set_layout
 
@@ -37,5 +38,9 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+  end
+
+  def cache_all_the_things
+    expires_in 6.hours, :public => true, 'max-stale' => 0
   end
 end
