@@ -61,7 +61,7 @@ $expand-arrow-space: 9 + $token-padding;
   td {
     vertical-align: top;
     line-height: 1.3em;
-    padding: 0.7em 0.5em 0.7em 1em;
+    padding: 0.7em 0.75em 0.7em 0.75em;
   }
   
   tr:nth-child(even) td {
@@ -232,8 +232,8 @@ mark {
 
 article table {
     @include table;
-    width:auto; /* override for static styles */
-    margin:em(32, 16) (-1 * em(22, 16)) 0; /* override for static styles */
+    width:106.71875%; /* override for static styles */
+    margin:em(32, 16) -3.4375% 0; /* override for static styles */
   
   /* ignore caption */
   thead,
@@ -413,6 +413,10 @@ header.page-header {
     position:absolute;
     top:10px;
   }
+
+  .ui-widget-header .ui-icon {
+    background-image: url(<%= asset_path "images/ui-icons_222222_256x240.png" %>);
+  }
   
   .ui-datepicker-prev {
     left:10px;
@@ -509,7 +513,7 @@ article dd {
 
 dl h1 {
   font-size: 100%;
-  margin-top: 0;
+  margin: 0;
   line-height: 1.5em;
   color: #333;
 }
