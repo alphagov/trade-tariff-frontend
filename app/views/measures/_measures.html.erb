@@ -182,4 +182,9 @@
       </nav>
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
+  <div class="inner">
+    <% measurable.import_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
+      <%= render partial: "measure_conditions/measure_condition", collection: measures.sort_by(&:geographical_area_description), as: 'measure', locals: { measure_group: "specific_country" } %>
+    <% end %>
+  </div>
 </div><!-- end .tab-content -->

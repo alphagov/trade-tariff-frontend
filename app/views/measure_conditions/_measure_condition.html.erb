@@ -1,0 +1,42 @@
+<div class='hidden' data-popup='conditions-<%= measure.id %>'>
+  <article>
+    <table>
+      <caption><%= measure.measure_type_description %> for <%= measure.geographical_area.description %>:</caption>
+      <thead>
+        <tr>
+          <th>Condition</th>
+          <th>Document code</th>
+          <th>Requirement</th>
+          <th>Action</th>
+          <th>Duty expression</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% measure.measure_conditions.each do |measure_condition| %>
+          <tr>
+            <td><%= measure_condition.condition %></td>
+            <td><%= measure_condition.document_code %></td>
+            <td>
+              <% if measure_condition.has_document_based_requirement? %>
+                <%= measure_condition.requirement %>
+              <% elsif measure_condition.has_duty_expression_based_requirement? %>
+                <% if measure.is_first_measure_condition?(measure_condition) %>
+                  greater than or equal to <%= measure_condition.requirement.duty_expression %>
+                <% elsif measure.is_last_measure_condition?(measure_condition) %>
+                  less than <%= measure.previous_condition_for(measure_condition).requirement.duty_expression %>
+                <% else %>
+                  greater than or equal to <%= measure_condition.requirement.duty_expression %>
+                  and less than <%= measure.previous_condition_for(measure_condition).requirement.duty_expression %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= measure_condition.action %></td>
+            <td>
+              <%= measure_condition.duty_expression %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </article>
+</div>
