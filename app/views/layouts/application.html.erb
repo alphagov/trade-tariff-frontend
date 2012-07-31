@@ -3,10 +3,10 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Trade Tariff | GOV.UK" %></title>
     <%= stylesheet_link_tag 'application' %>
-    <%= stylesheet_link_tag "tariff-print", :media => "print" %>
+    <%= stylesheet_link_tag 'tariff-print', media: 'print' %>
 
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag "application", defer: true %>
+    <%= javascript_include_tag 'application', defer: true %>
     <%= yield :section_meta_tags %>
     <%= yield :head %>
   </head>
