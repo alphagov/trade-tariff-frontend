@@ -5,7 +5,7 @@ $token-padding: 5;
 $token-space: $token-width + $token-padding; /* Uses above values */
 $top-level-padding: 10;
 
-$top-section-grey: #f8f7ee;
+$top-section-blue: #EAF3F8;
 
 /* end global variables */
 
@@ -426,6 +426,10 @@ header.page-header {
     right:10px;
   }
   
+  th {
+    width:1.7142857em;
+  }
+
   td {
     text-align:center;
   }
@@ -443,7 +447,7 @@ header.page-header {
 article dl {
   padding: px($top-level-padding) px($top-level-padding) 0 px($top-level-padding);
   margin: 0;
-  background: $top-section-grey;
+  background: $top-section-blue;
   position: relative;
   zoom:1;
   
@@ -710,7 +714,7 @@ dl.tariff-fragments dl.commodities {
 
 .nav-tabs {
   @include contain-float;
-  background:$top-section-grey;
+  background:$top-section-blue;
   @include tabs($token-width);
   
   li {
@@ -824,7 +828,7 @@ article.search-results {
 }
 
 h1.search-heading {
-  background: $top-section-grey;
+  background: $top-section-blue;
   color:#000;
   font-size:1em;
   font-weight:normal;
