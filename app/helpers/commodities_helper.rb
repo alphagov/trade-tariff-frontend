@@ -2,7 +2,7 @@ module CommoditiesHelper
   def commodity_tree(main_commodity, commodities)
     if commodities.any?
       content_tag(:dl, class: 'commodities') do
-        content_tag(:dt, commodities.first.description) +
+        content_tag(:dt, commodities.first.to_s) +
         content_tag(:dd, tree_node(main_commodity, commodities, commodities.first.number_indents))
       end
     else
