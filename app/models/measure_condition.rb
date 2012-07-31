@@ -17,10 +17,6 @@ class MeasureCondition
   end
 
   def duty_expression
-    components.map{|mcc|
-      DutyExpressionFormatter.format(mcc.duty_expression_id, mcc.duty_amount,
-                                     mcc.monetary_unit, mcc.measurement_unit,
-                                     mcc.measurement_unit_qualifier)
-    }.join(" ")
+    components.map(&:duty_expression).join(" ")
   end
 end
