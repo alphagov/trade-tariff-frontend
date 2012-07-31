@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :initialize_modules
-  before_filter :cache_all_the_things
-
+  before_filter :set_cache
   layout :set_layout
 
   rescue_from Errno::ECONNREFUSED do |e|
@@ -40,7 +39,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def cache_all_the_things
-    expires_in 6.hours, :public => true, 'max-stale' => 0
+  def set_cache
+    expires_in 2.hours, :public => true, 'max-stale' => 0
   end
 end
