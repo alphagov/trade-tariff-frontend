@@ -2,7 +2,7 @@ require 'api_entity'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :initialize_search
+  before_filter :initialize_modules
 
   layout :set_layout
 
@@ -16,10 +16,15 @@ class ApplicationController < ActionController::Base
     render text: '', status: :error
   end
 
+  def url_options
+    { date: @tariff_date }.merge(super)
+  end
+
   private
 
-  def initialize_search
+  def initialize_modules
     @search = Search.new(params)
+    @tariff_date = TariffDate.new(params[:date])
   end
 
   def set_layout

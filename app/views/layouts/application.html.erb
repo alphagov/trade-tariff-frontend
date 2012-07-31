@@ -31,15 +31,16 @@
               <%= f.button :submit, 'Search', class: 'button right' %>
             <% end %>
 
-           <form accept-charset="UTF-8" action="/search" class="simple_form date-filter related-module" id="date-filter" method="get" novalidate="novalidate">
-            <h2>This tariff applies today</h2>
-            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value=""></div>
-            <div class="control-group string optional">
-              <label class="string optional control-label visuallyhidden" for="commodity_search_r">Date of results</label>
-              <input class="string optional date" id="commodity_search_r" name="r" size="15" type="text" value="20/07/2012" />
-            </div>
-            <input class="btn button right" name="commit" type="submit" value="Change">
-          </form>
+            <%= simple_form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
+              <h2>This tariff applies</h2>
+              <%= f.input :date, label: 'Date of Results', input_html: { class: 'date',
+                                                                         size: 15,
+                                                                         name: 'date',
+                                                                         value: f.object.date.to_formatted_s(:default) },
+                                                           label_html: { class: 'visuallyhidden' } %>
+
+              <%= f.button :submit, 'Change', class: 'btn button right' %>
+            <% end %>
         </div>
       </section>
     </div>
