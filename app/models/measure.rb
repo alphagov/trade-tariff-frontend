@@ -8,6 +8,7 @@ class Measure
   has_one :geographical_area
   has_one :legal_act
   has_one :additional_code
+  has_one  :order_number
   has_many :excluded_countries, class_name: 'GeographicalArea'
   has_many :measure_components
   has_many :measure_conditions

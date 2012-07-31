@@ -19,7 +19,12 @@
     </td>
   <% end %>
 
-  <td><%= measure.measure_type_description %></td>
+  <td>
+    <%= measure.measure_type_description %>
+    <% if measure.order_number.present? %>
+      <%= render measure.order_number %>
+    <% end %>
+  </td>
 
   <td><%= measure.duty_expression %></td>
 

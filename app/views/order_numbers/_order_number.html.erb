@@ -1,0 +1,58 @@
+Order No: <%= link_to order_number.number, "#", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "order-number-#{order_number.id}" %>&nbsp;
+<div class='popup hidden' data-popup='order-number-<%= order_number.id %>'>
+  <article>
+    <table>
+      <caption>Order number <%= order_number.number %>:</caption>
+      <tbody>
+        <tr>
+          <td>Order Number</td>
+          <td><%= order_number.number %></td>
+        </tr>
+        <tr>
+          <td>Balance</td>
+          <td><%= order_number.definition.balance %></td>
+        </tr>
+        <tr>
+          <td>Initial amount</td>
+          <td><%= order_number.definition.initial_volume %></td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td><%= order_number.definition.status %></td>
+        </tr>
+        <tr>
+          <td>Unit</td>
+          <td><%= order_number.definition.measurement_unit %></td>
+        </tr>
+        <tr>
+          <td>Start date</td>
+          <td><%= order_number.definition.validity_start_date.to_formatted_s(:date) %></td>
+        </tr>
+        <tr>
+          <td>End date</td>
+          <td><%= order_number.definition.validity_end_date.to_formatted_s(:date) %></td>
+        </tr>
+        <tr>
+          <td>Suspension period start</td>
+          <td><%= order_number.definition.suspension_period_start_date.to_formatted_s(:full) %></td>
+        </tr>
+        <tr>
+          <td>Suspension period end</td>
+          <td><%= order_number.definition.suspension_period_end_date.to_formatted_s(:full) %></td>
+        </tr>
+        <tr>
+          <td>Blocking period start</td>
+          <td><%= order_number.definition.blocking_period_start_date.to_formatted_s(:full) %></td>
+        </tr>
+        <tr>
+          <td>Blocking period end</td>
+          <td><%= order_number.definition.blocking_period_end_date.to_formatted_s(:full) %></td>
+        </tr>
+        <tr>
+          <td>Last allocation date</td>
+          <td><%= order_number.definition.last_allocation_date.to_formatted_s(:full) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+</div>
