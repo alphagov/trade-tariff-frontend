@@ -1,10 +1,10 @@
 <dt class="heading-code">
   <%= heading.display_short_code %>
 </dt>
+<% if heading.declarable? %>
+<dd class="declarable">
+<% else %>
 <dd>
-  <% if heading.declarable? %>
-    <strong><%= link_to heading, heading_path(heading) %></strong>
-  <% else %>
-    <%= link_to heading, heading_path(heading) %>
-  <% end %>
+<% end %>
+  <%= link_to heading, heading_path(heading) %>
 </dd>
