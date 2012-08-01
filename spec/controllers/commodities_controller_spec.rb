@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe CommoditiesController, "GET to #show", :webmock do
   let!(:commodity) { attributes_for :commodity }
+  let!(:actual_date) { Date.today.to_s(:dashed) }
 
   before(:each) do
-    stub_request(:get, "http://www.example.com/api/commodities/#{commodity[:short_code]}").
+    stub_request(:get, "http://www.example.com/api/commodities/#{commodity[:short_code]}?as_of=#{actual_date}").
            to_return(status: 200,
                      body: File.read("spec/fixtures/responses/commodities_show.json"),
                      headers: { content_type: 'application/json' })
@@ -37,6 +38,7 @@ end
 
 describe CommoditiesController, "PUT to #update", :webmock do
   let!(:commodity) { attributes_for :commodity }
+  let!(:actual_date) { Date.today.to_s(:dashed) }
 
   before(:each) do
     stub_request(:get, /http:\/\/www.example.com\/api\/commodities\//).
