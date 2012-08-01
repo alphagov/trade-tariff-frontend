@@ -32,7 +32,7 @@
 
   <td>
     <% if measure.measure_conditions.any? %>
-      <%= link_to "View Conditions",  "##{measure.id}", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "conditions-#{measure.id}" %>
+      <%= link_to "View Conditions",  "##{measure.id}", class: 'reference', 'data-popup-ref' => "conditions-#{measure.id}" %>
     <% end %>
   </td>
 
@@ -41,24 +41,8 @@
   <td><%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external' %></td>
 
   <td>
-    <% measure.footnotes.each do |footnote| %>
-      <%= link_to footnote.code, "#", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "footnote-#{footnote.id}" %>&nbsp;
-      <div class='popup hidden' data-popup='footnote-<%= footnote.id %>'>
-        <article>
-          <table>
-            <caption>Footnote for commodity:</caption>
-            <thead>
-              <tr>
-                <th>Code</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render footnote %>
-            </tbody>
-          </table>
-        </article>
-      </div>
-    <% end %>
+      <% measure.footnotes.each do |footnote| %>
+        <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => "footnote-#{footnote.id}" %>&nbsp;
+      <% end %>
   </td>
 </tr>

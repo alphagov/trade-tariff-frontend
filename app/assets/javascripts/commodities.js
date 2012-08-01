@@ -138,25 +138,7 @@ GOVUK.tariff = {
                 $dialogTitle = $('#dialog-title'),
                 $closeBtn = $popup.find('.close a'),
                 loader = '<img src="" alt="Content is loading" class="loader" />',
-                htmlContent,
-                onSuccess,
-                onFail;
-
-            onSuccess = function (data) {
-                $popupInner.html(data);
-            };
-
-            onFail = function (jqXHR, txtStatus, errorThrown) {
-                // to do
-            };
-
-            //$popupInner.html(loader);
-
-            //$.ajax({
-            //    url : url,
-            //    success : onSuccess,
-            //    error : onSuccess
-            //});
+                htmlContent;
 
             htmlContent = $("[data-popup=" + $linkElm.data('popup-ref') + "]").html();
             $popupInner.html(htmlContent);
@@ -214,9 +196,11 @@ GOVUK.tariff = {
           @description initializes the popup behaviour
         */
         initialize : function () {
-            var that = this;
+            var that = this,
+                $linkElm = $('table td a.reference');
 
-            $('table td a.reference').on('click', function (e) {
+            $linkElm.attr('title', 'Opens in a popup');
+            $linkElm.on('click', function (e) {
                 var $this = $(this),
                     title = that.html[0] + 'Conditions' + that.html[1];
 

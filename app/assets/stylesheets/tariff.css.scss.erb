@@ -693,7 +693,7 @@ ul.commodities {
 
 dl.tariff-fragments dl.commodities {
   margin-left:px($token-width);
-  padding-bottom:px($top-level-padding);
+  padding-bottom:1em;
 
   dt {
     @include tariff-identifier-reset;
@@ -774,6 +774,16 @@ ul.tree-controls li {
   padding-right:px($top-level-padding);
 }
 
+.conditions article,
+.footnotes article {
+  min-height:0;
+}
+.conditions + .return-to-top,
+.footnotes + .return-to-top {
+  clear:both;
+  padding-top:2em;
+}
+
 /* Popup lightbox */
 
 #popup.tariff-info {
@@ -819,8 +829,8 @@ ul.tree-controls li {
   }
 
   table {
-    margin-left:0;
-    margin-right:0;
+    margin:0;
+    width:100%;
   }
 }
 
@@ -936,5 +946,11 @@ article.search-results {
 
   #date-filter input.button {
     display:none;
+  }
+
+  .conditions,
+  .footnotes {
+    display:none; 
+    clear:both;
   }
 }
