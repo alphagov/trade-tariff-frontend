@@ -48,7 +48,7 @@ $expand-arrow-space: 9 + $token-padding;
 @mixin table {
   border-collapse: collapse;
   border-spacing: 0;
-  
+
   caption {
     text-align:left;
     font-weight: 300;
@@ -56,24 +56,24 @@ $expand-arrow-space: 9 + $token-padding;
     font-size:em(19, 16);
     padding-left:1em;
   }
-  
+
   th,
   td {
     vertical-align: top;
     line-height: 1.3em;
     padding: 0.7em 0.75em 0.7em 0.75em;
   }
-  
+
   tr:nth-child(even) td {
     background-color: #fff;
   }
-  
+
   td {
     background: #fafafa;
     border:dotted 1px #bbb;
   }
-  
-  th {  
+
+  th {
     line-height:1.25em;
     text-align: left;
     color:#000;
@@ -95,7 +95,7 @@ $expand-arrow-space: 9 + $token-padding;
 @mixin tabs($side-padding) {
     padding: 0 0 0 px($side-padding);
     position: relative;
-  
+
   ol,
   ul {
     background-color: #C9D0D0;
@@ -111,7 +111,7 @@ $expand-arrow-space: 9 + $token-padding;
     _overflow: hidden;
     _padding: 1px 1px 0 0;
   }
-  
+
   ol li,
   ul li {
     float: left;
@@ -120,7 +120,7 @@ $expand-arrow-space: 9 + $token-padding;
   .lte-ie8 & ul li {
     _width: 7.5em;
   }
-  
+
   li a {
     background-color: #E1E8E8;
     display: block;
@@ -137,17 +137,17 @@ $expand-arrow-space: 9 + $token-padding;
     _background-image: none;
     _padding: 0 0.5em;
   }
-  
+
   li:first-child a {
     border-left: solid 1px #E1E8E8;
     margin-left: 0;
   }
-  
+
   li a:hover {
     background-color: #97C5E5;
     color: inherit;
   }
-  
+
   li.active a {
     background-color: #fff;
     border: solid 1px #C9D0D0;
@@ -160,7 +160,7 @@ $expand-arrow-space: 9 + $token-padding;
   .lte-ie8 & li.active a {
     _bottom: -1px;
   }
-  
+
   li.active a:hover {
     background-color: #fff;
     color: #2E8ACA;
@@ -181,7 +181,7 @@ $expand-arrow-space: 9 + $token-padding;
 
 @mixin underlined-primary-item {
   border-top:1px solid #eee;
-  
+
   &:nth-child(1) {
     border-top:none;
     padding-top:1px;
@@ -190,7 +190,7 @@ $expand-arrow-space: 9 + $token-padding;
 
 @mixin underlined-secondary-item {
   border-top:1px solid #eee;
-  
+
   &:nth-child(2) {
     border-top:none;
   }
@@ -203,7 +203,7 @@ $expand-arrow-space: 9 + $token-padding;
   margin: 0 px(-1 * $top-level-padding) 0 px(-1 * ($side-padding + $token-width + $token-padding));
   padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding + $token-width + $token-padding);
   background: #fff;
-  
+
   li {
     @include underlined-primary-item;
   }
@@ -234,25 +234,25 @@ article table {
     @include table;
     width:106.71875%; /* override for static styles */
     margin:em(32, 16) -3.4375% 0; /* override for static styles */
-  
+
   /* ignore caption */
   thead,
   tbody {
     font-size:em(12, 16);
   }
-  
+
   .tab-content & p {
     margin:0;
     font-size:1em;
   }
-  
+
   /* Expanding table-cell content */
 
   dl {
     padding:0;
     background:none;
   }
-  
+
   dt {
     @include tariff-identifier-reset;
     width:auto;
@@ -261,12 +261,12 @@ article table {
     text-align:left;
     cursor:pointer;
   }
-  
+
   dd {
     float:none;
     padding-left:0;
   }
-  
+
   dt.has_children {
     padding-left: px($expand-arrow-space);
     margin-left:-6px;
@@ -274,15 +274,15 @@ article table {
     background-position: 0px 2px;
     background-repeat: no-repeat;
   }
-  
+
   dt.open {
     background-position:0 -89px;
   }
-  
+
   ul {
     list-style:none;
   }
-  
+
   li {
     font-size:1em;
     padding-left:0;
@@ -303,7 +303,7 @@ article.tariff {
 .tariff {
   a {
     text-decoration:none;
-    
+
     &:hover,
     &:focus {
       color:#2e8aca
@@ -343,38 +343,38 @@ header.page-header {
   right: 0;
   top: 3.625em;
   width: 192px;
-  
+
   .related-module {
     background: #fff;
     font-size: 0.85em;
     padding: 1.35714285em 1em 0.35714285em;
     margin-bottom:2em;
-    
+
     h2 {
       font-size:em(14, 14);
     }
-    
+
     a,
     .btn {
       margin-bottom:1em;
     }
-    
+
     a,
     label {
       display:block;
     }
-    
+
     .control-group {
       margin-bottom:0.75em;
     }
-    
+
     input {
       margin-left:0;
     }
-    
+
     .btn {
       background-color: #28a197;
-      border-color: #28a197;    
+      border-color: #28a197;
     }
   }
 }
@@ -386,13 +386,13 @@ header.page-header {
 /* Some styles for date-filter are in the .js-enabled section */
 #date-filter {
   input.date:before {
-    content: '(';    
+    content: '(';
   }
-  
+
   input.date:after {
     content: ')';
   }
-  
+
   &.editMode input.date:before,
   &.editMode input.date:after {
     content: '';
@@ -404,11 +404,11 @@ header.page-header {
   font-size:em(14, 16);
   padding:px($top-level-padding);
   display:none;
-  
+
   .ui-datepicker-header {
     padding:0 px($token-padding + 16);
   }
-  
+
   .ui-datepicker-header a {
     position:absolute;
     top:10px;
@@ -417,15 +417,15 @@ header.page-header {
   .ui-widget-header .ui-icon {
     background-image: url(<%= asset_path "ui-icons_222222_256x240.png" %>);
   }
-  
+
   .ui-datepicker-prev {
     left:10px;
   }
-  
+
   .ui-datepicker-next {
     right:10px;
   }
-  
+
   th {
     width:1.7142857em;
   }
@@ -433,7 +433,7 @@ header.page-header {
   td {
     text-align:center;
   }
-  
+
   td .ui-state-default {
     background:none;
     text-decoration:none;
@@ -442,7 +442,7 @@ header.page-header {
   td a {
     display:block;
   }
-  
+
   .ui-state-highlight,
   .ui-widget-content .ui-state-highlight,
   .ui-widget-header .ui-state-highlight {
@@ -460,7 +460,7 @@ article dl {
   background: $top-section-blue;
   position: relative;
   zoom:1;
-  
+
   dl {
     @include contain-float;
     margin-left:px($token-width - $top-level-padding);
@@ -500,7 +500,7 @@ dl.tariff-fragments {
     padding-left: px($token-space);
     padding-top:1px; /* offset the border-bottom on the token */
     margin: 0;
-    @include underlined-secondary-item; 
+    @include underlined-secondary-item;
   }
 
   dl {
@@ -543,8 +543,8 @@ p.sections-intro {
 }
 
 dl.sections {
-  background:#fff;  
-  
+  background:#fff;
+
   dt {
     position:static;
     display:inline;
@@ -589,29 +589,29 @@ dl.chapters dt {
   padding:0 px($top-level-padding) 0;
   width:auto;
   font-size:1em; /* 14px */
-  
+
   h2,
   li {
     font-size:1em; /* 14px */
     margin-bottom:1em;
   }
-  
-  ol {    
+
+  ol {
     margin-left:0;
     padding-left:em(($token-space - $top-level-padding), 14);
   }
-  
+
   ol li {
     list-style-type:decimal;
     padding-left:0;
     margin-bottom:1em;
   }
-  
+
   ol ol {
     padding-left:0;
     margin-top:1em;
   }
-  
+
   ol ol li {
     list-style-type:lower-alpha;
   }
@@ -624,36 +624,36 @@ dl.chapters dt {
   list-style-image:none;
 }
 
-ul.commodities {  
+ul.commodities {
   @include selected-section($commodity-padding);
   @include contain-float;
-  
+
   li {
     display: block;
-    margin: 0;    
+    margin: 0;
     padding: 0;
     position:relative;
     @include contain-float;
-    
+
     a {
       margin:0 em($token-padding + 60, 16) 0 0;
-      text-decoration:none; 
+      text-decoration:none;
     }
 
     span {
       font-size: 0.85em;
       float: left;
       display: block;
-      
+
       &.identifier {
         @include tariff-identifier;
         font-weight:normal;
         float: right;
         border: 0;
-        padding: 0 em(7, 14) 0 0;
+        padding: 0 em(3, 14) 0 0;
         background:#2B8BC4;
-        width:7.86em;
-        
+        width:9.1em;
+
         span {
           font-size:1em;
           padding:0 em(5, 12) 0 em(7, 14);
@@ -663,7 +663,7 @@ ul.commodities {
           margin-right:em(7, 14);
         }
       }
-      
+
       &.rate {
         padding-right:em($token-padding, 14);
         width:em(60, 14);
@@ -694,7 +694,7 @@ ul.commodities {
 dl.tariff-fragments dl.commodities {
   margin-left:px($token-width);
   padding-bottom:px($top-level-padding);
-  
+
   dt {
     @include tariff-identifier-reset;
     width:auto;
@@ -704,7 +704,7 @@ dl.tariff-fragments dl.commodities {
     font-weight:normal;
     font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
   }
-  
+
   span {
     float: left;
     display: block;
@@ -727,7 +727,7 @@ dl.tariff-fragments dl.commodities {
   @include contain-float;
   background:$top-section-blue;
   @include tabs($token-width);
-  
+
   li {
     padding:0;
     margin:0;
@@ -752,12 +752,12 @@ dl.tariff-fragments dl.commodities {
   p {
     font-size:em(19, 16);
   }
-  
+
   em {
     font-style:normal;
     font-weight:bold;
   }
-  
+
   nav {
     margin:1em (-1 * em(22, 16)) 0; /* override for static styles */
   }
@@ -783,17 +783,17 @@ ul.tree-controls li {
   max-width: 720px;
   padding:0;
   zoom:1;
-  
+
   .info-content,
   article {
     padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
   }
-  
+
   .info-content {
     background-color: #f2f2f2;
     padding: 2.4em px($top-level-padding) px($top-level-padding) px($top-level-padding);
   }
-  
+
   /* resets for article styles */
   article {
     float:none;
@@ -801,15 +801,15 @@ ul.tree-controls li {
     width:auto;
     height:auto;
     min-height:0;
-    
+
     padding-bottom:3em;
     overflow:hidden;
   }
-  
+
   .close {
     padding:0.2em px($top-level-padding) 0.2em 0.5em;
     text-align:right;
-    
+
     a {
       background-position:0.6875em 0.6875em;
       display:inline-block;
@@ -817,7 +817,7 @@ ul.tree-controls li {
       overflow:hidden;
     }
   }
-  
+
   table {
     margin-left:0;
     margin-right:0;
@@ -848,43 +848,43 @@ h1.search-heading {
 article.search-results {
   font-size:em(14, 16);
   padding-bottom:2em;
-  
+
   h2 {
     clear:both;
     font-size:em(20, 16);
     margin-left:px($results-padding);
   }
-  
+
   dl {
     position:relative;
     background:none;
     padding:0;
   }
-  
+
   .results-subset {
     margin-left:px($results-padding);
     border-bottom:1px solid #eee;
   }
-  
+
   dt {
     @include tariff-identifier;
   }
-  
+
   dd {
     padding-left:px($token-space);
     float:none;
     @include underlined-secondary-item;
   }
-  
+
   dd a {
     text-decoration:none;
     display:block;
   }
-  
+
   dl dl {
     margin-left:0;
   }
-  
+
   li {
     font-size:1em; /* 14px */
     list-style:none;
@@ -894,13 +894,13 @@ article.search-results {
 
 .js-enabled {
   li.has_children {
-    
+
   }
 
   li.open {
     background-position: 0 -100px;
   }
-  
+
   li.has_children .description {
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
@@ -909,31 +909,31 @@ article.search-results {
     background-repeat: no-repeat;
     cursor:pointer;
   }
-  
+
   li.has_children a .description {
     margin-left: 0;
   }
   li.has_children .open {
     background-position:0 -385px;
   }
-  
+
   li.has_children a .description {
     padding-left:0;
-    background:none;    
+    background:none;
   }
-  
+
   .return-to-top {
     display:none;
   }
-  
+
   #date-filter input.date {
     border:none;
   }
-  
+
   #date-filter.editMode input.date {
     border:1px solid #BBB;
   }
-  
+
   #date-filter input.button {
     display:none;
   }

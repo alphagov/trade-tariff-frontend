@@ -1,8 +1,12 @@
 <li<% if ! commodity.leaf? %> class="has_children"<% end %>>
   <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>"><% end %>
   <span class="description" id="commodity-<%= commodity.short_code %>"><%= commodity %></span>
-  <% if commodity.leaf? %>    
-    <span class="identifier" aria-describedby="commodity-<%= commodity.short_code %>"><span class="chapter-code"><%= commodity.chapter_code %></span><span class="heading-code"><%= commodity.heading_code %></span><%= commodity.display_short_code %></span>
+  <% if commodity.leaf? %>
+    <span class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
+      <span class="chapter-code"><%= commodity.chapter_code %></span>
+      <span class="heading-code"><%= commodity.heading_code %></span>
+      <span><%= commodity.display_short_code %></span>
+    </span>
   <% end %>
   <% if commodity.children.any? %>
     <ul><%= render commodity.children %></ul>
