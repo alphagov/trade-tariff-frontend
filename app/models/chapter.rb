@@ -14,7 +14,7 @@ class Chapter
                        using: [:description]
 
   def to_s
-    description
+    description.downcase.titlecase
   end
 
   def to_param
