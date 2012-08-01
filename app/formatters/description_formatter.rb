@@ -1,4 +1,4 @@
-class DecriptionFormatter
+class DescriptionFormatter
   def self.format(str)
     str.gsub!("|", "&nbsp;")
     str.gsub!("!1!", "<br />")
@@ -8,7 +8,7 @@ class DecriptionFormatter
     str.gsub!("!O!", "&deg;")
     str.gsub!("!>=!", "&ge;")
     str.gsub!("!<=!", "&le;")
-    str.gsub! /@(.)/ do 
+    str.gsub! /@(.)/ do
       "<sub>#{$1}</sub>"
     end
     str.gsub! /$(.)/ do

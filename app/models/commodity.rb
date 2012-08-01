@@ -17,7 +17,7 @@ class Commodity
   has_many :import_measures, class_name: 'Measure'
   has_many :export_measures, class_name: 'Measure'
 
-  format :description, with: DecriptionFormatter,
+  format :description, with: DescriptionFormatter,
                        using: [:description]
 
   def substring=(substring)

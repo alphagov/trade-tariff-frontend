@@ -10,7 +10,7 @@ class Chapter
   has_one :section
   has_many :headings
 
-  format :description, with: DecriptionFormatter,
+  format :description, with: DescriptionFormatter,
                        using: [:description]
 
   def to_s
