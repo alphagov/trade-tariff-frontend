@@ -14,7 +14,7 @@ class Chapter
                        using: [:description]
 
   def to_s
-    description.downcase.titlecase
+    description.downcase.gsub(/^(.)/) { $1.capitalize }
   end
 
   def to_param
