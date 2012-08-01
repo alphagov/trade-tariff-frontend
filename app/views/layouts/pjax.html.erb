@@ -1,2 +1,2 @@
-<title><%= yield :title %> | GOV.UK</title>
+<title><%= content_for?(:title) ? yield(:title) : "Trade Tariff | GOV.UK" %></title>
 <%= yield %>
