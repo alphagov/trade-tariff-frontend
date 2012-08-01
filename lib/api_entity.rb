@@ -43,8 +43,8 @@ module ApiEntity
   end
 
   module ClassMethods
-    def find(id)
-      resp = get("/#{self.name.pluralize.parameterize}/#{id}")
+    def find(id, opts = {})
+      resp = get("/#{self.name.pluralize.parameterize}/#{id}", opts)
       case resp.code
       when 404
         raise ApiEntity::NotFound

@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def query_params
+    { query: { as_of: @tariff_date } }
+  end
+
   def set_cache
     expires_in 2.hours, :public => true, 'max-stale' => 0
   end
