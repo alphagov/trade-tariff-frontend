@@ -11,7 +11,7 @@ class DescriptionFormatter
     str.gsub! /@(.)/ do
       "<sub>#{$1}</sub>"
     end
-    str.gsub! /$(.)/ do
+    str.gsub! /\$(.)/ do
       "<sup>#{$1}</sup>"
     end
     str.strip
