@@ -1,7 +1,9 @@
 require 'api_entity'
+require 'formatter'
 
 class Heading
   include ApiEntity
+  include Models::Formatter
 
   attr_accessor :description, :code, :commodities, :short_code,
                 :import_measures, :export_measures, :leaf,
@@ -14,6 +16,9 @@ class Heading
   has_many :children, class_name: 'Heading'
   has_many :import_measures, class_name: 'Measure'
   has_many :export_measures, class_name: 'Measure'
+
+  format :description, with: DecriptionFormatter,
+                       using: [:description]
 
   alias :declarable? :declarable
   alias :leaf? :leaf
@@ -35,7 +40,7 @@ class Heading
   end
 
   def to_s
-    DecriptionFormatter.format(description)
+    description
   end
 
   def heading

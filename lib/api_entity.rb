@@ -13,6 +13,8 @@ module ApiEntity
     debug_output if Rails.env.development?
     headers 'authorization' => ActionController::HttpAuthentication::Token.encode_credentials("86c337686edc492184c5e9869c27a0b1")
 
+    attr_reader :attributes
+
     class_eval do
       def to_param
         id
@@ -25,8 +27,12 @@ module ApiEntity
 
     if attributes.present? && attributes.has_key?(class_name)
       self.attributes = attributes[class_name]
+
+      @attributes = attributes[class_name]
     else
       self.attributes = attributes
+
+      @attributes = attributes
     end
   end
 

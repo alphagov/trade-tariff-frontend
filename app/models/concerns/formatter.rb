@@ -14,7 +14,7 @@ module Models
             memo << (if field.is_a?(String)
                       field
                     elsif field.is_a?(Symbol)
-                      send(field)
+                      attributes[field.to_s]
                     end)
           }
 
