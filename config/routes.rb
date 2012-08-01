@@ -16,5 +16,5 @@ TariffWeb::Application.routes.draw do
     end
   end
 
-  root to: 'sections#index'
+  root to: 'pages#index'
 end

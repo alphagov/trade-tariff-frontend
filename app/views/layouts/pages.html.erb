@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Trade Tariff | GOV.UK" %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'tariff-print', media: 'print' %>
+
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', defer: true %>
+    <%= yield :section_meta_tags %>
+    <%= yield :head %>
+  </head>
+  <%# The citizen class is going to be deprecated, to be replaced with mainstream. %>
+  <%# Added the mainstream class in preparation for the change. %>
+  <body class="citizen mainstream">
+    <div id="wrapper" class="tariff">
+      <section id="content" role="main" class="group">
+        <%= render 'shared/header' %>
+        <div data-pjax-container class="article-container group">
+          <%= yield %>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
