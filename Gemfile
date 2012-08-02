@@ -20,6 +20,7 @@ gem 'gds-api-adapters', '~> 0.0.43'
 
 gem 'airbrake'
 gem 'lograge'
+gem 'unicorn', '~> 4.3.1'
 
 group :development do
   gem 'puma'
