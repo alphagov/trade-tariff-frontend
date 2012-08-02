@@ -1,1 +1,1 @@
-{"id":"4fbb5fc12b200f0f5e000001","code":"010100000080","description":"Live horses, asses, mules and hinnies","commodities":[{"id":"4fbb5fc72b200f0f5e000018","code":"010121000010","description":"Horses","substring":"1"}]}
+{"id":"4fbb5fc12b200f0f5e000001","goods_nomenclature_item_id":"010100000080","description":"Live horses, asses, mules and hinnies","commodities":[{"id":"4fbb5fc72b200f0f5e000018","goods_nomenclature_item_id":"010121000010","description":"Horses","substring":"1"}]}

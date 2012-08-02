@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe CommoditiesController, "GET to #show", :webmock do
-  let!(:commodity) { attributes_for :commodity }
+  let!(:commodity)   { Commodity.new(attributes_for :commodity) }
   let!(:actual_date) { Date.today.to_s(:dashed) }
 
   before(:each) do
-    stub_request(:get, "http://www.example.com/api/commodities/#{commodity[:short_code]}?as_of=#{actual_date}").
+    stub_request(:get, "http://www.example.com/api/commodities/#{commodity.short_code}?as_of=#{actual_date}").
            to_return(status: 200,
                      body: File.read("spec/fixtures/responses/commodities_show.json"),
                      headers: { content_type: 'application/json' })
 
-    get :show, id: commodity[:short_code]
+    get :show, id: commodity.short_code
   end
 
   it { should respond_with(:success) }
@@ -21,15 +21,15 @@ describe CommoditiesController, "GET to #show", :webmock do
 end
 
 describe CommoditiesController, "GET to #edit", :webmock do
-  let!(:commodity) { attributes_for :commodity }
+  let!(:commodity) { Commodity.new(attributes_for :commodity) }
 
   before(:each) do
-    stub_request(:get, "http://www.example.com/api/commodities/#{commodity[:short_code]}").
+    stub_request(:get, "http://www.example.com/api/commodities/#{commodity.short_code}").
            to_return(status: 200,
                      body: File.read("spec/fixtures/responses/commodities_show.json"),
                      headers: { content_type: 'application/json' })
 
-    get :edit, id: commodity[:short_code]
+    get :edit, id: commodity.short_code
   end
 
   it { should respond_with(:success) }
@@ -37,7 +37,7 @@ describe CommoditiesController, "GET to #edit", :webmock do
 end
 
 describe CommoditiesController, "PUT to #update", :webmock do
-  let!(:commodity) { attributes_for :commodity }
+  let!(:commodity)   { Commodity.new(attributes_for :commodity) }
   let!(:actual_date) { Date.today.to_s(:dashed) }
 
   before(:each) do
@@ -51,7 +51,7 @@ describe CommoditiesController, "PUT to #update", :webmock do
                      body: File.read("spec/fixtures/responses/commodities_show.json"),
                      headers: { content_type: 'application/json' })
 
-    put :update, id: commodity[:short_code]
+    put :update, id: commodity.to_param
   end
 
   it { should respond_with(:redirect) }

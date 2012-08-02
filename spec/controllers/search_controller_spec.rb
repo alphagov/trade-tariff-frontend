@@ -9,7 +9,7 @@ describe SearchController, "POST to #search", :webmock do
                      body: File.read("spec/fixtures/responses/search_search.json"),
                      headers: { content_type: 'application/json' })
 
-    get :search, { q: "test" }
+    get :search, { q: "test", as_of: Date.today }
   end
 
   it { should respond_with(:success) }

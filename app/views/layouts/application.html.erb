@@ -37,6 +37,8 @@
                           name: 'q',
                           size: 21,
                           placeholder: "name or commodity code" } %>
+              <%= f.input :as_of, as: :hidden,
+                                  input_html: { name: "as_of"} %>
 
               <%= f.button :submit, 'Search', class: 'button right' %>
             <% end %>

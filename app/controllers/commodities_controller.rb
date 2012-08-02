@@ -13,6 +13,6 @@ class CommoditiesController < ApplicationController
   def update
     @commodity = Commodity.find(params[:id])
     @commodity.update_attrs(params)
-    redirect_to edit_commodity_path(@commodity)
+    redirect_to edit_commodity_path(@commodity.to_param)
   end
 end

@@ -28,10 +28,10 @@ class Search
     end
   end
 
-  attr_accessor :q
+  attr_accessor :q, :as_of
 
   def perform
-    response = self.class.post("/search", body: { q: q })
+    response = self.class.post("/search", body: { q: q, as_of: as_of })
 
     Result.new(response) unless response.code == 500
   end
