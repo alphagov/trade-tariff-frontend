@@ -2,17 +2,92 @@
 /*jslint
  white: true */
 
+"use strict";
+
 /**
-  @name commodities
+ * @name GOVUK
+ * @namespace
+ * @description Global namespace for gov.uk
+ * @requires jquery 1.6.2
+*/ 
+var GOVUK = GOVUK || {};
+
+/**
+ * @name GOVUK.Tooltip
+ * @constructor
+ * @description Constructor for tooltips
+ * @requires jquery 1.6.2
+*/
+GOVUK.Tooltip = function (elm) {
+    var inst = this,
+        tipId = $(elm).attr('aria-describedby');
+
+    this.$elm = $(elm);
+    this.$tipElm = $('#' + tipId)
+        .remove()
+        .attr('aria-hidden', true);
+    this.isShowing = false;
+    this.offsetTop = 20;
+    this.offsetLeft = 20;
+
+    $(document.body).append(this.$tipElm);
+
+    this.$elm.on('mouseover focus', function (e) {
+        if (!inst.isShowing) {
+            inst.open(e);
+        }
+    });
+
+    this.$elm.on('mouseout blur', function () {
+        if (inst.isShowing) {
+            inst.close();
+        }
+    });
+};
+
+GOVUK.Tooltip.prototype = {
+    position : function (e) {
+        var pos = {
+            'top' : e.pageY,
+            'left' : e.pageX
+        };
+
+        this.$tipElm.css({
+            'top' : pos.top + this.offsetTop + 'px',
+            'left': pos.left + this.offsetLeft + 'px'
+        });
+    },
+    open : function (evt) {
+        var inst = this;
+
+        this.position(evt);
+        this.$tipElm
+            .attr('aria-hidden', false)
+            .show();
+
+        this.$elm.on('mousemove', function (e) {
+            inst.position(e);
+        })
+
+        this.isShowing = true;
+    },
+    close : function () {
+        this.$tipElm
+            .attr('aria-hidden', true)
+            .hide();
+
+        this.$elm.off('mousemove');
+        this.isShowing = false;
+    }
+};
+
+/**
+  @name GOVUK.tariff
+  @memberOf GOVUK
   @namespace
   @description A set of methods for handling behaviours with Trade tariff commodities
   @requires jquery 1.6.2
 */
-
-"use strict";
-
-var GOVUK = GOVUK || {};
-
 GOVUK.tariff = {
     /**
       @name GOVUK.tariff.tree
@@ -196,7 +271,7 @@ GOVUK.tariff = {
 
             $popup.css({
               'left': ($(document).width() - $popup.innerWidth()) / 2 + 'px',
-              'top': document.body.scrollTop + 12 + 'px' 
+              'top': $(document).scrollTop() + 12 + 'px' 
             });
         },
         /**
@@ -265,6 +340,32 @@ GOVUK.tariff = {
         }
     },
     /**
+     * @name GOVUK.tooltips
+     * @namespace
+     * @description Namespace for tooltip behaviours
+     * @requires jquery 1.6.2
+    */ 
+    tooltips : {
+        /**
+         * @name GOVUK.tooltips.tips
+         * @array
+         * @description
+        */
+        tips : [],
+        /**
+         * @name GOVUK.tooltips.initialize
+         * @function
+         * @description Method to initialize the namespace
+        */ 
+        initialize : function () {
+            var namespace = this;
+
+            $('.tooltip').each(function (idx) {
+                namespace.tips.push(new GOVUK.Tooltip(this));
+            });
+        }
+    },
+    /**
       @name initialize
       @function
       @description initializes namespace
@@ -276,5 +377,6 @@ GOVUK.tariff = {
         this.tabs.initialize();
         this.tablePopup.initialize();
         this.datePicker.initialize();
+        this.tooltips.initialize();
     }
 };

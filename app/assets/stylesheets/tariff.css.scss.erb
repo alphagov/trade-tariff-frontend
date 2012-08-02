@@ -461,6 +461,9 @@ article.tariff {
   }
 }
 
+.tooltip-description {
+}
+
 #index {
   list-style-type:upper-roman
 }
@@ -966,5 +969,21 @@ article.search-results {
   .footnotes {
     display:none; 
     clear:both;
+  }
+
+  .tooltip-description {
+    display:none;
+    position:absolute;
+    width:200px;
+    padding:px($top-level-padding);
+    z-index:1;
+    font-size:em(14, 16);
+    background:#fff;
+    border:solid 1px #bbb;
+
+    p {
+      margin:0;
+      padding:$top-level-padding;
+    }
   }
 }
