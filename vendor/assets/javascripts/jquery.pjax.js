@@ -1,6 +1,7 @@
 // jquery.pjax.js
 // copyright chris wanstrath
 // https://github.com/defunkt/jquery-pjax
+// https://raw.github.com/bitzesty/jquery-pjax/master/jquery.pjax.js
 
 (function($){
 
@@ -24,7 +25,7 @@
 //
 // Returns the jQuery object
 $.fn.pjax = function( container, options ) {
-  return this.live('click.pjax', function(event){
+  return $(document).on('click.pjax', this.selector, function(event){
     handleClick(event, container, options)
   })
 }
@@ -39,6 +40,8 @@ $.fn.pjax = function( container, options ) {
 // Examples
 //
 //   $('a').live('click', $.pjax.click)
+//   and
+//   $(document).on('click', 'a', $.pjax.click)
 //   // is the same as
 //   $('a').pjax()
 //
@@ -224,7 +227,12 @@ var pjax = $.pjax = function( options ) {
 
     // Scroll to top by default
     if (typeof options.scrollTo === 'number')
-      $(window).scrollTop(options.scrollTo)
+      try {
+        $(window).scrollTop(options.scrollTo)
+      }
+      catch (err) {
+        console.log(err.message);
+      }
 
     // Google Analytics support
     if ( (options.replace || options.push) && window._gaq )
@@ -561,7 +569,7 @@ pjax.click = handleClick
 //
 // You probably shouldn't use pjax on pages with other pushState
 // stuff yet.
-$(window).bind('popstate', function(event){
+$(window).on('popstate', function(event){
   var state = event.state
 
   if (state && state.container) {
@@ -624,7 +632,7 @@ $(window).bind('popstate', function(event){
 
 
 // Add the state property to jQuery's event object so we can use it in
-// $(window).bind('popstate')
+// $(window).on('popstate')
 if ( $.inArray('state', $.event.props) < 0 )
   $.event.props.push('state')
 
