@@ -13,100 +13,6 @@
 var GOVUK = GOVUK || {};
 
 /**
- * @name GOVUK.Tooltip
- * @constructor
- * @description Constructor for tooltips
- * @requires jquery 1.6.2
- * @param {Element} elm Element to apply tooltip Tooltip
- * @param {String} tipId Id of the tooltip description
-*/
-GOVUK.Tooltip = function (elm, tipId) {
-    var inst = this;
-
-    this.$elm = $(elm);
-    this.$tipElm = $('#' + tipId)
-        .remove()
-        .attr('aria-hidden', true);
-    this.isShowing = false;
-    this.offsetTop = 20;
-    this.offsetLeft = 20;
-
-    $(document.body).append(this.$tipElm);
-
-    this.$elm.on('mouseover focus', function (e) {
-        var elmPos;
-
-        if (!inst.isShowing) {
-            // send cursor position if event is mouseover, otherwise use element
-            if (e.type === 'mouseover') {
-                inst.open({ 'left' : e.pageX, 'top' : e.pageY });
-            } else {
-                elmPos = $(e.target).offset();
-                inst.open({ 'left' : elmPos.left, 'top' : elmPos.top });
-            }
-        }
-    });
-
-    this.$elm.on('mouseout blur', function () {
-        if (inst.isShowing) {
-            inst.close();
-        }
-    });
-};
-
-GOVUK.Tooltip.prototype = {
-    /**
-     * @name GOVUK.Tooltip.prototype.position
-     * @function
-     * @requires jquery.1.6.2
-     * @description Positions the tooltip description
-     * @param {Object} pos Object holding the target position
-    */ 
-    position : function (pos) {
-        this.$tipElm.css({
-            'top' : pos.top + this.offsetTop + 'px',
-            'left': pos.left + this.offsetLeft + 'px'
-        });
-    },
-    /**
-     * @name GOVUK.Tooltip.prototype.open
-     * @function
-     * @requires jquery.1.6.2
-     * @description Opens the tooltip description
-     * @param {Object} pos Object holding the target position
-    */ 
-    open : function (pos) {
-        var inst = this;
-
-        this.$tipElm
-            .attr('aria-hidden', false)
-            .show();
-
-        this.position(pos);
-
-        this.$elm.on('mousemove', function (e) {
-            inst.position({ 'left' : e.pageX, 'top' : e.pageY  });
-        });
-
-        this.isShowing = true;
-    },
-    /**
-     * @name GOVUK.Tooltip.prototype.close
-     * @function
-     * @requires jquery.1.6.2
-     * @description Closes the tooltip description
-    */ 
-    close : function () {
-        this.$tipElm
-            .attr('aria-hidden', true)
-            .hide();
-
-        this.$elm.off('mousemove');
-        this.isShowing = false;
-    }
-};
-
-/**
   @name GOVUK.tariff
   @memberOf GOVUK
   @namespace
@@ -365,49 +271,6 @@ GOVUK.tariff = {
         }
     },
     /**
-     * @name GOVUK.tooltips
-     * @namespace
-     * @description Namespace for tooltip behaviours
-     * @requires jquery 1.6.2
-    */ 
-    tooltips : {
-        /**
-         * @name GOVUK.tooltips.tips
-         * @array
-         * @description
-        */
-        tips : {},
-        /**
-         * @name GOVUK.tooltips.initialize
-         * @function
-         * @description Method to initialize the namespace
-        */ 
-        initialize : function () {
-            var namespace = this;
-
-            // clear up any existing tooltips
-            this.hideAll();
-
-            $('.tooltip').each(function (idx) {
-                var tipId = $(this).attr('aria-describedby');
-                
-                if (namespace.tips[tipId] !== 'undefined') {
-                    namespace.tips[tipId] = new GOVUK.Tooltip(this, tipId);
-                }
-            });
-        },
-        /**
-         * @name GOVUK.tooltips.hideAll
-         * @function
-         * @description Method to hide all the tooltips
-        */ 
-        hideAll : function () {
-            $.each(this.tips, function (idx) {
-                this.$tipElm.hide();
-            });
-        }
-    },
-    /**
       @name initialize
       @function
       @description initializes namespace
@@ -419,6 +282,5 @@ GOVUK.tariff = {
         this.tabs.initialize();
         this.tablePopup.initialize();
         this.datePicker.initialize();
-        this.tooltips.initialize();
     }
 };

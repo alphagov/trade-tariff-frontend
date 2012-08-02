@@ -1,5 +1,5 @@
 <li<% if ! commodity.leaf? %> class="has_children"<% end %>>
-  <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>" class="tooltip" aria-describedby="<%= commodity.code %>"><% end %>
+  <% if commodity.leaf? %><a href="<%= commodity_path(commodity) %>" title="View complete information for this commodity"><% end %>
   <span class="description" id="commodity-<%= commodity.short_code %>"><%= commodity %></span>
   <% if commodity.leaf? %>
     <span class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
@@ -14,6 +14,5 @@
   <% if commodity.leaf? %>
     </a>
     <span class="rate"><%= commodity.third_country_duty_rate %></span>
-    <div class="tooltip-description" role="tooltip" id="<%= commodity.code %>"><p>View full details</p></div>
   <% end %>
 </li>
