@@ -1,96 +1,21 @@
-<article class="tariff chapters">
-  <div class="inner">
-    <% if @results.present? && @results.entries.any? %>
-      <table>
-        <thead>
-          <tr>
-            <th class="p20"></th>
-            <th class="p80">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @results.entries.each do |result| %>
-            <tr>
-              <td>
-                <%= link_to "Section: #{result.section.numeral}", section_path(result.section) %>
-              </td>
-              <td>
-                <%= result.section.title %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= link_to "Chapter: #{result.chapter.short_code}", chapter_path(result.chapter) %>
-              </td>
-              <td>
-                <%= result.chapter %>
-              </td>
-            </tr>
-            <% if result.is_a?(Commodity) %>
-              <tr>
-                <td>
-                  <%= link_to "Heading: #{result.heading.short_code}", heading_path(result.heading) %>
-                </td>
-                <td>
-                  <%= result.heading %>
-                </td>
-              <tr>
-                <td>
-                  <%= link_to "Result: #{result.short_code}", commodity_path(result) %>
-                </td>
-                <td>
-                  <% if result.parents && result.parents.any? %>
-                    <%= result.parents.join(" - ") %>:
-                  <% end %>
-
-                  <strong><%= result %></strong>
-                  <% if result.synonyms.present? %>
-                    <br/>
-                    <%== render_synonyms(result.synonyms) %>
-                  <% end %>
-                </td>
-              </tr>
-            <% elsif result.is_a?(Heading) %>
-              <tr>
-                <td>
-                  <%= link_to "Result: #{result.short_code}", heading_path(result) %>
-                </td>
-                <td>
-                  <%= result %>
-
-                  <% if result.synonyms.present? %>
-                    <br/>
-                    <%== render_synonyms(result.synonyms) %>
-                  <% end %>
-                </td>
-            <% end %>
-            <tr>
-              <td colspan="2">&nbsp;</td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <%= paginate @results, remote: true %>
-    <% else %>
-      <p>Sorry no results found for that search term, please try again or browse the <%= link_to "tariffs by section", root_url %>.</p>
-    <% end %>
-  </div>
-</article>
-
-<!--
-
-<h1 class="search-heading">Search results for '<mark>horse</mark>'</h1>
+<h1 class="search-heading">Search results for '<mark><%= @search.q %></mark>'</h1>
 <article class="search-results">
   <p>Microcopy how to use/warning here.</p>
-  <h2>Sections that contain "<mark>horse</mark>":</h2>
+  <h2>Sections that contain '<mark><%= @search.q %></mark>':</h2>
+  <dl class="results-subset">
+    <dt>1</dt>
+    <dd><a href="#">Live animals; animal products (chapter 1 - 5)</a></dd>
+    <dt>2</dt>
+    <dd><a href="#">Animal or vegetable fats and oils and their cleavage products; prepared edible fats; animal or vegetable waxes (chapter 15)</a></dd>
+  </dl>
+  <h2>Chapters that contain '<mark><%= @search.q %></mark>':</h2>
   <dl class="results-subset">
     <dt>01</dt>
     <dd><a href="#">Live animals</a></dd>
     <dt>02</dt>
     <dd><a href="#">Meat and edible meat offal</a></dd>
   </dl>
-  <h2>Headings that contain '<mark>horse</mark>'</h2>
+  <h2>Headings that contain '<mark><%= @search.q %></mark>'</h2>
   <dl class="results-subset">
     <dt>01</dt>
     <dd><a href="#">Live animals</a>
@@ -114,7 +39,7 @@
         <dt>02</dt><dd><a href="#">Fish, fresh or chilled, excluding fish fillets and other fish meat of heading 0304</a></dd>
         <dt>03</dt><dd><a href="#">Fish, frozen, excluding fish fillets and other fish meat of heading 0304</a></dd>
       </dl>
-    </dd>            
+    </dd>
     <dt>07</dt>
     <dd>
       <a href="#">Edible vegetables and certain roots and tubers</a>
@@ -126,7 +51,7 @@
     <dd>
       <a href="#">Residues and waste from the food industries; prepared animal fodder</a>
        <dl>
-         <dt>08</dt><dd><a href="#">Vegetable materials and vegetable waste, vegetable residues and by-products, whether or not in the form of pellets, of a kind used in animal feeding, not elsewhere specified or included</a></dd> 
+         <dt>08</dt><dd><a href="#">Vegetable materials and vegetable waste, vegetable residues and by-products, whether or not in the form of pellets, of a kind used in animal feeding, not elsewhere specified or included</a></dd>
        </dl>
     </dd>
     <dt>44</dt>
@@ -137,7 +62,7 @@
        </dl>
     </dd>
   </dl>
-  <h2>Other terms containing '<mark>horse</mark>':</h2>
+  <h2>Other terms containing '<mark><%= @search.q %></mark>':</h2>
   <ul class="results-subset">
     <li><a href="#">Horse chestnuts</a></li>
     <li><a href="#">Horse beans</a></li>
@@ -153,5 +78,3 @@
     <li><a href="#">Classifying leguminous vegetables</a></li>
   </ul>
 </article>
-
--->
