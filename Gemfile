@@ -23,7 +23,6 @@ gem 'lograge'
 gem 'unicorn', '~> 4.3.1'
 
 group :development do
-  gem 'puma'
   gem 'capistrano'
   gem 'debugger'
   gem 'awesome_print'
