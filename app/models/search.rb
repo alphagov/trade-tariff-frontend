@@ -22,6 +22,9 @@ class Search
     end
 
     def entries=(entry_data)
+      @sections = entry_data['sections'].map{|section_data| Section.new(section_data)}
+      @chapters = entry_data['chapters'].map{|chapter_data| Chapter.new(chapter_data)}
+      @headings = entry_data['headings'].map{|heading_data| Heading.new(heading_data)}
     end
   end
 
