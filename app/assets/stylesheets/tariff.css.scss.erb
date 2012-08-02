@@ -447,6 +447,8 @@ article.tariff {
   .ui-widget-header .ui-state-highlight {
     border-width:3px;
   }
+
+  iframe.ui-datepicker-cover { display:none;  }
 }
 
 .tooltip-description {
@@ -629,6 +631,7 @@ dl.chapters dt {
 ul.commodities {
   @include selected-section($commodity-padding);
   @include contain-float;
+  position:relative; /* to give z-index */
 
   li {
     display: block;
@@ -924,6 +927,7 @@ article.search-results {
     background-position: 0 6px;
     background-repeat: no-repeat;
     cursor:pointer;
+    position:relative; /* to give z-index */
   }
 
   li.has_children a .description {
