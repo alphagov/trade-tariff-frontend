@@ -170,7 +170,7 @@ $expand-arrow-space: 9 + $token-padding;
 /* Mixins specific to tariff */
 
 @mixin tariff-identifier {
-  color:#fff;
+  color:#000;
   font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
@@ -222,16 +222,21 @@ mark {
   background:none;
 }
 
-.chapter-code {
-  background:#80B9DC;
-}
-
 .tariff header.page-header hgroup{
  padding-bottom:0;
 }
 
+.commodities .chapter-code,
+.commodities .heading-code {
+  border-right:#fff solid 2px;
+}
+
+.chapter-code {
+  background:#D4D5E7;
+}
+
 .heading-code {
-  background:#55A2D0;
+  background:#B6D7EB;
 }
 
 article table {
@@ -657,8 +662,8 @@ ul.commodities {
         float: right;
         border: 0;
         padding: 0 em(3, 14) 0 0;
-        background:#2B8BC4;
-        width:9.1em;
+        background:#B5DEDB;
+        width:8.8em;
 
         span {
           font-size:1em;
@@ -757,6 +762,9 @@ dl.tariff-fragments dl.commodities {
 
   p {
     font-size:em(19, 16);
+    padding:0;
+    margin-left:0;
+    margin-right:0;
   }
 
   em {
