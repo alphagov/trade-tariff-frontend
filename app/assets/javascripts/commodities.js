@@ -137,6 +137,7 @@ GOVUK.tariff = {
                 $popupInner = $popup.find('div.info-inner'),
                 $dialogTitle = $('#dialog-title'),
                 $closeBtn = $popup.find('.close a'),
+                $mask = $('#mask'),
                 loader = '<img src="" alt="Content is loading" class="loader" />',
                 htmlContent;
 
@@ -153,6 +154,14 @@ GOVUK.tariff = {
                     'role' : 'dialog',
                     'aria-labelledby' : 'dialog-title'
                 });
+            
+            $mask.on('click', function () {
+                  $popup.fadeOut(400, function(){
+                    $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
+                  });
+
+                  $linkElm.focus();
+            });
 
             // return focus to the trigger link when the lightbox closes
             $closeBtn.on('click', function (e) {

@@ -226,6 +226,10 @@ mark {
   background:#80B9DC;
 }
 
+.tariff header.page-header hgroup{
+ padding-bottom:0;
+}
+
 .heading-code {
   background:#55A2D0;
 }
@@ -312,6 +316,10 @@ article.tariff {
 
   p {
     font-size:1em;
+    padding-left:10%;
+    padding-right:10%;
+    margin-left:px($top-level-padding);
+    margin-right:px($top-level-padding);
   }
 
   .inner {
@@ -361,6 +369,18 @@ article.tariff {
     .btn {
       background-color: #28a197;
       border-color: #28a197;
+    }
+    address{
+      a {
+        margin-bottom: 0;
+      }
+    
+      .tel{
+        margin-bottom: 1em;
+        color: #000;
+        font-style:normal;
+        font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
+      }
     }
   }
 }
@@ -938,29 +958,5 @@ article.search-results {
   .footnotes {
     display:none; 
     clear:both;
-  }
-}
-
-/*
-  Matt's styles that will probably need to be removed/fixed
-*/
-.tariff header.page-header hgroup{
- padding-bottom:0;
-}
-
-#search-controls {
-
-
-  .related-module address{
-    a {
-      margin-bottom: 0;
-    }
-
-    .tel{
-      margin-bottom: 1em;
-      color: #000;
-      font-style:normal;
-      font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    }
   }
 }

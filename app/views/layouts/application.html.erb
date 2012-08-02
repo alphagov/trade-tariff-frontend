@@ -32,6 +32,7 @@
             <% end %>
 
             <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search related-module' } do |f| %>
+              <a href="/">View all sections</a>
               <%= f.input :q, required: false, label: "Search the tariff",
                         input_html: {
                           name: 'q',
