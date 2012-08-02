@@ -250,7 +250,8 @@ GOVUK.tariff = {
             }
 
             $input.datepicker({
-                dateFormat : 'dd/mm/yy'
+                dateFormat : 'dd/mm/yy',
+                maxDate: "+0m +0w"
             });
 
             // datepicker is allowing clicks on date anchors to pass through so prevent this
