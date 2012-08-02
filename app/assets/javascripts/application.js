@@ -8,4 +8,9 @@ $(function(){
   GOVUK.tariff.initialize();
   
   $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])').pjax('[data-pjax-container]', { timeout: 6000 ,success: function () { GOVUK.tariff.initialize(); } });
+
+  // $(document)
+  // .on('pjax:start', function() { $('#loading').show() })
+  // .on('pjax:end',   function() { $('#loading').hide() })
+
 });
