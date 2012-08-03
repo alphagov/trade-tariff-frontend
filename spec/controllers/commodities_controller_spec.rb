@@ -1,15 +1,9 @@
 require 'spec_helper'
 
-describe CommoditiesController, "GET to #show", :webmock do
+describe CommoditiesController, "GET to #show", vcr: { cassette_name: "commodities#show" } do
   let!(:commodity)   { Commodity.new(attributes_for :commodity) }
-  let!(:actual_date) { Date.today.to_s(:dashed) }
 
   before(:each) do
-    stub_request(:get, "http://www.example.com/api/commodities/#{commodity.short_code}?as_of=#{actual_date}").
-           to_return(status: 200,
-                     body: File.read("spec/fixtures/responses/commodities_show.json"),
-                     headers: { content_type: 'application/json' })
-
     get :show, id: commodity.short_code
   end
 
@@ -20,15 +14,10 @@ describe CommoditiesController, "GET to #show", :webmock do
   it { should assign_to(:commodity) }
 end
 
-describe CommoditiesController, "GET to #edit", :webmock do
+describe CommoditiesController, "GET to #edit", vcr: { cassette_name: "commodities#edit" } do
   let!(:commodity) { Commodity.new(attributes_for :commodity) }
 
   before(:each) do
-    stub_request(:get, "http://www.example.com/api/commodities/#{commodity.short_code}").
-           to_return(status: 200,
-                     body: File.read("spec/fixtures/responses/commodities_show.json"),
-                     headers: { content_type: 'application/json' })
-
     get :edit, id: commodity.short_code
   end
 
@@ -36,32 +25,13 @@ describe CommoditiesController, "GET to #edit", :webmock do
   it { should assign_to(:commodity) }
 end
 
-describe CommoditiesController, "PUT to #update", :webmock do
+describe CommoditiesController, "PUT to #update", vcr: { cassette_name: "commodities#put" } do
   let!(:commodity)   { Commodity.new(attributes_for :commodity) }
-  let!(:actual_date) { Date.today.to_s(:dashed) }
 
   before(:each) do
-    stub_request(:get, /http:\/\/www.example.com\/api\/commodities\//).
-           to_return(status: 200,
-                     body: File.read("spec/fixtures/responses/commodities_show.json"),
-                     headers: { content_type: 'application/json' })
-
-    stub_request(:put, /http:\/\/www.example.com\/api\/commodities/).
-           to_return(status: 200,
-                     body: File.read("spec/fixtures/responses/commodities_show.json"),
-                     headers: { content_type: 'application/json' })
-
     put :update, id: commodity.to_param
   end
 
   it { should respond_with(:redirect) }
   it { should assign_to(:commodity) }
-
-  it "makes request to fetch commodity data" do
-    a_request(:get, /http:\/\/www.example.com\/api\/commodities\//).should have_been_made
-  end
-
-  it "makes request to update commodity data" do
-    a_request(:put, /http:\/\/www.example.com\/api\/commodities\//).should have_been_made
-  end
 end

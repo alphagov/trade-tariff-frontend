@@ -1,26 +1,26 @@
 FactoryGirl.define do
   factory :section do
     title    { Forgery(:basic).text }
-    position { Forgery(:basic).number }
+    position { 1 }
   end
 
   factory :chapter do
     section
     description { Forgery(:basic).text }
-    goods_nomenclature_item_id { "#{2.times.map{ Random.rand(9) }.join}00000000" }
+    goods_nomenclature_item_id { "0100000000" }
   end
 
   factory :heading do
     chapter
     description { Forgery(:basic).text }
-    goods_nomenclature_item_id { "#{4.times.map{ Random.rand(9) }.join}00000000" }
+    goods_nomenclature_item_id { "0101000000" }
   end
 
   factory :commodity do
     heading
     description { Forgery(:basic).text }
-    producline_suffix { ["10", "20", "80"].sample }
-    goods_nomenclature_item_id { 10.times.map{ Random.rand(9) }.join }
+    producline_suffix { "80" }
+    goods_nomenclature_item_id { "0101300000" }
 
     trait :with_children do
       children { [attributes_for(:commodity)] }
