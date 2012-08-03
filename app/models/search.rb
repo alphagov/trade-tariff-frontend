@@ -33,7 +33,9 @@ class Search
   def perform
     response = self.class.post("/search", body: { q: q, as_of: as_of })
 
-    Result.new(response) unless response.code == 500
+    raise ApiEntity::Error if response.code == 500
+
+    Result.new(response)
   end
 
 end

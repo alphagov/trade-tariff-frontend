@@ -1,23 +1,12 @@
 require 'spec_helper'
 
-# describe Search do
-#   subject { Search }
+describe Search do
+  subject { Search }
 
-#   let(:search) { subject.new }
+  it 'raises on error if search responds with status 500' do
+    response_stub = stub(code: 500)
+    Search.stub(:post).and_return(response_stub)
 
-#   it 'allows to read search attributes' do
-#     Search::ATTRIBUTES.each do |attribute|
-#       -> { search.send(attribute) }.should_not raise_error
-#     end
-#   end
-
-#   it 'allows to set search attributes directly' do
-#     Search::ATTRIBUTES.each do |attribute|
-#       -> { search.send("#{attribute}=", "test") }.should_not raise_error
-#     end
-#   end
-
-#   it 'is not a persisted model' do
-#     search.persisted?.should be_false
-#   end
-# end
+    expect { Search.new(q: 'abc', as_of: Date.today).perform }.to raise_error ApiEntity::Error
+  end
+end
