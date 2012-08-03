@@ -1,3 +1,4 @@
+
 require 'api_entity'
 
 class ApplicationController < ActionController::Base
