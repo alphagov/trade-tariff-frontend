@@ -5,7 +5,7 @@ class Commodity
   include ApiEntity
   include Models::Formatter
 
-  attr_accessor :short_code, :code, :description, :substring, :hier_pos,
+  attr_accessor :description, :goods_nomenclature_item_id,
                 :synonyms, :uk_vat_rate, :third_country_duty_rate,
                 :leaf, :parents, :synonyms, :producline_suffix, :number_indents
 
@@ -27,6 +27,9 @@ class Commodity
   def update_attrs(params)
     self.class.put("/commodities/#{to_param}", body: params)
   end
+
+  alias :code       :goods_nomenclature_item_id
+  alias :short_code :goods_nomenclature_item_id
 
   def leaf?
     children.none?

@@ -6,38 +6,32 @@ class Search
   class Result
     include ApiEntity
 
-    attr_accessor :type
-    attr_reader :entries
+    attr_reader   :sections, :headings, :chapters, :commodities
+    attr_writer   :entry, :type
 
     def exact_match?
-      type == "exact_match"
+      @type == "exact_match"
     end
 
     def match_path
       {
-        controller: match['endpoint'],
+        controller: @entry['endpoint'],
         action: :show,
-        id: match['id']
+        id: @entry['id']
       }
     end
 
-    def match
-      entries.first
-    end
-
     def entries=(entry_data)
-      @entries ||= entry_data
+      @sections = entry_data['sections'].map{|section_data| Section.new(section_data)}
+      @chapters = entry_data['chapters'].map{|chapter_data| Chapter.new(chapter_data)}
+      @headings = entry_data['headings'].map{|heading_data| Heading.new(heading_data)}
     end
   end
 
-  ATTRIBUTES = [:q, :page]
-
-  ATTRIBUTES.each do |attribute|
-    attr_accessor attribute
-  end
+  attr_accessor :q, :as_of
 
   def perform
-    response = self.class.post("/search", body: { q: q, page: page })
+    response = self.class.post("/search", body: { q: q, as_of: as_of })
 
     Result.new(response) unless response.code == 500
   end

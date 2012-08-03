@@ -17,14 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   def url_options
-    { date: @tariff_date }.merge(super)
+    { as_of: @tariff_date }.merge(super)
   end
 
   private
 
   def initialize_modules
     @search = Search.new(params)
-    @tariff_date = TariffDate.new(params[:date])
+    @tariff_date = TariffDate.new(params[:as_of])
   end
 
   def set_layout

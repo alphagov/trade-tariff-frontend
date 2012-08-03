@@ -5,10 +5,10 @@ class Heading
   include ApiEntity
   include Models::Formatter
 
-  attr_accessor :description, :code, :commodities, :short_code,
+  attr_accessor :description, :commodities,
                 :import_measures, :export_measures, :leaf,
                 :declarable, :third_country_duty_rate, :uk_vat_rate,
-                :synonyms
+                :synonyms, :goods_nomenclature_item_id
 
   has_one :chapter
   has_one :section
@@ -20,8 +20,11 @@ class Heading
   format :description, with: DescriptionFormatter,
                        using: [:description]
 
+  delegate :code, to: :chapter, prefix: true
+
   alias :declarable? :declarable
   alias :leaf? :leaf
+  alias :code :goods_nomenclature_item_id
 
   def commodity_code
     code.first(10)
@@ -33,6 +36,10 @@ class Heading
 
   def display_export_code
     code[0..-3]
+  end
+
+  def short_code
+    code.first(4)
   end
 
   def to_param

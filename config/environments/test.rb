@@ -39,5 +39,5 @@ TariffWeb::Application.configure do
   config.middleware.use Slimmer::App, asset_host: "http://static.preview.alphagov.co.uk"
 
   # Host for Trade Tariff API endpoint
-  config.api_host = "http://www.example.com/api"
+  config.api_host = "http://localhost:3018"
 end

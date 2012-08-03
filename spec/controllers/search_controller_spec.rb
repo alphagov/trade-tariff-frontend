@@ -1,20 +1,31 @@
 require 'spec_helper'
 
-describe SearchController, "POST to #search", :webmock do
-  let(:results) { stub(results: []) }
+describe SearchController, "POST to #search" do
+  context "with exact match query", vcr: { cassette_name: "search#search_exact" }  do
+    let(:query) { "01" }
 
-  before(:each) do
-    stub_request(:post, "http://www.example.com/api/search").
-           to_return(status: 200,
-                     body: File.read("spec/fixtures/responses/search_search.json"),
-                     headers: { content_type: 'application/json' })
+    before(:each) do
+      get :search, { q: query }
+    end
 
-    get :search, { q: "test" }
+    it { should respond_with(:redirect) }
+    it { should assign_to(:search) }
+    it 'assigns search attribute' do
+      assigns[:search].q.should == query
+    end
   end
 
-  it { should respond_with(:success) }
-  it { should assign_to(:search) }
-  it 'assigns search attribute' do
-    assigns[:search].q.should == "test"
+  context "with fuzzy match query", vcr: { cassette_name: "search#search_fuzzy" }  do
+    let(:query) { "horses" }
+
+    before(:each) do
+      get :search, { q: query }
+    end
+
+    it { should respond_with(:success) }
+    it { should assign_to(:search) }
+    it 'assigns search attribute' do
+      assigns[:search].q.should == query
+    end
   end
 end

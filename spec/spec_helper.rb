@@ -1,15 +1,8 @@
-require 'simplecov'
-require 'simplecov-rcov'
-
-SimpleCov.start 'rails'
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-
 ENV["RAILS_ENV"] ||= 'test'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'webmock/rspec'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -20,12 +13,4 @@ RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.include FactoryGirl::Syntax::Methods
-
-  config.before(:each, :webmock) do
-    WebMock.enable!
-  end
-
-  config.after(:each, :webmock) do
-    WebMock.disable!
-  end
 end

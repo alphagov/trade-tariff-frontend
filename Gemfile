@@ -34,7 +34,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'forgery'
   gem 'shoulda-matchers'
-  gem 'webmock'
+  gem 'vcr'
+  gem 'fakeweb'
 end
 
 group :assets do

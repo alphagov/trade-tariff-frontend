@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3018/chapters/01?as_of=2012-08-03
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      authorization:
+      - Token token="86c337686edc492184c5e9869c27a0b1"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      x-ua-compatible:
+      - IE=Edge
+      etag:
+      - ! '"7ded1c3c68c42c5b997a1f352c605016"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 6b6843754ea9caa807191a05e72468c8
+      x-runtime:
+      - '0.027889'
+      connection:
+      - close
+      content-length:
+      - '1178'
+    body:
+      encoding: US-ASCII
+      string: ! '{"goods_nomenclature_item_id":"0100000000","description":"LIVE ANIMALS","headings":[{"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
+        horses, asses, mules and hinnies","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0102000000","declarable":false,"description":"Live
+        bovine animals","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0103000000","declarable":false,"description":"Live
+        swine","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0104000000","declarable":false,"description":"Live
+        sheep and goats","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0105000000","declarable":false,"description":"Live
+        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
+        turkeys and guinea fowls","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0106000000","declarable":false,"description":"Other
+        live animals","producline_suffix":"80","leaf":true,"children":[]}],"section":{"title":"Live
+        animals; animal products (chapter 1 - 5)","position":1,"numeral":"I"}}'
+    http_version: '1.1'
+  recorded_at: Fri, 03 Aug 2012 07:37:26 GMT
+recorded_with: VCR 2.2.4
