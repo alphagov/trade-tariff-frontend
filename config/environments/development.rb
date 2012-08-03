@@ -39,9 +39,5 @@ TariffWeb::Application.configure do
   config.slimmer.asset_host = ENV["STATIC_DEV"] || "http://static.dev.gov.uk"
 
   # Host for Trade Tariff API endpoint
-  if ENV['FACTER_govuk_class']
-    config.api_host = "http://tariff-api.dev.gov.uk"
-  else
-    config.api_host = "http://localhost:3018"
-  end
+  config.api_host = "http://tariff-api.dev.gov.uk"
 end

@@ -69,7 +69,7 @@ TariffWeb::Application.configure do
   config.slimmer.asset_host = Plek.current.find('assets')
 
   # Host for Trade Tariff API endpoint
-  if ENV['FACTER_govuk_class'] == "production"
+  if ENV['FACTER_govuk_platform'] == "production"
     config.api_host = "https://tariff-api.production.alphagov.co.uk"
   else
     config.api_host = "https://tariff-api.preview.alphagov.co.uk"
