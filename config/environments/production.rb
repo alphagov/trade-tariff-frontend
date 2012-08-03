@@ -69,8 +69,11 @@ TariffWeb::Application.configure do
   config.slimmer.asset_host = Plek.current.find('assets')
 
   # Host for Trade Tariff API endpoint
-  # TODO: externalize this lookup via Plek?
-  config.api_host = "https://tariff-api.preview.alphagov.co.uk"
+  if ENV['FACTER_govuk_class'] == "production"
+    config.api_host = "https://tariff-api.production.alphagov.co.uk"
+  else
+    config.api_host = "https://tariff-api.preview.alphagov.co.uk"
+  end
 
   config.lograge.enabled = true
 end
