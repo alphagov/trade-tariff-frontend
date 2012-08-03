@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3018/sections/1?as_of=2012-08-03
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      authorization:
+      - Token token="86c337686edc492184c5e9869c27a0b1"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      x-ua-compatible:
+      - IE=Edge
+      etag:
+      - ! '"942b817a5afb082469db533687e64727"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - ec4faa336a8ee6f840af1410128255f5
+      x-runtime:
+      - '0.012766'
+      connection:
+      - close
+      content-length:
+      - '675'
+    body:
+      encoding: US-ASCII
+      string: ! '{"position":1,"title":"Live animals; animal products (chapter 1 -
+        5)","numeral":"I","chapters":[{"description":"LIVE ANIMALS","goods_nomenclature_item_id":"0100000000"},{"description":"MEAT
+        AND EDIBLE MEAT OFFAL","goods_nomenclature_item_id":"0200000000"},{"description":"FISH
+        AND CRUSTACEANS, MOLLUSCS AND OTHER AQUATIC INVERTEBRATES","goods_nomenclature_item_id":"0300000000"},{"description":"DAIRY
+        PRODUCE; BIRDS''EGGS; NATURAL HONEY; EDIBLE PRODUCTS OF ANIMAL ORIGIN, NOT
+        ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0400000000"},{"description":"PRODUCTS
+        OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0500000000"}]}'
+    http_version: '1.1'
+  recorded_at: Fri, 03 Aug 2012 07:47:38 GMT
+recorded_with: VCR 2.2.4
