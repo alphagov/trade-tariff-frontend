@@ -11,7 +11,7 @@
   <% if heading.leaf? %>
     <%= link_to heading, heading_path(heading) %>
   <% else %>
-    <span class='description'><%= heading %></span>
+    <h2 class='description'><%= heading %></h2>
     <dl class='chapter-headings'>
       <%= render heading.children %>
     </dl>

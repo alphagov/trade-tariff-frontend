@@ -23,12 +23,14 @@ module CommoditiesHelper
     deeper_node = commodities.select{ |c| c.number_indents == depth + 1 }.first
 
     if deeper_node.present?
-      content_tag(:dl) do
-        content_tag(:dt, deeper_node.description) +
-        tree_node(main_commodity, commodities, deeper_node.number_indents)
+      content_tag(:dd) do
+        content_tag(:dl) do
+          content_tag(:dt, deeper_node.description) +
+          tree_node(main_commodity, commodities, deeper_node.number_indents)
+        end
       end
     else
-      commodity_heading(main_commodity)
+      content_tag(:dd, commodity_heading(main_commodity))
     end
   end
 
