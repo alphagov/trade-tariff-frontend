@@ -271,6 +271,34 @@ GOVUK.tariff = {
             });
         }
     },
+    loader : {
+        isShowing : false,
+        $mask : $('<div id="mask" />').css('opacity', 0.6).show(),
+        $img : $('<div id="loader"><img src="<%= asset_path "spinner.png" %>" alt="loading" /></div>'),
+        start : function () {
+          /*
+            var namespace = this;
+            this.timer = window.setTimeout(function () {
+              console.log('timer called');
+                if (!namespace.isShowing) {
+                console.log('isShowing is false so adding the', namespace.$mask, ' & ', namespace.$img);
+                    $(document.body).append(namespace.$mask);
+                    $(document.body).append(namespace.$img);
+                    namespace.isShowing = true;
+                }
+            }, 500);
+            */
+        },
+        end : function () {
+                /*
+                console.log('end called. Clearing timeout');
+            window.clearTimeout(this.timer);
+            $('#loader').remove();
+            $('#mask').remove();
+            this.isShowing = false;
+            */
+        }
+    },
     /**
       @name initialize
       @function
