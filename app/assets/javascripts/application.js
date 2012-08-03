@@ -12,11 +12,7 @@ $(function(){
       timeout: 6000,
       success: function () { 
         GOVUK.tariff.initialize();
-        GOVUK.tariff.loader.end();
-      },
-      beforeSend: function () {
-        GOVUK.tariff.loader.start();
       }
     }
-  );
+   );
 });
