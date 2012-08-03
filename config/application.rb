@@ -63,5 +63,8 @@ module TariffWeb
       g.template_engine :erb
       g.test_framework  false
     end
+
+    # Disable Rack::Cache.
+    config.action_dispatch.rack_cache = nil
   end
 end
