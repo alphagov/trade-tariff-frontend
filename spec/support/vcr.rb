@@ -4,5 +4,6 @@ require 'fakeweb'
 VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join('spec', 'vcr')
   c.hook_into :fakeweb
+  c.default_cassette_options = { match_requests_on: [:path] }
   c.configure_rspec_metadata!
 end
