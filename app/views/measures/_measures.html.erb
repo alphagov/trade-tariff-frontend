@@ -164,7 +164,7 @@
   <article class='tab-pane' id='footnotes' data-id="<%= measurable.to_param %>" data-class="<%=measurable.class.name.downcase.pluralize %>">
     <div class="inner">
       <table>
-        <caption>Measures for commodity:</caption>
+        <caption>Footnotes for commodity:</caption>
         <thead>
           <tr>
             <th>Code</th>
@@ -187,6 +187,14 @@
       <%= render partial: "measures/measure_references", collection: measures.sort_by(&:geographical_area_description), as: 'measure', locals: { measure_group: "third_country" } %>
     <% end %>
     <% measurable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
+      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:geographical_area_description), as: 'measure', locals: { measure_group: "specific_country" } %>
+    <% end %>
+  </div>
+  <div class="inner">
+    <% measurable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
+      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:geographical_area_description), as: 'measure', locals: { measure_group: "third_country" } %>
+    <% end %>
+    <% measurable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
       <%= render partial: "measures/measure_references", collection: measures.sort_by(&:geographical_area_description), as: 'measure', locals: { measure_group: "specific_country" } %>
     <% end %>
   </div>
