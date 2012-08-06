@@ -59,7 +59,7 @@ GOVUK.tariff = {
                 if (development){
                     if ($childList.is('.visuallyhidden')) {
                         $childList.removeClass('visuallyhidden');
-                        $(this).addClass('open');
+                        $parentNode.addClass('open');
                     }
                 }
                 
