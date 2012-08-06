@@ -950,17 +950,21 @@ article.search-results {
 
   .sections {
     @include underlined-section-list;
-    padding-left:px($token-space);
 
-    dt,
+    dt {
+      width:15%;
+      float:left;
+      padding-right:0px;
+    }
+    
     dd {
-      width:auto;
+      width:85%;
+      overflow:hidden;
     }
 
     dt {
       margin-left:0;
       font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
-      padding-right:px($token-padding);
     }
 
     dd {
