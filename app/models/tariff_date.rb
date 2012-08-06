@@ -26,7 +26,7 @@ class TariffDate
   end
 
   def to_param
-    date
+    date.to_formatted_s(:full)
   end
 
   def to_s
