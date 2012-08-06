@@ -7,7 +7,7 @@ class Heading
 
   attr_accessor :description, :commodities,
                 :import_measures, :export_measures, :leaf,
-                :declarable, :third_country_duty_rate, :uk_vat_rate,
+                :declarable, :uk_vat_rate,
                 :synonyms, :goods_nomenclature_item_id
 
   has_one :chapter
@@ -16,6 +16,7 @@ class Heading
   has_many :children, class_name: 'Heading'
   has_many :import_measures, class_name: 'Measure'
   has_many :export_measures, class_name: 'Measure'
+  has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
 
   format :description, with: DescriptionFormatter,
                        using: [:description]
@@ -56,5 +57,11 @@ class Heading
 
   def footnotes
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
+  end
+
+  def third_country_duty_rate
+    duty_expressions = basic_duty_rate_components.map(&:duty_expression)
+
+    (duty_expressions.blank?) ? "variable" : duty_expressions.join(" ")
   end
 end
