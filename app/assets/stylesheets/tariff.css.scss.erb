@@ -631,14 +631,26 @@ dl.chapters dt {
   left:px($token-space);
 }
 
-dl.chapter-headings .description {
-  display:block;
-  padding-top:px($top-level-padding / 2);
-  margin:0;
-  font-size:1em;
-  font-weight:normal;
-}
+dl.chapter-headings {
+  
+  dt.heading-subtitle {
+    display:block;
+    float:none;
+    position:static;
+    padding-top:px($top-level-padding / 2);
+    margin:0;
+    width:auto;
+    text-align:left;
+    font-size:1em;
+    font-weight:normal;
+    font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  }
 
+  dd.subtitle-description {
+    padding-left:0;
+    border-top:none;
+  }
+}
 .chapter-notes {
   padding:0 px($top-level-padding) 0;
   width:auto;
@@ -710,6 +722,7 @@ ul.commodities {
         background:#B5DEDB;
         width:8.6em;
         text-align:right;
+        margin-right: em(60 + $token-padding, 14);
 
         span {
           font-size:1em;
@@ -951,17 +964,9 @@ article.search-results {
     @include underlined-section-list;
 
     dt {
-      width:15%;
+      width:25%;
       float:left;
       padding-right:0px;
-    }
-    
-    dd {
-      width:85%;
-      overflow:hidden;
-    }
-
-    dt {
       margin-left:0;
       font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
     }

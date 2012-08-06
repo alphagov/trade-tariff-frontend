@@ -1,19 +1,15 @@
-<dt class="heading-code">
-  <% if heading.leaf? %>
-    <%= heading.display_short_code %>
-  <% end %>
-</dt>
-<% if heading.declarable? %>
-<dd class="declarable">
+<% if heading.leaf? %>
+<dt class="heading-code"><%= heading.display_short_code %></dt>
+<dd class="heading-description">
 <% else %>
-<dd>
+<dt class='heading-subtitle'><%= heading %></dt>
+<dd class="subtitle-description">
 <% end %>
   <% if heading.leaf? %>
     <%= link_to heading, heading_path(heading) %>
   <% else %>
-    <h2 class='description'><%= heading %></h2>
-    <dl class='chapter-headings'>
-      <%= render heading.children %>
-    </dl>
+  <dl class='chapter-headings'>
+    <%= render heading.children %>
+  </dl>
   <% end %>
 </dd>
