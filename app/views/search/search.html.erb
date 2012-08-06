@@ -1,54 +1,64 @@
 <h1 class="search-heading">Search results for '<mark><%= @search.q %></mark>'</h1>
 <article class="search-results">
   <p>Microcopy how to use/warning here.</p>
-  <h2>Sections that contain '<mark><%= @search.q %></mark>':</h2>
-  <dl class="results-subset">
-    <% @result.sections.each do |section| %>
-    <dt><%= section.position %></dt>
-    <dd>
-      <%= link_to section, section_path(section)%>
-    </dd>
+  <% if @results.any? %>
+    <% if @results.sections.any? %>
+      <h2>Sections that contain '<mark><%= @search.q %></mark>':</h2>
+      <dl class="results-subset">
+        <% @results.sections.each do |section| %>
+        <dt><%= section.position %></dt>
+        <dd>
+          <%= link_to section, section_path(section)%>
+        </dd>
+        <% end %>
+      </dl>
     <% end %>
-  </dl>
-  <h2>Chapters that contain '<mark><%= @search.q %></mark>':</h2>
-  <dl class="results-subset">
-    <% @result.chapters.each do |chapter| %>
-      <dt><%= chapter.short_code %></dt>
-      <dd>
-        <%= link_to chapter, chapter_path(chapter) %>
-      </dd>
-    <% end %>
-  </dl>
-  <h2>Headings that contain '<mark><%= @search.q %></mark>'</h2>
-  <dl class="results-subset">
-    <% @result.headings.group_by(&:chapter_code).each do |chapter, headings| %>
-    <dt><%= headings.first.chapter.short_code %></dt>
-    <dd>
-      <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
-      <dl>
-        <% headings.each do |heading| %>
-          <dt><%= heading.short_code %></dt>
+    <% if @results.chapters.any? %>
+      <h2>Chapters that contain '<mark><%= @search.q %></mark>':</h2>
+      <dl class="results-subset">
+        <% @results.chapters.each do |chapter| %>
+          <dt><%= chapter.short_code %></dt>
           <dd>
-            <%= link_to heading, heading_path(heading) %>
+            <%= link_to chapter, chapter_path(chapter) %>
           </dd>
         <% end %>
       </dl>
-    </dd>
     <% end %>
-  </dl>
-  <!-- <h2>Other terms containing '<mark><%= @search.q %></mark>':</h2>
-  <ul class="results-subset">
-    <li><a href="#">Horse chestnuts</a></li>
-    <li><a href="#">Horse beans</a></lir
-    <li><a href="#">Horse-radish</a></li>
-    <li><a href="#">Horsehair</a></li>
-    <li><a href="#">Horsehair, woven fabric</a></li>
-    <li><a href="#">Horse mackerel</a></li>
-    <li><a href="#">Horsemeat - Fresh, chilled, frozen, Salted, in brine, dried or smoked</a></li>
-  </ul>
-  <h2>Guides to classification that may be useful:</h2>
-  <ul class="results-subset">
-    <li><a href="#">Classifying saddlery and other equipment for animals</a></li>
-    <li><a href="#">Classifying leguminous vegetables</a></li>
-  </ul> -->
+    <% if @results.headings.any? %>
+      <h2>Headings that contain '<mark><%= @search.q %></mark>'</h2>
+      <dl class="results-subset">
+        <% @results.headings.group_by(&:chapter_code).each do |chapter, headings| %>
+        <dt><%= headings.first.chapter.short_code %></dt>
+        <dd>
+          <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
+          <dl>
+            <% headings.each do |heading| %>
+              <dt><%= heading.short_code %></dt>
+              <dd>
+                <%= link_to heading, heading_path(heading) %>
+              </dd>
+            <% end %>
+          </dl>
+        </dd>
+        <% end %>
+      </dl>
+    <% end %>
+    <!-- <h2>Other terms containing '<mark><%= @search.q %></mark>':</h2>
+    <ul class="results-subset">
+      <li><a href="#">Horse chestnuts</a></li>
+      <li><a href="#">Horse beans</a></lir
+      <li><a href="#">Horse-radish</a></li>
+      <li><a href="#">Horsehair</a></li>
+      <li><a href="#">Horsehair, woven fabric</a></li>
+      <li><a href="#">Horse mackerel</a></li>
+      <li><a href="#">Horsemeat - Fresh, chilled, frozen, Salted, in brine, dried or smoked</a></li>
+    </ul>
+    <h2>Guides to classification that may be useful:</h2>
+    <ul class="results-subset">
+      <li><a href="#">Classifying saddlery and other equipment for animals</a></li>
+      <li><a href="#">Classifying leguminous vegetables</a></li>
+    </ul> -->
+  <% else %>
+    <p>There are no results matching your query.</p>
+  <% end %>
 </article>

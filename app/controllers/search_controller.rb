@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def search
-    @result = @search.perform
+    @results = @search.perform
 
-    redirect_to url_for(@result.match_path) if @result.exact_match?
+    redirect_to url_for(@results.match_path) if @results.exact_match?
   end
 end

@@ -5,7 +5,7 @@ http_interactions:
     uri: http://tariff-api.dev.gov.uk/search
     body:
       encoding: US-ASCII
-      string: q=01&as_of=
+      string: q=&as_of=
     headers:
       authorization:
       - Token token="86c337686edc492184c5e9869c27a0b1"
@@ -29,16 +29,16 @@ http_interactions:
       x-ua-compatible:
       - IE=Edge
       etag:
-      - ! '"92117a675eb2b6c8c0a9f1d9bb7b0c7d"'
+      - ! '"bd080fe3906a254bf7a35f0fa7b20af8"'
       cache-control:
       - max-age=0, private, must-revalidate
       x-request-id:
-      - 084edf9fdf888bc89922bb6c374835fa
+      - 4a8a296edaddac38d05cbd44ce0ee048
       x-runtime:
-      - '0.199504'
+      - '0.021292'
     body:
       encoding: US-ASCII
-      string: ! '{"type":"exact_match","entry":{"endpoint":"chapters","id":"01"}}'
+      string: ! '{"q":["can''t be blank"]}'
     http_version: '1.1'
   recorded_at: Mon, 06 Aug 2012 08:52:45 GMT
 recorded_with: VCR 2.2.4
