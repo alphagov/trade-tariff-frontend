@@ -34,6 +34,7 @@ GOVUK.tariff = {
         initialize : function () {
             var $parentNodes = $('.has_children'),
                 isCommodityTree = false,
+                development = $('#development'),
                 $controls,
                 effectAll;
 
@@ -53,6 +54,15 @@ GOVUK.tariff = {
 
                 // hide all child lists
                 $childList.addClass('visuallyhidden');
+
+                // Matt's hack
+                if (development){
+                    if ($childList.is('.visuallyhidden')) {
+                        $childList.removeClass('visuallyhidden');
+                        $(this).addClass('open');
+                    }
+                }
+                
                 // allow expansion based on clicking
                 $parentNode.on('click', function(e) {
                     e.stopPropagation();
