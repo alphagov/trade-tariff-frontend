@@ -6,8 +6,13 @@ class Search
   class Result
     include ApiEntity
 
-    attr_reader   :sections, :headings, :chapters, :commodities
     attr_writer   :entry, :type
+
+    [:sections, :chapters, :headings, :commodities].each do |scope|
+      define_method(scope) do
+        instance_variable_get("@#{scope}").presence ||[]
+      end
+    end
 
     def exact_match?
       @type == "exact_match"
@@ -19,6 +24,10 @@ class Search
         action: :show,
         id: @entry['id']
       }
+    end
+
+    def any?
+      sections.any? || chapters.any? || headings.any?
     end
 
     def entries=(entry_data)

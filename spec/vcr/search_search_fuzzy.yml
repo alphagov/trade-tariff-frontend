@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:3018/search
+    uri: http://tariff-api.dev.gov.uk/search
     body:
       encoding: US-ASCII
       string: q=horses&as_of=
@@ -14,50 +14,56 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      server:
+      - nginx
+      date:
+      - Mon, 06 Aug 2012 08:52:45 GMT
       content-type:
       - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 200 OK
       x-ua-compatible:
       - IE=Edge
       etag:
-      - ! '"8ce3249d05e321e65735c59bee8c53ee"'
+      - ! '"cdb3f2f165ba28d9a465f95f302fc5d0"'
       cache-control:
       - max-age=0, private, must-revalidate
       x-request-id:
-      - 4266675b28513971e7f732158912799a
+      - c2b5dfe759bee92b43ef4c174cab0b33
       x-runtime:
-      - '0.033836'
-      connection:
-      - close
-      content-length:
-      - '5694'
+      - '0.123241'
     body:
       encoding: US-ASCII
-      string: ! '{"type":"fuzzy_match","entries":{"sections":[],"chapters":[],"headings":[{"id":"27624","goods_nomenclature_item_id":"0101000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00+03:00","validity_end_date":null,"description":"Live
+      string: ! '{"type":"fuzzy_match","entries":{"sections":[],"chapters":[],"headings":[{"id":"27624","goods_nomenclature_item_id":"0101000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00-08:00","validity_end_date":null,"description":"Live
         horses, asses, mules and hinnies","number_indents":0,"section":{"numeral":"I","title":"Live
-        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"live
-        animals"},"_score":2.5602632,"_type":"heading","_index":"headings","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28039","goods_nomenclature_item_id":"0205000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00+03:00","validity_end_date":null,"description":"Meat
+        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"live
+        animals"},"_score":2.5602632,"_type":"heading","_index":"headings","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28039","goods_nomenclature_item_id":"0205000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00-08:00","validity_end_date":null,"description":"Meat
         of horses, asses, mules or hinnies, fresh, chilled or frozen","number_indents":0,"section":{"numeral":"I","title":"Live
-        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"meat
-        and edible meat offal"},"_score":1.8213481,"_type":"heading","_index":"headings","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28044","goods_nomenclature_item_id":"0206000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00+03:00","validity_end_date":null,"description":"Edible
+        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"meat
+        and edible meat offal"},"_score":1.8213481,"_type":"heading","_index":"headings","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28044","goods_nomenclature_item_id":"0206000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00-08:00","validity_end_date":null,"description":"Edible
         offal of bovine animals, swine, sheep, goats, horses, asses, mules or hinnies,
         fresh, chilled or frozen","number_indents":0,"section":{"numeral":"I","title":"Live
-        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"meat
-        and edible meat offal"},"_score":1.4530461,"_type":"heading","_index":"headings","_version":null,"sort":null,"highlight":null,"_explanation":null}],"commodities":[{"id":"93797","goods_nomenclature_item_id":"0101210000","producline_suffix":"10","validity_start_date":"2012-01-01T00:00:00+02:00","validity_end_date":null,"description":"Horses","section":{"numeral":"I","title":"Live
-        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"LIVE
-        ANIMALS"},"heading":{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"LIVE
-        ANIMALS"},"_score":8.890115,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28100","goods_nomenclature_item_id":"0206809100","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00+03:00","validity_end_date":null,"description":"Of
-        horses, asses, mules and hinnies","section":{"numeral":"I","title":"Live animals;
-        animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"MEAT
-        AND EDIBLE MEAT OFFAL"},"heading":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"MEAT
-        AND EDIBLE MEAT OFFAL"},"_score":4.4450574,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28105","goods_nomenclature_item_id":"0206909100","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00+03:00","validity_end_date":null,"description":"Of
-        horses, asses, mules and hinnies","section":{"numeral":"I","title":"Live animals;
-        animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"MEAT
-        AND EDIBLE MEAT OFFAL"},"heading":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"MEAT
-        AND EDIBLE MEAT OFFAL"},"_score":4.4450574,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"72799","goods_nomenclature_item_id":"0210991000","producline_suffix":"80","validity_start_date":"2002-01-01T00:00:00+02:00","validity_end_date":null,"description":"Of
-        horses, salted, in brine or dried","section":{"numeral":"I","title":"Live
-        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"MEAT
-        AND EDIBLE MEAT OFFAL"},"heading":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00+03:00","validity_end_date":null,"description":"MEAT
-        AND EDIBLE MEAT OFFAL"},"_score":4.4450107,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null}]}}'
+        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"meat
+        and edible meat offal"},"_score":1.4530461,"_type":"heading","_index":"headings","_version":null,"sort":null,"highlight":null,"_explanation":null}],"commodities":[{"id":"93797","goods_nomenclature_item_id":"0101210000","producline_suffix":"10","validity_start_date":"2012-01-01T00:00:00-08:00","validity_end_date":null,"description":"Horses","number_indents":1,"section":{"numeral":"I","title":"Live
+        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"live
+        animals"},"heading":{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"LIVE
+        ANIMALS","number_indents":0},"_score":8.890115,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28100","goods_nomenclature_item_id":"0206809100","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00-08:00","validity_end_date":null,"description":"Of
+        horses, asses, mules and hinnies","number_indents":3,"section":{"numeral":"I","title":"Live
+        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"meat
+        and edible meat offal"},"heading":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"MEAT
+        AND EDIBLE MEAT OFFAL","number_indents":0},"_score":4.4450574,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"28105","goods_nomenclature_item_id":"0206909100","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00-08:00","validity_end_date":null,"description":"Of
+        horses, asses, mules and hinnies","number_indents":3,"section":{"numeral":"I","title":"Live
+        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"meat
+        and edible meat offal"},"heading":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"MEAT
+        AND EDIBLE MEAT OFFAL","number_indents":0},"_score":4.4450574,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null},{"id":"72799","goods_nomenclature_item_id":"0210991000","producline_suffix":"80","validity_start_date":"2002-01-01T00:00:00-08:00","validity_end_date":null,"description":"Of
+        horses, salted, in brine or dried","number_indents":4,"section":{"numeral":"I","title":"Live
+        animals; animal products (chapter 1 - 5)","position":1},"chapter":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"meat
+        and edible meat offal"},"heading":{"goods_nomenclature_sid":27809,"goods_nomenclature_item_id":"0200000000","producline_suffix":"80","validity_start_date":"1971-12-31T00:00:00-08:00","validity_end_date":null,"description":"MEAT
+        AND EDIBLE MEAT OFFAL","number_indents":0},"_score":4.4450107,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null}]}}'
     http_version: '1.1'
-  recorded_at: Fri, 03 Aug 2012 07:57:38 GMT
+  recorded_at: Mon, 06 Aug 2012 08:52:45 GMT
 recorded_with: VCR 2.2.4

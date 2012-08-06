@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3018/commodities/0101300000?as_of=2012-08-03
+    uri: http://tariff-api.dev.gov.uk/commodities/0101300000?as_of=2012-08-06
     body:
       encoding: US-ASCII
       string: ''
@@ -14,87 +14,34 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      server:
+      - nginx
+      date:
+      - Mon, 06 Aug 2012 08:52:40 GMT
       content-type:
       - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 200 OK
       x-ua-compatible:
       - IE=Edge
       etag:
-      - ! '"e440ece3172feead327afaf41aba4544"'
+      - ! '"644d92dcafd4e1b9ca8869aecaa1e2b0"'
       cache-control:
       - max-age=0, private, must-revalidate
       x-request-id:
-      - 76d79827f84c7c27ba99cb11e37c6a03
+      - e5d7386bc2a1736d56ba99794743e75e
       x-runtime:
-      - '2.472707'
-      connection:
-      - close
-      content-length:
-      - '94043'
+      - '2.747852'
     body:
       encoding: US-ASCII
       string: ! '{"producline_suffix":"80","description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[],"declarable":true,"import_measures":[{"origin":"eu","measure_type_description":"Confidential
-        Import Monitoring","legal_act":{"generating_regulation_code":"R2454/93","url":"http://eur-lex.europa.eu/Result.do?code=31993R2454&RechType=RECH_celex"},"measure_components":[],"measure_conditions":[],"geographical_area":{"iso_code":null,"description":"Statistical
-        surveillance","children_geographical_areas":[{"iso_code":"SA","description":"Saudi
-        Arabia"},{"iso_code":"BB","description":"Barbados"},{"iso_code":"SB","description":"Solomon
-        Islands"},{"iso_code":"BD","description":"Bangladesh"},{"iso_code":"SC","description":"Seychelles
-        and dependencies"},{"iso_code":"SD","description":"Sudan"},{"iso_code":"BF","description":"Burkina
-        Faso"},{"iso_code":"SG","description":"Singapore"},{"iso_code":"SH","description":"St
-        Helena and dependencies"},{"iso_code":"BH","description":"Bahrain"},{"iso_code":"BI","description":"Burundi"},{"iso_code":"SL","description":"Sierra
-        Leone"},{"iso_code":"BJ","description":"Benin"},{"iso_code":"SM","description":"San
-        Marino"},{"iso_code":"SN","description":"Senegal"},{"iso_code":"BM","description":"Bermuda"},{"iso_code":"BN","description":"Brunei"},{"iso_code":"SO","description":"Somalia"},{"iso_code":"BO","description":"Bolivia"},{"iso_code":"BR","description":"Brazil"},{"iso_code":"SR","description":"Surinam"},{"iso_code":"BS","description":"Bahamas"},{"iso_code":"ST","description":"S\u00e3o
-        Tom\u00e9 and Principe"},{"iso_code":"BT","description":"Bhutan"},{"iso_code":"SV","description":"El
-        Salvador"},{"iso_code":"HM","description":"Heard Island and McDonald Islands"},{"iso_code":"NF","description":"Norfolk
-        Island"},{"iso_code":"PS","description":"Occupied palestinian Territory"},{"iso_code":"TF","description":"French
-        Southern Territories"},{"iso_code":"TK","description":"Tokelau"},{"iso_code":"UM","description":"United
-        States Minor outlying islands"},{"iso_code":"CK","description":"Cook Islands"},{"iso_code":"NU","description":"Niue
-        Island"},{"iso_code":"XK","description":"Kosovo (As defined by United Nations
-        Security Council Resolution 1244 of 10 June 1999)"},{"iso_code":"QU","description":"Countries
-        and territories not specified"},{"iso_code":"WS","description":"Samoa"},{"iso_code":"GS","description":"South
-        Georgia and South Sandwich Islands"},{"iso_code":"GU","description":"Guam"},{"iso_code":"TL","description":"East
-        Timor"},{"iso_code":"XS","description":"Serbia"},{"iso_code":"EU","description":"European
-        Community"},{"iso_code":"CI","description":"Ivory Coast"},{"iso_code":"ME","description":"Montenegro"},{"iso_code":"AD","description":"Andorra"},{"iso_code":"NI","description":"Nicaragua"},{"iso_code":"NO","description":"Norway"},{"iso_code":"NP","description":"Nepal"},{"iso_code":"NR","description":"Nauru"},{"iso_code":"AE","description":"United
-        Arab Emirates"},{"iso_code":"NZ","description":"New Zealand"},{"iso_code":"OM","description":"Oman"},{"iso_code":"PA","description":"Panama"},{"iso_code":"AF","description":"Afghanistan"},{"iso_code":"PE","description":"Peru"},{"iso_code":"PF","description":"French
-        Polynesia"},{"iso_code":"AG","description":"Antigua and Barbuda"},{"iso_code":"PG","description":"Papua
-        New Guinea"},{"iso_code":"AI","description":"Anguilla"},{"iso_code":"PH","description":"Philippines"},{"iso_code":"AL","description":"Albania"},{"iso_code":"PK","description":"Pakistan"},{"iso_code":"AM","description":"Armenia"},{"iso_code":"AN","description":"Netherlands
-        Antilles"},{"iso_code":"PM","description":"St Pierre and Miquelon"},{"iso_code":"PN","description":"Pitcairn"},{"iso_code":"AR","description":"Argentina"},{"iso_code":"PY","description":"Paraguay"},{"iso_code":"QA","description":"Qatar"},{"iso_code":"AU","description":"Australia"},{"iso_code":"RU","description":"Russian
-        Federation"},{"iso_code":"AW","description":"Aruba"},{"iso_code":"RW","description":"Rwanda"},{"iso_code":"AZ","description":"Azerbaijan"},{"iso_code":"BA","description":"Bosnia
-        and Herzegovina"},{"iso_code":"GN","description":"Guinea"},{"iso_code":"GQ","description":"Equatorial
-        Guinea"},{"iso_code":"GT","description":"Guatemala"},{"iso_code":"GW","description":"Guinea
-        Bissau"},{"iso_code":"GY","description":"Guyana"},{"iso_code":"HK","description":"Hong
-        Kong"},{"iso_code":"HN","description":"Honduras"},{"iso_code":"HR","description":"Croatia"},{"iso_code":"HT","description":"Haiti"},{"iso_code":"ID","description":"Indonesia"},{"iso_code":"IL","description":"Israel"},{"iso_code":"IN","description":"India"},{"iso_code":"IO","description":"British
-        Indian Ocean Territory"},{"iso_code":"IQ","description":"Iraq"},{"iso_code":"IR","description":"Iran"},{"iso_code":"IS","description":"Iceland"},{"iso_code":"JM","description":"Jamaica"},{"iso_code":"JO","description":"Jordan"},{"iso_code":"JP","description":"Japan"},{"iso_code":"KE","description":"Kenya"},{"iso_code":"KG","description":"Kyrgyzstan"},{"iso_code":"KH","description":"Cambodia
-        (Kampuchea)"},{"iso_code":"KI","description":"Kiribati"},{"iso_code":"KM","description":"Comoros
-        (excluding Mayotte)"},{"iso_code":"KN","description":"St Kitts and Nevis"},{"iso_code":"KP","description":"North
-        Korea"},{"iso_code":"KR","description":"South Korea"},{"iso_code":"KW","description":"Kuwait"},{"iso_code":"KY","description":"Cayman
-        Islands"},{"iso_code":"KZ","description":"Kazakhstan"},{"iso_code":"LA","description":"Laos"},{"iso_code":"LB","description":"Lebanon"},{"iso_code":"LC","description":"St.
-        Lucia"},{"iso_code":"LK","description":"Sri Lanka"},{"iso_code":"LR","description":"Liberia"},{"iso_code":"LS","description":"Lesotho"},{"iso_code":"LY","description":"Libya"},{"iso_code":"MA","description":"Morocco"},{"iso_code":"MD","description":"Moldova"},{"iso_code":"MG","description":"Madagascar"},{"iso_code":"MH","description":"Rep.
-        of the Marshall Islands"},{"iso_code":"ML","description":"Mali"},{"iso_code":"MN","description":"Mongolia"},{"iso_code":"MO","description":"Macao"},{"iso_code":"MR","description":"Mauritania"},{"iso_code":"MU","description":"Mauritius"},{"iso_code":"MV","description":"Maldives"},{"iso_code":"MW","description":"Malawi"},{"iso_code":"MX","description":"Mexico"},{"iso_code":"MY","description":"Malaysia"},{"iso_code":"MZ","description":"Mozambique"},{"iso_code":"NA","description":"Namibia"},{"iso_code":"NC","description":"New
-        Caledonia and dependencies"},{"iso_code":"NE","description":"Niger"},{"iso_code":"NG","description":"Nigeria"},{"iso_code":"AO","description":"Angola"},{"iso_code":"GD","description":"Grenada"},{"iso_code":"ER","description":"Eritrea"},{"iso_code":"LI","description":"Liechtenstein"},{"iso_code":"PW","description":"Palau"},{"iso_code":"MS","description":"Montserrat"},{"iso_code":"MK","description":"Former
-        Yugoslav Republic of Macedonia"},{"iso_code":"MP","description":"Northern
-        Mariana Islands"},{"iso_code":"YT","description":"Mayotte"},{"iso_code":"CD","description":"Congo
-        Democratic Republic of"},{"iso_code":"MM","description":"Myanmar"},{"iso_code":"SY","description":"Syria"},{"iso_code":"SZ","description":"Swaziland"},{"iso_code":"BW","description":"Botswana"},{"iso_code":"TC","description":"Turks
-        and Caicos Islands"},{"iso_code":"BY","description":"Belarus"},{"iso_code":"TD","description":"Chad"},{"iso_code":"BZ","description":"Belize"},{"iso_code":"TG","description":"Togo"},{"iso_code":"CA","description":"Canada"},{"iso_code":"TH","description":"Thailand"},{"iso_code":"CF","description":"Central
-        African Republic"},{"iso_code":"CG","description":"Congo (Republic of)"},{"iso_code":"CH","description":"Switzerland"},{"iso_code":"TJ","description":"Tajikistan"},{"iso_code":"TM","description":"Turkmenistan"},{"iso_code":"TN","description":"Tunisia"},{"iso_code":"CL","description":"Chile"},{"iso_code":"TO","description":"Tonga"},{"iso_code":"CM","description":"Cameroon"},{"iso_code":"TR","description":"Turkey"},{"iso_code":"CN","description":"China"},{"iso_code":"TT","description":"Trinidad
-        and Tobago"},{"iso_code":"CO","description":"Colombia"},{"iso_code":"TV","description":"Tuvalu"},{"iso_code":"CR","description":"Costa
-        Rica"},{"iso_code":"TW","description":"Taiwan"},{"iso_code":"TZ","description":"Tanzania"},{"iso_code":"UA","description":"Ukraine"},{"iso_code":"CU","description":"Cuba"},{"iso_code":"UG","description":"Uganda"},{"iso_code":"US","description":"United
-        States of America"},{"iso_code":"CV","description":"Cape Verde"},{"iso_code":"UY","description":"Uruguay"},{"iso_code":"UZ","description":"Uzbekistan"},{"iso_code":"VC","description":"St
-        Vincent and the Grenadines"},{"iso_code":"VE","description":"Venezuela"},{"iso_code":"VG","description":"Brit.
-        Virgin Is."},{"iso_code":"DJ","description":"Djibouti"},{"iso_code":"VI","description":"Virgin
-        Islands of U.S."},{"iso_code":"DM","description":"Dominica"},{"iso_code":"DO","description":"Dominican
-        Republic"},{"iso_code":"VN","description":"Vietnam"},{"iso_code":"VU","description":"Vanuatu"},{"iso_code":"DZ","description":"Algeria"},{"iso_code":"WF","description":"Wallis
-        and Futuna Islands"},{"iso_code":"EC","description":"Ecuador"},{"iso_code":"EG","description":"Egypt"},{"iso_code":"ET","description":"Ethiopia"},{"iso_code":"FJ","description":"Fiji"},{"iso_code":"FK","description":"Falkland
-        Islands"},{"iso_code":"FM","description":"Micronesia, Federated States of"},{"iso_code":"FO","description":"Faroe
-        Islands"},{"iso_code":"GA","description":"Gabon"},{"iso_code":"YE","description":"Yemen"},{"iso_code":"ZA","description":"South
-        Africa"},{"iso_code":"ZM","description":"Zambia"},{"iso_code":"ZW","description":"Zimbabwe"},{"iso_code":"GE","description":"Georgia"},{"iso_code":"GH","description":"Ghana"},{"iso_code":"GI","description":"Gibraltar"},{"iso_code":"GL","description":"Greenland"},{"iso_code":"GM","description":"Gambia"},{"iso_code":"AQ","description":"Antarctica"},{"iso_code":"AS","description":"American
-        Samoa"},{"iso_code":"BV","description":"Bouvet Island"},{"iso_code":"CC","description":"Cocos
-        Islands (or Keeling Islands)"},{"iso_code":"CX","description":"Christmas Island"}]},"excluded_countries":[],"footnotes":[],"additional_code":null,"order_number":null},{"origin":"eu","measure_type_description":"Import
-        control measure","legal_act":{"generating_regulation_code":"R0101/12","url":"http://eur-lex.europa.eu/Result.do?code=32012R0101&RechType=RECH_celex"},"measure_components":[],"measure_conditions":[{"document_code":"C400","requirement_type":"document","requirement":{"requirement":"Presentation
-        of the required \"CITES\" certificate"},"action":"Import/export allowed after
-        control","condition":"Other conditions","components":[]},{"document_code":"Y900","requirement_type":"document","requirement":{"requirement":"Declared
-        goods do not belong to the Washington Convention (CITES)"},"action":"Import/export
-        allowed after control","condition":"Other conditions","components":[]},{"document_code":"","requirement_type":null,"requirement":null,"action":"Import/export
-        not allowed after control","condition":"Other conditions","components":[]}],"geographical_area":{"iso_code":null,"description":"ERGA
+        %","uk_vat_rate":"0.00 %","children":[],"declarable":true,"import_measures":[{"origin":"eu","measure_type_description":"Supplementary
+        unit","legal_act":{"generating_regulation_code":"R2658/87","url":"http://eur-lex.europa.eu/Result.do?code=31987R2658&RechType=RECH_celex"},"measure_components":[{"duty_amount":null,"duty_expression_id":"99","monetary_unit":null,"measurement_unit":"Number
+        of items","measurement_unit_qualifier":null}],"measure_conditions":[],"geographical_area":{"iso_code":null,"description":"ERGA
         OMNES","children_geographical_areas":[{"iso_code":"SA","description":"Saudi
         Arabia"},{"iso_code":"BB","description":"Barbados"},{"iso_code":"SB","description":"Solomon
         Islands"},{"iso_code":"BD","description":"Bangladesh"},{"iso_code":"SC","description":"Seychelles
@@ -148,18 +95,7 @@ http_interactions:
         Islands"},{"iso_code":"GA","description":"Gabon"},{"iso_code":"YE","description":"Yemen"},{"iso_code":"ZA","description":"South
         Africa"},{"iso_code":"ZM","description":"Zambia"},{"iso_code":"ZW","description":"Zimbabwe"},{"iso_code":"GE","description":"Georgia"},{"iso_code":"GH","description":"Ghana"},{"iso_code":"GI","description":"Gibraltar"},{"iso_code":"GL","description":"Greenland"},{"iso_code":"GM","description":"Gambia"},{"iso_code":"AQ","description":"Antarctica"},{"iso_code":"AS","description":"American
         Samoa"},{"iso_code":"BV","description":"Bouvet Island"},{"iso_code":"CC","description":"Cocos
-        Islands (or Keeling Islands)"},{"iso_code":"CX","description":"Christmas Island"}]},"excluded_countries":[],"footnotes":[{"code":"CD370","description":"The
-        application of the individual duty rate for this company shall be conditional
-        upon presentation to the customs authorities of the Member States of a valid
-        commercial invoice, which must include a declaration signed by an officer
-        of the entity issuing the commercial invoice, in the following format: \n1.
-        The name and function of the official of the entity which has issued the commercial
-        invoice. \n2. The following declaration: \"I, the undersigned, certify that
-        the [volume] of tartaric acid sold for export to the European Union covered
-        by this invoice was manufactured by [company name and address] [TARIC additional
-        code] in (country concerned). I declare that the information provided in this
-        invoice is complete and correct.\"\nDate and signature\nIf no such invoice
-        is presented, the duty rate applicable to all other companies shall apply."}],"additional_code":null,"order_number":null},{"origin":"eu","measure_type_description":"Veterinary
+        Islands (or Keeling Islands)"},{"iso_code":"CX","description":"Christmas Island"}]},"excluded_countries":[],"footnotes":[],"additional_code":null,"order_number":null},{"origin":"eu","measure_type_description":"Veterinary
         control","legal_act":{"generating_regulation_code":"D0275/07","url":"http://eur-lex.europa.eu/Result.do?code=32007D0275&RechType=RECH_celex"},"measure_components":[],"measure_conditions":[{"document_code":"C640","requirement_type":"document","requirement":{"requirement":"Common
         veterinary entry document (CVED) in accordance with Commission Regulation
         (EC) No. 282/2004, used for veterinary checks on live animals."},"action":"Import/export
@@ -231,8 +167,13 @@ http_interactions:
         was manufactured by [company name and address] [TARIC additional code] in
         (country concerned). I declare that the information provided in this invoice
         is complete and correct.\"\nDate and signature\nIf no such invoice is presented,
-        the duty rate applicable to all other companies shall apply."}],"additional_code":null,"order_number":null},{"origin":"eu","measure_type_description":"Third
-        country duty","legal_act":{"generating_regulation_code":"R1006/11","url":"http://eur-lex.europa.eu/Result.do?code=32011R1006&RechType=RECH_celex"},"measure_components":[{"duty_amount":7.7,"duty_expression_id":"01","monetary_unit":null,"measurement_unit":null,"measurement_unit_qualifier":null}],"measure_conditions":[],"geographical_area":{"iso_code":null,"description":"ERGA
+        the duty rate applicable to all other companies shall apply."}],"additional_code":null,"order_number":null},{"origin":"eu","measure_type_description":"Import
+        control measure","legal_act":{"generating_regulation_code":"R0101/12","url":"http://eur-lex.europa.eu/Result.do?code=32012R0101&RechType=RECH_celex"},"measure_components":[],"measure_conditions":[{"document_code":"C400","requirement_type":"document","requirement":{"requirement":"Presentation
+        of the required \"CITES\" certificate"},"action":"Import/export allowed after
+        control","condition":"Other conditions","components":[]},{"document_code":"Y900","requirement_type":"document","requirement":{"requirement":"Declared
+        goods do not belong to the Washington Convention (CITES)"},"action":"Import/export
+        allowed after control","condition":"Other conditions","components":[]},{"document_code":"","requirement_type":null,"requirement":null,"action":"Import/export
+        not allowed after control","condition":"Other conditions","components":[]}],"geographical_area":{"iso_code":null,"description":"ERGA
         OMNES","children_geographical_areas":[{"iso_code":"SA","description":"Saudi
         Arabia"},{"iso_code":"BB","description":"Barbados"},{"iso_code":"SB","description":"Solomon
         Islands"},{"iso_code":"BD","description":"Bangladesh"},{"iso_code":"SC","description":"Seychelles
@@ -286,9 +227,19 @@ http_interactions:
         Islands"},{"iso_code":"GA","description":"Gabon"},{"iso_code":"YE","description":"Yemen"},{"iso_code":"ZA","description":"South
         Africa"},{"iso_code":"ZM","description":"Zambia"},{"iso_code":"ZW","description":"Zimbabwe"},{"iso_code":"GE","description":"Georgia"},{"iso_code":"GH","description":"Ghana"},{"iso_code":"GI","description":"Gibraltar"},{"iso_code":"GL","description":"Greenland"},{"iso_code":"GM","description":"Gambia"},{"iso_code":"AQ","description":"Antarctica"},{"iso_code":"AS","description":"American
         Samoa"},{"iso_code":"BV","description":"Bouvet Island"},{"iso_code":"CC","description":"Cocos
-        Islands (or Keeling Islands)"},{"iso_code":"CX","description":"Christmas Island"}]},"excluded_countries":[],"footnotes":[],"additional_code":null,"order_number":null},{"origin":"eu","measure_type_description":"Supplementary
-        unit","legal_act":{"generating_regulation_code":"R2658/87","url":"http://eur-lex.europa.eu/Result.do?code=31987R2658&RechType=RECH_celex"},"measure_components":[{"duty_amount":null,"duty_expression_id":"99","monetary_unit":null,"measurement_unit":"Number
-        of items","measurement_unit_qualifier":null}],"measure_conditions":[],"geographical_area":{"iso_code":null,"description":"ERGA
+        Islands (or Keeling Islands)"},{"iso_code":"CX","description":"Christmas Island"}]},"excluded_countries":[],"footnotes":[{"code":"CD370","description":"The
+        application of the individual duty rate for this company shall be conditional
+        upon presentation to the customs authorities of the Member States of a valid
+        commercial invoice, which must include a declaration signed by an officer
+        of the entity issuing the commercial invoice, in the following format: \n1.
+        The name and function of the official of the entity which has issued the commercial
+        invoice. \n2. The following declaration: \"I, the undersigned, certify that
+        the [volume] of tartaric acid sold for export to the European Union covered
+        by this invoice was manufactured by [company name and address] [TARIC additional
+        code] in (country concerned). I declare that the information provided in this
+        invoice is complete and correct.\"\nDate and signature\nIf no such invoice
+        is presented, the duty rate applicable to all other companies shall apply."}],"additional_code":null,"order_number":null},{"origin":"eu","measure_type_description":"Third
+        country duty","legal_act":{"generating_regulation_code":"R1006/11","url":"http://eur-lex.europa.eu/Result.do?code=32011R1006&RechType=RECH_celex"},"measure_components":[{"duty_amount":7.7,"duty_expression_id":"01","monetary_unit":null,"measurement_unit":null,"measurement_unit_qualifier":null}],"measure_conditions":[],"geographical_area":{"iso_code":null,"description":"ERGA
         OMNES","children_geographical_areas":[{"iso_code":"SA","description":"Saudi
         Arabia"},{"iso_code":"BB","description":"Barbados"},{"iso_code":"SB","description":"Solomon
         Islands"},{"iso_code":"BD","description":"Bangladesh"},{"iso_code":"SC","description":"Seychelles
@@ -531,5 +482,5 @@ http_interactions:
         ANIMALS"},"ancestors":[],"heading":{"goods_nomenclature_item_id":"0101000000","description":"Live
         horses, asses, mules and hinnies"}}'
     http_version: '1.1'
-  recorded_at: Fri, 03 Aug 2012 07:40:14 GMT
+  recorded_at: Mon, 06 Aug 2012 08:52:40 GMT
 recorded_with: VCR 2.2.4
