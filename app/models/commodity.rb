@@ -16,6 +16,7 @@ class Commodity
   has_many :ancestors, class_name: 'Commodity'
   has_many :import_measures, class_name: 'Measure'
   has_many :export_measures, class_name: 'Measure'
+  has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
 
   format :description, with: DescriptionFormatter,
                        using: [:description]
@@ -61,5 +62,11 @@ class Commodity
 
   def footnotes
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
+  end
+
+  def third_country_duty_rate
+    duty_expressions = basic_duty_rate_components.map(&:duty_expression)
+
+    (duty_expressions.blank?) ? "variable" : duty_expressions.join(" ")
   end
 end
