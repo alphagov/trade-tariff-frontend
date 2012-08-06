@@ -179,19 +179,43 @@ $expand-arrow-space: 9 + $token-padding;
   font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-@mixin underlined-primary-item {
-  border-top:1px solid #eee;
+@mixin underlined-section-list {
+  dt,
+  dd {
+    border-top:1px solid #eee;
+  }
 
-  &:nth-child(1) {
+  dt:nth-child(1),
+  dd:nth-child(2) {
     border-top:none;
     padding-top:1px;
   }
 }
 
-@mixin underlined-secondary-item {
-  border-top:1px solid #eee;
+@mixin underlined-ordered-list {
+  li {
+    border-top:1px solid #eee;
+  }
 
-  &:nth-child(2) {
+  li:nth-child(1) {
+    border-top:none;
+    padding-top:1px;
+  }
+}
+
+@mixin underlined-token-list {
+  dt,
+  dl dt:nth-child(1) {
+    border-top:1px solid #fff;
+  }
+
+  dd,
+  dl dd:nth-child(2) {
+    border-top:1px solid #eee;
+  }
+
+  dt:nth-child(1),
+  dd:nth-child(2) {
     border-top:none;
     padding-top:1px;
   }
@@ -204,10 +228,6 @@ $expand-arrow-space: 9 + $token-padding;
   margin: 0 px(-1 * $top-level-padding) 0 px(-1 * ($side-padding + $token-width + $token-padding));
   padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding + $token-width + $token-padding);
   background: #fff;
-
-  li {
-    @include underlined-primary-item;
-  }
 }
 
 /* end mixins */
@@ -497,7 +517,13 @@ article dt {
     position:static;
     width:auto;
     margin-right:px($token-padding);
+    margin-left:-1 * px($token-padding);
   }
+}
+
+dl.chapters,
+dl.tariff-fragments .chapter-headings {
+  @include underlined-token-list;
 }
 
 dl.chapters dt,
@@ -560,6 +586,7 @@ p.sections-intro {
 }
 
 dl.sections {
+  @include underlined-section-list;
   background:#fff;
 
   dt {
@@ -569,14 +596,12 @@ dl.sections {
     margin-left:10%;
     text-align:left;
     font-weight:normal;
-    @include underlined-primary-item;
   }
 }
 
 dl.sections dd {
   width:75%;
   padding-left:0px;
-  @include underlined-secondary-item;
 }
 
 /* chapters and chapter headings */
@@ -595,6 +620,10 @@ dl.tariff-fragments dl.chapter-headings,
 dl.chapters,
 p.chapters-intro {
   @include selected-section(0);
+}
+
+dl.chapters {
+  @include underlined-token-list;
 }
 
 dl.chapter-headings dt,
@@ -651,6 +680,7 @@ dl.chapter-headings .description {
 
 ul.commodities {
   @include selected-section($commodity-padding);
+  @include underlined-ordered-list;
   @include contain-float;
   position:relative; /* to give z-index */
 
@@ -903,11 +933,39 @@ article.search-results {
     position:relative;
     background:none;
     padding:0;
+    @include underlined-token-list;
   }
 
   .results-subset {
     margin-left:px($results-padding);
     border-bottom:1px solid #eee;
+
+    li {
+       @include underlined-ordered-list;
+       font-size:1em; /* 14px */
+       list-style:none;
+       margin-left:-1 * px($token-padding);
+    }
+  }
+
+  .sections {
+    @include underlined-section-list;
+    padding-left:px($token-space);
+
+    dt,
+    dd {
+      width:auto;
+    }
+
+    dt {
+      margin-left:0;
+      font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
+      padding-right:px($token-padding);
+    }
+
+    dd {
+      padding-left:0;
+    }
   }
 
   dt {
@@ -917,7 +975,6 @@ article.search-results {
   dd {
     padding-left:px($token-space);
     float:none;
-    @include underlined-secondary-item;
   }
 
   dd a {
@@ -926,13 +983,7 @@ article.search-results {
   }
 
   dl dl {
-    margin-left:0;
-  }
-
-  li {
-    font-size:1em; /* 14px */
-    list-style:none;
-    @include underlined-primary-item;
+    margin-left:-1 * px($token-padding);
   }
 }
 
