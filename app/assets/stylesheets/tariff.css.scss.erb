@@ -913,7 +913,7 @@ ul.tree-controls li {
 
 /* variables specific to search */
 
-$results-padding: ((2 * $token-space) + $token-padding) + $top-level-padding;
+$results-padding: 81 - $top-level-padding;
 
 /* end variables specific to search */
 
@@ -963,7 +963,7 @@ article.search-results {
     @include underlined-section-list;
 
     dt {
-      width:25%;
+      width:15%;
       float:left;
       padding-right:0px;
       margin-left:0;
@@ -971,7 +971,9 @@ article.search-results {
     }
 
     dd {
+      width:84%;
       padding-left:0;
+      overflow:hidden;
     }
   }
 
