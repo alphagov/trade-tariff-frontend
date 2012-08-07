@@ -13,4 +13,12 @@
       </dd>
     </dl>
   </div>
+  <% if @section.section_note.present? %>
+    <article class='section-notes'>
+      <h2>Section notes</h2>
+
+      <%= simple_format @section.section_note %>
+    </article>
+  <% end %>
 </article>
+
