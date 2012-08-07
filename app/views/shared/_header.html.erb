@@ -4,7 +4,7 @@
       <span>Service</span>
       Trade Tariff
     </h1>
-    <p class="tariff-date <%= @section_css %>">This tariff applies <b>7th August 2012</b> <a href="#date-filter">change date</a></p>
+    <p class="tariff-date <%= @section_css %>">This tariff is for 7 August 2012 <a href="#date-filter">change date</a></p>
   </hgroup>
 </header>
 <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}"  } do |f| %>

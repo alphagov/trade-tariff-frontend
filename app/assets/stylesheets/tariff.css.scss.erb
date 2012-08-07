@@ -274,7 +274,7 @@ mark {
 
   a {
     font-size:em(14, 16);
-    padding-left:em(7, 14);
+    padding-left:1em;
   }
 }
 
@@ -388,64 +388,6 @@ article.tariff {
 
 .help-notice {
   padding:0.25em 1em 0.25em 1em;
-}
-
-
-#search-controls {
-  position: absolute;
-  right: 0;
-  top: em(80, 16);
-  width: 192px;
-
-  .related-module {
-    background: #fff;
-    font-size: 0.85em;
-    padding: 1.35714285em 1em 0.35714285em;
-    margin-bottom:2em;
-
-    address {
-      font-style:normal;
-    }
-
-    h2 {
-      font-size:em(14, 14);
-    }
-
-    a,
-    .btn {
-      margin-bottom:1em;
-    }
-
-    a,
-    label {
-      display:block;
-    }
-
-    .control-group {
-      margin-bottom:0.75em;
-    }
-
-    input {
-      margin-left:0;
-    }
-
-    .btn {
-      background-color: #28a197;
-      border-color: #28a197;
-    }
-    address{
-      a {
-        margin-bottom: 0;
-      }
-    
-      .tel{
-        margin-bottom: 1em;
-        color: #000;
-        font-style:normal;
-        font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
-      }
-    }
-  }
 }
 
 .tariff-search {
@@ -765,6 +707,11 @@ ul.commodities {
       float: left;
       display: block;
 
+      &.description {
+        padding-right:8.6em;
+        margin-right:px($token-space);
+      }
+
       &.identifier {
         @include tariff-identifier;
         font-weight:normal;
@@ -1050,9 +997,33 @@ article.search-results {
 
 .date-filter-search {
   line-height:2em;
+}
+
+.related-module {
+  background: #fff;
   font-size:em(14, 16);
   padding:px($top-level-padding);
-  background:#fff;
+  @include contain-float;
+
+  a {
+  }
+
+  address{
+    float:left;
+    width:50%;
+    text-align:center;
+    font-style:normal;
+
+    a {
+      margin-bottom: 0;
+    }
+  
+    .tel{
+      margin-bottom: 1em;
+      color: #000;
+      font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    }
+  }
 }
 
 #loader {

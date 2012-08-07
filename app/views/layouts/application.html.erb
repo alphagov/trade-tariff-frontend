@@ -34,6 +34,14 @@
               <%= f.button 'Search', class: 'button right' %>
             <% end %>
 
+        </div>
+        -->
+            <%= form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
+              <%= f.label :date, "Date of Tariff information" %>
+              <%= f.text_field :date, class: 'date', size: 15, name: 'date', value: f.object.date.to_formatted_s(:default) %>
+
+              <%= f.button  'Change date', class: 'btn button right' %>
+            <% end %>
             <div class="related-module">
               <address class="vcard">
                 <a data-skip-pjax class="fn org url" href="http://customs.hmrc.gov.uk/channelsPortalWebApp/channelsPortalWebApp.portal?_nfpb=true&amp;_pageLabel=pageVAT_ShowContent&amp;id=HMCE_CL_001640&amp;propertyType=document" target="_blank" rel="external">
@@ -48,14 +56,6 @@
                 <a href="tel:+448450109000" class="tel">0845 010 9000</a>
               </address>
           </div>
-        </div>
-        -->
-            <%= form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search', id: 'date-filter' } do |f| %>
-              <%= f.label :date, "Date of Tariff information" %>
-              <%= f.text_field :date, class: 'date', size: 15, name: 'date', value: f.object.date.to_formatted_s(:default) %>
-
-              <%= f.button  'Change date', class: 'btn button right' %>
-            <% end %>
       </section>
     </div>
   </body>
