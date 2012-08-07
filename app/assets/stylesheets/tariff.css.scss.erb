@@ -262,19 +262,22 @@ mark {
   font-size:em(14, 24);
 }
 
-.tariff header.page-header hgroup p {
+.tariff header.page-header hgroup p,
+.tariff header.page-header hgroup form {
   font-size:em(14, 16);
   text-align:right;
   margin:em(-20, 14) 0 0;
   padding:0 0 em(16, 14);
+  background:none;
 
   &.sections-context {
-    margin-right:8.4375%;
+    margin-right:7.5539149%%;
   }
 
   a {
     font-size:em(14, 16);
-    padding-left:1em;
+    display:inline-block;
+    margin-left:1em;
   }
 }
 
@@ -997,6 +1000,17 @@ article.search-results {
 
 .date-filter-search {
   line-height:2em;
+
+  input {
+    margin-right:1em;
+  }
+
+  img {
+    vertical-align:middle;
+    display:inline-block;
+    margin-right:1em;
+    cursor:pointer;
+  }
 }
 
 .related-module {
