@@ -54,14 +54,6 @@ GOVUK.tariff = {
 
                 // hide all child lists
                 $childList.addClass('visuallyhidden');
-
-                // Matt's hack
-                if (development){
-                    if ($childList.is('.visuallyhidden')) {
-                        $childList.removeClass('visuallyhidden');
-                        $parentNode.addClass('open');
-                    }
-                }
                 
                 // allow expansion based on clicking
                 $parentNode.on('click', function(e) {

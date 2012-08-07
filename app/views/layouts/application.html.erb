@@ -16,9 +16,7 @@
     <div id="wrapper" class="tariff service">
       <section id="content" role="main" class="group">
         <%= render 'shared/header' %>
-        <% unless Rails.env.development? %>
-          <div id='development'></div>
-        <% end %>
+
         <div data-pjax-container class="article-container group">
           <%= yield %>
         </div>

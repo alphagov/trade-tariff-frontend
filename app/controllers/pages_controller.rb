@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
   layout "pages"
-  def index; end
+  def index
+    @section_css = 'visuallyhidden'
+  end
 end
