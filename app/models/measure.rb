@@ -3,7 +3,7 @@ require 'api_entity'
 class Measure
   include ApiEntity
 
-  attr_accessor :origin, :measure_type_description
+  attr_accessor :origin, :measure_type_description, :ordernumber
 
   has_one :geographical_area
   has_one :legal_act
@@ -58,5 +58,9 @@ class Measure
   def previous_condition_for(condition)
     measure_conditions.select(&:has_duty_expression_based_requirement?)
                       .detect{|mc| mc.requirement.sequence_number == condition.requirement.sequence_number - 1 }
+  end
+
+  def order_number
+    @order_number.presence || OrderNumber.new(number: ordernumber, descriptionless: true)
   end
 end
