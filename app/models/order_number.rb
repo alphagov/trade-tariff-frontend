@@ -35,4 +35,8 @@ class OrderNumber
   def id
     @id ||= SecureRandom.hex(16)
   end
+
+  def has_definition?
+    definition.present?
+  end
 end
