@@ -243,6 +243,11 @@ mark {
   background:none;
 }
 
+.tariff header.page-header hgroup,
+.article-container {
+  margin-right:0;
+}
+
 .tariff header.page-header hgroup{
  padding-bottom:0;
 }
@@ -353,8 +358,8 @@ article.tariff {
 
   p {
     font-size:1em;
-    padding-left:10%;
-    padding-right:10%;
+    padding-left:8.4375%;
+    padding-right:8.4375%;
     margin-left:px($top-level-padding);
     margin-right:px($top-level-padding);
   }
@@ -424,6 +429,35 @@ article.tariff {
       }
     }
   }
+}
+
+.tariff-search {
+  text-align:right;
+  font-size:em(14, 16);
+  line-height:2em;
+  background:#fff;
+  height:2em;
+  padding:0.5em px($top-level-padding) 0.5em em(81, 14);
+  
+  a {
+    float:left;
+  }
+
+  p {
+    display:inline;
+    padding:0 3em 0 0;
+    margin:0;
+    text-align:left;
+
+    a {
+      font-size:0.85em;
+      float:none;
+    }
+  }
+}
+
+.tariff-search-sections {
+  padding-right:em(81, 14);
 }
 
 #commodity_search_q {
@@ -588,19 +622,20 @@ p.sections-intro {
 dl.sections {
   @include underlined-section-list;
   background:#fff;
+  padding-left:8.4375%;
+  padding-right:8.4375%;
 
   dt {
     position:static;
     display:inline;
-    width:15%;
-    margin-left:10%;
+    width:16%;
     text-align:left;
     font-weight:normal;
   }
 }
 
 dl.sections dd {
-  width:75%;
+  width:84%;
   padding-left:0px;
 }
 

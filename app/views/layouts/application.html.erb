@@ -22,6 +22,7 @@
         <div data-pjax-container class="article-container group">
           <%= yield %>
         </div>
+        <!--
         <div id="search-controls">
             <%= simple_form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
               <h2>This tariff applies</h2>
@@ -32,24 +33,17 @@
               <%= f.button :submit, 'Change', class: 'btn button right' %>
             <% end %>
 
-            <%= simple_form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search related-module' } do |f| %>
+            <%= form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search related-module' } do |f| %>
               <a href="/sections">View all sections</a>
-              <%= f.input :q, required: false, label: "Search the tariff",
+              <%= f.text_field :q, required: false, label: "Search the tariff",
                         input_html: {
                           name: 'q',
                           size: 21,
                           placeholder: "name/commodity code" } %>
-              <%= f.input :as_of, as: :hidden,
-                                  input_html: { name: "as_of"} %>
+              <%= f.hidden_field :as_of, input_html: { name: "as_of"} %>
 
-              <%= f.button :submit, 'Search', class: 'button right' %>
+              <%= f.button 'Search', class: 'button right' %>
             <% end %>
-
-            <!--
-            <div class="related-module">
-              TODO: Related links if any would go in here
-            </div>
-             -->
 
             <div class="related-module">
               <address class="vcard">
@@ -66,6 +60,7 @@
               </address>
           </div>
         </div>
+        -->
       </section>
     </div>
   </body>

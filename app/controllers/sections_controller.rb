@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
   def index
     @sections = Section.all
+    @section_css = 'tariff-search-sections'
   end
 
   def show
