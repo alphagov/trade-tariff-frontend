@@ -3,7 +3,7 @@ require 'api_entity'
 class Section
   include ApiEntity
 
-  attr_accessor :numeral, :position, :title, :chapters
+  attr_accessor :numeral, :position, :title, :chapters, :section_note
 
   has_many :chapters
 

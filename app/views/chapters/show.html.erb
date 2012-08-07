@@ -15,8 +15,12 @@
         </dl>
       </dd>
     </dl>
-   <article class="chapter-notes">
-      <h2>Chapter notes</h2>
-   </article>
-  </div>
+    <% if @chapter.chapter_note.present? %>
+      <article class="chapter-notes">
+        <h2>Chapter notes</h2>
+
+        <%= simple_format @chapter.chapter_note %>
+      </article>
+    <% end %>
+    </div>
 </article>
