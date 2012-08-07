@@ -24,15 +24,6 @@
         </div>
         <!--
         <div id="search-controls">
-            <%= simple_form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
-              <h2>This tariff applies</h2>
-              <%= f.input :date, label: 'Date of Results', 
-                  input_html: { class: 'date', size: 15, name: 'date', value: f.object.date.to_formatted_s(:default) },
-                  label_html: { class: 'visuallyhidden' } %>
-
-              <%= f.button :submit, 'Change', class: 'btn button right' %>
-            <% end %>
-
             <%= form_for @search, method: :get, url: perform_search_path, html: { class: 'tariff-search related-module' } do |f| %>
               <a href="/sections">View all sections</a>
               <%= f.text_field :q, required: false, label: "Search the tariff",
@@ -61,6 +52,12 @@
           </div>
         </div>
         -->
+            <%= form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search', id: 'date-filter' } do |f| %>
+              <%= f.label :date, "Date of Tariff information" %>
+              <%= f.text_field :date, class: 'date', size: 15, name: 'date', value: f.object.date.to_formatted_s(:default) %>
+
+              <%= f.button  'Change date', class: 'btn button right' %>
+            <% end %>
       </section>
     </div>
   </body>

@@ -251,8 +251,7 @@ GOVUK.tariff = {
         initialize : function () {
             var $form = $('#date-filter'),
                 $input = $form.find('input.date'),
-                $btn = $form.find('input.button'),
-                $changeLink = $('<a href="#">Change date</a>');
+                $btn = $form.find('input.button');
 
             // if form has already been initialised, quit
             if ($form.find('a').length) {
@@ -266,17 +265,6 @@ GOVUK.tariff = {
 
             // datepicker is allowing clicks on date anchors to pass through so prevent this
             $('#ui-datepicker-div').on('click', function (e) {
-                return false;
-            });
-
-            $form.append($changeLink);
-
-            $changeLink.on('click', function (e) {
-                $form.addClass('editMode');
-                $input.focus();
-                $(this).remove();
-                $btn.show();
-
                 return false;
             });
         }

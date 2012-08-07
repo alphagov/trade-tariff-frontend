@@ -249,16 +249,33 @@ mark {
 }
 
 .tariff header.page-header hgroup{
- padding-bottom:0;
+  padding-bottom:0;
+  padding-right:px($top-level-padding);
 }
 
 .tariff header.page-header hgroup h1{
   font-size:em(24, 16);
-  padding:em(16, 24) em($top-level-padding, 24) em(16, 24) em(73, 24);
+  padding:em(16, 24) em($top-level-padding, 24) 0 em(73, 24);
 }
 
 .tariff header.page-header hgroup h1 span {
   font-size:em(14, 24);
+}
+
+.tariff header.page-header hgroup p {
+  font-size:em(14, 16);
+  text-align:right;
+  margin:em(-20, 14) 0 0;
+  padding:0 0 em(16, 14);
+
+  &.sections-context {
+    margin-right:8.4375%;
+  }
+
+  a {
+    font-size:em(14, 16);
+    padding-left:em(7, 14);
+  }
 }
 
 .commodities .chapter-code,
@@ -456,7 +473,7 @@ article.tariff {
   }
 }
 
-.tariff-search-sections {
+.sections-context {
   padding-right:em(81, 14);
 }
 
@@ -1031,6 +1048,13 @@ article.search-results {
   }
 }
 
+.date-filter-search {
+  line-height:2em;
+  font-size:em(14, 16);
+  padding:px($top-level-padding);
+  background:#fff;
+}
+
 #loader {
   position:fixed;
   top:45%;
@@ -1081,22 +1105,14 @@ article.search-results {
     display:none;
   }
 
-  #date-filter input.date {
-    border:none;
-  }
-
-  #date-filter.editMode input.date {
-    border:1px solid #BBB;
-  }
-
-  #date-filter input.button {
-    display:none;
-  }
-
   .conditions,
   .footnotes {
     display:none; 
     clear:both;
+  }
+
+  .date-filter-search {
+    display:none;
   }
 
   .tooltip-description {
