@@ -18,7 +18,7 @@ namespace :panopticon do
         section: "business/international-trade",
         paths: [APP_SLUG],
         prefixes: [APP_SLUG],
-        live: false,
+        live: true,
         indexable_content: "Search for import and export commodity codes and for tax, duty and licenses that apply to your goods")
     registerer.register(record)
   end
