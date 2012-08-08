@@ -1,3 +1,6 @@
+require 'httparty'
+require 'multi_json'
+
 module ApiEntity
   class NotFound < StandardError; end
   class Error < StandardError; end
@@ -9,9 +12,9 @@ module ApiEntity
     include ActiveModel::Conversion
 
     include HTTParty
+    include MultiJson
     base_uri Rails.application.config.api_host
     debug_output if Rails.env.development?
-    headers 'authorization' => ActionController::HttpAuthentication::Token.encode_credentials("86c337686edc492184c5e9869c27a0b1")
 
     attr_reader :attributes
 

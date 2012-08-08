@@ -1,10 +1,13 @@
 TariffWeb::Application.routes.draw do
-  match "/search" => "search#search", via: :get, as: :perform_search
+  scope :path => "#{APP_SLUG}" do
+    get "/" => "pages#index"
+    match "/search" => "search#search", via: :get, as: :perform_search
 
-  resources :sections, only: [:index, :show]
-  resources :chapters, only: [:index, :show]
-  resources :headings, only: [:index, :show]
-  resources :commodities, only: [:index, :show, :edit, :update]
+    resources :sections, only: [:index, :show]
+    resources :chapters, only: [:index, :show]
+    resources :headings, only: [:index, :show]
+    resources :commodities, only: [:index, :show]
+  end
 
-  root to: 'pages#index'
+  root :to => redirect("/#{APP_SLUG}", :status => 302)
 end

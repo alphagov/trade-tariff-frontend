@@ -6,8 +6,8 @@ gem 'rails', '3.2.7'
 gem 'simple_form'
 
 gem 'oj'
-
 gem 'httparty'
+gem 'multi_json'
 
 gem 'kaminari'
 gem 'plek'
@@ -16,7 +16,7 @@ gem 'simplecov-rcov'
 gem 'ci_reporter'
 
 gem 'slimmer'
-gem 'gds-api-adapters', '~> 0.0.43'
+gem 'gds-api-adapters', '~> 0.1.2'
 
 gem 'airbrake'
 gem 'lograge'
