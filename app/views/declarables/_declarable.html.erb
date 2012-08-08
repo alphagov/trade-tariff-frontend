@@ -11,11 +11,15 @@
             <dd><%= link_to declarable.chapter, chapter_path(declarable.chapter) %>
               <dl>
                 <dt class="heading-code"><%= declarable.heading.display_short_code %></dt>
-                <dd><%= link_to declarable.heading, heading_path(declarable.heading) %>
-                    <% if with_commodity_tree %>
+                <% if with_commodity_tree %>
+                  <dd><%= link_to declarable.heading, heading_path(declarable.heading) %>
                       <%= commodity_tree(declarable, declarable.ancestors) %>
-                    <% end %>
-                </dd>
+                  </dd>
+                <% else %>
+                  <dd class="declarable">
+                    <h1><%= link_to declarable.heading, heading_path(declarable.heading) %></h1>
+                  </dd>
+                <% end %>
               </dl>
             </dd>
           </dl>
