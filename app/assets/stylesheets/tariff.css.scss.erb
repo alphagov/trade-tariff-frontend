@@ -248,6 +248,10 @@ mark {
   margin-right:0;
 }
 
+.tariff .article-container {
+  padding-bottom:2em;
+}
+
 .tariff header.page-header hgroup{
   padding-bottom:0;
   padding-right:px($top-level-padding);
@@ -271,7 +275,7 @@ mark {
   background:none;
 
   &.sections-context {
-    margin-right:7.5539149%%;
+    margin-right:7.5539149%;
   }
 
   a {
@@ -352,7 +356,7 @@ article table {
     padding-left:0;
   }
 
-  a[rel="external"]::after {
+  a[rel="external"]:after {
     content:"";
     margin-left:0;
     margin-right:0;
@@ -361,7 +365,6 @@ article table {
 
 article.tariff {
   font-size:em(14, 16);
-  padding-bottom:2em;
   min-height:34em; /* right column needs this to show all content */
   _height:34em;
 }
@@ -431,6 +434,11 @@ article.tariff {
   font-size:em(14, 16);
   padding:px($top-level-padding);
   display:none;
+
+  /* IE6 fix */
+  *.ui-datepicker-header {
+    width:1px;
+  }
 
   .ui-datepicker-header {
     padding:0 px($token-padding + 16);
@@ -1006,17 +1014,21 @@ article.search-results {
   }
 
   img {
-    vertical-align:middle;
+    vertical-align:top;
     display:inline-block;
     margin-right:1em;
     cursor:pointer;
+  }
+
+  .button {
+    vertical-align:middle;
   }
 }
 
 .related-module {
   background: #fff;
   font-size:em(14, 16);
-  padding:px($top-level-padding);
+  padding:1em;
   @include contain-float;
 
   a {
@@ -1033,7 +1045,8 @@ article.search-results {
     }
   
     .tel{
-      margin-bottom: 1em;
+      display:inline-block;
+      margin-left:0.5em;
       color: #000;
       font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
     }

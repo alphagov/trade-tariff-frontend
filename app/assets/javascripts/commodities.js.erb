@@ -244,26 +244,35 @@ GOVUK.tariff = {
             var $form = $('#date-filter'),
                 $input = $form.find('input.date'),
                 $btn = $form.find('input.button'),
-                $infoPara = $('.page-header hgroup p');
+                $infoPara = $('.page-header hgroup p'),
+                focusInput;
 
+            focusInput = function () {
+                // Input does not receive focus until this instruction is pushed to the end of the stack in IE
+                window.setTimeout(function () {
+                  $input.focus();
+                }, 0);
+            };
+                
             // datepicker is allowing clicks on date anchors to pass through so prevent this
             $('#ui-datepicker-div').on('click', function (e) {
                 return false;
             });
 
-                $input.datepicker({
-                    dateFormat : 'dd/mm/yy',
-                    maxDate: "+0m +0w",
-                    showOn: "button",
-                    buttonImage: "<%= asset_path 'calendar-icon.png' %>",
-                    buttonImageOnly: true
-                });
+            $input.datepicker({
+                dateFormat : 'dd/mm/yy',
+                maxDate: "+0m +0w",
+                showOn: "button",
+                buttonImage: "<%= asset_path 'calendar-icon.png' %>",
+                buttonImageOnly: true,
+                onClose : focusInput
+            });
 
             $infoPara.find('a').on('click', function (e) {
                 $infoPara.replaceWith($form);
                 $form.show();
 
-                $input.focus();
+                focusInput();
 
                 if ($infoPara.hasClass('sections-context')) {
                     $('#date-filter').addClass('sections-context');
