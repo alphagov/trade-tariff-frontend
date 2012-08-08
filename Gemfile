@@ -16,7 +16,7 @@ gem 'simplecov-rcov'
 gem 'ci_reporter'
 
 gem 'slimmer'
-gem 'gds-api-adapters', '~> 0.1.2'
+gem 'gds-api-adapters', '~> 0.2.2'
 
 gem 'airbrake'
 gem 'lograge'

@@ -9,7 +9,7 @@
  * @namespace
  * @description Global namespace for gov.uk
  * @requires jquery 1.6.2
-*/ 
+*/
 var GOVUK = GOVUK || {};
 
 /**
@@ -54,7 +54,7 @@ GOVUK.tariff = {
 
                 // hide all child lists
                 $childList.addClass('visuallyhidden');
-                
+
                 // allow expansion based on clicking
                 $parentNode.on('click', function(e) {
                     e.stopPropagation();
@@ -79,17 +79,17 @@ GOVUK.tariff = {
                 effectAll = function (ctrlIdx) {
                     $parentNodes.each(function (idx) {
                         var $this = $(this);
-                 
+
                         if (ctrlIdx === 0) {
                           $this.children('span').addClass('open');
                           $this.children('ul').removeClass('visuallyhidden');
                         } else {
                           $this.children('span').removeClass('open');
                           $this.children('ul').addClass('visuallyhidden');
-                        } 
+                        }
                     });
                 };
-        
+
                 $parentNodes.closest('div.inner').append($controls);
                 $('ul.tree-controls a').each(function (idx) {
                     $(this).on('click', function () {
@@ -162,7 +162,7 @@ GOVUK.tariff = {
                     'role' : 'dialog',
                     'aria-labelledby' : 'dialog-title'
                 });
-            
+
             $mask.on('click', function () {
                   $popup.fadeOut(400, function(){
                     $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
@@ -204,7 +204,7 @@ GOVUK.tariff = {
 
             $popup.css({
               'left': ($(document).width() - $popup.innerWidth()) / 2 + 'px',
-              'top': $(document).scrollTop() + 12 + 'px' 
+              'top': $(document).scrollTop() + 12 + 'px'
             });
         },
         /**
@@ -253,7 +253,7 @@ GOVUK.tariff = {
                   $input.focus();
                 }, 0);
             };
-                
+
             // datepicker is allowing clicks on date anchors to pass through so prevent this
             $('#ui-datepicker-div').on('click', function (e) {
                 return false;
@@ -261,7 +261,7 @@ GOVUK.tariff = {
 
             $input.datepicker({
                 dateFormat : 'dd/mm/yy',
-                maxDate: "+0m +0w",
+                maxDate: '05/06/2012',
                 showOn: "button",
                 buttonImage: "<%= asset_path 'calendar-icon.png' %>",
                 buttonImageOnly: true,
