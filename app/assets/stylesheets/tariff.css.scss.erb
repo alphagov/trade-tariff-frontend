@@ -278,7 +278,10 @@ mark {
   &.sections-context {
     margin-right:7.5539149%;
   }
+}
 
+
+.tariff header.page-header hgroup p {
   a {
     font-size:em(14, 16);
     display:inline-block;
@@ -430,11 +433,23 @@ article.tariff {
   width: 8em;
 }
 
+#ui-datepicker-container {
+  position:relative;
+  height:0;
+  width:auto;
+  overflow:visible;
+}
+
 .ui-datepicker {
   background:#fff;
-  font-size:em(14, 16);
+  border:1px solid #eee;
   padding:px($top-level-padding);
   display:none;
+  position:absolute;
+  right:0;
+  z-index:2;
+  text-align:left;
+  line-height:1.5;
 
   .ui-datepicker-header {
     padding:0 px($token-padding + 16);
@@ -445,6 +460,8 @@ article.tariff {
   .ui-datepicker-header a {
     position:absolute;
     top:10px;
+    display:block;
+    margin:0;
   }
 
   .ui-widget-header .ui-icon {
@@ -1011,11 +1028,15 @@ article.search-results {
     margin-right:1em;
   }
 
-  img {
+  .calendar-icon {
     vertical-align:top;
     display:inline-block;
     margin-right:1em;
     cursor:pointer;
+
+    img {
+      display:block;
+    }
   }
 
   .button {

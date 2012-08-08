@@ -13,6 +13,110 @@
 var GOVUK = GOVUK || {};
 
 /**
+ * @name GOVUK.Datepicker
+ * @constructor
+ * @description Constructor for an inline datepicker
+*/
+GOVUK.Datepicker = function ($form, iconSrc) {
+    var inst = this,
+        iconSrc = (iconSrc === undefined) ? "<%= asset_path 'calendar-icon.png' %>" : iconSrc;
+
+    this.$form = $form;
+    this.$input = $form.find('input.date');
+    this.$btn = $form.find('.button');
+    this.$container = $('<div id="ui-datepicker-container" />');
+    this.$calendarIcon = $('<a href="#" class="calendar-icon" title="Use calendar"><img src="' + iconSrc + '" alt="" /></a>');
+    this.isShowing = false;
+
+    this.$form.append(this.$container);
+
+    this.$container.datepicker({
+        dateFormat : 'dd/mm/yy',
+        maxDate: '05/06/2012',
+        defaultDate : this.$input.val(),
+        onSelect : function (dateTxt) {
+            inst.onSelect(dateTxt);
+        }
+    });
+
+    this.$datepickerElm = this.$container.find('.ui-datepicker');
+
+    // adapt existing form
+    this.$calendarIcon.insertAfter(this.$input);
+    this.$datepickerElm.hide();
+    this.focusInput();
+
+    // bind events
+    this.$input.on('keyup', function (e) {
+       inst.updateCalendar();
+    });
+    this.$calendarIcon.on('click', function (e) {
+        inst.toggleCalendar();
+        return false;
+    });
+    this.$datepickerElm.on('click', function (e) {
+        // datepicker is allowing clicks on date anchors to pass through so prevent this
+        return false;
+    })
+
+};
+
+GOVUK.Datepicker.prototype = {
+    /**
+     * @name GOVUK.Datepicker.prototype.updateCalendar
+     * @function
+     * @description Updates the calendar to the value of the input, if valid
+    */
+    updateCalendar : function () {
+        var val = this.$input.val();
+        if (val.match(/[\d]{1,2}\/[\d]{1,2}\/[\d]{2,4}/)) {
+          this.$container.datepicker("setDate", val);
+        }
+    },
+    /**
+     * @name GOVUK.Datepicker.prototype.focusInput
+     * @function
+     * @description Fix to force the input to receive focus under IE
+    */
+    focusInput : function () {
+        var inst = this;
+
+        // Input does not receive focus until this instruction is pushed to the end of the stack in IE
+        window.setTimeout(function () {
+          inst.$input.focus();
+        }, 0);
+    },
+    /**
+     * @name GOVUK.Datepicker.prototype.toggleCalendar
+     * @function
+     * @description Adds/Removes the calendar from the document
+    */
+    toggleCalendar : function () {
+       if (!this.isShowing) {
+           this.$datepickerElm.show();
+           this.isShowing = true;
+       } else {
+           this.$datepickerElm.hide();
+           this.isShowing = false;
+       }
+
+         return false;
+    },
+    /**
+     * @name GOVUK.Datepicker.prototype.onSelect
+     * @function
+     * @description Behaviours to run when a date is selected
+    */
+    onSelect : function (dateTxt) {
+      this.$input.val(dateTxt);
+      this.$container.datepicker("setDate", dateTxt);
+      this.$datepickerElm.hide();
+      this.isShowing = false;
+      this.focusInput();
+    }
+};
+
+/**
   @name GOVUK.tariff
   @memberOf GOVUK
   @namespace
@@ -230,49 +334,36 @@ GOVUK.tariff = {
         }
     },
     /**
-      @name GOVUK.tariff.datePicker
+      @name GOVUK.tariff.datePickers
       @object
       @description initializes namespace
     */
-    datePicker : {
+    datePickers : {
+        /**
+         * @name GOVUK.tariff.datePickers
+         * @array
+         * @description Array of Datepickers
+        */
+        pickers : [],
         /**
           @name GOVUK.tariff.datePicker.initialize
           @function
           @description initializes namespace
         */
         initialize : function () {
-            var $form = $('#date-filter'),
-                $input = $form.find('input.date'),
-                $btn = $form.find('input.button'),
-                $infoPara = $('.page-header hgroup p'),
-                focusInput;
-
-            focusInput = function () {
-                // Input does not receive focus until this instruction is pushed to the end of the stack in IE
-                window.setTimeout(function () {
-                  $input.focus();
-                }, 0);
-            };
-
-            // datepicker is allowing clicks on date anchors to pass through so prevent this
-            $('#ui-datepicker-div').on('click', function (e) {
-                return false;
-            });
-
-            $input.datepicker({
-                dateFormat : 'dd/mm/yy',
-                maxDate: '05/06/2012',
-                showOn: "button",
-                buttonImage: "<%= asset_path 'calendar-icon.png' %>",
-                buttonImageOnly: true,
-                onClose : focusInput
-            });
+            var $infoPara = $('.page-header hgroup p'),
+                $form = $('#date-filter'),
+                namespace = this;
 
             $infoPara.find('a').on('click', function (e) {
+                var calendar;
+
                 $infoPara.replaceWith($form);
+                calendar = new GOVUK.Datepicker($form)
+                namespace.pickers.push(calendar);
                 $form.show();
 
-                focusInput();
+                calendar.$container.css('margin-right', (calendar.$btn.innerWidth() + parseFloat(calendar.$input.css('margin-right'))) + 'px');
 
                 if ($infoPara.hasClass('sections-context')) {
                     $('#date-filter').addClass('sections-context');
@@ -293,6 +384,6 @@ GOVUK.tariff = {
         this.tree.initialize();
         this.tabs.initialize();
         this.tablePopup.initialize();
-        this.datePicker.initialize();
+        this.datePickers.initialize();
     }
 };
