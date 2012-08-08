@@ -1,3 +1,6 @@
+require 'httparty'
+require 'multi_json'
+
 module ApiEntity
   class NotFound < StandardError; end
   class Error < StandardError; end
@@ -9,6 +12,7 @@ module ApiEntity
     include ActiveModel::Conversion
 
     include HTTParty
+    include MultiJson
     base_uri Rails.application.config.api_host
     debug_output if Rails.env.development?
 

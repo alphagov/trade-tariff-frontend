@@ -6,8 +6,8 @@ gem 'rails', '3.2.7'
 gem 'simple_form'
 
 gem 'oj'
-
 gem 'httparty'
+gem 'multi_json'
 
 gem 'kaminari'
 gem 'plek'

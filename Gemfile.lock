@@ -230,6 +230,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   lograge
+  multi_json
   oj
   plek
   pry-rails
