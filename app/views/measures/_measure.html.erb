@@ -8,7 +8,7 @@
         </dt>
       <dd>
         <ul>
-          <% measure.geographical_area.children_geographical_areas.each do |children_geographical_area| %>
+          <% measure.geographical_area.children_geographical_areas.sort_by(&:iso_code).each do |children_geographical_area| %>
             <li><%= children_geographical_area.iso_code %> <%= children_geographical_area.description %></li>
           <% end %>
         </ul>
