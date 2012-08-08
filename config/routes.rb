@@ -4,7 +4,7 @@ TariffWeb::Application.routes.draw do
   resources :sections, only: [:index, :show]
   resources :chapters, only: [:index, :show]
   resources :headings, only: [:index, :show]
-  resources :commodities, only: [:index, :show, :edit, :update]
+  resources :commodities, only: [:index, :show]
 
   root to: 'pages#index'
 end

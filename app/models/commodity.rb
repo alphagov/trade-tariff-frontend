@@ -25,10 +25,6 @@ class Commodity
     @substring ||= substring.to_i
   end
 
-  def update_attrs(params)
-    self.class.put("/commodities/#{to_param}", body: params)
-  end
-
   alias :code       :goods_nomenclature_item_id
   alias :short_code :goods_nomenclature_item_id
 
