@@ -1,10 +1,14 @@
 require 'api_entity'
+require "slimmer/headers"
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include Slimmer::Headers
 
   before_filter :initialize_modules
   before_filter :set_cache
+  after_filter :set_analytics_headers
+
   layout :set_layout
 
   rescue_from Errno::ECONNREFUSED do |e|
@@ -46,5 +50,15 @@ class ApplicationController < ActionController::Base
 
   def set_cache
     expires_in 2.hours, :public => true, 'max-stale' => 0
+  end
+
+  def set_analytics_headers
+    headers = {
+      format:      "trade-tariff",
+      proposition: "business",
+      section:     "business",
+      need_id:     "B659"
+    }
+    set_slimmer_headers(headers)
   end
 end
