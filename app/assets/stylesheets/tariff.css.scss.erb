@@ -436,13 +436,10 @@ article.tariff {
   padding:px($top-level-padding);
   display:none;
 
-  /* IE6 fix */
-  *.ui-datepicker-header {
-    width:1px;
-  }
-
   .ui-datepicker-header {
     padding:0 px($token-padding + 16);
+    /* IE fix */
+    *width:1px;
   }
 
   .ui-datepicker-header a {
