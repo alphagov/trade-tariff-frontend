@@ -7,12 +7,12 @@ class Commodity
 
   attr_accessor :description, :goods_nomenclature_item_id,
                 :synonyms, :uk_vat_rate, :third_country_duty_rate,
-                :leaf, :parents, :synonyms, :producline_suffix, :number_indents
+                :leaf, :parents, :synonyms, :producline_suffix, :number_indents,
+                :goods_nomenclature_sid, :parent_sid, :casted_by
 
   has_one :section
   has_one :heading
   has_one :chapter
-  has_many :children, class_name: 'Commodity'
   has_many :ancestors, class_name: 'Commodity'
   has_many :import_measures, class_name: 'Measure'
   has_many :export_measures, class_name: 'Measure'
@@ -64,5 +64,17 @@ class Commodity
     duty_expressions = basic_duty_rate_components.map(&:duty_expression)
 
     (duty_expressions.blank?) ? "variable" : duty_expressions.join(" ")
+  end
+
+  def root
+    parent_sid.blank?
+  end
+
+  def children
+    if casted_by.present?
+      casted_by.commodities.select{|c| c.parent_sid == goods_nomenclature_sid }
+    else
+      []
+    end
   end
 end
