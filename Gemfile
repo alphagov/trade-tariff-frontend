@@ -45,6 +45,7 @@ group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
+  gem 'simplecov', :require => false
 end
 
 group :router do
