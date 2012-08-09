@@ -21,13 +21,7 @@ FactoryGirl.define do
     description { Forgery(:basic).text }
     producline_suffix { "80" }
     goods_nomenclature_item_id { "0101300000" }
-
-    trait :with_children do
-      children { [attributes_for(:commodity)] }
-    end
-
-    trait :without_children do
-      children { [] }
-    end
+    goods_nomenclature_sid { Forgery(:basic).number }
+    parent_sid { Forgery(:basic).number }
   end
 end

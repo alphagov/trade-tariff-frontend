@@ -16,7 +16,10 @@ module ApiEntity
     base_uri Rails.application.config.api_host
     debug_output if Rails.env.development?
 
+
     attr_reader :attributes
+
+    attr_accessor :casted_by
 
     class_eval do
       def to_param
@@ -27,6 +30,8 @@ module ApiEntity
 
   def initialize(attributes = {})
     class_name = self.class.name.downcase
+
+    attributes = HashWithIndifferentAccess.new(attributes)
 
     if attributes.present? && attributes.has_key?(class_name)
       self.attributes = attributes[class_name]
@@ -70,7 +75,9 @@ module ApiEntity
 
       class_eval <<-METHODS
         def #{association}=(data)
-          @#{association} ||= #{options[:class_name]}.new(data)
+          data ||= {}
+
+          @#{association} ||= #{options[:class_name]}.new(data.merge(casted_by: self))
         end
       METHODS
     end
@@ -82,7 +89,7 @@ module ApiEntity
 
       class_eval <<-METHODS
         def #{associations}=(data)
-          @#{associations} ||= data.map { |record| #{options[:class_name]}.new(record) }
+          @#{associations} ||= data.map { |record| #{options[:class_name]}.new(record.merge(casted_by: self)) }
         end
 
         def #{associations}

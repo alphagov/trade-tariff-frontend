@@ -16,7 +16,7 @@
                 <dt class="heading-code"><%= @heading.display_short_code %></dt>
                 <dd><h1><%= @heading %></h1>
                   <ul class="commodities">
-                    <%= render @commodities %>
+                    <%= render @commodities.select(&:root) %>
                   </ul>
                 </dd>
               </dl>
