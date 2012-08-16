@@ -77,15 +77,16 @@ jQuery.fn.tabs = function(settings){
 			}
 			else{	
 				//unselect tabs
-				tabsNav.find('li.active')
+				tabsNav.find('li')
+					.attr('aria-selected', false)
+					.filter('.active')
 					.removeClass('active')
-					.find('a')
-					.attr('aria-selected', false);
+					.find('a');
 				//set selected tab item	
 				tab
-					.attr('aria-selected', true)
 					.parent()
-					.addClass('active');
+					.addClass('active')
+					.attr('aria-selected', true);
 				//unselect  panels
 				tabsBody.find('.tabs-panel-selected')
 					.attr('aria-hidden',true)
