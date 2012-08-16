@@ -11,3 +11,10 @@ Assumes the GDS development envrionment is setup via puppet.
     ```
     ./startup.sh
     ```
+
+## Specs
+
+To run the spec use the following command: 
+
+    RAILS_ENV=test bundle exec rake ci:setup:r
+spec spec
