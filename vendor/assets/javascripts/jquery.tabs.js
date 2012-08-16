@@ -80,8 +80,10 @@ jQuery.fn.tabs = function(settings){
 				tabsNav.find('li.active')
 					.removeClass('active')
 					.find('a')
+					.attr('aria-selected', false);
 				//set selected tab item	
 				tab
+					.attr('aria-selected', true)
 					.parent()
 					.addClass('active');
 				//unselect  panels
