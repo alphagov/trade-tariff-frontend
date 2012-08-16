@@ -28,7 +28,11 @@
 
   <td><%= measure.duty_expression %></td>
 
-  <td><%= measure.additional_code %></td>
+  <td>
+    <% if measure.additional_code.present? %>
+      <%= link_to measure.additional_code,  "##{measure.additional_code.id}", class: 'reference', 'data-popup-ref' => "additional-code-#{measure.additional_code.id}" %>
+    <% end %>
+  </td>
 
   <td>
     <% if measure.measure_conditions.any? %>

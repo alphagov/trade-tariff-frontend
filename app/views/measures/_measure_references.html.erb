@@ -44,26 +44,48 @@
 <% end %>
 
 <% measure.footnotes.each do |footnote| %>
-<div class='footnotes' id='<%= footnote.id %>' data-popup='footnote-<%= footnote.id %>'> 
-  <article> 
-    <table> 
-      <caption>Footnote for commodity:</caption> 
-      <thead> 
-        <tr> 
-          <th>Code</th> 
-          <th>Description</th> 
-        </tr> 
-      </thead> 
-      <tbody> 
-        <%= render footnote %> 
-      </tbody> 
-    </table> 
-  </article> 
-</div> 
+<div class='footnotes' id='<%= footnote.id %>' data-popup='footnote-<%= footnote.id %>'>
+  <article>
+    <table>
+      <caption>Footnote for commodity:</caption>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render footnote %>
+      </tbody>
+    </table>
+  </article>
+</div>
 <% end %>
 
 <% if measure.measure_conditions.any? && measure.footnotes.any? %>
 <nav class="part-pagination return-to-top">
   <a href="#wrapper">Return to top ↑</a>
 </nav>
+<% end %>
+
+<% if measure.additional_code.present? %>
+  <div class='additional-codes' id='<%= measure.additional_code.id %>' data-popup='additional-code-<%= measure.additional_code.id %>'>
+    <article>
+      <table>
+        <caption>Additional code</caption>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Description code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= measure.additional_code.code %></td>
+            <td><%= measure.additional_code.description %></td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </div>
 <% end %>

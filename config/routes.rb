@@ -1,4 +1,4 @@
-TariffWeb::Application.routes.draw do
+TradeTariffFrontend::Application.routes.draw do
   scope :path => "#{APP_SLUG}" do
     get "/" => "pages#index"
     match "/search" => "search#search", via: :get, as: :perform_search

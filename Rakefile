@@ -6,4 +6,4 @@ require File.expand_path('../config/application', __FILE__)
 
 require 'ci/reporter/rake/rspec'
 
-TariffWeb::Application.load_tasks
+TradeTariffFrontend::Application.load_tasks
