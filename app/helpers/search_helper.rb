@@ -1,12 +1,9 @@
 module SearchHelper
-  def render_synonyms(synonyms)
-    list_body = ""
-
-    synonyms.split(/ /).uniq.each { |synonym|
-      list_body << content_tag(:span, synonym, class: "label label-info")
-      list_body << " "
-    }
-
-    list_body
+  def result_title(klass, results, query)
+    if results.referenced_match?
+      "Suggested #{klass.to_s.pluralize.downcase} for #{content_tag(:mark, query)}:"
+    else
+      "#{klass.to_s.pluralize.capitalize} that contain #{content_tag(:mark, query)}:"
+    end.html_safe
   end
 end
