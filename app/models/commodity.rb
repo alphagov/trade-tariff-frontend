@@ -57,7 +57,7 @@ class Commodity
   end
 
   def footnotes
-    [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
+    [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten.uniq
   end
 
   def third_country_duty_rate
