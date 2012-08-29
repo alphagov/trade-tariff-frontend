@@ -13,7 +13,7 @@ gem 'kaminari'
 
 gem 'gds-api-adapters', '~> 0.2.2'
 gem 'plek'
-gem 'slimmer', '1.2.4'
+gem 'slimmer', '2.0.0'
 
 gem 'unicorn', '~> 4.3.1'
 
@@ -30,7 +30,7 @@ end
 
 group :test do
   gem 'brakeman', '~> 1.7.0'
-  gem 'fakeweb'
+  gem 'webmock'
   gem 'factory_girl_rails'
   gem 'forgery'
   gem 'shoulda-matchers'
