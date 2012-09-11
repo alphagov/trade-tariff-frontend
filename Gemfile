@@ -11,7 +11,7 @@ gem 'oj'
 
 gem 'kaminari'
 
-gem 'gds-api-adapters', '~> 0.2.2'
+gem 'gds-api-adapters', '1.8.0'
 gem 'plek'
 gem 'slimmer', '2.0.0'
 
