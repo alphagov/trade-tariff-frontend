@@ -1078,6 +1078,18 @@ article.search-results {
   }
 }
 
+.flag {
+  display:block;
+  width:16px;
+  height:11px;
+  &.eu{
+    background: url(<%= asset_path('eu.png') %>)
+  }
+  &.uk{
+    background: url(<%= asset_path('uk.png') %>)
+  }
+}
+
 #loader {
   position:fixed;
   top:45%;

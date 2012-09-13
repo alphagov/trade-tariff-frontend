@@ -1,4 +1,7 @@
 <tr>
+  <td>
+    <div class="flag <%= measure.origin %>"></div>
+  </td>
   <% if measure_group == "specific_country" %>
     <td>
       <% if measure.geographical_area.children_geographical_areas.any? %>
