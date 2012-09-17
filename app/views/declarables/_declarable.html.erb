@@ -7,10 +7,10 @@
         <dt class="section-number">Section <%= declarable.section.numeral %></dt>
         <dd class="section-title tariff-fragments"><%= link_to declarable.section, section_path(declarable.section) %>
           <dl class="tariff-fragments">
-            <dt class="chapter-code"><%= declarable.chapter.short_code %></dt>
+            <dt class="chapter-code" title="Chapter code"><%= declarable.chapter.short_code %></dt>
             <dd><%= link_to declarable.chapter, chapter_path(declarable.chapter) %>
               <dl>
-                <dt class="heading-code"><%= declarable.heading.display_short_code %></dt>
+                <dt class="heading-code" title="Heading code"><%= declarable.heading.display_short_code %></dt>
                 <% if with_commodity_tree %>
                   <dd><%= link_to declarable.heading, heading_path(declarable.heading) %>
                       <%= commodity_tree(declarable, declarable.ancestors) %>
