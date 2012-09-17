@@ -5,8 +5,8 @@ gem 'rails', '3.2.8'
 
 gem 'simple_form'
 
-gem 'multi_json'
 gem 'yajl-ruby'
+gem 'multi_json'
 gem 'httparty'
 
 gem 'kaminari'
