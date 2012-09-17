@@ -424,6 +424,10 @@ article.tariff {
       float:none;
     }
   }
+
+  input {
+    font-size:1em;
+  }
 }
 
 .sections-context {
@@ -529,6 +533,7 @@ article dt {
   text-align: center;
   display: block;
   font-size: 1em;
+  line-height:1.5;
   position: absolute;
   left: 0;
   font-weight:normal;
@@ -738,7 +743,8 @@ ul.commodities {
     }
 
     span {
-      font-size: 0.85em;
+      font-size: em(14, 19);
+      line-height:1.5;
       float: left;
       display: block;
 
@@ -881,12 +887,13 @@ dl.tariff-fragments dd.declarable {
 }
 
 ul.tree-controls {
-  font-size:0.85em;
   margin-left:px($top-level-padding);
   padding:0;
 }
 
 ul.tree-controls li {
+  font-size:1em;
+  line-height:1.5;
   display:inline;
   padding-right:px($top-level-padding);
 }
