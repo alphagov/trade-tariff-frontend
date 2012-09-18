@@ -56,16 +56,13 @@ class ApplicationController < ActionController::Base
   end
 
   def load_artefact
-    @artefact = fetch_artefact(slug: APP_SLUG)
+    @artefact = content_api.artefact(APP_SLUG)
     set_slimmer_artefact(@artefact)
   end
 
   def set_analytics_headers
     headers = {
       format:      "trade-tariff",
-      proposition: "business",
-      section:     "business",
-      need_id:     "B659"
     }
     set_slimmer_headers(headers)
   end
