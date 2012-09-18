@@ -7,7 +7,8 @@ class MeasureCondition
     include Models::Formatter
 
     attr_accessor :sequence_number, :condition_amount, :monetary_unit,
-                  :measurement_unit, :measurement_unit_qualifier, :requirement
+                  :measurement_unit, :measurement_unit_qualifier, :certificate,
+                  :certificate_type
 
     format :duty_expression, with: DutyExpressionFormatter,
                              using: ["01", :condition_amount,
@@ -15,7 +16,7 @@ class MeasureCondition
                                     :measurement_unit_qualifier]
 
     def to_s
-      requirement
+      "#{certificate_type}: #{certificate}"
     end
   end
 end

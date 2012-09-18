@@ -3,8 +3,8 @@ require 'api_entity'
 class MeasureCondition
   include ApiEntity
 
-  has_one  :requirement, class: 'MeasureConditionRequirement'
-  has_many :components,  class: 'MeasureConditionComponent'
+  has_one  :requirement, class: 'MeasureCondition::Requirement'
+  has_many :components,  class: 'MeasureCondition::Component'
 
   attr_accessor :document_code, :action, :condition, :requirement_type
 
