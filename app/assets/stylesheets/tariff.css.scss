@@ -1052,19 +1052,15 @@ article.search-results {
     margin-right:1em;
   }
 
-  .calendar-icon {
-    vertical-align:top;
-    display:inline-block;
-    margin-right:1em;
-    cursor:pointer;
-
-    img {
-      display:block;
-    }
+  .tariff header hgroup & p {
+    font-size:1em;
+    padding:0;
   }
 
   .button {
     vertical-align:middle;
+    display:inline-block;
+    margin-left:0.5em;
   }
 }
 

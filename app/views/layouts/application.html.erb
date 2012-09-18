@@ -25,10 +25,15 @@
           <%= yield %>
         </div>
             <%= form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
-              <%= f.label :as_of, "This tariff is for" %>
-              <%= f.text_field :as_of, class: 'date', size: 15, name: 'as_of', value: f.object.date.to_formatted_s(:default) %>
-
+              <p>This tariff is for
+              <%= f.label :day, 'Day', { :class => 'visuallyhidden' }  %>
+              <%= select_day(f.object.date, {}, { :id => 'tariff_date_day' }) %>
+              <%= f.label :month, 'Month', { :class => 'visuallyhidden' }  %>
+              <%= select_month(f.object.date, {}, { :id => 'tariff_date_month' }) %>
+              <%= f.label :year, 'Year', { :class => 'visuallyhidden' }  %>
+              <%= select_year(f.object.date, {}, { :id => 'tariff_date_year' }) %>
               <%= f.button 'Change date', name: nil,  class: 'btn button right' %>
+              </p>
             <% end %>
             <div class="related-module">
               <address class="vcard">
