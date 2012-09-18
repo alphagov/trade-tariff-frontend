@@ -10,11 +10,12 @@ describe ApplicationController do
     end
 
     it "should fetch the artefact and pass it to slimmer" do
-      mock_artefact = {"slug" => APP_SLUG, "title" => "Trade Tariff"}
-      GdsApi::Panopticon.any_instance.should_receive(:artefact_for_slug).with(APP_SLUG).and_return(mock_artefact)
-      @controller.should_receive(:set_slimmer_artefact).with(mock_artefact)
+      artefact_data = artefact_for_slug(APP_SLUG)
+      content_api_has_an_artefact(APP_SLUG, artefact_data)
 
       get :index
+
+      response.headers[Slimmer::Headers::ARTEFACT_HEADER].should == artefact_data.to_json
     end
   end
 end

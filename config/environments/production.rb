@@ -66,8 +66,6 @@ TradeTariffFrontend::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.slimmer.asset_host = Plek.current.find('assets')
-
   # Host for Trade Tariff API endpoint
   if ENV['FACTER_govuk_platform'] == "production"
     config.api_host = "https://tariff-api.production.alphagov.co.uk"

@@ -35,9 +35,6 @@ TradeTariffFrontend::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Slimmer config
-  config.slimmer.asset_host = ENV["STATIC_DEV"] || "http://static.dev.gov.uk"
-
   # Host for Trade Tariff API endpoint
   config.api_host = "http://tariff-api.dev.gov.uk"
 end
