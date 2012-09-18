@@ -1,5 +1,6 @@
 class DescriptionFormatter
   def self.format(str)
+    return if str.nil?
     str.gsub!("|", "&nbsp;")
     str.gsub!("!1!", "<br />")
     str.gsub!("!X!", "&times;")
