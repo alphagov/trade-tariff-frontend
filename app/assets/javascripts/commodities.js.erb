@@ -53,7 +53,9 @@ GOVUK.tariff = {
                 }
 
                 // hide all child lists
-                $childList.addClass('visuallyhidden');
+                if (!isCommodityTree) {
+                  $childList.addClass('visuallyhidden');
+                }
 
                 // allow expansion based on clicking
                 $parentNode.on('click', function(e) {
