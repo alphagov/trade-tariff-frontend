@@ -250,6 +250,7 @@ mark {
 
 .tariff .article-container {
   padding-bottom:2em;
+  position:relative;
 }
 
 .tariff header.page-header hgroup{
@@ -276,9 +277,12 @@ mark {
   line-height:2em;
 
   &.sections-context {
-    margin-right:7.5539149%;
+    margin-right:em(71, 14);
   }
+}
 
+
+.tariff header.page-header hgroup p {
   a {
     font-size:em(14, 16);
     display:inline-block;
@@ -339,13 +343,13 @@ article table {
   dt.has_children {
     padding-left: px($expand-arrow-space);
     margin-left:-6px;
-    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+    background-image: image-url("expand-collapse-transparent.png");
     background-position: 0px 2px;
     background-repeat: no-repeat;
   }
 
   dt.open {
-    background-position:0 -89px;
+    background-position:0 -389px;
   }
 
   ul {
@@ -420,6 +424,10 @@ article.tariff {
       float:none;
     }
   }
+
+  input {
+    font-size:1em;
+  }
 }
 
 .sections-context {
@@ -430,11 +438,24 @@ article.tariff {
   width: 8em;
 }
 
+#ui-datepicker-container {
+  position:relative;
+  height:0;
+  width:auto;
+  overflow:visible;
+  z-index:2;
+}
+
 .ui-datepicker {
   background:#fff;
-  font-size:em(14, 16);
+  border:1px solid #eee;
   padding:px($top-level-padding);
   display:none;
+  position:absolute;
+  right:0;
+  z-index:2;
+  text-align:left;
+  line-height:1.5;
 
   .ui-datepicker-header {
     padding:0 px($token-padding + 16);
@@ -445,10 +466,12 @@ article.tariff {
   .ui-datepicker-header a {
     position:absolute;
     top:10px;
+    display:block;
+    margin:0;
   }
 
   .ui-widget-header .ui-icon {
-    background-image: url(<%= asset_path "ui-icons_222222_256x240.png" %>);
+    background-image: image-url("ui-icons_222222_256x240.png");
   }
 
   .ui-datepicker-prev {
@@ -510,6 +533,7 @@ article dt {
   text-align: center;
   display: block;
   font-size: 1em;
+  line-height:1.5;
   position: absolute;
   left: 0;
   font-weight:normal;
@@ -590,8 +614,8 @@ p.sections-intro {
 dl.sections {
   @include underlined-section-list;
   background:#fff;
-  padding-left:8.4375%;
-  padding-right:8.4375%;
+  padding-left:em(81, 14);
+  padding-right:em(81, 14);
 
   dt {
     position:static;
@@ -684,6 +708,13 @@ dl.chapter-headings {
   ol ol li {
     list-style-type:lower-alpha;
   }
+
+  p {
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right:0;
+  }
 }
 
 .tariff ul,
@@ -712,7 +743,8 @@ ul.commodities {
     }
 
     span {
-      font-size: 0.85em;
+      font-size: em(14, 19);
+      line-height:1.5;
       float: left;
       display: block;
 
@@ -798,6 +830,10 @@ dl.tariff-fragments dl.commodities {
   }
 }
 
+dl.tariff-fragments dd.declarable {
+  margin-bottom:px($top-level-padding);
+}
+
 .nav-tabs,
 .tab-content {
   font-size:em(16, 14);
@@ -816,7 +852,11 @@ dl.tariff-fragments dl.commodities {
 }
 
 .tab-content {
+  margin:0;
+
   .tab-pane {
+    padding-right:0;
+    padding-left:0;
     border-top:solid 1px #C9D0D0;
     clear:both;
   }
@@ -847,12 +887,13 @@ dl.tariff-fragments dl.commodities {
 }
 
 ul.tree-controls {
-  font-size:0.85em;
   margin-left:px($top-level-padding);
   padding:0;
 }
 
 ul.tree-controls li {
+  font-size:1em;
+  line-height:1.5;
   display:inline;
   padding-right:px($top-level-padding);
 }
@@ -1011,11 +1052,15 @@ article.search-results {
     margin-right:1em;
   }
 
-  img {
+  .calendar-icon {
     vertical-align:top;
     display:inline-block;
     margin-right:1em;
     cursor:pointer;
+
+    img {
+      display:block;
+    }
   }
 
   .button {
@@ -1051,6 +1096,18 @@ article.search-results {
   }
 }
 
+.flag {
+  display:block;
+  width:16px;
+  height:11px;
+  &.eu{
+    background: url(<%= asset_path('eu.png') %>)
+  }
+  &.uk{
+    background: url(<%= asset_path('uk.png') %>)
+  }
+}
+
 #loader {
   position:fixed;
   top:45%;
@@ -1078,7 +1135,7 @@ article.search-results {
   li.has_children .description {
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
-    background-image: url(<%= asset_path "expand-collapse-transparent.png" %>);
+    background-image: image-url("expand-collapse-transparent.png");
     background-position: 0 6px;
     background-repeat: no-repeat;
     cursor:pointer;

@@ -7,12 +7,6 @@
 $(function(){
   GOVUK.tariff.initialize();
   
-  $('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])').pjax('[data-pjax-container]', 
-    { 
-      timeout: 6000,
-      success: function () { 
-        GOVUK.tariff.initialize();
-      }
-    }
-   );
+  $('#pjax-container').pjax('a.js-pjax')
+    .on('pjax:end', function(){GOVUK.tariff.initialize()})
 });

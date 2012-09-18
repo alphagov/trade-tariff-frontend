@@ -5,15 +5,15 @@ gem 'rails', '3.2.8'
 
 gem 'simple_form'
 
+gem 'yajl-ruby'
 gem 'multi_json'
 gem 'httparty'
-gem 'oj'
 
 gem 'kaminari'
 
-gem 'gds-api-adapters', '~> 0.2.2'
+gem 'gds-api-adapters', '1.8.0'
 gem 'plek'
-gem 'slimmer'
+gem 'slimmer', '2.1.0'
 
 gem 'unicorn', '~> 4.3.1'
 
@@ -30,7 +30,7 @@ end
 
 group :test do
   gem 'brakeman', '~> 1.7.0'
-  gem 'fakeweb'
+  gem 'webmock'
   gem 'factory_girl_rails'
   gem 'forgery'
   gem 'shoulda-matchers'

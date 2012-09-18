@@ -18,6 +18,10 @@ class Search
       @type == "exact_match"
     end
 
+    def referenced_match?
+      @type == "referenced_match"
+    end
+
     def match_path
       {
         controller: @entry['endpoint'],
@@ -31,9 +35,9 @@ class Search
     end
 
     def entries=(entry_data)
-      @sections = entry_data['sections'].map{|section_data| Section.new(section_data)}
-      @chapters = entry_data['chapters'].map{|chapter_data| Chapter.new(chapter_data)}
-      @headings = entry_data['headings'].map{|heading_data| Heading.new(heading_data)}
+      @sections = entry_data['sections'].map{|section_data| Section.new(section_data.has_key?('reference') ? section_data['reference'] : section_data)}
+      @chapters = entry_data['chapters'].map{|chapter_data| Chapter.new(chapter_data.has_key?('reference') ? chapter_data['reference'] : chapter_data)}
+      @headings = entry_data['headings'].map{|heading_data| Heading.new(heading_data.has_key?('reference') ? heading_data['reference'] : heading_data)}
     end
   end
 

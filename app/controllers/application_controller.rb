@@ -1,12 +1,15 @@
 require 'api_entity'
 require "slimmer/headers"
+require 'gds_api/helpers'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include Slimmer::Headers
+  include GdsApi::Helpers
 
   before_filter :initialize_modules
   before_filter :set_cache
+  before_filter :load_artefact
   after_filter :set_analytics_headers
 
   layout :set_layout
@@ -34,10 +37,10 @@ class ApplicationController < ActionController::Base
 
   def set_layout
     if request.headers['X-PJAX']
-      response.headers[Slimmer::SKIP_HEADER] = "true"
+      response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
       "pjax"
     elsif request.headers['X-AJAX']
-      response.headers[Slimmer::SKIP_HEADER] = "true"
+      response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
       false
     else
       "application"
@@ -50,6 +53,11 @@ class ApplicationController < ActionController::Base
 
   def set_cache
     expires_in 2.hours, :public => true, 'max-stale' => 0
+  end
+
+  def load_artefact
+    @artefact = fetch_artefact(slug: APP_SLUG)
+    set_slimmer_artefact(@artefact)
   end
 
   def set_analytics_headers
