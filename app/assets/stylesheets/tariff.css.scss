@@ -1097,10 +1097,10 @@ article.search-results {
   width:16px;
   height:11px;
   &.eu{
-    background: url(image-url('eu.png'))
+    background: image-url('eu.png');
   }
   &.uk{
-    background: url(image-url('uk.png'))
+    background: image-url('uk.png');
   }
 }
 
