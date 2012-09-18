@@ -64,7 +64,7 @@
 
         <tbody>
           <% measurable.import_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by{|m|[m.origin, m.measure_type_description]}, locals: { measure_group: "third_country" } %>
+            <%= render partial: "measures/measure", collection: measures.sort_by(&:measure_type_description).sort_by(&:origin), locals: { measure_group: "third_country" } %>
           <% end %>
         </tbody>
       </table>
