@@ -16,7 +16,7 @@
       <h2><%= result_title(Chapter, @results, @search.q) %></h2>
       <dl class="results-subset">
         <% @results.chapters.each do |chapter| %>
-          <dt class="chapter-code"><%= chapter.short_code %></dt>
+          <dt class="chapter-code" title="Chapter code"><%= chapter.short_code %></dt>
           <dd>
             <%= link_to chapter, chapter_path(chapter) %>
           </dd>
@@ -27,12 +27,12 @@
       <h2><%= result_title(Heading, @results, @search.q) %></h2>
       <dl class="results-subset">
         <% @results.headings.group_by(&:chapter_code).each do |chapter, headings| %>
-        <dt class="chapter-code"><%= headings.first.chapter.short_code %></dt>
+        <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
           <dl>
             <% headings.each do |heading| %>
-              <dt class="heading-code"><%= heading.display_short_code %></dt>
+              <dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
               <dd>
                 <%= link_to heading, heading_path(heading) %>
               </dd>
