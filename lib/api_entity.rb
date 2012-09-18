@@ -34,13 +34,13 @@ module ApiEntity
     attributes = HashWithIndifferentAccess.new(attributes)
 
     if attributes.present? && attributes.has_key?(class_name)
-      self.attributes = attributes[class_name]
-
       @attributes = attributes[class_name]
-    else
-      self.attributes = attributes
 
+      self.attributes = attributes[class_name]
+    else
       @attributes = attributes
+
+      self.attributes = attributes
     end
   end
 

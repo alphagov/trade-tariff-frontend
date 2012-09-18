@@ -8,7 +8,7 @@
   </hgroup>
 </header>
 <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}"  } do |f| %>
-    <a data-skip-pjax href="<%= sections_path%>">View all sections</a>
+    <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
     <%= f.label :q, "Search the tariff" %>
     <%= f.text_field :q, required: false, 
                 size: 21,

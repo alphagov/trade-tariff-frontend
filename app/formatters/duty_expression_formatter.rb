@@ -7,6 +7,14 @@ class DutyExpressionFormatter
                    else
                      sprintf("%.2f%", duty_amount)
                    end
+                 when "02"
+                   sprintf("- %.2f %s/%s", duty_amount,
+                                           monetary_unit,
+                                           measurement_unit)
+                 when "03"
+                   sprintf("+ %.2f %s/%s", duty_amount,
+                                           monetary_unit,
+                                           measurement_unit)
                  when "04"
                    sprintf("+ %.2f %s/%s", duty_amount,
                                            monetary_unit,
@@ -23,6 +31,10 @@ class DutyExpressionFormatter
                  when "17"
                    sprintf("max %.2f%", duty_amount)
                  when "19"
+                   sprintf("+ %.2f %s/%s", duty_amount,
+                                           monetary_unit,
+                                           measurement_unit)
+                 when "20"
                    sprintf("+ %.2f %s/%s", duty_amount,
                                            monetary_unit,
                                            measurement_unit)
@@ -43,15 +55,15 @@ class DutyExpressionFormatter
                  when "37"
                    # Empty
                  when "40"
-                   # TODO Empty, check 21050099 for export
+                   "Export refunds for cereals"
                  when "41"
-                   # TODO Empty, check 21050099 for export
+                   "Export refunds for rice"
                  when "42"
-                   # TODO Empty, check 21050099 for export
+                   "Export refunds for eggs"
                  when "43"
-                   # TODO Empty, check 21050099 for export
+                   "Export refunds for sugar"
                  when "44"
-                   # TODO Empty, check 21050099 for export
+                   "Export refunds for milk products"
                  when "99"
                    measurement_unit
                  end

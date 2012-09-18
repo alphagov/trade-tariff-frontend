@@ -2,7 +2,7 @@
 <article class="search-results">
   <% if @results.any? %>
     <% if @results.sections.any? %>
-      <h2>Sections that contain '<mark><%= @search.q %></mark>':</h2>
+      <h2><%= result_title(Section, @results, @search.q) %></h2>
       <dl class="results-subset sections">
         <% @results.sections.each do |section| %>
         <dt>Section <%= section.numeral %></dt>
@@ -13,7 +13,7 @@
       </dl>
     <% end %>
     <% if @results.chapters.any? %>
-      <h2>Chapters that contain '<mark><%= @search.q %></mark>':</h2>
+      <h2><%= result_title(Chapter, @results, @search.q) %></h2>
       <dl class="results-subset">
         <% @results.chapters.each do |chapter| %>
           <dt class="chapter-code" title="Chapter code"><%= chapter.short_code %></dt>
@@ -24,7 +24,7 @@
       </dl>
     <% end %>
     <% if @results.headings.any? %>
-      <h2>Headings that contain '<mark><%= @search.q %></mark>'</h2>
+      <h2><%= result_title(Heading, @results, @search.q) %></h2>
       <dl class="results-subset">
         <% @results.headings.group_by(&:chapter_code).each do |chapter, headings| %>
         <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
@@ -42,21 +42,6 @@
         <% end %>
       </dl>
     <% end %>
-    <!-- <h2>Other terms containing '<mark><%= @search.q %></mark>':</h2>
-    <ul class="results-subset">
-      <li><a href="#">Horse chestnuts</a></li>
-      <li><a href="#">Horse beans</a></lir
-      <li><a href="#">Horse-radish</a></li>
-      <li><a href="#">Horsehair</a></li>
-      <li><a href="#">Horsehair, woven fabric</a></li>
-      <li><a href="#">Horse mackerel</a></li>
-      <li><a href="#">Horsemeat - Fresh, chilled, frozen, Salted, in brine, dried or smoked</a></li>
-    </ul>
-    <h2>Guides to classification that may be useful:</h2>
-    <ul class="results-subset">
-      <li><a href="#">Classifying saddlery and other equipment for animals</a></li>
-      <li><a href="#">Classifying leguminous vegetables</a></li>
-    </ul> -->
   <% else %>
     <p>There are no results matching your query.</p>
   <% end %>

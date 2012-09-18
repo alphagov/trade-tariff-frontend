@@ -1,4 +1,7 @@
 <tr>
+  <td>
+    <div class="flag <%= measure.origin %>"></div>
+  </td>
   <% if measure_group == "specific_country" %>
     <td>
       <% if measure.geographical_area.children_geographical_areas.any? %>
@@ -42,7 +45,11 @@
 
   <td><%= measure.excluded_country_list %></td>
 
-  <td><%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external' %></td>
+  <td>
+    <% if measure.legal_act.present? %>
+      <%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external' %>
+    <% end %>
+  </td>
 
   <td>
       <% measure.footnotes.each do |footnote| %>
