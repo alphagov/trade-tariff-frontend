@@ -63,4 +63,8 @@ class Measure
   def order_number
     @order_number.presence || OrderNumber.new(number: ordernumber, descriptionless: true)
   end
+
+  def sort_key
+    "#{origin}#{measure_type_description}"
+  end
 end
