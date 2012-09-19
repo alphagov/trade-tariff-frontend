@@ -3,7 +3,14 @@ class DutyExpressionFormatter
     @formatted = case duty_expression_id
                  when "01"
                    if monetary_unit.present? && measurement_unit.present?
-                     sprintf("%.2f %s/%s", duty_amount, monetary_unit, measurement_unit)
+                     monetary_unit_normalized = case monetary_unit
+                                                when 'EUC'
+                                                  'EUR (EUC)'
+                                                else
+                                                  monetary_unit
+                                                end
+
+                     sprintf("%.2f %s/%s", duty_amount, monetary_unit_normalized, measurement_unit)
                    else
                      sprintf("%.2f%", duty_amount)
                    end
@@ -24,10 +31,16 @@ class DutyExpressionFormatter
                  when "14"
                    "+ EA R"
                  when "15"
-                   sprintf("min %.2f %s/(%s/%s)", duty_amount,
-                                                  monetary_unit,
-                                                  measurement_unit,
-                                                  measurement_unit_qualifier)
+                   if measurement_unit_qualifier.present?
+                     sprintf("min %.2f %s/(%s/%s)", duty_amount,
+                                                    monetary_unit,
+                                                    measurement_unit,
+                                                    measurement_unit_qualifier)
+                   else
+                     sprintf("min %.2f %s/%s", duty_amount,
+                                                    monetary_unit,
+                                                    measurement_unit)
+                   end
                  when "17"
                    sprintf("max %.2f%", duty_amount)
                  when "19"
