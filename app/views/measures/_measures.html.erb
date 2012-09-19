@@ -126,15 +126,26 @@
             <th scope="col">Footnote</th>
           </tr>
         </thead>
-
-        <tbody>
-          <% measurable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
-          <% end %>
-        </tbody>
+        <% if measurable.export_measures.any? %>
+          <tbody>
+            <% measurable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
+              <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
+            <% end %>
+          </tbody>
+        <% else %>
+          <tr>
+            <td><div class="flag eu"></div></td>
+            <td colspan="8">There are no EU third country measures for this commodity on this date</td>
+          </tr>
+          <tr>
+            <td><div class="flag uk"></div></td>
+            <td colspan="8">No VAT or Excise measures were found for this commodity on this date</td>
+          </tr>
+        <% end %>
       </table>
 
       <table>
+        <caption>Measures for specific countries and country groups:</caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -158,8 +169,15 @@
         </thead>
 
         <tbody>
-          <% measurable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "specific_country" } %>
+          <% if measurable.export_measures.select(&:for_specific_countries).any? %>
+            <% measurable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
+              <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "specific_country" } %>
+            <% end %>
+          <% else %>
+            <tr>
+              <td><div class="flag eu"></div></td>
+              <td colspan="8">There are no EU third country measures for this commodity on this date</td>
+            </tr>
           <% end %>
         </tbody>
       </table>
