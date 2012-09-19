@@ -90,7 +90,7 @@
         </thead>
 
         <tbody>
-        <% if measurable.export_measures.select(&:for_specific_countries).any? %>
+        <% if measurable.import_measures.select(&:for_specific_countries).any? %>
           <% measurable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
             <%= render partial: "measures/measure", collection: measures.sort_by(&:geographical_area_description), locals: { measure_group: "specific_country" } %>
           <% end %>
