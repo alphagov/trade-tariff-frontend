@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :initialize_modules
   before_filter :set_cache
-  # before_filter :load_artefact
+  before_filter :load_artefact
   after_filter :set_analytics_headers
 
   layout :set_layout
@@ -56,8 +56,10 @@ class ApplicationController < ActionController::Base
   end
 
   def load_artefact
-    @artefact = content_api.artefact(APP_SLUG)
-    set_slimmer_artefact(@artefact)
+    unless Rails.env.development? #remove me once I rebuild my vm
+      @artefact = content_api.artefact(APP_SLUG)
+      set_slimmer_artefact(@artefact)
+    end
   end
 
   def set_analytics_headers
