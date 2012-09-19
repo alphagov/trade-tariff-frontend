@@ -90,9 +90,16 @@
         </thead>
 
         <tbody>
+        <% if measurable.export_measures.select(&:for_specific_countries).any? %>
           <% measurable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
             <%= render partial: "measures/measure", collection: measures.sort_by(&:geographical_area_description), locals: { measure_group: "specific_country" } %>
           <% end %>
+        <% else %>
+          <tr>
+            <td><div class="flag eu"></div></td>
+            <td colspan="8">There are no EU preference measures for this commodity on this date</td>
+          </tr>
+        <% end %>
         </tbody>
       </table>
       <nav class="part-pagination return-to-top">
@@ -123,12 +130,11 @@
             <th scope="col">Footnote</th>
           </tr>
         </thead>
+        <tbody>
         <% if measurable.export_measures.select(&:third_country).any? %>
-          <tbody>
             <% measurable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
               <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
             <% end %>
-          </tbody>
         <% else %>
           <tr>
             <td><div class="flag eu"></div></td>
@@ -139,6 +145,7 @@
             <td colspan="7">No VAT or Excise measures were found for this commodity on this date</td>
           </tr>
         <% end %>
+        </tbody>
       </table>
 
       <table>
@@ -166,16 +173,16 @@
         </thead>
 
         <tbody>
-          <% if measurable.export_measures.select(&:for_specific_countries).any? %>
-            <% measurable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-              <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "specific_country" } %>
-            <% end %>
-          <% else %>
-            <tr>
-              <td><div class="flag eu"></div></td>
-              <td colspan="8">There are no EU third country measures for this commodity on this date</td>
-            </tr>
+        <% if measurable.export_measures.select(&:for_specific_countries).any? %>
+          <% measurable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
+            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "specific_country" } %>
           <% end %>
+        <% else %>
+          <tr>
+            <td><div class="flag eu"></div></td>
+            <td colspan="8">There are no EU preference measures for this commodity on this date</td>
+          </tr>
+        <% end %>
         </tbody>
       </table>
       <nav class="part-pagination return-to-top">
