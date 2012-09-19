@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :initialize_modules
   before_filter :set_cache
-  # before_filter :load_artefact
+  before_filter :load_artefact
   after_filter :set_analytics_headers
 
   layout :set_layout
