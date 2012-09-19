@@ -126,7 +126,7 @@
             <th scope="col">Footnote</th>
           </tr>
         </thead>
-        <% if measurable.export_measures.any? %>
+        <% if measurable.export_measures.select(&:third_country).any? %>
           <tbody>
             <% measurable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
               <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
