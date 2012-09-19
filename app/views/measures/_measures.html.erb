@@ -160,7 +160,7 @@
 
         <tbody>
           <% measurable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:geographical_area_description), locals: { measure_group: "specific_country" } %>
+            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "specific_country" } %>
           <% end %>
         </tbody>
       </table>
@@ -195,7 +195,7 @@
       <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "third_country" } %>
     <% end %>
     <% measurable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:geographical_area_description), as: 'measure', locals: { measure_group: "specific_country" } %>
+      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "specific_country" } %>
     <% end %>
   </div>
   <div class="inner">
@@ -203,7 +203,7 @@
       <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "third_country" } %>
     <% end %>
     <% measurable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:geographical_area_description), as: 'measure', locals: { measure_group: "specific_country" } %>
+      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "specific_country" } %>
     <% end %>
   </div>
 </div><!-- end .tab-content -->
