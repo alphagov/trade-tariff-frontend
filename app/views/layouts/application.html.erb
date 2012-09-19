@@ -22,7 +22,7 @@
         <div id="pjax-container" class="article-container group">
           <%= yield %>
         </div>
-            <%= form_for @tariff_date, method: :get, url: '', html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
+            <%= form_for @tariff_date, method: :get, url: change_date_path, html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
               <p>This tariff is for
               <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
               <%= select_day(f.object.date, {}, { id: 'tariff_date_day' }) %>
