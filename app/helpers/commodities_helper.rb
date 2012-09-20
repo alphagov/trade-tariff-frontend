@@ -45,4 +45,12 @@ module CommoditiesHelper
                           id: "commodity-#{commodity.code}")
     end
   end
+
+  def declarable_heading(commodity)
+    content_tag(:h1) do
+      content_tag(:span, commodity.description,
+                          class: 'description',
+                          id: "commodity-#{commodity.code}")
+    end
+  end
 end
