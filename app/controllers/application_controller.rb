@@ -17,11 +17,17 @@ class ApplicationController < ActionController::Base
   rescue_from Errno::ECONNREFUSED do |e|
     render text: '', status: :error
   end
+
   rescue_from ApiEntity::NotFound do ||
     render text: '404', status: 404
   end
+
   rescue_from ApiEntity::Error do |e|
     render text: '', status: :error
+  end
+
+  rescue_from URI::InvalidURIError do |e|
+    render text: '404', status: 404
   end
 
   def url_options
@@ -56,16 +62,15 @@ class ApplicationController < ActionController::Base
   end
 
   def load_artefact
-    @artefact = fetch_artefact(slug: APP_SLUG)
-    set_slimmer_artefact(@artefact)
+    unless Rails.env.development? #remove me once I rebuild my vm
+      @artefact = content_api.artefact(APP_SLUG)
+      set_slimmer_artefact(@artefact)
+    end
   end
 
   def set_analytics_headers
     headers = {
       format:      "trade-tariff",
-      proposition: "business",
-      section:     "business",
-      need_id:     "B659"
     }
     set_slimmer_headers(headers)
   end

@@ -1,5 +1,6 @@
 class DescriptionFormatter
-  def self.format(str)
+  def self.format(element = "")
+    str = element.dup
     str.gsub!("|", "&nbsp;")
     str.gsub!("!1!", "<br />")
     str.gsub!("!X!", "&times;")

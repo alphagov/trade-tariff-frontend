@@ -18,6 +18,9 @@ class Commodity
   has_many :export_measures, class_name: 'Measure'
   has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
 
+  format :description, with: DescriptionTrimFormatter,
+                       using: [:description],
+                       as: :description_plain
   format :description, with: DescriptionFormatter,
                        using: [:description]
 
