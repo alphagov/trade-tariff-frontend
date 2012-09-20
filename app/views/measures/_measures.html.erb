@@ -134,9 +134,15 @@
         </thead>
         <tbody>
         <% if measurable.export_measures.select(&:third_country).any? %>
-            <% measurable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-              <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
-            <% end %>
+          <% measurable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
+            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
+          <% end %>
+          <% unless measurable.export_measures.select(&:third_country).select(&:vat?).any? %>
+            <tr>
+              <td><div class="flag uk"></div></td>
+              <td colspan="7">No VAT or Excise measures were found for this commodity on this date</td>
+            </tr>
+          <% end %>
         <% else %>
           <tr>
             <td><div class="flag eu"></div></td>
