@@ -17,11 +17,17 @@ class ApplicationController < ActionController::Base
   rescue_from Errno::ECONNREFUSED do |e|
     render text: '', status: :error
   end
+
   rescue_from ApiEntity::NotFound do ||
     render text: '404', status: 404
   end
+
   rescue_from ApiEntity::Error do |e|
     render text: '', status: :error
+  end
+
+  rescue_from URI::InvalidURIError do |e|
+    render text: '404', status: 404
   end
 
   def url_options
