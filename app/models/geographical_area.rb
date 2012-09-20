@@ -10,4 +10,8 @@ class GeographicalArea
   def type
     iso_code.blank?
   end
+
+  def description
+    attributes['description'].presence || ''
+  end
 end
