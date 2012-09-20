@@ -22,7 +22,9 @@
       <h2>Import</h2>
 			<p>The commodity code for importing is <em><%= measurable.code %></em>.</p>
       <p>Importing from outside the EU is subject to a third country duty of <em><%= measurable.third_country_duty_rate %></em>.</p>
-      <p> Goods are also subject to VAT standard rate of <em><%= measurable.uk_vat_rate %></em>.</p>
+      <% measurable.import_measures.select{|m| m.national? && m.vat? }.each do |measure| %>
+        <p>Goods are subject to <%= measure.measure_type_description %> of <em><%= measure.duty_expression %></em>.</p>
+      <% end %>
       <h2>Export</h2>
 			<p>The commodity code for exporting and intrastat reporting is <em><%= measurable.display_export_code %></em>.</p>
 

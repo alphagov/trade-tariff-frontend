@@ -67,4 +67,12 @@ class Measure
   def sort_key
     "#{origin}#{measure_type_description}"
   end
+
+  def national?
+    origin == 'uk'
+  end
+
+  def vat?
+    measure_type_description =~ /^VAT/
+  end
 end
