@@ -4,12 +4,12 @@ module Models
 
     module ClassMethods
       def format(attribute, options)
-        options.assert_valid_keys :with, :using
+        options.assert_valid_keys :with, :using, :as
 
-        formatter = options[:with]
-        using = options[:using]
+        formatter, using, resulting_method = options.values_at(:with, :using, :as)
+        resulting_method ||= attribute
 
-        define_method(attribute) do
+        define_method(resulting_method) do
           values = using.inject([]) { |memo, field|
             memo << (if field.is_a?(String)
                       field
