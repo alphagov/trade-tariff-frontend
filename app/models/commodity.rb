@@ -8,7 +8,7 @@ class Commodity
   attr_accessor :description, :goods_nomenclature_item_id,
                 :synonyms, :uk_vat_rate, :third_country_duty_rate,
                 :leaf, :parents, :synonyms, :producline_suffix, :number_indents,
-                :goods_nomenclature_sid, :parent_sid, :casted_by
+                :goods_nomenclature_sid, :parent_sid, :casted_by, :bti_url
 
   has_one :section
   has_one :heading

@@ -8,7 +8,7 @@ class Heading
   attr_accessor :description, :commodities,
                 :import_measures, :export_measures, :leaf,
                 :declarable, :uk_vat_rate,
-                :synonyms, :goods_nomenclature_item_id
+                :synonyms, :goods_nomenclature_item_id, :bti_url
 
   has_one :chapter
   has_one :section
