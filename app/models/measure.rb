@@ -7,6 +7,7 @@ class Measure
 
   has_one :geographical_area
   has_one :legal_act
+  has_one :suspension_legal_act, class_name: 'LegalAct'
   has_one :additional_code
   has_one  :order_number
   has_many :excluded_countries, class_name: 'GeographicalArea'

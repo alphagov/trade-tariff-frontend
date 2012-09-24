@@ -27,6 +27,9 @@
     <% if measure.order_number.present? %>
       <%= render measure.order_number %>
     <% end %>
+    <% if measure.suspension_legal_act.present? %>
+      (suspended <%= measure.suspension_legal_act.validity_start_date %> - <%= measure.suspension_legal_act.validity_end_date %>)
+    <% end %>
   </td>
 
   <td><%= measure.duty_expression %></td>
