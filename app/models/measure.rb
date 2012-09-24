@@ -77,6 +77,10 @@ class Measure
   def sort_key
     "#{origin}#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
   end
+  
+  def sort_key_specific_country
+    "#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
+  end
 
   def national?
     origin == 'uk'
