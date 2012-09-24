@@ -65,8 +65,17 @@ class Measure
     @order_number.presence || OrderNumber.new(number: ordernumber, descriptionless: true)
   end
 
+  # _999 is the master additional code and should come first
+  def additional_code_sort
+    if additional_code && additional_code.to_s.include?("999")
+      "A000"
+    else
+      additional_code.to_s
+    end
+  end
+
   def sort_key
-    "#{origin}#{measure_type_description}"
+    "#{origin}#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
   end
 
   def national?
