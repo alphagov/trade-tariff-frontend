@@ -1104,8 +1104,13 @@ article.search-results {
   }
 }
 
-.tariff .suspended{
-  color: #b10e1e;
+.tariff .suspended {
+  a{
+    color: #f47738;
+  }
+  a:hover{
+    color: #ffbf47;
+  }
 }
 
 #loader {
