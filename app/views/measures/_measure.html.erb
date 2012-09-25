@@ -48,7 +48,7 @@
     <% end %>
   </td>
   <td>
-    <%= measure.validity_start_date %><% if measure.validity_end_date.present? %>&nbsp;-&nbsp;<%= measure.validity_end_date %><% end %>
+    <%= measure.effective_start_date %><% if measure.effective_end_date.present? %>&nbsp;-&nbsp;<%= measure.effective_end_date %><% end %>
   </td>
   <td><%= measure.duty_expression %></td>
 

@@ -3,7 +3,7 @@ require 'api_entity'
 class Measure
   include ApiEntity
 
-  attr_accessor :origin, :measure_type_description, :ordernumber, :validity_start_date, :validity_end_date
+  attr_accessor :origin, :measure_type_description, :ordernumber, :effective_start_date, :effective_end_date
 
   has_one :geographical_area
   has_one :legal_act
@@ -21,12 +21,12 @@ class Measure
     @id ||= SecureRandom.hex(16)
   end
 
-  def validity_start_date=(date)
-    @validity_start_date = Date.parse(date) if date.present?
+  def effective_start_date=(date)
+    @effective_start_date = Date.parse(date) if date.present?
   end
 
-  def validity_end_date=(date)
-    @validity_end_date = Date.parse(date) if date.present?
+  def effective_end_date=(date)
+    @effective_end_date = Date.parse(date) if date.present?
   end
 
   def duty_expression
