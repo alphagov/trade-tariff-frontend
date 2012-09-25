@@ -7,10 +7,10 @@ class LegalAct
                 :validity_start_date
 
   def validity_start_date=(date)
-    @validity_start_date = Date.parse(date)
+    @validity_start_date = Date.parse(date) if date.present?
   end
 
   def validity_end_date=(date)
-    @validity_end_date = Date.parse(date)
+    @validity_end_date = Date.parse(date) if date.present?
   end
 end

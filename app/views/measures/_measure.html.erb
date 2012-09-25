@@ -42,7 +42,10 @@
 
   <td>
     <%= measure.measure_type_description %>
+    <br />
+    <%= measure.validity_start_date %><% if measure.validity_end_date.present? %>&nbsp;-&nbsp;<%= measure.validity_end_date %><% end %>
     <% if measure.order_number.present? %>
+    <br />
       <%= render measure.order_number %>
     <% end %>
   </td>
