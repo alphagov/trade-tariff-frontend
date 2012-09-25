@@ -1104,11 +1104,11 @@ article.search-results {
   }
 }
 
-.tariff .suspended {
-  a{
+.tariff{
+  a.suspended{
     color: #f47738;
   }
-  a:hover{
+  a.suspended:hover{
     color: #ffbf47;
   }
 }

@@ -8,6 +8,15 @@
       <dl>
         <dt class="has_children">
           <%= measure.geographical_area.description %>
+          <% if measure.suspension_legal_act.present? %>
+            <br />
+            <a class="suspended" href="<%= measure.suspension_legal_act.url %>" target="_blank">
+              Suspended from <%= measure.suspension_legal_act.validity_start_date %>
+              <% if measure.suspension_legal_act.validity_end_date %>
+                to <%= measure.suspension_legal_act.validity_end_date %>
+              <% end %>
+            </a>
+          <% end %>
         </dt>
       <dd>
         <ul>
@@ -18,6 +27,15 @@
       </dd>
         <% else %>
           <%= measure.geographical_area.description %>
+          <% if measure.suspension_legal_act.present? %>
+            <br />
+            <a class="suspended" href="<%= measure.suspension_legal_act.url %>" target="_blank">
+              Suspended from <%= measure.suspension_legal_act.validity_start_date %>
+              <% if measure.suspension_legal_act.validity_end_date %>
+                to <%= measure.suspension_legal_act.validity_end_date %>
+              <% end %>
+            </a>
+          <% end %>
         <% end %>
     </td>
   <% end %>
@@ -26,16 +44,6 @@
     <%= measure.measure_type_description %>
     <% if measure.order_number.present? %>
       <%= render measure.order_number %>
-    <% end %>
-    <% if measure.suspension_legal_act.present? %>
-    <br />
-      <span class="suspended">
-        <a href="<%= measure.suspension_legal_act.url %>" target="_blank">
-          Suspended from <%= measure.suspension_legal_act.validity_start_date %>
-          <% if measure.suspension_legal_act.validity_end_date %>
-            to <%= measure.suspension_legal_act.validity_end_date %>
-          <% end %>
-        </a>
     <% end %>
   </td>
 
