@@ -28,7 +28,7 @@
       <%= render measure.order_number %>
     <% end %>
     <% if measure.suspension_legal_act.present? %>
-      (suspended <%= measure.suspension_legal_act.validity_start_date %> - <%= measure.suspension_legal_act.validity_end_date %>)
+      <span class="suspended"><%= link_to "Suspended", measure.suspension_legal_act.url, target: "_blank" %> (<%= measure.suspension_legal_act.validity_start_date %> - <%= measure.suspension_legal_act.validity_end_date %>)</span>
     <% end %>
   </td>
 

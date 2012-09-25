@@ -1092,7 +1092,7 @@ article.search-results {
   }
 }
 
-.flag {
+.tariff .flag {
   display:block;
   width:16px;
   height:11px;
@@ -1102,6 +1102,10 @@ article.search-results {
   &.uk{
     background: image-url('uk.png');
   }
+}
+
+.tariff .suspended{
+  color: #b10e1e;
 }
 
 #loader {
