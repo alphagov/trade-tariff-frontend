@@ -1,2 +1,2 @@
 <dt>Section <%= section.numeral %></dt>
-<dd><a class="js-pjax" href="<%= section_path(section) %>"><%= section.title %></a></dd>
+<dd><%= link_to section.title, section_path(section), class: "js-pjax" %></dd>
