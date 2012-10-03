@@ -3,7 +3,7 @@ require 'api_entity'
 class Measure
   include ApiEntity
 
-  attr_accessor :origin, :measure_type_description, :ordernumber, :effective_start_date, :effective_end_date
+  attr_accessor :origin, :measure_type_description, :ordernumber, :effective_start_date, :effective_end_date, :measure_type_id
 
   has_one :geographical_area
   has_one :legal_act

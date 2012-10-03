@@ -59,6 +59,10 @@ class Commodity
     description
   end
 
+  def display_meursing_table?
+    !(([import_measures.map(&:measure_components).flatten.map(&:duty_expression_id) + export_measures.map(&:measure_components).flatten.map(&:duty_expression_id)]).flatten & ["12", "14", "21", "25", "27", "29"]).empty?
+  end
+
   def footnotes
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten.uniq(&:code).sort_by(&:code)
   end
