@@ -2,7 +2,7 @@ class TariffDate
   include ActiveModel::Validations
   include ActiveModel::Conversion
 
-  DEFAULT_DATE = Date.new(2012,10,02)
+  DEFAULT_DATE = Date.new(2012,10,03)
 
   attr_reader :date
 
