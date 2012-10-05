@@ -15,6 +15,8 @@ class Section
         raise ApiEntity::NotFound.new resp['error']
       when 500
         raise ApiEntity::Error.new resp['error']
+      when 502
+        raise ApiEntity::Error.new "502 Bad Gateway"
       end
       resp.map { |entry_data| new(entry_data) }
     end

@@ -64,6 +64,8 @@ module ApiEntity
         raise ApiEntity::NotFound
       when 500
         raise ApiEntity::Error.new resp['error']
+      when 502
+        raise ApiEntity::Error.new resp['error']
       end
       new(resp)
     end
