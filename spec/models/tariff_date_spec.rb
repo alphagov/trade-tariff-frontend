@@ -22,7 +22,7 @@ describe TariffDate do
     end
 
     it 'ignores incorrect date in param' do
-      subject.new('2011').to_s.should == subject.date.to_s(:dashed)
+      subject.new('2011').to_s.should == subject.new(nil).date.to_s(:dashed)
     end
   end
 end
