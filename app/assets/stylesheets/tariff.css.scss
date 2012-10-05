@@ -116,10 +116,6 @@ $expand-arrow-space: 9 + $token-padding;
   ul li {
     float: left;
   }
-  .lte-ie8 & ol li,
-  .lte-ie8 & ul li {
-    _width: 7.5em;
-  }
 
   li a {
     background-color: #E1E8E8;
@@ -135,7 +131,7 @@ $expand-arrow-space: 9 + $token-padding;
   }
   .lte-ie8 & li a {
     _background-image: none;
-    _padding: 0 0.5em;
+    _padding: 0 1em;
   }
 
   li:first-child a {
@@ -184,12 +180,6 @@ $expand-arrow-space: 9 + $token-padding;
   dd {
     border-top:1px solid #eee;
   }
-
-  dt:nth-child(1),
-  dd:nth-child(2) {
-    border-top:none;
-    padding-top:1px;
-  }
 }
 
 @mixin underlined-ordered-list {
@@ -213,19 +203,13 @@ $expand-arrow-space: 9 + $token-padding;
   dl dd:nth-child(2) {
     border-top:1px solid #eee;
   }
-
-  dt:nth-child(1),
-  dd:nth-child(2) {
-    border-top:none;
-    padding-top:1px;
-  }
 }
 
 // selected sections have consistent styling except for their spacing from the left-side
 // this is therefore left as a variable value
 
 @mixin selected-section($side-padding) {
-  margin: 0 px(-1 * $top-level-padding) 0 px(-1 * ($side-padding + $token-width + $token-padding));
+  margin: 0 0 0 px(-1 * ($side-padding + $token-width + $token-padding));
   padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding + $token-width + $token-padding);
   background: #fff;
 }
@@ -281,13 +265,16 @@ mark {
   }
 }
 
-
 .tariff header.page-header hgroup p {
   a {
     font-size:em(14, 16);
     display:inline-block;
     margin-left:1em;
   }
+}
+
+.tariff header.page-header hgroup form p {
+  margin-top:0;
 }
 
 .commodities .chapter-code,
@@ -513,7 +500,8 @@ article.tariff {
 }
 
 article dl {
-  padding: px($top-level-padding) px($top-level-padding) 0 px($top-level-padding);
+  padding: px($top-level-padding) px($token-width) 0;
+  padding: px($top-level-padding) 0 0;
   margin: 0;
   background: $top-section-blue;
   position: relative;
@@ -521,13 +509,13 @@ article dl {
 
   dl {
     @include contain-float;
-    margin-left:px($token-width - $top-level-padding);
     padding-top:0px;
   }
 }
 
 article dt {
   float: left;
+  cursor: pointer;
   width: px($token-width);
   clear: left;
   text-align: center;
@@ -543,7 +531,7 @@ article dt {
     position:static;
     width:auto;
     margin-right:px($token-padding);
-    margin-left:-1 * px($token-padding);
+    margin-left:px($token-padding);
   }
 }
 
@@ -559,7 +547,6 @@ dl.tariff-fragments .chapter-headings dt {
 
 dl.tariff-fragments {
   padding: 0;
-  margin-left: -1px * $token-space;
 
   dt {
     @include tariff-identifier;
@@ -590,6 +577,19 @@ article dd {
     width: auto;
     float: none;
     margin-bottom: 0;
+    padding-left: 0;
+
+    a {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    dl a {
+      display: inline-block;
+      padding-left: px($token-space);
+      margin-left: px($token-space) * -1;
+    }
   }
 }
 
@@ -624,6 +624,14 @@ dl.sections {
     text-align:left;
     font-weight:normal;
   }
+
+  a {
+    display: inline-block;
+    padding-left: 16%;
+    margin-left: -16%;
+    position: relative;
+    z-index: 1;
+  }
 }
 
 dl.sections dd {
@@ -650,6 +658,8 @@ p.chapters-intro {
 }
 
 dl.chapters {
+  margin-left: 0;
+  padding-left: 0;
   @include underlined-token-list;
 }
 
@@ -783,9 +793,11 @@ ul.commodities {
       }
     }
 
-    a {
+    article & a {
       display: block;
       @include contain-float;
+      margin-left: 0;
+      padding-left: 0;
     }
   }
 
@@ -1020,9 +1032,17 @@ article.search-results {
     }
 
     dd {
-      width:84%;
-      padding-left:0;
+      width: auto;
+      display: block;
+      padding: 0;
+      margin: 0;
       overflow:hidden;
+
+      a {
+        display: block;
+        padding-left: 15%;
+        margin-left: -15%;
+      }
     }
   }
 
@@ -1037,7 +1057,11 @@ article.search-results {
 
   dd a {
     text-decoration:none;
-    display:block;
+    display: inline-block;
+    padding-left: px($token-space);
+    margin-left: px($token-space) * -1;
+    position: relative;
+    z-index: 1;
   }
 
   dl dl {
@@ -1096,6 +1120,8 @@ article.search-results {
   display:block;
   width:16px;
   height:11px;
+  overflow:hidden;
+
   &.eu{
     background: image-url('eu.png');
   }
