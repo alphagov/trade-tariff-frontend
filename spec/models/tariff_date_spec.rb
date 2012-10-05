@@ -5,13 +5,13 @@ describe TariffDate do
 
   describe '#date' do
     it 'returns parsed date if it was provided' do
-      date = Date.today
+      date = Date.today + 1.day
 
       subject.new(date).date.should == date
     end
 
     it 'returns today\'s date if no date was parsed' do
-      subject.new(nil).date.should == TariffDate::DEFAULT_DATE
+      subject.new(nil).date.should == Date.today
     end
   end
 
@@ -22,7 +22,7 @@ describe TariffDate do
     end
 
     it 'ignores incorrect date in param' do
-      subject.new('2011').to_s.should == TariffDate::DEFAULT_DATE.to_s(:dashbed)
+      subject.new('2011').to_s.should == subject.date.to_s(:dashed)
     end
   end
 end
