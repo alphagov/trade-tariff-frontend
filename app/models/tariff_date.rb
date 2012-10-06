@@ -2,8 +2,6 @@ class TariffDate
   include ActiveModel::Validations
   include ActiveModel::Conversion
 
-  DEFAULT_DATE = Date.new(2012,10,03)
-
   attr_reader :date
 
   def initialize(date)
@@ -20,7 +18,7 @@ class TariffDate
   end
 
   def date
-    @date.presence || DEFAULT_DATE
+    @date.presence || Date.today
   end
 
   def persisted?

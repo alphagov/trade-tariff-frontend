@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
 
   def set_analytics_headers
     headers = {
-      format:      "trade-tariff",
+      format:      "custom-tool",
     }
     set_slimmer_headers(headers)
   end
