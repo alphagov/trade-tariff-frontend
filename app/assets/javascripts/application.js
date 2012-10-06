@@ -5,8 +5,11 @@
 //= require_tree .
 
 $(function(){
-  GOVUK.tariff.initialize();
+  GOVUK.tariff.onLoad();
+  GOVUK.tariff.onContentLoad();
   
   $('#pjax-container').pjax('a.js-pjax', {timeout: 4000})
-    .on('pjax:success', function(){GOVUK.tariff.initialize()})
+    .on('pjax:end', function(){
+      GOVUK.tariff.onContentLoad(this);
+    })
 });

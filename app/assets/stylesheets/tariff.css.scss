@@ -533,6 +533,10 @@ article dt {
     margin-right:px($token-padding);
     margin-left:px($token-padding);
   }
+
+  &.hover {
+    color: #2E8ACA;
+  }
 }
 
 dl.chapters,
@@ -550,6 +554,10 @@ dl.tariff-fragments {
 
   dt {
     @include tariff-identifier;
+
+    &.hover {
+      color: #2E8ACA;
+    }
   }
 
   dd {
@@ -585,10 +593,27 @@ article dd {
       z-index: 1;
     }
 
+    .js-enabled & a {
+      display: inline;
+    }
+
+    .js-enabled & a.hover {
+      color: #2E8ACA;
+    }
+
     dl a {
       display: inline-block;
       padding-left: px($token-space);
       margin-left: px($token-space) * -1;
+    }
+
+    .js-enabled & dl a {
+      padding-left: px($token-padding);
+      margin-left: px($token-padding) * -1;
+    }
+    
+    .js-enabled & dl a.hover {
+      color: #2E8ACA;
     }
   }
 }
@@ -627,8 +652,8 @@ dl.sections {
 
   a {
     display: inline-block;
-    padding-left: 16%;
-    margin-left: -16%;
+    padding-left: 19%;
+    margin-left: -19%;
     position: relative;
     z-index: 1;
   }
@@ -750,6 +775,10 @@ ul.commodities {
     a {
       margin:0;
       text-decoration:none;
+
+      &:hover span {
+        color: #2E8ACA;
+      }
     }
 
     span {
@@ -793,6 +822,7 @@ ul.commodities {
       }
     }
 
+    .js-enabled article & a,
     article & a {
       display: block;
       @include contain-float;
@@ -1032,7 +1062,7 @@ article.search-results {
     }
 
     dd {
-      width: auto;
+      width: 85%;
       display: block;
       padding: 0;
       margin: 0;
@@ -1048,6 +1078,10 @@ article.search-results {
 
   dt {
     @include tariff-identifier;
+
+    &.hover {
+      color: #2E8ACA;
+    }
   }
 
   dd {
@@ -1062,6 +1096,15 @@ article.search-results {
     margin-left: px($token-space) * -1;
     position: relative;
     z-index: 1;
+
+    &.hover {
+      color: #2E8ACA;
+    }
+
+    .js-enabled & {
+      padding-left: px($token-padding);
+      margin-left: px($token-padding) * -1;
+    }
   }
 
   dl dl {

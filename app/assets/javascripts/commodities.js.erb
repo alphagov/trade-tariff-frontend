@@ -30,11 +30,11 @@ GOVUK.tariff = {
           @name GOVUK.tariff.tree.initialize
           @function
           @description expands/collapses nodes in a tree
+          @param {String} context Element in which to add behaviours
         */
-        initialize : function () {
-            var $parentNodes = $('.has_children'),
+        initialize : function (context) {
+            var $parentNodes = $('.has_children', context),
                 isCommodityTree = false,
-                development = $('#development'),
                 $controls,
                 effectAll;
 
@@ -93,7 +93,7 @@ GOVUK.tariff = {
                 };
 
                 $parentNodes.closest('div.inner').append($controls);
-                $('ul.tree-controls a').each(function (idx) {
+                $('ul.tree-controls a', context).each(function (idx) {
                     $(this).on('click', function () {
                         effectAll(idx);
                         return false;
@@ -113,9 +113,10 @@ GOVUK.tariff = {
           @function
           @description adds tabbing behaviour
           @requires jquery.tabs.js
+          @param {String} context Element in which to add behaviours
         */
-        initialize : function () {
-            var $container = $('div.tariff');
+        initialize : function (context) {
+            var $container = $(context);
 
             if ($container.find('.nav-tabs').length) {
                 $container.tabs();
@@ -213,10 +214,11 @@ GOVUK.tariff = {
           @name GOVUK.tariff.tablePopup.initialize
           @function
           @description initializes the popup behaviour
+          @param {String} context Element in which to add behaviours
         */
-        initialize : function () {
+        initialize : function (context) {
             var that = this,
-                $linkElm = $('table td a.reference');
+                $linkElm = $('table td a.reference', context);
 
             $linkElm.attr('title', 'Opens in a popup');
             $linkElm.on('click', function (e) {
@@ -268,16 +270,101 @@ GOVUK.tariff = {
         }
     },
     /**
+      @name hovers
+      @object
+      @description adding hovers for item numbers
+    */
+    hovers : {
+      /**
+        @name init
+        @function
+        @description initialize the namespace
+        @param {String} context Element in which to add behaviours
+      */
+      init : function (context) {
+        var $terms = $('dt.chapter-code, dt.heading-code, dt.section-number, dl.sections dt', context),
+            controlClass;
+
+        controlClass = function (idx, action, $descriptionLink) {
+          return function () {
+            $descriptionLink[action + 'Class']('hover');
+            $terms.eq(idx)[action + 'Class']('hover');
+          }
+        };
+
+        $terms.each(function (idx) {
+          var $this = $(this),
+              $description = $this.next('dd').removeClass('hover'),
+              $descriptionLink = $description.find('>a');
+
+          if (!$descriptionLink.length) { 
+            $descriptionLink = $description.find('>h1 a')
+            if (!$descriptionLink.length) { return; }
+          }
+          
+          $descriptionLink.removeClass('hover');
+          
+          // fire the link when it's term is clicked
+          $this.on('click', function () {
+            // clear classes in case content is cached with pjax
+            $(this).removeClass('hover');
+            $descriptionLink.removeClass('hover')
+            GOVUK.tariff.utils.triggerEvt.call($descriptionLink[0], 'click');
+          });
+
+          $this.add($descriptionLink).hover(
+            controlClass(idx, 'add', $descriptionLink), 
+            controlClass(idx, 'remove', $descriptionLink)
+          );
+        });
+      }
+    },
+    /**
+      @name utils
+      @namespace
+      @description utilities for the GOVUK.tariff namespace
+    */ 
+    utils : {
+      /**
+        @name triggerEvt
+        @function
+        @description trigger an event on an element. To be on an element via the call() method
+        @param {String} event Name of the event to trigger
+      */
+      triggerEvt : function (event) {
+         if (document.createEvent) {
+             var evt = document.createEvent("HTMLEvents");
+             evt.initEvent(event, true, true ); // event type, bubbling, cancelable
+             return this.dispatchEvent(evt);
+         } else {
+             // dispatch for IE
+             var evt = document.createEventObject();
+             return this.fireEvent('on' + event, evt)
+         }
+      }
+    },
+    /**
       @name initialize
       @function
-      @description initializes namespace
+      @description adds behaviours inside of the pjax area
+      @param {Element} content Element in which to add behaviours
     */
-    initialize : function () {
-        var that = this;
+    onContentLoad : function (context) {
+        if (context === undefined) {
+          context = document.body;
+        }
 
-        this.tree.initialize();
-        this.tabs.initialize();
-        this.tablePopup.initialize();
+        this.tree.initialize(context);
+        this.tabs.initialize(context);
+        this.tablePopup.initialize(context);
+        this.hovers.init(context);
+    },
+    /**
+      @name onLoad
+      @function
+      @description adds behaviours outside of the pjax area
+    */
+    onLoad : function () {
         this.datePickers.initialize();
     }
 };
