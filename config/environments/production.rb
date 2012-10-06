@@ -61,7 +61,7 @@ TradeTariffFrontend::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_controller.asset_host = Plek.current.find('cdn')
+  config.action_controller.asset_host = ENV['GOVUK_ASSET_HOST'] || Plek.current.find('cdn')
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
