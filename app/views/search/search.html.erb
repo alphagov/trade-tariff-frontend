@@ -30,7 +30,7 @@
         <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
-          <dl>
+          <dl class="results-headings">
             <% headings.each do |heading| %>
               <dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
               <dd>

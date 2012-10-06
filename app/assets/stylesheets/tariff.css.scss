@@ -180,6 +180,12 @@ $expand-arrow-space: 9 + $token-padding;
   dd {
     border-top:1px solid #eee;
   }
+
+  dt:nth-child(1),
+  dd:nth-child(2) {
+    border-top:none;
+    padding-top:1px;
+  }
 }
 
 @mixin underlined-ordered-list {
@@ -202,6 +208,12 @@ $expand-arrow-space: 9 + $token-padding;
   dd,
   dl dd:nth-child(2) {
     border-top:1px solid #eee;
+  }
+
+  dt:nth-child(1),
+  dd:nth-child(2) {
+    border-top:none;
+    padding-top:1px;
   }
 }
 
@@ -1040,13 +1052,16 @@ article.search-results {
 
   .results-subset {
     margin-left:px($results-padding);
-    border-bottom:1px solid #eee;
 
     li {
        @include underlined-ordered-list;
        font-size:1em; /* 14px */
        list-style:none;
        margin-left:-1 * px($token-padding);
+    }
+
+    .results-headings {
+      margin-bottom: 1.5em;
     }
   }
 
