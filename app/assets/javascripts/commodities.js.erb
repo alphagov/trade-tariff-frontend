@@ -309,7 +309,7 @@ GOVUK.tariff = {
             // clear classes in case content is cached with pjax
             $(this).removeClass('hover');
             $descriptionLink.removeClass('hover')
-            GOVUK.tariff.utils.triggerEvt.call($descriptionLink[0], 'click');
+            GOVUK.tariff.utils.triggerClick.call($descriptionLink[0]);
           });
 
           $this.add($descriptionLink).hover(
@@ -326,20 +326,20 @@ GOVUK.tariff = {
     */ 
     utils : {
       /**
-        @name triggerEvt
+        @name triggerClick
         @function
-        @description trigger an event on an element. To be on an element via the call() method
+        @description trigger a click on an element. To be on an element via the call() method
         @param {String} event Name of the event to trigger
       */
-      triggerEvt : function (event) {
+      triggerClick : function () {
          if (document.createEvent) {
              var evt = document.createEvent("HTMLEvents");
-             evt.initEvent(event, true, true ); // event type, bubbling, cancelable
+             evt.initEvent('click', true, true ); // event type, bubbling, cancelable
              return this.dispatchEvent(evt);
          } else {
              // dispatch for IE
              var evt = document.createEventObject();
-             return this.fireEvent('on' + event, evt)
+             this.click();
          }
       }
     },
