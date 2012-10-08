@@ -11,7 +11,7 @@ class MeasureCondition
                   :certificate_type
 
     format :duty_expression, with: DutyExpressionFormatter,
-                             using: ["01", :condition_amount,
+                             using: ["01", " ", :condition_amount,
                                     :monetary_unit, :measurement_unit,
                                     :measurement_unit_qualifier]
 
