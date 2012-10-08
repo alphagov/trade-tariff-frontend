@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_cache
-    expires_in 2.hours, :public => true, 'max-stale' => 0
+    expires_in 2.hours, :public => true, 'max-stale' => 0, 'stale-if-error' => 86400, 'stale-while-revalidate' => 86400
   end
 
   def load_artefact
