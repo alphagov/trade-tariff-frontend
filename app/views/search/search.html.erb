@@ -1,10 +1,10 @@
 <h1 class="search-heading">Search results for '<mark><%= @search.q %></mark>'</h1>
 <article class="search-results">
   <% if @results.any? %>
-    <% if @results.sections.any? %>
-      <h2><%= result_title(Section, @results, @search.q) %></h2>
+    <% if @results.reference_match.sections.any? %>
+      <h2>Most popular sections for <%= @search %>:</h2>
       <dl class="results-subset sections">
-        <% @results.sections.each do |section| %>
+        <% @results.reference_match.sections.each do |section| %>
         <dt>Section <%= section.numeral %></dt>
         <dd>
           <%= link_to section, section_path(section)%>
@@ -12,10 +12,10 @@
         <% end %>
       </dl>
     <% end %>
-    <% if @results.chapters.any? %>
-      <h2><%= result_title(Chapter, @results, @search.q) %></h2>
+    <% if @results.reference_match.chapters.any? %>
+      <h2>Most popular chapters for <%= @search %>:</h2>
       <dl class="results-subset">
-        <% @results.chapters.each do |chapter| %>
+        <% @results.reference_match.chapters.each do |chapter| %>
           <dt class="chapter-code" title="Chapter code"><%= chapter.short_code %></dt>
           <dd>
             <%= link_to chapter, chapter_path(chapter) %>
@@ -23,10 +23,10 @@
         <% end %>
       </dl>
     <% end %>
-    <% if @results.headings.any? %>
-      <h2><%= result_title(Heading, @results, @search.q) %></h2>
+    <% if @results.reference_match.headings.any? %>
+      <h2>Most popular headings for <%= @search %>:</h2>
       <dl class="results-subset">
-        <% @results.headings.group_by(&:chapter_code).each do |chapter, headings| %>
+        <% @results.reference_match.headings.group_by(&:chapter_code).each do |chapter, headings| %>
         <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
@@ -35,6 +35,51 @@
               <dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
               <dd>
                 <%= link_to heading, heading_path(heading) %>
+              </dd>
+            <% end %>
+          </dl>
+        </dd>
+        <% end %>
+      </dl>
+    <% end %>
+
+    <% if @results.goods_nomenclature_match.sections.any? %>
+      <h2><%= @search %></h2>
+      <dl class="results-subset sections">
+        <% @results.goods_nomenclature_match.sections.each do |section| %>
+        <dt>Section <%= section.numeral %></dt>
+        <dd>
+          <%= link_to section, section_path(section)%>
+        </dd>
+        <% end %>
+      </dl>
+    <% end %>
+    <% if @results.goods_nomenclature_match.chapters.any? %>
+      <h2><%= @search.q %></h2>
+      <dl class="results-subset">
+        <% @results.goods_nomenclature_match.chapters.each do |chapter| %>
+          <dt class="chapter-code" title="Chapter code"><%= chapter.short_code %></dt>
+          <dd>
+            <%= link_to chapter, chapter_path(chapter) %>
+          </dd>
+        <% end %>
+      </dl>
+    <% end %>
+    <% if @results.goods_nomenclature_match.resulting_headings.any? %>
+      <h2><%= @search.q %></h2>
+      <dl class="results-subset">
+        <% @results.goods_nomenclature_match.resulting_headings.group_by(&:chapter_code).each do |chapter, headings| %>
+        <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
+        <dd>
+          <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
+          <dl>
+            <% headings.each do |heading| %>
+              <dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
+              <dd>
+                <%= link_to heading, heading_path(heading) %>
+                <% heading.commodities.each do |commodity| %>
+                  <p><%= commodity %></p>
+                <% end %>
               </dd>
             <% end %>
           </dl>

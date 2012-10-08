@@ -94,6 +94,11 @@ module ApiEntity
           @#{associations} ||= data.map { |record| #{options[:class_name]}.new(record.merge(casted_by: self)) }
         end
 
+        def add_#{associations.to_s.singularize}(record)
+          @#{associations} ||= []
+          @#{associations} << record
+        end
+
         def #{associations}
           @#{associations}.presence || []
         end

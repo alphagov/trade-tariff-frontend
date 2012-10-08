@@ -30,6 +30,18 @@ class Heading
   alias :leaf? :leaf
   alias :code :goods_nomenclature_item_id
 
+  def eql?(other_heading)
+    self.goods_nomenclature_item_id == other_heading.goods_nomenclature_item_id
+  end
+
+  def ==(other_heading)
+    self.goods_nomenclature_item_id == other_heading.goods_nomenclature_item_id
+  end
+
+  def hash
+    goods_nomenclature_item_id.to_i
+  end
+
   def commodity_code
     code.first(10)
   end
