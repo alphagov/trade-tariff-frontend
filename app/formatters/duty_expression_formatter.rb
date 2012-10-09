@@ -1,4 +1,9 @@
 class DutyExpressionFormatter
+
+  def self.prettify(float)
+    float.to_i == float ? float.to_i : float
+  end
+
   def self.format(opts={})
     duty_expression_id = opts[:duty_expression_id]
     duty_expression_description = opts[:duty_expression_description]
@@ -9,7 +14,7 @@ class DutyExpressionFormatter
     
     @formatted = ""
     if duty_amount.present?
-      @formatted << sprintf("%.2f", duty_amount)
+      @formatted << prettify(duty_amount).to_s
     end
     if duty_expression_description.present?
       @formatted << " " << duty_expression_description
