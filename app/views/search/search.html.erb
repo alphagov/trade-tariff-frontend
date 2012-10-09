@@ -4,25 +4,17 @@
     <% if @results.reference_match.sections.any? %>
       <h2>Most popular sections for <%= @search %>:</h2>
       <dl class="results-subset sections">
-        <% @results.reference_match.sections.each do |section| %>
-        <dt>Section <%= section.numeral %></dt>
-        <dd>
-          <%= link_to section, section_path(section)%>
-        </dd>
-        <% end %>
+        <%= render partial: 'search/section', collection: @results.reference_match.sections %>
       </dl>
     <% end %>
+
     <% if @results.reference_match.chapters.any? %>
       <h2>Most popular chapters for <%= @search %>:</h2>
       <dl class="results-subset">
-        <% @results.reference_match.chapters.each do |chapter| %>
-          <dt class="chapter-code" title="Chapter code"><%= chapter.short_code %></dt>
-          <dd>
-            <%= link_to chapter, chapter_path(chapter) %>
-          </dd>
-        <% end %>
+        <%= render partial: 'search/chapter', collection: @results.reference_match.chapters %>
       </dl>
     <% end %>
+
     <% if @results.reference_match.headings.any? %>
       <h2>Most popular headings for <%= @search %>:</h2>
       <dl class="results-subset">
@@ -31,12 +23,7 @@
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
           <dl class="results-headings">
-            <% headings.each do |heading| %>
-              <dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
-              <dd>
-                <%= link_to heading, heading_path(heading) %>
-              </dd>
-            <% end %>
+            <%= render partial: 'search/heading', collection: headings %>
           </dl>
         </dd>
         <% end %>
@@ -44,44 +31,28 @@
     <% end %>
 
     <% if @results.goods_nomenclature_match.sections.any? %>
-      <h2><%= @search %></h2>
+      <h2>Sections containing <%= @search %>:</h2>
       <dl class="results-subset sections">
-        <% @results.goods_nomenclature_match.sections.each do |section| %>
-        <dt>Section <%= section.numeral %></dt>
-        <dd>
-          <%= link_to section, section_path(section)%>
-        </dd>
-        <% end %>
+        <%= render partial: 'search/section', collection: @results.goods_nomenclature_match.sections %>
       </dl>
     <% end %>
+
     <% if @results.goods_nomenclature_match.chapters.any? %>
-      <h2><%= @search.q %></h2>
+      <h2>Chapters containing <%= @search %>:</h2>
       <dl class="results-subset">
-        <% @results.goods_nomenclature_match.chapters.each do |chapter| %>
-          <dt class="chapter-code" title="Chapter code"><%= chapter.short_code %></dt>
-          <dd>
-            <%= link_to chapter, chapter_path(chapter) %>
-          </dd>
-        <% end %>
+        <%= render partial: 'search/chapter', collection: @results.goods_nomenclature_match.chapters %>
       </dl>
     <% end %>
+
     <% if @results.goods_nomenclature_match.resulting_headings.any? %>
-      <h2><%= @search.q %></h2>
+      <h2>Headings containing <%= @search %>:</h2>
       <dl class="results-subset">
         <% @results.goods_nomenclature_match.resulting_headings.group_by(&:chapter_code).each do |chapter, headings| %>
         <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
           <dl>
-            <% headings.each do |heading| %>
-              <dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
-              <dd>
-                <%= link_to heading, heading_path(heading) %>
-                <% heading.commodities.each do |commodity| %>
-                  <p><%= commodity %></p>
-                <% end %>
-              </dd>
-            <% end %>
+            <%= render partial: 'search/heading', collection: headings %>
           </dl>
         </dd>
         <% end %>

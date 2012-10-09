@@ -1,0 +1,7 @@
+<dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
+<dd>
+  <%= link_to heading, heading_path(heading) %>
+  <% heading.commodities.each do |commodity| %>
+    <div><%= commodity %></div>
+  <% end %>
+</dd>
