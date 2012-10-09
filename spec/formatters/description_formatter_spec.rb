@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'description_formatter'
 
 describe DescriptionFormatter do
