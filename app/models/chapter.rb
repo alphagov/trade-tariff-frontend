@@ -11,12 +11,13 @@ class Chapter
   has_many :headings
 
   format :description, with: DescriptionFormatter,
-                       using: [:description]
+                       using: [:description], 
+                       as: :formatted_decription
 
   alias :code :goods_nomenclature_item_id
 
   def to_s
-    description.mb_chars.downcase.to_s.gsub(/^(.)/) { $1.capitalize }
+    formatted_decription.mb_chars.downcase.to_s.gsub(/^(.)/) { $1.capitalize }
   end
 
   def short_code

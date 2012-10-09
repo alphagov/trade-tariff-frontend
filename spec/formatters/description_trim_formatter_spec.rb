@@ -4,43 +4,43 @@ require 'description_trim_formatter'
 describe DescriptionTrimFormatter do
   describe '.format' do
     it 'replaces | with empty space' do
-      DescriptionTrimFormatter.format('|').should == ' '
+      DescriptionTrimFormatter.format(description: '|').should == ' '
     end
 
     it 'strips !1!' do
-      DescriptionTrimFormatter.format('!1!').should == ''
+      DescriptionTrimFormatter.format(description: '!1!').should == ''
     end
 
     it 'strips !X!' do
-      DescriptionTrimFormatter.format('!X!').should == ''
+      DescriptionTrimFormatter.format(description: '!X!').should == ''
     end
 
     it 'strips !x!' do
-      DescriptionTrimFormatter.format('!x!').should == ''
+      DescriptionTrimFormatter.format(description: '!x!').should == ''
     end
 
     it 'strips !o!' do
-      DescriptionTrimFormatter.format('!o!').should == ''
+      DescriptionTrimFormatter.format(description: '!o!').should == ''
     end
 
     it 'strips !O!' do
-      DescriptionTrimFormatter.format('!O!').should == ''
+      DescriptionTrimFormatter.format(description: '!O!').should == ''
     end
 
     it 'strips !>=!' do
-      DescriptionTrimFormatter.format('!>=!').should == ''
+      DescriptionTrimFormatter.format(description: '!>=!').should == ''
     end
 
     it 'strips !<=!' do
-      DescriptionTrimFormatter.format('!<=!').should == ''
+      DescriptionTrimFormatter.format(description: '!<=!').should == ''
     end
 
     it 'replaces  @<anycharacter> with <anycharacter>' do
-      DescriptionTrimFormatter.format('@1').should == '1'
+      DescriptionTrimFormatter.format(description: '@1').should == '1'
     end
 
     it 'replaces $<anycharacter> with <anycharacter>' do
-      DescriptionTrimFormatter.format('$1').should == '1'
+      DescriptionTrimFormatter.format(description: '$1').should == '1'
     end
   end
 end

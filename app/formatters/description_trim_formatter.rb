@@ -1,6 +1,6 @@
 class DescriptionTrimFormatter
-  def self.format(element = "")
-    str = element.dup
+  def self.format(opts = {})
+    str = opts[:description]
     str.gsub!("|", " ")
     str.gsub!("!1!", "")
     str.gsub!("!X!", "")
