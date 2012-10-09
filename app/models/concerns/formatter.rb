@@ -10,15 +10,16 @@ module Models
         resulting_method ||= attribute
 
         define_method(resulting_method) do
-          values = using.inject([]) { |memo, field|
-            memo << (if field.is_a?(String)
-                      field
-                    elsif field.is_a?(Symbol)
-                      attributes[field.to_s]
-                    end)
-          }
-
-          formatter.format(*values)
+          opts = {}
+          using.each do |field|
+            if field.is_a?(String)
+              opts[field.to_sym] = field
+            elsif
+              field.is_a?(Symbol)
+              opts[field] = attributes[field.to_s]
+            end
+          end
+          formatter.format(opts)
         end
       end
     end
