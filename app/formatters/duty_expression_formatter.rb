@@ -16,14 +16,16 @@ class DutyExpressionFormatter
     if duty_amount.present?
       @formatted << prettify(duty_amount).to_s
     end
-    if duty_expression_description.present?
+    # should use the abbreviation here first
+    # and should 
+    if duty_expression_description.present? 
       @formatted << " " << duty_expression_description
     end
     if monetary_unit.present?
       @formatted << " " << monetary_unit
     end
     if measurement_unit.present?
-      @formatted << "/" << measurement_unit
+      @formatted << " / " << measurement_unit
     end
     if measurement_unit_qualifier.present?
       @formatted << " " << measurement_unit_qualifier
