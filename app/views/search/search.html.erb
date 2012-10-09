@@ -52,7 +52,7 @@
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
           <dl>
-            <%= render partial: 'search/heading', collection: headings %>
+            <%= render partial: 'search/heading', collection: headings, locals: { search_query: @search.q } %>
           </dl>
         </dd>
         <% end %>
