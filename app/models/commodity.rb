@@ -24,6 +24,12 @@ class Commodity
   format :description, with: DescriptionFormatter,
                        using: [:description]
 
+  delegate :goods_nomenclature_item_id, to: :heading, prefix: true
+
+  def id
+    goods_nomenclature_item_id
+  end
+
   def substring=(substring)
     @substring ||= substring.to_i
   end
