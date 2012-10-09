@@ -1,4 +1,5 @@
-<tr>
+<% geo_class = measure.geographical_area.iso_code || measure.geographical_area.children_geographical_areas.sort_by(&:iso_code).map(&:iso_code).join(" ") %>
+<tr class="<%= geo_class %>">
   <td>
     <span class="flag <%= measure.origin %>"></span>
   </td>
