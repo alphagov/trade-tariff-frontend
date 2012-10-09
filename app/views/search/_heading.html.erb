@@ -2,6 +2,6 @@
 <dd>
   <%= link_to heading, heading_path(heading) %>
   <% heading.commodities.each do |commodity| %>
-    <div><%= commodity %></div>
+    <div><%= excerpt(commodity.description_plain, search_query, radius: 30) %></div>
   <% end %>
 </dd>
