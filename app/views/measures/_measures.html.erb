@@ -25,20 +25,22 @@
       <% measurable.import_measures.select{|m| m.national? && m.vat? }.each do |measure| %>
         <p>Goods are subject to <%= measure.measure_type_description %> of <em><%= measure.duty_expression %></em>.</p>
       <% end %>
-      <h2>Export</h2>
-			<p>The commodity code for exporting and intrastat reporting is <em><%= measurable.display_export_code %></em>.</p>
-
-      <div class="help-notice">
-        <p> See <a href="#import" data-toggle='tab'>import</a> and <a href="#export" data-toggle='tab'>export</a> tables for country-specific measures and restrictions.</p>
-      </div>
 
       <% if (@commodity && @commodity.display_meursing_table? || @heading && @heading.display_meursing_table?) %>
         <h1>Find meursing code</h1>
         <p>To calculate the duty rate you need to <%= link_to "find the additional meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window"%>.</p>
       <% end %>
 
+      <h2>Export</h2>
+      <p>The commodity code for exporting and intrastat reporting is <em><%= measurable.display_export_code %></em>.</p>
+
       <h2>Binding Tariff Information</h2>
       <p><%= link_to "You can search the EU EBTI-database for existing Binding Tariff Information for this commodity code", measurable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %></p>
+
+      <div class="help-notice">
+        <p> See <a href="#import" data-toggle='tab'>import</a> and <a href="#export" data-toggle='tab'>export</a> tables for country-specific measures and restrictions.</p>
+      </div>
+
       <nav class="part-pagination return-to-top">
         <a href="#wrapper">Return to top &uarr;</a>
       </nav>
