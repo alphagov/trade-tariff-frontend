@@ -1,5 +1,12 @@
 class DutyExpressionFormatter
-  def self.format(duty_expression_id, duty_expression_description, duty_amount, monetary_unit, measurement_unit, measurement_unit_qualifier)
+  def self.format(opts={})
+    duty_expression_id = opts[:duty_expression_id]
+    duty_expression_description = opts[:duty_expression_description]
+    duty_amount = opts[:duty_amount]
+    monetary_unit = opts[:monetary_unit]
+    measurement_unit = opts[:measurement_unit]
+    measurement_unit_qualifier = opts[:measurement_unit_qualifier]
+    
     @formatted = ""
     if duty_amount.present?
       @formatted << sprintf("%.2f", duty_amount)
