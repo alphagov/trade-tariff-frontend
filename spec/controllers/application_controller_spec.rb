@@ -17,5 +17,27 @@ describe ApplicationController do
 
       response.headers[Slimmer::Headers::ARTEFACT_HEADER].should == artefact_data.to_json
     end
+
+    describe "caching" do
+      before do
+        get :index
+      end
+
+      it "should have a max-age of 2 hours" do
+        response.headers["Cache-Control"].should include "max-age=7200"
+      end
+
+      it "should have a public directive" do
+        response.headers["Cache-Control"].should include "public"
+      end
+
+      it "should have a stale-if-error of 1 day" do
+        response.headers["Cache-Control"].should include "stale-if-error=86400"
+      end
+
+      it "should have a stale-while-revalidate of 1 day" do
+        response.headers["Cache-Control"].should include "stale-while-revalidate=86400"
+      end
+    end
   end
 end
