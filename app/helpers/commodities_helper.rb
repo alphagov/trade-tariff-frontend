@@ -25,7 +25,7 @@ module CommoditiesHelper
     if deeper_node.present?
       content_tag(:dd) do
         content_tag(:dl) do
-          content_tag(:dt, deeper_node.description) +
+          content_tag(:dt, deeper_node) +
           tree_node(main_commodity, commodities, deeper_node.number_indents)
         end
       end
@@ -40,7 +40,7 @@ module CommoditiesHelper
                          title: "Full tariff code: #{commodity.code}",
                          class: 'identifier',
                          'aria-describedby' => "commodity-#{commodity.code}") +
-      content_tag(:span, commodity.description,
+      content_tag(:span, commodity,
                           class: 'description',
                           id: "commodity-#{commodity.code}")
     end
@@ -48,7 +48,7 @@ module CommoditiesHelper
 
   def declarable_heading(commodity)
     content_tag(:h1) do
-      content_tag(:span, commodity.description,
+      content_tag(:span, commodity,
                           class: 'description',
                           id: "commodity-#{commodity.code}")
     end
