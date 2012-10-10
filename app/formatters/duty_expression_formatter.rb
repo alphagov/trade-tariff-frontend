@@ -18,19 +18,31 @@ class DutyExpressionFormatter
     case duty_expression_id
     when "99"
       @formatted << measurement_unit
-    when ("12" || "14" || "37" || "40" || "41" || "42" || "43" || "44")
-      @formatted << duty_expression_description
-    when ("21" || "25" || "27" || "29")
+    when "12", "14", "37", "40", "41", "42", "43", "44"
       if duty_expression_abbreviation.present?
         @formatted << duty_expression_abbreviation
       else
         @formatted << duty_expression_description
       end
-    when ("15" || "17" || "19" || "20")
+    when "21", "25", "27", "29"
       if duty_expression_abbreviation.present?
-        @formatted << "#{duty_expression_abbreviation} #{duty_amount} #{monetary_unit}"
-      else 
-        @formatted << "#{duty_expression_description} #{duty_amount} #{monetary_unit}"
+        @formatted << duty_expression_abbreviation
+      else
+        @formatted << duty_expression_description
+      end
+    when "15", "17", "19", "20"
+      if duty_expression_abbreviation.present?
+        @formatted << duty_expression_abbreviation
+      else duty_expression_description.present?
+        @formatted << duty_expression_description
+      end
+      if duty_amount.present?
+        @formatted << " " << prettify(duty_amount).to_s
+      end
+      if monetary_unit.present?
+        @formatted << " #{monetary_unit}"
+      else
+        @formatted << " %"
       end
       if measurement_unit.present? && measurement_unit_qualifier.present?
         @formatted << " / (#{measurement_unit}/#{measurement_unit_qualifier})"
@@ -57,6 +69,6 @@ class DutyExpressionFormatter
         @formatted << " / #{measurement_unit}"
       end
     end
-    @formatted
+    @formatted.html_safe
   end
 end

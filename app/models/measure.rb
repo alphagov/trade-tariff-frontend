@@ -30,15 +30,15 @@ class Measure
   end
 
   def duty_expression
-    measure_components.map(&:duty_expression).join(" + ")
+    measure_components.map(&:duty_expression).join(" ").html_safe
   end
 
   def condition_list
-    measure_conditions.map(&:document_code).join(",")
+    measure_conditions.map(&:document_code).join(",").html_safe
   end
 
   def excluded_country_list
-    excluded_countries.map(&:description).join(", ")
+    excluded_countries.map(&:description).join(", ").html_safe
   end
 
   def third_country
@@ -88,6 +88,10 @@ class Measure
   
   def sort_key_specific_country
     "#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
+  end
+
+  def third_country_duty
+    measure_type_id == "103"
   end
 
   def national?
