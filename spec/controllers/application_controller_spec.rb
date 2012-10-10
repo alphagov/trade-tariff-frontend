@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ApplicationController do
-
   describe "behaviour for all subclasses" do
     controller do
       def index
