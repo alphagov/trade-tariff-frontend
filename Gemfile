@@ -13,7 +13,7 @@ gem 'kaminari'
 
 gem 'gds-api-adapters', '2.1.0'
 gem 'plek'
-gem 'slimmer', '3.3.2'
+gem 'slimmer', '3.7.0'
 
 gem 'unicorn', '~> 4.3.1'
 
