@@ -30,7 +30,7 @@ class Measure
   end
 
   def duty_expression
-    measure_components.map(&:duty_expression).join(" ")
+    measure_components.map(&:duty_expression).join(" + ")
   end
 
   def condition_list

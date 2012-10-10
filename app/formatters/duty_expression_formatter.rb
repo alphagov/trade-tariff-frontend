@@ -17,6 +17,11 @@ class DutyExpressionFormatter
     case duty_expression_id
     when "99"
       @formatted << measurement_unit
+    when ("12" || "14" || "37" || "40" || "41" || "42" || "43" || "44")
+      @formatted << duty_expression_description
+    when ("21" || "25" || "27" || "29")
+      #TODO: Replace with abbreviation
+      @formatted << duty_expression_description
     else
       if duty_amount.present?
         @formatted << prettify(duty_amount).to_s
