@@ -7,6 +7,7 @@ class DutyExpressionFormatter
   def self.format(opts={})
     duty_expression_id = opts[:duty_expression_id]
     duty_expression_description = opts[:duty_expression_description]
+    duty_expression_abbreviation = opts[:duty_expression_abbreviation]
     duty_amount = opts[:duty_amount]
     monetary_unit = opts[:monetary_unit]
     measurement_unit = opts[:measurement_unit]
@@ -20,11 +21,17 @@ class DutyExpressionFormatter
     when ("12" || "14" || "37" || "40" || "41" || "42" || "43" || "44")
       @formatted << duty_expression_description
     when ("21" || "25" || "27" || "29")
-      #TODO: Replace with abbreviation
-      @formatted << duty_expression_description
+      if duty_expression_abbreviation.present?
+        @formatted << duty_expression_abbreviation
+      else
+        @formatted << duty_expression_description
+      end
     when ("15" || "17" || "19" || "20")
-      #TODO: Replace with abbreviation
-      @formatted << "#{duty_expression_description} #{duty_amount} #{monetary_unit}"
+      if duty_expression_abbreviation.present?
+        @formatted << "#{duty_expression_abbreviation} #{duty_amount} #{monetary_unit}"
+      else 
+        @formatted << "#{duty_expression_description} #{duty_amount} #{monetary_unit}"
+      end
       if measurement_unit.present? && measurement_unit_qualifier.present?
         @formatted << " / (#{measurement_unit}/#{measurement_unit_qualifier})"
       elsif measurement_unit.present?
@@ -34,9 +41,12 @@ class DutyExpressionFormatter
       if duty_amount.present?
         @formatted << prettify(duty_amount).to_s
       end
-      # should use the abbreviation here first
-      if duty_expression_description.present? && !monetary_unit.present?
+      if duty_expression_abbreviation.present? && !monetary_unit.present?
+        @formatted << " " << duty_expression_abbreviation
+      elsif duty_expression_description.present? && !monetary_unit.present?
         @formatted << " " << duty_expression_description
+      elsif duty_expression_description.blank?
+        @formatted << "%"
       end
       if monetary_unit.present?
         @formatted << " #{monetary_unit}"
