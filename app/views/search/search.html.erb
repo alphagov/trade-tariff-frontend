@@ -23,7 +23,7 @@
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
           <dl class="results-headings">
-            <%= render partial: 'search/heading', collection: headings %>
+            <%= render partial: 'search/heading', collection: headings.uniq.sort_by(&:short_code) %>
           </dl>
         </dd>
         <% end %>

@@ -45,10 +45,10 @@ class Search
 
       commodities.each do |commodity|
         if existing_heading = find_heading(commodity.heading)
-          existing_heading.add_commodity commodity
+          existing_heading.add_commodity(commodity)
         else
           @commodity_headings << build_heading_from(commodity).tap {|heading|
-            heading.add_commodity commodity
+            heading.add_commodity(commodity)
           }
         end
       end
