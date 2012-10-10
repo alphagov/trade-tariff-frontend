@@ -21,11 +21,12 @@ gem 'ci_reporter'
 gem 'airbrake'
 gem 'lograge'
 
+gem 'pry-rails'
+
 group :development do
   gem 'awesome_print'
   gem 'capistrano'
   gem 'debugger'
-  gem 'pry-rails'
 end
 
 group :test do
