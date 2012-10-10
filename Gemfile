@@ -14,6 +14,7 @@ gem 'kaminari'
 gem 'gds-api-adapters', '2.1.0'
 gem 'plek'
 gem 'slimmer', '3.7.0'
+gem 'govuk_frontend_toolkit', '0.3.3'
 
 gem 'unicorn', '~> 4.3.1'
 
