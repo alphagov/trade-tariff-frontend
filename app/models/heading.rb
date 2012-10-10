@@ -22,7 +22,8 @@ class Heading
                        using: [:description],
                        as: :description_plain
   format :description, with: DescriptionFormatter,
-                       using: [:description]
+                       using: [:description],
+                       as: :formatted_description
 
   delegate :code, to: :chapter, prefix: true
 
@@ -63,7 +64,7 @@ class Heading
   end
 
   def to_s
-    description
+    formatted_description
   end
 
   def heading

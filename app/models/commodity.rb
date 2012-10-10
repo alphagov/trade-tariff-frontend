@@ -22,7 +22,8 @@ class Commodity
                        using: [:description],
                        as: :description_plain
   format :description, with: DescriptionFormatter,
-                       using: [:description]
+                       using: [:description],
+                       as: :formatted_description
 
   delegate :goods_nomenclature_item_id, to: :heading, prefix: true
 
@@ -62,7 +63,7 @@ class Commodity
   end
 
   def to_s
-    description
+    formatted_description
   end
 
   def display_meursing_table?

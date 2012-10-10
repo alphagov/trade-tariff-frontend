@@ -71,9 +71,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_app_slimmer_headers
-    set_slimmer_headers(
-      format:               "custom-tool",
-      remove_meta_viewport: true
-    )
+    unless Rails.env.development? #remove me once I rebuild my vm
+      set_slimmer_headers(
+        format:               "custom-tool",
+        remove_meta_viewport: true
+      )
+    end
   end
 end
