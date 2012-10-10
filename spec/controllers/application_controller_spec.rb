@@ -17,6 +17,11 @@ describe ApplicationController do
       response.headers[Slimmer::Headers::ARTEFACT_HEADER].should == artefact_data.to_json
     end
 
+    it "should have a slimmer head set to remove the meta viewport HTML" do
+      get :index
+      response.headers[Slimmer::Headers::REMOVE_META_VIEWPORT].should == "true"
+    end
+
     describe "caching" do
       before do
         get :index

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   before_filter :initialize_modules
   before_filter :set_cache
   before_filter :load_artefact
-  after_filter :set_analytics_headers
+  after_filter :set_app_slimmer_headers
 
   layout :set_layout
 
@@ -70,10 +70,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_analytics_headers
-    headers = {
-      format:      "custom-tool",
-    }
-    set_slimmer_headers(headers)
+  def set_app_slimmer_headers
+    set_slimmer_headers(
+      format:               "custom-tool",
+      remove_meta_viewport: true
+    )
   end
 end
