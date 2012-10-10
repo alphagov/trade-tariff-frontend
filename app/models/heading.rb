@@ -82,6 +82,6 @@ class Heading
   def third_country_duty_rate
     duty_expressions = basic_duty_rate_components.map(&:duty_expression)
 
-    (duty_expressions.blank?) ? "variable" : duty_expressions.join(" ")
+    (duty_expressions.blank?) ? "variable" : duty_expressions.join(" + ")
   end
 end

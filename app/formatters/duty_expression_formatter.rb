@@ -22,6 +22,14 @@ class DutyExpressionFormatter
     when ("21" || "25" || "27" || "29")
       #TODO: Replace with abbreviation
       @formatted << duty_expression_description
+    when ("15" || "17" || "19" || "20")
+      #TODO: Replace with abbreviation
+      @formatted << "#{duty_expression_description} #{duty_amount} #{monetary_unit}"
+      if measurement_unit.present? && measurement_unit_qualifier.present?
+        @formatted << " / (#{measurement_unit}/#{measurement_unit_qualifier})"
+      elsif measurement_unit.present?
+        @formatted << " / #{measurement_unit}"
+      end    
     else
       if duty_amount.present?
         @formatted << prettify(duty_amount).to_s
