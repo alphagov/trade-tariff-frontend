@@ -58,6 +58,10 @@ class Search
       (headings + commodity_headings).sort_by(&:goods_nomenclature_item_id)
     end
 
+    def any?
+      [headings, commodities, chapters, sections].any? {|entity_group| entity_group.any? }
+    end
+
     private
 
     def find_heading(heading_for_search)
@@ -73,6 +77,10 @@ class Search
   class ReferenceMatch < BaseMatch
     array_attr_reader :sections, :chapters, :headings
     array_attr_writer :sections, :chapters, :headings
+
+    def any?
+      [headings, chapters, sections].any? {|entity_group| entity_group.any? }
+    end
   end
 
   class Outcome
@@ -85,7 +93,7 @@ class Search
       @type == "exact_match"
     end
 
-    def match_path
+    def to_param
       {
         controller: @entry['endpoint'],
         action: :show,
@@ -94,7 +102,8 @@ class Search
     end
 
     def any?
-      goods_nomenclature_match.present? || reference_match.present?
+      (goods_nomenclature_match.present? && goods_nomenclature_match.any?) ||
+      (reference_match.present? && reference_match.any?)
     end
 
     def goods_nomenclature_match=(entries)

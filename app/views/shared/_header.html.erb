@@ -10,10 +10,11 @@
 <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}"  } do |f| %>
     <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
     <%= f.label :q, "Search the tariff" %>
-    <%= f.text_field :q, required: false, 
+    <%= f.text_field :q, required: false,
                 size: 21,
-                placeholder: "name or code"  %>
-    <%= f.hidden_field :as_of %>
- 
+                placeholder: "name or code",
+                name: 'q'  %>
+    <%= f.hidden_field :as_of, name: 'as_of' %>
+
     <%= f.button 'Search', class: 'button right' %>
 <% end %>
