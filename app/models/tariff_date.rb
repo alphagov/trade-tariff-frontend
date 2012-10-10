@@ -2,7 +2,17 @@ class TariffDate
   include ActiveModel::Validations
   include ActiveModel::Conversion
 
+  DATE_KEYS = %w[year month day]
+
   attr_reader :date
+
+  def self.parse(date_param)
+    new(if valid_date_param?(date_param)
+      date_param.values_at(*DATE_KEYS).join("-")
+    else
+      Date.today
+    end)
+  end
 
   def initialize(date)
     self.date = date
@@ -31,5 +41,10 @@ class TariffDate
 
   def to_s
     date.to_formatted_s(:date)
+  end
+
+  def self.valid_date_param?(date_param)
+    date_param.present? && date_param.is_a?(Hash) &&
+    DATE_KEYS.all? { |k| k.in?(date_param.keys) }
   end
 end
