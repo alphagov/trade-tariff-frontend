@@ -12,23 +12,28 @@ class DutyExpressionFormatter
     measurement_unit = opts[:measurement_unit]
     measurement_unit_qualifier = opts[:measurement_unit_qualifier]
     
+
     @formatted = ""
-    if duty_amount.present?
-      @formatted << prettify(duty_amount).to_s
-    end
-    # should use the abbreviation here first
-    # and should 
-    if duty_expression_description.present? 
-      @formatted << " " << duty_expression_description
-    end
-    if monetary_unit.present?
-      @formatted << " " << monetary_unit
-    end
-    if measurement_unit.present?
-      @formatted << " / " << measurement_unit
-    end
-    if measurement_unit_qualifier.present?
-      @formatted << " " << measurement_unit_qualifier
+    case duty_expression_id
+    when "99"
+      @formatted << measurement_unit
+    else
+      if duty_amount.present?
+        @formatted << prettify(duty_amount).to_s
+      end
+      # should use the abbreviation here first
+      if duty_expression_description.present? && !monetary_unit.present?
+        @formatted << " " << duty_expression_description
+      end
+      if monetary_unit.present?
+        @formatted << " " << monetary_unit
+      end
+      if measurement_unit.present?
+        @formatted << " / " << measurement_unit
+      end
+      if measurement_unit_qualifier.present?
+        @formatted << " " << measurement_unit_qualifier
+      end
     end
     @formatted
   end
