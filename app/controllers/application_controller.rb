@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   before_filter :initialize_modules
   before_filter :set_cache
   before_filter :load_artefact
+  before_filter :store_location
   after_filter :set_app_slimmer_headers
 
   layout :set_layout
@@ -39,6 +40,16 @@ class ApplicationController < ActionController::Base
   def initialize_modules
     @search = Search.new(params)
     @tariff_date = TariffDate.new(params[:as_of])
+  end
+
+  def store_location
+    session[:return_to] = (request.get?) ? request.url : request.referer
+  end
+
+  def redirect_back_or_default(path, opts = {})
+    return_to = session[:return_to].presence || path
+    session[:return_to] = nil
+    redirect_to Rails.application.routes.recognize_path(return_to).merge(opts)
   end
 
   def set_layout

@@ -2,21 +2,43 @@ require 'spec_helper'
 
 describe ChangeDateController, "GET to #change" do
   context 'valid date param provided' do
-    let(:year)    { Forgery(:date).year }
-    let(:month)   { Forgery(:date).month(numerical: true) }
-    let(:day)     { Forgery(:date).day }
+    context 'redirect back path is absent (use default url)' do
+      let(:year)    { Forgery(:date).year }
+      let(:month)   { Forgery(:date).month(numerical: true) }
+      let(:day)     { Forgery(:date).day }
 
-    before(:each) do
-      get :change, date: {
-        year: year,
-        month: month,
-        day: day
-      }
+      before(:each) do
+        get :change, date: {
+          year: year,
+          month: month,
+          day: day
+        }
+      end
+
+      it { should respond_with(:redirect) }
+      it { should assign_to(:tariff_date) }
+      it { should redirect_to(sections_path(as_of: Date.new(year, month, day).to_s(:db))) }
     end
 
-    it { should respond_with(:redirect) }
-    it { should assign_to(:tariff_date) }
-    it { should redirect_to(sections_path(as_of: Date.new(year, month, day).to_s(:db))) }
+    context 'redirect back path is present' do
+      let(:year)    { Forgery(:date).year }
+      let(:month)   { Forgery(:date).month(numerical: true) }
+      let(:day)     { Forgery(:date).day }
+
+      before(:each) do
+        session[:return_to] = '/trade-tariff/chapters/01'
+
+        get :change, date: {
+          year: year,
+          month: month,
+          day: day
+        }
+      end
+
+      it { should respond_with(:redirect) }
+      it { should assign_to(:tariff_date) }
+      it { should redirect_to(chapter_path("01", as_of: Date.new(year, month, day).to_s(:db))) }
+    end
   end
 
   context 'invalid date param provided' do
