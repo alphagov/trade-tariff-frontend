@@ -26,13 +26,12 @@ class DutyExpressionFormatter
         @formatted << " " << duty_expression_description
       end
       if monetary_unit.present?
-        @formatted << " " << monetary_unit
+        @formatted << " #{monetary_unit}"
       end
-      if measurement_unit.present?
-        @formatted << " / " << measurement_unit
-      end
-      if measurement_unit_qualifier.present?
-        @formatted << " " << measurement_unit_qualifier
+      if measurement_unit.present? && measurement_unit_qualifier.present?
+        @formatted << " / (#{measurement_unit}/#{measurement_unit_qualifier})"
+      elsif measurement_unit.present?
+        @formatted << " / #{measurement_unit}"
       end
     end
     @formatted
