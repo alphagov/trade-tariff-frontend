@@ -1,43 +1,21 @@
 require 'api_entity'
 require 'formatter'
+require 'declarable'
 
 class Commodity
-  include ApiEntity
-  include Models::Formatter
+  include Models::Declarable
 
-  attr_accessor :description, :goods_nomenclature_item_id,
-                :synonyms, :uk_vat_rate, :third_country_duty_rate,
-                :leaf, :parents, :synonyms, :producline_suffix, :number_indents,
-                :goods_nomenclature_sid, :parent_sid, :casted_by, :bti_url
+  attr_accessor :parent_sid
 
-  has_one :section
   has_one :heading
-  has_one :chapter
-  has_one :footnote
   has_many :ancestors, class_name: 'Commodity'
-  has_many :import_measures, class_name: 'Measure'
-  has_many :export_measures, class_name: 'Measure'
-  has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
-
-  format :description, with: DescriptionTrimFormatter,
-                       using: [:description],
-                       as: :description_plain
-  format :description, with: DescriptionFormatter,
-                       using: [:description],
-                       as: :formatted_description
 
   delegate :goods_nomenclature_item_id, to: :heading, prefix: true
-
-  def id
-    goods_nomenclature_item_id
-  end
+  alias :short_code :goods_nomenclature_item_id
 
   def substring=(substring)
     @substring ||= substring.to_i
   end
-
-  alias :code       :goods_nomenclature_item_id
-  alias :short_code :goods_nomenclature_item_id
 
   def leaf?
     children.none?

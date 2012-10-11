@@ -1,36 +1,19 @@
 require 'api_entity'
 require 'formatter'
+require 'declarable'
 
 class Heading
-  include ApiEntity
-  include Models::Formatter
+  include Models::Declarable
 
-  attr_accessor :description, :commodities,
-                :import_measures, :export_measures, :leaf,
-                :declarable, :uk_vat_rate,
-                :synonyms, :goods_nomenclature_item_id, :bti_url
-
-  has_one :chapter
-  has_one :section
-  has_one :footnote
   has_many :commodities, class_name: 'Commodity'
   has_many :children, class_name: 'Heading'
-  has_many :import_measures, class_name: 'Measure'
-  has_many :export_measures, class_name: 'Measure'
-  has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
 
-  format :description, with: DescriptionTrimFormatter,
-                       using: [:description],
-                       as: :description_plain
-  format :description, with: DescriptionFormatter,
-                       using: [:description],
-                       as: :formatted_description
+  attr_accessor :leaf, :declarable
 
   delegate :code, to: :chapter, prefix: true
 
-  alias :declarable? :declarable
   alias :leaf? :leaf
-  alias :code :goods_nomenclature_item_id
+  alias :declarable? :declarable
 
   def eql?(other_heading)
     self.goods_nomenclature_item_id == other_heading.goods_nomenclature_item_id
