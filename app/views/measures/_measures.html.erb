@@ -231,6 +231,9 @@
         </thead>
 
         <tbody>
+          <% if declarable.footnote.present? %>
+            <%= render declarable.footnote %>
+          <% end %>
           <%= render declarable.footnotes %>
         </tbody>
       </table>
