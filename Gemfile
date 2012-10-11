@@ -19,7 +19,6 @@ gem 'govuk_frontend_toolkit', '0.3.3'
 gem 'unicorn', '~> 4.3.1'
 
 gem 'ci_reporter'
-gem 'airbrake'
 gem 'lograge'
 
 group :development, :test do
