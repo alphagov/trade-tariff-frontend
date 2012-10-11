@@ -32,10 +32,14 @@ class ApplicationController < ActionController::Base
   end
 
   def url_options
-    { as_of: @tariff_date }.merge(super)
+    date_param_provided? ? { as_of: @tariff_date }.merge(super) : super
   end
 
   private
+
+  def date_param_provided?
+    params[:as_of].present?
+  end
 
   def initialize_modules
     @search = Search.new(params)
