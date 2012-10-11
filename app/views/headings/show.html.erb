@@ -1,8 +1,7 @@
 <% content_for :title, "#{@heading} - Trade Tariff - GOV.UK" %>
 
 <% if @heading.declarable? %>
-  <%= render 'declarables/declarable', declarable: @heading,
-                                       with_commodity_tree: false %>
+  <%= render 'declarables/declarable', declarable: @heading %>
 <% else %>
   <article class="tariff">
     <div class="inner">
@@ -10,13 +9,13 @@
         <dt class="section-number">Section <%= @heading.section.numeral %></dt>
         <dd class="section-title"><%= link_to @heading.section.title, section_path(@heading.section), class: "js-pjax" %>
           <dl class="tariff-fragments">
-            <dt class="chapter-code" title="Chapter code"><%= @heading.chapter.short_code %></dt>
+            <dt class="chapter-code" title="Chapter code"><%= @heading.chapter_short_code %></dt>
             <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter), class: "js-pjax" %>
               <dl>
                 <dt class="heading-code" title="Heading code"><%= @heading.display_short_code %></dt>
                 <dd><h1><%= @heading %></h1>
                   <ul class="commodities">
-                    <%= render @commodities.select(&:root) %>
+                    <%= render @commodities.root_commodities %>
                   </ul>
                 </dd>
               </dl>

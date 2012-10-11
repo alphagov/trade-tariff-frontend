@@ -3,7 +3,7 @@
 <article class="tariff">
   <div class="inner">
     <dl>
-      <dt class="section-number">Section <%= @chapter.section.numeral %></dt>
+      <dt class="section-number">Section <%= @chapter.section_numeral %></dt>
       <dd class="section-title"><%= link_to @chapter.section, section_path(@chapter.section), class: "js-pjax" %>
         <dl class="tariff-fragments">
           <dt class="chapter-code" title="Chapter code"><%= @chapter.short_code %></dt>

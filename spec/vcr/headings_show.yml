@@ -2,55 +2,46 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/headings/0101?as_of=2012-08-06
+    uri: http://tariff-api.dev.gov.uk/headings/0101?as_of=2012-10-11
     body:
       encoding: US-ASCII
       string: ''
-    headers:
-      authorization:
-      - Token token="86c337686edc492184c5e9869c27a0b1"
+    headers: {}
   response:
     status:
       code: 200
       message: OK
     headers:
-      server:
+      Server:
       - nginx
-      date:
-      - Mon, 06 Aug 2012 08:52:45 GMT
-      content-type:
+      Date:
+      - Thu, 11 Oct 2012 15:01:35 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      transfer-encoding:
+      Transfer-Encoding:
       - chunked
-      connection:
+      Connection:
       - close
-      status:
+      Status:
       - 200 OK
-      x-ua-compatible:
+      X-Ua-Compatible:
       - IE=Edge
-      etag:
-      - ! '"91ccb4543a911b20134e40f8765b8417"'
-      cache-control:
+      Etag:
+      - ! '"68c642a6976067883b04643d751bb1e0"'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      x-request-id:
-      - 9a98d452fe556797f14c06c64a3558ca
-      x-runtime:
-      - '0.134999'
+      X-Request-Id:
+      - 5c14051fdef9ee9417025205bf2ea2fa
+      X-Runtime:
+      - '0.079323'
     body:
       encoding: US-ASCII
       string: ! '{"goods_nomenclature_item_id":"0101000000","description":"Live horses,
-        asses, mules and hinnies","third_country_duty_rate":"0.00 %","uk_vat_rate":"0.00
-        %","commodities":[{"producline_suffix":"10","description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101210000","leaf":false,"third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[{"producline_suffix":"80","description":"Pure-bred
-        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101210000","leaf":true,"third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[]},{"producline_suffix":"80","description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[{"producline_suffix":"80","description":"For
-        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[]},{"producline_suffix":"80","description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[]}]}]},{"producline_suffix":"80","description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[]},{"producline_suffix":"80","description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"third_country_duty_rate":"0.00
-        %","uk_vat_rate":"0.00 %","children":[]}],"chapter":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
-        ANIMALS"},"section":{"title":"Live animals; animal products (chapter 1 - 5)","numeral":"I","position":1}}'
-    http_version: '1.1'
-  recorded_at: Mon, 06 Aug 2012 08:52:45 GMT
-recorded_with: VCR 2.2.4
+        asses, mules and hinnies","bti_url":"http://ec.europa.eu/taxation_customs/dds2/ebti/ebti_consultation.jsp?Lang=en&nomenc=0101000000&Expand=true","chapter":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS"},"section":{"title":"Live animals; animal products (chapters 1 to
+        5)","numeral":"I","position":1},"commodities":[{"producline_suffix":"10","description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101210000","leaf":false,"goods_nomenclature_sid":93797,"parent_sid":null},{"producline_suffix":"80","description":"Pure-bred
+        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101210000","leaf":true,"goods_nomenclature_sid":93796,"parent_sid":93797},{"producline_suffix":"80","description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"goods_nomenclature_sid":93798,"parent_sid":93797},{"producline_suffix":"80","description":"For
+        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"goods_nomenclature_sid":93799,"parent_sid":93798},{"producline_suffix":"80","description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"goods_nomenclature_sid":93800,"parent_sid":93798},{"producline_suffix":"80","description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"goods_nomenclature_sid":93801,"parent_sid":null},{"producline_suffix":"80","description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"goods_nomenclature_sid":72763,"parent_sid":null}]}'
+    http_version: 
+  recorded_at: Thu, 11 Oct 2012 15:01:35 GMT
+recorded_with: VCR 2.2.5

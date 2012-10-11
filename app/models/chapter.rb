@@ -11,8 +11,10 @@ class Chapter
   has_many :headings
 
   format :description, with: DescriptionFormatter,
-                       using: [:description], 
+                       using: [:description],
                        as: :formatted_decription
+
+  delegate :numeral, to: :section, prefix: true
 
   alias :code :goods_nomenclature_item_id
 
