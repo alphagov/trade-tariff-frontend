@@ -75,8 +75,12 @@ class Commodity
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten.uniq(&:code).sort_by(&:code)
   end
 
+  def third_country_duty
+    @third_country_duty ||= basic_duty_rate_components.map(&:duty_expression)
+  end
+
   def third_country_duty_rate
-    import_measures.select(&:third_country_duty).first.duty_expression
+    (third_country_duty.blank?) ? "variable" : third_country_duty.join(" + ")
   end
 
   def root
