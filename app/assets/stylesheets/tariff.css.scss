@@ -256,7 +256,11 @@ mark {
 
 .tariff header.page-header hgroup h1{
   font-size:em(24, 16);
-  padding:em(16, 24) em($top-level-padding, 24) 0 em(73, 24);
+  padding:em(16, 24) em($top-level-padding, 24) em($top-level-padding, 24) em(73, 24);
+}
+
+#wrapper.tariff header.page-header hgroup h1{
+  background-position: 15px 15px;
 }
 
 .tariff header.page-header hgroup h1 span {
@@ -267,7 +271,7 @@ mark {
 .tariff header.page-header hgroup form {
   font-size:em(14, 16);
   text-align:right;
-  margin:em(-23, 14) 0 0;
+  margin:em(-33, 14) 0 0;
   padding:0 0 em(16, 14);
   background:none;
   line-height:2em;
@@ -304,13 +308,12 @@ mark {
 
 article table {
     @include table;
-    width:106.71875%; /* override for static styles */
-    margin:em(32, 16) -3.4375% 0; /* override for static styles */
+    width:100%; /* override for static styles */
+    margin:em(32, 16) 0 0; /* override for static styles */
 
-  /* ignore caption */
-  thead,
-  tbody {
-    font-size:em(12, 16);
+  th,
+  td {
+    font-size:em(14, 19);
   }
 
   .tab-content & p {
@@ -406,7 +409,7 @@ article.tariff {
   line-height:2em;
   background:#fff;
   height:2em;
-  padding:0.5em px($top-level-padding) 0.5em em(81, 14);
+  padding:0.5em px($top-level-padding) 0.5em px($token-space);
 
   a {
     float:left;
@@ -651,7 +654,7 @@ p.sections-intro {
 dl.sections {
   @include underlined-section-list;
   background:#fff;
-  padding-left:em(81, 14);
+  padding-left:px($token-space);
   padding-right:em(81, 14);
 
   dt {
@@ -678,6 +681,19 @@ dl.sections dd {
 
   &.hover {
     width: 84%;
+  }
+}
+
+article.section-notes {
+  h2,
+  p {
+    margin-left: px($token-space);
+    margin-right: px($token-space);
+  }
+
+  p {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -912,27 +928,34 @@ dl.tariff-fragments dd.declarable {
 
 .tab-content {
   margin:0;
+  width:100%;
 
   .tab-pane {
     padding-right:0;
     padding-left:0;
     border-top:solid 1px #C9D0D0;
     clear:both;
+    width:100%;
   }
 
   .inner {
-    padding:0em 2.5em 1em;
+    padding:0em px($token-space) 1em;
+
+    p {
+      margin-left:0;
+      margin-right:0;
+    }
   }
 
   h1.visuallyhidden + h2 {
-    margin-top:2em;
+    margin-top:14px;
   }
 
   p {
     font-size:em(19, 16);
     padding:0;
-    margin-left:0;
-    margin-right:0;
+    margin-left:px($token-space);
+    margin-right:px($token-space);
   }
 
   em {
@@ -1014,6 +1037,11 @@ ul.tree-controls li {
   table {
     margin:0;
     width:100%;
+
+    p {
+      font-size: 1em;
+      margin-top:0;
+    }
   }
 }
 
@@ -1045,7 +1073,7 @@ article.search-results {
   h2 {
     clear:both;
     font-size:em(20, 16);
-    margin-left:px($results-padding);
+    margin-left:px($token-space - $top-level-padding);
   }
 
   dl {
@@ -1056,7 +1084,7 @@ article.search-results {
   }
 
   .results-subset {
-    margin-left:px($results-padding);
+    margin-left:px($token-space - $top-level-padding);
 
     li {
        @include underlined-ordered-list;
