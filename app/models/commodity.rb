@@ -1,46 +1,28 @@
 require 'api_entity'
 require 'formatter'
+require 'declarable'
 
 class Commodity
-  include ApiEntity
-  include Models::Formatter
+  include Models::Declarable
 
-  attr_accessor :description, :goods_nomenclature_item_id,
-                :synonyms, :uk_vat_rate, :third_country_duty_rate,
-                :leaf, :parents, :synonyms, :producline_suffix, :number_indents,
-                :goods_nomenclature_sid, :parent_sid, :casted_by, :bti_url
+  attr_accessor :parent_sid
 
-  has_one :section
   has_one :heading
-  has_one :chapter
-  has_one :footnote
   has_many :ancestors, class_name: 'Commodity'
-  has_many :import_measures, class_name: 'Measure'
-  has_many :export_measures, class_name: 'Measure'
-  has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
 
-  format :description, with: DescriptionTrimFormatter,
-                       using: [:description],
-                       as: :description_plain
-  format :description, with: DescriptionFormatter,
-                       using: [:description],
-                       as: :formatted_description
-
-  delegate :goods_nomenclature_item_id, to: :heading, prefix: true
-
-  def id
-    goods_nomenclature_item_id
-  end
+  delegate :goods_nomenclature_item_id, :display_short_code, to: :heading, prefix: true
+  alias :short_code :goods_nomenclature_item_id
 
   def substring=(substring)
     @substring ||= substring.to_i
   end
 
-  alias :code       :goods_nomenclature_item_id
-  alias :short_code :goods_nomenclature_item_id
-
   def leaf?
     children.none?
+  end
+
+  def has_children?
+    not(leaf?)
   end
 
   def display_short_code
@@ -67,10 +49,6 @@ class Commodity
     formatted_description
   end
 
-  def display_meursing_table?
-    !(([import_measures.map(&:measure_components).flatten.map(&:duty_expression_id) + export_measures.map(&:measure_components).flatten.map(&:duty_expression_id)]).flatten & ["12", "14", "21", "25", "27", "29"]).empty?
-  end
-
   def footnotes
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten.uniq(&:code).sort_by(&:code)
   end
@@ -85,6 +63,10 @@ class Commodity
 
   def root
     parent_sid.blank?
+  end
+
+  def third_country_duty_rate
+    import_measures.select(&:third_country_duty).first.duty_expression
   end
 
   def children

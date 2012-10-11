@@ -1,36 +1,17 @@
 require 'api_entity'
 require 'formatter'
+require 'declarable'
 
 class Heading
-  include ApiEntity
-  include Models::Formatter
+  include Models::Declarable
 
-  attr_accessor :description, :commodities,
-                :import_measures, :export_measures, :leaf,
-                :declarable, :uk_vat_rate,
-                :synonyms, :goods_nomenclature_item_id, :bti_url
-
-  has_one :chapter
-  has_one :section
-  has_one :footnote
   has_many :commodities, class_name: 'Commodity'
   has_many :children, class_name: 'Heading'
-  has_many :import_measures, class_name: 'Measure'
-  has_many :export_measures, class_name: 'Measure'
-  has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
 
-  format :description, with: DescriptionTrimFormatter,
-                       using: [:description],
-                       as: :description_plain
-  format :description, with: DescriptionFormatter,
-                       using: [:description],
-                       as: :formatted_description
+  attr_accessor :leaf, :declarable
 
-  delegate :code, to: :chapter, prefix: true
-
-  alias :declarable? :declarable
   alias :leaf? :leaf
-  alias :code :goods_nomenclature_item_id
+  alias :declarable? :declarable
 
   def eql?(other_heading)
     self.goods_nomenclature_item_id == other_heading.goods_nomenclature_item_id
@@ -51,6 +32,7 @@ class Heading
   def display_short_code
     code[2..3]
   end
+  alias :heading_display_short_code :display_short_code
 
   def display_export_code
     code[0..-3]
@@ -64,18 +46,6 @@ class Heading
     short_code
   end
 
-  def to_s
-    formatted_description
-  end
-
-  def heading
-    self
-  end
-
-  def display_meursing_table?
-    !(([import_measures.map(&:measure_components).flatten.map(&:duty_expression_id) + export_measures.map(&:measure_components).flatten.map(&:duty_expression_id)]).flatten & ["12", "14", "21", "25", "27", "29"]).empty?
-  end
-
   def footnotes
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
   end
@@ -86,5 +56,9 @@ class Heading
 
   def third_country_duty_rate
     (third_country_duty.blank?) ? "variable" : third_country_duty.join(" + ")
+  end
+
+  def to_s
+    formatted_description
   end
 end

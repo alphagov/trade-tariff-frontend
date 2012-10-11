@@ -1,24 +1,23 @@
 <% content_for :title, "#{declarable.description_plain} | Trade Tariff | GOV.UK" %>
 
-
 <article class="tariff commodity">
   <div class="inner">
     <nav class="trail">
       <dl>
-        <dt class="section-number">Section <%= declarable.section.numeral %></dt>
+        <dt class="section-number">Section <%= declarable.section_numeral %></dt>
         <dd class="section-title tariff-fragments"><%= link_to declarable.section, section_path(declarable.section), class: "js-pjax" %>
           <dl class="tariff-fragments">
-            <dt class="chapter-code" title="Chapter code"><%= declarable.chapter.short_code %></dt>
+            <dt class="chapter-code" title="Chapter code"><%= declarable.chapter_short_code %></dt>
             <dd><%= link_to declarable.chapter, chapter_path(declarable.chapter), class: "js-pjax" %>
               <dl>
-                <dt class="heading-code" title="Heading code"><%= declarable.heading.display_short_code %></dt>
-                <% if with_commodity_tree %>
+                <dt class="heading-code" title="Heading code"><%= declarable.heading_display_short_code %></dt>
+                <% if declarable.show_commodity_tree? %>
                   <dd><%= link_to declarable.heading, heading_path(declarable.heading), class: "js-pjax" %>
                       <%= commodity_tree(declarable, declarable.ancestors) %>
                   </dd>
                 <% else %>
                   <dd class="declarable">
-										<%= declarable_heading(declarable) %>
+                    <%= declarable_heading(declarable) %>
                   </dd>
                 <% end %>
               </dl>

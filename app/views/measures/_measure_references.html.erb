@@ -1,8 +1,8 @@
-<% if measure.measure_conditions.any? %>
+<% if measure.has_measure_conditions? %>
 <div class='conditions' id='<%= measure.id %>' data-popup='conditions-<%= measure.id %>'>
   <article>
     <table>
-      <caption><%= measure.measure_type_description %> for <%= measure.geographical_area.description %>:</caption>
+      <caption><%= measure.measure_type_description %> for <%= measure.geographical_area_description %>:</caption>
       <thead>
         <tr>
           <th>Condition</th>
@@ -13,30 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <% measure.measure_conditions.each do |measure_condition| %>
-          <tr>
-            <td><%= measure_condition.condition %></td>
-            <td><%= measure_condition.document_code %></td>
-            <td>
-              <% if measure_condition.has_document_based_requirement? %>
-                <%= measure_condition.requirement %>
-              <% elsif measure_condition.has_duty_expression_based_requirement? %>
-                <% if measure.is_first_measure_condition?(measure_condition) %>
-                  greater than or equal to <%= measure_condition.requirement.duty_expression %>
-                <% elsif measure.is_last_measure_condition?(measure_condition) %>
-                  less than <%= measure.previous_condition_for(measure_condition).requirement.duty_expression %>
-                <% else %>
-                  greater than or equal to <%= measure_condition.requirement.duty_expression %>
-                  and less than <%= measure.previous_condition_for(measure_condition).requirement.duty_expression %>
-                <% end %>
-              <% end %>
-            </td>
-            <td><%= measure_condition.action %></td>
-            <td>
-              <%= measure_condition.duty_expression %>
-            </td>
-          </tr>
-        <% end %>
+        <%= render partial: "measure_conditions/measure_condition", collection: measure.measure_conditions, locals: { measure: measure } %>
       </tbody>
     </table>
   </article>
@@ -62,30 +39,10 @@
 </div>
 <% end %>
 
-<% if measure.measure_conditions.any? && measure.footnotes.any? %>
+<% if measure.has_references? %>
 <nav class="part-pagination return-to-top">
   <a href="#wrapper">Return to top ↑</a>
 </nav>
 <% end %>
 
-<% if measure.additional_code.present? %>
-  <div class='additional-codes' id='<%= measure.additional_code.id %>' data-popup='additional-code-<%= measure.additional_code.id %>'>
-    <article>
-      <table>
-        <caption>Additional code</caption>
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Description code</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= measure.additional_code.code %></td>
-            <td><%= measure.additional_code.description %></td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
-  </div>
-<% end %>
+<%= render measure.additional_code if measure.has_additional_code? %>

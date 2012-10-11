@@ -1,24 +1,23 @@
-<% geo_class = measure.geographical_area.iso_code || measure.geographical_area.children_geographical_areas.sort_by(&:iso_code).map(&:iso_code).join(" ") %>
-<tr class="<%= geo_class %>">
+<tr class="<%= measure.geo_class %>">
   <td>
     <span class="flag <%= measure.origin %>"></span>
   </td>
-  <% if measure_group == "specific_country" %>
+  <% if measure.for_specific_countries %>
     <td>
-      <% if measure.geographical_area.children_geographical_areas.any? %>
+      <% if measure.has_children_geographical_areas? %>
       <dl>
         <dt class="has_children">
-          <%= measure.geographical_area.description %>
+          <%= measure.geographical_area_description %>
         </dt>
       <dd>
         <ul>
-          <% measure.geographical_area.children_geographical_areas.sort_by(&:iso_code).each do |children_geographical_area| %>
+          <% measure.children_geographical_areas.each do |children_geographical_area| %>
             <li><%= children_geographical_area.iso_code %> <%= children_geographical_area.description %></li>
           <% end %>
         </ul>
       </dd>
     <% else %>
-      <%= measure.geographical_area.description %>
+      <%= measure.geographical_area_description %>
     <% end %>
     </td>
   <% end %>
@@ -30,6 +29,7 @@
       <%= render measure.order_number %>
     <% end %>
   </td>
+
   <td>
     <%= measure.effective_start_date %><% if measure.effective_end_date.present? %>&nbsp;-&nbsp;<%= measure.effective_end_date %><% end %>
     <% if measure.suspension_legal_act.present? %>

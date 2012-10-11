@@ -5,7 +5,7 @@ http_interactions:
     uri: http://tariff-api.dev.gov.uk/search
     body:
       encoding: US-ASCII
-      string: q=horses&as_of=
+      string: q=horses&as_of=2012-10-11
     headers: {}
   response:
     status:
@@ -15,7 +15,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 11 Oct 2012 15:01:37 GMT
+      - Thu, 11 Oct 2012 15:22:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,12 +31,12 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWE2MzZlZWVjYWYzNTE1OThlMDIyNGVlN2UxM2M4ZTk1BjsAVA%3D%3D--c2240e9f3f8dbd9b04b0d0f5c779221fa3ca3e74;
+      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTIxMmMxOGNlMmQwZjQ4ZDkzYTgwMWRkMzM3MDM1NjI2BjsAVA%3D%3D--fdd69ec9696aa0403b68416e31554d316613d45a;
         path=/; HttpOnly
       X-Request-Id:
-      - 5bd8d9a1f69b30005b4f3fd6983b3866
+      - 75b6898cdf55793b71e30a812bf1e355
       X-Runtime:
-      - '1.269391'
+      - '0.115481'
     body:
       encoding: US-ASCII
       string: ! '{"type":"fuzzy_match","goods_nomenclature_match":{"sections":[],"chapters":[],"headings":[{"id":"27624","goods_nomenclature_item_id":"0101000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00-08:00","validity_end_date":null,"description":"Live
@@ -137,5 +137,5 @@ http_interactions:
         and crustaceans, molluscs and other aquatic invertebrates"},"heading":{"goods_nomenclature_sid":28402,"goods_nomenclature_item_id":"0302000000","producline_suffix":"80","validity_start_date":"1972-01-01T00:00:00-08:00","validity_end_date":null,"description":"Fish,
         fresh or chilled, excluding fish fillets and other fish meat of heading|0304","number_indents":0},"_score":1.0614325,"_type":"commodity","_index":"commodities","_version":null,"sort":null,"highlight":null,"_explanation":null}]},"reference_match":{"sections":[],"chapters":[],"headings":[],"commodities":[]}}'
     http_version: 
-  recorded_at: Thu, 11 Oct 2012 15:01:37 GMT
+  recorded_at: Thu, 11 Oct 2012 15:22:52 GMT
 recorded_with: VCR 2.2.5

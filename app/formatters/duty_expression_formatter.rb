@@ -12,19 +12,13 @@ class DutyExpressionFormatter
     monetary_unit = opts[:monetary_unit]
     measurement_unit = opts[:measurement_unit]
     measurement_unit_qualifier = opts[:measurement_unit_qualifier]
-    
+
 
     @formatted = ""
     case duty_expression_id
     when "99"
       @formatted << measurement_unit
-    when "12", "14", "37", "40", "41", "42", "43", "44"
-      if duty_expression_abbreviation.present?
-        @formatted << duty_expression_abbreviation
-      else
-        @formatted << duty_expression_description
-      end
-    when "21", "25", "27", "29"
+    when "12", "14", "37", "40", "41", "42", "43", "44", "21", "25", "27", "29"
       if duty_expression_abbreviation.present?
         @formatted << duty_expression_abbreviation
       else
@@ -48,7 +42,7 @@ class DutyExpressionFormatter
         @formatted << " / (#{measurement_unit}/#{measurement_unit_qualifier})"
       elsif measurement_unit.present?
         @formatted << " / #{measurement_unit}"
-      end    
+      end
     else
       if duty_amount.present?
         @formatted << prettify(duty_amount).to_s
