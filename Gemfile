@@ -39,6 +39,7 @@ group :test do
   gem 'simplecov'
   gem 'simplecov-rcov'
   gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :assets do

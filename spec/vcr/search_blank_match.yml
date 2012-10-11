@@ -15,7 +15,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 10 Oct 2012 12:44:58 GMT
+      - Thu, 11 Oct 2012 15:01:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,15 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWRlNjg0OGRkZDUwZmZhMmI0MWRlMDc3OTVkYjhjZWZjBjsAVA%3D%3D--83562151cc1629416a3fac73c7aa2f77f7369e85;
+      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTNmMmNmMTgwMTUwNDRlYzE4MDRhMjczOGRjNjE4NDdiBjsAVA%3D%3D--9242b348804fe6ed139187651a4718d989758738;
         path=/; HttpOnly
       X-Request-Id:
-      - 1f45131645389dce3a4eda48830a5ee0
+      - 3abfc60508dada2f108713baff09ba0d
       X-Runtime:
-      - '0.068048'
+      - '0.067175'
     body:
       encoding: US-ASCII
       string: ! '{"q":["can''t be blank"]}'
     http_version: 
-  recorded_at: Wed, 10 Oct 2012 12:44:58 GMT
+  recorded_at: Thu, 11 Oct 2012 15:01:37 GMT
 recorded_with: VCR 2.2.5

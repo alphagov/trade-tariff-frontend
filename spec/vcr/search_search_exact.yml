@@ -6,39 +6,40 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: q=01&as_of=
-    headers:
-      authorization:
-      - Token token="86c337686edc492184c5e9869c27a0b1"
+    headers: {}
   response:
     status:
       code: 200
       message: OK
     headers:
-      server:
+      Server:
       - nginx
-      date:
-      - Mon, 06 Aug 2012 08:52:45 GMT
-      content-type:
+      Date:
+      - Thu, 11 Oct 2012 15:01:35 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      transfer-encoding:
+      Transfer-Encoding:
       - chunked
-      connection:
+      Connection:
       - close
-      status:
+      Status:
       - 200 OK
-      x-ua-compatible:
+      X-Ua-Compatible:
       - IE=Edge
-      etag:
+      Etag:
       - ! '"92117a675eb2b6c8c0a9f1d9bb7b0c7d"'
-      cache-control:
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      x-request-id:
-      - 084edf9fdf888bc89922bb6c374835fa
-      x-runtime:
-      - '0.199504'
+      Set-Cookie:
+      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWY5ODg5NmE0NDE3MTZiOTdmNzNhOTAyMTljMDJkNTU4BjsAVA%3D%3D--bf21c04fc4762ff99cada539f73a2b14f9202eda;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 55c209c77ae068cddb37d1837ccd0c51
+      X-Runtime:
+      - '0.044079'
     body:
       encoding: US-ASCII
       string: ! '{"type":"exact_match","entry":{"endpoint":"chapters","id":"01"}}'
-    http_version: '1.1'
-  recorded_at: Mon, 06 Aug 2012 08:52:45 GMT
-recorded_with: VCR 2.2.4
+    http_version: 
+  recorded_at: Thu, 11 Oct 2012 15:01:35 GMT
+recorded_with: VCR 2.2.5
