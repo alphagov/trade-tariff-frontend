@@ -1,6 +1,8 @@
 class DeclarablePresenter
   attr_reader :declarable
 
+  MEURSING_DUTY_EXPRESSION_IDS = %w[12 14 21 25 27 29]
+
   def initialize(declarable)
     @declarable = declarable
   end
@@ -10,7 +12,9 @@ class DeclarablePresenter
   end
 
   def display_meursing_table?
-    !(([import_measures.map(&:measure_components).flatten.map(&:duty_expression_id) + export_measures.map(&:measure_components).flatten.map(&:duty_expression_id)]).flatten & ["12", "14", "21", "25", "27", "29"]).empty?
+    ((declarable.import_measures.map(&:measure_components).flatten.map(&:duty_expression_id) +
+      declarable.export_measures.map(&:measure_components).flatten.map(&:duty_expression_id)) &
+       MEURSING_DUTY_EXPRESSION_IDS).any?
   end
 
   def national_vat_import_measures

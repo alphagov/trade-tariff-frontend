@@ -92,4 +92,12 @@ FactoryGirl.define do
     code { Forgery(:basic).text }
     description { Forgery(:basic).text }
   end
+
+  factory :measure_component do
+    duty_expression_id { Forgery(:basic).text }
+
+    trait :meursing do
+      duty_expression_id { %w[12 14 21 25 27 29].sample }
+    end
+  end
 end

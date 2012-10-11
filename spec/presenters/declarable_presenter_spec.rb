@@ -12,7 +12,18 @@ describe DeclarablePresenter do
   end
 
   describe "#display_meursing_table?" do
-    pending
+    let(:meursing_component) { attributes_for :measure_component, :meursing }
+    let(:meursing_measure)   { attributes_for(:measure, measure_components: [meursing_component])}
+    let(:commodity1) { DeclarablePresenter.new(Commodity.new(attributes_for(:commodity, import_measures: [meursing_measure]))) }
+    let(:commodity2) { DeclarablePresenter.new(Commodity.new(attributes_for(:commodity))) }
+
+    it 'returns true if measure has export or import measure components with meursing duty expression id' do
+      commodity1.display_meursing_table?.should be_true
+    end
+
+    it 'returns false if measure has no export or import measure components with meursing duty expression id' do
+      commodity2.display_meursing_table?.should be_false
+    end
   end
 
   describe "#national_vat_import_measures" do
