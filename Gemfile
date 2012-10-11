@@ -3,8 +3,6 @@ source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
 
 gem 'rails', '3.2.8'
 
-gem 'simple_form'
-
 gem 'yajl-ruby'
 gem 'multi_json'
 gem 'httparty'

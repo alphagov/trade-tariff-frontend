@@ -1,6 +1,6 @@
 class HeadingsController < ApplicationController
   def show
-    @heading = Heading.find(params[:id], query_params)
-    @commodities = @heading.commodities
+    @heading = HeadingPresenter.new(Heading.find(params[:id], query_params))
+    @commodities = HeadingCommodityPresenter.new(@heading.commodities)
   end
 end

@@ -26,7 +26,7 @@
       <% else %>
         <p>Importing from outside the EU is subject to <em>variable</em> third country duty.</p>
       <% end %>
-      <% declarable.import_measures.select{|m| m.national? && m.vat? }.each do |measure| %>
+      <% declarable.national_vat_import_measures.each do |measure| %>
         <p>Goods are subject to <%= measure.measure_type_description %>.</p>
       <% end %>
 
@@ -78,9 +78,7 @@
         </thead>
 
         <tbody>
-          <% declarable.import_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
-          <% end %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures_for_third_country %>
         </tbody>
       </table>
 
@@ -111,10 +109,8 @@
         </thead>
 
         <tbody>
-        <% if declarable.import_measures.select(&:for_specific_countries).any? %>
-          <% declarable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key_specific_country), locals: { measure_group: "specific_country" } %>
-          <% end %>
+        <% if declarable.has_import_measures_for_specific_countries? %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures_for_specific_countries %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -155,11 +151,9 @@
           </tr>
         </thead>
         <tbody>
-        <% if declarable.export_measures.select(&:third_country).any? %>
-          <% declarable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key), locals: { measure_group: "third_country" } %>
-          <% end %>
-          <% unless declarable.export_measures.select(&:third_country).select(&:vat?).any? %>
+        <% if declarable.has_export_measures_for_third_countries? %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures_for_third_country %>
+          <% unless declarable.has_vat_or_excise_third_country_export_measures? %>
             <tr>
               <td><span class="flag uk"></span></td>
               <td colspan="8">No VAT or Excise measures were found for this commodity on this date</td>
@@ -205,10 +199,8 @@
         </thead>
 
         <tbody>
-        <% if declarable.export_measures.select(&:for_specific_countries).any? %>
-          <% declarable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-            <%= render partial: "measures/measure", collection: measures.sort_by(&:sort_key_specific_country), locals: { measure_group: "specific_country" } %>
-          <% end %>
+        <% if declarable.has_export_measures_for_specific_countries? %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures_for_specific_countries %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -247,19 +239,11 @@
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
   <div class="inner">
-    <% declarable.import_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "third_country" } %>
-    <% end %>
-    <% declarable.import_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "specific_country" } %>
-    <% end %>
+    <%= render partial: "measures/measure_references", collection: declarable.import_measures_for_third_country, as: 'measure' %>
+    <%= render partial: "measures/measure_references", collection: declarable.import_measures_for_specific_countries, as: 'measure' %>
   </div>
   <div class="inner">
-    <% declarable.export_measures.select(&:third_country).group_by(&:geographical_area_type).each do |group, measures| %>
-      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "third_country" } %>
-    <% end %>
-    <% declarable.export_measures.select(&:for_specific_countries).group_by(&:geographical_area_type).each do |group, measures| %>
-      <%= render partial: "measures/measure_references", collection: measures.sort_by(&:sort_key), as: 'measure', locals: { measure_group: "specific_country" } %>
-    <% end %>
+    <%= render partial: "measures/measure_references", collection: declarable.export_measures_for_third_country, as: 'measure' %>
+    <%= render partial: "measures/measure_references", collection: declarable.export_measures_for_specific_countries, as: 'measure' %>
   </div>
 </div><!-- end .tab-content -->

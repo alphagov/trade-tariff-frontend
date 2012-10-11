@@ -21,6 +21,9 @@ module Models
       format :description, with: DescriptionFormatter,
                            using: [:description],
                            as: :formatted_description
+
+      delegate :numeral, to: :section, prefix: true
+      delegate :code, :short_code, to: :chapter, prefix: true
     end
 
     def code

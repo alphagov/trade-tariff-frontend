@@ -10,8 +10,6 @@ class Heading
 
   attr_accessor :leaf, :declarable
 
-  delegate :code, to: :chapter, prefix: true
-
   alias :leaf? :leaf
   alias :declarable? :declarable
 
@@ -34,6 +32,7 @@ class Heading
   def display_short_code
     code[2..3]
   end
+  alias :heading_display_short_code :display_short_code
 
   def display_export_code
     code[0..-3]
@@ -47,18 +46,6 @@ class Heading
     short_code
   end
 
-  def to_s
-    formatted_description
-  end
-
-  def heading
-    self
-  end
-
-  def display_meursing_table?
-    !(([import_measures.map(&:measure_components).flatten.map(&:duty_expression_id) + export_measures.map(&:measure_components).flatten.map(&:duty_expression_id)]).flatten & ["12", "14", "21", "25", "27", "29"]).empty?
-  end
-
   def footnotes
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
   end
@@ -69,5 +56,9 @@ class Heading
 
   def third_country_duty_rate
     (third_country_duty.blank?) ? "variable" : third_country_duty.join(" + ")
+  end
+
+  def to_s
+    formatted_description
   end
 end
