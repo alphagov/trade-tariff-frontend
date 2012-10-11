@@ -12,6 +12,7 @@ class Heading
 
   has_one :chapter
   has_one :section
+  has_one :footnote
   has_many :commodities, class_name: 'Commodity'
   has_many :children, class_name: 'Heading'
   has_many :import_measures, class_name: 'Measure'

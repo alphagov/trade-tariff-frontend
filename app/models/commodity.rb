@@ -13,6 +13,7 @@ class Commodity
   has_one :section
   has_one :heading
   has_one :chapter
+  has_one :footnote
   has_many :ancestors, class_name: 'Commodity'
   has_many :import_measures, class_name: 'Measure'
   has_many :export_measures, class_name: 'Measure'
