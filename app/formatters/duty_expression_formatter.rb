@@ -21,13 +21,13 @@ class DutyExpressionFormatter
     when "12", "14", "37", "40", "41", "42", "43", "44", "21", "25", "27", "29"
       if duty_expression_abbreviation.present?
         @formatted << duty_expression_abbreviation
-      else
+      elsif duty_expression_description.present?
         @formatted << duty_expression_description
       end
     when "15", "17", "19", "20"
       if duty_expression_abbreviation.present?
         @formatted << duty_expression_abbreviation
-      else duty_expression_description.present?
+      elsif duty_expression_description.present?
         @formatted << duty_expression_description
       end
       if duty_amount.present?
