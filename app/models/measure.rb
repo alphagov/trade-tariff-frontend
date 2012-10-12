@@ -83,7 +83,11 @@ class Measure
   end
 
   def sort_key
-    "#{origin}#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
+    "#{third_country_measure}#{origin}#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
+  end
+
+  def third_country_measure
+    measure_type_description != "Third country duty"
   end
 
   def third_country_duty
