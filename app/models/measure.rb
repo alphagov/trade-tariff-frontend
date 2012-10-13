@@ -57,6 +57,10 @@ class Measure
                       .min  == condition.requirement.sequence_number
   end
 
+  def has_single_component_based_on_duty_expression?
+    measure_conditions.select {|condition| condition.requirement_type == "duty_expression" }.size == 1
+  end
+
   def is_last_measure_condition?(condition)
     measure_conditions.select(&:has_duty_expression_based_requirement?)
                       .map(&:requirement)

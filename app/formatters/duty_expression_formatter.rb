@@ -13,8 +13,8 @@ class DutyExpressionFormatter
     measurement_unit = opts[:measurement_unit]
     measurement_unit_qualifier = opts[:measurement_unit_qualifier]
 
-
     @formatted = ""
+
     case duty_expression_id
     when "99"
       @formatted << measurement_unit

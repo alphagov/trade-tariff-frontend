@@ -4,21 +4,22 @@ module Models
 
     module ClassMethods
       def format(attribute, options)
-        options.assert_valid_keys :with, :using, :as
+        options.assert_valid_keys :with, :using, :as, :defaults
 
-        formatter, using, resulting_method = options.values_at(:with, :using, :as)
+        formatter, using, resulting_method, defaults = options.values_at(:with,
+                                                                         :using,
+                                                                         :as,
+                                                                         :defaults)
         resulting_method ||= attribute
 
         define_method(resulting_method) do
           opts = {}
           using.each do |field|
-            if field.is_a?(String)
-              opts[field.to_sym] = field
-            elsif
-              field.is_a?(Symbol)
-              opts[field] = attributes[field.to_s]
-            end
+            field.is_a?(Symbol)
+            opts[field] = attributes[field.to_s]
           end
+
+          opts.merge!(defaults) if defaults.present?
           formatter.format(opts)
         end
       end

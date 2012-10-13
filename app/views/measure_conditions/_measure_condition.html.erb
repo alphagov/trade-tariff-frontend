@@ -4,6 +4,8 @@
   <td>
     <% if measure_condition.has_document_based_requirement? %>
       <%= measure_condition.requirement %>
+    <% elsif measure.has_single_component_based_on_duty_expression? %>
+      <%= measure_condition.requirement.duty_expression %>
     <% elsif measure_condition.has_duty_expression_based_requirement? %>
       <% if measure.is_first_measure_condition?(measure_condition) %>
         greater than or equal to <%= measure_condition.requirement.duty_expression %>
