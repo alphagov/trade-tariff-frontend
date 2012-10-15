@@ -37,8 +37,8 @@ group :test do
   gem 'forgery'
   gem 'shoulda-matchers'
   gem 'vcr'
-  gem 'simplecov'
-  gem 'simplecov-rcov'
+  gem 'simplecov', '~> 0.6.4'
+  gem 'simplecov-rcov', '~> 0.2.3'
   gem 'rspec-rails'
   gem 'capybara'
 end

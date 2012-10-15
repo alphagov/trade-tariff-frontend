@@ -214,10 +214,10 @@ GEM
     sexp_processor (3.2.0)
     shoulda-matchers (1.4.0)
       activesupport (>= 3.0.0)
-    simplecov (0.7.0)
+    simplecov (0.6.4)
       multi_json (~> 1.0)
-      simplecov-html (~> 0.7.0)
-    simplecov-html (0.7.0)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
     slimmer (3.7.0)
@@ -284,8 +284,8 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
-  simplecov
-  simplecov-rcov
+  simplecov (~> 0.6.4)
+  simplecov-rcov (~> 0.2.3)
   slimmer (= 3.7.0)
   therubyracer
   uglifier (>= 1.0.3)

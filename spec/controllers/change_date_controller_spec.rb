@@ -26,7 +26,6 @@ describe ChangeDateController, "GET to #change" do
       let(:day)     { Forgery(:date).day }
 
       before(:each) do
-        session[:return_to] = '/trade-tariff/chapters/01'
 
         get :change, date: {
           year: year,
