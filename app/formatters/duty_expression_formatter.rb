@@ -24,7 +24,7 @@ class DutyExpressionFormatter
       elsif duty_expression_description.present?
         @formatted << duty_expression_description
       end
-    when "04", "15", "17", "19", "20"
+    when "02", "04", "15", "17", "19", "20", "36"
       if duty_expression_abbreviation.present?
         @formatted << duty_expression_abbreviation
       elsif duty_expression_description.present?
