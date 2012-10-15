@@ -6,7 +6,7 @@ class ChangeDateController < ApplicationController
     if request.referer
       back_url = Addressable::URI.parse(request.referer)
       back_url.query_values ||= {}
-      back_url.query_values = back_url.query_values.merge("as_of" => TariffDate.parse(params[:date]).to_s)
+      back_url.query_values = back_url.query_values.merge("as_of" => TariffDate.parse(params[:date]).to_param)
       return_to = back_url.to_s
     else
       return_to = sections_path
