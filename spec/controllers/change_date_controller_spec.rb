@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ChangeDateController, "GET to #change" do
-  context 'valid date param provided' do
+  pending 'valid date param provided' do
     context 'redirect back path is absent (use default url)' do
       let(:year)    { Forgery(:date).year }
       let(:month)   { Forgery(:date).month(numerical: true) }
@@ -39,8 +39,7 @@ describe ChangeDateController, "GET to #change" do
       it { should redirect_to(chapter_path("01", as_of: Date.new(year, month, day).to_s(:db))) }
     end
   end
-
-  context 'invalid date param provided' do
+  pending 'invalid date param provided' do
     context 'date param is a string' do
       before(:each) do
         get :change, date: "2012-10-1"
