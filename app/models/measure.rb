@@ -15,7 +15,7 @@ class Measure
   has_many :measure_conditions
   has_many :footnotes
 
-  delegate :type, :description, to: :geographical_area, prefix: true
+  delegate :description, :group_key, to: :geographical_area, prefix: true
 
   def id
     @id ||= SecureRandom.hex(16)
@@ -88,6 +88,10 @@ class Measure
 
   def sort_key
     "#{third_country_measure}#{origin}#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
+  end
+
+  def specific_country_sort_key
+    "#{geographical_area_group_key}#{geographical_area_description}#{additional_code_sort}#{measure_type_description}"
   end
 
   def third_country_measure

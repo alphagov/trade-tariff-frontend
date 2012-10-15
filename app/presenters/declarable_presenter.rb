@@ -33,9 +33,7 @@ class DeclarablePresenter
   def import_measures_for_specific_countries
     declarable.import_measures
               .select(&:for_specific_countries)
-              .group_by(&:geographical_area_type)
-              .map(&:last)
-              .map{|measure_group| measure_group.sort_by(&:sort_key) }
+              .sort_by(&:specific_country_sort_key)
               .flatten
               .present_with(MeasurePresenter)
   end
@@ -75,9 +73,7 @@ class DeclarablePresenter
   def export_measures_for_specific_countries
     declarable.export_measures
               .select(&:for_specific_countries)
-              .group_by(&:geographical_area_type)
-              .map(&:last)
-              .map{|measure_group| measure_group.sort_by(&:sort_key) }
+              .sort_by(&:specific_country_sort_key)
               .flatten
               .present_with(MeasurePresenter)
   end

@@ -7,8 +7,8 @@ class GeographicalArea
 
   has_many :children_geographical_areas, class_name: 'GeographicalArea'
 
-  def type
-    iso_code.blank?
+  def group_key
+    children_geographical_areas.any? ? "0" : "1"
   end
 
   def description
