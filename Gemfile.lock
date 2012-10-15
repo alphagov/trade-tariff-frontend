@@ -260,6 +260,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   awesome_print
   brakeman (~> 1.7.0)
   capistrano
