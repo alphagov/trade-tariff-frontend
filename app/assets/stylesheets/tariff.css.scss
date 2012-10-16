@@ -261,7 +261,13 @@ mark {
 }
 
 #wrapper.tariff header.page-header hgroup h1{
-  background-position: 15px 15px;
+  @media(min-width: 1020px) {
+    background-position: 15px 15px;
+    padding-left:128px;
+  }
+  
+  background-position: 0px 15px;
+  padding-left: 76px;
 }
 
 .tariff header.page-header hgroup h1 span {
