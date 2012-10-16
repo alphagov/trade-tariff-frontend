@@ -29,8 +29,8 @@
               <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
               <%= select_month(f.object.date, {}, { id: 'tariff_date_month' }) %>
               <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
-              <%= select_year(f.object.date, {end_year: (Date.today - 15.years).year, start_year: Date.today.year }, { id: 'tariff_date_year' }) %>
-              <%= f.button 'Change date', name: nil,  class: 'btn button right' %>
+              <%= select_year(f.object.date, {end_year: (Date.today - 15.years).year, start_year: (Date.today.year + 1.year) }, { id: 'tariff_date_year' }) %>
+              <%= f.button 'Set date', name: nil,  class: 'btn button right' %>
               </p>
             <% end %>
             <div class="related-module">
