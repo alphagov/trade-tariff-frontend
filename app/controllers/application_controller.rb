@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   before_filter :initialize_modules
   before_filter :set_cache
   before_filter :load_artefact
+  before_filter :load_last_update_date
 
   after_filter :set_app_slimmer_headers
 
@@ -66,6 +67,10 @@ class ApplicationController < ActionController::Base
     unless Rails.env.development?
       expires_in 2.hours, :public => true, 'stale-if-error' => 86400, 'stale-while-revalidate' => 86400
     end
+  end
+
+  def load_last_update_date
+    @last_update = Date.today.to_formatted_s(:rfc822) #TODO: Replace with backend API call
   end
 
   def load_artefact

@@ -4,11 +4,12 @@
       <span>Service</span>
       Trade Tariff
     </h1>
-    <p class="tariff-date <%= @section_css %>">This tariff is for <%= @tariff_date.date.to_formatted_s(:rfc822) %> <a href="#date-filter">change date</a></p>
+    <p class="tariff-date <%= @section_css %>">The reference date is <%= @tariff_date.date.to_formatted_s(:rfc822) %> <a href="#date-filter">change date</a>
+    </p>
+    <p class="tariff-date <%= @section_css %> update-time">Last database update <%= @last_update %></p>
   </hgroup>
 </header>
 <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}"  } do |f| %>
-    <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
     <%= f.label :q, "Search the tariff" %>
     <%= f.text_field :q, required: false,
                 size: 21,
@@ -17,4 +18,5 @@
     <%= f.hidden_field :as_of, name: 'as_of' %>
 
     <%= f.button 'Search', class: 'button right' %>
+<a href="<%= sections_path%>" class="js-pjax all-sections-link">View all sections</a>
 <% end %>

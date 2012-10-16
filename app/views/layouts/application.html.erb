@@ -23,7 +23,7 @@
           <%= yield %>
         </div>
             <%= form_for @tariff_date, method: :get, url: change_date_path, html: { class: 'date-filter-search related-module', id: 'date-filter' } do |f| %>
-              <p>This tariff is for
+              <p>Set the reference date to
               <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
               <%= select_day(f.object.date, {}, { id: 'tariff_date_day' }) %>
               <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
