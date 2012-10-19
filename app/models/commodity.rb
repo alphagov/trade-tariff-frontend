@@ -65,10 +65,6 @@ class Commodity
     parent_sid.blank?
   end
 
-  def third_country_duty_rate
-    import_measures.select(&:third_country_duty).first.duty_expression
-  end
-
   def children
     if casted_by.present?
       casted_by.commodities.select{|c| c.parent_sid == goods_nomenclature_sid }
