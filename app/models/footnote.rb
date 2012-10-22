@@ -7,7 +7,8 @@ class Footnote
 
   attr_accessor :code, :description
 
-  format :description, with: DescriptionFormatter, using: [:description]
+  format :formatted_description, with: DescriptionFormatter,
+                                using: :description
 
   def id
     @id ||= SecureRandom.hex(16)

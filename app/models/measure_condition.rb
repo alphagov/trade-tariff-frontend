@@ -2,6 +2,7 @@ require 'api_entity'
 
 class MeasureCondition
   include ApiEntity
+  include Models::Formatter
 
   has_one  :requirement, class: 'MeasureCondition::Requirement'
   has_many :components,  class: 'MeasureCondition::Component'

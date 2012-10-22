@@ -15,12 +15,10 @@ module Models
 
       attr_accessor :description, :goods_nomenclature_item_id, :producline_suffix, :number_indents, :goods_nomenclature_sid, :bti_url
 
-      format :description, with: DescriptionTrimFormatter,
-                           using: [:description],
-                           as: :description_plain
-      format :description, with: DescriptionFormatter,
-                           using: [:description],
-                           as: :formatted_description
+      format :description_plain, with: DescriptionTrimFormatter,
+                                 using: :description
+      format :formatted_description, with: DescriptionFormatter,
+                                     using: :description
 
       delegate :numeral, to: :section, prefix: true
       delegate :code, :short_code, to: :chapter, prefix: true
