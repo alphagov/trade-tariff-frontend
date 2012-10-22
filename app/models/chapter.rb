@@ -11,7 +11,7 @@ class Chapter
   has_many :headings
 
   format :formatted_description, with: DescriptionFormatter,
-                                using: :description
+                                 using: :description
 
   delegate :numeral, to: :section, prefix: true
 
