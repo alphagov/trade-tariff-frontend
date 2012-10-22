@@ -10,7 +10,7 @@ describe 'Search page' do
       VCR.use_cassette('chapters#show') do
         VCR.use_cassette('search#search_exact') do
           within("#new_search") do
-            fill_in 'search_q', with: '0101210000'
+            fill_in 't', with: '0101210000'
             click_button 'Search'
           end
 
@@ -27,7 +27,7 @@ describe 'Search page' do
       visit sections_path
 
       within("#new_search") do
-        fill_in 'search_q', with: 'horses'
+        fill_in 't', with: 'horses'
         click_button 'Search'
       end
 

@@ -15,7 +15,6 @@ describe ChangeDateController, "GET to #change" do
         }
       end
 
-      it { should respond_with(:redirect) }
       it { should assign_to(:tariff_date) }
       it { should redirect_to(sections_path(as_of: Date.new(year, month, day).to_s(:db))) }
     end
