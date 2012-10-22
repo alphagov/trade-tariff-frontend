@@ -61,7 +61,7 @@ describe DutyExpressionFormatter do
         it 'result includes measurement unit and measurement unit qualifier' do
           DutyExpressionFormatter.format(duty_expression_id: '15',
                                          measurement_unit: 'KG',
-                                         measurement_unit_qualifier: 'L',
+                                         formatted_measurement_unit_qualifier: 'L',
                                          duty_expression_description: 'abc').should =~ /\/ \(KG\/L\)/
         end
       end
@@ -119,7 +119,7 @@ describe DutyExpressionFormatter do
         it 'result includes measurement unit and measurement unit qualifier' do
           DutyExpressionFormatter.format(duty_expression_id: '66',
                                          measurement_unit: 'KG',
-                                         measurement_unit_qualifier: 'L',
+                                         formatted_measurement_unit_qualifier: 'L',
                                          duty_expression_description: 'abc').should =~ /\/ \(KG\/L\)/
         end
       end
