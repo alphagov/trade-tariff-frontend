@@ -1,3 +1,5 @@
+@import '_conditionals';
+
 /* global variables */
 
 $token-width: 27;
@@ -261,7 +263,7 @@ mark {
 }
 
 #wrapper.tariff header.page-header hgroup h1{
-  @media(min-width: 1020px) {
+  @include media($min-width: 1020px) {
     background-position: 15px 15px;
     padding-left:128px;
   }
@@ -946,7 +948,7 @@ dl.tariff-fragments dd.declarable {
   }
 
   .inner {
-    padding:0em px($token-space) 1em;
+    padding:0em px($top-level-padding) 1em;
 
     p {
       margin-left:0;
@@ -1002,6 +1004,7 @@ ul.tree-controls li {
 #popup.tariff-info {
   top: 12px;
   height:auto;
+  width: auto;
   _width:720px;
   max-width: 720px;
   padding:0;

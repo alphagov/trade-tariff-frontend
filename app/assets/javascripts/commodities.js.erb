@@ -137,6 +137,21 @@ GOVUK.tariff = {
                     '</div>' +
                 '</div>'],
         /**
+          @name GOVUK.tariff.tablePopup.setLeftPos
+          @function
+          @description Returns the left position of the popup relative to the window
+        */
+        setLeftPos : function ($popup) {
+            var windowWidth = $(window).width(),
+                popupWidth = $popup.innerWidth();
+
+            if (popupWidth < windowWidth) {
+                return ((windowWidth - popupWidth) / 2) + 'px'; 
+            } else {
+                return '0px';
+            }
+        },
+        /**
           @name GOVUK.tariff.tablePopup.adapt
           @function
           @description adapts the disclaimer popup for reuse
@@ -166,7 +181,10 @@ GOVUK.tariff = {
                     'aria-labelledby' : 'dialog-title'
                 });
 
-            $mask.on('click', function () {
+            $mask
+                .width($(document).width())
+                .height($(document).height())
+                .on('click', function () {
                   $popup.fadeOut(400, function(){
                     $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
                   });
@@ -206,8 +224,8 @@ GOVUK.tariff = {
             });
 
             $popup.css({
-              'left': ($(document).width() - $popup.innerWidth()) / 2 + 'px',
-              'top': $(document).scrollTop() + 12 + 'px'
+                'left': this.setLeftPos($popup), 
+                'top': $(document).scrollTop() + 12 + 'px'
             });
         },
         /**
