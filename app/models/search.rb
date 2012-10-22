@@ -115,15 +115,15 @@ class Search
     end
   end
 
-  attr_accessor :q, :as_of
+  attr_accessor :t, :as_of
 
   def perform
-    response = self.class.post("/search", body: { q: q, as_of: as_of })
+    response = self.class.post("/search", body: { t: t, as_of: as_of })
 
     raise ApiEntity::Error if response.code == 500
 
     Outcome.new(response)
   end
 
-  def to_s; q; end
+  def to_s; t; end
 end
