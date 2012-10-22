@@ -5,7 +5,7 @@ describe 'Heading page' do
     it 'displays declarable related information' do
       visit heading_path("0501")
 
-      page.should have_content 'Importing from outside the EU is subject to a third country duty of 0 %.'
+      page.should have_content 'Importing from outside the EU is subject to a third country duty of 0.00 %.'
       page.should have_content 'Goods are subject to VAT standard rate.'
     end
   end
