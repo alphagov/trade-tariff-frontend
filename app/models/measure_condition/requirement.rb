@@ -6,8 +6,13 @@ class MeasureCondition
     include ApiEntity
     include Models::Formatter
 
-    attr_accessor :sequence_number, :duty_amount, :monetary_unit,
-                  :measurement_unit, :measurement_unit_qualifier, :certificate,
+    attr_accessor :sequence_number,
+                  :duty_amount,
+                  :monetary_unit,
+                  :monetary_unit_abbreviation,
+                  :measurement_unit,
+                  :measurement_unit_qualifier,
+                  :certificate,
                   :certificate_type
 
 
@@ -17,6 +22,7 @@ class MeasureCondition
     format :duty_expression, with: RequirementDutyExpressionFormatter,
                              using: [:duty_amount,
                                      :monetary_unit,
+                                     :monetary_unit_abbreviation,
                                      :measurement_unit,
                                      :formatted_measurement_unit_qualifier]
 
