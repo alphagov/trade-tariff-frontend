@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ChangeDateController, "GET to #change" do
+describe ChangeDateController, "POST to #change" do
   context 'valid date param provided' do
     let(:year)    { Forgery(:date).year }
     let(:month)   { Forgery(:date).month(numerical: true) }
@@ -9,7 +9,7 @@ describe ChangeDateController, "GET to #change" do
     before(:each) do
       @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
 
-      get :change, { date: {
+      post :change, { date: {
         year: year,
         month: month,
         day: day
@@ -24,7 +24,7 @@ describe ChangeDateController, "GET to #change" do
   context 'invalid date param provided' do
     context 'date param is a string' do
       before(:each) do
-        get :change, date: "2012-10-1"
+        post :change, date: "2012-10-1"
       end
 
       it { should respond_with(:redirect) }
@@ -37,7 +37,7 @@ describe ChangeDateController, "GET to #change" do
       let(:month)   { Forgery(:date).month(numerical: true) }
 
       before(:each) do
-        get :change, date: {
+        post :change, date: {
           year: year,
           month: month,
         }
@@ -54,7 +54,7 @@ describe ChangeDateController, "GET to #change" do
       let(:day)     { 'er' }
 
       before(:each) do
-        get :change, date: {
+        post :change, date: {
           year: year,
           month: month,
           day: day
