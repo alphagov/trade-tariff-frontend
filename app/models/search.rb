@@ -125,5 +125,9 @@ class Search
     Outcome.new(response)
   end
 
+  def q
+    'trade_tariff'
+  end
+
   def to_s; t; end
 end
