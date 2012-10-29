@@ -1,45 +1,45 @@
----
-http_interactions:
-- request:
+--- 
+http_interactions: 
+- request: 
     method: post
     uri: http://tariff-api.dev.gov.uk/search
-    body:
+    body: 
       encoding: US-ASCII
-      string: q=01&as_of=
+      string: t=01&as_of=
     headers: {}
-  response:
-    status:
+
+  response: 
+    status: 
       code: 200
       message: OK
-    headers:
-      Server:
+    headers: 
+      Server: 
       - nginx
-      Date:
-      - Thu, 11 Oct 2012 15:01:35 GMT
-      Content-Type:
+      Date: 
+      - Mon, 22 Oct 2012 10:37:09 GMT
+      Content-Type: 
       - application/json; charset=utf-8
-      Transfer-Encoding:
+      Transfer-Encoding: 
       - chunked
-      Connection:
+      Connection: 
       - close
-      Status:
+      Status: 
       - 200 OK
-      X-Ua-Compatible:
+      X-Ua-Compatible: 
       - IE=Edge
-      Etag:
-      - ! '"92117a675eb2b6c8c0a9f1d9bb7b0c7d"'
-      Cache-Control:
+      Etag: 
+      - "\"92117a675eb2b6c8c0a9f1d9bb7b0c7d\""
+      Cache-Control: 
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWY5ODg5NmE0NDE3MTZiOTdmNzNhOTAyMTljMDJkNTU4BjsAVA%3D%3D--bf21c04fc4762ff99cada539f73a2b14f9202eda;
-        path=/; HttpOnly
-      X-Request-Id:
-      - 55c209c77ae068cddb37d1837ccd0c51
-      X-Runtime:
-      - '0.044079'
-    body:
+      Set-Cookie: 
+      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWNmZWY3MWM4ZTU0YzcxMjgxZDg0ODQ2YTViMzZjMzcxBjsAVA%3D%3D--4fa882d7400cfbaaabce84fc19c4763dc82e84f7; path=/; HttpOnly
+      X-Request-Id: 
+      - 324673b09a57d49c05b99084a27f4d83
+      X-Runtime: 
+      - "0.755247"
+    body: 
       encoding: US-ASCII
-      string: ! '{"type":"exact_match","entry":{"endpoint":"chapters","id":"01"}}'
+      string: "{\"type\":\"exact_match\",\"entry\":{\"endpoint\":\"chapters\",\"id\":\"01\"}}"
     http_version: 
-  recorded_at: Thu, 11 Oct 2012 15:01:35 GMT
+  recorded_at: Mon, 22 Oct 2012 10:37:09 GMT
 recorded_with: VCR 2.2.5

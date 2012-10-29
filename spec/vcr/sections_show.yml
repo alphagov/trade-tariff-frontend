@@ -1,53 +1,43 @@
----
-http_interactions:
-- request:
+--- 
+http_interactions: 
+- request: 
     method: get
-    uri: http://tariff-api.dev.gov.uk/sections/1?as_of=2012-10-11
-    body:
+    uri: http://tariff-api.dev.gov.uk/sections/1?as_of=2012-10-22
+    body: 
       encoding: US-ASCII
-      string: ''
+      string: ""
     headers: {}
-  response:
-    status:
+
+  response: 
+    status: 
       code: 200
       message: OK
-    headers:
-      Server:
+    headers: 
+      Server: 
       - nginx
-      Date:
-      - Thu, 11 Oct 2012 15:01:37 GMT
-      Content-Type:
+      Date: 
+      - Mon, 22 Oct 2012 10:37:10 GMT
+      Content-Type: 
       - application/json; charset=utf-8
-      Transfer-Encoding:
+      Transfer-Encoding: 
       - chunked
-      Connection:
+      Connection: 
       - close
-      Status:
+      Status: 
       - 200 OK
-      X-Ua-Compatible:
+      X-Ua-Compatible: 
       - IE=Edge
-      Etag:
-      - ! '"422fcfe6bd3fcea23583e969497128ee"'
-      Cache-Control:
+      Etag: 
+      - "\"603b818d5fb28399c7de77c7df0f67c1\""
+      Cache-Control: 
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - bf55c91474ce518bfef5c1ac8c68eb0a
-      X-Runtime:
-      - '0.051933'
-    body:
+      X-Request-Id: 
+      - 3135006c5956562c28c0777ebbf65bbc
+      X-Runtime: 
+      - "0.129758"
+    body: 
       encoding: US-ASCII
-      string: ! '{"position":1,"title":"Live animals; animal products (chapters 1
-        to 5)","numeral":"I","section_note":" 1. Any reference in this section to
-        a particular genus or species of an animal, except where the context otherwise
-        requires, includes a reference to the young of that genus or species. 2. Except
-        where the context otherwise requires, throughout the nomenclature any reference
-        to \"dried\" products also covers products which have been dehydrated, evaporated
-        or freeze-dried.","chapters":[{"description":"LIVE ANIMALS","goods_nomenclature_item_id":"0100000000"},{"description":"MEAT
-        AND EDIBLE MEAT OFFAL","goods_nomenclature_item_id":"0200000000"},{"description":"FISH
-        AND CRUSTACEANS, MOLLUSCS AND OTHER AQUATIC INVERTEBRATES","goods_nomenclature_item_id":"0300000000"},{"description":"DAIRY
-        PRODUCE; BIRDS'' EGGS; NATURAL HONEY; EDIBLE PRODUCTS OF ANIMAL ORIGIN, NOT
-        ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0400000000"},{"description":"PRODUCTS
-        OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0500000000"}]}'
+      string: "{\"position\":1,\"title\":\"Live animals; animal products (chapters 1 to 5)\",\"numeral\":\"I\",\"section_note\":\" 1. Any reference in this section to a particular genus or species of an animal, except where the context otherwise requires, includes a reference to the young of that genus or species. 2. Except where the context otherwise requires, throughout the nomenclature any reference to \\\"dried\\\" products also covers products which have been dehydrated, evaporated or freeze-dried.\",\"chapters\":[{\"description\":\"LIVE ANIMALS\",\"goods_nomenclature_item_id\":\"0100000000\"},{\"description\":\"MEAT AND EDIBLE MEAT OFFAL\",\"goods_nomenclature_item_id\":\"0200000000\"},{\"description\":\"FISH AND CRUSTACEANS, MOLLUSCS AND OTHER AQUATIC INVERTEBRATES\",\"goods_nomenclature_item_id\":\"0300000000\"},{\"description\":\"DAIRY PRODUCE; BIRDS'EGGS; NATURAL HONEY; EDIBLE PRODUCTS OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED\",\"goods_nomenclature_item_id\":\"0400000000\"},{\"description\":\"PRODUCTS OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED\",\"goods_nomenclature_item_id\":\"0500000000\"}]}"
     http_version: 
-  recorded_at: Thu, 11 Oct 2012 15:01:37 GMT
+  recorded_at: Mon, 22 Oct 2012 10:37:10 GMT
 recorded_with: VCR 2.2.5

@@ -1,6 +1,8 @@
 class DescriptionFormatter
   def self.format(opts = {})
-    str = opts[:description]
+    raise ArgumentError.new("DescriptionFormatter expects :using arg to be a single value") if opts.keys.many?
+
+    str = opts.values.first
     str.gsub!("|", "&nbsp;")
     str.gsub!("!1!", "<br />")
     str.gsub!("!X!", "&times;")
@@ -9,6 +11,9 @@ class DescriptionFormatter
     str.gsub!("!O!", "&deg;")
     str.gsub!("!>=!", "&ge;")
     str.gsub!("!<=!", "&le;")
+    str.gsub!("& ", "&amp; ")
+    str.gsub!("\n \n", "<br/>")
+    str.gsub!("\n", "<br/>")
     str.gsub! /@(.)/ do
       "<sub>#{$1}</sub>"
     end

@@ -1,4 +1,4 @@
-<h1 class="search-heading">Search results for '<mark><%= @search.q %></mark>'</h1>
+<h1 class="search-heading">Search results for '<mark><%= @search.t %></mark>'</h1>
 <article class="search-results">
   <% if @results.any? %>
     <% if @results.reference_match.sections.any? %>
@@ -52,7 +52,7 @@
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
           <dl class="results-headings">
-            <%= render partial: 'search/heading', collection: headings, locals: { search_query: @search.q } %>
+            <%= render partial: 'search/heading', collection: headings, locals: { search_query: @search.t } %>
           </dl>
         </dd>
         <% end %>

@@ -4,25 +4,29 @@ module Models
 
     module ClassMethods
       def format(attribute, options)
-        options.assert_valid_keys :with, :using, :as, :defaults
+        options.assert_valid_keys :with, :using, :defaults
 
-        formatter, using, resulting_method, defaults = options.values_at(:with,
-                                                                         :using,
-                                                                         :as,
-                                                                         :defaults)
-        resulting_method ||= attribute
-
-        define_method(resulting_method) do
+        formatter, using, defaults = options.values_at(:with,
+                                                       :using,
+                                                       :defaults)
+        define_method(attribute) do
           opts = {}
-          using.each do |field|
-            field.is_a?(Symbol)
-            opts[field] = attributes[field.to_s]
-          end
 
-          opts.merge!(defaults) if defaults.present?
+          [using].flatten.each do |field|
+            opts[field] = result_of_attribute_or_method_call(field)
+          end if using.present?
+
           formatter.format(opts)
         end
       end
+    end
+
+    private
+
+    def result_of_attribute_or_method_call(field_name)
+      attributes[field_name.to_s].presence ||
+      (send(field_name) if respond_to?(field_name)).presence ||
+      ""
     end
   end
 end

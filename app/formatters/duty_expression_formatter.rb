@@ -1,7 +1,7 @@
 class DutyExpressionFormatter
 
   def self.prettify(float)
-    float.to_i == float ? float.to_i : float
+    sprintf("%.2f", float)
   end
 
   def self.format(opts={})
@@ -9,9 +9,9 @@ class DutyExpressionFormatter
     duty_expression_description = opts[:duty_expression_description]
     duty_expression_abbreviation = opts[:duty_expression_abbreviation]
     duty_amount = opts[:duty_amount]
-    monetary_unit = opts[:monetary_unit]
+    monetary_unit = opts[:monetary_unit_abbreviation].presence || opts[:monetary_unit]
     measurement_unit = opts[:measurement_unit]
-    measurement_unit_qualifier = opts[:measurement_unit_qualifier]
+    measurement_unit_qualifier = opts[:formatted_measurement_unit_qualifier]
 
     output = []
 
