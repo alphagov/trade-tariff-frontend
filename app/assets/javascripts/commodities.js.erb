@@ -141,15 +141,29 @@ GOVUK.tariff = {
           @function
           @description Returns the left position of the popup relative to the window
         */
-        setLeftPos : function ($popup) {
+        getDimensions : function ($popup) {
             var windowWidth = $(window).width(),
-                popupWidth = $popup.innerWidth();
+                popupWidth = $popup.innerWidth(),
+                scrollLeft = $(document).scrollLeft(),
+                sidePadding = 0,
+                dimensions = {};
+
+            if ($popup.css('position') === 'absolute') {
+                dimensions.top = $(document).scrollTop() + 12 + 'px';
+                sidePadding = scrollLeft;
+            }
 
             if (popupWidth < windowWidth) {
-                return ((windowWidth - popupWidth) / 2) + 'px'; 
+                dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px'; 
             } else {
-                return '0px';
+                // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
+                if (popupWidth > windowWidth) {
+                    dimensions.width = windowWidth - (parseFloat($popup.css('padding-left')) + parseFloat($popup.css('padding-right'))) + 'px';
+                }
+                dimensions.left = sidePadding + 'px';
             }
+
+            return dimensions;
         },
         /**
           @name GOVUK.tariff.tablePopup.adapt
@@ -165,7 +179,8 @@ GOVUK.tariff = {
                 $closeBtn = $popup.find('.close a'),
                 $mask = $('#mask'),
                 loader = '<img src="" alt="Content is loading" class="loader" />',
-                htmlContent;
+                htmlContent,
+                popupCSS;
 
             htmlContent = $("[data-popup=" + $linkElm.data('popup-ref') + "]").html();
             $popupInner.html(htmlContent);
@@ -223,10 +238,8 @@ GOVUK.tariff = {
                 return true;
             });
 
-            $popup.css({
-                'left': this.setLeftPos($popup), 
-                'top': $(document).scrollTop() + 12 + 'px'
-            });
+            popupCSS = this.getDimensions($popup);
+            $popup.css(popupCSS);
         },
         /**
           @name GOVUK.tariff.tablePopup.initialize

@@ -1012,6 +1012,7 @@ ul.tree-controls li {
 /* Popup lightbox */
 
 #popup.tariff-info {
+  position: fixed;
   top: 12px;
   height:auto;
   width: auto;
@@ -1020,6 +1021,7 @@ ul.tree-controls li {
   zoom:1;
   
   @include ie(6) {
+    position: absolute;
     width:720px;
   }
 
