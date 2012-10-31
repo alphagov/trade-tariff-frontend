@@ -56,6 +56,7 @@ module TradeTariffFrontend
     # config.active_record.whitelist_attributes = false #will move to mongo for API
 
     config.assets.precompile += %w{
+      tariff.css
       tariff-print.css
     }
 
