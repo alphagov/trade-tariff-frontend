@@ -12,7 +12,6 @@ gem "kaminari"
 gem "gds-api-adapters", "2.1.0"
 gem "plek"
 gem "slimmer", "3.7.0"
-gem "govuk_frontend_toolkit", "0.7.1"
 gem "addressable"
 
 gem "unicorn", "~> 4.3.1"
@@ -47,6 +46,7 @@ end
 
 group :assets do
   gem "coffee-rails", "~> 3.2.1"
+  gem "govuk_frontend_toolkit", "0.7.1"
   gem "jquery-rails"
   gem "sass-rails", "~> 3.2.3"
   gem "therubyracer"
