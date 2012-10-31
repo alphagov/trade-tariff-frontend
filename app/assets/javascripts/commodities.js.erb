@@ -137,6 +137,35 @@ GOVUK.tariff = {
                     '</div>' +
                 '</div>'],
         /**
+          @name GOVUK.tariff.tablePopup.getDimensions
+          @function
+          @description Returns dimensions to be used to size and position the popup
+        */
+        getDimensions : function ($popup) {
+            var windowWidth = $(window).width(),
+                popupWidth = $popup.innerWidth(),
+                scrollLeft = $(document).scrollLeft(),
+                sidePadding = 0,
+                dimensions = {};
+
+            if ($popup.css('position') === 'absolute') {
+                dimensions.top = $(document).scrollTop() + 12 + 'px';
+                sidePadding = scrollLeft;
+            }
+
+            if (popupWidth < windowWidth) {
+                dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px'; 
+            } else {
+                // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
+                if (popupWidth > windowWidth) {
+                    dimensions.width = windowWidth - (parseFloat($popup.css('padding-left')) + parseFloat($popup.css('padding-right'))) + 'px';
+                }
+                dimensions.left = sidePadding + 'px';
+            }
+
+            return dimensions;
+        },
+        /**
           @name GOVUK.tariff.tablePopup.adapt
           @function
           @description adapts the disclaimer popup for reuse
@@ -150,7 +179,8 @@ GOVUK.tariff = {
                 $closeBtn = $popup.find('.close a'),
                 $mask = $('#mask'),
                 loader = '<img src="" alt="Content is loading" class="loader" />',
-                htmlContent;
+                htmlContent,
+                popupCSS;
 
             htmlContent = $("[data-popup=" + $linkElm.data('popup-ref') + "]").html();
             $popupInner.html(htmlContent);
@@ -166,7 +196,10 @@ GOVUK.tariff = {
                     'aria-labelledby' : 'dialog-title'
                 });
 
-            $mask.on('click', function () {
+            $mask
+                .width($(document).width())
+                .height($(document).height())
+                .on('click', function () {
                   $popup.fadeOut(400, function(){
                     $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
                   });
@@ -205,10 +238,8 @@ GOVUK.tariff = {
                 return true;
             });
 
-            $popup.css({
-              'left': ($(document).width() - $popup.innerWidth()) / 2 + 'px',
-              'top': $(document).scrollTop() + 12 + 'px'
-            });
+            popupCSS = this.getDimensions($popup);
+            $popup.css(popupCSS);
         },
         /**
           @name GOVUK.tariff.tablePopup.initialize

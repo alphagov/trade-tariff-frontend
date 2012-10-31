@@ -1,3 +1,5 @@
+@import '_conditionals';
+
 /* global variables */
 
 $token-width: 27;
@@ -106,10 +108,13 @@ $expand-arrow-space: 9 + $token-padding;
     position: relative;
     z-index: 5;
   }
-  .lte-ie8 & ol,
-  .lte-ie8 & ul {
-    _overflow: hidden;
-    _padding: 1px 1px 0 0;
+
+  @include ie(6) {
+    ol,
+    ul {
+      overflow: hidden;
+      padding: 1px 1px 0 0;
+    }
   }
 
   ol li,
@@ -129,9 +134,11 @@ $expand-arrow-space: 9 + $token-padding;
     text-decoration: none;
     top: 0;
   }
-  .lte-ie8 & li a {
-    _background-image: none;
-    _padding: 0 1em;
+  @include ie(6) {
+    li a {
+      background-image: none;
+      padding: 0 1em;
+    }
   }
 
   li:first-child a {
@@ -153,8 +160,10 @@ $expand-arrow-space: 9 + $token-padding;
     position: relative;
     z-index: 5;
   }
-  .lte-ie8 & li.active a {
-    _bottom: -1px;
+  @include ie(6) {
+    li.active a {
+      bottom: -1px;
+    }
   }
 
   li.active a:hover {
@@ -261,7 +270,7 @@ mark {
 }
 
 #wrapper.tariff header.page-header hgroup h1{
-  @media(min-width: 1020px) {
+  @include media($min-width: 1020px) {
     background-position: 15px 15px;
     padding-left:128px;
   }
@@ -380,7 +389,9 @@ article table {
 article.tariff {
   font-size:em(14, 16);
   min-height:34em; /* right column needs this to show all content */
-  _height:34em;
+  @include ie(6) {
+    height:34em;
+  }
 }
 
 .tariff {
@@ -468,8 +479,9 @@ article.tariff {
 
   .ui-datepicker-header {
     padding:0 px($token-padding + 16);
-    /* IE fix */
-    *width:1px;
+    @include ie-lte(7) {
+      width:1px;
+    }
   }
 
   .ui-datepicker-header a {
@@ -946,7 +958,7 @@ dl.tariff-fragments dd.declarable {
   }
 
   .inner {
-    padding:0em px($token-space) 1em;
+    padding:0em px($top-level-padding) 1em;
 
     p {
       margin-left:0;
@@ -1000,12 +1012,18 @@ ul.tree-controls li {
 /* Popup lightbox */
 
 #popup.tariff-info {
+  position: fixed;
   top: 12px;
   height:auto;
-  _width:720px;
+  width: auto;
   max-width: 720px;
   padding:0;
   zoom:1;
+  
+  @include ie(6) {
+    position: absolute;
+    width:720px;
+  }
 
   .info-content,
   article {
@@ -1123,8 +1141,8 @@ article.search-results {
       margin: 0;
       overflow:hidden;
 
-      .lte-ie8 & {
-        *width: 84%;
+      @include ie-lte(7) {
+        width: 84%;
       }
     
       a {
