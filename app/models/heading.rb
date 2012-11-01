@@ -50,14 +50,6 @@ class Heading
     [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
   end
 
-  def third_country_duty
-    @third_country_duty ||= basic_duty_rate_components.map(&:duty_expression)
-  end
-
-  def third_country_duty_rate
-    (third_country_duty.blank?) ? "variable" : third_country_duty.join(" + ")
-  end
-
   def to_s
     formatted_description
   end

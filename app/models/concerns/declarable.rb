@@ -27,5 +27,13 @@ module Models
     def code
       goods_nomenclature_item_id
     end
+
+    def third_country_duty
+      import_measures.select(&:third_country_duty).first
+    end
+
+    def third_country_duty_rate
+      third_country_duty.try(:duty_expression)
+    end
   end
 end
