@@ -5,7 +5,7 @@
 $token-width: 27;
 $token-padding: 5;
 $token-space: $token-width + $token-padding; /* Uses above values */
-$top-level-padding: 10;
+$top-level-padding: 25;
 
 $top-section-blue: #EAF3F8;
 
@@ -274,7 +274,7 @@ mark {
     background-position: 15px 15px;
     padding-left:128px;
   }
-  
+
   background-position: 0px 15px;
   padding-left: 76px;
 }
@@ -417,7 +417,7 @@ article.tariff {
   }
 }
 
-.help-notice {
+.help-notice, .info-notice {
   padding:0.25em 1em 0.25em 1em;
 }
 
@@ -573,6 +573,10 @@ article dt {
   }
 }
 
+article .help-notice {
+  background-color: #eaedef;
+}
+
 dl.chapters,
 dl.tariff-fragments .chapter-headings {
   @include underlined-token-list;
@@ -645,7 +649,7 @@ article dd {
       padding-left: px($token-padding);
       margin-left: px($token-padding) * -1;
     }
-    
+
     .js-enabled & dl a.hover {
       color: #2E8ACA;
     }
@@ -958,7 +962,7 @@ dl.tariff-fragments dd.declarable {
   }
 
   .inner {
-    padding:0em px($top-level-padding) 1em;
+    padding:0em px($top-level-padding + 10) 1em;
 
     p {
       margin-left:0;
@@ -984,6 +988,15 @@ dl.tariff-fragments dd.declarable {
 
   nav {
     margin:1em (-1 * em(22, 16)) 0; /* override for static styles */
+  }
+
+  .consigned {
+    margin: 2em px($top-level-padding);
+
+    p {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
 
@@ -1019,7 +1032,7 @@ ul.tree-controls li {
   max-width: 720px;
   padding:0;
   zoom:1;
-  
+
   @include ie(6) {
     position: absolute;
     width:720px;
@@ -1144,7 +1157,7 @@ article.search-results {
       @include ie-lte(7) {
         width: 84%;
       }
-    
+
       a {
         display: block;
         padding-left: 15%;

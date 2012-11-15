@@ -41,6 +41,15 @@ class Commodity
     code[2..3]
   end
 
+  # There are no consigned declarable headings
+  def consigned?
+    description =~ /Consigned from/
+  end
+
+  def consigned_from
+    description.match(/Consigned from (.*)/)[1]
+  end
+
   def to_param
     code
   end

@@ -17,6 +17,11 @@
 
 <div id="measures-js" class='tab-content'>
   <article class='tab-pane active' id='overview'>
+    <% if declarable.consigned? %>
+      <div class="consigned info-notice">
+        <p>This commodity is consigned from <strong><%= declarable.consigned_from %></strong>.</p>
+      </div>
+    <% end %>
     <div class="inner">
       <h1 class="visuallyhidden">Overview</h1>
       <h2>Import</h2>
