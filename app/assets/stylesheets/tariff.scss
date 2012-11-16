@@ -5,7 +5,7 @@
 $token-width: 27;
 $token-padding: 5;
 $token-space: $token-width + $token-padding; /* Uses above values */
-$top-level-padding: 25;
+$top-level-padding: 10;
 
 $top-section-blue: #EAF3F8;
 
@@ -324,8 +324,8 @@ mark {
 
 article table {
     @include table;
-    width:100%; /* override for static styles */
-    margin:em(32, 16) 0 0; /* override for static styles */
+    width:106.4%; /* override for static styles */
+    margin:em(32, 16) -1 * em(30, 16) 0; /* override for static styles */
 
   th,
   td {
@@ -962,7 +962,7 @@ dl.tariff-fragments dd.declarable {
   }
 
   .inner {
-    padding:0em px($top-level-padding + 10) 1em;
+    padding:0em 2.5em 1em;
 
     p {
       margin-left:0;
@@ -977,8 +977,8 @@ dl.tariff-fragments dd.declarable {
   p {
     font-size:em(19, 16);
     padding:0;
-    margin-left:px($token-space);
-    margin-right:px($token-space);
+    margin-left: em(40, 19);
+    margin-right: em(40, 19);
   }
 
   em {
@@ -991,12 +991,16 @@ dl.tariff-fragments dd.declarable {
   }
 
   .consigned {
-    margin: 2em px($top-level-padding);
+    margin: 2em 1.5em;
 
     p {
       margin-left: 0;
       margin-right: 0;
     }
+  }
+
+  .help-notice {
+    margin:1em -1em 0em;
   }
 }
 
