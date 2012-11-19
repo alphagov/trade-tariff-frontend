@@ -54,9 +54,9 @@ $expand-arrow-space: 9 + $token-padding;
   caption {
     text-align:left;
     font-weight: 300;
-    margin-bottom: 0.5em;
     font-size:em(19, 16);
-    padding-left:0em;
+    padding: 0 em(30, 19) px($top-level-padding);
+    margin-bottom: 0;
   }
 
   th,
@@ -1025,25 +1025,25 @@ dl.tariff-fragments dd.declarable {
   }
 
   em {
-    font-style:normal;
-    font-weight:bold;
+    font-style: normal;
+    font-weight: bold;
   }
 
   nav {
-    margin:1em (-1 * em(22, 16)) 0; /* override for static styles */
-  }
-
-  .consigned {
-    margin: 2em 1.5em;
-
-    p {
-      margin-left: 0;
-      margin-right: 0;
-    }
+    margin: 1em (-1 * em(22, 16)) 0; /* override for static styles */
   }
 
   .help-notice {
-    margin:1em -1em 0em;
+    margin: 1em 1.5em 2em;
+
+    p {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  .inner .help-notice {
+    margin: 2em -1em 0em;
   }
 }
 
