@@ -816,9 +816,10 @@ dl.chapter-headings {
 }
 
 ul.commodities {
-  @include selected-section($commodity-padding);
-  @include underlined-ordered-list;
   @include contain-float;
+  background: #fff;
+  margin-left: -1px * ($token-width + $token-space);
+  padding-left: px($token-padding);
   position:relative; /* to give z-index */
 
   li {
@@ -826,7 +827,53 @@ ul.commodities {
     margin: 0;
     padding: 0;
     position:relative;
+    background-image: url(commodity-indents.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
     @include contain-float;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &.level-1 {
+      padding-left: px(($token-width - $token-padding) + $token-space);
+      background-position: -984px em(10, 19);
+    }
+
+    &.level-2 {
+      margin-left: px($token-width * 2) * -1;
+      padding-left: px(($token-width * 2) + $token-width);
+      background-position: -972px em(10, 19);
+    }
+
+    &.level-3 {
+      margin-left: px(($token-width * 2) + $token-width) * -1;
+      padding-left: px(($token-width * 2) + ($token-width * 2));
+      background-position: -960px em(10, 19);
+    }
+
+    &.level-4 {
+      margin-left: px(($token-width * 2) + ($token-width * 2)) * -1;
+      padding-left: px(($token-width * 2) + ($token-width * 3));
+      background-position: -948px em(10, 19);
+    }
+
+    &.level-5 {
+      margin-left: px(($token-width * 2) + ($token-width * 3)) * -1;
+      padding-left: px(($token-width * 2) + ($token-width * 4));
+      background-position: -936px em(10, 19);
+    }
+
+    a,
+    ul {
+      border-bottom: solid 1px #eee;
+    }
+
+    &:last-child > a,
+    &.last-child > ul {
+      border-bottom: none;
+    }
 
     a {
       margin:0;
@@ -887,13 +934,9 @@ ul.commodities {
     }
   }
 
-  li:last-child {
-    border-bottom: 0;
-  }
-
   ul {
     margin: 0;
-    padding-left: em($token-width, 14);
+    padding-left: 0;
     clear: both;
   }
 }

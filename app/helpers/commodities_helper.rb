@@ -1,4 +1,12 @@
 module CommoditiesHelper
+  def leaf_position(commodity)
+    if commodity.last_child?
+      " last-child"
+    else
+      ""
+    end
+  end
+
   def commodity_level(commodity)
     "level-#{commodity.number_indents}"
   end
