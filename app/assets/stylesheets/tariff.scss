@@ -274,7 +274,7 @@ mark {
     background-position: 15px 15px;
     padding-left:128px;
   }
-  
+
   background-position: 0px 15px;
   padding-left: 76px;
 }
@@ -324,8 +324,8 @@ mark {
 
 article table {
     @include table;
-    width:100%; /* override for static styles */
-    margin:em(32, 16) 0 0; /* override for static styles */
+    width:106.4%; /* override for static styles */
+    margin:em(32, 16) -1 * em(30, 16) 0; /* override for static styles */
 
   th,
   td {
@@ -417,7 +417,7 @@ article.tariff {
   }
 }
 
-.help-notice {
+.help-notice, .info-notice {
   padding:0.25em 1em 0.25em 1em;
 }
 
@@ -573,6 +573,10 @@ article dt {
   }
 }
 
+article .help-notice {
+  background-color: #eaedef;
+}
+
 dl.chapters,
 dl.tariff-fragments .chapter-headings {
   @include underlined-token-list;
@@ -645,7 +649,7 @@ article dd {
       padding-left: px($token-padding);
       margin-left: px($token-padding) * -1;
     }
-    
+
     .js-enabled & dl a.hover {
       color: #2E8ACA;
     }
@@ -958,7 +962,7 @@ dl.tariff-fragments dd.declarable {
   }
 
   .inner {
-    padding:0em px($top-level-padding) 1em;
+    padding:0em 2.5em 1em;
 
     p {
       margin-left:0;
@@ -973,8 +977,8 @@ dl.tariff-fragments dd.declarable {
   p {
     font-size:em(19, 16);
     padding:0;
-    margin-left:px($token-space);
-    margin-right:px($token-space);
+    margin-left: em(40, 19);
+    margin-right: em(40, 19);
   }
 
   em {
@@ -984,6 +988,19 @@ dl.tariff-fragments dd.declarable {
 
   nav {
     margin:1em (-1 * em(22, 16)) 0; /* override for static styles */
+  }
+
+  .consigned {
+    margin: 2em 1.5em;
+
+    p {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .help-notice {
+    margin:1em -1em 0em;
   }
 }
 
@@ -1019,7 +1036,7 @@ ul.tree-controls li {
   max-width: 720px;
   padding:0;
   zoom:1;
-  
+
   @include ie(6) {
     position: absolute;
     width:720px;
@@ -1144,7 +1161,7 @@ article.search-results {
       @include ie-lte(7) {
         width: 84%;
       }
-    
+
       a {
         display: block;
         padding-left: 15%;

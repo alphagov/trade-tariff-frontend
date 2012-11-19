@@ -56,4 +56,30 @@ describe Commodity do
       commodity.to_param.should == commodity.code
     end
   end
+
+  describe '#consigned?' do
+    let(:consigned_commodity)     { Commodity.new(attributes_for :commodity, description: 'Consigned from Malaysia') }
+    let(:non_consigned_commodity) { Commodity.new(attributes_for :commodity) }
+
+    it 'returns true if description matches Consigned from pattern' do
+      consigned_commodity.consigned?.should be_true
+    end
+
+    it 'returns false if description does not match consigned pattern' do
+      non_consigned_commodity.consigned?.should be_false
+    end
+  end
+
+  describe '#consigned_from' do
+    let(:consigned_commodity)     { Commodity.new(attributes_for :commodity, description: 'Consigned from Malaysia') }
+    let(:non_consigned_commodity) { Commodity.new(attributes_for :commodity) }
+
+    it 'returns country name' do
+      consigned_commodity.consigned_from.should eq 'Malaysia'
+    end
+
+    it 'returns blank value for non consigned commodity' do
+      non_consigned_commodity.consigned_from.should be_blank
+    end
+  end
 end
