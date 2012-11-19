@@ -47,7 +47,7 @@ class Commodity
   end
 
   def consigned_from
-    description.match(/Consigned from (.*)/)[1]
+    description.match(/Consigned from (.*)/)[1] if consigned?
   end
 
   def to_param
