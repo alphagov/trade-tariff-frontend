@@ -17,6 +17,7 @@
 
 <div id="measures-js" class='tab-content'>
   <article class='tab-pane active' id='overview'>
+    <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <div class="inner">
       <h1 class="visuallyhidden">Overview</h1>
       <h2>Import</h2>
@@ -51,6 +52,7 @@
     </div>
   </article>
   <article class='tab-pane' id='import' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+    <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <p>The commodity code for importing is <em><%= declarable.code %></em>.</p>
     <div class="inner">
       <table>
@@ -125,6 +127,7 @@
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
   <article class='tab-pane' id='export' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+    <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <p>The commodity code for exporting and intrastat reporting is <em><%= declarable.display_export_code %></em>.</p>
     <div class="inner">
       <table>

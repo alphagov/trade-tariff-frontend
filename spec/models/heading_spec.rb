@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Heading do
-  describe "#to_param" do
+  describe '#to_param' do
     let(:heading) { Heading.new(attributes_for :heading) }
 
     it 'returns heading code as param' do
@@ -9,11 +9,17 @@ describe Heading do
     end
   end
 
-  describe "#commodity_code" do
+  describe '#commodity_code' do
     let(:heading) { Heading.new(attributes_for :heading) }
 
     it 'returns first ten symbols of code' do
       heading.commodity_code.should == heading.code.to_s.first(10)
+    end
+  end
+
+  describe '#consigned?' do
+    it 'returns false (there are no consigned declarable headings)' do
+      subject.consigned?.should be_false
     end
   end
 end

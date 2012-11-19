@@ -42,6 +42,11 @@ class Heading
     code.first(4)
   end
 
+  # There are no consigned declarable headings
+  def consigned?
+    false
+  end
+
   def to_param
     short_code
   end
