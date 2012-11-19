@@ -1,4 +1,8 @@
 module CommoditiesHelper
+  def commodity_level(commodity)
+    "level-#{commodity.number_indents}"
+  end
+
   def commodity_tree(main_commodity, commodities)
     if commodities.any?
       content_tag(:dl, class: 'commodities') do
