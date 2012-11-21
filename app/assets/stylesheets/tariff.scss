@@ -1,4 +1,6 @@
 @import "_conditionals.scss";
+@import "_colours.scss";
+@import "_shims.scss";
 
 /* global variables */
 
@@ -233,6 +235,31 @@ $expand-arrow-space: 9 + $token-padding;
   margin: 0 0 0 px(-1 * ($side-padding + $token-width + $token-padding));
   padding: px($top-level-padding) px($top-level-padding) px($top-level-padding) px($side-padding + $token-width + $token-padding);
   background: #fff;
+}
+
+// generates commodity tree items based on the level
+@mixin indented-item($level) {
+  $left-pos: -984px;
+
+  @if $level == 1 {
+    padding-left: px(($token-width - $token-padding) + $token-space);
+    background-position: $left-pos 0.5em;
+  } @else {
+    margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
+    padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
+    background-position: $left-pos + (12px * ($level - 1)) 0.5em;
+  }
+}
+
+@mixin indented-list($levels) {
+  $indent-level: 1;
+
+  @while $indent-level < $levels {
+    &.level-#{$indent-level} {
+      @include indented-item($indent-level);
+    }
+    $indent-level: $indent-level + 1;
+  }
 }
 
 /* end mixins */
@@ -659,10 +686,11 @@ article dd {
 dl h1 {
   font-size: 100%;
   margin: 0;
-  padding-bottom:px($top-level-padding);
+  padding-bottom: px($top-level-padding);
   line-height: 1.5em;
   color: #333;
 }
+
 dl h1 .identifier {
   font-weight:400;
 }
@@ -815,11 +843,42 @@ dl.chapter-headings {
   list-style-image:none;
 }
 
+.tariff .commodity-tree-note {
+  font-size: em(12, 14);
+  background: #fff;
+  margin: 0 0 0 px($token-width + $token-space) * -1;
+  padding: px($token-padding) em(127, 12) 0 px($token-width + $token-space);
+  line-height: (20 / 12);
+  color: $grey-40; 
+  @extend %contain-floats;
+
+  @include ie(6) {
+    position: relative;
+  }
+
+  span {
+    position: absolute;
+    left: -9999em;
+  }
+
+  em {
+    font-style: normal;
+    float: left;
+
+    &.code {
+      float: right;
+      width: 6em;
+      margin-right: -6em;
+    }
+  }
+}
+
 ul.commodities {
   @include contain-float;
   background: #fff;
-  margin-left: -1px * ($token-width + $token-space);
+  margin-top: 0;
   margin-bottom: 0;
+  margin-left: -1px * ($token-width + $token-space);
   padding-left: px($token-padding);
   position:relative; /* to give z-index */
 
@@ -837,27 +896,7 @@ ul.commodities {
       border-bottom: 0;
     }
 
-    @mixin indented-item($level) {
-      $left-pos: -984px;
-
-      @if $level == 1 {
-        padding-left: px(($token-width - $token-padding) + $token-space);
-        background-position: $left-pos 0.5em;
-      } @else {
-        margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
-        padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
-        background-position: $left-pos + (12px * ($level - 1)) 0.5em;
-      }
-    }
-
-    $indent-level: 1;
-
-    @while $indent-level < 11 {
-      &.level-#{$indent-level} {
-        @include indented-item($indent-level);
-      }
-      $indent-level: $indent-level + 1;
-    }
+    @include indented-list(13);
 
     a,
     ul {
@@ -865,10 +904,15 @@ ul.commodities {
     }
 
     &:last-child > a,
-    &.last-child > a,
-    &:last-child > ul,
-    &.last-child > ul {
+    &:last-child > ul {
       border-bottom: none;
+    }
+    
+    @include ie-lte(8) {
+      &.last-child > a,
+      &.last-child > ul {
+        border-bottom: none;
+      }
     }
 
     /* Not ASCII art but CSS to patch IE6's lack of a descendant selector */
@@ -1104,7 +1148,6 @@ p.tree-controls {
   a {
     font-size:1em;
     line-height:1.5;
-    padding-right:px($top-level-padding);
   }
 }
 
@@ -1328,7 +1371,7 @@ article.search-results {
     font-weight: normal;
     margin: 0;
     padding: 0;
-    color: #c2c2c2;
+    color: $grey-40;
   }
 
   ul {
@@ -1403,6 +1446,7 @@ article.search-results {
   }
 
   li.has_children .description {
+    color: #2E3191;
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
     background-image: image-url("expand-collapse-transparent.png");
@@ -1412,9 +1456,15 @@ article.search-results {
     position:relative; /* to give z-index */
   }
 
+  li.has_children .description:hover,
+  li.has_children .description-hover {
+    color: #2E8ACA;
+  }
+
   li.has_children a .description {
     margin-left: 0;
   }
+
   li.has_children .open {
     background-position:0 -385px;
   }
