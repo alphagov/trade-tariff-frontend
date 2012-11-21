@@ -36,9 +36,16 @@ GOVUK.tariff = {
             var $parentNodes = $('.has_children', context),
                 isCommodityTree = false,
                 $controls,
-                effectAll;
+                effectAll,
+                controlHover;
 
             if (!$parentNodes.length) { return; }
+
+            controlHover = function (action) {
+              return function (evt) {
+                $(evt.target)[action + 'Class']('description-hover');
+              }
+            };
 
             $parentNodes.each(function (idx) {
                 var $parentNode = $(this),
@@ -70,14 +77,16 @@ GOVUK.tariff = {
                     }
 
                     return false;
-                });
+                })
+                .on('mouseover', controlHover('add'))
+                .on('mouseout', controlHover('remove'));
             });
 
             if (isCommodityTree) {
-                $controls = '<ul class="tree-controls">' +
-                                '<li><a href="#">open all</a></li>' +
-                                '<li><a href="#">close all</a></li>' +
-                            '</ul>';
+                $controls = '<p class="tree-controls">' +
+                                '<a href="#">open all</a> / ' +
+                                '<a href="#">close all</a>' +
+                            '</p>';
                 effectAll = function (ctrlIdx) {
                     $parentNodes.each(function (idx) {
                         var $this = $(this);
@@ -93,8 +102,9 @@ GOVUK.tariff = {
                 };
 
                 $parentNodes.closest('div.inner').append($controls);
-                $('ul.tree-controls a', context).each(function (idx) {
-                    $(this).on('click', function () {
+                $('p.tree-controls a', context).each(function (idx) {
+                  $(this)
+                    .on('click', function () {
                         effectAll(idx);
                         return false;
                     });

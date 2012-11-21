@@ -254,7 +254,7 @@ mark {
 }
 
 .tariff .article-container {
-  padding-bottom:2em;
+  padding-bottom:em(25, 19);
   position:relative;
 }
 
@@ -819,6 +819,7 @@ ul.commodities {
   @include contain-float;
   background: #fff;
   margin-left: -1px * ($token-width + $token-space);
+  margin-bottom: 0;
   padding-left: px($token-padding);
   position:relative; /* to give z-index */
 
@@ -836,33 +837,26 @@ ul.commodities {
       border-bottom: 0;
     }
 
-    &.level-1 {
-      padding-left: px(($token-width - $token-padding) + $token-space);
-      background-position: -984px em(10, 19);
+    @mixin indented-item($level) {
+      $left-pos: -984px;
+
+      @if $level == 1 {
+        padding-left: px(($token-width - $token-padding) + $token-space);
+        background-position: $left-pos 0.5em;
+      } @else {
+        margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
+        padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
+        background-position: $left-pos + (12px * ($level - 1)) 0.5em;
+      }
     }
 
-    &.level-2 {
-      margin-left: px($token-width * 2) * -1;
-      padding-left: px(($token-width * 2) + $token-width);
-      background-position: -972px em(10, 19);
-    }
+    $indent-level: 1;
 
-    &.level-3 {
-      margin-left: px(($token-width * 2) + $token-width) * -1;
-      padding-left: px(($token-width * 2) + ($token-width * 2));
-      background-position: -960px em(10, 19);
-    }
-
-    &.level-4 {
-      margin-left: px(($token-width * 2) + ($token-width * 2)) * -1;
-      padding-left: px(($token-width * 2) + ($token-width * 3));
-      background-position: -948px em(10, 19);
-    }
-
-    &.level-5 {
-      margin-left: px(($token-width * 2) + ($token-width * 3)) * -1;
-      padding-left: px(($token-width * 2) + ($token-width * 4));
-      background-position: -936px em(10, 19);
+    @while $indent-level < 11 {
+      &.level-#{$indent-level} {
+        @include indented-item($indent-level);
+      }
+      $indent-level: $indent-level + 1;
     }
 
     a,
@@ -871,8 +865,59 @@ ul.commodities {
     }
 
     &:last-child > a,
+    &.last-child > a,
+    &:last-child > ul,
     &.last-child > ul {
       border-bottom: none;
+    }
+
+    /* Not ASCII art but CSS to patch IE6's lack of a descendant selector */
+    @include ie(6) {
+      &.last-child ul a,
+      &.last-child ul ul,
+      &.last-child ul li a,
+      &.last-child ul li ul,
+      &.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul {
+        border-bottom: solid 1px #eee;
+      }
+
+      &.last-child a,
+      &.last-child ul,
+      &.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul {
+        border-bottom: none;
+      }
     }
 
     a {
@@ -888,7 +933,7 @@ ul.commodities {
       font-size: em(14, 19);
       line-height:1.5;
       float: left;
-      display: block;
+      display: inline;
 
       &.description {
         padding-right:8.6em;
@@ -938,6 +983,10 @@ ul.commodities {
     margin: 0;
     padding-left: 0;
     clear: both;
+
+    @include ie-lte(7) {
+      margin-left: -16px;
+    }
   }
 }
 
@@ -1047,16 +1096,16 @@ dl.tariff-fragments dd.declarable {
   }
 }
 
-ul.tree-controls {
-  margin-left:px($top-level-padding);
+p.tree-controls {
+  margin-left: px($token-width);
+  margin-bottom: 0;
   padding:0;
-}
 
-ul.tree-controls li {
-  font-size:1em;
-  line-height:1.5;
-  display:inline;
-  padding-right:px($top-level-padding);
+  a {
+    font-size:1em;
+    line-height:1.5;
+    padding-right:px($top-level-padding);
+  }
 }
 
 .conditions article,
@@ -1271,16 +1320,26 @@ article.search-results {
 .related-module {
   background: #fff;
   font-size:em(14, 16);
-  padding:1em;
+  padding:0 1em 7em px($token-width);
   @include contain-float;
+
+  h1 {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: #c2c2c2;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 
   a {
   }
 
   address{
-    float:left;
-    width:50%;
-    text-align:center;
     font-style:normal;
 
     a {
