@@ -28,8 +28,13 @@ module Models
       goods_nomenclature_item_id
     end
 
+    def third_country_duty_measures
+      import_measures.select(&:third_country_duty)
+    end
+
     def third_country_duty
-      import_measures.select(&:third_country_duty).first
+      third_country_duty_measures.sort_by(&:additional_code_code)
+                                 .last
     end
 
     def third_country_duty_rate
