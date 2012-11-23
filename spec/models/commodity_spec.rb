@@ -82,4 +82,29 @@ describe Commodity do
       non_consigned_commodity.consigned_from.should be_blank
     end
   end
+
+  describe 'third country duty rate fetch' do
+    let(:measure1)      { attributes_for :measure, :third_country, measure_type_description: 'abc', additional_code: { code: '123' } }
+    let(:measure2)      { attributes_for :measure, :third_country, measure_type_description: 'def', additional_code: { code: '456' } }
+    let(:measure3)      { attributes_for :measure, measure_type_id: '911', measure_type_description: 'xyz' }
+    let(:measures)      { [measure1, measure2, measure3] }
+    let(:commodity)     { Commodity.new(attributes_for :commodity, import_measures: measures) }
+
+    describe '#third_country_duty_measures' do
+      it 'picks only commodities that qualify for third country duty' do
+        commodity.third_country_duty_measures.map(&:measure_type_description).should include 'abc'
+        commodity.third_country_duty_measures.map(&:measure_type_description).should include 'def'
+      end
+
+      it 'does not pick other measures' do
+        commodity.third_country_duty_measures.map(&:measure_type_description).should_not include 'xyz'
+      end
+    end
+
+    describe '#third_country_duty' do
+      it 'sorts commodities by additional code and picks the last one' do
+        commodity.third_country_duty.measure_type_description.should eq 'def'
+      end
+    end
+  end
 end
