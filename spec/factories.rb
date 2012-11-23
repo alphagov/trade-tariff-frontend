@@ -38,6 +38,7 @@ FactoryGirl.define do
     end
 
     trait :third_country do
+      measure_type_id { '103' }
       geographical_area { attributes_for(:geographical_area, :third_country) }
     end
 

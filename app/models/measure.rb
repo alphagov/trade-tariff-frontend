@@ -16,6 +16,7 @@ class Measure
   has_many :footnotes
 
   delegate :description, :group_key, to: :geographical_area, prefix: true
+  delegate :code, to: :additional_code, prefix: true, allow_nil: true
 
   def id
     @id ||= SecureRandom.hex(16)
@@ -108,5 +109,9 @@ class Measure
 
   def vat?
     measure_type_description =~ /^VAT/
+  end
+
+  def additional_code
+    @additional_code.presence || NullObject.new(code: '')
   end
 end
