@@ -9,13 +9,13 @@
 </header>
 <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}"  } do |f| %>
     <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
+    <%= f.hidden_field :q, name: 'q' %>
     <%= f.label :t, "Search the tariff" %>
     <%= f.text_field :t, required: false,
                 size: 21,
                 placeholder: "name or code",
                 name: 't'  %>
     <%= f.hidden_field :as_of, name: 'as_of' %>
-    <%= f.hidden_field :q, name: 'q' %>
 
     <%= f.button 'Search', class: 'button right' %>
 <% end %>
