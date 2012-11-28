@@ -24,8 +24,7 @@ class DeclarablePresenter
   end
 
   def import_measures_for_third_country
-    declarable.import_measures
-              .select(&:third_country)
+    declarable.third_country_duty_measures
               .sort_by(&:sort_key)
               .present_with(MeasurePresenter)
   end
