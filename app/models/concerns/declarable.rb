@@ -30,6 +30,7 @@ module Models
 
     def third_country_duty_measures
       import_measures.select(&:third_country)
+                     .sort_by(&:sort_key)
     end
 
     def third_country_duty_rate
