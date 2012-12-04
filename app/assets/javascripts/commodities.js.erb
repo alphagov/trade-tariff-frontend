@@ -37,9 +37,23 @@ GOVUK.tariff = {
                 isCommodityTree = false,
                 $controls,
                 effectAll,
-                controlHover;
+                controlHover,
+                clickBranch;
 
             if (!$parentNodes.length) { return; }
+
+            clickBranch = function ($branch, $childList, action) {
+              var titleTxt = {
+                    'open' : 'Click to close',
+                    'close' : 'Click to open'
+                  },
+                  listAction = (action === 'open') ? 'removeClass' : 'addClass',
+                  branchAction = (action === 'open') ? 'addClass' : 'removeClass';
+
+              $childList[listAction]('visuallyhidden');
+              $branch[branchAction]('open')
+                .attr('title',  titleTxt[action]);
+            };
 
             controlHover = function (action) {
               return function (evt) {
@@ -64,16 +78,16 @@ GOVUK.tariff = {
                   $childList.addClass('visuallyhidden');
                 }
 
+                $parentNode.attr('title', 'Click to close');
+
                 // allow expansion based on clicking
                 $parentNode.on('click', function(e) {
                     e.stopPropagation();
                     if ($childList.is('.visuallyhidden')) {
-                        $childList.removeClass('visuallyhidden');
-                        $(this).addClass('open');
+                      clickBranch($(this), $childList, 'open');
                     }
                     else {
-                        $childList.addClass('visuallyhidden');
-                        $(this).removeClass('open');
+                      clickBranch($(this), $childList, 'close');
                     }
 
                     return false;
@@ -92,11 +106,9 @@ GOVUK.tariff = {
                         var $this = $(this);
 
                         if (ctrlIdx === 0) {
-                          $this.children('span').addClass('open');
-                          $this.children('ul').removeClass('visuallyhidden');
+                          clickBranch($(this), $childList, 'open');
                         } else {
-                          $this.children('span').removeClass('open');
-                          $this.children('ul').addClass('visuallyhidden');
+                          clickBranch($(this), $childList, 'close');
                         }
                     });
                 };
