@@ -9,7 +9,7 @@ gem "httparty"
 
 gem "kaminari"
 
-gem "gds-api-adapters", "2.1.0"
+gem "gds-api-adapters", "4.1.3"
 gem "plek"
 gem "slimmer", "3.7.0"
 gem "addressable"
