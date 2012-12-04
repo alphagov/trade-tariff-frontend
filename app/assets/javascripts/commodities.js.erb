@@ -36,9 +36,30 @@ GOVUK.tariff = {
             var $parentNodes = $('.has_children', context),
                 isCommodityTree = false,
                 $controls,
-                effectAll;
+                effectAll,
+                controlHover,
+                clickBranch;
 
             if (!$parentNodes.length) { return; }
+
+            clickBranch = function ($branch, $childList, action) {
+              var titleTxt = {
+                    'open' : 'Click to close',
+                    'close' : 'Click to open'
+                  },
+                  listAction = (action === 'open') ? 'removeClass' : 'addClass',
+                  branchAction = (action === 'open') ? 'addClass' : 'removeClass';
+
+              $childList[listAction]('visuallyhidden');
+              $branch[branchAction]('open')
+                .attr('title',  titleTxt[action]);
+            };
+
+            controlHover = function (action) {
+              return function (evt) {
+                $(evt.target)[action + 'Class']('description-hover');
+              }
+            };
 
             $parentNodes.each(function (idx) {
                 var $parentNode = $(this),
@@ -57,44 +78,45 @@ GOVUK.tariff = {
                   $childList.addClass('visuallyhidden');
                 }
 
+                $parentNode.attr('title', 'Click to close');
+
                 // allow expansion based on clicking
                 $parentNode.on('click', function(e) {
                     e.stopPropagation();
                     if ($childList.is('.visuallyhidden')) {
-                        $childList.removeClass('visuallyhidden');
-                        $(this).addClass('open');
+                      clickBranch($(this), $childList, 'open');
                     }
                     else {
-                        $childList.addClass('visuallyhidden');
-                        $(this).removeClass('open');
+                      clickBranch($(this), $childList, 'close');
                     }
 
                     return false;
-                });
+                })
+                .on('mouseover', controlHover('add'))
+                .on('mouseout', controlHover('remove'));
             });
 
             if (isCommodityTree) {
-                $controls = '<ul class="tree-controls">' +
-                                '<li><a href="#">open all</a></li>' +
-                                '<li><a href="#">close all</a></li>' +
-                            '</ul>';
+                $controls = '<p class="tree-controls">' +
+                                '<a href="#">open all</a> / ' +
+                                '<a href="#">close all</a>' +
+                            '</p>';
                 effectAll = function (ctrlIdx) {
                     $parentNodes.each(function (idx) {
                         var $this = $(this);
 
                         if (ctrlIdx === 0) {
-                          $this.children('span').addClass('open');
-                          $this.children('ul').removeClass('visuallyhidden');
+                          clickBranch($(this), $childList, 'open');
                         } else {
-                          $this.children('span').removeClass('open');
-                          $this.children('ul').addClass('visuallyhidden');
+                          clickBranch($(this), $childList, 'close');
                         }
                     });
                 };
 
                 $parentNodes.closest('div.inner').append($controls);
-                $('ul.tree-controls a', context).each(function (idx) {
-                    $(this).on('click', function () {
+                $('p.tree-controls a', context).each(function (idx) {
+                  $(this)
+                    .on('click', function () {
                         effectAll(idx);
                         return false;
                     });
@@ -282,7 +304,7 @@ GOVUK.tariff = {
           @description initializes namespace
         */
         initialize : function () {
-            var $infoPara = $('.page-header hgroup p'),
+            var $infoPara = $('p.tariff-date'),
                 $form = $('#date-filter'),
                 namespace = this;
 

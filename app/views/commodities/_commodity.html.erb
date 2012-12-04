@@ -1,10 +1,10 @@
 <% if commodity.has_children? %>
-  <li class="has_children">
+  <li class="has_children <%= commodity_level(commodity)%><%= leaf_position(commodity) %>">
     <span class="description open" id="commodity-<%= commodity.short_code %>"><%= commodity %></span>
     <ul><%= render commodity.children %></ul>
   </li>
 <% else %>
-  <li>
+  <li class="<%= commodity_level(commodity)%><%= leaf_position(commodity) %>">
     <a class="js-pjax" href="<%= commodity_path(commodity) %>" title="View complete information for this commodity">
     <span class="description open" id="commodity-<%= commodity.short_code %>"><%= commodity %></span>
       <span class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
