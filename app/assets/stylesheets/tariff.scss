@@ -844,16 +844,21 @@ dl.chapter-headings {
 }
 
 .tariff .commodity-tree-note {
-  font-size: em(12, 14);
   background: #fff;
   margin: 0 0 0 px($token-width + $token-space) * -1;
-  padding: px($token-padding) em(127, 12) 0 px($token-width + $token-space);
+  padding: px($token-padding) em(127, 14) 0 px($token-width + $token-space);
   line-height: (20 / 12);
   color: $grey-40; 
   @extend %contain-floats;
 
   @include ie(6) {
     position: relative;
+  }
+
+  /* the parent needs to have the same font-size as the tree so zooming works */
+  span,
+  em {
+    font-size: em(12, 14); 
   }
 
   span {
