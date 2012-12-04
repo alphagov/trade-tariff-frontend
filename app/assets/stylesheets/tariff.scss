@@ -324,16 +324,31 @@ mark {
   }
 }
 
-.tariff header.page-header hgroup p {
-  a {
-    font-size:em(14, 16);
-    display:inline-block;
-    margin-left:1em;
+.tariff header.page-header hgroup form p {
+  margin-top:0;
+}
+
+.tariff p.tariff-date,
+.tariff .date-filter-search {
+  font-size: em(14, 16);
+  padding: 0 px($top-level-padding) px($top-level-padding) 52%;
+  margin: -2em 0 0;
+  line-height: 2em;
+  background: #fff;
+
+  @include ie(6) {
+    zoom: 1;
   }
 }
 
-.tariff header.page-header hgroup form p {
-  margin-top:0;
+.tariff p.tariff-date a {
+  font-size:em(14, 16);
+  display:inline-block;
+  margin-left:1em;
+}
+
+.tariff p.sections-context {
+  padding-right:em(81, 14);
 }
 
 .commodities .chapter-code,
@@ -449,15 +464,16 @@ article.tariff {
 }
 
 .tariff-search {
-  text-align:right;
   font-size:em(14, 16);
   line-height:2em;
   background:#fff;
-  height:2em;
-  padding:0.5em px($top-level-padding) 0.5em px($token-space);
+  padding:0 px($top-level-padding) 0 px($token-space);
 
   a {
-    float:left;
+    display: block;
+    width: 8em;
+    position: relative;
+    z-index: 1;
   }
 
   p {
@@ -475,10 +491,6 @@ article.tariff {
   input {
     font-size:1em;
   }
-}
-
-.sections-context {
-  padding-right:em(81, 14);
 }
 
 #commodity_search_q {
@@ -846,7 +858,7 @@ dl.chapter-headings {
 .tariff .commodity-tree-note {
   background: #fff;
   margin: 0 0 0 px($token-width + $token-space) * -1;
-  padding: px($token-padding) em(127, 14) 0 px($token-width + $token-space);
+  padding: px($token-padding) em(137, 14) 0 px($token-width + $token-space);
   line-height: (20 / 12);
   color: $grey-40; 
   @extend %contain-floats;
@@ -885,6 +897,7 @@ ul.commodities {
   margin-bottom: 0;
   margin-left: -1px * ($token-width + $token-space);
   padding-left: px($token-padding);
+  padding-right: em($top-level-padding, 14);
   position:relative; /* to give z-index */
 
   li {
@@ -1348,14 +1361,16 @@ article.search-results {
 
 .date-filter-search {
   line-height:2em;
+  font-size:1em;
 
   input {
     margin-right:1em;
   }
 
-  .tariff header hgroup & p {
-    font-size:1em;
-    padding:0;
+  p {
+    padding: 0;
+    margin: 0;
+    line-height: 2em;
   }
 
   .button {
