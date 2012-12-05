@@ -73,4 +73,12 @@ class Commodity
       []
     end
   end
+
+  def last_child?
+    if casted_by.present?
+      self.goods_nomenclature_sid == casted_by.commodities.select{|c| c.parent_sid == self.parent_sid }.last.goods_nomenclature_sid
+    else
+      false
+    end
+  end
 end

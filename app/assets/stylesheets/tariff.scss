@@ -1,4 +1,6 @@
 @import "_conditionals.scss";
+@import "_colours.scss";
+@import "_shims.scss";
 
 /* global variables */
 
@@ -235,6 +237,31 @@ $expand-arrow-space: 9 + $token-padding;
   background: #fff;
 }
 
+// generates commodity tree items based on the level
+@mixin indented-item($level) {
+  $left-pos: -984px;
+
+  @if $level == 1 {
+    padding-left: px(($token-width - $token-padding) + $token-space);
+    background-position: $left-pos 0.5em;
+  } @else {
+    margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
+    padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
+    background-position: $left-pos + (12px * ($level - 1)) 0.5em;
+  }
+}
+
+@mixin indented-list($levels) {
+  $indent-level: 1;
+
+  @while $indent-level < $levels {
+    &.level-#{$indent-level} {
+      @include indented-item($indent-level);
+    }
+    $indent-level: $indent-level + 1;
+  }
+}
+
 /* end mixins */
 
 .visuallyhidden {
@@ -254,7 +281,7 @@ mark {
 }
 
 .tariff .article-container {
-  padding-bottom:2em;
+  padding-bottom:em(25, 19);
   position:relative;
 }
 
@@ -297,16 +324,31 @@ mark {
   }
 }
 
-.tariff header.page-header hgroup p {
-  a {
-    font-size:em(14, 16);
-    display:inline-block;
-    margin-left:1em;
+.tariff header.page-header hgroup form p {
+  margin-top:0;
+}
+
+.tariff p.tariff-date,
+.tariff .date-filter-search {
+  font-size: em(14, 16);
+  padding: 0 px($top-level-padding) px($top-level-padding) 52%;
+  margin: -2em 0 0;
+  line-height: 2em;
+  background: #fff;
+
+  @include ie(6) {
+    zoom: 1;
   }
 }
 
-.tariff header.page-header hgroup form p {
-  margin-top:0;
+.tariff p.tariff-date a {
+  font-size:em(14, 16);
+  display:inline-block;
+  margin-left:1em;
+}
+
+.tariff p.sections-context {
+  padding-right:em(81, 14);
 }
 
 .commodities .chapter-code,
@@ -422,15 +464,16 @@ article.tariff {
 }
 
 .tariff-search {
-  text-align:right;
   font-size:em(14, 16);
   line-height:2em;
   background:#fff;
-  height:2em;
-  padding:0.5em px($top-level-padding) 0.5em px($token-space);
+  padding:0 px($top-level-padding) 0 px($token-space);
 
   a {
-    float:left;
+    display: block;
+    width: 8em;
+    position: relative;
+    z-index: 1;
   }
 
   p {
@@ -448,10 +491,6 @@ article.tariff {
   input {
     font-size:1em;
   }
-}
-
-.sections-context {
-  padding-right:em(81, 14);
 }
 
 #commodity_search_q {
@@ -659,10 +698,11 @@ article dd {
 dl h1 {
   font-size: 100%;
   margin: 0;
-  padding-bottom:px($top-level-padding);
+  padding-bottom: px($top-level-padding);
   line-height: 1.5em;
   color: #333;
 }
+
 dl h1 .identifier {
   font-weight:400;
 }
@@ -815,10 +855,49 @@ dl.chapter-headings {
   list-style-image:none;
 }
 
+.tariff .commodity-tree-note {
+  background: #fff;
+  margin: 0 0 0 px($token-width + $token-space) * -1;
+  padding: px($token-padding) em(137, 14) 0 px($token-width + $token-space);
+  line-height: (20 / 12);
+  color: $grey-40; 
+  @extend %contain-floats;
+
+  @include ie(6) {
+    position: relative;
+  }
+
+  /* the parent needs to have the same font-size as the tree so zooming works */
+  span,
+  em {
+    font-size: em(12, 14); 
+  }
+
+  span {
+    position: absolute;
+    left: -9999em;
+  }
+
+  em {
+    font-style: normal;
+    float: left;
+
+    &.code {
+      float: right;
+      width: 6em;
+      margin-right: -6em;
+    }
+  }
+}
+
 ul.commodities {
-  @include selected-section($commodity-padding);
-  @include underlined-ordered-list;
   @include contain-float;
+  background: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: -1px * ($token-width + $token-space);
+  padding-left: px($token-padding);
+  padding-right: em($top-level-padding, 14);
   position:relative; /* to give z-index */
 
   li {
@@ -826,7 +905,82 @@ ul.commodities {
     margin: 0;
     padding: 0;
     position:relative;
+    background-image: url(commodity-indents.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
     @include contain-float;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    @include indented-list(13);
+
+    a,
+    ul {
+      border-bottom: solid 1px #eee;
+    }
+
+    &:last-child > a,
+    &:last-child > ul {
+      border-bottom: none;
+    }
+    
+    @include ie-lte(8) {
+      &.last-child > a,
+      &.last-child > ul {
+        border-bottom: none;
+      }
+    }
+
+    /* Not ASCII art but CSS to patch IE6's lack of a descendant selector */
+    @include ie(6) {
+      &.last-child ul a,
+      &.last-child ul ul,
+      &.last-child ul li a,
+      &.last-child ul li ul,
+      &.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul {
+        border-bottom: solid 1px #eee;
+      }
+
+      &.last-child a,
+      &.last-child ul,
+      &.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul {
+        border-bottom: none;
+      }
+    }
 
     a {
       margin:0;
@@ -841,7 +995,7 @@ ul.commodities {
       font-size: em(14, 19);
       line-height:1.5;
       float: left;
-      display: block;
+      display: inline;
 
       &.description {
         padding-right:8.6em;
@@ -887,14 +1041,14 @@ ul.commodities {
     }
   }
 
-  li:last-child {
-    border-bottom: 0;
-  }
-
   ul {
     margin: 0;
-    padding-left: em($token-width, 14);
+    padding-left: 0;
     clear: both;
+
+    @include ie-lte(7) {
+      margin-left: -16px;
+    }
   }
 }
 
@@ -1004,16 +1158,15 @@ dl.tariff-fragments dd.declarable {
   }
 }
 
-ul.tree-controls {
-  margin-left:px($top-level-padding);
+p.tree-controls {
+  margin-left: px($token-width);
+  margin-bottom: 0;
   padding:0;
-}
 
-ul.tree-controls li {
-  font-size:1em;
-  line-height:1.5;
-  display:inline;
-  padding-right:px($top-level-padding);
+  a {
+    font-size:1em;
+    line-height:1.5;
+  }
 }
 
 .conditions article,
@@ -1208,14 +1361,16 @@ article.search-results {
 
 .date-filter-search {
   line-height:2em;
+  font-size:1em;
 
   input {
     margin-right:1em;
   }
 
-  .tariff header hgroup & p {
-    font-size:1em;
-    padding:0;
+  p {
+    padding: 0;
+    margin: 0;
+    line-height: 2em;
   }
 
   .button {
@@ -1228,16 +1383,26 @@ article.search-results {
 .related-module {
   background: #fff;
   font-size:em(14, 16);
-  padding:1em;
+  padding:0 1em 7em px($token-width);
   @include contain-float;
+
+  h1 {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: $grey-40;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 
   a {
   }
 
   address{
-    float:left;
-    width:50%;
-    text-align:center;
     font-style:normal;
 
     a {
@@ -1301,6 +1466,7 @@ article.search-results {
   }
 
   li.has_children .description {
+    color: #2E3191;
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
     background-image: image-url("expand-collapse-transparent.png");
@@ -1310,9 +1476,15 @@ article.search-results {
     position:relative; /* to give z-index */
   }
 
+  li.has_children .description:hover,
+  li.has_children .description-hover {
+    color: #2E8ACA;
+  }
+
   li.has_children a .description {
     margin-left: 0;
   }
+
   li.has_children .open {
     background-position:0 -385px;
   }
