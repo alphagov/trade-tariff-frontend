@@ -275,6 +275,14 @@ mark {
   background:none;
 }
 
+section#content {
+  min-width: 960px;
+
+  @include ie(6) {
+    width: 960px;
+    }
+}
+
 .tariff header.page-header hgroup,
 .tariff .article-container {
   margin-right:0;
