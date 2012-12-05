@@ -346,6 +346,7 @@ section#content {
 
   @include ie(6) {
     zoom: 1;
+    padding-left: 36em;
   }
 }
 
