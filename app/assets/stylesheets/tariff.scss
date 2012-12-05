@@ -275,12 +275,20 @@ mark {
   background:none;
 }
 
+header#global-header,
+footer#footer,
 section#content {
   min-width: 960px;
+}
 
-  @include ie(6) {
+div.header-context {
+  min-width: 960px - px(4 * 16);
+}
+
+@include ie(6) {
+  section#content {
     width: 960px;
-    }
+  }
 }
 
 .tariff header.page-header hgroup,
