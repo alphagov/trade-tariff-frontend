@@ -103,7 +103,8 @@ GOVUK.tariff = {
                             '</p>';
                 effectAll = function (ctrlIdx) {
                     $parentNodes.each(function (idx) {
-                        var $this = $(this);
+                        var $this = $(this),
+                            $childList = $this.children('ul');
 
                         if (ctrlIdx === 0) {
                           clickBranch($(this), $childList, 'open');
