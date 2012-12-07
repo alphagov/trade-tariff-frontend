@@ -283,6 +283,10 @@ section#content {
 
 div.header-context {
   min-width: 960px - px(4 * 16);
+
+  @include ie(7) {
+    min-width: 960px;
+  }
 }
 
 @include ie(6) {
