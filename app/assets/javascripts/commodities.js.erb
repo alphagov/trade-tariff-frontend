@@ -34,9 +34,12 @@ GOVUK.tariff = {
         */
         initialize : function (context) {
             var $parentNodes = $('.has_children', context),
+                $branchSwitches = $([]),
+                $childLists,
                 isCommodityTree = false,
                 $controls,
                 effectAll,
+                setMembers,
                 controlHover,
                 clickBranch;
 
@@ -44,15 +47,33 @@ GOVUK.tariff = {
 
             clickBranch = function ($branch, $childList, action) {
               var titleTxt = {
-                    'open' : 'Click to close',
-                    'close' : 'Click to open'
+                      'open' : 'Click to close',
+                      'close' : 'Click to open'
                   },
                   listAction = (action === 'open') ? 'removeClass' : 'addClass',
                   branchAction = (action === 'open') ? 'addClass' : 'removeClass';
 
               $childList[listAction]('visuallyhidden');
               $branch[branchAction]('open')
-                .attr('title',  titleTxt[action]);
+                  .attr('title',  titleTxt[action]);
+            };
+
+            setMembers = function ($parentNode, $childList) {
+                var spanTitle,
+                    $branchSwitch;
+
+                if (!isCommodityTree) {
+                    $childList = $parentNode.siblings('dd').find('ul');
+                } else {
+                    $childList = $parentNode.children('ul');
+                }
+
+                spanTitle = (isCommodityTree) ? 'Click to close' : 'Click to open';
+                $branchSwitch = (isCommodityTree) ? $parentNode.children('span') : $parentNode;
+                $branchSwitch.attr('title', spanTitle);
+                $branchSwitches = $branchSwitches.add($branchSwitch);
+
+                return $childList;
             };
 
             controlHover = function (action) {
@@ -65,29 +86,25 @@ GOVUK.tariff = {
                 var $parentNode = $(this),
                     $childList;
 
-                if ($parentNode[0].nodeName.toLowerCase() === 'dt') {
-                    $childList = $parentNode.siblings('dd').find('ul');
-                } else {
+                if ((idx === 0) && ($parentNode[0].nodeName.toLowerCase() !== 'dt')) {
                     isCommodityTree = true;
-                    $parentNode = $parentNode.children('span');
-                    $childList = $parentNode.siblings('ul');
                 }
+
+                $childList = setMembers($parentNode);
 
                 // hide all child lists
                 if (!isCommodityTree) {
-                  $childList.addClass('visuallyhidden');
+                    $childList.addClass('visuallyhidden');
                 }
 
-                $parentNode.attr('title', 'Click to close');
-
                 // allow expansion based on clicking
-                $parentNode.on('click', function(e) {
+                $branchSwitches.eq(idx).on('click', function(e) {
                     e.stopPropagation();
                     if ($childList.is('.visuallyhidden')) {
-                      clickBranch($(this), $childList, 'open');
+                        clickBranch($(this), $childList, 'open');
                     }
                     else {
-                      clickBranch($(this), $childList, 'close');
+                        clickBranch($(this), $childList, 'close');
                     }
 
                     return false;
@@ -103,13 +120,12 @@ GOVUK.tariff = {
                             '</p>';
                 effectAll = function (ctrlIdx) {
                     $parentNodes.each(function (idx) {
-                        var $this = $(this),
-                            $childList = $this.children('ul');
+                        var $childList = $(this).children('ul');
 
                         if (ctrlIdx === 0) {
-                          clickBranch($(this), $childList, 'open');
+                            clickBranch($branchSwitches.eq(idx), $childList, 'open');
                         } else {
-                          clickBranch($(this), $childList, 'close');
+                            clickBranch($branchSwitches.eq(idx), $childList, 'close');
                         }
                     });
                 };
