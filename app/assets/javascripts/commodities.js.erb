@@ -58,24 +58,24 @@ GOVUK.tariff = {
                   .attr('title',  titleTxt[action]);
             };
 
-            setMembers = function ($parentNode, $childList) {
+            setMembers = function ($branchNode, $subTree) {
                 var defaultTitle,
                     $branchSwitch;
 
                 if (!isCommodityTree) {
-                    $childList = $parentNode.siblings('dd').find('ul');
+                    $subTree = $branchNode.siblings('dd').find('ul');
                     defaultTitle = 'Click to open';
-                    $branchSwitch = $parentNode;
+                    $branchSwitch = $branchNode;
                 } else {
-                    $childList = $parentNode.children('ul');
+                    $subTree = $branchNode.children('ul');
                     defaultTitle = 'Click to close';
-                    $branchSwitch = $parentNode.children('span');
+                    $branchSwitch = $branchNode.children('span');
                 }
 
                 $branchSwitch.attr('title', defaultTitle);
                 $branchSwitches = $branchSwitches.add($branchSwitch);
 
-                return $childList;
+                return $subTree;
             };
 
             controlHover = function (action) {
