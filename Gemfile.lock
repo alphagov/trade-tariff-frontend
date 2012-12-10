@@ -148,7 +148,7 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
     null_logger (0.0.1)
-    plek (0.5.0)
+    plek (1.0.0)
       builder
     polyglot (0.3.3)
     pry (0.9.10)
@@ -286,7 +286,7 @@ DEPENDENCIES
   kaminari
   lograge (= 0.1.2)
   multi_json
-  plek
+  plek (>= 1.0.0)
   pry-rails
   rails (= 3.2.9)
   router-client (~> 3.0.1)
