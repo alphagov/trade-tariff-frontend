@@ -68,11 +68,7 @@ TradeTariffFrontend::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Host for Trade Tariff API endpoint
-  if ENV['FACTER_govuk_platform'] == "production"
-    config.api_host = "https://tariff-api.production.alphagov.co.uk"
-  else
-    config.api_host = "https://tariff-api.preview.alphagov.co.uk"
-  end
+  config.api_host = Plek.new.find("tariff-api")
 
   config.lograge.enabled = true
 end
