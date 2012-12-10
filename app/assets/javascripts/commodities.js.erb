@@ -59,18 +59,20 @@ GOVUK.tariff = {
             };
 
             setMembers = function ($parentNode, $childList) {
-                var spanTitle,
+                var defaultTitle,
                     $branchSwitch;
 
                 if (!isCommodityTree) {
                     $childList = $parentNode.siblings('dd').find('ul');
+                    defaultTitle = 'Click to open';
+                    $branchSwitch = $parentNode;
                 } else {
                     $childList = $parentNode.children('ul');
+                    defaultTitle = 'Click to close';
+                    $branchSwitch = $parentNode.children('span');
                 }
 
-                spanTitle = (isCommodityTree) ? 'Click to close' : 'Click to open';
-                $branchSwitch = (isCommodityTree) ? $parentNode.children('span') : $parentNode;
-                $branchSwitch.attr('title', spanTitle);
+                $branchSwitch.attr('title', defaultTitle);
                 $branchSwitches = $branchSwitches.add($branchSwitch);
 
                 return $childList;
@@ -90,7 +92,7 @@ GOVUK.tariff = {
                     isCommodityTree = true;
                 }
 
-                $childList = setMembers($parentNode);
+                $childList = setMembers($parentNode, $childList);
 
                 // hide all child lists
                 if (!isCommodityTree) {
