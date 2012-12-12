@@ -11,7 +11,7 @@ gem "kaminari"
 
 gem "gds-api-adapters", "4.1.3"
 gem "plek", ">=1.0.0"
-gem "slimmer", "3.7.0"
+gem "slimmer", "3.9.5"
 gem "addressable"
 
 gem "unicorn", "~> 4.3.1"
