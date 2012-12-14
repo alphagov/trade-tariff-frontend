@@ -17,7 +17,7 @@ gem "addressable"
 gem "unicorn", "~> 4.3.1"
 
 gem "ci_reporter"
-gem "lograge"
+gem "lograge", "0.1.2"
 gem "aws-ses", require: "aws/ses" # Needed by exception_notification
 gem "exception_notification"
 
