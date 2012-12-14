@@ -275,6 +275,26 @@ mark {
   background:none;
 }
 
+header#global-header,
+footer#footer,
+section#content {
+  min-width: 960px;
+}
+
+div.header-context {
+  min-width: 960px - px(4 * 16);
+
+  @include ie(7) {
+    min-width: 960px;
+  }
+}
+
+@include ie(6) {
+  section#content {
+    width: 960px;
+  }
+}
+
 .tariff header.page-header hgroup,
 .tariff .article-container {
   margin-right:0;
@@ -338,6 +358,7 @@ mark {
 
   @include ie(6) {
     zoom: 1;
+    padding-left: 36em;
   }
 }
 
