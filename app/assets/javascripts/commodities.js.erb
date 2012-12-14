@@ -58,9 +58,10 @@ GOVUK.tariff = {
                   .attr('title',  titleTxt[action]);
             };
 
-            setMembers = function ($branchNode, $subTree) {
+            setMembers = function ($branchNode) {
                 var defaultTitle,
-                    $branchSwitch;
+                    $branchSwitch,
+                    $subTree;
 
                 if (!isCommodityTree) {
                     $subTree = $branchNode.siblings('dd').find('ul');
