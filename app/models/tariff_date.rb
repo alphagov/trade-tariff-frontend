@@ -43,6 +43,10 @@ class TariffDate
     date.to_formatted_s(:date)
   end
 
+  def to_taric_date
+    date.to_formatted_s(:eutaric)
+  end
+
   def self.valid_date_param?(date_param)
     date_param.present? && date_param.is_a?(Hash) &&
     DATE_KEYS.all? { |k| k.in?(date_param.keys) }
