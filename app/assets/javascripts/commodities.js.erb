@@ -305,7 +305,8 @@ GOVUK.tariff = {
         initialize : function (context) {
             var that = this,
                 hash = window.location.hash,
-                $linkElms = $('table td a.reference', context);
+                $linkElms = $('table td a.reference', context),
+                tabId;
 
             $linkElms.each(function (idx, linkElm) {
                 var $linkElm = $(linkElm);
@@ -317,6 +318,9 @@ GOVUK.tariff = {
                 });
 
                 if ($linkElm.attr("href") === hash) {
+                    tabId = $linkElm.closest(".tab-pane").attr("id");
+                    tabId = tabId.replace(/(\w+)-enhanced/, "tab-$1");
+                    $('#' + tabId + ' a').trigger('click');
                     that.open($(linkElm));
                 }
             }); 
