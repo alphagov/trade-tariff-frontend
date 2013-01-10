@@ -11,7 +11,7 @@ class DescriptionFormatter
     str.gsub!("!O!", "&deg;")
     str.gsub!("!>=!", "&ge;")
     str.gsub!("!<=!", "&le;")
-    str.gsub!("& ", "&amp; ")
+    str.gsub!("&", "&amp; ")
     str.gsub!("\n \n", "<br/>")
     str.gsub!("\n", "<br/>")
     str.gsub! /@(.)/ do

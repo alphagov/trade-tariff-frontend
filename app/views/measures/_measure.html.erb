@@ -46,13 +46,13 @@
 
   <td>
     <% if measure.additional_code.present? %>
-      <%= link_to measure.additional_code,  "##{measure.additional_code.id}", class: 'reference', 'data-popup-ref' => "additional-code-#{measure.additional_code.id}" %>
+      <%= link_to measure.additional_code,  "##{measure.additional_code.id}", class: 'reference', 'data-popup-ref' => "#{measure.additional_code.id}" %>
     <% end %>
   </td>
 
   <td>
     <% if measure.measure_conditions.any? %>
-      <%= link_to "View Conditions",  "##{measure.id}", class: 'reference', 'data-popup-ref' => "conditions-#{measure.id}" %>
+      <%= link_to "View Conditions",  "##{measure.destination}-#{measure.id}-conditions", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.id}-conditions" %>
     <% end %>
   </td>
 
@@ -66,7 +66,7 @@
 
   <td>
       <% measure.footnotes.each do |footnote| %>
-        <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => "footnote-#{footnote.id}" %>&nbsp;
+        <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => footnote.id %>&nbsp;
       <% end %>
   </td>
 </tr>
