@@ -284,6 +284,19 @@ GOVUK.tariff = {
             $popup.css(popupCSS);
         },
         /**
+          @name GOVUK.tariff.tablePopup.open
+          @function
+          @description opens the popup
+          @param {Element} $target Target of the click event
+        */
+        open : function ($target) {
+            var title = this.html[0] + 'Conditions' + this.html[1];
+
+            BetaPopup.maskOpacity = 0.2;
+            BetaPopup.popup(title, 'tariff-info');
+            this.adapt($target);
+        },
+        /**
           @name GOVUK.tariff.tablePopup.initialize
           @function
           @description initializes the popup behaviour
@@ -291,19 +304,22 @@ GOVUK.tariff = {
         */
         initialize : function (context) {
             var that = this,
-                $linkElm = $('table td a.reference', context);
+                hash = window.location.hash,
+                $linkElms = $('table td a.reference', context);
 
-            $linkElm.attr('title', 'Opens in a popup');
-            $linkElm.on('click', function (e) {
-                var $this = $(this),
-                    title = that.html[0] + 'Conditions' + that.html[1];
+            $linkElms.each(function (idx, linkElm) {
+                var $linkElm = $(linkElm);
 
-                BetaPopup.maskOpacity = 0.2;
-                BetaPopup.popup(title, 'tariff-info');
-                that.adapt($this);
+                $linkElm.attr('title', 'Opens in a popup');
+                $linkElm.on('click', function (e) {
+                    that.open($(this));
+                    return false;
+                });
 
-                return false;
-            });
+                if ($linkElm.attr("href") === hash) {
+                    that.open($(linkElm));
+                }
+            }); 
         }
     },
     /**
