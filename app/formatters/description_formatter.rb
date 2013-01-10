@@ -3,6 +3,7 @@ class DescriptionFormatter
     raise ArgumentError.new("DescriptionFormatter expects :using arg to be a single value") if opts.keys.many?
 
     str = opts.values.first
+    str.gsub!("&", "&amp; ")
     str.gsub!("|", "&nbsp;")
     str.gsub!("!1!", "<br />")
     str.gsub!("!X!", "&times;")
@@ -11,7 +12,6 @@ class DescriptionFormatter
     str.gsub!("!O!", "&deg;")
     str.gsub!("!>=!", "&ge;")
     str.gsub!("!<=!", "&le;")
-    str.gsub!("& ", "&amp; ")
     str.gsub!("\n \n", "<br/>")
     str.gsub!("\n", "<br/>")
     str.gsub! /@(.)/ do
