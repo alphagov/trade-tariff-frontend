@@ -33,7 +33,7 @@
 
       <% if declarable.display_meursing_table? %>
         <h1>Find meursing code</h1>
-        <p>To find the meursing code and calculate the duty rate you need to use the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@tariff_date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>. Prefix this code with a 7 and declare it with the ten-digit code from Trade Tariff.</p>
+        <p><%= link_to "Find the meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> for this commodity. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@tariff_date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
       <% end %>
 
       <h2>Export</h2>
