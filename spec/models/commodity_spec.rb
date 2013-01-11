@@ -58,11 +58,16 @@ describe Commodity do
   end
 
   describe '#consigned?' do
-    let(:consigned_commodity)     { Commodity.new(attributes_for :commodity, description: 'Consigned from Malaysia') }
-    let(:non_consigned_commodity) { Commodity.new(attributes_for :commodity) }
+    let(:consigned_commodity)           { Commodity.new(attributes_for :commodity, description: 'Consigned from Malaysia') }
+    let(:consigned_downcase_commodity)  { Commodity.new(attributes_for :commodity, description: 'consigned from Malaysia') }
+    let(:non_consigned_commodity)       { Commodity.new(attributes_for :commodity) }
 
     it 'returns true if description matches Consigned from pattern' do
       consigned_commodity.consigned?.should be_true
+    end
+
+    it 'returns true if description matches consigned from (downcased) pattern' do
+      consigned_downcase_commodity.consigned?.should be_true
     end
 
     it 'returns false if description does not match consigned pattern' do

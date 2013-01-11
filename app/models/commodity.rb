@@ -43,7 +43,7 @@ class Commodity
 
   # There are no consigned declarable headings
   def consigned?
-    description =~ /Consigned from/
+    description =~ /Consigned from/i
   end
 
   def consigned_from
