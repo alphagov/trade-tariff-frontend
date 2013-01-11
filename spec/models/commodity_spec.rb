@@ -76,15 +76,34 @@ describe Commodity do
   end
 
   describe '#consigned_from' do
-    let(:consigned_commodity)     { Commodity.new(attributes_for :commodity, description: 'Consigned from Malaysia') }
-    let(:non_consigned_commodity) { Commodity.new(attributes_for :commodity) }
-
     it 'returns country name' do
-      consigned_commodity.consigned_from.should eq 'Malaysia'
+      commodity = Commodity.new(attributes_for :commodity, description: 'Consigned from Malaysia')
+      commodity.consigned_from.should eq 'Malaysia'
     end
 
     it 'returns blank value for non consigned commodity' do
-      non_consigned_commodity.consigned_from.should be_blank
+      commodity = Commodity.new(attributes_for :commodity, description: 'from Malaysia')
+      commodity.consigned_from.should be_blank
+    end
+
+    it 'should handle multiple consignments' do
+      commodity = Commodity.new(attributes_for :commodity, description: 'Consigned from Brazil; consigned from Israel')
+      commodity.consigned_from.should eq 'Brazil, Israel'
+    end
+
+    it 'should handle consignments from countries will names of few words' do
+      commodity = Commodity.new(attributes_for :commodity, description: 'Consigned from the Republic of Korea')
+      commodity.consigned_from.should eq 'the Republic of Korea'
+    end
+
+    it 'should handle consignments from multiple listed countries' do
+      commodity = Commodity.new(attributes_for :commodity, description: 'Consigned from Taiwan, Indonesia, Sri Lanka or the Philippines')
+      commodity.consigned_from.should eq 'Taiwan, Indonesia, Sri Lanka or the Philippines'
+    end
+
+    it 'should handle consignments from countries that have names with apostrophes' do
+      commodity = Commodity.new(attributes_for :commodity, description: "Consigned from Lao People's Democratic Republic")
+      commodity.consigned_from.should eq "Lao People's Democratic Republic"
     end
   end
 
