@@ -43,11 +43,11 @@ class Commodity
 
   # There are no consigned declarable headings
   def consigned?
-    description =~ /Consigned from/
+    description =~ /consigned from/i
   end
 
   def consigned_from
-    description.match(/Consigned from (.*)/)[1] if consigned?
+    description.scan(/consigned from ([a-zA-Z,' ]+)(?:\W|$)/i).join(", ") if consigned?
   end
 
   def to_param
