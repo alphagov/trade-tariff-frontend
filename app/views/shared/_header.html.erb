@@ -22,7 +22,6 @@
       <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
       <%= select_year(f.object.date, {end_year: (Date.today - 15.years).year, start_year: (Date.today + 1.year).year }, { id: 'tariff_date_year', name: 'year' }) %>
     </p>
-    <strong><%= f.object.date %></strong>
     <%= f.button 'Search', class: 'button right' %>
     <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
 <% end %>
