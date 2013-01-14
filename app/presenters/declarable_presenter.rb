@@ -4,7 +4,7 @@ class DeclarablePresenter
   MEURSING_DUTY_EXPRESSION_IDS = %w[12 14 21 25 27 29]
   MEURSING_TOOL_LINK = "http://ec.europa.eu/taxation_customs/dds2/taric/measures.jsp?Lang=en&SimDate=%{date}&Taric=%{commodity_code}&LangDescr=en"
 
-  def initialize(declarable, country = nil) # TODO pass actual country in
+  def initialize(declarable, country = nil)
     @declarable = declarable
     @country = country
   end
@@ -14,11 +14,19 @@ class DeclarablePresenter
   end
 
   def import_measures
-    declarable.import_measures
+    if country.present?
+      declarable.import_measures.select{ |m| m.relevant_for_country?(country) }
+    else
+      declarable.import_measures
+    end
   end
 
   def export_measures
-    declarable.export_measures
+    if country.present?
+      declarable.export_measures.select{ |m| m.relevant_for_country?(country) }
+    else
+      declarable.export_measures
+    end
   end
 
   def display_meursing_table?

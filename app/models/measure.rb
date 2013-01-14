@@ -127,6 +127,12 @@ class Measure
     measure_type_description =~ /^VAT/
   end
 
+  def relevant_for_country?(country_code)
+    (geographical_area.iso_code == country_code ||
+    geographical_area.children_geographical_areas.map(&:iso_code).include?(country_code)) &&
+    !excluded_countries.map(&:iso_code).include?(country_code)
+  end
+
   def additional_code
     @additional_code.presence || NullObject.new(code: '')
   end
