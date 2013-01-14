@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     @search = Search.new(params)
     @tariff_date = TariffDate.new(params[:as_of])
   end
-  
+
   def set_layout
     if request.headers['X-PJAX']
       response.headers[Slimmer::Headers::SKIP_HEADER] = "true"

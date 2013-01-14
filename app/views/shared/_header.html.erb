@@ -14,6 +14,7 @@
                 placeholder: "name or code",
                 name: 't'  %>
     <%= f.hidden_field :as_of, name: 'as_of' %>
+    <%= f.select :country, f.object.countries.map{ |c| [c.description, c.geographical_area_id] }, { include_blank: true }, name: 'country' %>
     <%= f.button 'Search', class: 'button right' %>
     <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
 <% end %>
