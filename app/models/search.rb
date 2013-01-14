@@ -37,5 +37,11 @@ class Search
     attributes.slice(:day, :year, :month, :country)
   end
 
-  def to_s; t; end
+  def country
+    countries.detect { |c| c.geographical_area_id == attributes['country'] }
+  end
+
+  def to_s
+    t
+  end
 end

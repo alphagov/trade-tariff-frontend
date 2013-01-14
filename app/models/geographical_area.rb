@@ -21,6 +21,10 @@ class GeographicalArea
     attributes['description'].presence || ''
   end
 
+  def id
+    geographical_area_id.presence || iso_code
+  end
+
   def to_s
     description
   end
