@@ -13,9 +13,17 @@
                 size: 21,
                 placeholder: "name or code",
                 name: 't'  %>
-    <%= f.hidden_field :as_of, name: 'as_of' %>
     <%= f.select :country, f.object.countries.map{ |c| [c.description, c.geographical_area_id] }, { include_blank: true }, name: 'country' %>
+    <p>This tariff is for
+      <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
+      <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
+      <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
+      <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
+      <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
+      <%= select_year(f.object.date, {end_year: (Date.today - 15.years).year, start_year: (Date.today + 1.year).year }, { id: 'tariff_date_year', name: 'year' }) %>
+    </p>
+    <strong><%= f.object.date %></strong>
     <%= f.button 'Search', class: 'button right' %>
     <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
 <% end %>
-<p class="tariff-date <%= @section_css %>">This tariff is for <%= @tariff_date.date.to_formatted_s(:rfc822) %> <a href="#date-filter">change date</a></p>
+<p class="tariff-date <%= @section_css %>">This tariff is for <%= @search.date.to_formatted_s(:rfc822) %> <a href="#date-filter">change date</a></p>

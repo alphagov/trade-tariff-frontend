@@ -32,18 +32,20 @@ class ApplicationController < ActionController::Base
   end
 
   def url_options
-    date_param_provided? ? { as_of: @tariff_date }.merge(super) : super
+    search_invoked? ? { year: @search.date.year,
+                        month: @search.date.month,
+                        day: @search.date.day,
+                        country: @search.country }.merge(super) : super
   end
 
   private
 
-  def date_param_provided?
-    params[:as_of].present?
+  def search_invoked?
+    params[:q].present? || params[:day].present? || params[:country].present?
   end
 
   def initialize_modules
     @search = Search.new(params)
-    @tariff_date = TariffDate.new(params[:as_of])
   end
 
   def set_layout
@@ -59,7 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
   def query_params
-    { query: { as_of: @tariff_date } }
+    { query: { as_of: @search.date } }
   end
 
   def set_cache
