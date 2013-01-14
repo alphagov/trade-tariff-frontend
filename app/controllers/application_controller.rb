@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
   def query_params
-    { query: { as_of: @search.date } }
+    { query: { as_of: search_query.date } }
   end
 
   def set_cache

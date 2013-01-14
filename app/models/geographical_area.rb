@@ -3,23 +3,14 @@ require 'api_entity'
 class GeographicalArea
   include ApiEntity
 
+  collection_path "/geographical_areas/countries"
+
   attr_accessor :iso_code, :description, :geographical_area_id
 
   has_many :children_geographical_areas, class_name: 'GeographicalArea'
 
-  class << self
-    def countries
-      resp = get("/geographical_areas/countries")
-      case resp.code
-      when 404
-        raise ApiEntity::NotFound.new resp['error']
-      when 500
-        raise ApiEntity::Error.new resp['error']
-      when 502
-        raise ApiEntity::Error.new "502 Bad Gateway"
-      end
-      resp.map { |entry_data| new(entry_data) }
-    end
+  def self.countries
+    all.sort_by(&:iso_code)
   end
 
   def group_key
