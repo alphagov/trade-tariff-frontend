@@ -4,15 +4,13 @@ class Search
   include ApiEntity
 
   attr_accessor :t,       # search text query
-                :as_of,   # search date
                 :country, # search country
                 :day,
                 :month,
-                :year,
-                :date
+                :year
 
   def perform
-    response = self.class.post("/search", body: { t: t, as_of: as_of })
+    response = self.class.post("/search", body: { t: t, as_of: date.to_s(:db) })
 
     raise ApiEntity::Error if response.code == 500
 

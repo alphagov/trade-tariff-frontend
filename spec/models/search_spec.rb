@@ -7,6 +7,6 @@ describe Search do
     response_stub = stub(code: 500)
     Search.stub(:post).and_return(response_stub)
 
-    expect { Search.new(t: 'abc', as_of: Date.today).perform }.to raise_error ApiEntity::Error
+    expect { Search.new(t: 'abc').perform }.to raise_error ApiEntity::Error
   end
 end
