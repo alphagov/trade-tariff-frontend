@@ -31,5 +31,13 @@ class Search
     @date ||= TariffDate.parse(attributes.slice(*TariffDate::DATE_KEYS)).date
   end
 
+  def contains_search_term?
+    t.present?
+  end
+
+  def query_attributes
+    attributes.slice(:day, :year, :month, :country)
+  end
+
   def to_s; t; end
 end

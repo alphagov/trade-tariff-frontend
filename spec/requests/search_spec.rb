@@ -46,6 +46,7 @@ describe 'Search page' do
         visit sections_path
 
         within("#new_search") do
+          fill_in 't', with: " !such string should not exist in the database! "
           click_button 'Search'
         end
 

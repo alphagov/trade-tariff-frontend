@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   include Slimmer::Headers
   include GdsApi::Helpers
 
-  before_filter :initialize_modules
   before_filter :set_cache
   before_filter :load_artefact
+  before_filter :search_query
 
   after_filter :set_app_slimmer_headers
 
@@ -32,10 +32,10 @@ class ApplicationController < ActionController::Base
   end
 
   def url_options
-    search_invoked? ? { year: @search.date.year,
-                        month: @search.date.month,
-                        day: @search.date.day,
-                        country: @search.country }.merge(super) : super
+    search_invoked? ? { year: search_query.date.year,
+                        month: search_query.date.month,
+                        day: search_query.date.day,
+                        country: search_query.country }.merge(super) : super
   end
 
   private
@@ -44,8 +44,8 @@ class ApplicationController < ActionController::Base
     params[:q].present? || params[:day].present? || params[:country].present?
   end
 
-  def initialize_modules
-    @search = Search.new(params)
+  def search_query
+    @search ||= Search.new(params)
   end
 
   def set_layout
