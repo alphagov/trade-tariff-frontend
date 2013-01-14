@@ -16,7 +16,6 @@ module ApiEntity
     base_uri Rails.application.config.api_host
     debug_output if Rails.env.development?
 
-
     attr_reader :attributes
 
     attr_accessor :casted_by
