@@ -1,5 +1,5 @@
 <% if measure.has_measure_conditions? %>
-  <div class='conditions' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-conditions'>
+<div class='conditions' id='<%= measure.id %>' data-popup='conditions-<%= measure.id %>'>
   <article>
     <table>
       <caption><%= measure.measure_type_description %> for <%= measure.geographical_area_description %>:</caption>
@@ -21,7 +21,7 @@
 <% end %>
 
 <% measure.footnotes.each do |footnote| %>
-<div class='footnotes' id='<%= footnote.id %>' data-popup='<%= footnote.id %>'>
+<div class='footnotes' id='<%= footnote.id %>' data-popup='footnote-<%= footnote.id %>'>
   <article>
     <table>
       <caption>Footnote for commodity:</caption>

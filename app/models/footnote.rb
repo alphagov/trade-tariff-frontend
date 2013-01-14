@@ -11,6 +11,6 @@ class Footnote
                                 using: :description
 
   def id
-    @id ||= "#{casted_by.destination}-#{casted_by.id}-footnote-#{code}"
+    @id ||= SecureRandom.hex(16)
   end
 end

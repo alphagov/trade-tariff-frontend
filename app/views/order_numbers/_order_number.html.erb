@@ -1,5 +1,5 @@
-Order No: <%= link_to order_number.number, "##{order_number.id}", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "#{order_number.id}" %>&nbsp;
-<div class='popup hidden' data-popup='<%= order_number.id %>'>
+Order No: <%= link_to order_number.number, "#", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "order-number-#{order_number.id}" %>&nbsp;
+<div class='popup hidden' data-popup='order-number-<%= order_number.id %>'>
   <article>
     <% if order_number.has_definition? %>
       <table>

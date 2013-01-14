@@ -33,7 +33,7 @@ class OrderNumber
   has_one :definition
 
   def id
-    @id ||= "#{casted_by.destination}-#{casted_by.id}-order-number-#{number}"
+    @id ||= SecureRandom.hex(16)
   end
 
   def has_definition?

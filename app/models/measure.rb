@@ -3,9 +3,7 @@ require 'api_entity'
 class Measure
   include ApiEntity
 
-  attr_accessor :origin, :measure_sid, :measure_type_description, :ordernumber,
-                :effective_start_date, :effective_end_date, :measure_type_id,
-                :import
+  attr_accessor :origin, :measure_type_description, :ordernumber, :effective_start_date, :effective_end_date, :measure_type_id
 
   has_one :geographical_area
   has_one :legal_act
@@ -21,19 +19,7 @@ class Measure
   delegate :code, to: :additional_code, prefix: true, allow_nil: true
 
   def id
-    measure_sid
-  end
-
-  def import?
-    import
-  end
-
-  def export?
-    !import
-  end
-
-  def destination
-    import? ? "import" : "export"
+    @id ||= SecureRandom.hex(16)
   end
 
   def effective_start_date=(date)
