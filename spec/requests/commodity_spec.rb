@@ -23,13 +23,17 @@ describe 'Commodity page' do
     end
   end
 
-  context 'commodity containing order number without description' do
-    it 'renders order number without details properly', vcr: { cassette_name: "commodities#show_5604900010" } do
-      visit commodity_path('5604900010', as_of: '2004-10-01')
+  context 'commodity with country filter', vcr: { cassette_name: "commodities#show_0101300000" } do
+    it 'will not display measures for other countries except for selected one' do
+      VCR.use_cassette('geographical_areas#countries') do
+        visit commodity_path("0101300000", country: "AD")
 
-      page.should have_content 'GSP Confidential Surveillance'
-      page.should have_content 'Order No: 421305'
-      page.should have_content 'Information on the availability of this quota can be obtained from the Rural Payments Agency.'
+        within("#measures-js") do
+          page.should     have_content 'Andorra'
+          page.should_not have_content 'Albania'
+          page.should_not have_content 'Chile'
+        end
+      end
     end
   end
 end

@@ -29,6 +29,18 @@ class DeclarablePresenter
     end
   end
 
+  def third_country_duty_measures
+    import_measures.select(&:third_country)
+                   .sort_by(&:sort_key)
+  end
+
+  def third_country_duty_rate
+    third_country_duty_measures.select(&:third_country_duty)
+                               .sort_by(&:additional_code_code)
+                               .last
+                               .try(:duty_expression)
+  end
+
   def display_meursing_table?
     ((import_measures.map(&:measure_components).flatten.map(&:duty_expression_id) +
       export_measures.map(&:measure_components).flatten.map(&:duty_expression_id)) &
