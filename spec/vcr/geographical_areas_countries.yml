@@ -1,46 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://tariff-api.dev.gov.uk/search
-    body:
-      encoding: US-ASCII
-      string: t=%20!such%20string%20should%20not%20exist%20in%20the%20database!%20&as_of=
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: ! 'OK '
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Mon, 14 Jan 2013 13:22:54 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '151'
-      Connection:
-      - close
-      X-Ua-Compatible:
-      - IE=Edge
-      Etag:
-      - ! '"6c2c96771b1914a484ec360ac23f9ba4"'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 1a1a0e4c99f466ee2aadb8434d069938
-      X-Runtime:
-      - '0.050574'
-      Set-Cookie:
-      - _tradetariffbackend_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTAxODE4ODk3ZTZiOTNkNmUzNmViZTcwYzVkZmUyYWI3BjsAVA%3D%3D--ea897509262ebb7b8bcede7a27e8a4a9b9dc3215;
-        path=/; HttpOnly
-    body:
-      encoding: US-ASCII
-      string: ! '{"goods_nomenclature_match":{"sections":[],"chapters":[],"headings":[],"commodities":[]},"reference_match":{"sections":[],"chapters":[],"headings":[]}}'
-    http_version: 
-  recorded_at: Mon, 14 Jan 2013 13:22:54 GMT
-- request:
     method: get
     uri: http://tariff-api.dev.gov.uk/geographical_areas/countries
     body:
@@ -58,7 +18,7 @@ http_interactions:
         bmdpbng=
       !binary "RGF0ZQ==":
       - !binary |-
-        TW9uLCAxNCBKYW4gMjAxMyAxMzoyMjo1OSBHTVQ=
+        TW9uLCAxNCBKYW4gMjAxMyAxMTo0NTozOCBHTVQ=
       !binary "Q29udGVudC1UeXBl":
       - !binary |-
         YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
@@ -79,10 +39,10 @@ http_interactions:
         bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
       !binary "WC1SZXF1ZXN0LUlk":
       - !binary |-
-        NzY3MDk2MDgxMDRhZDQ0MTA1ZmYyZTJiYmM3M2U5OTI=
+        ZDNlNGNmMDRkODViMDZlOGZkNmI5MTdlMWMwYzYzMjU=
       !binary "WC1SdW50aW1l":
       - !binary |-
-        MC4wMjUzMTQ=
+        MC4wNTkxNzg=
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -436,5 +396,5 @@ http_interactions:
         cyAoTWFyaXRpbWUgZG9tYWluIG91dHNpZGUgb2YgdGVycml0b3JpYWwgd2F0
         ZXJzKSJ9XQ==
     http_version: 
-  recorded_at: Mon, 14 Jan 2013 13:23:00 GMT
+  recorded_at: Mon, 14 Jan 2013 11:45:38 GMT
 recorded_with: VCR 2.2.5

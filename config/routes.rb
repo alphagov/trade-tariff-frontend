@@ -3,7 +3,6 @@ TradeTariffFrontend::Application.routes.draw do
     get "/" => "pages#index"
     get "healthcheck" => "healthcheck#check"
     match "/search" => "search#search", via: :get, as: :perform_search
-    match "/change-date" => "change_date#change", via: :post, as: :change_date
 
     resources :sections, only: [:index, :show]
     resources :chapters, only: [:index, :show]

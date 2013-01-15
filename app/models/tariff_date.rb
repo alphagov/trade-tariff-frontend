@@ -39,8 +39,8 @@ class TariffDate
     date.to_formatted_s(:full)
   end
 
-  def to_s
-    date.to_formatted_s(:date)
+  def to_s(format = :date)
+    date.to_formatted_s(format)
   end
 
   def to_taric_date
