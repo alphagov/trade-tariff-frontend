@@ -10,7 +10,7 @@ class AdditionalCode
                                  using: :description
 
   def id
-    @id ||= SecureRandom.hex(16)
+    @id ||= "#{casted_by.destination}-#{casted_by.id}-additional-code-#{code}"
   end
 
   def present?
