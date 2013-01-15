@@ -18,4 +18,14 @@ describe 'Commodity page' do
       page.should have_content 'Goods are subject to VAT standard rate.'
     end
   end
+
+  context 'commodity containing order number without description' do
+    it 'renders order number without details properly', vcr: { cassette_name: "commodities#show_5604900010" } do
+      visit commodity_path('5604900010', as_of: '2004-10-01')
+
+      page.should have_content 'GSP Confidential Surveillance'
+      page.should have_content 'Order No: 421305'
+      page.should have_content 'Information on the availability of this quota can be obtained from the Rural Payments Agency.'
+    end
+  end
 end

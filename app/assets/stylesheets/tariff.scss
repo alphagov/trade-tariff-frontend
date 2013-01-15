@@ -423,7 +423,6 @@ article table {
 
   dt.has_children {
     padding-left: px($expand-arrow-space);
-    margin-left:-6px;
     background-image: image-url("expand-collapse-transparent.png");
     background-position: 0px 2px;
     background-repeat: no-repeat;
@@ -1253,6 +1252,11 @@ p.tree-controls {
   table {
     margin:0;
     width:100%;
+
+    caption {
+      padding-left: 0;
+      padding-right: 0;
+    }
 
     p {
       font-size: 1em;

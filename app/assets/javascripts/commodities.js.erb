@@ -19,6 +19,7 @@ var GOVUK = GOVUK || {};
   @description A set of methods for handling behaviours with Trade tariff commodities
   @requires jquery 1.6.2
 */
+
 GOVUK.tariff = {
     /**
       @name GOVUK.tariff.tree
@@ -196,7 +197,7 @@ GOVUK.tariff = {
             }
 
             if (popupWidth < windowWidth) {
-                dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px'; 
+                dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px';
             } else {
                 // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
                 if (popupWidth > windowWidth) {
@@ -251,6 +252,9 @@ GOVUK.tariff = {
 
             // return focus to the trigger link when the lightbox closes
             $closeBtn.on('click', function (e) {
+                // restore URL to tab view
+                window.location.hash = window.location.hash.match(/^#(import|export)/)[0]
+
                 $linkElm.focus()
             });
 
@@ -275,6 +279,9 @@ GOVUK.tariff = {
                             return false;
                         }
                     }
+                } else if (e.which == 27) {
+                  // restore URL to tab view
+                  window.location.hash = window.location.hash.match(/^#(import|export)/)[0]
                 }
 
                 return true;
@@ -284,6 +291,19 @@ GOVUK.tariff = {
             $popup.css(popupCSS);
         },
         /**
+          @name GOVUK.tariff.tablePopup.open
+          @function
+          @description opens the popup
+          @param {Element} $target Target of the click event
+        */
+        open : function ($target) {
+            var title = this.html[0] + 'Conditions' + this.html[1];
+
+            BetaPopup.maskOpacity = 0.2;
+            BetaPopup.popup(title, 'tariff-info');
+            this.adapt($target);
+        },
+        /**
           @name GOVUK.tariff.tablePopup.initialize
           @function
           @description initializes the popup behaviour
@@ -291,25 +311,31 @@ GOVUK.tariff = {
         */
         initialize : function (context) {
             var that = this,
-                $linkElm = $('table td a.reference', context);
+                hash = window.location.hash,
+                $linkElms = $('table td a.reference', context),
+                tabId;
 
-            $linkElm.attr('title', 'Opens in a popup');
-            $linkElm.on('click', function (e) {
-                var $this = $(this),
-                    title = that.html[0] + 'Conditions' + that.html[1];
+            $linkElms.each(function (idx, linkElm) {
+                var $linkElm = $(linkElm);
 
-                BetaPopup.maskOpacity = 0.2;
-                BetaPopup.popup(title, 'tariff-info');
-                that.adapt($this);
+                $linkElm.attr('title', 'Opens in a popup');
+                $linkElm.on('click', function (e) {
+                    that.open($(this));
+                });
 
-                return false;
+                if ($linkElm.attr("href") === hash) {
+                    tabId = $linkElm.closest(".tab-pane").attr("id");
+                    tabId = tabId.replace(/(\w+)-enhanced/, "tab-$1");
+                    $('#' + tabId + ' a').trigger('click');
+                    that.open($(linkElm));
+                }
             });
         }
     },
     /**
       @name GOVUK.tariff.datePickers
       @object
-      @description container for datePickers behaviour 
+      @description container for datePickers behaviour
     */
     datePickers : {
         /**
@@ -370,13 +396,13 @@ GOVUK.tariff = {
               $description = $this.next('dd').removeClass('hover'),
               $descriptionLink = $description.find('>a');
 
-          if (!$descriptionLink.length) { 
+          if (!$descriptionLink.length) {
             $descriptionLink = $description.find('>h1 a')
             if (!$descriptionLink.length) { return; }
           }
-          
+
           $descriptionLink.removeClass('hover');
-          
+
           // fire the link when it's term is clicked
           $this.on('click', function () {
             // clear classes in case content is cached with pjax
@@ -386,7 +412,7 @@ GOVUK.tariff = {
           });
 
           $this.add($descriptionLink).hover(
-            controlClass(idx, 'add', $descriptionLink), 
+            controlClass(idx, 'add', $descriptionLink),
             controlClass(idx, 'remove', $descriptionLink)
           );
         });
@@ -396,7 +422,7 @@ GOVUK.tariff = {
       @name utils
       @namespace
       @description utilities for the GOVUK.tariff namespace
-    */ 
+    */
     utils : {
       /**
         @name triggerClick
