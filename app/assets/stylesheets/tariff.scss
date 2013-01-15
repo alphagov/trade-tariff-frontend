@@ -369,7 +369,7 @@ div.header-context {
 }
 
 .tariff fieldset.country-picker select {
-  width: 250px;
+  width: 200px;
 }
 
 .tariff form.tariff-search a:hover {
@@ -495,14 +495,7 @@ article.tariff {
   font-size:em(14, 16);
   line-height:2em;
   background:#fff;
-  padding:0 px($top-level-padding) 0 px($token-space);
-
-  // a {
-  //   display: block;
-  //   width: 8em;
-  //   position: relative;
-  //   z-index: 1;
-  // }
+  padding:0 px($top-level-padding) 1em px($token-space);
 
   p {
     display:inline;
@@ -518,6 +511,19 @@ article.tariff {
 
   input {
     font-size:1em;
+  }
+
+  fieldset {
+    float: left;
+    width: 49%;
+  }
+
+  &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
   }
 }
 

@@ -28,6 +28,10 @@
     <a>change country</a>
   </fieldset>
 
+  <fieldset class='relevant-links'>
+    <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
+  </fieldset>
+
   <fieldset class='date-picker'>
     <span class='fields'>This tariff is for
       <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
@@ -42,6 +46,4 @@
     </span>
     <a>change date</a>
   </fieldset>
-
-  <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
 <% end %>
