@@ -10,7 +10,10 @@ class GeographicalArea
   has_many :children_geographical_areas, class_name: 'GeographicalArea'
 
   def self.countries
-    all.sort_by(&:iso_code)
+    excluded_country_ids = ['GB']
+
+    all.sort_by(&:id)
+       .reject { |country| country.id.in?(excluded_country_ids) }
   end
 
   def group_key

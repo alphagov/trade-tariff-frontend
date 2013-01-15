@@ -35,6 +35,10 @@ class Search
               end
   end
 
+  def filtered_by_country?
+    country.present?
+  end
+
   def contains_search_term?
     t.present?
   end
