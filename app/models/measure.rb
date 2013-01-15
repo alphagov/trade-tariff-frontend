@@ -89,7 +89,9 @@ class Measure
   end
 
   def order_number
-    @order_number.presence || OrderNumber.new(number: ordernumber, descriptionless: true)
+    @order_number.presence || OrderNumber.new(number: ordernumber,
+                                              descriptionless: true,
+                                              casted_by: self)
   end
 
   # _999 is the master additional code and should come first
