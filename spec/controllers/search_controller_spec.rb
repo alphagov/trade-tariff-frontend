@@ -52,7 +52,7 @@ describe SearchController, "POST to #search" do
 
   context 'without search term', vcr: { cassette_name: "search#blank_match" }  do
     context 'changing browse date' do
-      context 'valid date param provided' do
+      context 'valid date params provided' do
         let(:year)    { Forgery(:date).year }
         let(:month)   { Forgery(:date).month(numerical: true) }
         let(:day)     { Forgery(:date).day }
@@ -64,6 +64,24 @@ describe SearchController, "POST to #search" do
             year: year,
             month: month,
             day: day
+          }
+        end
+
+        it { should respond_with(:redirect) }
+        it { should assign_to(:search) }
+        it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
+      end
+
+      context 'valid date time param(as_of) provided' do
+        let(:year)    { Forgery(:date).year }
+        let(:month)   { Forgery(:date).month(numerical: true) }
+        let(:day)     { Forgery(:date).day }
+
+        before(:each) do
+          @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+
+          post :search, {
+            as_of: "#{year}-#{month}-#{day}"
           }
         end
 

@@ -7,7 +7,8 @@ class Search
                 :country, # search country
                 :day,
                 :month,
-                :year
+                :year,
+                :as_of    # legacy format for specifying date
 
   def perform
     response = self.class.post("/search", body: { t: t, as_of: date.to_s(:db) })
@@ -26,7 +27,12 @@ class Search
   end
 
   def date
-    @date ||= TariffDate.parse(attributes.slice(*TariffDate::DATE_KEYS)).date
+    @date ||= if as_of.present?
+                TariffDate.new(as_of).date
+              else
+                TariffDate.parse(attributes.slice(*TariffDate::DATE_KEYS))
+                          .date
+              end
   end
 
   def contains_search_term?
@@ -34,7 +40,9 @@ class Search
   end
 
   def query_attributes
-    attributes.slice(:day, :year, :month, :country)
+    { day: date.day,
+      year: date.year,
+      month: date.month }.merge(attributes.slice(:country))
   end
 
   def country_name
