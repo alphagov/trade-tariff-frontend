@@ -196,7 +196,7 @@ GOVUK.tariff = {
             }
 
             if (popupWidth < windowWidth) {
-                dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px'; 
+                dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px';
             } else {
                 // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
                 if (popupWidth > windowWidth) {
@@ -323,43 +323,45 @@ GOVUK.tariff = {
                     $('#' + tabId + ' a').trigger('click');
                     that.open($(linkElm));
                 }
-            }); 
+            });
         }
     },
     /**
-      @name GOVUK.tariff.datePickers
+      @name GOVUK.tariff.searchForm
       @object
-      @description container for datePickers behaviour 
+      @description container for searchForm behaviour
     */
-    datePickers : {
-        /**
-         * @name GOVUK.tariff.datePickers
-         * @array
-         * @description Array of Datepickers
-        */
-        pickers : [],
+    searchForm : {
         /**
           @name GOVUK.tariff.datePicker.initialize
           @function
           @description initializes namespace
         */
+        toggledControl: {
+          initialize: function(control) {
+            var   $dateForm = $('fieldset[class=' + control + ']'),
+                  $infoPara = $dateForm.find('span.text'),
+                  $fields = $dateForm.find('span.fields'),
+                  namespace = this;
+
+              $fields.hide();
+
+              $dateForm.find('a').on('click', function (e) {
+                  $infoPara.toggle();
+                  $fields.toggle();
+
+                  return false;
+              });
+          }
+        },
+
         initialize : function () {
-            var $infoPara = $('p.tariff-date'),
-                $form = $('#date-filter'),
-                namespace = this;
+          var toggledControls = ['date-picker', 'country-picker'],
+              namespace = this;
 
-            $infoPara.find('a').on('click', function (e) {
-                var calendar;
-
-                $infoPara.replaceWith($form);
-                $form.show();
-
-                if ($infoPara.hasClass('sections-context')) {
-                    $('#date-filter').addClass('sections-context');
-                }
-
-                return false;
-            });
+          $(toggledControls).each(function(idx, element){
+            namespace.toggledControl.initialize(element);
+          })
         }
     },
     /**
@@ -390,13 +392,13 @@ GOVUK.tariff = {
               $description = $this.next('dd').removeClass('hover'),
               $descriptionLink = $description.find('>a');
 
-          if (!$descriptionLink.length) { 
+          if (!$descriptionLink.length) {
             $descriptionLink = $description.find('>h1 a')
             if (!$descriptionLink.length) { return; }
           }
-          
+
           $descriptionLink.removeClass('hover');
-          
+
           // fire the link when it's term is clicked
           $this.on('click', function () {
             // clear classes in case content is cached with pjax
@@ -406,7 +408,7 @@ GOVUK.tariff = {
           });
 
           $this.add($descriptionLink).hover(
-            controlClass(idx, 'add', $descriptionLink), 
+            controlClass(idx, 'add', $descriptionLink),
             controlClass(idx, 'remove', $descriptionLink)
           );
         });
@@ -416,7 +418,7 @@ GOVUK.tariff = {
       @name utils
       @namespace
       @description utilities for the GOVUK.tariff namespace
-    */ 
+    */
     utils : {
       /**
         @name triggerClick
@@ -458,6 +460,6 @@ GOVUK.tariff = {
       @description adds behaviours outside of the pjax area
     */
     onLoad : function () {
-        this.datePickers.initialize();
+        this.searchForm.initialize();
     }
 };

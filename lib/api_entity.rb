@@ -16,7 +16,6 @@ module ApiEntity
     base_uri Rails.application.config.api_host
     debug_output if Rails.env.development?
 
-
     attr_reader :attributes
 
     attr_accessor :casted_by
@@ -57,6 +56,19 @@ module ApiEntity
   end
 
   module ClassMethods
+    def all
+      resp = get(collection_path)
+      case resp.code
+      when 404
+        raise ApiEntity::NotFound.new resp['error']
+      when 500
+        raise ApiEntity::Error.new resp['error']
+      when 502
+        raise ApiEntity::Error.new "502 Bad Gateway"
+      end
+      resp.map { |entry_data| new(entry_data) }
+    end
+
     def find(id, opts = {})
       resp = get("/#{self.name.pluralize.parameterize}/#{id}", opts)
       case resp.code
@@ -103,6 +115,14 @@ module ApiEntity
           @#{associations}.presence || []
         end
       METHODS
+    end
+
+    def collection_path(path = nil)
+      if path
+        @collection_path = path
+      else
+        @collection_path
+      end
     end
   end
 end

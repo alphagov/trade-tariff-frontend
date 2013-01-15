@@ -368,6 +368,14 @@ div.header-context {
   margin-left:1em;
 }
 
+.tariff fieldset.country-picker select {
+  width: 200px;
+}
+
+.tariff form.tariff-search a:hover {
+  cursor: pointer;
+}
+
 .tariff p.sections-context {
   padding-right:em(81, 14);
 }
@@ -487,14 +495,7 @@ article.tariff {
   font-size:em(14, 16);
   line-height:2em;
   background:#fff;
-  padding:0 px($top-level-padding) 0 px($token-space);
-
-  a {
-    display: block;
-    width: 8em;
-    position: relative;
-    z-index: 1;
-  }
+  padding:0 px($top-level-padding) 1em px($token-space);
 
   p {
     display:inline;
@@ -510,6 +511,19 @@ article.tariff {
 
   input {
     font-size:1em;
+  }
+
+  fieldset {
+    float: left;
+    width: 49%;
+  }
+
+  &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
   }
 }
 
@@ -880,7 +894,7 @@ dl.chapter-headings {
   margin: 0 0 0 px($token-width + $token-space) * -1;
   padding: px($token-padding) em(137, 14) 0 px($token-width + $token-space);
   line-height: (20 / 12);
-  color: $grey-40; 
+  color: $grey-40;
   @extend %contain-floats;
 
   @include ie(6) {
@@ -890,7 +904,7 @@ dl.chapter-headings {
   /* the parent needs to have the same font-size as the tree so zooming works */
   span,
   em {
-    font-size: em(12, 14); 
+    font-size: em(12, 14);
   }
 
   span {
@@ -945,7 +959,7 @@ ul.commodities {
     &:last-child > ul {
       border-bottom: none;
     }
-    
+
     @include ie-lte(8) {
       &.last-child > a,
       &.last-child > ul {
@@ -964,12 +978,12 @@ ul.commodities {
       &.last-child ul li.last-child ul li.last-child ul li a,
       &.last-child ul li.last-child ul li.last-child ul li ul,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
-      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a, 
-      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul, 
-      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
@@ -987,7 +1001,7 @@ ul.commodities {
       &.last-child ul li.last-child ul li.last-child a,
       &.last-child ul li.last-child ul li.last-child ul,
       &.last-child ul li.last-child ul li.last-child ul li.last-child a,
-      &.last-child ul li.last-child ul li.last-child ul li.last-child ul, 
+      &.last-child ul li.last-child ul li.last-child ul li.last-child ul,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
       &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
