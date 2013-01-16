@@ -5,7 +5,7 @@ class GeographicalArea
 
   collection_path "/geographical_areas/countries"
 
-  attr_accessor :iso_code, :description, :geographical_area_id
+  attr_accessor :geographical_area_id, :description
 
   has_many :children_geographical_areas, class_name: 'GeographicalArea'
 
@@ -25,7 +25,7 @@ class GeographicalArea
   end
 
   def id
-    geographical_area_id.presence || iso_code
+    geographical_area_id
   end
 
   def to_s

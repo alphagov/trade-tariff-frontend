@@ -128,9 +128,9 @@ class Measure
   end
 
   def relevant_for_country?(country_code)
-    (geographical_area.iso_code == country_code ||
-    geographical_area.children_geographical_areas.map(&:iso_code).include?(country_code)) &&
-    !excluded_countries.map(&:iso_code).include?(country_code)
+    (geographical_area.geographical_area_id == country_code ||
+    geographical_area.children_geographical_areas.map(&:geographical_area_id).include?(country_code)) &&
+    !excluded_countries.map(&:geographical_area_id).include?(country_code)
   end
 
   def additional_code
