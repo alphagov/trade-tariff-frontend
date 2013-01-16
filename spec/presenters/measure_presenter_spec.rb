@@ -4,14 +4,14 @@ describe MeasurePresenter do
   describe "#geo_class" do
     context 'when geographical area is a country group' do
       let(:children_ga)       { [attributes_for(:geographical_area), attributes_for(:geographical_area)]}
-      let(:geographical_area) { attributes_for(:geographical_area, iso_code: nil, children_geographical_areas: children_ga) }
+      let(:geographical_area) { attributes_for(:geographical_area, geographical_area_id: nil, children_geographical_areas: children_ga) }
       let(:measure)           { Measure.new(attributes_for(:measure, geographical_area: geographical_area))}
 
       subject { MeasurePresenter.new(measure) }
 
-      it 'returns list of contained children geographical area iso codes' do
-        subject.geo_class.should =~ /#{children_ga.first[:iso_code]}/
-        subject.geo_class.should =~ /#{children_ga.last[:iso_code]}/
+      it 'returns list of contained children geographical area ids' do
+        subject.geo_class.should =~ /#{children_ga.first[:geographical_area_id]}/
+        subject.geo_class.should =~ /#{children_ga.last[:geographical_area_id]}/
       end
     end
 
@@ -21,15 +21,15 @@ describe MeasurePresenter do
 
       subject { MeasurePresenter.new(measure) }
 
-      it 'returns iso code of geographical area' do
-        subject.geo_class.should =~ /#{geographical_area[:iso_code]}/
+      it 'returns geographical area id of geographical area' do
+        subject.geo_class.should =~ /#{geographical_area[:geographical_area_id]}/
       end
     end
   end
 
   describe "#has_children_geographical_areas?" do
     let(:children_ga)       { [attributes_for(:geographical_area), attributes_for(:geographical_area)]}
-    let(:geographical_area) { attributes_for(:geographical_area, iso_code: nil, children_geographical_areas: children_ga) }
+    let(:geographical_area) { attributes_for(:geographical_area, geographical_area_id: nil, children_geographical_areas: children_ga) }
     let(:measure1)          { MeasurePresenter.new(Measure.new(attributes_for(:measure, geographical_area: geographical_area))) }
 
     let(:measure2)          { MeasurePresenter.new(Measure.new(attributes_for(:measure, geographical_area: attributes_for(:geographical_area))))}
@@ -45,7 +45,7 @@ describe MeasurePresenter do
 
   describe "#children_geographical_areas" do
     let(:children_ga)       { [attributes_for(:geographical_area), attributes_for(:geographical_area)]}
-    let(:geographical_area) { attributes_for(:geographical_area, iso_code: nil, children_geographical_areas: children_ga) }
+    let(:geographical_area) { attributes_for(:geographical_area, geographical_area_id: nil, children_geographical_areas: children_ga) }
     let(:measure1)          { MeasurePresenter.new(Measure.new(attributes_for(:measure, geographical_area: geographical_area))) }
 
     it 'returns measure geographical area children geographical areas' do

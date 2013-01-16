@@ -6,7 +6,7 @@ class MeasurePresenter
   end
 
   def geo_class
-    measure.geographical_area.iso_code || measure.geographical_area.children_geographical_areas.sort_by(&:iso_code).map(&:iso_code).join(" ")
+    measure.geographical_area.geographical_area_id || measure.geographical_area.children_geographical_areas.sort_by(&:geographical_area_id).map(&:geographical_area_id).join(" ")
   end
 
   def has_children_geographical_areas?
@@ -14,7 +14,7 @@ class MeasurePresenter
   end
 
   def children_geographical_areas
-    measure.geographical_area.children_geographical_areas.sort_by(&:iso_code)
+    measure.geographical_area.children_geographical_areas.sort_by(&:geographical_area_id)
   end
 
   def has_measure_conditions?
