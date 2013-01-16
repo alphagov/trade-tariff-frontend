@@ -22,5 +22,9 @@ class OrderNumber
         instance_variable_set("@#{field}".to_sym, Time.parse(arg)) if arg.present?
       }
     end
+
+    def present?
+      status.present?
+    end
   end
 end
