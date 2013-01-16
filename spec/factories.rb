@@ -60,7 +60,7 @@ FactoryGirl.define do
   end
 
   factory :geographical_area do
-    iso_code { Forgery(:basic).text(exactly: 2).upcase }
+    geographical_area_id { Forgery(:basic).text(exactly: 2).upcase }
     description { Forgery(:basic).text }
 
     trait :third_country do
@@ -72,7 +72,6 @@ FactoryGirl.define do
     end
 
     trait :with_children do
-      iso_code { nil }
       children_geographical_areas { [attributes_for(:geograpical_area)] }
     end
   end

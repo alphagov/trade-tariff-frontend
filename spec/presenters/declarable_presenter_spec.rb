@@ -89,7 +89,7 @@ describe DeclarablePresenter do
   end
 
   describe "#import_measures_for_specific_countries" do
-    let(:geographical_area)               { attributes_for(:geographical_area, iso_code: nil) }
+    let(:geographical_area)               { attributes_for(:geographical_area, geographical_area_id: nil) }
     let(:measure_third_country)           { attributes_for(:measure, :third_country, origin: 'eu',) }
     let(:measure_specific_country)        { attributes_for(:measure, :specific_country, origin: 'eu') }
     let(:measure_specific_country_group)  { attributes_for(:measure, geographical_area: geographical_area) }
