@@ -339,17 +339,22 @@ GOVUK.tariff = {
         */
         toggledControl: {
           initialize: function(control) {
-            var   $dateForm = $('fieldset[class=' + control + ']'),
-                  $infoPara = $dateForm.find('span.text'),
-                  $fields = $dateForm.find('span.fields');
+            var   $controlForm = $('fieldset[class=' + control + ']'),
+                  $infoPara = $controlForm.find('span.text'),
+                  $fields = $controlForm.find('span.fields');
 
               $fields.hide();
 
-              $dateForm.find('a').on('click', function (e) {
+              $controlForm.on('click', 'a', function (e) {
                   $infoPara.toggle();
                   $fields.toggle();
+                  $(this).addClass('submit');
 
                   return false;
+              });
+
+              $controlForm.on('click', 'a.submit', function(e) {
+                $controlForm.closest('form').submit();
               });
           }
         },
