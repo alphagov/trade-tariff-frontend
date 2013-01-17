@@ -18,20 +18,6 @@
     <%= f.button 'Search', class: 'button right' %>
   </fieldset>
 
-  <fieldset class='country-picker'>
-    <span class='fields'>Country of origin/destination
-      <%= f.select :country, f.object.countries.map{ |c| [c.description, c.geographical_area_id] }, { include_blank: true }, name: 'country' %>
-    </span>
-    <span class='text'>
-      Country of origin/destination <%= @search.country_name %>
-    </span>
-    <a>change country</a>
-  </fieldset>
-
-  <fieldset class='relevant-links'>
-    <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
-  </fieldset>
-
   <fieldset class='date-picker'>
     <span class='fields'>This tariff is for
       <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
@@ -45,5 +31,19 @@
       This tariff is for <%= @search.date.to_formatted_s(:rfc822) %>
     </span>
     <a>change date</a>
+  </fieldset>
+
+  <fieldset class='relevant-links'>
+    <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
+  </fieldset>
+
+  <fieldset class='country-picker'>
+    <span class='fields'>Country of origin/destination
+      <%= f.select :country, f.object.countries.map{ |c| [c.description, c.geographical_area_id] }, { include_blank: 'All countries' }, name: 'country' %>
+    </span>
+    <span class='text'>
+      Country of origin/destination <%= @search.country_name %>
+    </span>
+    <a>change country</a>
   </fieldset>
 <% end %>
