@@ -37,7 +37,7 @@
     <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
   </fieldset>
 
-  <fieldset class='country-picker'>
+  <!-- <fieldset class='country-picker'>
     <span class='fields'>Country of origin/destination
       <%= f.select :country, f.object.countries.map{ |c| [c.description, c.geographical_area_id] }, { include_blank: 'All countries' }, name: 'country' %>
     </span>
@@ -45,5 +45,5 @@
       Country of origin/destination <%= @search.country_name %>
     </span>
     <a>change country</a>
-  </fieldset>
+  </fieldset> -->
 <% end %>
