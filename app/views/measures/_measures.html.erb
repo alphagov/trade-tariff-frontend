@@ -80,7 +80,7 @@
         </thead>
 
         <tbody>
-          <%= render partial: "measures/measure", collection: declarable.import_measures_for_third_country %>
+        <%= render partial: "measures/measure", collection: declarable.import_measures_for_third_country, locals: { declarable: declarable } %>
         </tbody>
       </table>
 
@@ -116,7 +116,7 @@
 
         <tbody>
         <% if declarable.has_import_measures_for_specific_countries? %>
-          <%= render partial: "measures/measure", collection: declarable.import_measures_for_specific_countries %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures_for_specific_countries, locals: { declarable: declarable } %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -159,7 +159,7 @@
         </thead>
         <tbody>
         <% if declarable.has_export_measures_for_third_countries? %>
-          <%= render partial: "measures/measure", collection: declarable.export_measures_for_third_country %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures_for_third_country, locals: { declarable: declarable } %>
           <% unless declarable.has_vat_or_excise_third_country_export_measures? %>
             <tr>
               <td><span class="flag uk"></span></td>
@@ -211,7 +211,7 @@
 
         <tbody>
         <% if declarable.has_export_measures_for_specific_countries? %>
-          <%= render partial: "measures/measure", collection: declarable.export_measures_for_specific_countries %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures_for_specific_countries, locals: { declarable: declarable } %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>

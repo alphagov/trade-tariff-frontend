@@ -56,4 +56,8 @@ describe 'Commodity page' do
       end
     end
   end
+
+  context 'commodity with national measurement units' do
+    pending
+  end
 end

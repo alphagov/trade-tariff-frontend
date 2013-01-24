@@ -42,7 +42,12 @@
       </a>
     <% end %>
   </td>
-  <td><%= measure.duty_expression %></td>
+  <td>
+    <%= measure.duty_expression %>
+    <% if measure.excise? && declarable.national_measurement_units.any? %>
+      / <%= declarable.national_measurement_units.select(&:present?).join(' / ') %>
+    <% end %>
+  </td>
 
   <td>
     <% if measure.additional_code.present? %>

@@ -124,6 +124,10 @@ class Measure
     measure_type_description =~ /^VAT/
   end
 
+  def excise?
+    measure_type_description =~ /^EXCISE/
+  end
+
   def relevant_for_country?(country_code)
     (geographical_area.geographical_area_id == country_code ||
     geographical_area.children_geographical_areas.map(&:geographical_area_id).include?(country_code)) &&
