@@ -6,6 +6,8 @@ class TariffDate
 
   attr_reader :date
 
+  delegate :day, :month, :year, :to_formatted_s, to: :date
+
   def self.parse(date_param)
     new(if valid_date_param?(date_param)
       date_param.values_at(*DATE_KEYS).join("-")

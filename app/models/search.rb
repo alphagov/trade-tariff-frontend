@@ -28,10 +28,9 @@ class Search
 
   def date
     @date ||= if as_of.present?
-                TariffDate.new(as_of).date
+                TariffDate.new(as_of)
               else
                 TariffDate.parse(attributes.slice(*TariffDate::DATE_KEYS))
-                          .date
               end
   end
 
