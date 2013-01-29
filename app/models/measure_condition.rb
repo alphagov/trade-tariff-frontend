@@ -9,6 +9,8 @@ class MeasureCondition
 
   attr_accessor :document_code, :action, :condition, :requirement_type
 
+  delegate :sequence_number, to: :requirement
+
   def has_document_based_requirement?
     requirement.present? && requirement_type == "document"
   end

@@ -42,4 +42,18 @@ describe 'Commodity page' do
       end
     end
   end
+
+  context 'commodity with complex measure condition requirements' do
+    it 'renders successfully' do
+      VCR.use_cassette('geographical_areas#countries') do
+        VCR.use_cassette('commodities#show_1701910000_2006-02-01') do
+          visit commodity_path("1701910000", as_of: "2006-02-01")
+
+          within("#import") do
+            page.should have_content 'Additional duty based on cif price'
+          end
+        end
+      end
+    end
+  end
 end
