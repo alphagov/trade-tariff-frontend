@@ -85,7 +85,10 @@ class Measure
 
   def previous_condition_for(condition)
     measure_conditions.select(&:has_duty_expression_based_requirement?)
-                      .detect{|mc| mc.requirement.sequence_number == condition.requirement.sequence_number - 1 }
+                      .sort_by(&:sequence_number)
+                      .reverse
+                      .select{|mc| mc.requirement.sequence_number < condition.requirement.sequence_number }
+                      .first
   end
 
   # _999 is the master additional code and should come first
