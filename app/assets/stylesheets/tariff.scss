@@ -496,6 +496,7 @@ article.tariff {
   line-height:2em;
   background:#fff;
   padding:0 px($top-level-padding) 1em px($token-space);
+  @include contain-float;
 
   p {
     display:inline;
@@ -516,14 +517,10 @@ article.tariff {
   fieldset {
     float: left;
     width: 49%;
-  }
 
-  &:after {
-    content: "\0020";
-    display: block;
-    height: 0;
-    overflow: hidden;
-    clear: both;
+    &.relevant-links {
+      clear: both; 
+    }
   }
 }
 
