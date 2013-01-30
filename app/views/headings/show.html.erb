@@ -13,7 +13,7 @@
             <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter), class: "js-pjax" %>
               <dl>
                 <dt class="heading-code" title="Heading code"><%= @heading.display_short_code %></dt>
-                <dd><h1><%= @heading %></h1>
+                <dd><h1><%= @heading.description.html_safe %></h1>
                 <p class="commodity-tree-note"><span>The number following each commodity's </span><em>Description</em><span> is its </span><em class="code">Code</em></p>
                   <ul class="commodities">
                     <%= render @commodities.root_commodities %>
