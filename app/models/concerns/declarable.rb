@@ -12,6 +12,7 @@ module Models
       has_many :import_measures, class_name: 'Measure'
       has_many :export_measures, class_name: 'Measure'
       has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
+      has_many :national_measurement_units, class_name: 'NationalMeasurementUnit'
 
       attr_accessor :description, :goods_nomenclature_item_id, :producline_suffix, :number_indents, :goods_nomenclature_sid, :bti_url
 
