@@ -27,7 +27,7 @@
       <% else %>
         <p>Importing from outside the EU is subject to <em>variable</em> third country duty.</p>
       <% end %>
-      <% declarable.national_vat_import_measures.each do |measure| %>
+      <% declarable.import_measures.vat.national.each do |measure| %>
         <p>Goods are subject to <%= measure.measure_type_description %>.</p>
       <% end %>
 
@@ -80,16 +80,52 @@
         </thead>
 
         <tbody>
-        <%= render partial: "measures/measure", collection: declarable.import_measures_for_third_country, locals: { declarable: declarable } %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries, locals: { declarable: declarable } %>
         </tbody>
       </table>
 
-      <table>
-        <% if @search.filtered_by_country? %>
+      <% if @search.filtered_by_country? %>
+        <table>
           <caption>Measures for <%= @search.country_name %>:</caption>
-        <% else %>
-          <caption>Measures for specific countries and country groups:</caption>
-        <% end %>
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+
+              <th>Country</th>
+
+              <th>Measure Type</th>
+
+              <th>Start &amp; End Dates</th>
+
+              <th>Duty rates / Supplementary units</th>
+
+              <th>Additional codes</th>
+
+              <th>Conditions</th>
+
+              <th>Exclusions</th>
+
+              <th class="legal-act external-link" title="Links open externally">Legal Act</th>
+
+              <th>Footnotes</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <% if declarable.import_measures.for_country(@search.country).any? %>
+            <%= render partial: "measures/measure", collection: declarable.import_measures.for_country(@search.country) %>
+          <% else %>
+            <tr>
+              <td><span class="flag eu"></span></td>
+              <td colspan="8">There are no EU preference measures for this commodity on this date</td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
+
+      <table>
+        <caption>Measures for specific countries and country groups:</caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -115,8 +151,8 @@
         </thead>
 
         <tbody>
-        <% if declarable.has_import_measures_for_specific_countries? %>
-          <%= render partial: "measures/measure", collection: declarable.import_measures_for_specific_countries, locals: { declarable: declarable } %>
+        <% if declarable.import_measures.for_specific_countries.any? %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries, locals: { declarable: declarable }  %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -158,19 +194,15 @@
           </tr>
         </thead>
         <tbody>
-        <% if declarable.has_export_measures_for_third_countries? %>
-          <%= render partial: "measures/measure", collection: declarable.export_measures_for_third_country, locals: { declarable: declarable } %>
-          <% unless declarable.has_vat_or_excise_third_country_export_measures? %>
-            <tr>
-              <td><span class="flag uk"></span></td>
-              <td colspan="8">No VAT or Excise measures were found for this commodity on this date</td>
-            </tr>
-          <% end %>
+        <% if declarable.export_measures.for_all_countries.any? %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries, locals: { declarable: declarable } %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
             <td colspan="8">There are no EU third country measures for this commodity on this date</td>
           </tr>
+        <% end %>
+        <% unless declarable.export_measures.for_all_countries.vat.any? %>
           <tr>
             <td><span class="flag uk"></span></td>
             <td colspan="8">No VAT or Excise measures were found for this commodity on this date</td>
@@ -179,12 +211,48 @@
         </tbody>
       </table>
 
-      <table>
-        <% if @search.filtered_by_country? %>
+      <% if @search.filtered_by_country? %>
+        <table>
           <caption>Measures for <%= @search.country_name %>:</caption>
-        <% else %>
-          <caption>Measures for specific countries and country groups:</caption>
-        <% end %>
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+
+              <th>Country</th>
+
+              <th>Measure Type</th>
+
+              <th>Start &amp; End Dates</th>
+
+              <th>Duty rates / Supplementary units</th>
+
+              <th>Additional codes</th>
+
+              <th>Conditions</th>
+
+              <th>Exclusions</th>
+
+              <th class="legal-act external-link" title="Links open externally">Legal Act</th>
+
+              <th>Footnotes</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <% if declarable.export_measures.for_country(@search.country).any? %>
+            <%= render partial: "measures/measure", collection: declarable.export_measures.for_country(@search.country) %>
+          <% else %>
+            <tr>
+              <td><span class="flag eu"></span></td>
+              <td colspan="8">There are no EU preference measures for this commodity on this date</td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
+
+      <table>
+        <caption>Measures for specific countries and country groups:</caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -210,8 +278,8 @@
         </thead>
 
         <tbody>
-        <% if declarable.has_export_measures_for_specific_countries? %>
-          <%= render partial: "measures/measure", collection: declarable.export_measures_for_specific_countries, locals: { declarable: declarable } %>
+        <% if declarable.export_measures.for_specific_countries.any? %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures.for_specific_countries, locals: { declarable: declarable } %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -262,11 +330,11 @@
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
   <div class="inner">
-    <%= render partial: "measures/measure_references", collection: declarable.import_measures_for_third_country, as: 'measure' %>
-    <%= render partial: "measures/measure_references", collection: declarable.import_measures_for_specific_countries, as: 'measure' %>
+    <%= render partial: "measures/measure_references", collection: declarable.import_measures.for_all_countries, as: 'measure' %>
+    <%= render partial: "measures/measure_references", collection: declarable.import_measures.for_specific_countries, as: 'measure' %>
   </div>
   <div class="inner">
-    <%= render partial: "measures/measure_references", collection: declarable.export_measures_for_third_country, as: 'measure' %>
-    <%= render partial: "measures/measure_references", collection: declarable.export_measures_for_specific_countries, as: 'measure' %>
+    <%= render partial: "measures/measure_references", collection: declarable.export_measures.for_all_countries, as: 'measure' %>
+    <%= render partial: "measures/measure_references", collection: declarable.export_measures.for_specific_countries, as: 'measure' %>
   </div>
 </div><!-- end .tab-content -->
