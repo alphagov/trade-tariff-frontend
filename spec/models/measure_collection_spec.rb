@@ -51,6 +51,16 @@ describe MeasureCollection do
     end
   end
 
+  describe '#except' do
+    let(:measure1) { Measure.new(attributes_for(:measure, :third_country)) }
+    let(:measure2) { Measure.new(attributes_for(:measure, :specific_country)) }
+    let(:collection) { MeasureCollection.new([measure1, measure2]) }
+
+    it 'removes matching measures' do
+      collection.except(:third_country).should_not include measure1
+    end
+  end
+
   describe '#to_a' do
     context 'presenter class given (default)' do
       let(:measure) { Measure.new(attributes_for(:measure)) }

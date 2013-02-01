@@ -35,6 +35,11 @@ class MeasureCollection
     self
   end
 
+  def except(condition)
+    self.measures = measures.reject(&condition)
+    self
+  end
+
   def to_a
     if presenter_klass.present?
       present_with(presenter_klass)

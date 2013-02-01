@@ -112,8 +112,8 @@
           </thead>
 
           <tbody>
-          <% if declarable.import_measures.for_country(@search.country).any? %>
-            <%= render partial: "measures/measure", collection: declarable.import_measures.for_country(@search.country) %>
+          <% if declarable.import_measures.except(:third_country).for_country(@search.country).any? %>
+            <%= render partial: "measures/measure", collection: declarable.import_measures.except(:third_country).for_country(@search.country) %>
           <% else %>
             <tr>
               <td><span class="flag eu"></span></td>
@@ -239,8 +239,8 @@
           </thead>
 
           <tbody>
-          <% if declarable.export_measures.for_country(@search.country).any? %>
-            <%= render partial: "measures/measure", collection: declarable.export_measures.for_country(@search.country) %>
+          <% if declarable.export_measures.except(:third_country).for_country(@search.country).any? %>
+            <%= render partial: "measures/measure", collection: declarable.export_measures.except(&:third_country).for_country(@search.country) %>
           <% else %>
             <tr>
               <td><span class="flag eu"></span></td>
