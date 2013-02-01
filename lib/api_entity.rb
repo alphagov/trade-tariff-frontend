@@ -103,7 +103,11 @@ module ApiEntity
 
       class_eval <<-METHODS
         def #{associations}=(data)
-          @#{associations} ||= data.map { |record| #{options[:class_name]}.new(record.merge(casted_by: self)) }
+          @#{associations} ||= if data.present?
+            data.map { |record| #{options[:class_name]}.new(record.merge(casted_by: self)) }
+          else
+            []
+          end
         end
 
         def add_#{associations.to_s.singularize}(record)

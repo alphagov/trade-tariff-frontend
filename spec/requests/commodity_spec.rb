@@ -56,4 +56,18 @@ describe 'Commodity page' do
       end
     end
   end
+
+  context 'commodity with national measurement units' do
+    it 'renders successfully' do
+      VCR.use_cassette('geographical_areas#countries') do
+        VCR.use_cassette('commodities#show_2208909110') do
+          visit commodity_path("2208909110")
+
+          within("#import") do
+            page.should     have_content 'LITRE OF ALCOHOL / LITRE'
+          end
+        end
+      end
+    end
+  end
 end
