@@ -227,8 +227,25 @@
   </article><!-- end .tab-pane -->
   <article class='tab-pane' id='footnotes' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <div class="inner">
+      <% if declarable.footnote.present? %>
+        <table>
+          <caption>Footnotes for commodity:</caption>
+          <thead>
+            <tr>
+              <th>Code</th>
+
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <%= render declarable.footnote %>
+          </tbody>
+        </table>
+      <% end %>
+
       <table>
-        <caption>Footnotes for commodity:</caption>
+        <caption>Footnotes for measures:</caption>
         <thead>
           <tr>
             <th>Code</th>
@@ -238,9 +255,6 @@
         </thead>
 
         <tbody>
-          <% if declarable.footnote.present? %>
-            <%= render declarable.footnote %>
-          <% end %>
           <%= render declarable.footnotes %>
         </tbody>
       </table>
