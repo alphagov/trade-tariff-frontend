@@ -80,7 +80,11 @@
         </thead>
 
         <tbody>
-          <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <% if @search.filtered_by_country? %>
+            <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <% else %>
+            <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <% end %>
         </tbody>
       </table>
 
@@ -152,7 +156,11 @@
 
         <tbody>
         <% if declarable.import_measures.for_specific_countries.any? %>
-          <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+          <% if @search.filtered_by_country? %>
+            <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+          <% else %>
+            <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+          <% end %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -195,7 +203,11 @@
         </thead>
         <tbody>
         <% if declarable.export_measures.for_all_countries.any? %>
-          <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <% if @search.filtered_by_country? %>
+            <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <% else %>
+            <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <% end %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
