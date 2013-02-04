@@ -20,7 +20,6 @@
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <div class="inner">
       <h1 class="visuallyhidden">Overview</h1>
-      <%= render partial: 'declarables/filtered_by_country', locals: { search: @search } %>
       <h2>Import</h2>
       <p>The commodity code for importing is <em><%= declarable.code %></em>.</p>
       <% if declarable.third_country_duty_rate.present? %>
