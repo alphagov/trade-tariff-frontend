@@ -88,4 +88,23 @@ describe MeasureCollection do
       end
     end
   end
+
+  describe "#present?" do
+    context 'measures present' do
+      let(:measure) { Measure.new(attributes_for(:measure)) }
+      subject { MeasureCollection.new([measure]) }
+
+      it 'returns true' do
+        subject.present?.should be_true
+      end
+    end
+
+    context 'measures blank' do
+      subject { MeasureCollection.new([]) }
+
+      it 'returns false' do
+        subject.present?.should be_false
+      end
+    end
+  end
 end
