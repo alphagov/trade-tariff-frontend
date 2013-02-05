@@ -457,11 +457,7 @@ article table {
 
   thead {
     th.footnote-code {
-      width: 1em;
-
-      @include ie-lte(7) {
-        width: 5%;
-      }
+      width: 40px;
     }
   }
 }
