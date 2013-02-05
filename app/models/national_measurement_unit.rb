@@ -8,12 +8,13 @@ class NationalMeasurementUnit
   def description_map
     {
      '048' => 'Hectokilogram Net Dry Matter (100kg/net mas)',
+     '066' => 'Litre of Alcohol',
      '070' => 'Standard Litre of Hydrocarbon Oil',
      '100' => '% Lactic Matter / 100 Kg Product',
      '101' => '% Lactic Dry Matter / 100 Kg Product',
      '102' => '% Sucrose Content / 100 Kg Net',
      '104' => '% Added Sugar / 100 Kg',
-     '106' => '% Actual Alcoholic Strength / Hectolitre',
+     '106' => '% Actual Alcoholic Strength / Hectolitre'
     }
   end
 

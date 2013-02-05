@@ -64,7 +64,7 @@ describe 'Commodity page' do
           visit commodity_path("2208909110")
 
           within("#import") do
-            page.should     have_content 'LITRE OF ALCOHOL / LITRE'
+            page.should     have_content 'Litre of Alcohol/Litre'
           end
         end
       end
