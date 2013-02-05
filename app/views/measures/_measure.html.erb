@@ -45,7 +45,7 @@
   <td>
     <%= measure.duty_expression %>
     <% if measure.excise? && declarable.national_measurement_units.any? %>
-      / <%= declarable.national_measurement_units.select(&:present?).join(' / ') %>
+      (<%= declarable.national_measurement_units.select(&:present?).join('/') %>)
     <% end %>
   </td>
 
