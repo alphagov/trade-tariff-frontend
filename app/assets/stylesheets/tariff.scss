@@ -1181,7 +1181,7 @@ dl.tariff-fragments dd.declarable {
     margin: 1em (-1 * em(22, 16)) 0; /* override for static styles */
   }
 
-  .help-notice {
+  .help-notice, .info-notice {
     margin: 1em 1.5em 2em;
 
     p {
@@ -1190,7 +1190,7 @@ dl.tariff-fragments dd.declarable {
     }
   }
 
-  .inner .help-notice {
+  .inner .help-notice, .inner .info-notice {
     margin: 2em -1em 0em;
   }
 }

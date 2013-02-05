@@ -18,6 +18,7 @@
 <div id="measures-js" class='tab-content'>
   <article class='tab-pane active' id='overview'>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
+    <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <div class="inner">
       <h1 class="visuallyhidden">Overview</h1>
       <h2>Import</h2>
@@ -53,10 +54,9 @@
   </article>
   <article class='tab-pane' id='import' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
+    <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <p>The commodity code for importing is <em><%= declarable.code %></em>.</p>
     <div class="inner">
-      <%= render partial: 'declarables/filtered_by_country', locals: { search: @search } %>
-
       <table class='third-country'>
         <caption>Third country measures:</caption>
         <thead>
@@ -178,10 +178,9 @@
   </article><!-- end .tab-pane -->
   <article class='tab-pane' id='export' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
+    <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <p>The commodity code for exporting and intrastat reporting is <em><%= declarable.display_export_code %></em>.</p>
     <div class="inner">
-      <%= render partial: 'declarables/filtered_by_country', locals: { search: @search } %>
-
       <table class='third-country'>
         <caption>Third country measures:</caption>
         <thead>
