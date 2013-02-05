@@ -28,7 +28,7 @@
       <%= select_year(f.object.date, {end_year: (Date.today - 15.years).year, start_year: (Date.today + 1.year).year }, { id: 'tariff_date_year', name: 'year' }) %>
     </span>
     <span class="text <%= @section_css %>">
-      This tariff is for <%= @search.date.to_formatted_s(:rfc822) %>
+      This tariff is for <%= @search.date.to_formatted_s(:long) %>
     </span>
     <a>change date</a>
   </fieldset>
