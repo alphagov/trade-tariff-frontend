@@ -454,6 +454,12 @@ article table {
     margin-left:0;
     margin-right:0;
   }
+
+  thead {
+    th.footnote-code {
+      width: 1em;
+    }
+  }
 }
 
 article.tariff {
