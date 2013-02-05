@@ -55,7 +55,7 @@ describe SearchController, "POST to #search" do
       context 'valid date params provided' do
         let(:year)    { Forgery(:date).year }
         let(:month)   { Forgery(:date).month(numerical: true) }
-        let(:day)     { (1..29).to_a.sample }
+        let(:day)     { (1..28).to_a.sample }
 
         before(:each) do
           @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
@@ -75,7 +75,7 @@ describe SearchController, "POST to #search" do
       context 'valid date time param(as_of) provided' do
         let(:year)    { Forgery(:date).year }
         let(:month)   { Forgery(:date).month(numerical: true) }
-        let(:day)     { (1..29).to_a.sample }
+        let(:day)     { (1..28).to_a.sample }
 
         before(:each) do
           @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
