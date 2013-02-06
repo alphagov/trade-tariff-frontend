@@ -57,11 +57,11 @@ class Measure
   end
 
   def third_country
-    geographical_area.description == "ERGA OMNES"
+    geographical_area.geographical_area_id == '1011'
   end
 
   def for_specific_countries
-    geographical_area.description != "ERGA OMNES"
+    !third_country
   end
 
 
