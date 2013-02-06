@@ -32,4 +32,17 @@ describe Measure do
       measure.relevant_for_country?('lt').should eq false
     end
   end
+
+  describe '#third_country' do
+    let(:measure1) { Measure.new(attributes_for(:measure, geographical_area: {geographical_area_id: '1011' })) }
+    let(:measure2) { Measure.new(attributes_for(:measure, geographical_area: {geographical_area_id: '103'  })) }
+
+    it 'returns true if geographical area' do
+      measure1.third_country.should be_true
+    end
+
+    it 'returns false if country name does not contain ERGA OMNES' do
+      measure2.third_country.should be_false
+    end
+  end
 end
