@@ -35,22 +35,18 @@
   </fieldset>
 
   <fieldset class='relevant-links'>
-    <a href="<%= sections_path%>" class="js-pjax">View all sections</a>
+    <a href="<%= sections_path %>" class="js-pjax">View all sections</a>
   </fieldset>
 
   <fieldset class='country-picker'>
     <span class='fields'>
-      <% if @search.filtered_by_country? %>
-        Trade between the UK and
-      <% else %>
-        Trade between the UK and All countries
-      <% end %>
+      Trade between the UK and
       <%= f.select :country, f.object.countries.map{ |c| [c.description, c.geographical_area_id] }, { include_blank: 'All countries' }, name: 'country' %>
       <a class="submit">set country</a>
     </span>
     <span class='text'>
       <% if @search.filtered_by_country? %>
-        Trade between the UK and <%= @search.country_name %>
+        Trade between the UK and <%= truncate @search.country_name.to_s, length: 30 %>
       <% else %>
         Trade between the UK and All countries
       <% end %>
