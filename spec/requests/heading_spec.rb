@@ -21,11 +21,14 @@ describe 'Heading page' do
           VCR.use_cassette('headings#show_declarable') do
             visit heading_path("0501", country: 'ZW')
 
-            within("#measures-js") do
+            within("#import table.specific-countries") do
+              page.should_not     have_content 'Zimbabwe'
+              page.should_not     have_content 'Eastern and Southern Africa States' # Zimbabwe is member of latter
+            end
+
+            within("#import table.country-filter") do
               page.should     have_content 'Zimbabwe'
               page.should     have_content 'Eastern and Southern Africa States' # Zimbabwe is member of latter
-              page.should_not have_content 'Andorra'
-              page.should_not have_content 'Chile'
             end
           end
         end

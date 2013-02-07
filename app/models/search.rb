@@ -34,8 +34,16 @@ class Search
               end
   end
 
+  def filtered_by_date?
+    date.date != Date.today
+  end
+
   def filtered_by_country?
     country.present?
+  end
+
+  def any_filter_active?
+    filtered_by_date? || filtered_by_country?
   end
 
   def contains_search_term?
