@@ -97,11 +97,14 @@ module ApiEntity
     end
 
     def has_many(associations, opts = {})
-      options = opts.reverse_merge({ class_name: associations.to_s.singularize.classify })
-
-      attr_accessor associations.to_sym
+      options = opts.reverse_merge({ class_name: associations.to_s.singularize.classify,
+                                     wrapper: Array })
 
       class_eval <<-METHODS
+        def #{associations}
+          #{options[:wrapper]}.new(@#{associations}.presence || [])
+        end
+
         def #{associations}=(data)
           @#{associations} ||= if data.present?
             data.map { |record| #{options[:class_name]}.new(record.merge(casted_by: self)) }
@@ -113,10 +116,6 @@ module ApiEntity
         def add_#{associations.to_s.singularize}(record)
           @#{associations} ||= []
           @#{associations} << record
-        end
-
-        def #{associations}
-          @#{associations}.presence || []
         end
       METHODS
     end

@@ -33,10 +33,14 @@ describe 'Commodity page' do
         VCR.use_cassette('commodities#show_0101300000') do
           visit commodity_path("0101300000", country: "AD")
 
-          within("#import") do
+          within("#import table.specific-countries") do
+            page.should_not     have_content 'Andorra'
+            page.should have_content 'Albania'
+            page.should have_content 'Chile'
+          end
+
+          within("#import table.country-filter") do
             page.should     have_content 'Andorra'
-            page.should_not have_content 'Albania'
-            page.should_not have_content 'Chile'
           end
         end
       end

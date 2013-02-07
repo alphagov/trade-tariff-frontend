@@ -57,6 +57,10 @@ FactoryGirl.define do
     trait :with_footnotes do
       footnotes { [attributes_for(:footnote)] }
     end
+
+    trait :national do
+      origin { 'uk' }
+    end
   end
 
   factory :geographical_area do

@@ -9,8 +9,10 @@ module Models
       has_one :section
       has_one :chapter
       has_one :footnote
-      has_many :import_measures, class_name: 'Measure'
-      has_many :export_measures, class_name: 'Measure'
+      has_many :import_measures, class_name: 'Measure',
+                                 wrapper: MeasureCollection
+      has_many :export_measures, class_name: 'Measure',
+                                 wrapper: MeasureCollection
       has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
       has_many :national_measurement_units, class_name: 'NationalMeasurementUnit'
 
