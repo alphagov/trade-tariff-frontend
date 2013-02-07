@@ -64,7 +64,7 @@ FactoryGirl.define do
     description { Forgery(:basic).text }
 
     trait :third_country do
-      description { "ERGA OMNES" }
+      geographical_area_id { "1011" }
     end
 
     trait :specific_country do
