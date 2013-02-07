@@ -371,6 +371,11 @@ div.header-context {
   width: 200px;
 }
 
+.tariff fieldset.country-picker span.fields,
+.tariff fieldset.date-picker span.fields {
+  display: none;
+}
+
 .tariff form.tariff-search a:hover {
   cursor: pointer;
 }
