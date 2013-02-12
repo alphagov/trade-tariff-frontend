@@ -43,12 +43,10 @@
     <% end %>
   </td>
   <td>
+    <%= measure.duty_expression %>
+
     <% if measure.excise? && declarable.national_measurement_units.any? %>
-      <%= number_with_precision(measure.measure_components.first.duty_amount, precision: 2) %>
-      <%= measure.measure_components.first.monetary_unit %> /
-      <%= declarable.national_measurement_units.select(&:present?).join(' / ') %>
-    <% else %>
-      <%= measure.duty_expression %>
+      (<%= national_quantities(declarable, measure.measure_components.first.measurement_unit) %>)
     <% end %>
   </td>
 
