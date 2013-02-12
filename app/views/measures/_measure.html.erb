@@ -46,6 +46,7 @@
     <%= measure.duty_expression %>
 
     <% if measure.excise? && declarable.national_measurement_units.any? %>
+      <br/>
       (<%= national_quantities(declarable, measure.measure_components.first.measurement_unit) %>)
     <% end %>
   </td>
