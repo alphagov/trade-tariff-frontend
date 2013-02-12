@@ -92,7 +92,7 @@
 
       <% if @search.filtered_by_country? %>
         <table class='country-filter'>
-          <caption>Measures for <%= @search.country_name %>:</caption>
+          <caption>Measures specific to <%= @search.country_name %>:</caption>
           <thead>
             <tr>
               <th>&nbsp;</th>
@@ -131,7 +131,13 @@
       <% end %>
 
       <table class='specific-countries'>
-        <caption>Measures for specific countries and country groups:</caption>
+        <caption>
+          <% if @search.filtered_by_country? %>
+            Measures for other countries and country groups:
+          <% else %>
+            Measures for specific countries and country groups:
+          <% end %>
+        </caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -228,7 +234,7 @@
 
       <% if @search.filtered_by_country? %>
         <table class='country-filter'>
-          <caption>Measures for <%= @search.country_name %>:</caption>
+          <caption>Measures specific to <%= @search.country_name %>:</caption>
           <thead>
             <tr>
               <th>&nbsp;</th>
@@ -267,7 +273,13 @@
       <% end %>
 
       <table class='specific-countries'>
-        <caption>Measures for specific countries and country groups:</caption>
+        <caption>
+          <% if @search.filtered_by_country? %>
+            Measures for other countries and country groups:
+          <% else %>
+            Measures for specific countries and country groups:
+          <% end %>
+        </caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
