@@ -1,11 +1,15 @@
 require 'spec_helper'
 
-describe 'Sections Index page', vcr: { cassette_name: "sections#index" }  do
+describe 'Sections Index page' do
   it 'should display section names' do
-    visit sections_path
+    VCR.use_cassette('geographical_areas#countries') do
+      VCR.use_cassette('sections#index') do
+        visit sections_path
 
-    page.should have_content 'Live animals; animal products'
-    page.should have_content 'Vehicles, aircraft'
+        page.should have_content 'Live animals; animal products'
+        page.should have_content 'Vehicles, aircraft'
+      end
+    end
   end
 end
 
