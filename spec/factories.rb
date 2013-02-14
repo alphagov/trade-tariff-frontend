@@ -104,4 +104,21 @@ FactoryGirl.define do
       duty_expression_id { %w[12 14 21 25 27 29].sample }
     end
   end
+
+  factory :tariff_update do
+    update_type    { ['TariffSynchronizer::ChiefUpdate',
+                      'TariffSynchronizer::TaricUpdate'].sample }
+    state { 'A' }
+    created_at { Time.now.to_s }
+    updated_at { Time.now.to_s }
+    filename { 'filename.txt' }
+
+    trait :chief do
+      update_type { 'TariffSynchronizer::ChiefUpdate' }
+    end
+
+    trait :taric do
+      update_type { 'TariffSynchronizer::TaricUpdate' }
+    end
+  end
 end
