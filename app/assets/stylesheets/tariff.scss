@@ -211,12 +211,19 @@ $expand-arrow-space: 9 + $token-padding;
 }
 
 @mixin underlined-token-list {
-  dt,
+  /* IE8 is not recognising selector blocks including nth-child so they are separate here */
+  dt {
+    border-top:1px solid #fff;
+  }
+
   dl dt:nth-child(1) {
     border-top:1px solid #fff;
   }
 
-  dd,
+  dd {
+    border-top:1px solid #eee;
+  }
+
   dl dd:nth-child(2) {
     border-top:1px solid #eee;
   }
