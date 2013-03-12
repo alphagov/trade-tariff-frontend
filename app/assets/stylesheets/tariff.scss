@@ -1,6 +1,8 @@
+@import "_typography.scss";
 @import "_conditionals.scss";
 @import "_colours.scss";
 @import "_shims.scss";
+@import "_device-pixels.scss";
 
 /* global variables */
 
@@ -462,8 +464,6 @@ article table {
 
   a[rel="external"]:after {
     content:"";
-    margin-left:0;
-    margin-right:0;
   }
 
   thead {
@@ -912,7 +912,7 @@ dl.chapter-headings {
   margin: 0 0 0 px($token-width + $token-space) * -1;
   padding: px($token-padding) em(137, 14) 0 px($token-width + $token-space);
   line-height: (20 / 12);
-  color: $grey-40;
+  color: $grey-1;
   @extend %contain-floats;
 
   @include ie(6) {
@@ -1448,7 +1448,7 @@ article.search-results {
     font-weight: normal;
     margin: 0;
     padding: 0;
-    color: $grey-40;
+    color: $grey-1;
   }
 
   ul {
@@ -1464,6 +1464,10 @@ article.search-results {
 
     a {
       margin-bottom: 0;
+    }
+
+    a[rel="external"]:after {
+      @include external-link-14;
     }
 
     .tel{
