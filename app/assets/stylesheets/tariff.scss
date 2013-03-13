@@ -1466,7 +1466,7 @@ article.search-results {
       margin-bottom: 0;
     }
 
-    a[rel="external"]:after {
+    a[rel="external"] {
       @include external-link-14;
     }
 
