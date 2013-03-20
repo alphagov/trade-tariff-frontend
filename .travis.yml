@@ -4,7 +4,7 @@ before_install:
    - sudo apt-get update -qq
    - sudo apt-get install -qq wbritish
 script:
- - RAILS_ENV=test bundle exec rake spec
+ - RAILS_ENV=test GOVUK_APP_DOMAIN=test.example.com bundle exec rake spec
 rvm:
   - 2.0.0
   - 1.9.3
