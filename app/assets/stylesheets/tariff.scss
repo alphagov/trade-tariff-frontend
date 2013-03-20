@@ -253,6 +253,7 @@ $expand-arrow-space: 9 + $token-padding;
   @if $level == 1 {
     padding-left: px(($token-width - $token-padding) + $token-space);
     background-position: $left-pos 0.5em;
+    font-weight: 700;
   } @else {
     margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
     padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
