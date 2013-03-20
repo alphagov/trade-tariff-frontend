@@ -14,8 +14,8 @@ class MeasureComponent
                 :measurement_unit,
                 :measurement_unit_qualifier
 
-  format :measurement_unit_qualifier, with: DescriptionFormatter,
-                                     using: :formatted_measurement_unit_qualifier
+  format :formatted_measurement_unit_qualifier, with: DescriptionFormatter,
+                                                using: :measurement_unit_qualifier
 
   format :duty_expression, with: DutyExpressionFormatter,
                            using: [:duty_expression_id,
