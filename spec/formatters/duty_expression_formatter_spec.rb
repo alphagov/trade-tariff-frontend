@@ -6,7 +6,7 @@ describe DutyExpressionFormatter do
     context 'for duty expression 99' do
       it 'return the measurement unit' do
         DutyExpressionFormatter.format(duty_expression_id: '99',
-                                       measurement_unit: 'abc').should == 'abc'
+                                       measurement_unit: 'abc').should eq 'abc'
       end
     end
 
@@ -15,14 +15,14 @@ describe DutyExpressionFormatter do
         it 'returns duty expression abbreviation' do
           DutyExpressionFormatter.format(duty_expression_id: '12',
                                          duty_expression_abbreviation: 'abc',
-                                         duty_expression_description: 'def').should == 'abc'
+                                         duty_expression_description: 'def').should eq 'abc'
         end
       end
 
       context 'duty expression abbreviation missing' do
         it 'returns duty expression description' do
           DutyExpressionFormatter.format(duty_expression_id: '12',
-                                         duty_expression_description: 'def').should == 'def'
+                                         duty_expression_description: 'def').should eq 'def'
         end
       end
     end

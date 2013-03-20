@@ -4,8 +4,8 @@ class DescriptionFormatter
 
     str = opts.values.first
     str.gsub!("|%", "%")
-    str.gsub!(/&(\w+|\s+)/, '&amp;\1')
     str.gsub!("|", "&nbsp;")
+    str.gsub!(/&(?!#|nbsp)/, '&amp;')
     str.gsub!("!1!", "<br />")
     str.gsub!("!X!", "&times;")
     str.gsub!("!x!", "&times;")
