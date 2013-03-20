@@ -18,6 +18,10 @@ class Search
     Outcome.new(response)
   end
 
+  def t=(t)
+    @t = t.to_s.gsub(/(\[|\])/,'')
+  end
+
   def q
     'trade_tariff'
   end
