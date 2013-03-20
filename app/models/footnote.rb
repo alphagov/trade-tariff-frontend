@@ -8,7 +8,7 @@ class Footnote
   attr_accessor :code, :description
 
   format :formatted_description, with: DescriptionFormatter,
-                                using: :description
+                                 using: :description
 
   def id
     @id ||= "#{casted_by.destination}-#{casted_by.id}-footnote-#{code}"
