@@ -73,7 +73,7 @@
 
   <td>
       <% measure.footnotes.each do |footnote| %>
-        <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => footnote.id %>&nbsp;
+        <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => footnote.id %> <br />
       <% end %>
   </td>
 </tr>
