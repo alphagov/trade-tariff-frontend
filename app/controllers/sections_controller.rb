@@ -6,7 +6,7 @@ class SectionsController < ApplicationController
   end
 
   def show
-    @section = SectionPresenter.new(Section.find(params[:id], query_params))
+    @section = Section.find(params[:id], query_params)
     @chapters = @section.chapters
   end
 end
