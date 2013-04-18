@@ -17,15 +17,15 @@ class Chapter
 
   alias :code :goods_nomenclature_item_id
 
-  def to_s
-    formatted_description.mb_chars.downcase.to_s.gsub(/^(.)/) { $1.capitalize }
-  end
-
   def short_code
     code.first(2)
   end
 
   def to_param
     short_code
+  end
+
+  def to_s
+    formatted_description.mb_chars.downcase.to_s.gsub(/^(.)/) { $1.capitalize }
   end
 end
