@@ -7,6 +7,8 @@ gem "yajl-ruby"
 gem "multi_json"
 gem "httparty"
 
+gem "redcarpet"
+
 gem "gds-api-adapters", "4.1.3"
 gem "plek", "1.3.1"
 gem "slimmer", "3.17.0"
