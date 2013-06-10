@@ -298,20 +298,28 @@ div.header-context {
   }
 }
 
+#wrapper {
+  background: #eaedef;
+  border-top: solid 1px #dee0e2;
+}
+
 @include ie(6) {
   section#content {
     width: 960px;
   }
 }
 
-.tariff header.page-header hgroup,
-.tariff .article-container {
+header.page-header hgroup,
+.article-container {
   margin-right:0;
+  max-width: 100%;
 }
 
-.tariff .article-container {
+.article-container {
   padding-bottom:em(25, 19);
   position:relative;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .tariff header.page-header hgroup{
@@ -321,18 +329,9 @@ div.header-context {
 
 .tariff header.page-header hgroup h1{
   font-size:em(24, 16);
-  padding:em(16, 24) em($top-level-padding, 24) em($top-level-padding, 24) em(73, 24);
+  padding-left: $token-space;
+  margin-left: 0;
   width:50%;
-}
-
-#wrapper.tariff header.page-header hgroup h1{
-  @include media($min-width: 1020px) {
-    background-position: 15px 15px;
-    padding-left:128px;
-  }
-
-  background-position: 0px 15px;
-  padding-left: 76px;
 }
 
 .tariff header.page-header hgroup h1 span {
@@ -541,6 +540,10 @@ article.tariff {
 
     &.relevant-links {
       clear: both;
+    }
+
+    &.search {
+      padding-bottom: 60px;
     }
   }
 }
