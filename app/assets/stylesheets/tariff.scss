@@ -1,3 +1,4 @@
+
 @import "_typography.scss";
 @import "_conditionals.scss";
 @import "_colours.scss";
@@ -540,10 +541,6 @@ article.tariff {
 
     &.relevant-links {
       clear: both;
-    }
-
-    &.search {
-      padding-bottom: 60px;
     }
   }
 }
