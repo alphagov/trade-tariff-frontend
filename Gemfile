@@ -14,7 +14,7 @@ gem "plek", "1.3.1"
 gem "slimmer", "3.17.0"
 gem "addressable"
 
-gem "unicorn", "~> 4.3.1"
+gem "unicorn", "~> 4.6.3"
 
 gem "ci_reporter"
 gem "lograge", "0.1.2"
