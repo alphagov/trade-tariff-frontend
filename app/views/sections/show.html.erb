@@ -3,9 +3,9 @@
 <article class="tariff chapters">
   <div class="inner">
     <dl>
-      <dt class="section-number">Section <%= @section.numeral %></dt>
+      <dt class="section-number">Section <%= @section.numeral %> <%= @section.title_chapters %></dt>
       <dd class="section-title">
-        <h1><%= link_to @section, sections_path, class: "js-pjax" %></h1>
+        <h1><%= link_to @section.title_without_chapters, sections_path, class: "js-pjax" %></h1>
         <!--<p class="chapters-intro">Microcopy about what chapters are goes here.</p>-->
         <dl class="tariff-fragments chapters">
         <%= render @chapters %>

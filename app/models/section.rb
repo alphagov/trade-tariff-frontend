@@ -13,6 +13,14 @@ class Section
     position
   end
 
+  def title_without_chapters
+    title.split(/\(.*\)/).first.strip
+  end
+
+  def title_chapters
+    title.match(/\(.*\)/)[0]
+  end
+
   def to_s
     title
   end
