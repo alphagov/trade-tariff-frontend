@@ -5,20 +5,34 @@ class Section
 
   collection_path "/sections"
 
-  attr_accessor :numeral, :position, :title, :chapters, :section_note
+  attr_accessor :numeral,
+                :position,
+                :title,
+                :chapters,
+                :section_note,
+                :chapter_from,
+                :chapter_to
 
   has_many :chapters
 
+  def chapter_from=(chapter_from)
+    @chapter_from = chapter_from.to_i
+  end
+
+  def chapter_to=(chapter_to)
+    @chapter_to = chapter_to.to_i
+  end
+
+  def chapters_title
+    if chapter_from == chapter_to
+      "chapter #{chapter_from}"
+    else
+      "chapters #{chapter_from} to #{chapter_to}"
+    end
+  end
+
   def to_param
     position
-  end
-
-  def title_without_chapters
-    title.split(/\(.*\)/).first.strip
-  end
-
-  def title_chapters
-    title.match(/\(.*\)/)[0]
   end
 
   def to_s

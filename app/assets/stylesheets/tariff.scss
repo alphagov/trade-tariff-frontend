@@ -775,28 +775,32 @@ dl.sections {
   dt {
     position:static;
     display:inline;
-    width:16%;
+    width: 8%;
     text-align:left;
     font-weight:normal;
   }
 
   a {
     display: block;
-    padding-left: 19%;
-    margin-left: -19%;
+    padding-left: 35%;
+    margin-left: -35%;
     position: relative;
     z-index: 1;
     zoom: 1;
   }
 }
 
-dl.sections dd {
-  width: 84%;
+dl.sections dd.title {
+  width: 74%;
   padding-left: 0px;
 
   &.hover {
-    width: 84%;
+    width: 74%;
   }
+}
+
+dl.sections dd.chapters {
+  width: 15%;
 }
 
 article.section-notes {
