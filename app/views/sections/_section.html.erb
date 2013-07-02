@@ -1,3 +1,7 @@
-<dt>Section <%= section.numeral %></dt>
-<dd class='chapters'><%= section.chapters_title %></dd>
+<dt>
+  <span class='numeral'>
+    Section <%= section.numeral %>
+  </span>
+  <%= section.chapters_title %>
+</dt>
 <dd class='title'><%= link_to section, section_path(section), class: "js-pjax", title: "Section #{section.position}" %></dd>

@@ -775,9 +775,14 @@ dl.sections {
   dt {
     position:static;
     display:inline;
-    width: 8%;
+    width: 23%;
     text-align:left;
     font-weight:normal;
+
+    span.numeral {
+      display: inline-block;
+      width: 35%;
+    }
   }
 
   a {
@@ -797,10 +802,6 @@ dl.sections dd.title {
   &.hover {
     width: 74%;
   }
-}
-
-dl.sections dd.chapters {
-  width: 15%;
 }
 
 article.section-notes {
