@@ -28,7 +28,6 @@ end
 group :development do
   gem "awesome_print"
   gem "capistrano"
-  gem "debugger"
 end
 
 group :test do
