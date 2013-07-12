@@ -687,7 +687,7 @@ dl.tariff-fragments {
   padding: 0;
 
   dt {
-    @include tariff-identifier;
+    @include tariff-identifier-tabular;
 
     &.hover {
       color: #2E8ACA;
@@ -1078,7 +1078,7 @@ ul.commodities {
         padding: 0 0.75em 0 0;
         float:right;
         background:#B5DEDB;
-        width:8.4em;
+        width:8.5em;
         text-align:right;
 
         span {
