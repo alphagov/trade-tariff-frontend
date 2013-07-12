@@ -318,8 +318,8 @@ header.page-header div,
 .article-container {
   padding-bottom:em(25, 19);
   position:relative;
-  max-width: 100%;
-  overflow: hidden;
+  max-width: 94%;
+  //overflow: hidden;
 }
 
 .tariff header.page-header div {
@@ -769,7 +769,7 @@ p.sections-intro {
 dl.sections {
   @include underlined-section-list;
   background:#fff;
-  padding-left:0.25em;
+  padding-left:0;
   padding-right:em(81, 14);
 
   dt {
@@ -962,7 +962,7 @@ ul.commodities {
   margin-bottom: 0;
   margin-left: -1px * ($token-width + $token-space);
   padding-left: px($token-padding);
-  padding-right: em($top-level-padding, 14);
+  //padding-right: em($top-level-padding, 14);
   position:relative; /* to give z-index */
 
   li {
