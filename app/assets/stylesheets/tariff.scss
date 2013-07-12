@@ -665,7 +665,7 @@ article dt {
 }
 
 article .help-notice {
-  
+
 }
 
 dl.chapters,
@@ -769,7 +769,7 @@ p.sections-intro {
 dl.sections {
   @include underlined-section-list;
   background:#fff;
-  padding-left:px($token-space);
+  padding-left:0.25em;
   padding-right:em(81, 14);
 
   dt {
