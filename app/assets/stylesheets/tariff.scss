@@ -1072,7 +1072,7 @@ ul.commodities {
       }
 
       &.identifier {
-        @include tariff-identifier;
+        @include tariff-identifier-tabular;
         font-weight:normal;
         border: 0;
         padding: 0 0.75em 0 0;
