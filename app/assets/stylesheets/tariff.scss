@@ -906,7 +906,10 @@ dl.chapter-headings {
     margin-left:0;
     margin-right:0;
     padding-left:0;
-    padding-right:0;
+    max-width: 53em;
+    border-right: 10px solid #dee0e2;
+    padding-right: 17em;
+    line-height: 1.45;
   }
 }
 
