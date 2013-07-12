@@ -183,6 +183,11 @@ $expand-arrow-space: 9 + $token-padding;
   font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+@mixin tariff-identifier-tabular {
+  color:#000;
+  font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
 @mixin tariff-identifier-reset {
   color:#333;
   font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
