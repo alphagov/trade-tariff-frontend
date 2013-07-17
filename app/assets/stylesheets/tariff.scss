@@ -104,7 +104,7 @@ $expand-arrow-space: 9 + $token-padding;
 
   ol,
   ul {
-    background-color: #C9D0D0;
+    //background-color: #C9D0D0;
     float: left;
     list-style: none;
     margin: 0;
@@ -127,7 +127,7 @@ $expand-arrow-space: 9 + $token-padding;
   }
 
   li a {
-    background-color: #E1E8E8;
+    //background-color: #E1E8E8;
     display: block;
     height: 2.25em;
     line-height: 2.25em;
@@ -137,6 +137,7 @@ $expand-arrow-space: 9 + $token-padding;
     text-align: center;
     text-decoration: underline;
     top: 0;
+    border:none;
   }
   @include ie(6) {
     li a {
