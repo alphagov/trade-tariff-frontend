@@ -58,9 +58,10 @@ $expand-arrow-space: 9 + $token-padding;
 
   caption {
     text-align:left;
-    font-size:em(19, 16);
-    padding: 0 em(30, 19) px($top-level-padding);
+    font-size: 1.5em;
     margin-bottom: 0;
+    padding: 0;
+    margin: 0 0 0.4em 0.35em;
   }
 
   th,
@@ -1200,7 +1201,7 @@ dl.tariff-fragments dd.declarable {
   p {
     font-size:em(19, 16);
     padding:0;
-    margin-left: em(40, 19);
+    
     margin-right: em(40, 19);
   }
 
