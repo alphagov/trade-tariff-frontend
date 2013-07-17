@@ -1219,11 +1219,13 @@ dl.tariff-fragments dd.declarable {
     p {
       margin-right: 0;
       margin-left: 0;
+      padding: 0 1em 0 1.75em;
     }
   }
 
   .inner .help-notice, .inner .info-notice {
-    margin: 2em -1em 0em;
+    margin: 2em 0em 0em;
+    max-width: 37em;
   }
 }
 
