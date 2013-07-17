@@ -1397,7 +1397,7 @@ article.search-results {
   }
 
   dt {
-    @include tariff-identifier;
+    @include tariff-identifier-tabular; 
 
     &.hover {
       color: #2E8ACA;
