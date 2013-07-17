@@ -505,8 +505,9 @@ article.tariff {
     font-size:1em;
     padding-left:8.4375%;
     padding-right:8.4375%;
-    margin-left:px($top-level-padding);
+    //margin-left:px($top-level-padding);
     margin-right:px($top-level-padding);
+    max-width:50em;
   }
 
   .inner {
@@ -818,8 +819,8 @@ dl.sections dd.title {
 article.section-notes {
   h2,
   p {
-    margin-left: px($token-space);
-    margin-right: px($token-space);
+    //margin-left: px($token-space);
+    //margin-right: px($token-space);
   }
 
   p {
@@ -1186,7 +1187,7 @@ dl.tariff-fragments dd.declarable {
   }
 
   .inner {
-    padding:0em 3em 1em 0.75em;
+    padding:1em 3em 1em 0.75em;
 
     p {
       margin-left:0;
