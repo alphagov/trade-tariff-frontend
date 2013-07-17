@@ -102,6 +102,12 @@ $expand-arrow-space: 9 + $token-padding;
   }
 }
 
+.get-started {
+  .button {
+    padding: 0.62em 0.5em 0.45em 0.5em;
+  }
+}
+
 .more {
   max-width: 45em;
 }
