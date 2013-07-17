@@ -105,7 +105,6 @@ $expand-arrow-space: 9 + $token-padding;
 
   ol,
   ul {
-    //background-color: #C9D0D0;
     float: left;
     list-style: none;
     margin: 0;
@@ -128,7 +127,6 @@ $expand-arrow-space: 9 + $token-padding;
   }
 
   li a {
-    //background-color: #E1E8E8;
     display: block;
     height: 2.25em;
     line-height: 2.25em;
@@ -505,7 +503,6 @@ article.tariff {
     font-size:1em;
     padding-left:8.4375%;
     padding-right:8.4375%;
-    //margin-left:px($top-level-padding);
     margin-right:px($top-level-padding);
     max-width:50em;
   }
@@ -819,8 +816,7 @@ dl.sections dd.title {
 article.section-notes {
   h2,
   p {
-    //margin-left: px($token-space);
-    //margin-right: px($token-space);
+
   }
 
   p {
@@ -968,7 +964,6 @@ ul.commodities {
   margin-bottom: 0;
   margin-left: -1px * ($token-width + $token-space);
   padding-left: px($token-padding);
-  //padding-right: em($top-level-padding, 14);
   position:relative; /* to give z-index */
 
   li {
