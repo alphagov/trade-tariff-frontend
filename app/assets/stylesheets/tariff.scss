@@ -96,6 +96,16 @@ $expand-arrow-space: 9 + $token-padding;
   }
 }
 
+.get-started-intro {
+  p {
+    max-width:35em;
+  }
+}
+
+.more {
+  max-width: 45em;
+}
+
 // the tab panes associated with these tabs require the following styles:
 // border-top:solid 1px #C9D0D0;
 
