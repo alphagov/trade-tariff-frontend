@@ -135,7 +135,7 @@ $expand-arrow-space: 9 + $token-padding;
     padding: 0 1em 0 0.75em;
     position: relative;
     text-align: center;
-    text-decoration: none;
+    text-decoration: underline;
     top: 0;
   }
   @include ie(6) {
