@@ -99,7 +99,7 @@ $expand-arrow-space: 9 + $token-padding;
 // border-top:solid 1px #C9D0D0;
 
 @mixin tabs($side-padding) {
-    padding: 0 0 0 px($side-padding);
+    padding: 0;
     position: relative;
 
   ol,
