@@ -413,6 +413,7 @@ header.page-header div,
 article table {
     @include table;
     width:106.4%; /* override for static styles */
+    margin: 0 0 2em -0.6em;
 
   th,
   td {
