@@ -45,7 +45,7 @@ end
 
 group :assets do
   gem "coffee-rails", "~> 3.2.1"
-  gem "govuk_frontend_toolkit", "0.15.0"
+  gem "govuk_frontend_toolkit", "0.32.2"
   gem "jquery-rails"
   gem "sass-rails", "~> 3.2.3"
   gem "therubyracer"
