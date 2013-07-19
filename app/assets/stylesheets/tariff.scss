@@ -433,6 +433,7 @@ article table {
   th,
   td {
     font-size:em(14, 19);
+    @include tariff-identifier-tabular;
   }
 
   .tab-content & p {
@@ -1299,6 +1300,7 @@ p.tree-controls {
 
     padding-bottom:3em;
     overflow:hidden;
+
   }
 
   .close {
