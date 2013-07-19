@@ -945,6 +945,7 @@ dl.chapter-headings {
   padding: px($token-padding) em(137, 14) 0 px($token-width + $token-space);
   line-height: (20 / 12);
   color: $grey-1;
+  max-width: none;
   @extend %contain-floats;
 
   @include ie(6) {
