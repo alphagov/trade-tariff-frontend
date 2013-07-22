@@ -793,6 +793,10 @@ dl.sections {
     z-index: 1;
     zoom: 1;
   }
+
+  dt.heading, dd.heading {
+    font-weight: 600;
+  }
 }
 
 dl.sections dd.title {
