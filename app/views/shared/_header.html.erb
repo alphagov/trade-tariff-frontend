@@ -1,10 +1,10 @@
 <header class="page-header group">
-  <hgroup>
+  <div>
     <h1>
       <span>Service</span>
       Trade Tariff
     </h1>
-  </hgroup>
+  </div>
 </header>
 
 <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}"  } do |f| %>

@@ -310,7 +310,7 @@ div.header-context {
   }
 }
 
-header.page-header hgroup,
+header.page-header div,
 .article-container {
   margin-right:0;
   max-width: 100%;
@@ -323,24 +323,24 @@ header.page-header hgroup,
   overflow: hidden;
 }
 
-.tariff header.page-header hgroup{
+.tariff header.page-header div {
   padding-bottom:0;
   padding-right:px($top-level-padding);
 }
 
-.tariff header.page-header hgroup h1{
+.tariff header.page-header div h1{
   font-size:em(24, 16);
   padding-left: $token-space;
   margin-left: 0;
   width:50%;
 }
 
-.tariff header.page-header hgroup h1 span {
+.tariff header.page-header div h1 span {
   font-size:em(14, 24);
 }
 
-.tariff header.page-header hgroup p,
-.tariff header.page-header hgroup form {
+.tariff header.page-header div p,
+.tariff header.page-header div form {
   font-size:em(14, 16);
   text-align:right;
   margin:em(-33, 14) 0 0;
@@ -353,7 +353,7 @@ header.page-header hgroup,
   }
 }
 
-.tariff header.page-header hgroup form p {
+.tariff header.page-header div form p {
   margin-top:0;
 }
 
