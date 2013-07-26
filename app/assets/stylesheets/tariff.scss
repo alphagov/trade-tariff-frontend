@@ -58,9 +58,10 @@ $expand-arrow-space: 9 + $token-padding;
 
   caption {
     text-align:left;
-    font-size:em(19, 16);
-    padding: 0 em(30, 19) px($top-level-padding);
+    font-size: 1.5em;
     margin-bottom: 0;
+    padding: 0;
+    margin: 0 0 0.4em 0.35em;
   }
 
   th,
@@ -95,16 +96,31 @@ $expand-arrow-space: 9 + $token-padding;
   }
 }
 
+.get-started-intro {
+  p {
+    max-width:35em;
+  }
+}
+
+.get-started {
+  .button {
+    padding: 0.62em 0.5em 0.45em 0.5em;
+  }
+}
+
+.more {
+  max-width: 45em;
+}
+
 // the tab panes associated with these tabs require the following styles:
 // border-top:solid 1px #C9D0D0;
 
 @mixin tabs($side-padding) {
-    padding: 0 0 0 px($side-padding);
+    padding: 0;
     position: relative;
 
   ol,
   ul {
-    background-color: #C9D0D0;
     float: left;
     list-style: none;
     margin: 0;
@@ -127,7 +143,6 @@ $expand-arrow-space: 9 + $token-padding;
   }
 
   li a {
-    background-color: #E1E8E8;
     display: block;
     height: 2.25em;
     line-height: 2.25em;
@@ -135,8 +150,9 @@ $expand-arrow-space: 9 + $token-padding;
     padding: 0 1em 0 0.75em;
     position: relative;
     text-align: center;
-    text-decoration: none;
+    text-decoration: underline;
     top: 0;
+    border:none;
   }
   @include ie(6) {
     li a {
@@ -181,6 +197,11 @@ $expand-arrow-space: 9 + $token-padding;
 @mixin tariff-identifier {
   color:#000;
   font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+@mixin tariff-identifier-tabular {
+  color:#000;
+  font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 @mixin tariff-identifier-reset {
@@ -300,8 +321,7 @@ div.header-context {
 }
 
 #wrapper {
-  background: #eaedef;
-  border-top: solid 1px #dee0e2;
+  background: #fff;
 }
 
 @include ie(6) {
@@ -319,8 +339,7 @@ header.page-header div,
 .article-container {
   padding-bottom:em(25, 19);
   position:relative;
-  max-width: 100%;
-  overflow: hidden;
+  max-width: 94%;
 }
 
 .tariff header.page-header div {
@@ -409,11 +428,12 @@ header.page-header div,
 article table {
     @include table;
     width:106.4%; /* override for static styles */
-    margin:em(32, 16) -1 * em(30, 16) 0; /* override for static styles */
+    margin: 0 0 2em -0.6em;
 
   th,
   td {
     font-size:em(14, 19);
+    @include tariff-identifier-tabular;
   }
 
   .tab-content & p {
@@ -483,6 +503,7 @@ article.tariff {
   @include ie(6) {
     height:34em;
   }
+  margin:0 0 0 2.25em;
 }
 
 .tariff {
@@ -499,8 +520,8 @@ article.tariff {
     font-size:1em;
     padding-left:8.4375%;
     padding-right:8.4375%;
-    margin-left:px($top-level-padding);
     margin-right:px($top-level-padding);
+    max-width:50em;
   }
 
   .inner {
@@ -665,7 +686,7 @@ article dt {
 }
 
 article .help-notice {
-  background-color: #eaedef;
+
 }
 
 dl.chapters,
@@ -682,7 +703,7 @@ dl.tariff-fragments {
   padding: 0;
 
   dt {
-    @include tariff-identifier;
+    @include tariff-identifier-tabular;
 
     &.hover {
       color: #2E8ACA;
@@ -769,7 +790,7 @@ p.sections-intro {
 dl.sections {
   @include underlined-section-list;
   background:#fff;
-  padding-left:px($token-space);
+  padding-left:0;
   padding-right:em(81, 14);
 
   dt {
@@ -812,8 +833,7 @@ dl.sections dd.title {
 article.section-notes {
   h2,
   p {
-    margin-left: px($token-space);
-    margin-right: px($token-space);
+
   }
 
   p {
@@ -872,7 +892,7 @@ dl.chapter-headings {
   }
 }
 .chapter-notes {
-  padding:0 px($top-level-padding) 0;
+  
   width:auto;
   font-size:1em; /* 14px */
 
@@ -906,7 +926,9 @@ dl.chapter-headings {
     margin-left:0;
     margin-right:0;
     padding-left:0;
-    padding-right:0;
+    max-width: 50em;
+    padding-right: 17em;
+    line-height: 1.45;
   }
 }
 
@@ -923,6 +945,7 @@ dl.chapter-headings {
   padding: px($token-padding) em(137, 14) 0 px($token-width + $token-space);
   line-height: (20 / 12);
   color: $grey-1;
+  max-width: none;
   @extend %contain-floats;
 
   @include ie(6) {
@@ -947,7 +970,7 @@ dl.chapter-headings {
     &.code {
       float: right;
       width: 8em;
-      margin-right: -8em;
+      margin-right: -8.9em;
     }
   }
 }
@@ -959,7 +982,6 @@ ul.commodities {
   margin-bottom: 0;
   margin-left: -1px * ($token-width + $token-space);
   padding-left: px($token-padding);
-  padding-right: em($top-level-padding, 14);
   position:relative; /* to give z-index */
 
   li {
@@ -1065,13 +1087,13 @@ ul.commodities {
       }
 
       &.identifier {
-        @include tariff-identifier;
+        @include tariff-identifier-tabular;
         font-weight:normal;
         border: 0;
-        padding: 0 em(7, 14) 0 0;
+        padding: 0 0.75em 0 0;
         float:right;
         background:#B5DEDB;
-        width:8.6em;
+        width:8.5em;
         text-align:right;
 
         span {
@@ -1178,7 +1200,7 @@ dl.tariff-fragments dd.declarable {
   }
 
   .inner {
-    padding:0em 2.5em 1em;
+    padding:1em 3em 1em 0.75em;
 
     p {
       margin-left:0;
@@ -1193,7 +1215,7 @@ dl.tariff-fragments dd.declarable {
   p {
     font-size:em(19, 16);
     padding:0;
-    margin-left: em(40, 19);
+    
     margin-right: em(40, 19);
   }
 
@@ -1212,11 +1234,13 @@ dl.tariff-fragments dd.declarable {
     p {
       margin-right: 0;
       margin-left: 0;
+      padding: 0 1em 0 1.75em;
     }
   }
 
   .inner .help-notice, .inner .info-notice {
-    margin: 2em -1em 0em;
+    margin: 2em 0em 0em;
+    max-width: 37em;
   }
 }
 
@@ -1277,6 +1301,7 @@ p.tree-controls {
 
     padding-bottom:3em;
     overflow:hidden;
+
   }
 
   .close {
@@ -1322,10 +1347,10 @@ article.search-results {
 }
 
 h1.search-heading {
-  background: $top-section-blue;
   color:#000;
-  font-size:1em;
-  font-weight:normal;
+  font-size:1.25em;
+  font-weight:bold;
+  margin-left: 1.1em;
 }
 
 article.search-results {
@@ -1391,7 +1416,7 @@ article.search-results {
   }
 
   dt {
-    @include tariff-identifier;
+    @include tariff-identifier-tabular; 
 
     &.hover {
       color: #2E8ACA;
