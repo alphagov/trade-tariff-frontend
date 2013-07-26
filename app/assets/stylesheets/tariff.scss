@@ -433,6 +433,17 @@ article table {
   th,
   td {
     font-size:em(14, 19);
+  }
+
+  td.numerical {
+    @include tariff-identifier-tabular;
+  }
+
+  td span.numerical {
+    @include tariff-identifier-tabular;
+  }
+
+  td a.numerical{
     @include tariff-identifier-tabular;
   }
 
@@ -892,7 +903,7 @@ dl.chapter-headings {
   }
 }
 .chapter-notes {
-  
+
   width:auto;
   font-size:1em; /* 14px */
 
@@ -1215,7 +1226,7 @@ dl.tariff-fragments dd.declarable {
   p {
     font-size:em(19, 16);
     padding:0;
-    
+
     margin-right: em(40, 19);
   }
 
@@ -1416,7 +1427,7 @@ article.search-results {
   }
 
   dt {
-    @include tariff-identifier-tabular; 
+    @include tariff-identifier-tabular;
 
     &.hover {
       color: #2E8ACA;
@@ -1530,6 +1541,7 @@ article.search-results {
 
 .tariff{
   a.suspended{
+    font-family:"NTA", "Helvetica Neue", Arial, Helvetica, sans-serif;
     color: #f47738;
   }
   a.suspended:hover{

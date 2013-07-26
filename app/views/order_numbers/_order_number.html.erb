@@ -1,4 +1,4 @@
-Order No: <%= link_to order_number.number, "##{order_number.id}", class: 'reference', title: 'Opens in a popup', 'data-popup-ref' => "#{order_number.id}" %>&nbsp;
+Order No: <%= link_to order_number.number, "##{order_number.id}", class: 'reference numerical', title: 'Opens in a popup', 'data-popup-ref' => "#{order_number.id}" %>&nbsp;
 <div class='popup hidden' data-popup='<%= order_number.id %>'>
   <article>
     <% if order_number.has_definition? %>
@@ -7,15 +7,15 @@ Order No: <%= link_to order_number.number, "##{order_number.id}", class: 'refere
         <tbody>
           <tr>
             <td>Order Number</td>
-            <td><%= order_number.number %></td>
+            <td class="numerical"><%= order_number.number %></td>
           </tr>
           <tr>
             <td>Balance</td>
-            <td><%= order_number.definition.balance %></td>
+            <td class="numerical"><%= order_number.definition.balance %></td>
           </tr>
           <tr>
             <td>Initial amount</td>
-            <td><%= order_number.definition.initial_volume %></td>
+            <td class="numerical"><%= order_number.definition.initial_volume %></td>
           </tr>
           <tr>
             <td>Status</td>
@@ -27,31 +27,31 @@ Order No: <%= link_to order_number.number, "##{order_number.id}", class: 'refere
           </tr>
           <tr>
             <td>Start date</td>
-            <td><%= order_number.definition.validity_start_date.to_formatted_s(:date) %></td>
+            <td class="numerical"><%= order_number.definition.validity_start_date.to_formatted_s(:date) %></td>
           </tr>
           <tr>
             <td>End date</td>
-            <td><%= order_number.definition.validity_end_date.to_formatted_s(:date) %></td>
+            <td class="numerical"><%= order_number.definition.validity_end_date.to_formatted_s(:date) %></td>
           </tr>
           <tr>
             <td>Suspension period start</td>
-            <td><%= order_number.definition.suspension_period_start_date.to_formatted_s(:full) %></td>
+            <td class="numerical"><%= order_number.definition.suspension_period_start_date.to_formatted_s(:full) %></td>
           </tr>
           <tr>
             <td>Suspension period end</td>
-            <td><%= order_number.definition.suspension_period_end_date.to_formatted_s(:full) %></td>
+            <td class="numerical"><%= order_number.definition.suspension_period_end_date.to_formatted_s(:full) %></td>
           </tr>
           <tr>
             <td>Blocking period start</td>
-            <td><%= order_number.definition.blocking_period_start_date.to_formatted_s(:full) %></td>
+            <td class="numerical"><%= order_number.definition.blocking_period_start_date.to_formatted_s(:full) %></td>
           </tr>
           <tr>
             <td>Blocking period end</td>
-            <td><%= order_number.definition.blocking_period_end_date.to_formatted_s(:full) %></td>
+            <td class="numerical"><%= order_number.definition.blocking_period_end_date.to_formatted_s(:full) %></td>
           </tr>
           <tr>
             <td>Last allocation date</td>
-            <td><%= order_number.definition.last_allocation_date.to_formatted_s(:full) %></td>
+            <td class="numerical"><%= order_number.definition.last_allocation_date.to_formatted_s(:full) %></td>
           </tr>
         </tbody>
       </table>

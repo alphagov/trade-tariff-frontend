@@ -30,7 +30,7 @@
     <% end %>
   </td>
 
-  <td>
+  <td class="numerical">
     <%= measure.effective_start_date %><% if measure.effective_end_date.present? %>&nbsp;-&nbsp;<%= measure.effective_end_date %><% end %>
     <% if measure.suspension_legal_act.present? %>
       <br />
@@ -42,7 +42,7 @@
       </a>
     <% end %>
   </td>
-  <td>
+  <td class="numerical">
     <%= measure.duty_expression %>
 
     <% if measure.excise? && declarable.national_measurement_units.any? %>
@@ -51,7 +51,7 @@
     <% end %>
   </td>
 
-  <td>
+  <td class="numerical">
     <% if measure.additional_code.present? %>
       <%= link_to measure.additional_code,  "##{measure.additional_code.id}", class: 'reference', 'data-popup-ref' => "#{measure.additional_code.id}" %>
     <% end %>
@@ -65,13 +65,13 @@
 
   <td><%= measure.excluded_country_list %></td>
 
-  <td>
+  <td class="numerical">
     <% if measure.legal_act.present? %>
       <%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external' %>
     <% end %>
   </td>
 
-  <td>
+  <td class="numerical">
       <% measure.footnotes.each do |footnote| %>
         <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => footnote.id %> <br />
       <% end %>

@@ -1,6 +1,6 @@
 <tr>
   <td><%= measure_condition.condition %></td>
-  <td><%= measure_condition.document_code %></td>
+  <td class="numerical"><%= measure_condition.document_code %></td>
   <td>
     <% if measure_condition.has_document_based_requirement? %>
       <%= measure_condition.requirement %>
@@ -18,7 +18,7 @@
     <% end %>
   </td>
   <td><%= measure_condition.action %></td>
-  <td>
+  <td class="numerical">
     <%= raw measure_condition.duty_expression %>
   </td>
 </tr>
