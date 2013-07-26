@@ -775,7 +775,7 @@ dl.sections {
   dt {
     position:static;
     display:inline;
-    width: 15%;
+    width: 20%;
     text-align:left;
     font-weight:normal;
 
@@ -787,8 +787,8 @@ dl.sections {
 
   a {
     display: block;
-    padding-left: 15%;
-    margin-left: -15%;
+    padding-left: 20%;
+    margin-left: -20%;
     position: relative;
     z-index: 1;
     zoom: 1;
@@ -801,11 +801,11 @@ dl.sections {
 }
 
 dl.sections dd.title {
-  width: 85%;
+  width: 80%;
   padding-left: 0px;
 
   &.hover {
-    width: 85%;
+    width: 80%;
   }
 }
 
