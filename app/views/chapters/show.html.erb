@@ -19,7 +19,7 @@
       <article class="chapter-notes">
         <h2>Chapter notes</h2>
 
-        <%= simple_format @chapter.chapter_note %>
+        <%= markdown(@chapter.chapter_note) %>
       </article>
     <% end %>
     </div>
