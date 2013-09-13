@@ -34,6 +34,10 @@ class DeclarablePresenter
     MEURSING_TOOL_LINK % { date: date, commodity_code: declarable.code }
   end
 
+  def self.model_name
+    name.chomp("Presenter").constantize.model_name
+  end
+
   private
 
   def method_missing(*args, &block)

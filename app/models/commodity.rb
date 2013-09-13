@@ -1,8 +1,10 @@
 require 'api_entity'
 require 'formatter'
 require 'declarable'
+require 'changeable'
 
 class Commodity
+  include Models::Changeable
   include Models::Declarable
 
   attr_accessor :parent_sid

@@ -771,6 +771,11 @@ article dd {
     .js-enabled & dl a {
       padding-left: px($token-padding);
       margin-left: px($token-padding) * -1;
+
+      &.feed {
+        padding-left: 25px;
+        height: 20px;
+      }
     }
 
     .js-enabled & dl a.hover {
@@ -1632,4 +1637,9 @@ article.search-results {
       padding:$top-level-padding;
     }
   }
+}
+
+.feed {
+  display: inline-block;
+  background: image-url('feed-icon-black.png') 12% 40% no-repeat;
 }

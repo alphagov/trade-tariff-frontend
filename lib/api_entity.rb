@@ -21,6 +21,10 @@ module ApiEntity
     attr_accessor :casted_by
 
     class_eval do
+      def resource_path
+        "/#{self.class.name.underscore.pluralize}/#{to_param}"
+      end
+
       def to_param
         id
       end

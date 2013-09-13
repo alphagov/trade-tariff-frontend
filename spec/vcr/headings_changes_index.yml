@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/headings/0101?as_of=2013-09-13
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Sep 2013 13:17:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1627'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"351f099f0a1a4d2391b622ce50af9443"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b835abc4e68ead3b4863d8b80346418d
+      X-Runtime:
+      - '0.177045'
+    body:
+      encoding: UTF-8
+      string: '{"goods_nomenclature_item_id":"0101000000","description":"Live horses,
+        asses, mules and hinnies","bti_url":"http://ec.europa.eu/taxation_customs/dds2/ebti/ebti_consultation.jsp?Lang=en&nomenc=0101000000&Expand=true","chapter":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS"},"section":{"title":"Live animals; animal products","numeral":"I","position":1},"commodities":[{"producline_suffix":"10","description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101210000","leaf":false,"goods_nomenclature_sid":93797,"parent_sid":null},{"producline_suffix":"80","description":"Pure-bred
+        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101210000","leaf":true,"goods_nomenclature_sid":93796,"parent_sid":93797},{"producline_suffix":"80","description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"goods_nomenclature_sid":93798,"parent_sid":93797},{"producline_suffix":"80","description":"For
+        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"goods_nomenclature_sid":93799,"parent_sid":93798},{"producline_suffix":"80","description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"goods_nomenclature_sid":93800,"parent_sid":93798},{"producline_suffix":"80","description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"goods_nomenclature_sid":93801,"parent_sid":null},{"producline_suffix":"80","description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"goods_nomenclature_sid":72763,"parent_sid":null}]}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2013 13:17:14 GMT
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/headings/0101/changes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Sep 2013 13:17:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3261'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"24d808706de305f85afe06554a49ea96"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 6bf5895824b540b738be39ce8f6faf34
+      X-Runtime:
+      - '0.230932'
+    body:
+      encoding: UTF-8
+      string: '[{"oid":2212902,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307234,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212878,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307222,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2213391,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286146,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212947,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286168,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2213392,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307479,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212948,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307257,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2201057,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-295465,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"VAT
+        standard rate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2201109,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-295517,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"VAT
+        standard rate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212901,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286134,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212877,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286142,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}}]'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2013 13:17:19 GMT
+recorded_with: VCR 2.5.0

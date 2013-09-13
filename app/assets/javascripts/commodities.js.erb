@@ -165,6 +165,28 @@ GOVUK.tariff = {
             }
         }
     },
+    tabLinkFocuser:{
+        /**
+          @name GOVUK.tariff.tabLinkFocuser.initialize
+          @function
+          @description opens relevant tab and focuses on element inside its content
+          @param {String} context Element in which to add behaviours
+        */
+        initialize : function (context) {
+            var hash = window.location.hash,
+                pattern = /^#(import|export)\-(measure)\-(\d+)$/;
+
+            if (hash.match(pattern)) {
+              var matches = hash.match(pattern),
+                  tabId = 'tab-' + matches[1],
+                  entity = matches[2],
+                  entityId = matches[3];
+
+                  $('#' + tabId + ' a').trigger('click');
+                  $('#' + entity + '-' + entityId).focus();
+            }
+        }
+    },
     /**
       @name GOVUK.tariff.tablePopup
       @object
@@ -454,6 +476,7 @@ GOVUK.tariff = {
         this.tree.initialize(context);
         this.tabs.initialize(context);
         this.tablePopup.initialize(context);
+        this.tabLinkFocuser.initialize(context);
         this.hovers.init(context);
     },
     /**
