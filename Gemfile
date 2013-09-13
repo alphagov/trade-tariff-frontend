@@ -7,7 +7,7 @@ gem "yajl-ruby"
 gem "multi_json"
 gem "httparty"
 
-gem "kaminari"
+gem "redcarpet"
 
 gem "gds-api-adapters", "4.1.3"
 gem "plek", "1.3.1"
@@ -26,7 +26,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "awesome_print"
   gem "capistrano"
 end
 

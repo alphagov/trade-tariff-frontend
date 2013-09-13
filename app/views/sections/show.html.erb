@@ -17,7 +17,7 @@
     <article class='section-notes'>
       <h2>Section notes</h2>
 
-      <%= simple_format @section.section_note %>
+      <%= markdown(@section.section_note) %>
     </article>
   <% end %>
 </article>
