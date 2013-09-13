@@ -6,13 +6,13 @@ TradeTariffFrontend::Application.routes.draw do
 
     resources :sections, only: [:index, :show]
     resources :chapters, only: [:index, :show] do
-      member { get :changes }
+      resources :changes, only: [:index], module: 'chapters'
     end
     resources :headings, only: [:index, :show] do
-      member { get :changes }
+      resources :changes, only: [:index], module: 'headings'
     end
     resources :commodities, only: [:index, :show] do
-      member { get :changes }
+      resources :changes, only: [:index], module: 'commodities'
     end
 
     resources :changes
