@@ -6,6 +6,7 @@ gem "rails", "3.2.14"
 gem "yajl-ruby"
 gem "multi_json"
 gem "httparty"
+gem "hashie"
 
 gem "redcarpet"
 

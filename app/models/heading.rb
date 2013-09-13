@@ -58,4 +58,10 @@ class Heading
   def to_s
     formatted_description
   end
+
+  def changes
+    self.class.get("#{resource_path}/changes").map { | change_data|
+      Change.new(change_data)
+    }
+  end
 end

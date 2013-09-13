@@ -28,4 +28,10 @@ class Chapter
   def to_s
     formatted_description.mb_chars.downcase.to_s.gsub(/^(.)/) { $1.capitalize }
   end
+
+  def changes
+    self.class.get("#{resource_path}/changes").map { | change_data|
+      Change.new(change_data)
+    }
+  end
 end
