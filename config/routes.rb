@@ -14,8 +14,6 @@ TradeTariffFrontend::Application.routes.draw do
     resources :commodities, only: [:index, :show] do
       resources :changes, only: [:index], module: 'commodities'
     end
-
-    resources :changes
   end
 
   root :to => redirect("/#{APP_SLUG}", :status => 302)

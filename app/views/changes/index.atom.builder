@@ -6,7 +6,7 @@ atom_feed do |feed|
     feed.entry(
       change,
       id: "tag:#{request.host},2005:Change/#{change.id}",
-      url: chapter_url(id: changeable.goods_nomenclature_item_id, anchor: change.anchor_link)
+      url: change_url(anchor: change.anchor_link)
     ) do |entry|
       entry.title(change.title)
       entry.content(change.content)

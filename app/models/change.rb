@@ -21,6 +21,10 @@ class Change
     @operation_date = Date.parse(operation_date)
   end
 
+  def change_url(changeable)
+    "/"
+  end
+
   private
 
   def record_class
