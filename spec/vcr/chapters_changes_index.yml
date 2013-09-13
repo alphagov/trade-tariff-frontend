@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=2013-09-13
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Sep 2013 13:18:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1185'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"9ece0643ff9f5696b738f73299cd3996"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8ffde41dfc4f45f0a6c6a2002bc5077b
+      X-Runtime:
+      - '0.173666'
+    body:
+      encoding: UTF-8
+      string: '{"goods_nomenclature_item_id":"0100000000","description":"LIVE ANIMALS","chapter_note_id":null,"headings":[{"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
+        horses, asses, mules and hinnies","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0102000000","declarable":false,"description":"Live
+        bovine animals","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0103000000","declarable":false,"description":"Live
+        swine","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0104000000","declarable":false,"description":"Live
+        sheep and goats","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0105000000","declarable":false,"description":"Live
+        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
+        turkeys and guinea fowls","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0106000000","declarable":false,"description":"Other
+        live animals","producline_suffix":"80","leaf":true,"children":[]}],"section":{"title":"Live
+        animals; animal products","position":1,"numeral":"I"}}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2013 13:18:15 GMT
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/chapters/01/changes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Sep 2013 13:18:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3261'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"f0bea019f397b36216e34eeaf20f620e"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 38e90b3f74e4c9e0fc704e272f835cfb
+      X-Runtime:
+      - '0.258184'
+    body:
+      encoding: UTF-8
+      string: '[{"oid":2213392,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307479,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212948,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307257,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2201057,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-295465,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"VAT
+        standard rate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2201109,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-295517,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"VAT
+        standard rate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212901,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286134,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212877,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286142,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212902,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307234,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212878,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307222,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2213391,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286146,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Animal
+        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}},{"oid":2212947,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286168,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Common
+        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
+        OMNES"}}}]'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2013 13:18:20 GMT
+recorded_with: VCR 2.5.0

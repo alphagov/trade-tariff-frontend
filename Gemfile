@@ -6,6 +6,7 @@ gem "rails", "3.2.14"
 gem "yajl-ruby"
 gem "multi_json"
 gem "httparty"
+gem "hashie"
 
 gem "redcarpet"
 
@@ -31,7 +32,7 @@ end
 
 group :test do
   gem "brakeman", "~> 1.7.0"
-  gem "webmock"
+  gem "webmock", "~> 1.11.0"
   gem "factory_girl_rails"
   gem "forgery"
   gem "shoulda-matchers"

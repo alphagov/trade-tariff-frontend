@@ -1,8 +1,10 @@
 require 'api_entity'
 require 'formatter'
+require 'changeable'
 
 class Chapter
   include ApiEntity
+  include Models::Changeable
   include Models::Formatter
 
   attr_accessor :description, :headings, :goods_nomenclature_item_id, :chapter_note
