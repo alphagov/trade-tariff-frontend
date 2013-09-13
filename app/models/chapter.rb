@@ -1,8 +1,10 @@
 require 'api_entity'
 require 'formatter'
+require 'changeable'
 
 class Chapter
   include ApiEntity
+  include Models::Changeable
   include Models::Formatter
 
   attr_accessor :description, :headings, :goods_nomenclature_item_id, :chapter_note
@@ -27,11 +29,5 @@ class Chapter
 
   def to_s
     formatted_description.mb_chars.downcase.to_s.gsub(/^(.)/) { $1.capitalize }
-  end
-
-  def changes
-    self.class.get("#{resource_path}/changes").map { | change_data|
-      Change.new(change_data)
-    }
   end
 end

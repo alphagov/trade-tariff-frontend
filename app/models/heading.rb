@@ -1,8 +1,10 @@
 require 'api_entity'
 require 'formatter'
 require 'declarable'
+require 'changeable'
 
 class Heading
+  include Models::Changeable
   include Models::Declarable
 
   has_many :commodities, class_name: 'Commodity'
@@ -57,11 +59,5 @@ class Heading
 
   def to_s
     formatted_description
-  end
-
-  def changes
-    self.class.get("#{resource_path}/changes").map { | change_data|
-      Change.new(change_data)
-    }
   end
 end

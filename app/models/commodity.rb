@@ -1,8 +1,10 @@
 require 'api_entity'
 require 'formatter'
 require 'declarable'
+require 'changeable'
 
 class Commodity
+  include Models::Changeable
   include Models::Declarable
 
   attr_accessor :parent_sid
@@ -80,11 +82,5 @@ class Commodity
     else
       false
     end
-  end
-
-  def changes
-    self.class.get("#{resource_path}/changes").map { | change_data|
-      Change.new(change_data)
-    }
   end
 end
