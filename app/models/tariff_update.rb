@@ -3,7 +3,7 @@ require 'api_entity'
 class TariffUpdate
   include ApiEntity
 
-  collection_path "/updates"
+  collection_path "/updates/latest"
 
   attr_accessor :update_type, :state, :created_at, :updated_at, :filename
 
