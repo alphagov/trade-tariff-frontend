@@ -6,7 +6,9 @@ module ApplicationHelper
   private
 
   def markdown_renderer
-    @note_renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::XHTML,
+    renderer = Redcarpet::Render::XHTML.new(filter_html: true)
+
+    @note_renderer ||= Redcarpet::Markdown.new(renderer,
                                                autolink: true,
                                                space_after_headers: true,
                                                tables: true,
