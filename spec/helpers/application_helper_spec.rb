@@ -13,8 +13,16 @@ describe ApplicationHelper do
     context 'string contains HTML code' do
       let(:markdown_string) { '<b class="class">abc</b>' }
 
-      it 'HTML entities are escaped' do
+      it 'HTML entities are filtered' do
         helper.markdown(markdown_string).strip.should eq '<p>abc</p>'
+      end
+    end
+
+    context 'string contains Javascript code' do
+      let(:markdown_string) { "<script type='text/javascript'>alert('hello');</script>" }
+
+      it '<script> tags are filtered, quotes are escaped' do
+        helper.markdown(markdown_string).strip.should eq "<p>alert(&#39;hello&#39;);</p>"
       end
     end
   end
