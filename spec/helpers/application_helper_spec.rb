@@ -10,14 +10,6 @@ describe ApplicationHelper do
       end
     end
 
-    context 'string contains HTML code' do
-      let(:string) { '<b class="class">abc</b>' }
-
-      it 'HTML entities are filtered' do
-        helper.govspeak(string).strip.should eq '<p>abc</p>'
-      end
-    end
-
     context 'string contains Javascript code' do
       let(:string) { "<script type='text/javascript'>alert('hello');</script>" }
 
