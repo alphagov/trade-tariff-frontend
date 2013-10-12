@@ -8,7 +8,7 @@ gem "multi_json"
 gem "httparty"
 gem "hashie"
 
-gem "govspeak", "~> 0.8.9"
+gem "govspeak", "1.2.3"
 
 gem "gds-api-adapters", "4.1.3"
 gem "plek", "1.3.1"
