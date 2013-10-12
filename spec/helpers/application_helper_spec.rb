@@ -13,8 +13,8 @@ describe ApplicationHelper do
     context 'string contains Javascript code' do
       let(:string) { "<script type='text/javascript'>alert('hello');</script>" }
 
-      it '<script> tags are filtered, quotes are escaped' do
-        helper.govspeak(string).strip.should eq "<p>alert(&#39;hello&#39;);</p>"
+      it '<script> tags are filtered' do
+        helper.govspeak(string).strip.should eq "alert('hello');"
       end
     end
   end
