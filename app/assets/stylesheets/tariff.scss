@@ -846,18 +846,6 @@ dl.sections dd.title {
   }
 }
 
-article.section-notes {
-  h2,
-  p {
-
-  }
-
-  p {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
 /* chapters and chapter headings */
 
 article.chapters dt {
@@ -907,7 +895,7 @@ dl.chapter-headings {
     border-top:none;
   }
 }
-.chapter-notes {
+.section-notes, .chapter-notes {
 
   width:auto;
   font-size:1em; /* 14px */
