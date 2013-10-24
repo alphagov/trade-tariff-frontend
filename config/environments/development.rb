@@ -36,5 +36,5 @@ TradeTariffFrontend::Application.configure do
   config.assets.debug = true
 
   # Host for Trade Tariff API endpoint
-  config.api_host = "http://tariff-api.dev.gov.uk"
+  config.api_host = ENV["TARIFF_API_HOST"] || "http://tariff-api.dev.gov.uk"
 end

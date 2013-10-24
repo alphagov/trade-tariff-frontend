@@ -1,43 +1,60 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=2012-10-22
-    body: 
+    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=2013-10-28
+    body:
       encoding: US-ASCII
-      string: ""
+      string: ''
     headers: {}
-
-  response: 
-    status: 
+  response:
+    status:
       code: 200
-      message: OK
-    headers: 
-      Server: 
+      message: 'OK '
+    headers:
+      Server:
       - nginx
-      Date: 
-      - Mon, 22 Oct 2012 10:37:04 GMT
-      Content-Type: 
+      Date:
+      - Mon, 28 Oct 2013 13:16:41 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding: 
-      - chunked
-      Connection: 
+      Content-Length:
+      - '2294'
+      Connection:
       - close
-      Status: 
-      - 200 OK
-      X-Ua-Compatible: 
+      X-Ua-Compatible:
       - IE=Edge
-      Etag: 
-      - "\"23b75ff7cb4b8989692603c14aa51652\""
-      Cache-Control: 
+      Etag:
+      - '"d007f9dabd4ed846beb1feb4bbe373b3"'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id: 
-      - a077169e4dfbb8b2911b92db9d1dbb60
-      X-Runtime: 
-      - "0.917348"
-    body: 
-      encoding: US-ASCII
-      string: "{\"goods_nomenclature_item_id\":\"0100000000\",\"description\":\"LIVE ANIMALS\",\"chapter_note\":\" 1. This chapter covers all live animals except:\\n(a) fish and crustaceans, molluscs and other aquatic invertebrates, of heading 0301, 0306, 0307 or 0308;\\n(b) cultures of micro-organisms and other products of heading 3002; and\\n(c) animals of heading 9508.\",\"headings\":[{\"goods_nomenclature_item_id\":\"0101000000\",\"declarable\":false,\"description\":\"Live horses, asses, mules and hinnies\",\"producline_suffix\":\"80\",\"leaf\":true,\"children\":[]},{\"goods_nomenclature_item_id\":\"0102000000\",\"declarable\":false,\"description\":\"Live bovine animals\",\"producline_suffix\":\"80\",\"leaf\":true,\"children\":[]},{\"goods_nomenclature_item_id\":\"0103000000\",\"declarable\":false,\"description\":\"Live swine\",\"producline_suffix\":\"80\",\"leaf\":true,\"children\":[]},{\"goods_nomenclature_item_id\":\"0104000000\",\"declarable\":false,\"description\":\"Live sheep and goats\",\"producline_suffix\":\"80\",\"leaf\":true,\"children\":[]},{\"goods_nomenclature_item_id\":\"0105000000\",\"declarable\":false,\"description\":\"Live poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese, turkeys and guinea fowls\",\"producline_suffix\":\"80\",\"leaf\":true,\"children\":[]},{\"goods_nomenclature_item_id\":\"0106000000\",\"declarable\":false,\"description\":\"Other live animals\",\"producline_suffix\":\"80\",\"leaf\":true,\"children\":[]}],\"section\":{\"title\":\"Live animals; animal products (chapters 1 to 5)\",\"position\":1,\"numeral\":\"I\"}}"
+      X-Request-Id:
+      - a6a3bcc932db13103be4e2a2fd14d63f
+      X-Runtime:
+      - '0.623733'
+    body:
+      encoding: UTF-8
+      string: '{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS","formatted_description":"Live animals","chapter_note_id":98,"section_id":1,"chapter_note":"abc!!!!!!!dd!!!\r\n\r\n!d!ddd!!w!!ddd!\r\n\r\n\r\n\r\n\r\n\r\n!\r\n!\r\n!\r\n!\r\n\r\nx
+        x x","headings":[{"goods_nomenclature_sid":27624,"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
+        horses, asses, mules and hinnies","producline_suffix":"80","leaf":true,"description_plain":"Live
+        horses, asses, mules and hinnies","formatted_description":"Live horses, asses,
+        mules and hinnies","children":[]},{"goods_nomenclature_sid":27633,"goods_nomenclature_item_id":"0102000000","declarable":false,"description":"Live
+        bovine animals","producline_suffix":"80","leaf":true,"description_plain":"Live
+        bovine animals","formatted_description":"Live bovine animals","children":[]},{"goods_nomenclature_sid":27762,"goods_nomenclature_item_id":"0103000000","declarable":false,"description":"Live
+        swine","producline_suffix":"80","leaf":true,"description_plain":"Live swine","formatted_description":"Live
+        swine","children":[]},{"goods_nomenclature_sid":27773,"goods_nomenclature_item_id":"0104000000","declarable":false,"description":"Live
+        sheep and goats","producline_suffix":"80","leaf":true,"description_plain":"Live
+        sheep and goats","formatted_description":"Live sheep and goats","children":[]},{"goods_nomenclature_sid":27783,"goods_nomenclature_item_id":"0105000000","declarable":false,"description":"Live
+        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
+        turkeys and guinea fowls","producline_suffix":"80","leaf":true,"description_plain":"Live
+        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
+        turkeys and guinea fowls","formatted_description":"Live poultry, that is to
+        say, fowls of the species Gallus domesticus, ducks, geese, turkeys and guinea
+        fowls","children":[]},{"goods_nomenclature_sid":27802,"goods_nomenclature_item_id":"0106000000","declarable":false,"description":"Other
+        live animals","producline_suffix":"80","leaf":true,"description_plain":"Other
+        live animals","formatted_description":"Other live animals","children":[]}],"section":{"id":1,"title":"Live
+        animals; animal products","position":1,"numeral":"I"}}'
     http_version: 
-  recorded_at: Mon, 22 Oct 2012 10:37:04 GMT
-recorded_with: VCR 2.2.5
+  recorded_at: Mon, 28 Oct 2013 13:16:41 GMT
+recorded_with: VCR 2.5.0

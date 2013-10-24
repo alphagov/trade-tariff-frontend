@@ -23,16 +23,16 @@
       <h1 class="visuallyhidden">Overview</h1>
       <h2>Import</h2>
       <p>The commodity code for importing is <em><%= declarable.code %></em>.</p>
-      <% if declarable.third_country_duty_rate.present? %>
-        <p>Importing from outside the EU is subject to a third country duty of <em><%= declarable.third_country_duty_rate %></em>.</p>
+      <% if declarable.basic_duty_rate.present? %>
+        <p>Importing from outside the EU is subject to a third country duty of <em><%= declarable.basic_duty_rate %></em>.</p>
       <% else %>
         <p>Importing from outside the EU is subject to <em>variable</em> third country duty.</p>
       <% end %>
       <% declarable.import_measures.vat.national.each do |measure| %>
-        <p>Goods are subject to <%= measure.measure_type_description %>.</p>
+        <p>Goods are subject to <%= measure.measure_type.description %>.</p>
       <% end %>
 
-      <% if declarable.display_meursing_table? %>
+      <% if declarable.meursing_code? %>
         <h1>Find meursing code</h1>
         <p><%= link_to "Find the meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> for this commodity. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
       <% end %>

@@ -5,7 +5,7 @@ class GeographicalArea
 
   collection_path "/geographical_areas/countries"
 
-  attr_accessor :geographical_area_id, :description
+  attr_accessor :id, :description
 
   has_many :children_geographical_areas, class_name: 'GeographicalArea'
 
@@ -22,10 +22,6 @@ class GeographicalArea
 
   def description
     attributes['description'].presence || ''
-  end
-
-  def id
-    geographical_area_id
   end
 
   def to_s

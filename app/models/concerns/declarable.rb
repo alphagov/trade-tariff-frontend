@@ -4,7 +4,6 @@ module Models
 
     included do
       include ApiEntity
-      include Models::Formatter
 
       has_one :section
       has_one :chapter
@@ -13,18 +12,18 @@ module Models
                                  wrapper: MeasureCollection
       has_many :export_measures, class_name: 'Measure',
                                  wrapper: MeasureCollection
-      has_many :basic_duty_rate_components, class_name: 'MeasureComponent'
-      has_many :national_measurement_units, class_name: 'NationalMeasurementUnit'
 
-      attr_accessor :description, :goods_nomenclature_item_id, :producline_suffix, :number_indents, :goods_nomenclature_sid, :bti_url
-
-      format :description_plain, with: DescriptionTrimFormatter,
-                                 using: :description
-      format :formatted_description, with: DescriptionFormatter,
-                                     using: :description
+      attr_accessor :description, :goods_nomenclature_item_id,
+                    :number_indents, :goods_nomenclature_sid, :bti_url, :description_plain,
+                    :formatted_description, :consigned, :consigned_from, :basic_duty_rate,
+                    :meursing_code
 
       delegate :numeral, to: :section, prefix: true
       delegate :code, :short_code, to: :chapter, prefix: true
+    end
+
+    def meursing_code?
+      meursing_code
     end
 
     def code

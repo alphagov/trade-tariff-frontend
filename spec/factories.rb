@@ -8,37 +8,49 @@ FactoryGirl.define do
     section
     description { Forgery(:basic).text }
     goods_nomenclature_item_id { "0100000000" }
+    formatted_description { Forgery(:basic).text }
   end
 
   factory :heading do
     chapter
     description { Forgery(:basic).text }
+    formatted_description { Forgery(:basic).text }
     goods_nomenclature_item_id { "0101000000" }
   end
 
   factory :commodity do
     heading
     description { Forgery(:basic).text }
-    producline_suffix { "80" }
+    formatted_description { Forgery(:basic).text }
     goods_nomenclature_item_id { "0101300000" }
     goods_nomenclature_sid { Forgery(:basic).number }
     parent_sid { Forgery(:basic).number }
   end
 
   factory :measure do
+    ignore do
+      measure_type_description { Forgery(:basic).text }
+    end
+
     origin { ['eu', 'uk'].sample }
-    measure_type_description { Forgery(:basic).text }
     ordernumber { Forgery(:basic).number(exactly: 5) }
     effective_start_date { Date.today.ago(3.years).to_s }
     effective_end_date { nil }
-    measure_type_id { Forgery(:basic).text }
+
+    measure_type {
+      attributes_for(:measure_type, id: Forgery(:basic).text, description: measure_type_description)
+    }
 
     trait :vat do
-      measure_type_description { 'VAT' }
+      measure_type {
+        attributes_for(:measure_type, :vat, description: measure_type_description)
+      }
     end
 
     trait :third_country do
-      measure_type_id { '103' }
+      measure_type {
+        attributes_for(:measure_type, :third_country, description: measure_type_description)
+      }
       geographical_area { attributes_for(:geographical_area, :third_country) }
     end
 
@@ -63,12 +75,25 @@ FactoryGirl.define do
     end
   end
 
+  factory :measure_type do
+    id { Forgery(:basic).text(exactly: 3) }
+    description { Forgery(:basic).text }
+
+    trait :vat do
+      description { 'VAT' }
+    end
+
+    trait :third_country do
+      id { '103' }
+    end
+  end
+
   factory :geographical_area do
-    geographical_area_id { Forgery(:basic).text(exactly: 2).upcase }
+    id { Forgery(:basic).text(exactly: 2).upcase }
     description { Forgery(:basic).text }
 
     trait :third_country do
-      geographical_area_id { "1011" }
+      id { "1011" }
     end
 
     trait :specific_country do
@@ -95,14 +120,6 @@ FactoryGirl.define do
   factory :footnote do
     code { Forgery(:basic).text }
     description { Forgery(:basic).text }
-  end
-
-  factory :measure_component do
-    duty_expression_id { Forgery(:basic).text }
-
-    trait :meursing do
-      duty_expression_id { %w[12 14 21 25 27 29].sample }
-    end
   end
 
   factory :tariff_update do
