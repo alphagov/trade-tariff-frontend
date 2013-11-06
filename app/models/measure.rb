@@ -4,7 +4,7 @@ class Measure
   include ApiEntity
 
   attr_accessor :id, :origin, :effective_start_date, :effective_end_date,
-                :import
+                :import, :vat, :excise
 
   has_one :geographical_area
   has_one :legal_act
@@ -86,7 +86,7 @@ class Measure
   end
 
   def vat?
-    measure_type.description =~ /^VAT/
+    vat
   end
 
   def relevant_for_country?(country_code)
