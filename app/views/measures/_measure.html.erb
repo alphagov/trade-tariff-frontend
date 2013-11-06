@@ -7,23 +7,23 @@
       <% if measure.has_children_geographical_areas? %>
       <dl>
         <dt class="has_children">
-          <%= measure.geographical_area_description %>
+          <%= measure.geographical_area.description %>
         </dt>
       <dd>
         <ul>
           <% measure.children_geographical_areas.each do |children_geographical_area| %>
-            <li><%= children_geographical_area.geographical_area_id %> <%= children_geographical_area.description %></li>
+            <li><%= children_geographical_area.id %> <%= children_geographical_area.description %></li>
           <% end %>
         </ul>
       </dd>
     <% else %>
-      <%= measure.geographical_area_description %>
+      <%= measure.geographical_area.description %>
     <% end %>
     </td>
   <% end %>
 
   <td>
-    <%= measure.measure_type_description %>
+    <%= measure.measure_type.description %>
     <% if measure.order_number.present? %>
     <br />
       <%= render measure.order_number %>
@@ -44,11 +44,6 @@
   </td>
   <td class="numerical">
     <%= measure.duty_expression %>
-
-    <% if measure.excise? && declarable.national_measurement_units.any? %>
-      <br/>
-      (<%= national_quantities(declarable, measure.measure_components.first.measurement_unit) %>)
-    <% end %>
   </td>
 
   <td class="numerical">
@@ -72,8 +67,8 @@
   </td>
 
   <td class="numerical">
-      <% measure.footnotes.each do |footnote| %>
-        <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => footnote.id %> <br />
-      <% end %>
+    <% measure.footnotes.each do |footnote| %>
+      <%= link_to footnote.code, "##{footnote.id}", class: 'reference', 'data-popup-ref' => footnote.id %> <br />
+    <% end %>
   </td>
 </tr>

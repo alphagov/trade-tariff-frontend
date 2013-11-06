@@ -2,12 +2,8 @@ require 'api_entity'
 
 class AdditionalCode
   include ApiEntity
-  include Models::Formatter
 
-  attr_accessor :code, :description
-
-  format :formatted_description, with: DescriptionFormatter,
-                                 using: :description
+  attr_accessor :code, :description, :formatted_description
 
   def id
     @id ||= "#{casted_by.destination}-#{casted_by.id}-additional-code-#{code}"

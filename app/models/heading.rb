@@ -1,5 +1,4 @@
 require 'api_entity'
-require 'formatter'
 require 'declarable'
 require 'changeable'
 
@@ -58,6 +57,6 @@ class Heading
   end
 
   def to_s
-    formatted_description
+    formatted_description || description
   end
 end

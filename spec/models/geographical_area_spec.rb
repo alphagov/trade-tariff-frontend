@@ -14,7 +14,7 @@ describe GeographicalArea do
     end
 
     it 'removes excluded countries (United Kingdom)' do
-      countries.detect{ |c| c.id == 'GB' }.should be_blank
+      countries.detect { |c| c.id == 'GB' }.should be_blank
     end
   end
 end

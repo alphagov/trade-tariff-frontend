@@ -61,7 +61,7 @@ class Search
   end
 
   def country_name
-    countries.detect { |c| c.geographical_area_id == attributes['country'] }
+    countries.detect { |c| c.id == attributes['country'] }
   end
 
   def to_s

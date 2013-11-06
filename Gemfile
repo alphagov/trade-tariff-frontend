@@ -48,7 +48,7 @@ group :assets do
   gem "govuk_frontend_toolkit", "0.32.2"
   gem "jquery-rails"
   gem "sass-rails", "~> 3.2.3"
-  gem "therubyracer"
+  gem "therubyracer", "0.12.0"
   gem "uglifier", ">= 1.0.3"
 end
 

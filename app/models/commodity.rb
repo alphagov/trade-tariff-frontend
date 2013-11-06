@@ -1,5 +1,4 @@
 require 'api_entity'
-require 'formatter'
 require 'declarable'
 require 'changeable'
 
@@ -45,11 +44,7 @@ class Commodity
 
   # There are no consigned declarable headings
   def consigned?
-    description =~ /consigned from/i
-  end
-
-  def consigned_from
-    description.scan(/consigned from ([a-zA-Z,' ]+)(?:\W|$)/i).join(", ") if consigned?
+    consigned
   end
 
   def to_param
@@ -57,7 +52,7 @@ class Commodity
   end
 
   def to_s
-    formatted_description
+    formatted_description || description
   end
 
   def footnotes
@@ -70,7 +65,7 @@ class Commodity
 
   def children
     if casted_by.present?
-      casted_by.commodities.select{|c| c.parent_sid == goods_nomenclature_sid }
+      casted_by.commodities.select { |c| c.parent_sid == goods_nomenclature_sid }
     else
       []
     end

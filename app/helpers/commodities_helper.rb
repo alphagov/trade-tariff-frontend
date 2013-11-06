@@ -66,12 +66,4 @@ module CommoditiesHelper
                           id: "commodity-#{commodity.code}")
     end
   end
-
-  def national_quantities(declarable, taric_measurement_unit)
-    national_measurement_units = declarable.national_measurement_units
-                                           .select(&:present?)
-                                           .select{ |nmu| nmu.level > 1 }
-                                           .reject { |nmu| nmu.description == taric_measurement_unit }
-    national_measurement_units.join(' - ')
-  end
 end

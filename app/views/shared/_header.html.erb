@@ -40,7 +40,7 @@
   <fieldset class='country-picker'>
     <span class='fields'>
       Trade between the UK and
-      <%= f.select :country, f.object.countries.map{ |c| [c.description, c.geographical_area_id] }, { include_blank: 'All countries' }, name: 'country' %>
+      <%= f.select :country, f.object.countries.map{ |c| [c.description, c.id] }, { include_blank: 'All countries' }, name: 'country' %>
       <a class="submit" role='button' href="#set-country" title='set country'>set country</a>
     </span>
     <span class='text'>

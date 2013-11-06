@@ -13,12 +13,16 @@ describe 'Sections Index page' do
   end
 end
 
-describe 'Section page', vcr: { cassette_name: "sections#show" }   do
+describe 'Section page' do
   it 'should display section name and chapters in the section' do
-    visit section_path(1)
+    VCR.use_cassette('geographical_areas#countries') do
+      VCR.use_cassette('sections#show') do
+        visit section_path(1)
 
-    page.should have_content 'Live animals; animal products'
-    page.should have_content 'Live animals'
-    page.should have_content 'Meat and edible meat offal'
+        page.should have_content 'Live animals; animal products'
+        page.should have_content 'Live animals'
+        page.should have_content 'Meat and edible meat offal'
+      end
+    end
   end
 end
