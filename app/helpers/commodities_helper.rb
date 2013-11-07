@@ -14,7 +14,7 @@ module CommoditiesHelper
   def commodity_tree(main_commodity, commodities)
     if commodities.any?
       content_tag(:dl, class: 'commodities') do
-        content_tag(:dt, commodities.first.to_s) +
+        content_tag(:dt, commodities.first.to_s.html_safe) +
         content_tag(:dd, tree_node(main_commodity, commodities, commodities.first.number_indents))
       end
     else
@@ -37,7 +37,7 @@ module CommoditiesHelper
     if deeper_node.present?
       content_tag(:dd) do
         content_tag(:dl) do
-          content_tag(:dt, deeper_node) +
+          content_tag(:dt, deeper_node.to_s.html_safe) +
           tree_node(main_commodity, commodities, deeper_node.number_indents)
         end
       end
@@ -52,7 +52,7 @@ module CommoditiesHelper
                          title: "Full tariff code: #{commodity.code}",
                          class: 'identifier',
                          'aria-describedby' => "commodity-#{commodity.code}") +
-      content_tag(:span, "#{commodity.to_s} (#{link_to('changes', commodity_changes_path(commodity.declarable, format: :atom), class: 'feed')})".html_safe,
+      content_tag(:span, "#{commodity.to_s.html_safe} (#{link_to('changes', commodity_changes_path(commodity.declarable, format: :atom), class: 'feed')})".html_safe,
                          class: 'description',
                          id: "commodity-#{commodity.code}")
 

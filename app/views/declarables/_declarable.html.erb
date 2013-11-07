@@ -12,7 +12,7 @@
               <dl>
                 <dt class="heading-code" title="Heading code"><%= declarable.heading_display_short_code %></dt>
                 <% if declarable.show_commodity_tree? %>
-                  <dd><%= link_to declarable.heading, heading_path(declarable.heading), class: "js-pjax" %>
+                  <dd><%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading), class: "js-pjax" %>
                       <%= commodity_tree(declarable, declarable.ancestors) %>
                   </dd>
                 <% else %>
