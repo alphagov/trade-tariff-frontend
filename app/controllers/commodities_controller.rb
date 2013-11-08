@@ -1,4 +1,4 @@
-class CommoditiesController < ApplicationController
+class CommoditiesController < GoodsNomenclaturesController
   def show
     @commodity = CommodityPresenter.new(Commodity.find(params[:id], query_params))
     @heading = @commodity.heading
@@ -13,5 +13,11 @@ class CommoditiesController < ApplicationController
     respond_to do |format|
       format.atom
     end
+  end
+
+  private
+
+  def goods_code_id
+    super.first(10)
   end
 end

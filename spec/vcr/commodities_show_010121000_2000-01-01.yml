@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/commodities/0101210000?as_of=2000-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: 'Not Found '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 08 Nov 2013 13:52:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '98'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 9a8a7f03935d3f67e88da7d1efc1447d
+      X-Runtime:
+      - '0.075887'
+    body:
+      encoding: UTF-8
+      string: '{"error":"not found","url":"http://tariff-api.dev.gov.uk/commodities/0101210000?as_of=2000-01-01"}'
+    http_version: 
+  recorded_at: Fri, 08 Nov 2013 13:52:16 GMT
+- request:
+    method: post
+    uri: http://tariff-api.dev.gov.uk/search
+    body:
+      encoding: UTF-8
+      string: t=0101210000&as_of=2013-11-08
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 08 Nov 2013 13:52:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '75'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"9d734d8438196be77ae4729e40a54e62"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d89809b80e3e5ae43158782e9c2b7481
+      X-Runtime:
+      - '0.021070'
+    body:
+      encoding: UTF-8
+      string: '{"type":"exact_match","entry":{"endpoint":"commodities","id":"0101210000"}}'
+    http_version: 
+  recorded_at: Fri, 08 Nov 2013 13:52:16 GMT
+recorded_with: VCR 2.5.0

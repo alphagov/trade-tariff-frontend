@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/chapters/011?as_of=2013-11-08
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: 'Not Found '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 08 Nov 2013 13:18:15 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '15'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 66dd5e074c7b3490451a595f524a4df4
+      X-Runtime:
+      - '0.077833'
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Fri, 08 Nov 2013 13:18:15 GMT
+- request:
+    method: post
+    uri: http://tariff-api.dev.gov.uk/search
+    body:
+      encoding: UTF-8
+      string: t=011&as_of=2013-11-08
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 08 Nov 2013 13:18:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '64'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"92117a675eb2b6c8c0a9f1d9bb7b0c7d"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - fd942fb3cc440d1de1d3bb4e2f3db9b0
+      X-Runtime:
+      - '0.018457'
+    body:
+      encoding: UTF-8
+      string: '{"type":"exact_match","entry":{"endpoint":"chapters","id":"01"}}'
+    http_version: 
+  recorded_at: Fri, 08 Nov 2013 13:18:15 GMT
+recorded_with: VCR 2.5.0
