@@ -19,6 +19,9 @@
         </dl>
       </dd>
     </dl>
+
+    <%= render partial: 'sections/note', locals: { section_note: @chapter.section.section_note } %>
+
     <% if @chapter.chapter_note.present? %>
       <article class="chapter-notes">
         <h2>Chapter notes</h2>
