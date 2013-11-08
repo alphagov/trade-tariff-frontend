@@ -8,6 +8,7 @@ TradeTariffFrontend::Application.routes.draw do
 
     get "/" => "pages#index"
     get "healthcheck" => "healthcheck#check"
+    get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
     match "/search" => "search#search", via: :get, as: :perform_search
 
     resources :sections, only: [:index, :show]
