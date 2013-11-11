@@ -1,5 +1,11 @@
+require 'trade_tariff_frontend'
+
 TradeTariffFrontend::Application.routes.draw do
   scope :path => "#{APP_SLUG}" do
+    mount TradeTariffFrontend::RequestForwarder.new(
+      host: Rails.application.config.api_host
+    ), at: '/api'
+
     get "/" => "pages#index"
     get "healthcheck" => "healthcheck#check"
     match "/search" => "search#search", via: :get, as: :perform_search
