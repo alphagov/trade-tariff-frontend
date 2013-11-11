@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/headings/0110?as_of=2013-11-08
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: 'Not Found '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 08 Nov 2013 13:39:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '89'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - f47a285d506ece6d37b4d1a6848a8c7e
+      X-Runtime:
+      - '0.100992'
+    body:
+      encoding: UTF-8
+      string: '{"error":"not found","url":"http://tariff-api.dev.gov.uk/headings/0110?as_of=2013-11-08"}'
+    http_version: 
+  recorded_at: Fri, 08 Nov 2013 13:39:00 GMT
+- request:
+    method: post
+    uri: http://tariff-api.dev.gov.uk/search
+    body:
+      encoding: UTF-8
+      string: t=0110&as_of=2013-11-08
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 08 Nov 2013 13:39:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '189'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"ffa09cf47ce2ca729333e7c30665780d"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - e706af0cbfe9b4ad7e47959a4f0067fa
+      X-Runtime:
+      - '0.248031'
+    body:
+      encoding: UTF-8
+      string: '{"type":"fuzzy_match","goods_nomenclature_match":{"sections":[],"chapters":[],"headings":[],"commodities":[]},"reference_match":{"sections":[],"chapters":[],"headings":[],"commodities":[]}}'
+    http_version: 
+  recorded_at: Fri, 08 Nov 2013 13:39:01 GMT
+recorded_with: VCR 2.5.0
