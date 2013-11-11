@@ -1,0 +1,17 @@
+<article class="tariff a-z">
+  <div class="inner">
+    <ol class="index">
+      <%= a_z_index(letter) %>
+    </ol>
+
+    <h1><%= letter.upcase %></h1>
+
+    <ol class="listing">
+      <% @search_references.each do |search_reference| %>
+        <li>
+          <%= link_to search_reference, search_reference.link %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</article>

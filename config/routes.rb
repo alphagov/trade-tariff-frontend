@@ -9,6 +9,10 @@ TradeTariffFrontend::Application.routes.draw do
     get "/" => "pages#index"
     get "healthcheck" => "healthcheck#check"
     match "/search" => "search#search", via: :get, as: :perform_search
+    match "a-z-index/:letter" => "search_references#show",
+          via: :get,
+          as: :a_z_index,
+          constraints: { letter: /[a-z]{1}/i }
 
     resources :sections, only: [:index, :show]
     resources :chapters, only: [:index, :show] do
