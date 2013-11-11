@@ -13,13 +13,8 @@
       </dd>
     </dl>
   </div>
-  <% if @section.section_note.present? %>
-    <article class='section-notes'>
-      <h2>Section notes</h2>
 
-      <%= govspeak(@section.section_note) %>
-    </article>
-  <% end %>
+  <%= render partial: 'note', locals: { section_note: @section.section_note } %>
 </article>
 
 <script type="text/javascript">

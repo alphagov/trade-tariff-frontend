@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=2013-10-28
+    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=2013-11-08
     body:
       encoding: US-ASCII
       string: ''
@@ -15,28 +15,27 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 28 Oct 2013 13:16:41 GMT
+      - Fri, 08 Nov 2013 09:45:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '2294'
+      - '2231'
       Connection:
       - close
       X-Ua-Compatible:
       - IE=Edge
       Etag:
-      - '"d007f9dabd4ed846beb1feb4bbe373b3"'
+      - '"3cca3fed76da6f541dcbbbbca9ba94fb"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a6a3bcc932db13103be4e2a2fd14d63f
+      - fadd414bbc8a1799f210d4ea3b2dfab2
       X-Runtime:
-      - '0.623733'
+      - '0.107063'
     body:
       encoding: UTF-8
       string: '{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","description":"LIVE
-        ANIMALS","formatted_description":"Live animals","chapter_note_id":98,"section_id":1,"chapter_note":"abc!!!!!!!dd!!!\r\n\r\n!d!ddd!!w!!ddd!\r\n\r\n\r\n\r\n\r\n\r\n!\r\n!\r\n!\r\n!\r\n\r\nx
-        x x","headings":[{"goods_nomenclature_sid":27624,"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
+        ANIMALS","formatted_description":"Live animals","chapter_note_id":381,"section_id":1,"chapter_note":"!!!","headings":[{"goods_nomenclature_sid":27624,"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
         horses, asses, mules and hinnies","producline_suffix":"80","leaf":true,"description_plain":"Live
         horses, asses, mules and hinnies","formatted_description":"Live horses, asses,
         mules and hinnies","children":[]},{"goods_nomenclature_sid":27633,"goods_nomenclature_item_id":"0102000000","declarable":false,"description":"Live
@@ -54,7 +53,7 @@ http_interactions:
         fowls","children":[]},{"goods_nomenclature_sid":27802,"goods_nomenclature_item_id":"0106000000","declarable":false,"description":"Other
         live animals","producline_suffix":"80","leaf":true,"description_plain":"Other
         live animals","formatted_description":"Other live animals","children":[]}],"section":{"id":1,"title":"Live
-        animals; animal products","position":1,"numeral":"I"}}'
+        animals; animal products","position":1,"numeral":"I","section_note":"abc!!!"}}'
     http_version: 
-  recorded_at: Mon, 28 Oct 2013 13:16:41 GMT
+  recorded_at: Fri, 08 Nov 2013 09:45:50 GMT
 recorded_with: VCR 2.5.0
