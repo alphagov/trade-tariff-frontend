@@ -41,6 +41,7 @@ group :test do
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
   gem "capybara"
+  gem "timecop"
 end
 
 group :assets do

@@ -44,14 +44,23 @@ describe CommoditiesController, "GET to #show" do
   context 'with commodity id that does not exist in provided date', vcr: { cassette_name: "commodities#show_010121000_2000-01-01" } do
     let(:commodity_id) { '0101210000' } # commodity 0101210000 does not exist at 1st of Jan, 2000
 
+    around do |example|
+      Timecop.freeze(Date.new(2013,11,11)) do
+        example.yield
+      end
+    end
+
     before(:each) do
-      get :show, id: commodity_id, as_of: Date.new(2000,1,1)
+      get :show, id: commodity_id, year: 2000, month: 1, day: 1, country: nil
     end
 
     it 'redirects to actual version of the commodity page' do
       expect(response.status).to eq 302
       expect(response.location).to eq commodity_url(
-        id: commodity_id.first(10)
+        id: commodity_id.first(10),
+        year: 2013,
+        month: 11,
+        day: 11
       )
     end
   end
