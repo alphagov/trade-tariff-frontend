@@ -1,11 +1,12 @@
-require 'api_entity'
+require "api_entity"
 require "slimmer/headers"
-require 'gds_api/helpers'
+require "gds_api/helpers"
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include Slimmer::Headers
   include GdsApi::Helpers
+  include TradeTariffFrontend::ViewContext::Controller
 
   before_filter :set_cache
   before_filter :load_artefact

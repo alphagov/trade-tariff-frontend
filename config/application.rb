@@ -15,6 +15,8 @@ APP_SLUG = 'trade-tariff'
 
 module TradeTariffFrontend
   class Application < Rails::Application
+    require 'trade_tariff_frontend'
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

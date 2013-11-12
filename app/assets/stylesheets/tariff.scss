@@ -572,6 +572,10 @@ article.tariff {
     width: 49%;
 
     &.relevant-links {
+      a {
+        margin-right: 1em;
+      }
+
       clear: both;
     }
   }
@@ -1631,4 +1635,26 @@ article.search-results {
 .feed {
   display: inline-block;
   background: image-url('feed-icon-black.png') 12% 40% no-repeat;
+}
+
+article.a-z {
+  ol.index {
+    padding-left: 0;
+
+    li { display: inline-block !important }
+    li.active {
+      a {
+        color: #000;
+        font-weight: 700;
+      }
+    }
+  }
+
+  ol.listing {
+    padding-left: 0;
+
+    li {
+      display: block;
+    }
+  }
 }

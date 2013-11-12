@@ -1,4 +1,4 @@
-class DeclarablePresenter
+class DeclarablePresenter < TradeTariffFrontend::Presenter
   attr_reader :declarable
 
   MEURSING_TOOL_LINK = "http://ec.europa.eu/taxation_customs/dds2/taric/measures.jsp?Lang=en&SimDate=%{date}&Taric=%{commodity_code}&LangDescr=en"

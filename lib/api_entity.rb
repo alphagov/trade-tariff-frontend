@@ -60,8 +60,8 @@ module ApiEntity
   end
 
   module ClassMethods
-    def all
-      resp = get(collection_path)
+    def all(opts = {})
+      resp = get(collection_path, opts)
       case resp.code
       when 404
         raise ApiEntity::NotFound.new resp['error']
