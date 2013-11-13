@@ -1,8 +1,13 @@
 require 'api_entity'
+require 'ostruct'
 require 'search/base_match'
 
 class Search
   class GoodsNomenclatureMatch < BaseMatch
+    BLANK_RESULT = OpenStruct.new(
+      sections: [], chapters: [], headings: [], commodities: []
+    )
+
     array_attr_reader :sections, :chapters, :headings, :commodities
     array_attr_writer :sections, :chapters, :headings, :commodities
     attr_reader :commodity_headings
@@ -37,6 +42,14 @@ class Search
 
     def any?
       [headings, commodities, chapters, sections].any? {|entity_group| entity_group.any? }
+    end
+
+    def all
+      [headings, commodities, chapters, sections].flatten
+    end
+
+    def size
+      all.size
     end
 
     private
