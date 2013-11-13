@@ -25,6 +25,8 @@ class SearchController < ApplicationController
       format.json {
         render json: SearchPresenter.new(@search, @results)
       }
+
+      format.atom
     end
   end
 end

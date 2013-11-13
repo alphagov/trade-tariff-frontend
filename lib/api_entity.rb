@@ -10,6 +10,7 @@ module ApiEntity
   included do
     include ActiveModel::Validations
     include ActiveModel::Conversion
+    extend  ActiveModel::Naming
 
     include HTTParty
     include MultiJson
@@ -56,7 +57,7 @@ module ApiEntity
   end
 
   def persisted?
-    false
+    true
   end
 
   module ClassMethods

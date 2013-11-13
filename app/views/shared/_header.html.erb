@@ -6,7 +6,7 @@
   </div>
 </header>
 
-<%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}"  } do |f| %>
+<%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
   <fieldset class='search'>
     <%= f.hidden_field :q, name: 'q' %>
     <%= f.label :t, "Search the tariff" %>

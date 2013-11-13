@@ -67,4 +67,8 @@ class Search
   def to_s
     t
   end
+
+  def id
+    t
+  end
 end
