@@ -13,7 +13,7 @@ atom_feed do |feed|
       entry.updated(change.operation_date.xmlschema)
 
       entry.author do |author|
-        author.name("UK Trade Tariff")
+        author.name("HM Government")
       end
     end
   end
