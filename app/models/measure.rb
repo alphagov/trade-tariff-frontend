@@ -66,7 +66,7 @@ class Measure
   end
 
   def sort_key
-    "#{third_country_measure}#{origin}#{geographical_area_description}#{additional_code_sort}#{measure_type.description}"
+    "#{third_country_measure}#{origin}#{!vat}#{geographical_area_description}#{measure_type.description}#{additional_code_sort}"
   end
 
   def specific_country_sort_key
