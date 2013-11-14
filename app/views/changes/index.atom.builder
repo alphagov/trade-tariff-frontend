@@ -1,6 +1,7 @@
 atom_feed do |feed|
-  feed.title("Trade Tariff - changes for #{changeable.goods_nomenclature_item_id}: #{changeable}")
-  feed.updated(@changes.first.operation_date) if @changes.length > 0
+  feed.title("BETA: Trade Tariff measure changes feed for #{changeable.class.model_name} #{changeable.to_param}: #{changeable}")
+  feed.subtitle("BETA: This is a prototype ATOM feed showing the last 10 measure changes made to #{changeable.class.model_name} #{changeable.to_param} since #{@changes.last_change_operation_date}. Your feedback will help us to improve it.")
+  feed.updated(@changes.first_change_operation_date) if @changes.any?
 
   @changes.each do |change|
     feed.entry(

@@ -1,9 +1,9 @@
-require 'forwardable'
-
 class ChangesPresenter
   include Enumerable
-  extend Forwardable
-  def_delegators :@change_collection, :each, :length
+
+  delegate :each, to: :@change_collection
+  delegate :operation_date, to: :first_change, prefix: true
+  delegate :operation_date, to: :last_change, prefix: true
 
   def initialize(change_collection)
     @change_collection = change_collection.map { |change|
@@ -12,6 +12,14 @@ class ChangesPresenter
   end
 
   private
+
+  def first_change
+    @change_collection.first || NullObject.new
+  end
+
+  def last_change
+    @change_collection.last || NullObject.new
+  end
 
   def change_presenter_class_for(model)
     "#{model}ChangePresenter".constantize

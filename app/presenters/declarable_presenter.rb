@@ -24,6 +24,10 @@ class DeclarablePresenter < TradeTariffFrontend::Presenter
     name.chomp("Presenter").constantize.model_name
   end
 
+  def to_param
+    @declarable.to_param
+  end
+
   private
 
   def method_missing(*args, &block)
