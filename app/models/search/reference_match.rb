@@ -7,18 +7,18 @@ class Search
 
   class ReferenceMatch < BaseMatch
     BLANK_RESULT = OpenStruct.new(
-      sections: [], chapters: [], headings: []
+      sections: [], chapters: [], headings: [], commodities: []
     )
 
-    array_attr_reader :sections, :chapters, :headings
-    array_attr_writer :sections, :chapters, :headings
+    array_attr_reader :sections, :chapters, :headings, :commodities
+    array_attr_writer :sections, :chapters, :headings, :commodities
 
     def any?
-      [headings, chapters, sections].any? { |entity_group| entity_group.any? }
+      [headings, chapters, sections, commodities].any? { |entity_group| entity_group.any? }
     end
 
     def all
-      (sections + chapters + headings).flatten
+      (sections + chapters + headings + commodities).flatten
     end
 
     def size
