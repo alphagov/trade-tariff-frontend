@@ -1,11 +1,11 @@
 require 'api_entity'
 require 'changeable'
 
-class Chapter
+class Chapter < GoodsNomenclature
   include ApiEntity
   include Models::Changeable
 
-  attr_accessor :description, :headings, :goods_nomenclature_item_id, :chapter_note, :formatted_description
+  attr_accessor :headings, :chapter_note
 
   has_one :section
   has_many :headings
