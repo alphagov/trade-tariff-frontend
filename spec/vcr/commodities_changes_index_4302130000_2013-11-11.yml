@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/commodities/4302130000?as_of=2013-11-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: 'Not Found '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 28 Nov 2013 14:08:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '98'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 3461c290e3cd6bb418a1d3412896f0a3
+      X-Runtime:
+      - '0.076260'
+    body:
+      encoding: UTF-8
+      string: '{"error":"not found","url":"http://tariff-api.dev.gov.uk/commodities/4302130000?as_of=2013-11-11"}'
+    http_version: 
+  recorded_at: Thu, 28 Nov 2013 14:08:30 GMT
+recorded_with: VCR 2.5.0

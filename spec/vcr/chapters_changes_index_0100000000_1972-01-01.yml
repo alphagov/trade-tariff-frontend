@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=1972-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 29 Nov 2013 08:05:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2252'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"f9d1d0ce2da0bbdf059b4ec346a98600"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 13dc312def200f3825ea2ebca1bcde28
+      X-Runtime:
+      - '0.252653'
+    body:
+      encoding: UTF-8
+      string: '{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS","formatted_description":"Live animals","chapter_note_id":381,"section_id":1,"chapter_note":"woot
+        woot","headings":[{"goods_nomenclature_sid":27624,"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
+        horses, asses, mules and hinnies","producline_suffix":"80","leaf":true,"description_plain":"Live
+        horses, asses, mules and hinnies","formatted_description":"Live horses, asses,
+        mules and hinnies","children":[]},{"goods_nomenclature_sid":27633,"goods_nomenclature_item_id":"0102000000","declarable":false,"description":"Live
+        bovine animals","producline_suffix":"80","leaf":true,"description_plain":"Live
+        bovine animals","formatted_description":"Live bovine animals","children":[]},{"goods_nomenclature_sid":27762,"goods_nomenclature_item_id":"0103000000","declarable":false,"description":"Live
+        swine","producline_suffix":"80","leaf":true,"description_plain":"Live swine","formatted_description":"Live
+        swine","children":[]},{"goods_nomenclature_sid":27773,"goods_nomenclature_item_id":"0104000000","declarable":false,"description":"Live
+        sheep and goats","producline_suffix":"80","leaf":true,"description_plain":"Live
+        sheep and goats","formatted_description":"Live sheep and goats","children":[]},{"goods_nomenclature_sid":27783,"goods_nomenclature_item_id":"0105000000","declarable":false,"description":"Live
+        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
+        turkeys and guinea fowls","producline_suffix":"80","leaf":true,"description_plain":"Live
+        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
+        turkeys and guinea fowls","formatted_description":"Live poultry, that is to
+        say, fowls of the species Gallus domesticus, ducks, geese, turkeys and guinea
+        fowls","children":[]},{"goods_nomenclature_sid":27802,"goods_nomenclature_item_id":"0106000000","declarable":false,"description":"Other
+        live animals","producline_suffix":"80","leaf":true,"description_plain":"Other
+        live animals","formatted_description":"Other live animals","children":[]}],"section":{"id":1,"title":"Live
+        animals; animal products","position":1,"numeral":"I","section_note":"heelo\r\n\r\nworldldl"}}'
+    http_version: 
+  recorded_at: Fri, 29 Nov 2013 08:05:54 GMT
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/chapters/01/changes?as_of=1972-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 29 Nov 2013 08:05:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"d751713988987e9331980363e24189ce"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 4b0cf7656728b748913eaf37c2ccb5ba
+      X-Runtime:
+      - '0.189793'
+    body:
+      encoding: UTF-8
+      string: '[]'
+    http_version: 
+  recorded_at: Fri, 29 Nov 2013 08:05:59 GMT
+recorded_with: VCR 2.5.0

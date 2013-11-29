@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/headings/0101?as_of=1972-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 29 Nov 2013 08:06:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2337'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"10d3a150d78ac4ab121ca18e8215296c"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d434ad89210f81b36d35057659f987c8
+      X-Runtime:
+      - '0.055412'
+    body:
+      encoding: UTF-8
+      string: '{"goods_nomenclature_item_id":"0101000000","description":"Live horses,
+        asses, mules and hinnies","bti_url":"http://ec.europa.eu/taxation_customs/dds2/ebti/ebti_consultation.jsp?Lang=en&nomenc=0101000000&Expand=true","formatted_description":"Live
+        horses, asses, mules and hinnies","chapter":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS","formatted_description":"Live animals"},"section":{"title":"Live
+        animals; animal products","numeral":"I","position":1},"commodities":[{"description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101110000","leaf":false,"goods_nomenclature_sid":27625,"formatted_description":"Horses","description_plain":"Horses","parent_sid":null},{"description":"Pure-bred
+        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101110000","leaf":true,"goods_nomenclature_sid":27626,"formatted_description":"Pure-bred
+        breeding animals","description_plain":"Pure-bred breeding animals","parent_sid":27625},{"description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101190000","leaf":false,"goods_nomenclature_sid":27627,"formatted_description":"Other","description_plain":"Other","parent_sid":27625},{"description":"For
+        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101191000","leaf":true,"goods_nomenclature_sid":27628,"formatted_description":"For
+        slaughter","description_plain":"For slaughter","parent_sid":27627},{"description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101199000","leaf":true,"goods_nomenclature_sid":27629,"formatted_description":"Other","description_plain":"Other","parent_sid":27627},{"description":"Asses,
+        mules and hinnies","number_indents":1,"goods_nomenclature_item_id":"0101200000","leaf":false,"goods_nomenclature_sid":27630,"formatted_description":"Asses,
+        mules and hinnies","description_plain":"Asses, mules and hinnies","parent_sid":null},{"description":"Asses","number_indents":2,"goods_nomenclature_item_id":"0101201000","leaf":true,"goods_nomenclature_sid":27631,"formatted_description":"Asses","description_plain":"Asses","parent_sid":27630},{"description":"Mules
+        and hinnies","number_indents":2,"goods_nomenclature_item_id":"0101209000","leaf":true,"goods_nomenclature_sid":27632,"formatted_description":"Mules
+        and hinnies","description_plain":"Mules and hinnies","parent_sid":27630}]}'
+    http_version: 
+  recorded_at: Fri, 29 Nov 2013 08:06:20 GMT
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/headings/0101/changes?as_of=1972-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 29 Nov 2013 08:06:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"d751713988987e9331980363e24189ce"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 14c34c7a4e597131cd7ebd017b1ee953
+      X-Runtime:
+      - '0.024088'
+    body:
+      encoding: UTF-8
+      string: '[]'
+    http_version: 
+  recorded_at: Fri, 29 Nov 2013 08:06:25 GMT
+recorded_with: VCR 2.5.0
