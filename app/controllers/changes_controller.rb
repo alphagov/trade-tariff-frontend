@@ -1,6 +1,6 @@
 class ChangesController < ApplicationController
   def index
-    @changes = ChangesPresenter.new(changeable.changes)
+    @changes = ChangesPresenter.new(changeable.changes(query_params))
 
     respond_to do |format|
       format.atom

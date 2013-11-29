@@ -1,7 +1,7 @@
 class ChangesPresenter
   include Enumerable
 
-  delegate :each, to: :@change_collection
+  delegate :each, :empty?, to: :@change_collection
   delegate :operation_date, to: :first_change, prefix: true
   delegate :operation_date, to: :last_change, prefix: true
 

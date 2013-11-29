@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=1970-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: 'Not Found '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 29 Nov 2013 07:45:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '87'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 7e431a2b3812354177700e6473c2e64f
+      X-Runtime:
+      - '0.019470'
+    body:
+      encoding: UTF-8
+      string: '{"error":"not found","url":"http://tariff-api.dev.gov.uk/chapters/01?as_of=1970-01-01"}'
+    http_version: 
+  recorded_at: Fri, 29 Nov 2013 07:45:53 GMT
+recorded_with: VCR 2.5.0
