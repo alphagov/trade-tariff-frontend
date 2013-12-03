@@ -2,7 +2,7 @@ require 'api_entity'
 require 'declarable'
 require 'changeable'
 
-class Commodity
+class Commodity < GoodsNomenclature
   include Models::Changeable
   include Models::Declarable
 

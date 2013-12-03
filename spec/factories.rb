@@ -4,6 +4,13 @@ FactoryGirl.define do
     position { 1 }
   end
 
+  factory :goods_nomenclature do
+    description { Forgery(:basic).text }
+    goods_nomenclature_item_id { "0100000000" }
+    validity_start_date { Date.today.ago(3.years) }
+    validity_end_date   { nil }
+  end
+
   factory :chapter do
     section
     description { Forgery(:basic).text }
