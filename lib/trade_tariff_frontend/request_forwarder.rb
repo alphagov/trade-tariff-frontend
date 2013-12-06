@@ -7,6 +7,9 @@ module TradeTariffFrontend
 
     def initialize(opts = {})
       @host = URI.parse(opts.fetch(:host))
+      @api_request_path_formatter = opts.fetch(:api_request_path_formatter) do
+        ->(path) { path }
+      end
     end
 
     def host
@@ -46,7 +49,7 @@ module TradeTariffFrontend
     private
 
     def request_url_for(rackreq)
-      "http://#{host}:#{port}#{rackreq.env["PATH_INFO"]}"
+      "http://#{host}:#{port}#{api_request_path_for(rackreq.env["PATH_INFO"])}"
     end
 
     def request_headers_for(env)
@@ -57,6 +60,10 @@ module TradeTariffFrontend
           headers[$1] = value
         end
       }
+    end
+
+    def api_request_path_for(path)
+      @api_request_path_formatter.call(path)
     end
   end
 end
