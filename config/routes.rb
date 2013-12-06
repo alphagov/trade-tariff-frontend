@@ -24,8 +24,8 @@ TradeTariffFrontend::Application.routes.draw do
       end
     end
 
-    constraints(format: 'json', path: /^sections|chapters|headings|commodities/) do
-      match '*path',
+    constraints(format: 'json', endpoint: TradeTariffFrontend.accessible_api_endpoints) do
+      match ':endpoint/(*path)',
         via: :get,
         to: TradeTariffFrontend::RequestForwarder.new(
           host: Rails.application.config.api_host,
