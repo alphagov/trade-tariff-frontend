@@ -1,4 +1,7 @@
 <% content_for :title, "#{@heading} - Trade Tariff - GOV.UK" %>
+<% content_for :head do %>
+  <link rel='alternate' type='application/json' href='<%= heading_url(@heading, format: :json) %>' title='Heading information page in JSON format' />
+<% end %>
 
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading %>
