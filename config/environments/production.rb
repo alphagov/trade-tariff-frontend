@@ -69,6 +69,4 @@ TradeTariffFrontend::Application.configure do
 
   # Host for Trade Tariff API endpoint
   config.api_host = Plek.new.find("tariff-api")
-
-  config.lograge.enabled = true
 end
