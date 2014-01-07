@@ -10,7 +10,7 @@ gem "hashie"
 
 gem "govspeak", "1.2.3"
 
-gem "gds-api-adapters", "4.1.3"
+gem 'gds-api-adapters', '8.2.1'
 gem "plek", "1.3.1"
 gem "slimmer", "3.17.0"
 gem "addressable"
