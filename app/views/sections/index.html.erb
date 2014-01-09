@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <link rel='alternate' type='application/json' href='<%= sections_url(format: :json) %>' title='Section list in JSON format' />
+<% end %>
+
 <article class="tariff sections">
   <div class="inner">
     <dl class="sections">

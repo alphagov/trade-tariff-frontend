@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk//sections/1.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 19 Dec 2013 08:52:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1638'
+      Connection:
+      - close
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"d3dfae28087ffc14128581d7117cbe64"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a68da4e7de5aa5e24b73a3b3bcf8723b
+      X-Runtime:
+      - '0.133386'
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"position":1,"title":"Live animals; animal products","numeral":"I","chapter_from":"01","chapter_to":"05","section_note":"heelo\r\n\r\nworldldl","chapters":[{"description":"LIVE
+        ANIMALS","goods_nomenclature_item_id":"0100000000","goods_nomenclature_sid":27623,"headings_from":"0101","headings_to":"0106","formatted_description":"Live
+        animals","chapter_note_id":381},{"description":"MEAT AND EDIBLE MEAT OFFAL","goods_nomenclature_item_id":"0200000000","goods_nomenclature_sid":27809,"headings_from":"0201","headings_to":"0210","formatted_description":"Meat
+        and edible meat offal","chapter_note_id":332},{"description":"FISH AND CRUSTACEANS,
+        MOLLUSCS AND OTHER AQUATIC INVERTEBRATES","goods_nomenclature_item_id":"0300000000","goods_nomenclature_sid":28373,"headings_from":"0301","headings_to":"0308","formatted_description":"Fish
+        and crustaceans, molluscs and other aquatic invertebrates","chapter_note_id":333},{"description":"DAIRY
+        PRODUCE; BIRDS'' EGGS; NATURAL HONEY; EDIBLE PRODUCTS OF ANIMAL ORIGIN, NOT
+        ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0400000000","goods_nomenclature_sid":29417,"headings_from":"0401","headings_to":"0410","formatted_description":"Dairy
+        produce; birds'' eggs; natural honey; edible products of animal origin, not
+        elsewhere specified or included","chapter_note_id":334},{"description":"PRODUCTS
+        OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0500000000","goods_nomenclature_sid":30015,"headings_from":"0501","headings_to":"0511","formatted_description":"Products
+        of animal origin, not elsewhere specified or included","chapter_note_id":335}]}'
+    http_version: 
+  recorded_at: Thu, 19 Dec 2013 08:52:27 GMT
+recorded_with: VCR 2.5.0

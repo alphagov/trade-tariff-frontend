@@ -11,6 +11,19 @@ TradeTariffFrontend::Application.routes.draw do
           as: :a_z_index,
           constraints: { letter: /[a-z]{1}/i }
 
+    constraints TradeTariffFrontend::ApiConstraints.new(
+      TradeTariffFrontend.accessible_api_endpoints
+    ) do
+      match ':endpoint/(*path)',
+        via: :get,
+        to: TradeTariffFrontend::RequestForwarder.new(
+          host: Rails.application.config.api_host,
+          api_request_path_formatter: ->(path) {
+            path.gsub(APP_SLUG, '')
+          }
+        )
+    end
+
     constraints(format: 'html') do
       resources :sections, only: [:index, :show]
       resources :chapters, only: [:index, :show] do
@@ -22,17 +35,6 @@ TradeTariffFrontend::Application.routes.draw do
       resources :commodities, only: [:index, :show] do
         resources :changes, only: [:index], module: 'commodities'
       end
-    end
-
-    constraints(format: 'json', endpoint: TradeTariffFrontend.accessible_api_endpoints) do
-      match ':endpoint/(*path)',
-        via: :get,
-        to: TradeTariffFrontend::RequestForwarder.new(
-          host: Rails.application.config.api_host,
-          api_request_path_formatter: ->(path) {
-            path.gsub(APP_SLUG, '')
-          }
-        )
     end
   end
 

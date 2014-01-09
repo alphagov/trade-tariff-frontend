@@ -1,1 +1,5 @@
+<% content_for :head do %>
+  <link rel='alternate' type='application/json' href='<%= commodity_url(@commodity, format: :json) %>' title='Commodity information page in JSON format' />
+<% end %>
+
 <%= render 'declarables/declarable', declarable: @commodity %>
