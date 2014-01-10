@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=2013-09-13
+    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=2014-01-10
     body:
       encoding: US-ASCII
       string: ''
@@ -15,39 +15,100 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 13 Sep 2013 13:18:15 GMT
+      - Fri, 10 Jan 2014 08:56:00 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '1185'
+      - '3083'
       Connection:
       - close
       X-Ua-Compatible:
       - IE=Edge
       Etag:
-      - '"9ece0643ff9f5696b738f73299cd3996"'
+      - "\"806e70e87543f43b91c0b4331db35fce\""
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8ffde41dfc4f45f0a6c6a2002bc5077b
+      - 3d3185078d177c13b69d5a897f8c494a
       X-Runtime:
-      - '0.173666'
+      - '4.726328'
     body:
-      encoding: UTF-8
-      string: '{"goods_nomenclature_item_id":"0100000000","description":"LIVE ANIMALS","chapter_note_id":null,"headings":[{"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
-        horses, asses, mules and hinnies","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0102000000","declarable":false,"description":"Live
-        bovine animals","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0103000000","declarable":false,"description":"Live
-        swine","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0104000000","declarable":false,"description":"Live
-        sheep and goats","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0105000000","declarable":false,"description":"Live
-        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
-        turkeys and guinea fowls","producline_suffix":"80","leaf":true,"children":[]},{"goods_nomenclature_item_id":"0106000000","declarable":false,"description":"Other
-        live animals","producline_suffix":"80","leaf":true,"children":[]}],"section":{"title":"Live
-        animals; animal products","position":1,"numeral":"I"}}'
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJnb29kc19ub21lbmNsYXR1cmVfc2lkIjoyNzYyMywiZ29vZHNfbm9tZW5j
+        bGF0dXJlX2l0ZW1faWQiOiIwMTAwMDAwMDAwIiwiZGVzY3JpcHRpb24iOiJM
+        SVZFIEFOSU1BTFMiLCJmb3JtYXR0ZWRfZGVzY3JpcHRpb24iOiJMaXZlIGFu
+        aW1hbHMiLCJjaGFwdGVyX25vdGVfaWQiOjMzMSwic2VjdGlvbl9pZCI6MSwi
+        Y2hhcHRlcl9ub3RlIjoiMS4gVGhpcyBjaGFwdGVyIGNvdmVycyBhbGwgbGl2
+        ZSBhbmltYWxzIGV4Y2VwdDpcbsKgwqDCoMKgKGEpIGZpc2ggYW5kIGNydXN0
+        YWNlYW5zLCBtb2xsdXNjcyBhbmQgb3RoZXIgYXF1YXRpYyBpbnZlcnRlYnJh
+        dGVzLCBvZiBoZWFkaW5nIDAzMDEsIDAzMDYsIDAzMDcgb3IgMDMwODtcbsKg
+        wqDCoMKgKGIpIGN1bHR1cmVzIG9mIG1pY3JvLW9yZ2FuaXNtcyBhbmQgb3Ro
+        ZXIgcHJvZHVjdHMgb2YgaGVhZGluZyAzMDAyOyBhbmRcbsKgwqDCoMKgKGMp
+        IGFuaW1hbHMgb2YgaGVhZGluZyA5NTA4LlxuKGEpIGZpc2ggYW5kIGNydXN0
+        YWNlYW5zLCBtb2xsdXNjcyBhbmQgb3RoZXIgYXF1YXRpYyBpbnZlcnRlYnJh
+        dGVzLCBvZiBoZWFkaW5nIDAzMDEsIDAzMDYsIDAzMDcgb3IgMDMwODtcbihi
+        KSBjdWx0dXJlcyBvZiBtaWNyby1vcmdhbmlzbXMgYW5kIG90aGVyIHByb2R1
+        Y3RzIG9mIGhlYWRpbmcgMzAwMjsgYW5kXG4oYykgYW5pbWFscyBvZiBoZWFk
+        aW5nIDk1MDguIiwiaGVhZGluZ3MiOlt7Imdvb2RzX25vbWVuY2xhdHVyZV9z
+        aWQiOjI3NjI0LCJnb29kc19ub21lbmNsYXR1cmVfaXRlbV9pZCI6IjAxMDEw
+        MDAwMDAiLCJkZWNsYXJhYmxlIjpmYWxzZSwiZGVzY3JpcHRpb24iOiJMaXZl
+        IGhvcnNlcywgYXNzZXMsIG11bGVzIGFuZCBoaW5uaWVzIiwicHJvZHVjbGlu
+        ZV9zdWZmaXgiOiI4MCIsImxlYWYiOnRydWUsImRlc2NyaXB0aW9uX3BsYWlu
+        IjoiTGl2ZSBob3JzZXMsIGFzc2VzLCBtdWxlcyBhbmQgaGlubmllcyIsImZv
+        cm1hdHRlZF9kZXNjcmlwdGlvbiI6IkxpdmUgaG9yc2VzLCBhc3NlcywgbXVs
+        ZXMgYW5kIGhpbm5pZXMiLCJjaGlsZHJlbiI6W119LHsiZ29vZHNfbm9tZW5j
+        bGF0dXJlX3NpZCI6Mjc2MzMsImdvb2RzX25vbWVuY2xhdHVyZV9pdGVtX2lk
+        IjoiMDEwMjAwMDAwMCIsImRlY2xhcmFibGUiOmZhbHNlLCJkZXNjcmlwdGlv
+        biI6IkxpdmUgYm92aW5lIGFuaW1hbHMiLCJwcm9kdWNsaW5lX3N1ZmZpeCI6
+        IjgwIiwibGVhZiI6dHJ1ZSwiZGVzY3JpcHRpb25fcGxhaW4iOiJMaXZlIGJv
+        dmluZSBhbmltYWxzIiwiZm9ybWF0dGVkX2Rlc2NyaXB0aW9uIjoiTGl2ZSBi
+        b3ZpbmUgYW5pbWFscyIsImNoaWxkcmVuIjpbXX0seyJnb29kc19ub21lbmNs
+        YXR1cmVfc2lkIjoyNzc2MiwiZ29vZHNfbm9tZW5jbGF0dXJlX2l0ZW1faWQi
+        OiIwMTAzMDAwMDAwIiwiZGVjbGFyYWJsZSI6ZmFsc2UsImRlc2NyaXB0aW9u
+        IjoiTGl2ZSBzd2luZSIsInByb2R1Y2xpbmVfc3VmZml4IjoiODAiLCJsZWFm
+        Ijp0cnVlLCJkZXNjcmlwdGlvbl9wbGFpbiI6IkxpdmUgc3dpbmUiLCJmb3Jt
+        YXR0ZWRfZGVzY3JpcHRpb24iOiJMaXZlIHN3aW5lIiwiY2hpbGRyZW4iOltd
+        fSx7Imdvb2RzX25vbWVuY2xhdHVyZV9zaWQiOjI3NzczLCJnb29kc19ub21l
+        bmNsYXR1cmVfaXRlbV9pZCI6IjAxMDQwMDAwMDAiLCJkZWNsYXJhYmxlIjpm
+        YWxzZSwiZGVzY3JpcHRpb24iOiJMaXZlIHNoZWVwIGFuZCBnb2F0cyIsInBy
+        b2R1Y2xpbmVfc3VmZml4IjoiODAiLCJsZWFmIjp0cnVlLCJkZXNjcmlwdGlv
+        bl9wbGFpbiI6IkxpdmUgc2hlZXAgYW5kIGdvYXRzIiwiZm9ybWF0dGVkX2Rl
+        c2NyaXB0aW9uIjoiTGl2ZSBzaGVlcCBhbmQgZ29hdHMiLCJjaGlsZHJlbiI6
+        W119LHsiZ29vZHNfbm9tZW5jbGF0dXJlX3NpZCI6Mjc3ODMsImdvb2RzX25v
+        bWVuY2xhdHVyZV9pdGVtX2lkIjoiMDEwNTAwMDAwMCIsImRlY2xhcmFibGUi
+        OmZhbHNlLCJkZXNjcmlwdGlvbiI6IkxpdmUgcG91bHRyeSwgdGhhdCBpcyB0
+        byBzYXksIGZvd2xzIG9mIHRoZSBzcGVjaWVzIEdhbGx1cyBkb21lc3RpY3Vz
+        LCBkdWNrcywgZ2Vlc2UsIHR1cmtleXMgYW5kIGd1aW5lYSBmb3dscyIsInBy
+        b2R1Y2xpbmVfc3VmZml4IjoiODAiLCJsZWFmIjp0cnVlLCJkZXNjcmlwdGlv
+        bl9wbGFpbiI6IkxpdmUgcG91bHRyeSwgdGhhdCBpcyB0byBzYXksIGZvd2xz
+        IG9mIHRoZSBzcGVjaWVzIEdhbGx1cyBkb21lc3RpY3VzLCBkdWNrcywgZ2Vl
+        c2UsIHR1cmtleXMgYW5kIGd1aW5lYSBmb3dscyIsImZvcm1hdHRlZF9kZXNj
+        cmlwdGlvbiI6IkxpdmUgcG91bHRyeSwgdGhhdCBpcyB0byBzYXksIGZvd2xz
+        IG9mIHRoZSBzcGVjaWVzIEdhbGx1cyBkb21lc3RpY3VzLCBkdWNrcywgZ2Vl
+        c2UsIHR1cmtleXMgYW5kIGd1aW5lYSBmb3dscyIsImNoaWxkcmVuIjpbXX0s
+        eyJnb29kc19ub21lbmNsYXR1cmVfc2lkIjoyNzgwMiwiZ29vZHNfbm9tZW5j
+        bGF0dXJlX2l0ZW1faWQiOiIwMTA2MDAwMDAwIiwiZGVjbGFyYWJsZSI6ZmFs
+        c2UsImRlc2NyaXB0aW9uIjoiT3RoZXIgbGl2ZSBhbmltYWxzIiwicHJvZHVj
+        bGluZV9zdWZmaXgiOiI4MCIsImxlYWYiOnRydWUsImRlc2NyaXB0aW9uX3Bs
+        YWluIjoiT3RoZXIgbGl2ZSBhbmltYWxzIiwiZm9ybWF0dGVkX2Rlc2NyaXB0
+        aW9uIjoiT3RoZXIgbGl2ZSBhbmltYWxzIiwiY2hpbGRyZW4iOltdfV0sInNl
+        Y3Rpb24iOnsiaWQiOjEsInRpdGxlIjoiTGl2ZSBhbmltYWxzOyBhbmltYWwg
+        cHJvZHVjdHMiLCJwb3NpdGlvbiI6MSwibnVtZXJhbCI6IkkiLCJzZWN0aW9u
+        X25vdGUiOiIxLiBBbnkgcmVmZXJlbmNlIGluIHRoaXMgc2VjdGlvbiB0byBh
+        IHBhcnRpY3VsYXIgZ2VudXMgb3Igc3BlY2llcyBvZiBhbiBhbmltYWwsIGV4
+        Y2VwdCB3aGVyZSB0aGUgY29udGV4dCBvdGhlcndpc2UgcmVxdWlyZXMsIGlu
+        Y2x1ZGVzIGEgcmVmZXJlbmNlIHRvIHRoZSB5b3VuZyBvZiB0aGF0IGdlbnVz
+        IG9yIHNwZWNpZXMuXG4yLiBFeGNlcHQgd2hlcmUgdGhlIGNvbnRleHQgb3Ro
+        ZXJ3aXNlIHJlcXVpcmVzLCB0aHJvdWdob3V0IHRoZSBub21lbmNsYXR1cmUg
+        YW55IHJlZmVyZW5jZSB0byBgZHJpZWQnIHByb2R1Y3RzIGFsc28gY292ZXJz
+        IHByb2R1Y3RzIHdoaWNoIGhhdmUgYmVlbiBkZWh5ZHJhdGVkLCBldmFwb3Jh
+        dGVkIG9yIGZyZWV6ZS1kcmllZC4ifX0=
     http_version: 
-  recorded_at: Fri, 13 Sep 2013 13:18:15 GMT
+  recorded_at: Fri, 10 Jan 2014 08:56:00 GMT
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/chapters/01/changes
+    uri: http://tariff-api.dev.gov.uk/chapters/01/changes?as_of=2014-01-10
     body:
       encoding: US-ASCII
       string: ''
@@ -60,46 +121,46 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 13 Sep 2013 13:18:20 GMT
+      - Fri, 10 Jan 2014 08:56:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '3261'
+      - '3221'
       Connection:
       - close
       X-Ua-Compatible:
       - IE=Edge
       Etag:
-      - '"f0bea019f397b36216e34eeaf20f620e"'
+      - "\"720d4aa106252a77b67a809a563dfedc\""
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 38e90b3f74e4c9e0fc704e272f835cfb
+      - 7a46c6b937eb956a221254030296593f
       X-Runtime:
-      - '0.258184'
+      - '7.373938'
     body:
       encoding: UTF-8
-      string: '[{"oid":2213392,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307479,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Animal
-        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2212948,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307257,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Common
-        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2201057,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-295465,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"VAT
-        standard rate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2201109,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-295517,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"VAT
-        standard rate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2212901,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286134,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Common
-        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2212877,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286142,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Animal
-        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2212902,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307234,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Common
-        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2212878,"model_name":"Measure","operation_date":"2013-09-02","operation":"C","record":{"measure_sid":-307222,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Animal
-        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2213391,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286146,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101299000","measure_type_description":"Animal
-        Health Certificate","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}},{"oid":2212947,"model_name":"Measure","operation_date":"2013-09-02","operation":"U","record":{"measure_sid":-286168,"origin":"uk","import":true,"goods_nomenclature_item_id":"0101300000","measure_type_description":"Common
-        Veterinary Entry Document (CVED)","geographical_area":{"geographical_area_id":"1011","description":"ERGA
-        OMNES"}}}]'
+      string: "[{\"oid\":2289439,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349296,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102295900\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289435,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349292,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102292900\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289440,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349297,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102296100\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289436,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349293,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102294100\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289441,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349298,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102296900\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289432,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349289,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0101000000\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289437,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349294,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102294900\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289433,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349290,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102291000\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289438,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349295,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102295100\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}},{\"oid\":2289434,\"model_name\":\"Measure\",\"operation_date\":\"2013-12-19\",\"operation\":\"C\",\"record\":{\"id\":3349291,\"origin\":\"eu\",\"import\":true,\"goods_nomenclature_item_id\":\"0102292100\",\"measure_type\":{\"id\":\"142\",\"description\":\"Tariff
+        preference\"},\"geographical_area\":{\"id\":\"2080\",\"description\":\"LOMB
+        O'SEAS C'TRIES & T'TORIES\"}}}]"
     http_version: 
-  recorded_at: Fri, 13 Sep 2013 13:18:20 GMT
+  recorded_at: Fri, 10 Jan 2014 08:56:13 GMT
 recorded_with: VCR 2.5.0
