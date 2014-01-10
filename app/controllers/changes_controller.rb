@@ -1,10 +1,10 @@
 class ChangesController < ApplicationController
+  respond_to :atom
+
   def index
     @changes = ChangesPresenter.new(changeable.changes(query_params))
 
-    respond_to do |format|
-      format.atom
-    end
+    respond_with(@changes)
   end
 
   helper_method :changeable

@@ -24,17 +24,24 @@ TradeTariffFrontend::Application.routes.draw do
         )
     end
 
-    constraints(format: 'html') do
-      resources :sections, only: [:index, :show]
-      resources :chapters, only: [:index, :show] do
-        resources :changes, only: [:index], module: 'chapters'
-      end
-      resources :headings, only: [:index, :show] do
-        resources :changes, only: [:index], module: 'headings'
-      end
-      resources :commodities, only: [:index, :show] do
-        resources :changes, only: [:index], module: 'commodities'
-      end
+    resources :sections, only: [:index, :show]
+    resources :chapters, only: [:index, :show] do
+      resources :changes,
+                only: [:index],
+                defaults: { format: :atom },
+                module: 'chapters'
+    end
+    resources :headings, only: [:index, :show] do
+      resources :changes,
+                only: [:index],
+                defaults: { format: :atom },
+                module: 'headings'
+    end
+    resources :commodities, only: [:index, :show] do
+      resources :changes,
+                only: [:index],
+                defaults: { format: :atom },
+                module: 'commodities'
     end
   end
 
