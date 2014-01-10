@@ -425,6 +425,10 @@ header.page-header div,
   background:#B6D7EB;
 }
 
+.commodity-code {
+  background:#B5DEDB;
+}
+
 article table {
     @include table;
     width:106.4%; /* override for static styles */
@@ -1421,6 +1425,18 @@ article.search-results {
         padding-left: 15%;
         margin-left: -15%;
       }
+    }
+  }
+
+  dl.result-commodities {
+    dt.commodity-code {
+      width: auto;
+      padding: 0 3px;
+    }
+
+    dl.commodities a {
+      padding-left: 14px;
+      margin-left: 14px;
     }
   }
 
