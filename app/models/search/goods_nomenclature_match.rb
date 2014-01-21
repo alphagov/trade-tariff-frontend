@@ -10,12 +10,15 @@ class Search
 
     array_attr_reader :sections, :chapters, :headings, :commodities
     array_attr_writer :sections, :chapters, :headings, :commodities
-    attr_reader :commodity_headings
 
     def commodities=(commodity_data)
-      @commodities = commodity_data.map { |cd| Commodity.new(cd) }
+      @commodities = commodity_data.map { |cd| Commodity.new(cd["_source"]) }
 
       self.commodity_headings = @commodities
+    end
+
+    def commodity_headings
+      @commodity_headings.presence || []
     end
 
     # Extract Headings from Commodity object as we need to build
@@ -55,7 +58,7 @@ class Search
     private
 
     def find_heading(heading_for_search)
-      (@headings + @commodity_headings).detect { |heading| heading == heading_for_search }
+      (headings + commodity_headings).detect { |heading| heading == heading_for_search }
     end
 
     def build_heading_from(commodity)
