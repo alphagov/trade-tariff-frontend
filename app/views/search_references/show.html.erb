@@ -4,14 +4,24 @@
       <%= a_z_index(letter) %>
     </ol>
 
-    <h1><%= letter.upcase %></h1>
+    <table>
+      <caption><%= letter.upcase %></caption>
 
-    <ol class="listing">
+      <tbody>
       <% @search_references.each do |search_reference| %>
-        <li>
-          <%= link_to search_reference, search_reference.link %>
-        </li>
+        <tr>
+          <td>
+            <%= link_to search_reference, search_reference.link %>
+          </td>
+          <td>
+            <%= search_reference.referenced_class %>
+          </td>
+          <td class="numerical">
+           <%= search_reference.referenced_id %>
+          </td>
+        </tr>
       <% end %>
-    </ol>
+      </tbody>
+    </table>
   </div>
 </article>
