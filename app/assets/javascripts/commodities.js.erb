@@ -361,7 +361,7 @@ GOVUK.tariff = {
         */
         toggledControl: {
           initialize: function(control) {
-            var   $controlForm = $('fieldset[class=' + control + ']'),
+            var   $controlForm = $('fieldset[class~=' + control + ']'),
                   $infoPara = $controlForm.find('span.text'),
                   $fields = $controlForm.find('span.fields');
 
