@@ -17,7 +17,7 @@
     <%= f.button 'Search', class: 'button right' %>
   </fieldset>
 
-  <fieldset class='date-picker'>
+  <fieldset class='date-picker help-notice'>
     <span class='fields'>This tariff is for
       <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
       <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
@@ -38,7 +38,7 @@
     <a href="<%= a_z_index_path(letter: 'a') %>" class="js-pjax">A-Z Index</a>
   </fieldset>
 
-  <fieldset class='country-picker'>
+  <fieldset class='country-picker help-notice'>
     <span class='fields'>
       Trade between the UK and
       <%= f.select :country, f.object.countries.map{ |c| [c.description, c.id] }, { include_blank: 'All countries' }, name: 'country' %>
