@@ -126,7 +126,7 @@ GEM
       addressable
     link_header (0.0.8)
     logstash-event (1.1.5)
-    logstasher (0.4.1)
+    logstasher (0.4.8)
       logstash-event (~> 1.1.0)
     lrucache (0.1.3)
       PriorityQueue (~> 0.1.2)
@@ -290,7 +290,7 @@ DEPENDENCIES
   hashie
   httparty
   jquery-rails
-  logstasher (= 0.4.1)
+  logstasher (= 0.4.8)
   multi_json
   plek (= 1.3.1)
   pry-rails

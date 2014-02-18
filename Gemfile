@@ -18,7 +18,7 @@ gem "addressable"
 gem "unicorn", "~> 4.6.3"
 
 gem "ci_reporter"
-gem 'logstasher', '0.4.1'
+gem 'logstasher', '0.4.8'
 gem "aws-ses", require: "aws/ses" # Needed by exception_notification
 gem "exception_notification"
 
