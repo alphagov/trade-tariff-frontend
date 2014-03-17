@@ -5,7 +5,7 @@
   </li>
 <% else %>
   <li class="<%= commodity_level(commodity)%><%= leaf_position(commodity) %>">
-    <a class="js-pjax" href="<%= commodity_path(commodity) %>" title="View complete information for this commodity">
+    <a href="<%= commodity_path(commodity) %>" title="View complete information for this commodity">
     <span class="description open" id="commodity-<%= commodity.short_code %>"><%= commodity.to_s.html_safe %></span>
       <span class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
         <span class="chapter-code"><%= commodity.chapter_code %></span>

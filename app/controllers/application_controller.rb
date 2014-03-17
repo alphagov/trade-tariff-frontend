@@ -50,10 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_layout
-    if request.headers['X-PJAX']
-      response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
-      "pjax"
-    elsif request.headers['X-AJAX']
+    if request.headers['X-AJAX']
       response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
       false
     else

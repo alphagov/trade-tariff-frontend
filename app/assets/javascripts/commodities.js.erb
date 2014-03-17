@@ -465,10 +465,10 @@ GOVUK.tariff = {
     /**
       @name initialize
       @function
-      @description adds behaviours inside of the pjax area
+      @description adds behaviours 
       @param {Element} content Element in which to add behaviours
     */
-    onContentLoad : function (context) {
+    onLoad : function (context) {
         if (context === undefined) {
           context = document.body;
         }
@@ -478,13 +478,6 @@ GOVUK.tariff = {
         this.tablePopup.initialize(context);
         this.tabLinkFocuser.initialize(context);
         this.hovers.init(context);
-    },
-    /**
-      @name onLoad
-      @function
-      @description adds behaviours outside of the pjax area
-    */
-    onLoad : function () {
         this.searchForm.initialize();
-    }
+    },
 };

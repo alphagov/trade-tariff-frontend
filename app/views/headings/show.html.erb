@@ -10,10 +10,10 @@
     <div class="inner">
       <dl>
         <dt class="section-number">Section <%= @heading.section.numeral %></dt>
-        <dd class="section-title"><%= link_to @heading.section.title, section_path(@heading.section), class: "js-pjax" %>
+        <dd class="section-title"><%= link_to @heading.section.title, section_path(@heading.section) %>
           <dl class="tariff-fragments">
             <dt class="chapter-code" title="Chapter code"><%= @heading.chapter_short_code %></dt>
-            <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter), class: "js-pjax" %>
+            <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
               <dl>
                 <dt class="heading-code" title="Heading code"><%= @heading.display_short_code %></dt>
                 <dd>
