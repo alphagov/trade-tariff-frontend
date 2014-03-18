@@ -5,14 +5,14 @@
     <nav class="trail">
       <dl>
         <dt class="section-number">Section <%= declarable.section_numeral %></dt>
-        <dd class="section-title tariff-fragments"><%= link_to declarable.section, section_path(declarable.section), class: "js-pjax" %>
+        <dd class="section-title tariff-fragments"><%= link_to declarable.section, section_path(declarable.section) %>
           <dl class="tariff-fragments">
             <dt class="chapter-code" title="Chapter code"><%= declarable.chapter_short_code %></dt>
-            <dd><%= link_to declarable.chapter, chapter_path(declarable.chapter), class: "js-pjax" %>
+            <dd><%= link_to declarable.chapter, chapter_path(declarable.chapter) %>
               <dl>
                 <dt class="heading-code" title="Heading code"><%= declarable.heading_display_short_code %></dt>
                 <% if declarable.show_commodity_tree? %>
-                  <dd><%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading), class: "js-pjax" %>
+                  <dd><%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading) %>
                       <%= commodity_tree(declarable, declarable.ancestors) %>
                   </dd>
                 <% else %>
