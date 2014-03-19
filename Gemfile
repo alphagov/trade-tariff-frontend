@@ -3,7 +3,7 @@ source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
 gem "rails", "3.2.17"
 
-gem "yajl-ruby"
+gem "yajl-ruby", "1.2.0", require: "yajl"
 gem "faraday"
 gem "faraday_middleware"
 gem "hashie"
