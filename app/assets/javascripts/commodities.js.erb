@@ -4,480 +4,477 @@
 
 "use strict";
 
-/**
- * @name GOVUK
- * @namespace
- * @description Global namespace for gov.uk
- * @requires jquery 1.6.2
-*/
-var GOVUK = GOVUK || {};
+(function() {
+  window.GOVUK = window.GOVUK || {};
+  /**
+    @name GOVUK.tariff
+    @memberOf GOVUK
+    @namespace
+    @description A set of methods for handling behaviours with Trade tariff commodities
+    @requires jquery 1.6.2
+  */
 
-/**
-  @name GOVUK.tariff
-  @memberOf GOVUK
-  @namespace
-  @description A set of methods for handling behaviours with Trade tariff commodities
-  @requires jquery 1.6.2
-*/
-GOVUK.tariff = {
-    /**
-      @name GOVUK.tariff.tree
-      @object
-      @description Behaviours for expandable trees
-    */
-    tree : {
-        /**
-          @name GOVUK.tariff.tree.initialize
-          @function
-          @description expands/collapses nodes in a tree
-          @param {String} context Element in which to add behaviours
-        */
-        initialize : function (context) {
-            var $parentNodes = $('.has_children', context),
-                $branchSwitches = $([]),
-                $childLists,
-                isCommodityTree = false,
-                $controls,
-                effectAll,
-                setMembers,
-                controlHover,
-                clickBranch;
+  GOVUK.tariff = {
+      /**
+        @name GOVUK.tariff.tree
+        @object
+        @description Behaviours for expandable trees
+      */
+      tree : {
+          /**
+            @name GOVUK.tariff.tree.initialize
+            @function
+            @description expands/collapses nodes in a tree
+            @param {String} context Element in which to add behaviours
+          */
+          initialize : function (context) {
+              var $parentNodes = $('.has_children', context),
+                  $branchSwitches = $([]),
+                  $childLists,
+                  isCommodityTree = false,
+                  $controls,
+                  effectAll,
+                  setMembers,
+                  controlHover,
+                  clickBranch;
 
-            if (!$parentNodes.length) { return; }
+              if (!$parentNodes.length) { return; }
 
-            clickBranch = function ($branch, $childList, action) {
-              var titleTxt = {
-                      'open' : 'Click to close',
-                      'close' : 'Click to open'
-                  },
-                  listAction = (action === 'open') ? 'removeClass' : 'addClass',
-                  branchAction = (action === 'open') ? 'addClass' : 'removeClass';
+              clickBranch = function ($branch, $childList, action) {
+                var titleTxt = {
+                        'open' : 'Click to close',
+                        'close' : 'Click to open'
+                    },
+                    listAction = (action === 'open') ? 'removeClass' : 'addClass',
+                    branchAction = (action === 'open') ? 'addClass' : 'removeClass';
 
-              $childList[listAction]('visuallyhidden');
-              $branch[branchAction]('open')
-                  .attr('title',  titleTxt[action]);
-            };
+                $childList[listAction]('visuallyhidden');
+                $branch[branchAction]('open')
+                    .attr('title',  titleTxt[action]);
+              };
 
-            setMembers = function ($branchNode) {
-                var defaultTitle,
-                    $branchSwitch,
-                    $subTree;
+              setMembers = function ($branchNode) {
+                  var defaultTitle,
+                      $branchSwitch,
+                      $subTree;
 
-                if (!isCommodityTree) {
-                    $subTree = $branchNode.siblings('dd').find('ul');
-                    defaultTitle = 'Click to open';
-                    $branchSwitch = $branchNode;
-                } else {
-                    $subTree = $branchNode.children('ul');
-                    defaultTitle = 'Click to close';
-                    $branchSwitch = $branchNode.children('span');
+                  if (!isCommodityTree) {
+                      $subTree = $branchNode.siblings('dd').find('ul');
+                      defaultTitle = 'Click to open';
+                      $branchSwitch = $branchNode;
+                  } else {
+                      $subTree = $branchNode.children('ul');
+                      defaultTitle = 'Click to close';
+                      $branchSwitch = $branchNode.children('span');
+                  }
+
+                  $branchSwitch.attr('title', defaultTitle);
+                  $branchSwitches = $branchSwitches.add($branchSwitch);
+
+                  return $subTree;
+              };
+
+              controlHover = function (action) {
+                return function (evt) {
+                  $(evt.target)[action + 'Class']('description-hover');
                 }
+              };
 
-                $branchSwitch.attr('title', defaultTitle);
-                $branchSwitches = $branchSwitches.add($branchSwitch);
+              $parentNodes.each(function (idx) {
+                  var $parentNode = $(this),
+                      $childList;
 
-                return $subTree;
-            };
+                  if ((idx === 0) && ($parentNode[0].nodeName.toLowerCase() !== 'dt')) {
+                      isCommodityTree = true;
+                  }
 
-            controlHover = function (action) {
-              return function (evt) {
-                $(evt.target)[action + 'Class']('description-hover');
+                  $childList = setMembers($parentNode);
+
+                  // hide all child lists
+                  if (!isCommodityTree) {
+                      $childList.addClass('visuallyhidden');
+                  }
+
+                  // allow expansion based on clicking
+                  $branchSwitches.eq(idx).on('click', function(e) {
+                      e.stopPropagation();
+                      if ($childList.is('.visuallyhidden')) {
+                          clickBranch($(this), $childList, 'open');
+                      }
+                      else {
+                          clickBranch($(this), $childList, 'close');
+                      }
+
+                      return false;
+                  })
+                  .on('mouseover', controlHover('add'))
+                  .on('mouseout', controlHover('remove'));
+              });
+
+              if (isCommodityTree) {
+                  $controls = '<p class="tree-controls">' +
+                                  '<a href="#">open all</a> / ' +
+                                  '<a href="#">close all</a>' +
+                              '</p>';
+                  effectAll = function (ctrlIdx) {
+                      $parentNodes.each(function (idx) {
+                          var $childList = $(this).children('ul');
+
+                          if (ctrlIdx === 0) {
+                              clickBranch($branchSwitches.eq(idx), $childList, 'open');
+                          } else {
+                              clickBranch($branchSwitches.eq(idx), $childList, 'close');
+                          }
+                      });
+                  };
+
+                  $parentNodes.closest('div.inner').append($controls);
+                  $('p.tree-controls a', context).each(function (idx) {
+                    $(this)
+                      .on('click', function () {
+                          effectAll(idx);
+                          return false;
+                      });
+                  });
               }
-            };
+          }
+      },
+      /**
+        @name GOVUK.tariff.tabs
+        @object
+        @description Tabbing behaviours
+      */
+      tabs : {
+          /**
+            @name GOVUK.tariff.tabs.initialize
+            @function
+            @description adds tabbing behaviour
+            @requires jquery.tabs.js
+            @param {String} context Element in which to add behaviours
+          */
+          initialize : function (context) {
+              var $container = $(context);
 
-            $parentNodes.each(function (idx) {
-                var $parentNode = $(this),
-                    $childList;
+              if ($container.find('.nav-tabs').length) {
+                  $container.tabs();
+              }
+          }
+      },
+      tabLinkFocuser:{
+          /**
+            @name GOVUK.tariff.tabLinkFocuser.initialize
+            @function
+            @description opens relevant tab and focuses on element inside its content
+            @param {String} context Element in which to add behaviours
+          */
+          initialize : function (context) {
+              var hash = window.location.hash,
+                  pattern = /^#(import|export)\-(measure)\-(\d+)$/;
 
-                if ((idx === 0) && ($parentNode[0].nodeName.toLowerCase() !== 'dt')) {
-                    isCommodityTree = true;
-                }
+              if (hash.match(pattern)) {
+                var matches = hash.match(pattern),
+                    tabId = 'tab-' + matches[1],
+                    entity = matches[2],
+                    entityId = matches[3];
 
-                $childList = setMembers($parentNode);
+                    $('#' + tabId + ' a').trigger('click');
+                    $('#' + entity + '-' + entityId).focus();
+              }
+          }
+      },
+      /**
+        @name GOVUK.tariff.tablePopup
+        @object
+        @description Adds popup behaviour to tariff table cells
+      */
+      tablePopup : {
+          html : ['<div class="info-content"><h2 id="dialog-title" class="visuallyhidden">',
+                  '</h2>' +
+                      '<p class="close"><a href="#">Close</a></p>' +
+                      '<div class="info-inner">' +
+                          '<p>Test content</p>' +
+                      '</div>' +
+                  '</div>'],
+          /**
+            @name GOVUK.tariff.tablePopup.getDimensions
+            @function
+            @description Returns dimensions to be used to size and position the popup
+          */
+          getDimensions : function ($popup) {
+              var windowWidth = $(window).width(),
+                  popupWidth = $popup.innerWidth(),
+                  scrollLeft = $(document).scrollLeft(),
+                  sidePadding = 0,
+                  dimensions = {};
 
-                // hide all child lists
-                if (!isCommodityTree) {
-                    $childList.addClass('visuallyhidden');
-                }
+              if ($popup.css('position') === 'absolute') {
+                  dimensions.top = $(document).scrollTop() + 12 + 'px';
+                  sidePadding = scrollLeft;
+              }
 
-                // allow expansion based on clicking
-                $branchSwitches.eq(idx).on('click', function(e) {
-                    e.stopPropagation();
-                    if ($childList.is('.visuallyhidden')) {
-                        clickBranch($(this), $childList, 'open');
-                    }
-                    else {
-                        clickBranch($(this), $childList, 'close');
-                    }
+              if (popupWidth < windowWidth) {
+                  dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px';
+              } else {
+                  // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
+                  if (popupWidth > windowWidth) {
+                      dimensions.width = windowWidth - (parseFloat($popup.css('padding-left')) + parseFloat($popup.css('padding-right'))) + 'px';
+                  }
+                  dimensions.left = sidePadding + 'px';
+              }
 
-                    return false;
-                })
-                .on('mouseover', controlHover('add'))
-                .on('mouseout', controlHover('remove'));
-            });
+              return dimensions;
+          },
+          /**
+            @name GOVUK.tariff.tablePopup.adapt
+            @function
+            @description adapts the disclaimer popup for reuse
+            @param {Object} $this jQuery-wrapped link that fired the popup
+          */
+          adapt : function ($linkElm) {
+              var url = $linkElm.attr('href'),
+                  $popup = $('#popup'),
+                  $popupInner = $popup.find('div.info-inner'),
+                  $dialogTitle = $('#dialog-title'),
+                  $closeBtn = $popup.find('.close a'),
+                  $mask = $('#mask'),
+                  loader = '<img src="" alt="Content is loading" class="loader" />',
+                  htmlContent,
+                  popupCSS;
 
-            if (isCommodityTree) {
-                $controls = '<p class="tree-controls">' +
-                                '<a href="#">open all</a> / ' +
-                                '<a href="#">close all</a>' +
-                            '</p>';
-                effectAll = function (ctrlIdx) {
-                    $parentNodes.each(function (idx) {
-                        var $childList = $(this).children('ul');
+              htmlContent = $("[data-popup=" + $linkElm.data('popup-ref') + "]").html();
+              $popupInner.html(htmlContent);
 
-                        if (ctrlIdx === 0) {
-                            clickBranch($branchSwitches.eq(idx), $childList, 'open');
-                        } else {
-                            clickBranch($branchSwitches.eq(idx), $childList, 'close');
-                        }
-                    });
-                };
-
-                $parentNodes.closest('div.inner').append($controls);
-                $('p.tree-controls a', context).each(function (idx) {
-                  $(this)
-                    .on('click', function () {
-                        effectAll(idx);
-                        return false;
-                    });
-                });
-            }
-        }
-    },
-    /**
-      @name GOVUK.tariff.tabs
-      @object
-      @description Tabbing behaviours
-    */
-    tabs : {
-        /**
-          @name GOVUK.tariff.tabs.initialize
-          @function
-          @description adds tabbing behaviour
-          @requires jquery.tabs.js
-          @param {String} context Element in which to add behaviours
-        */
-        initialize : function (context) {
-            var $container = $(context);
-
-            if ($container.find('.nav-tabs').length) {
-                $container.tabs();
-            }
-        }
-    },
-    tabLinkFocuser:{
-        /**
-          @name GOVUK.tariff.tabLinkFocuser.initialize
-          @function
-          @description opens relevant tab and focuses on element inside its content
-          @param {String} context Element in which to add behaviours
-        */
-        initialize : function (context) {
-            var hash = window.location.hash,
-                pattern = /^#(import|export)\-(measure)\-(\d+)$/;
-
-            if (hash.match(pattern)) {
-              var matches = hash.match(pattern),
-                  tabId = 'tab-' + matches[1],
-                  entity = matches[2],
-                  entityId = matches[3];
-
-                  $('#' + tabId + ' a').trigger('click');
-                  $('#' + entity + '-' + entityId).focus();
-            }
-        }
-    },
-    /**
-      @name GOVUK.tariff.tablePopup
-      @object
-      @description Adds popup behaviour to tariff table cells
-    */
-    tablePopup : {
-        html : ['<div class="info-content"><h2 id="dialog-title" class="visuallyhidden">',
-                '</h2>' +
-                    '<p class="close"><a href="#">Close</a></p>' +
-                    '<div class="info-inner">' +
-                        '<p>Test content</p>' +
-                    '</div>' +
-                '</div>'],
-        /**
-          @name GOVUK.tariff.tablePopup.getDimensions
-          @function
-          @description Returns dimensions to be used to size and position the popup
-        */
-        getDimensions : function ($popup) {
-            var windowWidth = $(window).width(),
-                popupWidth = $popup.innerWidth(),
-                scrollLeft = $(document).scrollLeft(),
-                sidePadding = 0,
-                dimensions = {};
-
-            if ($popup.css('position') === 'absolute') {
-                dimensions.top = $(document).scrollTop() + 12 + 'px';
-                sidePadding = scrollLeft;
-            }
-
-            if (popupWidth < windowWidth) {
-                dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px';
-            } else {
-                // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
-                if (popupWidth > windowWidth) {
-                    dimensions.width = windowWidth - (parseFloat($popup.css('padding-left')) + parseFloat($popup.css('padding-right'))) + 'px';
-                }
-                dimensions.left = sidePadding + 'px';
-            }
-
-            return dimensions;
-        },
-        /**
-          @name GOVUK.tariff.tablePopup.adapt
-          @function
-          @description adapts the disclaimer popup for reuse
-          @param {Object} $this jQuery-wrapped link that fired the popup
-        */
-        adapt : function ($linkElm) {
-            var url = $linkElm.attr('href'),
-                $popup = $('#popup'),
-                $popupInner = $popup.find('div.info-inner'),
-                $dialogTitle = $('#dialog-title'),
-                $closeBtn = $popup.find('.close a'),
-                $mask = $('#mask'),
-                loader = '<img src="" alt="Content is loading" class="loader" />',
-                htmlContent,
-                popupCSS;
-
-            htmlContent = $("[data-popup=" + $linkElm.data('popup-ref') + "]").html();
-            $popupInner.html(htmlContent);
-
-            // reset the tabindex of the heading
-            $dialogTitle
-                .attr('tabindex', 0)
-                .focus();
-            $popup
-                .attr({
-                    'tabindex' : -1,
-                    'role' : 'dialog',
-                    'aria-labelledby' : 'dialog-title'
-                });
-
-            $mask
-                .width($(document).width())
-                .height($(document).height())
-                .on('click', function () {
-                  $popup.fadeOut(400, function(){
-                    $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
+              // reset the tabindex of the heading
+              $dialogTitle
+                  .attr('tabindex', 0)
+                  .focus();
+              $popup
+                  .attr({
+                      'tabindex' : -1,
+                      'role' : 'dialog',
+                      'aria-labelledby' : 'dialog-title'
                   });
 
-                  $linkElm.focus();
-            });
+              $mask
+                  .width($(document).width())
+                  .height($(document).height())
+                  .on('click', function () {
+                    $popup.fadeOut(400, function(){
+                      $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
+                    });
 
-            // return focus to the trigger link when the lightbox closes
-            $closeBtn.on('click', function (e) {
-                $linkElm.focus()
-            });
+                    $linkElm.focus();
+              });
 
-            // dialogs need focus to be retained until closed so control tabbing
-            $popup.on('keydown', function (e) {
-                if (e.which == 9){
+              // return focus to the trigger link when the lightbox closes
+              $closeBtn.on('click', function (e) {
+                  $linkElm.focus()
+              });
 
-                    // cancel tabbing from the close button (assumed this is the last link)
-                    if (e.target.nodeName.toLowerCase() === 'a') {
-                        if (!event.shiftKey) {
-                            return false;
-                        }
-                    } else {
+              // dialogs need focus to be retained until closed so control tabbing
+              $popup.on('keydown', function (e) {
+                  if (e.which == 9){
 
-                        // popup removes tabindex from the title by default so re-apply it
-                        if (e.target.nodeName.toLowerCase() === 'h2') {
-                            e.target.tabIndex = 0;
-                        }
+                      // cancel tabbing from the close button (assumed this is the last link)
+                      if (e.target.nodeName.toLowerCase() === 'a') {
+                          if (!event.shiftKey) {
+                              return false;
+                          }
+                      } else {
 
-                        // cancel reverse-tabbing out of the popup
-                        if (event.shiftKey) {
-                            return false;
-                        }
-                    }
-                }
+                          // popup removes tabindex from the title by default so re-apply it
+                          if (e.target.nodeName.toLowerCase() === 'h2') {
+                              e.target.tabIndex = 0;
+                          }
 
-                return true;
-            });
+                          // cancel reverse-tabbing out of the popup
+                          if (event.shiftKey) {
+                              return false;
+                          }
+                      }
+                  }
 
-            popupCSS = this.getDimensions($popup);
-            $popup.css(popupCSS);
-        },
-        /**
-          @name GOVUK.tariff.tablePopup.open
-          @function
-          @description opens the popup
-          @param {Element} $target Target of the click event
-        */
-        open : function ($target) {
-            var title = this.html[0] + 'Conditions' + this.html[1];
+                  return true;
+              });
 
-            BetaPopup.maskOpacity = 0.2;
-            BetaPopup.popup(title, 'tariff-info');
-            this.adapt($target);
-        },
-        /**
-          @name GOVUK.tariff.tablePopup.initialize
-          @function
-          @description initializes the popup behaviour
-          @param {String} context Element in which to add behaviours
-        */
-        initialize : function (context) {
-            var that = this,
-                hash = window.location.hash,
-                $linkElms = $('table td a.reference', context),
-                tabId;
+              popupCSS = this.getDimensions($popup);
+              $popup.css(popupCSS);
+          },
+          /**
+            @name GOVUK.tariff.tablePopup.open
+            @function
+            @description opens the popup
+            @param {Element} $target Target of the click event
+          */
+          open : function ($target) {
+              var title = this.html[0] + 'Conditions' + this.html[1];
 
-            $linkElms.each(function (idx, linkElm) {
-                var $linkElm = $(linkElm);
+              BetaPopup.maskOpacity = 0.2;
+              BetaPopup.popup(title, 'tariff-info');
+              this.adapt($target);
+          },
+          /**
+            @name GOVUK.tariff.tablePopup.initialize
+            @function
+            @description initializes the popup behaviour
+            @param {String} context Element in which to add behaviours
+          */
+          initialize : function (context) {
+              var that = this,
+                  hash = window.location.hash,
+                  $linkElms = $('table td a.reference', context),
+                  tabId;
 
-                $linkElm.attr('title', 'Opens in a popup');
-                $linkElm.on('click', function (e) {
-                    that.open($(this));
+              $linkElms.each(function (idx, linkElm) {
+                  var $linkElm = $(linkElm);
+
+                  $linkElm.attr('title', 'Opens in a popup');
+                  $linkElm.on('click', function (e) {
+                      that.open($(this));
+                      return false;
+                  });
+
+                  if ($linkElm.attr("href") === hash) {
+                      tabId = $linkElm.closest(".tab-pane").attr("id");
+                      tabId = tabId.replace(/(\w+)-enhanced/, "tab-$1");
+                      $('#' + tabId + ' a').trigger('click');
+                      that.open($(linkElm));
+                  }
+              });
+          }
+      },
+      /**
+        @name GOVUK.tariff.searchForm
+        @object
+        @description container for searchForm behaviour
+      */
+      searchForm : {
+          /**
+            @name GOVUK.tariff.datePicker.initialize
+            @function
+            @description initializes namespace
+          */
+          toggledControl: {
+            initialize: function(control) {
+              var   $controlForm = $('fieldset[class~=' + control + ']'),
+                    $infoPara = $controlForm.find('span.text'),
+                    $fields = $controlForm.find('span.fields');
+
+                $fields.hide();
+
+                $controlForm.on('click', 'a', function (e) {
+                    $infoPara.toggle();
+                    $fields.toggle();
                     return false;
                 });
 
-                if ($linkElm.attr("href") === hash) {
-                    tabId = $linkElm.closest(".tab-pane").attr("id");
-                    tabId = tabId.replace(/(\w+)-enhanced/, "tab-$1");
-                    $('#' + tabId + ' a').trigger('click');
-                    that.open($(linkElm));
-                }
-            });
-        }
-    },
-    /**
-      @name GOVUK.tariff.searchForm
-      @object
-      @description container for searchForm behaviour
-    */
-    searchForm : {
+                $controlForm.on('click', 'a.submit', function(e) {
+                  $controlForm.closest('form').submit();
+                });
+            }
+          },
+
+          initialize : function () {
+            var toggledControls = ['date-picker', 'country-picker'],
+                namespace = this;
+
+            $(toggledControls).each(function(idx, element){
+              namespace.toggledControl.initialize(element);
+            })
+          }
+      },
+      /**
+        @name hovers
+        @object
+        @description adding hovers for item numbers
+      */
+      hovers : {
         /**
-          @name GOVUK.tariff.datePicker.initialize
+          @name init
           @function
-          @description initializes namespace
+          @description initialize the namespace
+          @param {String} context Element in which to add behaviours
         */
-        toggledControl: {
-          initialize: function(control) {
-            var   $controlForm = $('fieldset[class~=' + control + ']'),
-                  $infoPara = $controlForm.find('span.text'),
-                  $fields = $controlForm.find('span.fields');
+        init : function (context) {
+          var $terms = $('dt.chapter-code, dt.heading-code, dt.section-number, dl.sections dt', context),
+              controlClass;
 
-              $fields.hide();
+          controlClass = function (idx, action, $descriptionLink) {
+            return function () {
+              $descriptionLink[action + 'Class']('hover');
+              $terms.eq(idx)[action + 'Class']('hover');
+            }
+          };
 
-              $controlForm.on('click', 'a', function (e) {
-                  $infoPara.toggle();
-                  $fields.toggle();
-                  return false;
-              });
+          $terms.each(function (idx) {
+            var $this = $(this),
+                $description = $this.next('dd').removeClass('hover'),
+                $descriptionLink = $description.find('>a');
 
-              $controlForm.on('click', 'a.submit', function(e) {
-                $controlForm.closest('form').submit();
-              });
-          }
-        },
+            if (!$descriptionLink.length) {
+              $descriptionLink = $description.find('>h1 a')
+              if (!$descriptionLink.length) { return; }
+            }
 
-        initialize : function () {
-          var toggledControls = ['date-picker', 'country-picker'],
-              namespace = this;
+            $descriptionLink.removeClass('hover');
 
-          $(toggledControls).each(function(idx, element){
-            namespace.toggledControl.initialize(element);
-          })
-        }
-    },
-    /**
-      @name hovers
-      @object
-      @description adding hovers for item numbers
-    */
-    hovers : {
-      /**
-        @name init
-        @function
-        @description initialize the namespace
-        @param {String} context Element in which to add behaviours
-      */
-      init : function (context) {
-        var $terms = $('dt.chapter-code, dt.heading-code, dt.section-number, dl.sections dt', context),
-            controlClass;
+            // fire the link when it's term is clicked
+            $this.on('click', function () {
+              // clear classes in case content is cached with pjax
+              $(this).removeClass('hover');
+              $descriptionLink.removeClass('hover')
+              GOVUK.tariff.utils.triggerClick.call($descriptionLink[0]);
+            });
 
-        controlClass = function (idx, action, $descriptionLink) {
-          return function () {
-            $descriptionLink[action + 'Class']('hover');
-            $terms.eq(idx)[action + 'Class']('hover');
-          }
-        };
-
-        $terms.each(function (idx) {
-          var $this = $(this),
-              $description = $this.next('dd').removeClass('hover'),
-              $descriptionLink = $description.find('>a');
-
-          if (!$descriptionLink.length) {
-            $descriptionLink = $description.find('>h1 a')
-            if (!$descriptionLink.length) { return; }
-          }
-
-          $descriptionLink.removeClass('hover');
-
-          // fire the link when it's term is clicked
-          $this.on('click', function () {
-            // clear classes in case content is cached with pjax
-            $(this).removeClass('hover');
-            $descriptionLink.removeClass('hover')
-            GOVUK.tariff.utils.triggerClick.call($descriptionLink[0]);
+            $this.add($descriptionLink).hover(
+              controlClass(idx, 'add', $descriptionLink),
+              controlClass(idx, 'remove', $descriptionLink)
+            );
           });
-
-          $this.add($descriptionLink).hover(
-            controlClass(idx, 'add', $descriptionLink),
-            controlClass(idx, 'remove', $descriptionLink)
-          );
-        });
-      }
-    },
-    /**
-      @name utils
-      @namespace
-      @description utilities for the GOVUK.tariff namespace
-    */
-    utils : {
-      /**
-        @name triggerClick
-        @function
-        @description trigger a click on an element. To be on an element via the call() method
-        @param {String} event Name of the event to trigger
-      */
-      triggerClick : function () {
-         if (document.createEvent) {
-             var evt = document.createEvent("HTMLEvents");
-             evt.initEvent('click', true, true ); // event type, bubbling, cancelable
-             return this.dispatchEvent(evt);
-         } else {
-             // dispatch for IE
-             var evt = document.createEventObject();
-             this.click();
-         }
-      }
-    },
-    /**
-      @name initialize
-      @function
-      @description adds behaviours 
-      @param {Element} content Element in which to add behaviours
-    */
-    onLoad : function (context) {
-        if (context === undefined) {
-          context = document.body;
         }
+      },
+      /**
+        @name utils
+        @namespace
+        @description utilities for the GOVUK.tariff namespace
+      */
+      utils : {
+        /**
+          @name triggerClick
+          @function
+          @description trigger a click on an element. To be on an element via the call() method
+          @param {String} event Name of the event to trigger
+        */
+        triggerClick : function () {
+           if (document.createEvent) {
+               var evt = document.createEvent("HTMLEvents");
+               evt.initEvent('click', true, true ); // event type, bubbling, cancelable
+               return this.dispatchEvent(evt);
+           } else {
+               // dispatch for IE
+               var evt = document.createEventObject();
+               this.click();
+           }
+        }
+      },
+      /**
+        @name initialize
+        @function
+        @description adds behaviours 
+        @param {Element} content Element in which to add behaviours
+      */
+      onLoad : function (context) {
+          if (context === undefined) {
+            context = document.body;
+          }
 
-        this.tree.initialize(context);
-        this.tabs.initialize(context);
-        this.tablePopup.initialize(context);
-        this.tabLinkFocuser.initialize(context);
-        this.hovers.init(context);
-        this.searchForm.initialize();
-    },
-};
+          this.tree.initialize(context);
+          this.tabs.initialize(context);
+          this.tablePopup.initialize(context);
+          this.tabLinkFocuser.initialize(context);
+          this.hovers.init(context);
+          this.searchForm.initialize();
+      },
+  };
+
+}());
