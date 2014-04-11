@@ -19,7 +19,7 @@ gem "unicorn", "~> 4.6.3"
 
 gem "ci_reporter"
 gem "logstasher", '0.4.8'
-gem "airbrake", "3.1.15"
+gem "airbrake", "3.1.16"
 
 group :development, :test do
   gem "pry-rails"
