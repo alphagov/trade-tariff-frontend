@@ -10,6 +10,8 @@ class Search
                 :year,
                 :as_of    # legacy format for specifying date
 
+  delegate :today?, to: :date
+
   def perform
     response = self.class.post("/search", body: { t: t, as_of: date.to_s(:db) })
 

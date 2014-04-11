@@ -25,11 +25,11 @@
       <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
       <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
       <%= select_year(f.object.date, {end_year: 2008, start_year: (Date.today + 1.year).year }, { id: 'tariff_date_year', name: 'year' }) %>
-      <a class="submit" role='button' href='#set-date' title='set date'>set date</a>
+      <a class="submit" role='button' href='#set-date' title='set date' rel='nofollow'>set date</a>
     </span>
     <span class="text <%= @section_css %>">
       This tariff is for <%= @search.date.to_formatted_s(:long) %>
-      <a href='#change-date' title='change date'>change date</a>
+      <a href='#change-date' title='change date' rel='nofollow'>change date</a>
     </span>
   </fieldset>
 
@@ -42,7 +42,7 @@
     <span class='fields'>
       Trade between the UK and
       <%= f.select :country, f.object.countries.map{ |c| [c.description, c.id] }, { include_blank: 'All countries' }, name: 'country' %>
-      <a class="submit" role='button' href="#set-country" title='set country'>set country</a>
+      <a class="submit" role='button' href="#set-country" title='set country' rel='nofollow'>set country</a>
     </span>
     <span class='text'>
       <% if @search.filtered_by_country? %>
@@ -50,7 +50,7 @@
       <% else %>
         Trade between the UK and All countries
       <% end %>
-      <a href='#change-country' title='change country'>change country</a>
+      <a href='#change-country' title='change country' rel='nofollow'>change country</a>
     </span>
   </fieldset>
 <% end %>
