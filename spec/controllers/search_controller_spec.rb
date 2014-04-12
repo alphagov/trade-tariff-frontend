@@ -192,4 +192,23 @@ describe SearchController, "GET to #search" do
       end
     end
   end
+
+  describe "header for crawlers", vcr: { cassette_name: "search#blank_match" } do
+    context "non historical" do
+      before { get :search }
+
+      it "should not include X-Robots-Tag" do
+        expect(response.headers["X-Robots-Tag"]).to_not be_present
+      end
+    end
+    context "historical" do
+      before {
+        get :search, {month: 1, year: 2008, day: 1}
+      }
+
+      it {
+        expect(response.headers["X-Robots-Tag"]).to eq("none")
+      }
+    end
+  end
 end
