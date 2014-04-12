@@ -4,7 +4,7 @@
     <% if @results.reference_match.sections.any? %>
       <h2>Most popular sections for <%= @search %>:</h2>
       <dl class="results-subset sections">
-        <%= render partial: 'search/section', collection: @results.reference_match.sections %>
+        <%= render partial: 'search/section', collection: @results.reference_match.sections_uniq %>
       </dl>
     <% end %>
 
