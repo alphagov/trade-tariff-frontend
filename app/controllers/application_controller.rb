@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_cache
   before_filter :load_artefact
   before_filter :search_query
+  before_filter :bots_no_index_if_historical
 
   after_filter :set_app_slimmer_headers
 
@@ -82,5 +83,11 @@ class ApplicationController < ActionController::Base
         remove_meta_viewport: true
       )
     end
+  end
+
+  protected
+
+  def bots_no_index_if_historical
+    response.headers["X-Robots-Tag"] = "none" unless @search.today?
   end
 end
