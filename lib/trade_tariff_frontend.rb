@@ -5,6 +5,8 @@ module TradeTariffFrontend
   autoload :Presenter,      'trade_tariff_frontend/presenter'
   autoload :ViewContext,    'trade_tariff_frontend/view_context'
 
+  mattr_accessor :faraday
+
   module_function
 
   # API Endpoints of the Tariff API app that can be reached
