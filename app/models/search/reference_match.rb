@@ -24,9 +24,5 @@ class Search
     def size
       all.size
     end
-
-    def sections_uniq
-      sections.uniq { |s| s.to_param }
-    end
   end
 end
