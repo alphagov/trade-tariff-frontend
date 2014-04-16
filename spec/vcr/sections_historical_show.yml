@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tariff-api.dev.gov.uk/sections/1?as_of=2014-04-15
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Apr 2014 22:04:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      X-Meta-Request-Version:
+      - 0.2.9
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - ! '"73526b498664ae52813ebc497cec0622"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 2dd17f754c6676b42a5f4069fd78a6fe
+      X-Runtime:
+      - '0.491261'
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":1,"position":1,"title":"Live animals; animal products","numeral":"I","chapter_from":"01","chapter_to":"05","section_note":"1.
+        Any reference in this section to a particular genus or species of an animal,
+        except where the context otherwise requires, includes a reference to the young
+        of that genus or species.\n2. Except where the context otherwise requires,
+        throughout the nomenclature any reference to `dried'' products also covers
+        products which have been dehydrated, evaporated or freeze-dried.","_response_info":{"links":[{"rel":"self","href":"/trade-tariff/sections/1?as_of=2014-04-15"},{"rel":"sections","href":"/trade-tariff/sections"}]},"chapters":[{"description":"LIVE
+        ANIMALS","goods_nomenclature_item_id":"0100000000","goods_nomenclature_sid":27623,"headings_from":"0101","headings_to":"0106","formatted_description":"Live
+        animals","chapter_note_id":331},{"description":"MEAT AND EDIBLE MEAT OFFAL","goods_nomenclature_item_id":"0200000000","goods_nomenclature_sid":27809,"headings_from":"0201","headings_to":"0210","formatted_description":"Meat
+        and edible meat offal","chapter_note_id":332},{"description":"FISH AND CRUSTACEANS,
+        MOLLUSCS AND OTHER AQUATIC INVERTEBRATES","goods_nomenclature_item_id":"0300000000","goods_nomenclature_sid":28373,"headings_from":"0301","headings_to":"0308","formatted_description":"Fish
+        and crustaceans, molluscs and other aquatic invertebrates","chapter_note_id":333},{"description":"DAIRY
+        PRODUCE; BIRDS'' EGGS; NATURAL HONEY; EDIBLE PRODUCTS OF ANIMAL ORIGIN, NOT
+        ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0400000000","goods_nomenclature_sid":29417,"headings_from":"0401","headings_to":"0410","formatted_description":"Dairy
+        produce; birds'' eggs; natural honey; edible products of animal origin, not
+        elsewhere specified or included","chapter_note_id":334},{"description":"PRODUCTS
+        OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0500000000","goods_nomenclature_sid":30015,"headings_from":"0501","headings_to":"0511","formatted_description":"Products
+        of animal origin, not elsewhere specified or included","chapter_note_id":335}]}'
+    http_version: 
+  recorded_at: Tue, 15 Apr 2014 22:04:09 GMT
+recorded_with: VCR 2.5.0

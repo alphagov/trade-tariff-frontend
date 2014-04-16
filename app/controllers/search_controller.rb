@@ -1,8 +1,6 @@
 require 'addressable/uri'
 
 class SearchController < ApplicationController
-  before_filter :bots_no_index_if_historical, only: :search
-
   def search
     @results = @search.perform
 
@@ -30,11 +28,5 @@ class SearchController < ApplicationController
 
       format.atom
     end
-  end
-
-  private
-
-  def bots_no_index_if_historical
-    response.headers["X-Robots-Tag"] = "none" unless @search.today?
   end
 end
