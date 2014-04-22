@@ -13,11 +13,11 @@ class Search
   delegate :today?, to: :date
 
   def perform
-    response = self.class.post("/search", body: { t: t, as_of: date.to_s(:db) })
+    response = self.class.post("/search", {t: t, as_of: date.to_s(:db)})
 
-    raise ApiEntity::Error if response.code == 500
+    raise ApiEntity::Error if response.status == 500
 
-    Outcome.new(response)
+    Outcome.new response.body
   end
 
   def t=(t)

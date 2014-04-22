@@ -4,8 +4,8 @@ source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 gem "rails", "3.2.17"
 
 gem "yajl-ruby"
-gem "multi_json"
-gem "httparty"
+gem "faraday"
+gem "faraday_middleware"
 gem "hashie"
 
 gem "govspeak", "1.2.3"

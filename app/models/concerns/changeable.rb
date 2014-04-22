@@ -3,7 +3,8 @@ module Models
     extend ActiveSupport::Concern
 
     def changes(query_params = {})
-      self.class.get("#{resource_path}/changes", query_params).map { | change_data|
+      resp = self.class.get("#{resource_path}/changes", query_params).body
+      resp.map { | change_data|
         Change.new(change_data)
       }
     end
