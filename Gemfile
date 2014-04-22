@@ -5,6 +5,7 @@ gem "rails", "3.2.17"
 
 gem "yajl-ruby"
 gem "faraday"
+gem "faraday_middleware"
 gem "hashie"
 
 gem "govspeak", "1.2.3"

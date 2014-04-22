@@ -17,7 +17,7 @@ class Search
 
     raise ApiEntity::Error if response.status == 500
 
-    Outcome.new JSON.parse(response.body)
+    Outcome.new response.body
   end
 
   def t=(t)

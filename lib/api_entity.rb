@@ -75,7 +75,7 @@ module ApiEntity
       when 502
         raise ApiEntity::Error.new "502 Bad Gateway"
       end
-      JSON.parse(resp.body).map { |entry_data| new(entry_data) }
+      resp.body.map { |entry_data| new(entry_data) }
     end
 
     def find(id, opts = {})
@@ -88,7 +88,7 @@ module ApiEntity
       when 502
         raise ApiEntity::Error.new resp['error']
       end
-      new(JSON.parse(resp.body))
+      new(resp.body)
     end
 
     def has_one(association, opts = {})
