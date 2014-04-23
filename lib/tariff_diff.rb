@@ -18,12 +18,12 @@ class TariffDiff
   end
 
   def report
-    puts "\nFinished chapter #{@chapter_id}."
-    puts "Compared #{resources_count} resources"
-    puts "#{not_found.count} resource(s) not found"
-    puts "#{not_matching.values.flatten.count} resource(s) don't match:"
+    Rails.logger.debug "\nFinished chapter #{@chapter_}."
+    Rails.logger.debug "Compared #{resources_count} resources"
+    Rails.logger.debug "#{not_found.count} resource(s) not found"
+    Rails.logger.debug "#{not_matching.values.flatten.count} resource(s) don't match:"
     not_matching.each do |kind, resources|
-      puts "\t#{kind}: #{resources.count}"
+      Rails.logger.debug "\t#{kind}: #{resources.count}"
     end
   end
 
@@ -66,7 +66,7 @@ class TariffDiff
     url = "/trade-tariff/#{resource.pluralize}/#{id}.json"
     responses = responses_for(url)
     if responses.first.to_s != responses.last.to_s
-      puts "\n#{resource} #{id} doesn't match. Endpoint: #{url}"
+      Rails.logger.debug "\n#{resource} #{id} doesn't match. Endpoint: #{url}"
       not_matching[resource.pluralize.to_sym] << id
       show_diff(responses) if responses.all?{|r| r.is_a?(Hash)}
     end
@@ -74,9 +74,9 @@ class TariffDiff
   end
 
   def show_diff(responses)
-    puts "\tdiff:"
-    puts "\thost1 (#{host1.url_prefix}):\n#{responses.first.diff(responses.last)}"
-    puts "\thost2 (#{host2.url_prefix}):\n#{responses.last.diff(responses.first)}"
+    Rails.logger.debug "\tdiff:"
+    Rails.logger.debug "\thost1 (#{host1.url_prefix}):\n#{responses.first.diff(responses.last)}"
+    Rails.logger.debug "\thost2 (#{host2.url_prefix}):\n#{responses.last.diff(responses.first)}"
   end
 
   def responses_for(url)
@@ -86,7 +86,7 @@ class TariffDiff
         # 404 urls
         if response.status == 404
           full_url = response.env[:url].to_s
-          puts "404: #{full_url}"
+          Rails.logger.debug "404: #{full_url}"
           not_found << full_url
         end
       end

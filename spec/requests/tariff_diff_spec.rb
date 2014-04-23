@@ -25,6 +25,7 @@ describe TariffDiff do
     before {
       # set chapter
       ENV["chapter"] = "01"
+      Rails.logger.level = Logger::WARN
       diff.run!
     }
 

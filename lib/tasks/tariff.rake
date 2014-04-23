@@ -2,7 +2,7 @@ require "tariff_diff"
 
 namespace :tariff do
   desc "See what data is different between two app instances"
-  task :diff, [:host1, :host2] do |t, args|
+  task :diff, [:host1, :host2] => :environment do |t, args|
     # chapter is required
     # if the host requires authentication, set username and password to env
     # variables. eg:
