@@ -51,7 +51,3 @@ group :assets do
   gem "therubyracer", "0.12.0"
   gem "uglifier", ">= 1.0.3"
 end
-
-group :router do
-  gem "router-client", "~> 3.0.1", :require => "router"
-end
