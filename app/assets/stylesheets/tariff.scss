@@ -1292,6 +1292,7 @@ p.tree-controls {
   max-width: 720px;
   padding:0;
   zoom:1;
+  z-index: 10;
 
   @include ie(6) {
     position: absolute;
