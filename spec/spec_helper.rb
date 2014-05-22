@@ -15,6 +15,8 @@ require 'gds_api/test_helpers/content_api'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+Capybara.javascript_driver = :poltergeist
+
 RSpec.configure do |config|
   config.order = :random
   config.infer_base_class_for_anonymous_controllers = false
@@ -24,6 +26,8 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include GdsApi::TestHelpers::ContentApi
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
 
   config.before(type: :request) do
     stub_content_api_default_artefact
