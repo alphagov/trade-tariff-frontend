@@ -17,6 +17,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 Capybara.javascript_driver = :poltergeist
 
+Rails.application.routes.default_url_options[:host] = "test.host"
+
 RSpec.configure do |config|
   config.order = :random
   config.infer_base_class_for_anonymous_controllers = false
