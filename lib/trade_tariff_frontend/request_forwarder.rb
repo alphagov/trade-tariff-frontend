@@ -26,11 +26,11 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
-        response = Faraday.send(rackreq.request_method.downcase, request_url_for(rackreq), {}, request_headers_for(env))
+        response = HTTParty.send(rackreq.request_method.downcase, request_url_for(rackreq), request_headers_for(env))
 
         Rack::Response.new(
           [response.body],
-          response.status.to_i,
+          response.code.to_i,
           Rack::Utils::HeaderHash.new(
             response.headers.
                      except(*IGNORED_UPSTREAM_HEADERS).
@@ -60,13 +60,6 @@ module TradeTariffFrontend
           headers[$1] = value
         end
       }
-
-      # transform to strings so that faraday doesn't complain
-      env.inject({}) do |h, (key, value)|
-        h.tap { |h|
-          h[key] = String(value)
-        }
-      end
     end
 
     def api_request_path_for(path)

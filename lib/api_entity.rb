@@ -1,3 +1,6 @@
+require 'httparty'
+require 'multi_json'
+
 module ApiEntity
   class NotFound < StandardError; end
   class Error < StandardError; end
@@ -8,6 +11,11 @@ module ApiEntity
     include ActiveModel::Validations
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
+
+    include HTTParty
+    include MultiJson
+    base_uri Rails.application.config.api_host
+    debug_output if Rails.env.development?
 
     attr_reader :attributes
 
@@ -53,21 +61,9 @@ module ApiEntity
   end
 
   module ClassMethods
-    def head(*args)
-      TradeTariffFrontend.faraday.head(*args)
-    end
-
-    def post(*args)
-      TradeTariffFrontend.faraday.post(*args)
-    end
-
-    def get(*args)
-      TradeTariffFrontend.faraday.get(*args)
-    end
-
     def all(opts = {})
       resp = get(collection_path, opts)
-      case resp.status
+      case resp.code
       when 404
         raise ApiEntity::NotFound.new resp['error']
       when 500
@@ -75,12 +71,12 @@ module ApiEntity
       when 502
         raise ApiEntity::Error.new "502 Bad Gateway"
       end
-      resp.body.map { |entry_data| new(entry_data) }
+      resp.map { |entry_data| new(entry_data) }
     end
 
     def find(id, opts = {})
       resp = get("/#{self.name.pluralize.parameterize}/#{id}", opts)
-      case resp.status
+      case resp.code
       when 404
         raise ApiEntity::NotFound
       when 500
@@ -88,7 +84,7 @@ module ApiEntity
       when 502
         raise ApiEntity::Error.new resp['error']
       end
-      new(resp.body)
+      new(resp)
     end
 
     def has_one(association, opts = {})
