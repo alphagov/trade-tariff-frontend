@@ -7,7 +7,6 @@ gem "yajl-ruby"
 gem "multi_json"
 gem "httparty"
 gem "hashie"
-gem "faraday"
 gem "govspeak", "1.2.3"
 
 gem 'gds-api-adapters', '8.2.1'
