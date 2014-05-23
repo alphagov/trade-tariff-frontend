@@ -84,6 +84,8 @@ GEM
     factory_girl_rails (4.1.0)
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.1.5)
     forgery (0.5.0)
@@ -133,6 +135,7 @@ GEM
     mime-types (1.25.1)
     multi_json (1.10.0)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -272,6 +275,7 @@ DEPENDENCIES
   ci_reporter
   coffee-rails (~> 3.2.1)
   factory_girl_rails
+  faraday
   forgery
   gds-api-adapters (= 8.2.1)
   govspeak (= 1.2.3)
