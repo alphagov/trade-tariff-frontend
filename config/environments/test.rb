@@ -36,7 +36,7 @@ TradeTariffFrontend::Application.configure do
   config.active_support.deprecation = :stderr
 
   # Slimmer config
-  config.middleware.use Slimmer::App, asset_host: "http://static.preview.alphagov.co.uk"
+  config.middleware.use Slimmer::App, asset_host: "https://assets-origin.preview.alphagov.co.uk"
 
   # Host for Trade Tariff API endpoint
   config.api_host = "http://tariff-api.dev.gov.uk"
