@@ -3,15 +3,11 @@ require 'api_entity'
 class DutyExpression
   include ApiEntity
 
-  attr_accessor :base, :formatted_base, :national_measurement_units
-
-  def national_measurement_units
-    attributes["national_measurement_units"] || []
-  end
+  attr_accessor :base, :formatted_base
 
   def to_s
-    if national_measurement_units.any?
-      "#{base} (#{national_measurement_units.join(" - ")})"
+    if formatted_base.present?
+      formatted_base
     else
       base
     end
