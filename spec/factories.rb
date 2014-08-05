@@ -82,6 +82,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :duty_expression do
+    base "80.50 EUR / Hectokilogram"
+    formatted_base "80.50 EUR / <abbr title='Hectokilogram'>Hectokilogram</abbr>"
+    national_measurement_units nil
+  end
+
   factory :measure_type do
     id { Forgery(:basic).text(exactly: 3) }
     description { Forgery(:basic).text }
