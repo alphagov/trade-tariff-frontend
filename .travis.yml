@@ -7,8 +7,5 @@ script:
  - RAILS_ENV=test GOVUK_APP_DOMAIN=test.example.com bundle exec rake spec
 rvm:
   - 2.1.2
-matrix:
-  allow_failures:
-    - rvm: 2.0.0
 notifications:
   email:  false
