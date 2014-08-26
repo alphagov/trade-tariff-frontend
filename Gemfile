@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
-gem "rails", "3.2.18"
+gem "rails", "3.2.19"
 
 gem "yajl-ruby"
 gem "multi_json"
