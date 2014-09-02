@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
 gem "rails", "3.2.19"
 
@@ -43,7 +44,7 @@ group :test do
   gem "timecop"
 end
 
-group :assets do
+group :assets, :test do
   gem "coffee-rails", "~> 3.2.1"
   gem "govuk_frontend_toolkit", "1.5.0"
   gem "jquery-rails"

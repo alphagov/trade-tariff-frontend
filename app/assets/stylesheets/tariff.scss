@@ -89,6 +89,7 @@ $expand-arrow-space: 9 + $token-padding;
     border:solid 1px #bbb;
   }
   th.legal-act {
+    @include external-link-default;
     width:6.66666664em;
   }
   td small{
@@ -1532,6 +1533,7 @@ article.search-results {
     }
 
     a[rel="external"] {
+      @include external-link-default;
       @include external-link-14;
     }
 
