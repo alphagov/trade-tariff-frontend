@@ -37,9 +37,9 @@ group :test do
   gem "simplecov", "~> 0.6.4"
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
-  gem "capybara"
-  gem "poltergeist"
-  gem "phantomjs", require: "phantomjs/poltergeist"
+  gem "capybara", "~> 2.4.1"
+  gem "poltergeist", "~> 1.5.1"
+  gem "phantomjs", "~> 1.9.7.1", require: "phantomjs/poltergeist"
   gem "timecop"
 end
 
