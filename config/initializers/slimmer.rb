@@ -6,6 +6,6 @@ TradeTariffFrontend::Application.configure do
   end
 
   if Rails.env.development? || Rails.env.test?
-    config.slimmer.asset_host = ENV["STATIC_DEV"] || "https://assets-origin.preview.alphagov.co.uk"
+    config.slimmer.asset_host = ENV["STATIC_DEV"] || "https://assets.digital.cabinet-office.gov.uk/"
   end
 end
