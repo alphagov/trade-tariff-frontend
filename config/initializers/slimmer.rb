@@ -5,7 +5,7 @@ TradeTariffFrontend::Application.configure do
     config.slimmer.use_cache = true
   end
 
-  if Rails.env.development?
-    config.slimmer.asset_host = ENV["STATIC_DEV"] || "https://assets-origin.preview.alphagov.co.uk"
+  if Rails.env.development? || Rails.env.test?
+    config.slimmer.asset_host = ENV["STATIC_DEV"] || "https://assets.digital.cabinet-office.gov.uk/"
   end
 end

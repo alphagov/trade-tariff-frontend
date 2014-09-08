@@ -9,7 +9,7 @@ gem "httparty"
 gem "hashie"
 gem "govspeak", "1.2.3"
 
-gem 'gds-api-adapters', '8.2.1'
+gem "gds-api-adapters", "14.4.0"
 gem "plek", "1.3.1"
 gem "slimmer", "3.25.0"
 gem "addressable"
@@ -38,17 +38,17 @@ group :test do
   gem "simplecov", "~> 0.6.4"
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
-  gem "capybara"
-  gem "poltergeist"
-  gem "phantomjs", require: "phantomjs/poltergeist"
+  gem "capybara", "~> 2.4.1"
+  gem "poltergeist", "~> 1.5.1"
+  gem "phantomjs", "~> 1.9.7.1", require: "phantomjs/poltergeist"
   gem "timecop"
 end
 
-group :assets do
+group :assets, :test do
   gem "coffee-rails", "~> 3.2.1"
-  gem "govuk_frontend_toolkit", "0.32.2"
+  gem "govuk_frontend_toolkit", "1.5.0"
   gem "jquery-rails"
-  gem "sass-rails", "~> 3.2.3"
+  gem "sass-rails", "~> 3.2.6"
   gem "therubyracer", "0.12.0"
   gem "uglifier", ">= 1.0.3"
 end

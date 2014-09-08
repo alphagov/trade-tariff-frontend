@@ -70,19 +70,18 @@ class ApplicationController < ActionController::Base
   end
 
   def load_artefact
-    unless Rails.env.development? #remove me once I rebuild my vm
+    # Can only load artifact if content_api is running
+    unless Rails.env.development?
       @artefact = content_api.artefact(APP_SLUG)
       set_slimmer_artefact(@artefact)
     end
   end
 
   def set_app_slimmer_headers
-    unless Rails.env.development? #remove me once I rebuild my vm
-      set_slimmer_headers(
-        format:               "custom-tool",
-        remove_meta_viewport: true
-      )
-    end
+    set_slimmer_headers(
+      format:               "custom-tool",
+      remove_meta_viewport: true
+    )
   end
 
   protected
