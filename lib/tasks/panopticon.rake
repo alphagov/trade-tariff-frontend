@@ -14,7 +14,7 @@ namespace :panopticon do
         slug: APP_SLUG,
         title: "UK Trade Tariff",
         description: "Search for import and export commodity codes and for tax, duty and licenses that apply to your goods",
-        need_id: "B659",
+        need_id: "100233", #Find out the correct trade tariffs for items I am importing or exporting
         section: "business/international-trade",
         paths: [],
         prefixes: ["/#{APP_SLUG}"],
