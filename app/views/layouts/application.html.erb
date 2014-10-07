@@ -44,6 +44,9 @@
               </address>
             </li>
           </ul>
+          <div id="last-updated-at">
+            Last updated: <%= TariffUpdate.all.first.updated_at.strftime("%e %B %Y") %>
+          </div>
         </section>
       </main>
     </div>
