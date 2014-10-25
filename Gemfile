@@ -1,7 +1,6 @@
 source "https://rubygems.org"
-source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
-gem "rails", "3.2.19"
+gem "rails", "~> 4.1.6"
 
 gem "yajl-ruby"
 gem "multi_json"
@@ -16,9 +15,16 @@ gem "addressable"
 
 gem "unicorn", "~> 4.6.3"
 
-gem "ci_reporter"
+gem "ci_reporter_rspec"
 gem "logstasher", '0.4.8'
 gem "airbrake", "3.1.16"
+
+gem "coffee-rails"
+gem "govuk_frontend_toolkit", "1.6.0"
+gem "jquery-rails", "~> 2.1.3"
+gem "sass-rails", "~> 4.0.3"
+gem "therubyracer", "0.12.0"
+gem "uglifier", ">= 1.0.3"
 
 group :development, :test do
   gem "pry-rails"
@@ -39,16 +45,6 @@ group :test do
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
   gem "capybara", "~> 2.4.1"
-  gem "poltergeist", "~> 1.5.1"
-  gem "phantomjs", "~> 1.9.7.1", require: "phantomjs/poltergeist"
+  gem "poltergeist"
   gem "timecop"
-end
-
-group :assets, :test do
-  gem "coffee-rails", "~> 3.2.1"
-  gem "govuk_frontend_toolkit", "1.5.0"
-  gem "jquery-rails"
-  gem "sass-rails", "~> 3.2.6"
-  gem "therubyracer", "0.12.0"
-  gem "uglifier", ">= 1.0.3"
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SearchController, "GET to #search" do
+describe SearchController, "GET to #search", type: :controller do
   include CrawlerCommons
 
   context 'with HTML format' do
@@ -13,7 +13,7 @@ describe SearchController, "GET to #search" do
         end
 
         it { should respond_with(:redirect) }
-        it { should assign_to(:search) }
+        it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
           assigns[:search].t.should == query
         end
@@ -27,7 +27,7 @@ describe SearchController, "GET to #search" do
         end
 
         it { should respond_with(:success) }
-        it { should assign_to(:search) }
+        it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
           assigns[:search].t.should == query
         end
@@ -43,7 +43,7 @@ describe SearchController, "GET to #search" do
         end
 
         it { should respond_with(:success) }
-        it { should assign_to(:search) }
+        it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
           assigns[:search].t.should == query
         end
@@ -71,7 +71,7 @@ describe SearchController, "GET to #search" do
           end
 
           it { should respond_with(:redirect) }
-          it { should assign_to(:search) }
+          it { expect(assigns(:search)).to be_a(Search) }
           it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
         end
 
@@ -89,7 +89,7 @@ describe SearchController, "GET to #search" do
           end
 
           it { should respond_with(:redirect) }
-          it { should assign_to(:search) }
+          it { expect(assigns(:search)).to be_a(Search) }
           it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
         end
 
@@ -100,7 +100,7 @@ describe SearchController, "GET to #search" do
             end
 
             it { should respond_with(:redirect) }
-            it { should assign_to(:search) }
+            it { expect(assigns(:search)).to be_a(Search) }
             it { should redirect_to(sections_path) }
           end
 
@@ -116,7 +116,7 @@ describe SearchController, "GET to #search" do
             end
 
             it { should respond_with(:redirect) }
-            it { should assign_to(:search) }
+            it { expect(assigns(:search)).to be_a(Search) }
             it { should redirect_to(sections_path) }
           end
 
@@ -134,7 +134,7 @@ describe SearchController, "GET to #search" do
             end
 
             it { should respond_with(:redirect) }
-            it { should assign_to(:search) }
+            it { expect(assigns(:search)).to be_a(Search) }
             it { should redirect_to(sections_path) }
           end
         end

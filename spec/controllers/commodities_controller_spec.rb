@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommoditiesController, "GET to #show" do
+describe CommoditiesController, "GET to #show", type: :controller do
   context 'existing commodity id provided', vcr: { cassette_name: "commodities#show" } do
     let!(:commodity)   { Commodity.new(attributes_for :commodity) }
 
@@ -8,11 +8,13 @@ describe CommoditiesController, "GET to #show" do
       get :show, id: commodity.short_code
     end
 
+    subject { controller }
+
     it { should respond_with(:success) }
-    it { should assign_to(:section) }
-    it { should assign_to(:chapter) }
-    it { should assign_to(:heading) }
-    it { should assign_to(:commodity) }
+    it { expect(assigns(:section)).to be_present }
+    it { expect(assigns(:chapter)).to be_present }
+    it { expect(assigns(:heading)).to be_present }
+    it { expect(assigns(:commodity)).to be_present }
   end
 
   context 'with too long commodity id provided', vcr: { cassette_name: "commodities#show_01012100001234" } do

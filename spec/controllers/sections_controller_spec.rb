@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe SectionsController, "GET to #index", vcr: { cassette_name: "sections#index" }  do
+describe SectionsController, "GET to #index", type: :controller, vcr: { cassette_name: "sections#index" } do
   include CrawlerCommons
 
   context "non historical" do
     before { get :index }
 
     it { should respond_with(:success) }
-    it { should assign_to(:sections) }
+    it { expect(assigns(:sections)).to be_a(Array) }
     it { should_not_include_robots_tag! }
   end
 
@@ -21,7 +21,7 @@ describe SectionsController, "GET to #index", vcr: { cassette_name: "sections#in
   end
 end
 
-describe SectionsController, "GET to #show" do
+describe SectionsController, "GET to #show", type: :controller do
   include CrawlerCommons
 
   context 'with existing section id provided', vcr: { cassette_name: "sections#show" } do
@@ -31,8 +31,8 @@ describe SectionsController, "GET to #show" do
       before { get :show, id: section.position }
 
       it { should respond_with(:success) }
-      it { should assign_to(:section) }
-      it { should assign_to(:chapters) }
+      it { expect(assigns(:section)).to be_a(Section) }
+      it { expect(assigns(:chapters)).to be_a(Array) }
       it { should_not_include_robots_tag! }
     end
 

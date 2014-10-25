@@ -38,11 +38,11 @@ describe Measure do
     let(:measure2) { Measure.new(attributes_for(:measure, geographical_area: {id: '103'  })) }
 
     it 'returns true if geographical area' do
-      measure1.third_country.should be_true
+      expect(measure1.third_country).to be true
     end
 
     it 'returns false if country name does not contain ERGA OMNES' do
-      measure2.third_country.should be_false
+      expect(measure2.third_country).to be false
     end
   end
 end

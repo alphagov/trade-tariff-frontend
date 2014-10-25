@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Commodities::ChangesController, "GET to #index" do
+describe Commodities::ChangesController, "GET to #index", type: :controller do
   context "commodity is valid at given date", vcr: { cassette_name: "commodities_changes#index" }  do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "0101210000") }
 
@@ -9,11 +9,11 @@ describe Commodities::ChangesController, "GET to #index" do
     end
 
     it { should respond_with(:success) }
-    it { should assign_to(:changeable) }
-    it { should assign_to(:changes) }
+    it { expect(assigns(:changeable)).to be_present }
+    it { expect(assigns(:changes)).to be_a(ChangesPresenter) }
   end
 
-  context 'commodity has no changes at given date', vcr: { cassette_name: "commodities_changes#index_4302130000_1998-01-01" } do
+  context 'commodity has no changes at given date', vcr: { cassette_name: "commodities_changes#index_4302130000_1998-01-01" }, type: :controller do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "4302130000") }
 
     before(:each) do
@@ -21,8 +21,8 @@ describe Commodities::ChangesController, "GET to #index" do
     end
 
     it { should respond_with(:success) }
-    it { should assign_to(:changeable) }
-    it { should assign_to(:changes) }
+    it { expect(assigns(:changeable)).to be_present }
+    it { expect(assigns(:changes)).to be_a(ChangesPresenter) }
 
     it 'fetches no changes' do
       expect(assigns[:changes]).to be_empty

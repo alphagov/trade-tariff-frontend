@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Chapter page' do
+describe 'Chapter page', type: :request do
   context 'as HTML' do
     it 'should display chapter name and headings in the chapter' do
       VCR.use_cassette('geographical_areas#countries') do

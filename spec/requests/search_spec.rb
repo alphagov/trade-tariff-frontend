@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Search page' do
+describe 'Search page', type: :request do
   describe "search results" do
     before { Section.stub(:all).and_return([]) }
 

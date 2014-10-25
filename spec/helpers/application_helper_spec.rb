@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, type: :helper do
   describe '#govspeak' do
     context 'string without HTML code' do
       let(:string) { '**hello**' }

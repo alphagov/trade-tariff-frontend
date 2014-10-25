@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SearchReferencesController, 'GET to #show' do
+describe SearchReferencesController, 'GET to #show', type: :controller do
   render_views
 
   around do |example|

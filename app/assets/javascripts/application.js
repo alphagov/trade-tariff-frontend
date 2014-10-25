@@ -1,3 +1,4 @@
+//= require jquery
 //= require jquery.tabs
 //= require jquery.datepicker
 //= require jquery.history

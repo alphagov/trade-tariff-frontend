@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HealthcheckController do
+describe HealthcheckController, type: :controller do
   it "returns success on request" do
     Section.stub(:all).and_return([])
 

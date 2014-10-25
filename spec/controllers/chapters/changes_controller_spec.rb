@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Chapters::ChangesController, "GET to #index" do
+describe Chapters::ChangesController, "GET to #index", type: :controller do
   let!(:chapter)   { Chapter.new(attributes_for :chapter, goods_nomenclature_item_id: "0100000000") }
 
   context 'chapter is valid at given date', vcr: { cassette_name: "chapters_changes#index" } do
@@ -9,8 +9,8 @@ describe Chapters::ChangesController, "GET to #index" do
     end
 
     it { should respond_with(:success) }
-    it { should assign_to(:changeable) }
-    it { should assign_to(:changes) }
+    it { expect(assigns(:changeable)).to be_present }
+    it { expect(assigns(:changes)).to be_a(ChangesPresenter) }
   end
 
   context 'chapter has no changes at given date', vcr: { cassette_name: "chapters_changes#index_0100000000_1972-01-01" } do
@@ -19,8 +19,8 @@ describe Chapters::ChangesController, "GET to #index" do
     end
 
     it { should respond_with(:success) }
-    it { should assign_to(:changeable) }
-    it { should assign_to(:changes) }
+    it { expect(assigns(:changeable)).to be_present }
+    it { expect(assigns(:changes)).to be_a(ChangesPresenter) }
 
     it 'fetches no changes' do
       expect(assigns[:changes]).to be_empty

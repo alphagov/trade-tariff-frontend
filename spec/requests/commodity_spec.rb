@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Commodity page' do
+describe 'Commodity page', type: :request do
   context 'basic commodity' do
     context 'as HTML' do
       it 'displays declarable related information' do
@@ -23,7 +23,7 @@ describe 'Commodity page' do
 
             json = JSON.parse(response.body)
 
-            expect(json["declarable"]).to be_true
+            expect(json["declarable"]).to be true
             expect(json["import_measures"]).to be_kind_of Array
           end
         end
@@ -36,7 +36,7 @@ describe 'Commodity page' do
 
             json = JSON.parse(response.body)
 
-            expect(json["declarable"]).to be_true
+            expect(json["declarable"]).to be true
             expect(json["import_measures"]).to be_kind_of Array
           end
         end

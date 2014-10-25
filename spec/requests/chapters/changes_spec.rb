@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'GET to #index - getting chapter change feed' do
+describe 'GET to #index - getting chapter change feed', type: :request do
   let!(:chapter)   { Chapter.new(attributes_for :chapter, goods_nomenclature_item_id: "0101000000") }
 
   context 'no request format supplied' do

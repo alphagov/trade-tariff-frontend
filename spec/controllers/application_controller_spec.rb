@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationController do
+describe ApplicationController, type: :controller do
   describe "behaviour for all subclasses" do
     controller do
       def index
@@ -14,12 +14,12 @@ describe ApplicationController do
 
       get :index
 
-      response.headers[Slimmer::Headers::ARTEFACT_HEADER].should == artefact_data.to_json
+      expect(response.headers[Slimmer::Headers::ARTEFACT_HEADER]).to eq(artefact_data.to_json)
     end
 
     it "should have a slimmer head set to remove the meta viewport HTML" do
       get :index
-      response.headers[Slimmer::Headers::REMOVE_META_VIEWPORT].should == "true"
+      expect(response.headers[Slimmer::Headers::REMOVE_META_VIEWPORT]).to eq("true")
     end
 
     describe "caching" do
@@ -28,19 +28,19 @@ describe ApplicationController do
       end
 
       it "should have a max-age of 2 hours" do
-        response.headers["Cache-Control"].should include "max-age=7200"
+        expect(response.headers["Cache-Control"]).to include "max-age=7200"
       end
 
       it "should have a public directive" do
-        response.headers["Cache-Control"].should include "public"
+        expect(response.headers["Cache-Control"]).to include "public"
       end
 
       it "should have a stale-if-error of 1 day" do
-        response.headers["Cache-Control"].should include "stale-if-error=86400"
+        expect(response.headers["Cache-Control"]).to include "stale-if-error=86400"
       end
 
       it "should have a stale-while-revalidate of 1 day" do
-        response.headers["Cache-Control"].should include "stale-while-revalidate=86400"
+        expect(response.headers["Cache-Control"]).to include "stale-while-revalidate=86400"
       end
     end
   end

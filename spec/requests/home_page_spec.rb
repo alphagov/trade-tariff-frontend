@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Home page' do
+describe 'Home page', type: :request do
   it 'successfully renders the Tariff home page' do
     VCR.use_cassette('geographical_areas#countries') do
       visit root_path
