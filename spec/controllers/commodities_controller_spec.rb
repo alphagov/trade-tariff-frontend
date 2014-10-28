@@ -46,9 +46,9 @@ describe CommoditiesController, "GET to #show", type: :controller do
   context 'with commodity id that does not exist in provided date', vcr: { cassette_name: "commodities#show_010121000_2000-01-01" } do
     let(:commodity_id) { '0101210000' } # commodity 0101210000 does not exist at 1st of Jan, 2000
 
-    around do |example|
+    around(:each) do |example|
       Timecop.freeze(Date.new(2013,11,11)) do
-        example.yield
+        example.run
       end
     end
 
