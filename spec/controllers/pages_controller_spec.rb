@@ -15,16 +15,6 @@ describe PagesController, "GET to #opensearch", type: :controller do
   end
 
   context 'when asked with no format' do
-    pending do
-      before {
-        get :opensearch
-      }
-
-      it 'returns HTTP 406 (not supported) status' do
-        expect(response.status).to eq 406
-      end
-    end
-
     it "raises ActionController::UnknownFormat as per rails 4" do
       expect {
         get :opensearch
@@ -33,16 +23,6 @@ describe PagesController, "GET to #opensearch", type: :controller do
   end
 
   context 'with unsupported format' do
-    pending do
-      before {
-        get :opensearch, format: :json
-      }
-
-      it 'returns HTTP 406 (not supported) status' do
-        expect(response.status).to eq 406
-      end
-    end
-
     it "raises ActionController::UnknownFormat as per rails 4" do
       expect {
         get :opensearch, format: :json
