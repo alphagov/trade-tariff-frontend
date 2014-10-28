@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe HeadingCommodityPresenter do
   describe '#root_commodities' do
-    let(:root_commodity) { stub(root: true) }
-    let(:non_root_commodity) { stub(root: false) }
+    let(:root_commodity) { OpenStruct.new(root: true) }
+    let(:non_root_commodity) { OpenStruct.new(root: false) }
     let(:commodities) { [root_commodity, non_root_commodity] }
 
     it 'returns commodities that have root identication' do

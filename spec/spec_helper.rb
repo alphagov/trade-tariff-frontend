@@ -15,14 +15,13 @@ require 'gds_api/test_helpers/content_api'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+# require models
+Dir[Rails.root.join("app/models/*.rb")].each {|f| require f}
+
 require 'capybara/rails'
 require 'capybara/rspec'
+
 require 'capybara/poltergeist'
-
-Capybara.register_driver :poltergeist_debug do |app|
-  Capybara::Poltergeist::Driver.new(app, { debug: true })
-end
-
 Capybara.javascript_driver = :poltergeist
 
 Rails.application.routes.default_url_options[:host] = "test.host"
@@ -42,8 +41,8 @@ RSpec.configure do |config|
   config.before(type: :request) do
     stub_content_api_default_artefact
   end
-  
+
   config.before(:each) do
-    TariffUpdate.stub(:all).and_return([OpenStruct.new(updated_at: Date.today)])
+    allow(TariffUpdate).to receive(:all).and_return([OpenStruct.new(updated_at: Date.today)])
   end
 end

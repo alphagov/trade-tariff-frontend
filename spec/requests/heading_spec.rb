@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Heading page' do
+describe 'Heading page', type: :request do
   context 'as HTML' do
     context 'declarable heading' do
       context 'without country filter' do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommoditiesHelper do
+describe CommoditiesHelper, type: :helper do
   let!(:commodity1) { Commodity.new(attributes_for :commodity) }
   let!(:commodity2) { Commodity.new(attributes_for :commodity) }
 

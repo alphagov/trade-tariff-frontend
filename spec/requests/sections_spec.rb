@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Sections Index page' do
+describe 'Sections Index page', type: :request do
   context 'as HTML' do
     it 'should display section names' do
       VCR.use_cassette('geographical_areas#countries') do
@@ -43,7 +43,7 @@ describe 'Sections Index page' do
   end
 end
 
-describe 'Section page' do
+describe 'Section page', type: :request do
   context 'as HTML' do
     it 'should display section name and chapters in the section' do
       VCR.use_cassette('geographical_areas#countries') do

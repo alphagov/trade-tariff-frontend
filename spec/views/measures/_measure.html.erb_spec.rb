@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "measures/_measure.html.erb" do
+describe "measures/_measure.html.erb", type: :view do
   let(:measure) {
     Measure.new(
       attributes_for(:measure, :third_country,

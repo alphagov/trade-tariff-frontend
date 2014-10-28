@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HeadingsController, "GET to #show" do
+describe HeadingsController, "GET to #show", type: :controller do
   context 'with existing heading id provided', vcr: { cassette_name: "headings#show" } do
     let!(:heading)     { Heading.new(attributes_for :heading) }
 
@@ -9,8 +9,8 @@ describe HeadingsController, "GET to #show" do
     end
 
     it { should respond_with(:success) }
-    it { should assign_to(:heading) }
-    it { should assign_to(:commodities) }
+    it { expect(assigns(:heading)).to be_a(HeadingPresenter) }
+    it { expect(assigns(:commodities)).to be_a(HeadingCommodityPresenter) }
   end
 
   context 'with too long chapter id provided', vcr: { cassette_name: "headings#show_0101" } do

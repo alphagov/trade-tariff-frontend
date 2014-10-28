@@ -32,7 +32,7 @@ class Section
   end
 
   def to_param
-    position
+    position.to_s
   end
 
   def to_s

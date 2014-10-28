@@ -43,8 +43,8 @@ describe Commodity do
       let(:commodity_leaf)     { heading.commodities.last }
 
       it 'returns true if it is a left and false otherwise' do
-        commodity_non_leaf.leaf?.should be_false
-        commodity_leaf.leaf?.should be_true
+        expect(commodity_non_leaf.leaf?).to be false
+        expect(commodity_leaf.leaf?).to be true
       end
     end
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ChaptersController, "GET to #show" do
+describe ChaptersController, "GET to #show", type: :controller do
   let!(:section)     { attributes_for :section }
 
   context 'with existing chapter id provided', vcr: { cassette_name: "chapters#show" } do
@@ -12,8 +12,8 @@ describe ChaptersController, "GET to #show" do
     end
 
     it { should respond_with(:success) }
-    it { should assign_to(:chapter) }
-    it { should assign_to(:headings) }
+    it { expect(assigns(:chapter)).to be_a(Chapter) }
+    it { expect(assigns(:headings)).to be_a(Array) }
   end
 
   context 'with too long chapter id provided', vcr: { cassette_name: "chapters#show_011" } do

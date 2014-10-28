@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'GET to #index - getting heading change feed' do
+describe 'GET to #index - getting heading change feed', type: :request do
   let!(:heading)   { Heading.new(attributes_for :heading, goods_nomenclature_item_id: "0101000000") }
 
   context 'no request format supplied' do

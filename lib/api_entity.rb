@@ -1,5 +1,6 @@
 require 'httparty'
 require 'multi_json'
+require 'active_model'
 
 module ApiEntity
   class NotFound < StandardError; end

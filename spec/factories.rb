@@ -35,7 +35,7 @@ FactoryGirl.define do
   end
 
   factory :measure do
-    ignore do
+    transient do
       measure_type_description { Forgery(:basic).text }
     end
 

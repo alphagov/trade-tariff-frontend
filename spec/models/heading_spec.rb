@@ -19,7 +19,7 @@ describe Heading do
 
   describe '#consigned?' do
     it 'returns false (there are no consigned declarable headings)' do
-      subject.consigned?.should be_false
+      subject.consigned?.should be false
     end
   end
 end

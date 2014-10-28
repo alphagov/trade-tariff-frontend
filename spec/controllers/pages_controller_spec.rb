@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PagesController, "GET to #opensearch" do
+describe PagesController, "GET to #opensearch", type: :controller do
   context 'when asked for XML file' do
     render_views
 
@@ -15,22 +15,38 @@ describe PagesController, "GET to #opensearch" do
   end
 
   context 'when asked with no format' do
-    before {
-      get :opensearch
-    }
+    pending do
+      before {
+        get :opensearch
+      }
 
-    it 'returns HTTP 406 (not supported) status' do
-      expect(response.status).to eq 406
+      it 'returns HTTP 406 (not supported) status' do
+        expect(response.status).to eq 406
+      end
+    end
+
+    it "raises ActionController::UnknownFormat as per rails 4" do
+      expect {
+        get :opensearch
+      }.to raise_error(ActionController::UnknownFormat)
     end
   end
 
   context 'with unsupported format' do
-    before {
-      get :opensearch, format: 'json'
-    }
+    pending do
+      before {
+        get :opensearch, format: :json
+      }
 
-    it 'returns HTTP 406 (not supported) status' do
-      expect(response.status).to eq 406
+      it 'returns HTTP 406 (not supported) status' do
+        expect(response.status).to eq 406
+      end
+    end
+
+    it "raises ActionController::UnknownFormat as per rails 4" do
+      expect {
+        get :opensearch, format: :json
+      }.to raise_error(ActionController::UnknownFormat)
     end
   end
 end

@@ -95,7 +95,7 @@ describe MeasureCollection do
       subject { MeasureCollection.new([measure]) }
 
       it 'returns true' do
-        subject.present?.should be_true
+        expect(subject).to be_present
       end
     end
 
@@ -103,7 +103,7 @@ describe MeasureCollection do
       subject { MeasureCollection.new([]) }
 
       it 'returns false' do
-        subject.present?.should be_false
+        expect(subject).to_not be_present
       end
     end
   end
