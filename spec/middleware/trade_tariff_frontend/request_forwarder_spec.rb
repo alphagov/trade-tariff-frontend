@@ -11,10 +11,10 @@ describe TradeTariffFrontend::RequestForwarder do
     described_class.new(host: host)
   end
 
-  around do |example|
+  around(:each) do |example|
     # These specs use WebMock
     VCR.turned_off do
-      example.yield
+      example.run
     end
   end
 
