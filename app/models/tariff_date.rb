@@ -1,3 +1,5 @@
+require 'active_model'
+
 class TariffDate
   include ActiveModel::Validations
   include ActiveModel::Conversion
