@@ -3,9 +3,9 @@ require 'spec_helper'
 describe SearchReferencesController, 'GET to #show', type: :controller do
   render_views
 
-  around do |example|
+  around(:each) do |example|
     VCR.use_cassette('a_z_index#show_m') do
-      example.yield
+      example.run
     end
   end
 
