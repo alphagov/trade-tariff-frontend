@@ -1,8 +1,11 @@
-# TradeTariffFrontend
-
 [![Build Status](https://travis-ci.org/alphagov/trade-tariff-frontend.png?branch=master)](https://travis-ci.org/alphagov/trade-tariff-frontend)
 
-A web application front end for use with the UK Trade Tariff API.
+# TradeTariffFrontend
+
+A web application front end for:
+
+* [Trade Tariff Backend](https://github.com/alphagov/trade-tariff-backend)
+
 Please ensure the API is running and properly configured in the 
 environment files.
 
