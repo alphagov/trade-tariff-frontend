@@ -9,8 +9,8 @@ gem "hashie"
 gem "govspeak", "1.2.3"
 
 gem "gds-api-adapters", "14.4.0"
-gem "plek", "1.3.1"
-gem "slimmer", "3.25.0"
+gem "plek", "~> 1.8.1"
+gem "slimmer", "~> 4.2.2"
 gem "addressable"
 
 gem "unicorn", "~> 4.6.3"
