@@ -6,8 +6,7 @@ A web application front end for:
 
 * [Trade Tariff Backend](https://github.com/alphagov/trade-tariff-backend)
 
-Please ensure the API is running and properly configured in the 
-environment files.
+This application requires the trade tariff backend API to be running.
 
 Assumes the GDS development environment is setup via puppet.
 
