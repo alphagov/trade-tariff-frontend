@@ -285,7 +285,7 @@ DEPENDENCIES
   logstasher (= 0.4.8)
   multi_json
   plek (~> 1.8.1)
-  poltergeist
+  poltergeist (~> 1.5.1)
   pry-rails
   rails (~> 4.1.6)
   rspec-rails

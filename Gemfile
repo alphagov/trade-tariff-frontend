@@ -45,6 +45,6 @@ group :test do
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
   gem "capybara", "~> 2.4.1"
-  gem "poltergeist"
+  gem "poltergeist", "~> 1.5.1"
   gem "timecop"
 end

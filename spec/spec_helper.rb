@@ -22,6 +22,12 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
 require 'capybara/poltergeist'
+
+# Allow any SSL protocol, we override the default SSLv3 PhantomJS SSL Protocol 
+# as it is not supported by our servers
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, { phantomjs_options: ['--ssl-protocol=any']})
+end
 Capybara.javascript_driver = :poltergeist
 
 Rails.application.routes.default_url_options[:host] = "test.host"
