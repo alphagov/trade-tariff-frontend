@@ -4,6 +4,6 @@ bundler_args: --without development
 script:
  - RAILS_ENV=test GOVUK_APP_DOMAIN=test.example.com bundle exec rake spec
 rvm:
-  - 2.1.2
+  - 2.1.4
 notifications:
   email:  false
