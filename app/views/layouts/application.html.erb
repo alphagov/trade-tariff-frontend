@@ -45,7 +45,7 @@
             </li>
           </ul>
           <div id="last-updated-at">
-            Last updated: <%= TariffUpdate.all.first.updated_at.strftime("%e %B %Y") %>
+            Last updated: <%= @tariff_last_updated ? @tariff_last_updated.strftime("%e %B %Y") : 'never' %>
           </div>
         </section>
       </main>
