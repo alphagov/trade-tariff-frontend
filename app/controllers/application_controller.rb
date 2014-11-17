@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   include GdsApi::Helpers
   include TradeTariffFrontend::ViewContext::Controller
 
+  before_filter :set_last_updated
   before_filter :set_cache
   before_filter :load_artefact
   before_filter :search_query
@@ -41,6 +42,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_last_updated
+    @tariff_last_updated ||= begin
+      last = TariffUpdate.all.first
+      last ? last.updated_at : nil
+    end
+  end
 
   def search_invoked?
     params[:q].present? || params[:day].present? || params[:country].present?
