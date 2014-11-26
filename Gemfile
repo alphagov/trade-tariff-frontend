@@ -10,7 +10,7 @@ gem "govspeak", "1.2.3"
 
 gem "gds-api-adapters", "14.4.0"
 gem "plek", "~> 1.8.1"
-gem "slimmer", "~> 5.0.0", github: "alphagov/slimmer", branch: "master", ref: "055040c" 
+gem "slimmer", "~> 5.0.1"
 gem "addressable"
 
 gem "unicorn", "~> 4.6.3"
