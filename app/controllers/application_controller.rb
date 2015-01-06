@@ -1,5 +1,6 @@
 require "api_entity"
 require "gds_api/helpers"
+require 'govuk_artefact'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
@@ -75,7 +76,7 @@ class ApplicationController < ActionController::Base
   def load_artefact
     # Can only load artifact if content_api is running
     unless Rails.env.development?
-      @artefact = content_api.artefact(APP_SLUG)
+      @artefact = GovukArtefact.new(content_api.artefact(APP_SLUG))
     end
   end
 

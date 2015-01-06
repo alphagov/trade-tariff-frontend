@@ -10,7 +10,6 @@ require File.expand_path("../../config/environment", __FILE__)
 
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'slimmer/test'
 require 'gds_api/test_helpers/content_api'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -23,7 +22,7 @@ require 'capybara/rspec'
 
 require 'capybara/poltergeist'
 
-# Allow any SSL protocol, we override the default SSLv3 PhantomJS SSL Protocol 
+# Allow any SSL protocol, we override the default SSLv3 PhantomJS SSL Protocol
 # as it is not supported by our servers
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, { phantomjs_options: ['--ssl-protocol=any']})

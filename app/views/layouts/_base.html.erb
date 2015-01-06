@@ -32,12 +32,14 @@
     if (window.devicePixelRatio) {
       _gaq.push(['_setCustomVar', 11, 'Pixel Ratio', String(window.devicePixelRatio), 2 ]);
     }
-    _gaq.push(["_setCustomVar",1,"Section","business and self-employed",3]);
-    GOVUK.Analytics.Section = "business and self-employed";
-    _gaq.push(["_setCustomVar",3,"NeedID","100233",3]);
-    GOVUK.Analytics.NeedID = "100233";
-    _gaq.push(["_setCustomVar",4,"Proposition","citizen",3]);
-    GOVUK.Analytics.Proposition = "citizen";
+    <% if @artefact && @artefact.primary_root_section %>
+      _gaq.push(["_setCustomVar",1,"Section","<%= @artefact.primary_root_section["title"].downcase %>",3]);
+      GOVUK.Analytics.Section = "<%= @artefact.primary_root_section["title"].downcase %>";
+      _gaq.push(["_setCustomVar",3,"NeedID","<%= @artefact.need_ids.join(',') %>",3]);
+      GOVUK.Analytics.NeedID = "<%= @artefact.need_ids.join(',') %>";
+      _gaq.push(["_setCustomVar",4,"Proposition","<%= @artefact.proposition %>",3]);
+      GOVUK.Analytics.Proposition = "<%= @artefact.proposition %>";
+    <% end %>
     _gaq.push(["_setCustomVar",2,"Format","custom-tool",3]);
     GOVUK.Analytics.Format = "custom-tool";
     _gaq.push(['_gat._anonymizeIp']);
