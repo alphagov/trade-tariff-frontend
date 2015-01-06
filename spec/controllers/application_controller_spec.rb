@@ -8,18 +8,13 @@ describe ApplicationController, type: :controller do
       end
     end
 
-    it "should fetch the artefact and pass it to slimmer" do
+    it "should fetch the artefact from content api" do
       artefact_data = artefact_for_slug(APP_SLUG)
       content_api_has_an_artefact(APP_SLUG, artefact_data)
 
       get :index
 
-      expect(response.headers[Slimmer::Headers::ARTEFACT_HEADER]).to eq(artefact_data.to_json)
-    end
-
-    it "should have a slimmer head set to remove the meta viewport HTML" do
-      get :index
-      expect(response.headers[Slimmer::Headers::REMOVE_META_VIEWPORT]).to eq("true")
+      expect(assigns(:aretefact))
     end
 
     describe "caching" do
