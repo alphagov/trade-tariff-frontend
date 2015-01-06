@@ -1,10 +1,8 @@
 require "api_entity"
-require "slimmer/headers"
 require "gds_api/helpers"
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include Slimmer::Headers
   include GdsApi::Helpers
   include TradeTariffFrontend::ViewContext::Controller
 
@@ -13,8 +11,6 @@ class ApplicationController < ActionController::Base
   before_filter :load_artefact
   before_filter :search_query
   before_filter :bots_no_index_if_historical
-
-  after_filter :set_app_slimmer_headers
 
   layout :set_layout
 
@@ -60,7 +56,6 @@ class ApplicationController < ActionController::Base
 
   def set_layout
     if request.headers['X-AJAX']
-      response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
       false
     else
       "application"
@@ -81,15 +76,7 @@ class ApplicationController < ActionController::Base
     # Can only load artifact if content_api is running
     unless Rails.env.development?
       @artefact = content_api.artefact(APP_SLUG)
-      set_slimmer_artefact(@artefact)
     end
-  end
-
-  def set_app_slimmer_headers
-    set_slimmer_headers(
-      format:               "custom-tool",
-      remove_meta_viewport: true
-    )
   end
 
   protected
