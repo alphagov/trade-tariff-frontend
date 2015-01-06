@@ -1,24 +1,11 @@
-<% content_for :page_title, content_for?(:title) ? yield(:title) : "Trade Tariff - GOV.UK" %>
-
-<% content_for :head do %>
-  <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application.css" %><!--<![endif]-->
-  <!--[if IE 6]><%= stylesheet_link_tag "application-ie6.css" %><![endif]-->
-  <!--[if IE 7]><%= stylesheet_link_tag "application-ie7.css" %><![endif]-->
-  <!--[if IE 8]><%= stylesheet_link_tag "application-ie8.css" %><![endif]-->
-  <%= stylesheet_link_tag 'tariff-print', media: 'print' %>
-  <%= csrf_meta_tags %>
-
-  <%= yield :section_meta_tags %>
-  <meta name="x-section-name" content="Business" />
-  <meta name="x-section-link" content="/browse/business" />
-  <meta name="x-section-format" content="trade-tariff" />
-
-  <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
-
-  <%= yield :head %>
-<% end %>
-
 <% content_for :content do %>
+  <div id="global-breadcrumb" class="header-context">
+    <ol role="breadcrumbs" class="group">
+      <li><a href="/">Home</a></li>
+      <li><a href="/browse/business">Business and self-employed</a></li>
+      <li><strong><a href="/browse/business/imports-exports">Imports and exports</a></strong></li>
+    </ol>
+  </div>
   <div id="wrapper" class="tariff service">
     <main id="content" role="main" class="group">
       <%= render 'shared/header' %>
@@ -54,7 +41,5 @@
   </div>
 <% end %>
 
-<% content_for :body_end do %>
-  <%= javascript_include_tag 'application' %>
-<% end %>
+<%= render :partial => 'layouts/base' %>
 <%= render :file => 'layouts/govuk_template' %>

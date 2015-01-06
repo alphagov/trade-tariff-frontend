@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Trade Tariff - GOV.UK" %></title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= stylesheet_link_tag 'tariff-print', media: 'print' %>
+<% content_for :content do %>
+  <div id="global-breadcrumb" class="header-context">
+    <ol role="breadcrumbs" class="group">
+      <li><a href="/">Home</a></li>
+      <li><a href="/browse/business">Business and self-employed</a></li>
+      <li><strong><a href="/browse/business/imports-exports">Imports and exports</a></strong></li>
+    </ol>
+  </div>
+  <div id="wrapper" class="page-layout">
+    <main id="content" role="main">
+      <%= yield %>
+    </main>
+  </div>
+<% end %>
 
-    <%= csrf_meta_tags %>
-    <%= javascript_include_tag 'application', defer: true %>
-    <%= yield :section_meta_tags %>
-    <meta name="x-section-name" content="Business" />
-    <meta name="x-section-link" content="/browse/business" />
-    <meta name="x-section-format" content="trade-tariff" />
-
-    <%= yield :head %>
-  </head>
-  <body class="mainstream">
-    <div id="wrapper" class="service">
-      <main id="content" role="main" class="group">
-        <%= render 'shared/header' %>
-        <div class="article-container group">
-          <%= yield %>
-        </div>
-      </main>
-    </div>
-  </body>
-</html>
+<%= render :partial => 'layouts/base' %>
+<%= render :file => 'layouts/govuk_template' %>

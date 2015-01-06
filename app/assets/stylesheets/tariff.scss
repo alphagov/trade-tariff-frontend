@@ -4,6 +4,8 @@
 @import "_colours.scss";
 @import "_shims.scss";
 @import "_device-pixels.scss";
+@import "_grid_layout.scss";
+@import "design-patterns/_buttons.scss";
 
 /* global variables */
 
@@ -59,6 +61,7 @@ $expand-arrow-space: 9 + $token-padding;
   caption {
     text-align:left;
     font-size: 1.5em;
+    font-weight: bold;
     margin-bottom: 0;
     padding: 0;
     margin: 0 0 0.4em 0.35em;
@@ -321,8 +324,13 @@ div.header-context {
   }
 }
 
+body {
+  min-width: 980px;
+}
+
 #wrapper {
   background: #fff;
+  @extend %site-width-container;
 }
 
 @include ie(6) {
@@ -340,7 +348,6 @@ header.page-header div,
 .article-container {
   padding-bottom:em(25, 19);
   position:relative;
-  max-width: 94%;
 }
 
 .tariff header.page-header div {
@@ -351,7 +358,7 @@ header.page-header div,
 .tariff header.page-header div h1{
   font-size:em(24, 16);
   padding-left: $token-space;
-  margin-left: 0;
+  margin: 30px 0 5px;
   width:50%;
 }
 
@@ -428,6 +435,14 @@ header.page-header div,
 
 .commodity-code {
   background:#B5DEDB;
+}
+
+article li {
+  font-size: 19px;
+
+  li {
+    font-weight: 400;
+  }
 }
 
 article table {
@@ -519,7 +534,7 @@ article.tariff {
   @include ie(6) {
     height:34em;
   }
-  margin:0 0 0 2.25em;
+  margin:0;
 }
 
 .tariff {
@@ -553,7 +568,7 @@ article.tariff {
   font-size:em(14, 16);
   line-height:2em;
   background:#fff;
-  padding:0 px($top-level-padding) 1em px($token-space);
+  padding:0 px($top-level-padding) 1em 0;
   @include contain-float;
 
   p {
@@ -587,6 +602,10 @@ article.tariff {
 
   .help-notice {
     padding: 0em;
+  }
+
+  .button {
+    @include button;
   }
 }
 
@@ -1300,6 +1319,29 @@ p.tree-controls {
     width:720px;
   }
 
+  .close {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    a {
+      background-color: transparent;
+      background-image: image-url("close.png");
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      display: block;
+      margin: 0;
+      height: 2em;
+      width: 2em;
+      text-indent: -9999px;
+
+      &:hover {
+        background-color: rgba(0,0,0,0.25);
+      }
+    }
+  }
+
   .info-content,
   article {
     padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
@@ -1506,7 +1548,7 @@ article.search-results {
 .related-module {
   background: #fff;
   font-size:em(14, 16);
-  padding:0 1em 7em px($token-width);
+  padding:0 1em 7em 0;
   @include contain-float;
 
   h1 {
@@ -1675,6 +1717,87 @@ article.a-z {
         color: #000;
         font-weight: 700;
       }
+    }
+  }
+}
+#global-breadcrumb {
+  background-color: #fff;
+  max-width: 1020px;
+  margin:0 auto;
+  z-index: 50;
+
+  @include ie(6) {
+    width: 960px;
+  }
+
+  ol {
+    max-width: 960px;
+    margin: 0 30px;
+    padding: 0.75em 0;
+
+    @include ie-lte(7) {
+      padding: 0.75em 16px 0;
+      width: 900px;
+    }
+
+    li {
+      @include core-16;
+      background-image: image-url("separator.png");
+      background-position: 100% 50%;
+      background-repeat: no-repeat;
+      float: left;
+      list-style: none;
+      margin-left: 0;
+      margin-right: 0.5em;
+      margin-bottom: 0.4em;
+      padding-right: 1em;
+
+      @include device-pixel-ratio() {
+        background-image: image-url("separator-2x.png");
+        background-size: 6px 11px;
+      }
+
+      a {
+        color: $text-colour;
+      }
+
+      strong {
+        font-weight: normal;
+      }
+
+      &:last-child {
+        background-image: none;
+        margin-right: 0
+      }
+    }
+  }
+}
+#wrapper.page-layout {
+  padding-bottom: 60px;
+  #content {
+    width: 66.66%;
+  }
+
+  h1 {
+    @include bold-48;
+    margin: 30px 0 40px;
+  }
+  .get-started {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+  .button {
+    @include button;
+  }
+  p,
+  li {
+    @include core-19;
+  }
+  ul {
+    padding-left: 1.2em;
+    li {
+      margin-bottom: 5px;
     }
   }
 }
