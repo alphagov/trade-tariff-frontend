@@ -9,8 +9,8 @@ gem "hashie"
 gem "govspeak", "1.2.3"
 
 gem "gds-api-adapters", "14.4.0"
+gem "govuk_template", "0.12.0"
 gem "plek", "~> 1.8.1"
-gem "slimmer", "~> 5.0.1"
 gem "addressable"
 
 gem "unicorn", "~> 4.6.3"
@@ -20,7 +20,7 @@ gem "logstasher", '0.4.8'
 gem "airbrake", "3.1.16"
 
 gem "coffee-rails"
-gem "govuk_frontend_toolkit", "1.6.0"
+gem "govuk_frontend_toolkit", "3.1.0"
 gem "jquery-rails", "~> 2.1.3"
 gem "sass-rails", "~> 4.0.3"
 gem "therubyracer", "0.12.0"

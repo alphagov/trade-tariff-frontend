@@ -1,57 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Trade Tariff - GOV.UK" %></title>
-    <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application.css" %><!--<![endif]-->
-    <!--[if IE 6]><%= stylesheet_link_tag "application-ie6.css" %><![endif]-->
-    <!--[if IE 7]><%= stylesheet_link_tag "application-ie7.css" %><![endif]-->
-    <!--[if IE 8]><%= stylesheet_link_tag "application-ie8.css" %><![endif]-->
-    <%= stylesheet_link_tag 'tariff-print', media: 'print' %>
+<% content_for :content do %>
+  <div id="global-breadcrumb" class="header-context">
+    <%= breadcrumbs %>
+  </div>
+  <div id="wrapper" class="tariff service">
+    <main id="content" role="main" class="group">
+      <%= render 'shared/header' %>
 
-    <%= csrf_meta_tags %>
-    <%= javascript_include_tag 'application', defer: true %>
-    <%= yield :section_meta_tags %>
-    <meta name="x-section-name" content="Business" />
-    <meta name="x-section-link" content="/browse/business" />
-    <meta name="x-section-format" content="trade-tariff" />
+      <div class="article-container group">
+        <%= yield %>
+      </div>
+      <section class="related-module">
+        <h1>Further help with classification:</h1>
+        <ul>
+          <li><a href="https://www.gov.uk/browse/business/imports-exports/classification-of-goods">Classification guides</a></li>
+          <li><a href="https://www.gov.uk/finding-commodity-codes">Commodity codes for import and export duty</a></li>
+          <li><a href="https://www.gov.uk/classification-of-goods">Using the Trade Tariff for classifying imports and exports</a></li>
+          <li>
+          <li><a href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&amp;Screen=0&amp;Expand=true" target="_blank" rel="external">Integrated Tariff of the European Community (TARIC) database</a></li>
+          <li>
+            <address class="vcard">
+              <a class="fn org url" href="http://search2.hmrc.gov.uk/kb5/hmrc/contactus/view.page?record=dMVkEC6liWE" target="_blank" rel="external">
+                HMRC VAT, Excise and Customs Helpline
+              </a>
+              <a href="tel:+443002003700" class="tel">0300 200 3700</a>
+            </address>
+          </li>
+        </ul>
 
-    <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
-
-    <%= yield :head %>
-  </head>
-  <body class="mainstream">
-    <div id="wrapper" class="tariff service">
-      <main id="content" role="main" class="group">
-        <%= render 'shared/header' %>
-
-        <div class="article-container group">
-          <%= yield %>
+        <% if @tariff_last_updated %>
+        <div id="last-updated-at">
+          Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>
         </div>
-        <section class="related-module">
-          <h1>Further help with classification:</h1>
-          <ul>
-            <li><a href="https://www.gov.uk/browse/business/imports-exports/classification-of-goods">Classification guides</a></li>
-            <li><a href="https://www.gov.uk/finding-commodity-codes">Commodity codes for import and export duty</a></li>
-            <li><a href="https://www.gov.uk/classification-of-goods">Using the Trade Tariff for classifying imports and exports</a></li>
-            <li>
-            <li><a href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&amp;Screen=0&amp;Expand=true" target="_blank" rel="external">Integrated Tariff of the European Community (TARIC) database</a></li>
-            <li>
-              <address class="vcard">
-                <a class="fn org url" href="http://search2.hmrc.gov.uk/kb5/hmrc/contactus/view.page?record=dMVkEC6liWE" target="_blank" rel="external">
-                  HMRC VAT, Excise and Customs Helpline
-                </a>
-                <a href="tel:+443002003700" class="tel">0300 200 3700</a>
-              </address>
-            </li>
-          </ul>
+        <% end %>
+      </section>
+    </main>
+  </div>
+  <%= render :partial => 'layouts/report_a_problem' %>
+<% end %>
 
-          <% if @tariff_last_updated %>
-          <div id="last-updated-at">
-            Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>
-          </div>
-          <% end %>
-        </section>
-      </main>
-    </div>
-  </body>
-</html>
+<%= render :partial => 'layouts/base' %>
+<%= render :file => 'layouts/govuk_template' %>
