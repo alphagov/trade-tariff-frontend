@@ -15,9 +15,9 @@ module ApplicationHelper
     crumbs = [ content_tag(:li, link_to( 'Home', '/' )) ]
     if @artefact && @artefact.primary_section
       @artefact.non_primary_sections.each do |section|
-        crumbs << content_tag(:li, link_to( section.title, section.content_with_tag.web_url))
+        crumbs << content_tag(:li, link_to( section["title"], section["content_with_tag"]["web_url"]))
       end
-      primary_link = link_to( @artefact.primary_section.title, @artefact.primary_section.content_with_tag.web_url)
+      primary_link = link_to( @artefact.primary_section["title"], @artefact.primary_section["content_with_tag"]["web_url"])
       crumbs << content_tag(:li, content_tag(:strong, primary_link))
     end
     content_tag(:ol, crumbs.join('').html_safe, role: "breadcrumbs")
