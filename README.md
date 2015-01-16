@@ -16,6 +16,6 @@ Assumes the GDS development environment is setup via puppet.
 
 ## Specs
 
-To run the spec use the following command: 
+To run the spec use the following command:
 
-    RAILS_ENV=test bundle exec rake ci:setup:rspec spec assets:clean assets:precompile
+    RAILS_ENV=test bundle exec rake
