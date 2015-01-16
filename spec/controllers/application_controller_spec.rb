@@ -14,7 +14,7 @@ describe ApplicationController, type: :controller do
 
       get :index
 
-      expect(assigns(:aretefact))
+      expect(assigns(:artefact)).to be_present
     end
 
     describe "caching" do
