@@ -5,7 +5,7 @@ class GovukArtefact
   end
 
   def primary_section
-    @data["tags"].select { |tag| tag.details.type == 'section' }.first if @data
+    @data["tags"].select { |tag| tag["details"] && tag["details"]["type"] == 'section' }.first if @data
   end
 
   def primary_root_section
