@@ -35,7 +35,7 @@ group :development do
 end
 
 group :test do
-  gem "brakeman", "~> 1.7.0"
+  gem "brakeman", "~> 3.0.0", require: false
   gem "webmock", "~> 1.11.0"
   gem "factory_girl_rails"
   gem "forgery"
