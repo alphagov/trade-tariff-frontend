@@ -28,6 +28,7 @@ gem "uglifier", ">= 1.0.3"
 
 group :development, :test do
   gem "pry-rails"
+  gem "bundler-audit"
 end
 
 group :development do
