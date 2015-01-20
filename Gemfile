@@ -22,7 +22,7 @@ gem "airbrake", "3.1.16"
 gem "coffee-rails"
 gem "govuk_frontend_toolkit", "3.1.0"
 gem "jquery-rails", "~> 2.1.3"
-gem "sass-rails", "~> 4.0.3"
+gem "sass-rails", "~> 4.0.5"
 gem "therubyracer", "0.12.0"
 gem "uglifier", ">= 1.0.3"
 
@@ -35,7 +35,7 @@ group :development do
 end
 
 group :test do
-  gem "brakeman", "~> 1.7.0"
+  gem "brakeman", "~> 3.0.0", require: false
   gem "webmock", "~> 1.11.0"
   gem "factory_girl_rails"
   gem "forgery"
