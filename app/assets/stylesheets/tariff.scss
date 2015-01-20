@@ -1715,7 +1715,10 @@ article.a-z {
   ol.index {
     padding-left: 0;
 
-    li { display: inline-block !important }
+    li {
+      padding-left: 0.5em;
+      display: inline-block !important;
+    }
     li.active {
       a {
         color: #000;
