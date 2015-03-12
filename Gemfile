@@ -20,7 +20,7 @@ gem "logstasher", '0.4.8'
 gem "airbrake", "3.1.16"
 
 gem "coffee-rails"
-gem "govuk_frontend_toolkit", "3.1.0"
+gem "govuk_frontend_toolkit", "3.2.1"
 gem "jquery-rails", "~> 2.1.3"
 gem "sass-rails", "~> 4.0.5"
 gem "therubyracer", "0.12.0"
