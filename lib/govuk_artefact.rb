@@ -17,11 +17,7 @@ class GovukArtefact
   end
 
   def need_ids
-    @data.details.need_ids
-  end
-
-  def proposition
-    @data.details.business_proposition ? 'business' : 'citizen'
+    @data.details.need_ids if @data && @data.details
   end
 
   def non_primary_sections
