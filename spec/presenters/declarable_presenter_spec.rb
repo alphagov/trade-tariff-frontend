@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe DeclarablePresenter do
   it 'relays all undefined methods to presented declarable object' do
-    DeclarablePresenter.new(Commodity.new(goods_nomenclature_item_id: "0102210000")).heading_code.should eq("02")
+    expect(
+      DeclarablePresenter.new(Commodity.new(goods_nomenclature_item_id: "0102210000")).heading_code
+    ).to eq("02")
   end
 
   describe 'third country duty rate fetch' do
@@ -14,12 +16,18 @@ describe DeclarablePresenter do
 
     describe '#third_country_duty_measures' do
       it 'picks only commodities that qualify for third country duty' do
-        commodity.third_country_duty_measures.map(&:measure_type).map(&:description).should include 'abc'
-        commodity.third_country_duty_measures.map(&:measure_type).map(&:description).should include 'def'
+        expect(
+          commodity.third_country_duty_measures.map(&:measure_type).map(&:description)
+        ).to include 'abc'
+        expect(
+          commodity.third_country_duty_measures.map(&:measure_type).map(&:description)
+        ).to include 'def'
       end
 
       it 'does not pick other measures' do
-        commodity.third_country_duty_measures.map(&:measure_type).map(&:description).should_not include 'xyz'
+        expect(
+          commodity.third_country_duty_measures.map(&:measure_type).map(&:description)
+        ).to_not include 'xyz'
       end
     end
   end

@@ -7,8 +7,8 @@ describe 'Sections Index page', type: :request do
         VCR.use_cassette('sections#index') do
           visit sections_path
 
-          page.should have_content 'Live animals; animal products'
-          page.should have_content 'Vehicles, aircraft'
+          expect(page).to have_content 'Live animals; animal products'
+          expect(page).to have_content 'Vehicles, aircraft'
         end
       end
     end
@@ -50,9 +50,9 @@ describe 'Section page', type: :request do
         VCR.use_cassette('sections#show') do
           visit section_path(1)
 
-          page.should have_content 'Live animals; animal products'
-          page.should have_content 'Live animals'
-          page.should have_content 'Meat and edible meat offal'
+          expect(page).to have_content 'Live animals; animal products'
+          expect(page).to have_content 'Live animals'
+          expect(page).to have_content 'Meat and edible meat offal'
         end
       end
     end

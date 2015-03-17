@@ -7,7 +7,9 @@ describe MeasureCollection do
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters measures by country code' do
-      collection.for_country('IT').should_not include measure2
+      expect(
+        collection.for_country('IT')
+      ).to_not include measure2
     end
   end
 
@@ -17,7 +19,7 @@ describe MeasureCollection do
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters measures belonging to third country group' do
-      collection.for_all_countries.should_not include measure2
+      expect(collection.for_all_countries).to_not include measure2
     end
   end
 
@@ -27,7 +29,7 @@ describe MeasureCollection do
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters measures for specific countries' do
-      collection.for_specific_countries.should_not include measure1
+      expect(collection.for_specific_countries).to_not include measure1
     end
   end
 
@@ -37,7 +39,7 @@ describe MeasureCollection do
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters VAT measures' do
-      collection.vat.should_not include measure2
+      expect(collection.vat).to_not include measure2
     end
   end
 
@@ -47,7 +49,7 @@ describe MeasureCollection do
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters national measures' do
-      collection.national.should_not include measure2
+      expect(collection.national).to_not include measure2
     end
   end
 
@@ -57,7 +59,9 @@ describe MeasureCollection do
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'removes matching measures' do
-      collection.except(:third_country).should_not include measure1
+      expect(
+        collection.except(:third_country)
+      ).to_not include measure1
     end
   end
 
@@ -67,11 +71,11 @@ describe MeasureCollection do
       let(:collection) { MeasureCollection.new([measure]) }
 
       it 'returns an Array' do
-        collection.to_a.should be_kind_of Array
+        expect(collection.to_a).to be_kind_of Array
       end
 
       it 'returns array of Measures wrapped in Presenter objects' do
-        collection.to_a.first.should be_kind_of collection.presenter_klass
+        expect(collection.to_a.first).to be_kind_of collection.presenter_klass
       end
     end
 
@@ -80,11 +84,11 @@ describe MeasureCollection do
       let(:collection) { MeasureCollection.new([measure], nil) }
 
       it 'returns an Array' do
-        collection.to_a.should be_kind_of Array
+        expect(collection.to_a).to be_kind_of Array
       end
 
       it 'returns plain Measure object array' do
-        collection.to_a.first.should be_kind_of Measure
+        expect(collection.to_a.first).to be_kind_of Measure
       end
     end
   end

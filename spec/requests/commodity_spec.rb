@@ -8,8 +8,8 @@ describe 'Commodity page', type: :request do
           VCR.use_cassette('commodities#show_0101300000') do
             visit commodity_path("0101300000")
 
-            page.should have_content 'Importing from outside the EU is subject to a third country duty of 7.70 %'
-            page.should have_content 'Goods are subject to VAT standard rate.'
+            expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 7.70 %'
+            expect(page).to have_content 'Goods are subject to VAT standard rate.'
           end
         end
       end
@@ -50,8 +50,8 @@ describe 'Commodity page', type: :request do
         VCR.use_cassette('commodities#show_8714930019') do
           visit commodity_path("8714930019")
 
-          page.should have_content 'Importing from outside the EU is subject to a third country duty of 4.70 %.'
-          page.should have_content 'Goods are subject to VAT standard rate.'
+          expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 4.70 %.'
+          expect(page).to have_content 'Goods are subject to VAT standard rate.'
         end
       end
     end
@@ -64,13 +64,13 @@ describe 'Commodity page', type: :request do
           visit commodity_path("0101300000", country: "AD")
 
           within("#import table.specific-countries") do
-            page.should_not     have_content 'Andorra'
-            page.should have_content 'Albania'
-            page.should have_content 'Chile'
+            expect(page).to_not     have_content 'Andorra'
+            expect(page).to have_content 'Albania'
+            expect(page).to have_content 'Chile'
           end
 
           within("#import table.country-filter") do
-            page.should     have_content 'Andorra'
+            expect(page).to     have_content 'Andorra'
           end
         end
       end
@@ -84,7 +84,7 @@ describe 'Commodity page', type: :request do
           visit commodity_path("1701910000", as_of: "2006-02-01")
 
           within("#import") do
-            page.should have_content 'Additional duty based on cif price'
+            expect(page).to have_content 'Additional duty based on cif price'
           end
         end
       end
@@ -98,7 +98,7 @@ describe 'Commodity page', type: :request do
           visit commodity_path("2208909110")
 
           within("#import") do
-            page.should     have_content 'l alc. 100%'
+            expect(page).to     have_content 'l alc. 100%'
           end
         end
       end

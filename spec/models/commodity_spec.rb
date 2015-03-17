@@ -18,13 +18,13 @@ describe Commodity do
       it 'returns list of commodities children' do
         heading
 
-        heading.commodities.first.children.should include heading.commodities.last
+        expect(heading.commodities.first.children).to include heading.commodities.last
       end
 
       it 'returns empty array if commodity does not have children' do
         heading
 
-        heading.commodities.last.children.should be_blank
+        expect(heading.commodities.last.children).to be_blank
       end
     end
 
@@ -33,8 +33,8 @@ describe Commodity do
         heading
 
         root_children = heading.commodities.select(&:root)
-        root_children.should     include heading.commodities.first
-        root_children.should_not include heading.commodities.last
+        expect(root_children).to     include heading.commodities.first
+        expect(root_children).to_not include heading.commodities.last
       end
     end
 
@@ -53,7 +53,7 @@ describe Commodity do
     let(:commodity) { Commodity.new(attributes_for :commodity) }
 
     it 'returns commodity code as param' do
-      commodity.to_param.should == commodity.code
+      expect(commodity.to_param).to eq commodity.code
     end
   end
 end

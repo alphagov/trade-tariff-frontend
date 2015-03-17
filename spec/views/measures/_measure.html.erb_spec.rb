@@ -16,9 +16,9 @@ describe "measures/_measure.html.erb", type: :view do
     let(:duty_expression) { attributes_for(:duty_expression) }
 
     it {
-      rendered.should =~ /EUR/
-      rendered.should =~ /Hectokilogram/
-      rendered.should =~ /<abbr title='Hectokilogram'>/
+      expect(rendered).to match /EUR/
+      expect(rendered).to match /Hectokilogram/
+      expect(rendered).to match /<abbr title='Hectokilogram'>/
     }
   end
 
@@ -28,8 +28,8 @@ describe "measures/_measure.html.erb", type: :view do
     }
 
     it {
-      rendered.should =~ /EUR/
-      rendered.should =~ /Hectokilogram/
+      expect(rendered).to match /EUR/
+      expect(rendered).to match /Hectokilogram/
     }
   end
 end

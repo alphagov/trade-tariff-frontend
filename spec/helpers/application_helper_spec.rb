@@ -6,7 +6,9 @@ describe ApplicationHelper, type: :helper do
       let(:string) { '**hello**' }
 
       it 'renders string in Markdown as HTML' do
-        helper.govspeak(string).strip.should eq '<p><strong>hello</strong></p>'
+        expect(
+          helper.govspeak(string).strip
+        ).to eq '<p><strong>hello</strong></p>'
       end
     end
 
@@ -14,7 +16,9 @@ describe ApplicationHelper, type: :helper do
       let(:string) { "<script type='text/javascript'>alert('hello');</script>" }
 
       it '<script> tags are filtered' do
-        helper.govspeak(string).strip.should eq "alert('hello');"
+        expect(
+          helper.govspeak(string).strip
+        ).to eq "alert('hello');"
       end
     end
   end
