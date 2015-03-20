@@ -15,7 +15,7 @@ describe SearchController, "GET to #search", type: :controller do
         it { should respond_with(:redirect) }
         it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
-          assigns[:search].t.should == query
+          expect(assigns[:search].t).to eq query
         end
       end
 
@@ -29,7 +29,7 @@ describe SearchController, "GET to #search", type: :controller do
         it { should respond_with(:success) }
         it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
-          assigns[:search].t.should == query
+          expect(assigns[:search].t).to eq query
         end
       end
 
@@ -45,10 +45,10 @@ describe SearchController, "GET to #search", type: :controller do
         it { should respond_with(:success) }
         it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
-          assigns[:search].t.should == query
+          expect(assigns[:search].t).to eq query
         end
         it "should display no results" do
-          response.body.should =~ /no results/
+          expect(response.body).to match /no results/
         end
       end
     end

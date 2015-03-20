@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe 'Search page', type: :request do
   describe "search results" do
-    before { Section.stub(:all).and_return([]) }
+    before {
+      allow(Section).to receive(:all).and_return([])
+    }
 
     context 'exact match' do
       it 'should redirect user to exact match page' do
@@ -17,8 +19,8 @@ describe 'Search page', type: :request do
                   click_button 'Search'
                 end
 
-                page.should have_content 'Pure-bred breeding animals'
-                page.should have_content 'The commodity code for importing is 0101210000.'
+                expect(page).to have_content 'Pure-bred breeding animals'
+                expect(page).to have_content 'The commodity code for importing is 0101210000.'
               end
             end
           end
@@ -38,7 +40,7 @@ describe 'Search page', type: :request do
                 click_button 'Search'
               end
 
-              page.should have_content 'Headings containing horses'
+              expect(page).to have_content 'Headings containing horses'
             end
           end
         end
@@ -56,7 +58,7 @@ describe 'Search page', type: :request do
               click_button 'Search'
             end
 
-            page.should have_content 'There are no results matching your query'
+            expect(page).to have_content 'There are no results matching your query'
           end
         end
       end

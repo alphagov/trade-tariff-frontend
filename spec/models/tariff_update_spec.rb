@@ -6,7 +6,7 @@ describe TariffUpdate do
       let(:tariff_update) { TariffUpdate.new(attributes_for :tariff_update, :chief) }
 
       it 'returns Chief' do
-        tariff_update.update_type.should eq 'CHIEF'
+        expect(tariff_update.update_type).to eq 'CHIEF'
       end
     end
 
@@ -14,7 +14,7 @@ describe TariffUpdate do
       let(:tariff_update) { TariffUpdate.new(attributes_for :tariff_update, :taric) }
 
       it 'returns Taric' do
-        tariff_update.update_type.should eq 'TARIC'
+        expect(tariff_update.update_type).to eq 'TARIC'
       end
     end
   end
@@ -23,7 +23,7 @@ describe TariffUpdate do
     let(:tariff_update) { TariffUpdate.new(attributes_for :tariff_update, :chief) }
 
     it 'returns instance of date' do
-      tariff_update.updated_at.should be_kind_of Date
+      expect(tariff_update.updated_at).to be_kind_of Date
     end
   end
 end

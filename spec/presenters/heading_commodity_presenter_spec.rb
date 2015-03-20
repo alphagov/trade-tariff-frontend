@@ -7,11 +7,15 @@ describe HeadingCommodityPresenter do
     let(:commodities) { [root_commodity, non_root_commodity] }
 
     it 'returns commodities that have root identication' do
-      HeadingCommodityPresenter.new(commodities).root_commodities.should include root_commodity
+      expect(
+        HeadingCommodityPresenter.new(commodities).root_commodities
+      ).to include root_commodity
     end
 
     it 'does not return commodity not marked as root' do
-      HeadingCommodityPresenter.new(commodities).root_commodities.should_not include non_root_commodity
+      expect(
+        HeadingCommodityPresenter.new(commodities).root_commodities
+      ).to_not include non_root_commodity
     end
   end
 end

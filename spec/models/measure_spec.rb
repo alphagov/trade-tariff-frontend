@@ -5,8 +5,12 @@ describe Measure do
     it 'returns true if geographical area code matches' do
       measure = Measure.new(attributes_for(:measure, geographical_area: {id: 'br',
                                                                          description: 'Brazil'}))
-      measure.relevant_for_country?('br').should eq true
-      measure.relevant_for_country?('fr').should eq false
+      expect(
+        measure.relevant_for_country?('br')
+      ).to eq true
+      expect(
+        measure.relevant_for_country?('fr')
+      ).to eq false
     end
 
     it 'returns true if geographical area (group) contains matching code' do
@@ -16,8 +20,12 @@ describe Measure do
                                                                            {id: 'lt', description: 'Lithuania'},
                                                                            {id: 'fr', description: 'France'}
                                                                          ]}))
-      measure.relevant_for_country?('lt').should eq true
-      measure.relevant_for_country?('it').should eq false
+      expect(
+        measure.relevant_for_country?('lt')
+      ).to eq true
+      expect(
+        measure.relevant_for_country?('it')
+      ).to eq false
     end
 
     it 'returns false if country code is among excluded countries for this measure' do
@@ -29,7 +37,9 @@ describe Measure do
                                                      excluded_countries: [
                                                                           {id: 'lt', description: 'Lithuania'}
                                                                          ]))
-      measure.relevant_for_country?('lt').should eq false
+      expect(
+        measure.relevant_for_country?('lt')
+      ).to eq false
     end
   end
 

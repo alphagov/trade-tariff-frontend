@@ -7,9 +7,9 @@ describe 'Chapter page', type: :request do
         VCR.use_cassette('chapters#show') do
           visit chapter_path("01")
 
-          page.should have_content 'Live animals'
-          page.should have_content 'Live bovine animals'
-          page.should have_content 'Live swine'
+          expect(page).to have_content 'Live animals'
+          expect(page).to have_content 'Live bovine animals'
+          expect(page).to have_content 'Live swine'
         end
       end
     end

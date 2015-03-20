@@ -5,7 +5,7 @@ describe 'Home page', type: :request do
     VCR.use_cassette('geographical_areas#countries') do
       visit root_path
 
-      page.should have_content 'Use this tool to search'
+      expect(page).to have_content 'Use this tool to search'
     end
   end
 end

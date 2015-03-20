@@ -9,7 +9,6 @@ SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 require File.expand_path("../../config/environment", __FILE__)
 
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'gds_api/test_helpers/content_api'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -32,11 +31,11 @@ Capybara.javascript_driver = :poltergeist
 Rails.application.routes.default_url_options[:host] = "test.host"
 
 RSpec.configure do |config|
+  config.raise_errors_for_deprecations!
   config.order = :random
   config.infer_base_class_for_anonymous_controllers = false
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
-  config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.include FactoryGirl::Syntax::Methods
   config.include GdsApi::TestHelpers::ContentApi

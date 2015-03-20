@@ -5,16 +5,18 @@ describe GeographicalArea do
     let(:countries) { GeographicalArea.countries }
 
     it 'fetches geographical areas that are countries from the API' do
-      countries.should be_kind_of Array
-      countries.should_not be_blank
+      expect(countries).to be_kind_of Array
+      expect(countries).to_not be_blank
     end
 
     it 'sorts countries by id' do
-      countries.first.id.should be < countries.second.id
+      expect(countries.first.id).to be < countries.second.id
     end
 
     it 'removes excluded countries (United Kingdom)' do
-      countries.detect { |c| c.id == 'GB' }.should be_blank
+      expect(
+        countries.detect { |c| c.id == 'GB' }
+      ).to be_blank
     end
   end
 end

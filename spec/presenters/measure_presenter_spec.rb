@@ -10,8 +10,8 @@ describe MeasurePresenter do
       subject { MeasurePresenter.new(measure) }
 
       it 'returns list of contained children geographical area ids' do
-        subject.geo_class.should =~ /#{children_ga.first[:geographical_area_id]}/
-        subject.geo_class.should =~ /#{children_ga.last[:geographical_area_id]}/
+        expect(subject.geo_class).to match /#{children_ga.first[:geographical_area_id]}/
+        expect(subject.geo_class).to match /#{children_ga.last[:geographical_area_id]}/
       end
     end
 
@@ -22,7 +22,7 @@ describe MeasurePresenter do
       subject { MeasurePresenter.new(measure) }
 
       it 'returns geographical area id of geographical area' do
-        subject.geo_class.should =~ /#{geographical_area[:geographical_area_id]}/
+        expect(subject.geo_class).to match /#{geographical_area[:geographical_area_id]}/
       end
     end
   end
@@ -35,11 +35,11 @@ describe MeasurePresenter do
     let(:measure2)          { MeasurePresenter.new(Measure.new(attributes_for(:measure, geographical_area: attributes_for(:geographical_area))))}
 
     it 'returns true if measures geographical area contains any children geographical area' do
-      measure1.has_children_geographical_areas?.should be true
+      expect(measure1.has_children_geographical_areas?).to be true
     end
 
     it 'returns false if measures geographical area has no children geographical area' do
-      measure2.has_children_geographical_areas?.should be false
+      expect(measure2.has_children_geographical_areas?).to be false
     end
   end
 
@@ -49,8 +49,8 @@ describe MeasurePresenter do
     let(:measure1)          { MeasurePresenter.new(Measure.new(attributes_for(:measure, geographical_area: geographical_area))) }
 
     it 'returns measure geographical area children geographical areas' do
-      measure1.children_geographical_areas.should have_attribute_superset_of children_ga.first
-      measure1.children_geographical_areas.should have_attribute_superset_of children_ga.last
+      expect(measure1.children_geographical_areas).to have_attribute_superset_of children_ga.first
+      expect(measure1.children_geographical_areas).to have_attribute_superset_of children_ga.last
     end
   end
 
@@ -59,11 +59,11 @@ describe MeasurePresenter do
     let(:measure2)          { MeasurePresenter.new(Measure.new(attributes_for(:measure))) }
 
     it 'returns true if measure has measure conditions' do
-      measure1.has_measure_conditions?.should be true
+      expect(measure1.has_measure_conditions?).to be true
     end
 
     it 'returns false if measure has no measure conditions' do
-      measure2.has_measure_conditions?.should be false
+      expect(measure2.has_measure_conditions?).to be false
     end
   end
 
@@ -72,11 +72,11 @@ describe MeasurePresenter do
     let(:measure2)          { MeasurePresenter.new(Measure.new(attributes_for(:measure))) }
 
     it 'returns true if measure has additional code' do
-      measure1.has_additional_code?.should be true
+      expect(measure1.has_additional_code?).to be true
     end
 
     it 'returns false if measure has no additional code' do
-      measure2.has_additional_code?.should be false
+      expect(measure2.has_additional_code?).to be false
     end
   end
 
@@ -86,15 +86,15 @@ describe MeasurePresenter do
     let(:measure3)          { MeasurePresenter.new(Measure.new(attributes_for(:measure))) }
 
     it 'returns true if measure has conditions' do
-      measure1.has_references?.should be true
+      expect(measure1.has_references?).to be true
     end
 
     it 'returns true if measure has footnotes' do
-      measure2.has_references?.should be true
+      expect(measure2.has_references?).to be true
     end
 
     it 'returns false if measure has no footnotes or conditions' do
-      measure3.has_references?.should be false
+      expect(measure3.has_references?).to be false
     end
   end
 end
