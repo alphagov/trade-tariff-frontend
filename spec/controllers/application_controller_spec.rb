@@ -12,6 +12,9 @@ describe ApplicationController, type: :controller do
       artefact_data = artefact_for_slug(APP_SLUG)
       content_api_has_an_artefact(APP_SLUG, artefact_data)
 
+      # trigger filter as it's only run on production
+      controller.send :load_artefact
+
       get :index
 
       expect(assigns(:artefact)).to be_present
