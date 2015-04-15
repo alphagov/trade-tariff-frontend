@@ -47,7 +47,7 @@ describe CommoditiesController, "GET to #show", type: :controller do
     let(:commodity_id) { '0101210000' } # commodity 0101210000 does not exist at 1st of Jan, 2000
 
     around(:each) do |example|
-      Timecop.freeze(Date.new(2013,11,11)) do
+      Timecop.freeze(DateTime.new(2013,11,11,12,0,0)) do
         example.run
       end
     end
