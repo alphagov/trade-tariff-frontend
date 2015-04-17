@@ -85,6 +85,8 @@ GEM
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.4.0)
     factory_girl (4.5.0)
@@ -94,13 +96,13 @@ GEM
       railties (>= 3.0.0)
     fastercsv (1.5.5)
     forgery (0.6.0)
-    gds-api-adapters (18.0.0)
+    gds-api-adapters (18.3.1)
       link_header
       lrucache (~> 0.1.1)
       null_logger
       plek
       rack-cache
-      rest-client (~> 1.7.3)
+      rest-client (~> 1.8.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     govspeak (3.3.0)
@@ -119,6 +121,8 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     htmlentities (4.3.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -201,7 +205,8 @@ GEM
     request_store (1.1.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rest-client (1.7.3)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rspec (3.2.0)
@@ -277,6 +282,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
     unicorn (4.6.3)
       kgio (~> 2.6)
       rack
@@ -306,7 +314,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1)
   factory_girl_rails
   forgery
-  gds-api-adapters (~> 18.0)
+  gds-api-adapters (~> 18.3)
   govspeak (~> 3.3)
   govuk_frontend_toolkit (~> 3.2)
   govuk_template (= 0.12.0)
