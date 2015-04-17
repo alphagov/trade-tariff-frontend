@@ -30,6 +30,7 @@ gem "responders", "~> 2.0"
 group :development, :test do
   gem "pry-rails"
   gem "bundler-audit"
+  gem "brakeman", "~> 3.0.2", require: false
 end
 
 group :development do
@@ -37,7 +38,6 @@ group :development do
 end
 
 group :test do
-  gem "brakeman", "~> 3.0.2", require: false
   gem "webmock", "~> 1.20"
   gem "factory_girl_rails"
   gem "forgery"
