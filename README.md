@@ -11,7 +11,8 @@ This application requires the trade tariff backend API to be running.
 Assumes the GDS development environment is setup via puppet.
 
 ## Run TradeTariffFrontend
-
+    
+    (ensure trade-tariff-backend is running)
     ./startup.sh
 
 ## Specs
