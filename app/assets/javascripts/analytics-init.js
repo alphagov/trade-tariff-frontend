@@ -11,8 +11,7 @@
   // Configure profiles and make interface public
   // for custom dimensions, virtual pageviews and events
   GOVUK.analytics = new GOVUK.Tracker({
-    universalId: 'UA-26179049-7',
-    classicId: 'UA-26179049-1',
+    universalId: 'UA-26179049-1',
     cookieDomain: cookieDomain
   });
 
