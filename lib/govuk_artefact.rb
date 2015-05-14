@@ -16,10 +16,6 @@ class GovukArtefact
     primary_root_section
   end
 
-  def need_ids
-    @data.details.need_ids if @data && @data.details
-  end
-
   def non_primary_sections
     if (section = primary_section)
       sections = recurse_sections(section)

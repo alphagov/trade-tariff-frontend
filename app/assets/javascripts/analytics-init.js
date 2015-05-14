@@ -15,16 +15,11 @@
     cookieDomain: cookieDomain
   });
 
-  var $section = $('head meta[name="govuk:section"]'),
-      $needIds = $('head meta[name="govuk:need-ids"]');
+  var $section = $('head meta[name="govuk:section"]');
 
   // Set custom dimensions before tracking pageviews
   if ($section) {
     GOVUK.analytics.setDimension(1, $section.attr('content'), 'Section');
-  }
-
-  if ($needIds) {
-    GOVUK.analytics.setDimension(3, $needIds.attr('content'), 'NeedID');
   }
 
   GOVUK.analytics.setDimension(2, 'custom-tool', 'Format');
