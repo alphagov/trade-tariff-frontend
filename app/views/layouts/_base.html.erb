@@ -16,9 +16,6 @@
     <% if @artefact.primary_root_section %>
       <meta name="govuk:section" content="<%= @artefact.primary_root_section["title"].downcase %>">
     <% end %>
-    <% if @artefact.need_ids %>
-      <meta name="govuk:need-ids" content="<%= @artefact.need_ids.join(',') %>">
-    <% end %>
   <% end %>
 
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
