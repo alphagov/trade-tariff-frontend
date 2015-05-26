@@ -2,7 +2,7 @@
   "use strict";
 
   // Load Google Analytics libraries
-  GOVUK.Tracker.load();
+  GOVUK.Analytics.load();
 
   // Use document.domain in dev, preview and staging so that tracking works
   // Otherwise explicitly set the domain as www.gov.uk (and not gov.uk).
@@ -10,7 +10,7 @@
 
   // Configure profiles and make interface public
   // for custom dimensions, virtual pageviews and events
-  GOVUK.analytics = new GOVUK.Tracker({
+  GOVUK.analytics = new GOVUK.Analytics({
     universalId: 'UA-26179049-1',
     cookieDomain: cookieDomain
   });
@@ -19,12 +19,12 @@
 
   // Set custom dimensions before tracking pageviews
   if ($section) {
-    GOVUK.analytics.setDimension(1, $section.attr('content'), 'Section');
+    GOVUK.analytics.setDimension(1, $section.attr('content'));
   }
 
-  GOVUK.analytics.setDimension(2, 'custom-tool', 'Format');
+  GOVUK.analytics.setDimension(2, 'custom-tool'); // Format
   if (window.devicePixelRatio) {
-    GOVUK.analytics.setDimension(11, window.devicePixelRatio, 'Pixel Ratio', 2);
+    GOVUK.analytics.setDimension(11, window.devicePixelRatio);
   }
 
   // Activate any event plugins eg. print intent, error tracking
