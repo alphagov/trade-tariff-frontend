@@ -13,13 +13,13 @@ namespace :panopticon do
     record = OpenStruct.new(
         slug: APP_SLUG,
         title: "UK Trade Tariff",
-        description: "Search for import and export commodity codes and for tax, duty and licenses that apply to your goods",
+        description: "Search for import and export commodity codes and for tax, duty and licences that apply to your goods",
         need_id: "100233", #Find out the correct trade tariffs for items I am importing or exporting
         section: "business/international-trade",
         paths: [],
         prefixes: ["/#{APP_SLUG}"],
         state: "live",
-        indexable_content: "Search for import and export commodity codes and for tax, duty and licenses that apply to your goods")
+        indexable_content: "Search for import and export commodity codes and for tax, duty and licences that apply to your goods")
     registerer.register(record)
   end
 end
