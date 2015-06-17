@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery-migrate-min
 //= require jquery.tabs
 //= require jquery.datepicker
 //= require jquery.history

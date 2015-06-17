@@ -22,6 +22,7 @@ gem "airbrake", "~> 4.1"
 gem "coffee-rails", "~> 4.1"
 gem "govuk_frontend_toolkit", "~> 4.0.0"
 gem "jquery-rails", "~> 3.1.3"
+gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0"
 gem "therubyracer", "~> 0.12.0"
 gem "uglifier", "~> 2.7"
