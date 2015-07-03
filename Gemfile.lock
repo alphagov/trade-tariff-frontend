@@ -302,7 +302,7 @@ DEPENDENCIES
   plek (~> 1.8.1)
   poltergeist (~> 1.5.1)
   pry-rails
-  rails (~> 4.2.2)
+  rails (= 4.2.2)
   responders (~> 2.0)
   rspec-rails (~> 3.2)
   sass-rails (~> 5.0)
