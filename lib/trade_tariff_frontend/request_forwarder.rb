@@ -49,7 +49,11 @@ module TradeTariffFrontend
     private
 
     def request_url_for(rackreq)
-      "http://#{host}:#{port}#{api_request_path_for(rackreq.env["PATH_INFO"])}"
+      "http://#{host}:#{port}#{request_uri_for(rackreq)}"
+    end
+
+    def request_uri_for(rackreq)
+      api_request_path_for(rackreq.env["PATH_INFO"] + "?" + rackreq.env["QUERY_STRING"])
     end
 
     def request_headers_for(env)

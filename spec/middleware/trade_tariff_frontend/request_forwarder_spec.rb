@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe TradeTariffFrontend::RequestForwarder do
-  let(:app)          { ->(env) { [200, env, "app"] } }
-  let(:host)         { 'http://tariff-api.example.com' }
-  let(:request_path) { '/sections/1' }
+  let(:app)            { ->(env) { [200, env, "app"] } }
+  let(:host)           { "http://tariff-api.example.com" }
+  let(:request_path)   { "/sections/1" }
+  let(:request_params) { "?page=2"}
 
   let(:response_body) { "example" }
 
@@ -90,6 +91,20 @@ describe TradeTariffFrontend::RequestForwarder do
 
     expect(status).to eq 405 # METHOD NOT ALLOWED
     expect(body).to be_blank
+  end
+
+  it "forwards request params" do
+    request_uri = request_path + request_params
+
+    stub_request(:get, "#{host}#{request_uri}").to_return(
+      status: 200,
+      body: response_body,
+      headers: { "Content-Length" => response_body.size }
+    )
+
+    status, env, body = middleware.call env_for(request_uri)
+
+    expect(status).to eq(200)
   end
 
   def env_for(url, opts = {})
