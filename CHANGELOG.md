@@ -1,5 +1,19 @@
 # Change Log
 
+## [release_754...release_776](https://github.com/alphagov/trade-tariff-frontend/compare/release_754...release_776)
+### Changed
+- Upgraded Ruby version to 2.2.2
+- Upgraded Rails version to 4.2.3
+- GOVUK Classic removed
+- API request_forwarder now passes on query strings so we can do pagenatination  
+- Fix licences typo
+
+### Added
+- Links to Volume 1 and 3
+
+### Removed
+- Need IDs custom dimension not used anymore
+
 ## [release_742...release_754](https://github.com/alphagov/trade-tariff-frontend/compare/release_742...release_754)
 ### Changed
 - Modified padding between letters in az-index
