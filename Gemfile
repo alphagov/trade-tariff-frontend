@@ -8,7 +8,7 @@ gem "httparty", "~> 0.13"
 gem "hashie", "~> 3.4"
 gem "govspeak", "~> 3.4"
 
-gem "gds-api-adapters", "20.1.1"
+gem "gds-api-adapters", "23.2.2"
 gem "govuk_template", "~> 0.14"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
