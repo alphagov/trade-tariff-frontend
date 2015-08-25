@@ -2,4 +2,4 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  meta_description: "Search for import and export commodity codes and for tax, duty and licences that apply to your goods"

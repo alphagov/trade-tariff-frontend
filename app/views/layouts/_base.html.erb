@@ -12,6 +12,10 @@
   <meta name="x-section-link" content="/browse/business" />
   <meta name="x-section-format" content="trade-tariff" />
 
+  <% if @meta_description %>
+    <meta name="description" content="<%= @meta_description %>">
+  <% end %>
+
   <% if @artefact %>
     <% if @artefact.primary_root_section %>
       <meta name="govuk:section" content="<%= @artefact.primary_root_section["title"].downcase %>">
