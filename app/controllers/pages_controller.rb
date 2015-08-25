@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def index
     @section_css = 'visuallyhidden'
+    @meta_description = I18n.t('meta_description')
   end
 
   def opensearch

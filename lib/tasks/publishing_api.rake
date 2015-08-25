@@ -12,7 +12,7 @@ namespace :publishing_api do
       rendering_app: "tariff",
       publishing_app: "tariff",
       title: "Trade tariff finder",
-      description: "Landing page for the trade tariff finder.",
+      description: I18n.t('meta_description'),
       public_updated_at: Time.zone.now.iso8601,
       update_type: "major",
     )
