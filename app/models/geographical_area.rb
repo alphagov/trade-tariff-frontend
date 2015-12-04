@@ -24,6 +24,10 @@ class GeographicalArea
     attributes['description'].presence || ''
   end
 
+  def long_description
+    "#{description} (#{id})"
+  end
+
   def to_s
     description
   end
