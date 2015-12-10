@@ -48,4 +48,5 @@ group :test do
   gem "capybara", "~> 2.4"
   gem "poltergeist", "~> 1.6"
   gem "timecop", "~> 0.8"
+  gem "rspec_junit_formatter"
 end
