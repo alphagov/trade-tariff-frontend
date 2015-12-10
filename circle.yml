@@ -1,0 +1,8 @@
+dependencies:
+  bundler:
+    without: [development]
+  post:
+    - bundle exec rake bundler:audit
+machine:
+  environment:
+    GOVUK_APP_DOMAIN: test.example.com
