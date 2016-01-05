@@ -4,4 +4,5 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-TradeTariffFrontend::Application.config.secret_key_base = "74c6f7889a662230804792dd19a2cc6a970f119fc9cef320c3012916380f2b4a0540ec31dc0b033d12e3ae174464f3e642bd45305010398ed0a86142da83bd15"
+TradeTariffFrontend::Application.config.secret_token = Rails.application.secrets.secret_token
+TradeTariffFrontend::Application.config.secret_key_base = Rails.application.secrets.secret_key_base
