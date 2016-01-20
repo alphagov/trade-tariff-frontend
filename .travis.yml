@@ -2,7 +2,6 @@ language: ruby
 cache: bundler
 bundler_args: --without development
 script:
- - RAILS_ENV=test bundle exec rake bundler:audit
  - RAILS_ENV=test GOVUK_APP_DOMAIN=test.example.com bundle exec rake spec
 rvm:
   - 2.2.1

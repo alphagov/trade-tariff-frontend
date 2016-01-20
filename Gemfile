@@ -30,7 +30,6 @@ gem "responders", "~> 2.1"
 
 group :development, :test do
   gem "pry-rails"
-  gem "bundler-audit"
 end
 
 group :development do
