@@ -43,9 +43,6 @@ GEM
       multi_json
     arel (6.0.2)
     builder (3.2.2)
-    bundler-audit (0.4.0)
-      bundler (~> 1.2)
-      thor (~> 0.18)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -282,7 +279,6 @@ PLATFORMS
 DEPENDENCIES
   addressable (~> 2.3)
   airbrake (~> 4.3)
-  bundler-audit
   capistrano (~> 3.4)
   capybara (~> 2.4)
   ci_reporter_rspec (~> 1.0)
