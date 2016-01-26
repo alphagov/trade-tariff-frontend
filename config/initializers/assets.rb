@@ -25,28 +25,3 @@ Rails.application.config.assets.precompile += %w{
   tariff.css
   tariff-print.css
 }
-
-# Assets from govuk-template
-# See issue https://github.com/alphagov/govuk_template/issues/87
-Rails.application.config.assets.precompile += %w(
-  apple-touch-icon-152x152.png
-  apple-touch-icon-120x120.png
-  apple-touch-icon-76x76.png
-  apple-touch-icon-60x60.png
-  opengraph-image.png
-  open-government-licence.png
-  open-government-licence_2x.png
-  govuk-crest.png
-  govuk-crest-2x.png
-  govuk-crest-ie.png
-  gov.uk_logotype_crown.png
-  gov.uk_logotype_crown-1x.png
-  gov.uk_logotype_crown_invert_trans.png
-  file.png
-)
-
-
-
-
-
-
