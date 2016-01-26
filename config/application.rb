@@ -54,24 +54,6 @@ module TradeTariffFrontend
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = false #will move to mongo for API
 
-    config.assets.precompile += %w{
-      ui-icons_222222_256x240.png
-      application.css
-      application-ie8.css
-      application-ie7.css
-      application-ie6.css
-      tariff.css
-      tariff-print.css
-    }
-
-    config.assets.prefix = "/tariff"
-
-    # Enable the asset pipeline
-    config.assets.enabled = true
-
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
-
     # Generator config
     config.generators do |g|
       g.orm             false
