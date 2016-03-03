@@ -1,0 +1,6 @@
+dependencies:
+  bundler:
+    without: [development]
+machine:
+  environment:
+    GOVUK_APP_DOMAIN: test.example.com

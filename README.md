@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/alphagov/trade-tariff-frontend.png?branch=master)](https://travis-ci.org/alphagov/trade-tariff-frontend)
+[![Circle CI](https://circleci.com/gh/bitzesty/trade-tariff-frontend.svg?style=svg)](https://circleci.com/gh/bitzesty/trade-tariff-frontend)
 
 # TradeTariffFrontend
 
