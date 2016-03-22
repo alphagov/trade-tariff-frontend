@@ -13,7 +13,7 @@ gem "govuk_template", "~> 0.14"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
-gem "unicorn", "~> 4.9"
+gem "puma"
 
 gem "ci_reporter_rspec", "~> 1.0"
 gem "logstasher", "~> 0.6"
