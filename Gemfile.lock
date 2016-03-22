@@ -114,7 +114,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    kgio (2.9.3)
     kramdown (1.5.0)
     libv8 (3.16.14.11)
     link_header (0.0.8)
@@ -153,6 +152,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    puma (2.13.4)
     rack (1.6.4)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -177,12 +177,16 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
     railties (4.2.3)
       actionpack (= 4.2.3)
       activesupport (= 4.2.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.15.0)
     rake (10.4.2)
     ref (2.0.0)
     request_store (1.2.0)
@@ -261,10 +265,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
-    unicorn (4.9.0)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     vcr (2.9.3)
     webmock (1.21.0)
       addressable (>= 2.3.6)
@@ -301,7 +301,9 @@ DEPENDENCIES
   plek (~> 1.11)
   poltergeist (~> 1.6)
   pry-rails
+  puma
   rails (= 4.2.3)
+  rails_12factor
   responders (~> 2.1)
   rspec-rails (~> 3.2)
   rspec_junit_formatter
@@ -312,10 +314,9 @@ DEPENDENCIES
   therubyracer (~> 0.12)
   timecop (~> 0.8)
   uglifier (~> 2.7)
-  unicorn (~> 4.9)
   vcr
   webmock (~> 1.21)
   yajl-ruby (~> 1.2)
 
 BUNDLED WITH
-   1.10.5
+   1.11.2
