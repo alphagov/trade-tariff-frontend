@@ -24,7 +24,6 @@ gem "govuk_frontend_toolkit", "~> 4.1"
 gem "jquery-rails", "~> 3.1.3"
 gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0"
-gem "therubyracer", "~> 0.12"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1"
 
@@ -49,4 +48,9 @@ group :test do
   gem "poltergeist", "~> 1.6"
   gem "timecop", "~> 0.8"
   gem "rspec_junit_formatter"
+end
+
+group :production do
+  gem "therubyracer", "~> 0.12"
+  gem "rails_12factor"
 end
