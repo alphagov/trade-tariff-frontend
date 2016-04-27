@@ -9,7 +9,7 @@ gem "hashie", "~> 3.4"
 gem "govspeak", "~> 3.4"
 
 gem "gds-api-adapters", "23.2.2"
-gem "govuk_template", "~> 0.16"
+gem "govuk_template", "~> 0.17"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
@@ -20,7 +20,7 @@ gem "logstasher", "~> 0.6"
 gem "airbrake", "~> 4.3"
 
 gem "coffee-rails", "~> 4.1"
-gem "govuk_frontend_toolkit", "~> 4.1"
+gem "govuk_frontend_toolkit", "~> 4.10"
 gem "jquery-rails", "~> 3.1.3"
 gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0"
@@ -33,6 +33,7 @@ end
 
 group :development do
   gem "capistrano", "~> 3.4"
+  gem "foreman"
 end
 
 group :test do
