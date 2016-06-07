@@ -17,7 +17,6 @@ gem "puma"
 
 gem "ci_reporter_rspec", "~> 1.0"
 gem "logstasher", "~> 0.6"
-gem "airbrake", "~> 4.3"
 
 gem "coffee-rails", "~> 4.1"
 gem "govuk_frontend_toolkit", "~> 4.10"
@@ -29,11 +28,6 @@ gem "responders", "~> 2.1"
 
 group :development, :test do
   gem "pry-rails"
-end
-
-group :development do
-  gem "capistrano", "~> 3.4"
-  gem "foreman"
 end
 
 group :test do
@@ -54,4 +48,5 @@ end
 group :production do
   gem "therubyracer", "~> 0.12"
   gem "rails_12factor"
+  gem "sentry-raven"
 end
