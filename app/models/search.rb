@@ -41,7 +41,7 @@ class Search
   end
 
   def filtered_by_date?
-    date.date != Date.today
+    date.date != Date.current
   end
 
   def filtered_by_country?

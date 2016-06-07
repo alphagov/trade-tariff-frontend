@@ -24,7 +24,7 @@
       <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
       <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
       <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
-      <%= select_year(f.object.date, {end_year: 2008, start_year: (Date.today + 1.year).year }, { id: 'tariff_date_year', name: 'year' }) %>
+      <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>
       <a class="submit" role='button' href='#set-date' title='set date' rel='nofollow'>set date</a>
     </span>
     <span class="text <%= @section_css %>">

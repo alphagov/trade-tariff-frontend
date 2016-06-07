@@ -8,7 +8,7 @@ class GoodsNomenclaturesController < ApplicationController
   end
 
   def find_relevant_goods_code_or_fallback
-    @search = Search.new(t: goods_code_id, as_of: Date.today)
+    @search = Search.new(t: goods_code_id, as_of: Date.current)
     results = @search.perform
 
     if results.exact_match?

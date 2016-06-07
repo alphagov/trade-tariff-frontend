@@ -11,7 +11,7 @@ describe TariffDate do
     end
 
     it 'returns today\'s date if no date was parsed' do
-      expect(subject.new(nil).date).to eq Date.today
+      expect(subject.new(nil).date).to eq Date.current
     end
   end
 
