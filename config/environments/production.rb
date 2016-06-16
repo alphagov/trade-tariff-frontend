@@ -37,7 +37,7 @@ TradeTariffFrontend::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -72,9 +72,4 @@ TradeTariffFrontend::Application.configure do
 
   # Host for Trade Tariff API endpoint
   config.api_host = Plek.new.find("tariff-api")
-
-  # Enable JSON-style logging
-  config.logstasher.enabled = true
-  config.logstasher.logger = Logger.new("#{Rails.root}/log/#{Rails.env}.json.log")
-  config.logstasher.supress_app_log = true
 end

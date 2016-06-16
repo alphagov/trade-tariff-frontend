@@ -16,7 +16,6 @@ gem "addressable", "~> 2.3"
 gem "puma"
 
 gem "ci_reporter_rspec", "~> 1.0"
-gem "logstasher", "~> 0.6"
 
 gem "coffee-rails", "~> 4.1"
 gem "govuk_frontend_toolkit", "~> 4.10"
