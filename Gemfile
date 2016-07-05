@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "2.3.1"
 
 gem "rails", "4.2.5.2"
 
@@ -13,7 +14,7 @@ gem "govuk_template", "~> 0.17"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
-gem "puma"
+gem "puma", "~> 3.4"
 
 gem "ci_reporter_rspec", "~> 1.0"
 
