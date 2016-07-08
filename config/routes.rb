@@ -19,7 +19,7 @@ TradeTariffFrontend::Application.routes.draw do
         to: TradeTariffFrontend::RequestForwarder.new(
           host: Rails.application.config.api_host,
           api_request_path_formatter: ->(path) {
-            path.gsub(APP_SLUG, '')
+            path.gsub("#{APP_SLUG}/", "")
           }
         )
     end

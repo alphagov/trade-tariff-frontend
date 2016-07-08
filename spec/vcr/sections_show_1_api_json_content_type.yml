@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk//sections/1
+    uri: http://tariff-api.dev.gov.uk/sections/1
     body:
       encoding: US-ASCII
       string: ''
@@ -46,6 +46,6 @@ http_interactions:
         elsewhere specified or included","chapter_note_id":334},{"description":"PRODUCTS
         OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED","goods_nomenclature_item_id":"0500000000","goods_nomenclature_sid":30015,"headings_from":"0501","headings_to":"0511","formatted_description":"Products
         of animal origin, not elsewhere specified or included","chapter_note_id":335}]}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 19 Dec 2013 08:53:11 GMT
 recorded_with: VCR 2.5.0
