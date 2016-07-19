@@ -33,8 +33,7 @@ module CommoditiesHelper
 
   def tree_node(main_commodity, commodities, depth)
     deeper_node = commodities.select{ |c| c.number_indents == depth + 1 }.first
-
-    if deeper_node.present?
+    if deeper_node.present? && deeper_node.number_indents < main_commodity.number_indents
       content_tag(:dd) do
         content_tag(:dl) do
           content_tag(:dt, deeper_node.to_s.html_safe) +
