@@ -63,6 +63,7 @@ GEM
     concurrent-ruby (1.0.1)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    dalli (2.7.4)
     diff-lcs (1.2.5)
     docile (1.1.5)
     domain_name (0.5.24)
@@ -272,6 +273,7 @@ DEPENDENCIES
   capybara (~> 2.4)
   ci_reporter_rspec (~> 1.0)
   coffee-rails (~> 4.1)
+  dalli
   factory_girl_rails
   forgery
   gds-api-adapters (= 23.2.2)
