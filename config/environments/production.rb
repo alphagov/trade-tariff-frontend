@@ -37,13 +37,9 @@ TradeTariffFrontend::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  config.log_level = :debug
-
-  # Prepend all log lines with the following tags
-  # config.log_tags = [ :subdomain, :uuid ]
-
-  # Use a different logger for distributed setups
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
+  config.log_level = :info
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
 
   # Use a different cache store in production
   config.cache_store = :dalli_store, nil, { namespace: ENV["GOVUK_APP_DOMAIN"], expires_in: 1.day, compress: true, username: ENV["MEMCACHE_USER"], password: ENV["MEMCACHE_PASSWORD"] }
@@ -59,7 +55,7 @@ TradeTariffFrontend::Application.configure do
   config.action_mailer.delivery_method = :ses
 
   # Enable threaded mode
-  # config.threadsafe!
+  config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)

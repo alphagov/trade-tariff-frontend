@@ -26,6 +26,9 @@ gem "sass-rails", "~> 5.0"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1"
 
+gem "logstash-event"
+gem "lograge"
+
 group :development, :test do
   gem "pry-rails"
 end
