@@ -21,7 +21,7 @@ Uses:
 
 Commands:
 
-    bin/setup
+    ./bin/setup
     foreman start
 
 ## Running the test suite
@@ -29,3 +29,20 @@ Commands:
 To run the spec use the following command:
 
     RAILS_ENV=test bundle exec rake
+
+## Deploying the application
+
+We deploy to cloud foundry, so you need to have the CLI installed, and the following plugin installed:
+
+https://github.com/contraband/autopilot/releases
+
+Set the following ENV variables:
+* CF_USER
+* CF_PASSWORD
+* CF_ORG
+* CF_SPACE
+* CF_APP
+
+Then run
+
+    ./bin/deploy
