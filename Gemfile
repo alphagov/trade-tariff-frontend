@@ -15,7 +15,8 @@ gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
 gem "puma", "~> 3.4"
-gem "dalli"
+gem "dalli", "~> 2.7"
+gem "connection_pool", "~> 2.2"
 gem "ci_reporter_rspec", "~> 1.0"
 
 gem "coffee-rails", "~> 4.1"

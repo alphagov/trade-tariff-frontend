@@ -61,6 +61,7 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     concurrent-ruby (1.0.1)
+    connection_pool (2.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     dalli (2.7.4)
@@ -278,7 +279,8 @@ DEPENDENCIES
   capybara (~> 2.4)
   ci_reporter_rspec (~> 1.0)
   coffee-rails (~> 4.1)
-  dalli
+  connection_pool (~> 2.2)
+  dalli (~> 2.7)
   factory_girl_rails
   forgery
   gds-api-adapters (= 23.2.2)
