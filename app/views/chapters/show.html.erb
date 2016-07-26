@@ -13,7 +13,7 @@
           <dd>
             <h1>
               <%= link_to  @chapter, chapter_path(@chapter) %>
-              (<%= link_to 'changes', chapter_changes_path(@chapter, format: :atom), class: "feed" %>)
+              
             </h1>
             <dl class="chapter-headings">
               <%= render @headings %>
