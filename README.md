@@ -45,6 +45,8 @@ Set the following ENV variables:
 * CF_ORG
 * CF_SPACE
 * CF_APP
+* SLACK_CHANNEL
+* SLACK_WEBHOOK
 
 Then run
 
