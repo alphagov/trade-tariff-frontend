@@ -29,6 +29,7 @@ gem "responders", "~> 2.1"
 
 gem "logstash-event"
 gem "lograge"
+gem "rack-timeout", "~> 0.4"
 
 group :development, :test do
   gem "pry-rails"
