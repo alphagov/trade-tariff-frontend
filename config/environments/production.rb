@@ -43,7 +43,6 @@ TradeTariffFrontend::Application.configure do
   config.lograge.custom_options = lambda do |event|
     {
       params: event.payload[:params].except('controller', 'action', 'format', 'utf8'),
-      domain: ENV["GOVUK_APP_DOMAIN"]
     }.merge(JSON.parse(ENV['VCAP_APPLICATION']))
   end
 
