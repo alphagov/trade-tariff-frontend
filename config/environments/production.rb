@@ -26,8 +26,6 @@ TradeTariffFrontend::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.assets.debug = false
-
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
