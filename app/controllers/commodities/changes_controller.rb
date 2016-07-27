@@ -1,7 +1,10 @@
 module Commodities
   class ChangesController < ::ChangesController
+
+    private
+
     def commodity
-      Commodity.find(params[:commodity_id], query_params)
+      @commodity ||= Commodity.find(params[:commodity_id], query_params)
     end
 
     def changeable

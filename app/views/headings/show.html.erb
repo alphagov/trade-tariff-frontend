@@ -19,6 +19,7 @@
                 <dd>
                   <h1>
                     <%= @heading.formatted_description.html_safe %>
+                    (<%= link_to 'changes', heading_changes_path(@heading.declarable, format: :atom), class: "feed" %>)
                   </h1>
                 <p class="commodity-tree-note"><span>The number following each commodity's </span><em>Description</em><span> is its </span><em class="code">Commodity code</em></p>
                   <ul class="commodities">

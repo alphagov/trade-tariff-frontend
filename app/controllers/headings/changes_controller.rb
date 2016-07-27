@@ -1,7 +1,10 @@
 module Headings
   class ChangesController < ::ChangesController
+
+    private
+
     def heading
-      Heading.find(params[:heading_id], query_params)
+      @heading ||= Heading.find(params[:heading_id], query_params)
     end
 
     def changeable

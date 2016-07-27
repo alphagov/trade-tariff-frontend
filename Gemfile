@@ -33,6 +33,7 @@ gem "rack-timeout", "~> 0.4"
 
 group :development, :test do
   gem "pry-rails"
+  gem "quiet_assets"
 end
 
 group :test do
