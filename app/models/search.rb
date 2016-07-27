@@ -29,7 +29,12 @@ class Search
   end
 
   def countries(geographical_area_klass = GeographicalArea)
-    @countries ||= geographical_area_klass.countries.sort_by(&:description)
+    @countries ||= Rails.cache.fetch(
+      "#{geographical_area_klass}_search_countries",
+      expires_in: 24.hours
+    ) do
+      geographical_area_klass.countries.sort_by(&:description)
+    end
   end
 
   def date
