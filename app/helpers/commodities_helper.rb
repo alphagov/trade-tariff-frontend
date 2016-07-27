@@ -60,7 +60,7 @@ module CommoditiesHelper
 
   def declarable_heading(commodity)
     content_tag(:h1) do
-      content_tag(:span, commodity,
+      content_tag(:span, commodity.formatted_description.html_safe,
                           class: 'description',
                           id: "commodity-#{commodity.code}")
     end
