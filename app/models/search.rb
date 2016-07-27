@@ -28,12 +28,12 @@ class Search
     'trade_tariff'
   end
 
-  def countries(geographical_area_klass = GeographicalArea)
+  def countries
     @countries ||= Rails.cache.fetch(
-      "#{geographical_area_klass}_search_countries",
+      "search_countries",
       expires_in: 24.hours
     ) do
-      geographical_area_klass.countries.sort_by(&:description)
+      GeographicalArea.countries.sort_by(&:description)
     end
   end
 
