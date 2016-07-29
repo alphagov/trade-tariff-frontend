@@ -79,4 +79,9 @@ class ApplicationController < ActionController::Base
   def bots_no_index_if_historical
     response.headers["X-Robots-Tag"] = "none" unless @search.today?
   end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:user_agent] = request.env["HTTP_USER_AGENT"]
+  end
 end

@@ -47,6 +47,14 @@ TradeTariffFrontend::Application.configure do
       JSON.parse(ENV['VCAP_APPLICATION']).except('application_uris', 'host', 'application_name', 'space_id', 'port', 'uris', 'application_version')
     )
   end
+  config.lograge.ignore_custom = lambda do |event, *args|
+    [
+      "Smokey Test / Ruby",
+      "updown.io"
+    ].any? do |ignored_user_agent|
+      event[:payload][:user_agent] == ignored_user_agent
+    end
+  end
 
   # Use a different cache store in production
   config.cache_store = :dalli_store, nil, {
