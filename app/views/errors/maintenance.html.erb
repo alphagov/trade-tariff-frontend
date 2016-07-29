@@ -1,0 +1,16 @@
+<header class="page-header group">
+  <div>
+    <h1>Maintenance</h1>
+  </div>
+</header>
+<div class="article-container">
+  <article role="article" class="group">
+    <div class="inner">
+      <% if ENV["MAINTENANCE"].present? && ENV["MAINTENANCE"] != "true" %>
+        <p><%= ENV["MAINTENANCE"] %></p>
+      <% else %>
+        <p>The GOV.UK Trade Traiff tool is currently unavailable due to scheduled maintenance.</p>
+      <% end %>
+    </div>
+  </article>
+</div>

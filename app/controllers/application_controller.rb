@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_last_updated
   before_filter :set_cache
   before_filter :search_query
+  before_filter :maintenance_mode_if_active
   before_filter :bots_no_index_if_historical
 
   layout :set_layout
@@ -75,6 +76,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def maintenance_mode_if_active
+    if ENV["MAINTENANCE"].present? && action_name != "maintenance"
+      redirect_to "/503"
+    end
+  end
 
   def bots_no_index_if_historical
     response.headers["X-Robots-Tag"] = "none" unless @search.today?
