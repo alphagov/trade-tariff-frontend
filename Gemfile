@@ -3,7 +3,7 @@ ruby "2.3.1"
 
 gem "rails", "4.2.5.2"
 
-gem "yajl-ruby", "~> 1.2"
+gem "yajl-ruby", "~> 1.2", require: "yajl"
 gem "multi_json", "~> 1.11"
 gem "httparty", "~> 0.13"
 gem "hashie", "~> 3.4"
@@ -14,11 +14,6 @@ gem "govuk_template", "~> 0.17"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
-gem "puma", "~> 3.4"
-gem "dalli", "~> 2.7"
-gem "connection_pool", "~> 2.2"
-gem "ci_reporter_rspec", "~> 1.0"
-
 gem "coffee-rails", "~> 4.1"
 gem "govuk_frontend_toolkit", "~> 4.10"
 gem "jquery-rails", "~> 3.1.3"
@@ -27,12 +22,19 @@ gem "sass-rails", "~> 5.0"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1"
 
+# Logging
 gem "logstash-event"
 gem "lograge"
+
+# Web Server
+gem "puma"
 gem "rack-timeout", "~> 0.4"
 
+# Memcache
+gem "dalli", "~> 2.7"
+gem "connection_pool", "~> 2.2"
+
 group :development, :test do
-  gem "pry-rails"
   gem "quiet_assets"
 end
 
