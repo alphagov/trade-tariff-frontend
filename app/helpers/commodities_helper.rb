@@ -51,7 +51,7 @@ module CommoditiesHelper
                          title: "Full tariff code: #{commodity.code}",
                          class: 'identifier',
                          'aria-describedby' => "commodity-#{commodity.code}") +
-      content_tag(:span, "#{commodity.to_s.html_safe} (#{link_to('changes', commodity_changes_path(commodity.declarable, format: :atom), class: 'feed')})".html_safe,
+      content_tag(:span, "#{commodity.to_s.html_safe} (#{link_to('changes', commodity_changes_path(commodity.declarable, format: :atom), class: 'feed', rel: 'nofollow')})".html_safe,
                          class: 'description',
                          id: "commodity-#{commodity.code}")
 
