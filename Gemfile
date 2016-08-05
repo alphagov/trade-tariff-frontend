@@ -16,6 +16,7 @@ gem "addressable", "~> 2.3"
 
 gem "coffee-rails", "~> 4.1"
 gem "govuk_frontend_toolkit", "~> 4.14"
+gem 'govuk_elements_rails', '~> 1.2', '>= 1.2.2'
 gem "jquery-rails", "~> 3.1.3"
 gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0"
