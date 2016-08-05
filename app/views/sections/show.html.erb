@@ -8,7 +8,7 @@
     <dl>
       <dt class="section-number">Section <%= @section.numeral %></dt>
       <dd class="section-title">
-        <h1><%= link_to @section, sections_path %></h1>
+        <h1><%= link_to @section, sections_path(request.query_parameters.symbolize_keys) %></h1>
         <!--<p class="chapters-intro">Microcopy about what chapters are goes here.</p>-->
         <dl class="tariff-fragments chapters">
         <%= render @chapters %>

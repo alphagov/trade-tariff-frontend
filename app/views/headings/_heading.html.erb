@@ -6,7 +6,7 @@
 <dd class="subtitle-description">
 <% end %>
   <% if heading.leaf? %>
-    <%= link_to heading.formatted_description.html_safe, heading_path(heading) %>
+    <%= link_to heading.formatted_description.html_safe, heading_path(heading, request.query_parameters.symbolize_keys) %>
   <% else %>
   <dl class='chapter-headings'>
     <%= render heading.children %>

@@ -10,10 +10,10 @@
     <div class="inner">
       <dl>
         <dt class="section-number">Section <%= @heading.section.numeral %></dt>
-        <dd class="section-title"><%= link_to @heading.section.title, section_path(@heading.section) %>
+        <dd class="section-title"><%= link_to @heading.section.title, section_path(@heading.section, request.query_parameters.symbolize_keys) %>
           <dl class="tariff-fragments">
             <dt class="chapter-code" title="Chapter code"><%= @heading.chapter_short_code %></dt>
-            <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter) %>
+            <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter, request.query_parameters.symbolize_keys) %>
               <dl>
                 <dt class="heading-code" title="Heading code"><%= @heading.display_short_code %></dt>
                 <dd>

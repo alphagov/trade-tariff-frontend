@@ -34,8 +34,8 @@
   </fieldset>
 
   <fieldset class='relevant-links'>
-    <a href="<%= sections_path %>">View all sections</a>
-    <a href="<%= a_z_index_path(letter: 'a') %>">A-Z Index</a>
+    <%= link_to "View all sections", sections_path(request.query_parameters.symbolize_keys) %>
+    <%= link_to "A-Z Index", a_z_index_path(letter: "a") %>
   </fieldset>
 
   <fieldset class='country-picker help-notice'>
