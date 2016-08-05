@@ -21,6 +21,55 @@
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
 <% end %>
 
+<% if !current_page?(controller: 'pages', action: 'index') %>
+  <% content_for :header_class, 'with-proposition' %>
+  <% content_for :proposition_header do %>
+    <div class="header-proposition">
+      <div class="content">
+        <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+        <nav id="proposition-menu">
+          <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
+          <ul id="proposition-links">
+            <li><a href="<%= sections_path %>" class="<%= 'active' if params[:controller] == 'sections' || params[:controller] == 'chapters' ||  params[:controller] == 'headings' ||  params[:controller] == 'commodities' %>">Search the Tariff</li>
+            <li><a href="#">How to use the Tariff</a></li>
+            <li><a href="<%= a_z_index_path(letter: 'a') %>" class="<%= 'active' if params[:controller] == 'search_references' %>">A-Z Index</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% content_for :footer_top do %>
+  <nav class="footer-categories">
+    <div class="">
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="#">Tariff Classification Service</a></li>
+      </ul>
+    </div>
+
+    <div class="">
+      <h2>Help</h2>
+      <ul>
+        <li><a href="#">How to use the Tariff</a></li>
+        <li><a href="#">Classification guides</a></li>
+        <li><a href="#">How to classify imports and exports using the UK Trade Tariff</a></li>
+        <li><a href="#">Imports and exports</a></li>
+      </ul>
+    </div>
+
+    <div class="">
+      <h2>Related information</h2>
+      <ul>
+        <li><a href="#">UK Trade Tariff: Volume 1 &ndash; background information for importers and exporters</a></li>
+        <li><a href="#">UK Trade Tariff: Volume 3 &ndash; procedures, codes and declaration entry details</a></li>
+        <li><a href="#">Integrated tariff of the European Community (TARIC) database</a></li>
+      </ul>
+    </div>
+  </nav>
+<% end %>
+
 <% content_for :footer_support_links do %>
   <h2 class="visuallyhidden">Support links</h2>
   <ul>
