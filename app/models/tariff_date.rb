@@ -14,7 +14,7 @@ class TariffDate
     new(if valid_date_param?(date_param)
       date_param.values_at(*DATE_KEYS).join("-")
     else
-      Date.today
+      Date.current
     end)
   end
 
@@ -32,7 +32,7 @@ class TariffDate
   end
 
   def date
-    @date.presence || Date.today
+    @date.presence || Date.current
   end
 
   def persisted?

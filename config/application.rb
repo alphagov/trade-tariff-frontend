@@ -63,5 +63,8 @@ module TradeTariffFrontend
 
     # Disable Rack::Cache.
     config.action_dispatch.rack_cache = nil
+
+    # Tells Rails to serve error pages from the app itself, rather than using static error pages in public/
+    config.exceptions_app = self.routes
   end
 end

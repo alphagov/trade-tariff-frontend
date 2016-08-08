@@ -1,41 +1,54 @@
-[![Build Status](https://travis-ci.org/alphagov/trade-tariff-frontend.png?branch=master)](https://travis-ci.org/alphagov/trade-tariff-frontend)
+[![CircleCI](https://circleci.com/gh/bitzesty/trade-tariff-frontend/tree/master.svg?style=svg)](https://circleci.com/gh/bitzesty/trade-tariff-frontend/tree/master)
+[![Code Climate](https://codeclimate.com/github/bitzesty/trade-tariff-frontend/badges/gpa.svg)](https://codeclimate.com/github/bitzesty/trade-tariff-frontend)
 
-# TradeTariffFrontend
+# Trade Tariff Frontend
 
-A web application front end for:
+https://www.gov.uk/trade-tariff
+
+This is the front-end application for:
 
 * [Trade Tariff Backend](https://github.com/alphagov/trade-tariff-backend)
 
-This application requires the trade tariff backend API to be running.
+This application requires the Trade Tariff Backend API to be running and the following env variable set `TARIFF_API_HOST`.
 
-Assumes the GDS development environment is setup via puppet.
+## Running the frontend
 
-### Running TradeTariffFrontend
+Requires:
+* Ruby
+* Rails
 
-    (ensure trade-tariff-backend is running)
-    ./startup.sh
+Uses:
+* Memcache
 
-### Running TradeTariffFrontend (bowl)
+Commands:
 
-  from `development`:
+    ./bin/setup
+    foreman start
 
-      `bowl tradetariff`
-
-  after bowling, the app will be available at:
-
-    http://tariff.dev.gov.uk/trade-tariff
-
-### Data
-
-Trade Tariff's database is one of the largest we have. For this reason it is excluded from the data replication script we have in development.
-
-In order to download the database dump, you will need to edit the [common-args.sh](github.gds/gds/development/blob/master/replication/common-args.sh):
-
-    - Remove `tariff`, `tariff_temporal` and `tariff_demo` from the IGNORE string
-    - Run the replicate-data-local.sh script
-
-### Running the test suite
+## Running the test suite
 
 To run the spec use the following command:
 
     RAILS_ENV=test bundle exec rake
+
+## Deploying the application
+
+We deploy to cloud foundry, so you need to have the CLI installed, and the following [cf plugin](https://docs.cloudfoundry.org/cf-cli/use-cli-plugins.html) installed:
+
+Download the plugin for your os:  https://github.com/contraband/autopilot/releases
+
+    chmod +x autopilot-(YOUR_OS)
+    cf install-plugin autopilot-(YOUR_OS)
+
+Set the following ENV variables:
+* CF_USER
+* CF_PASSWORD
+* CF_ORG
+* CF_SPACE
+* CF_APP
+* SLACK_CHANNEL
+* SLACK_WEBHOOK
+
+Then run
+
+    ./bin/deploy

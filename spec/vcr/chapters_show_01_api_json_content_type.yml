@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk//chapters/01
+    uri: http://tariff-api.dev.gov.uk/chapters/01
     body:
       encoding: US-ASCII
       string: ''
@@ -55,6 +55,6 @@ http_interactions:
         live animals","producline_suffix":"80","leaf":true,"description_plain":"Other
         live animals","formatted_description":"Other live animals","children":[]}],"section":{"id":1,"title":"Live
         animals; animal products","position":1,"numeral":"I","section_note":"heelo\r\n\r\nworldldl"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 19 Dec 2013 08:46:35 GMT
 recorded_with: VCR 2.5.0

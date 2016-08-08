@@ -19,7 +19,7 @@ TradeTariffFrontend::Application.routes.draw do
         to: TradeTariffFrontend::RequestForwarder.new(
           host: Rails.application.config.api_host,
           api_request_path_formatter: ->(path) {
-            path.gsub(APP_SLUG, '')
+            path.gsub("#{APP_SLUG}/", "")
           }
         )
     end
@@ -46,4 +46,8 @@ TradeTariffFrontend::Application.routes.draw do
   end
 
   root to: redirect("/#{APP_SLUG}", status: 302)
+
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+  match "/503", to: "errors#maintenance", via: :all
 end

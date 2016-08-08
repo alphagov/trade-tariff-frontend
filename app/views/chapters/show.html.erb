@@ -7,13 +7,13 @@
   <div class="inner">
     <dl>
       <dt class="section-number">Section <%= @chapter.section_numeral %></dt>
-      <dd class="section-title"><%= link_to @chapter.section, section_path(@chapter.section) %>
+      <dd class="section-title"><%= link_to @chapter.section, section_path(@chapter.section, request.query_parameters.symbolize_keys) %>
         <dl class="tariff-fragments">
           <dt class="chapter-code" title="Chapter code"><%= @chapter.short_code %></dt>
           <dd>
             <h1>
-              <%= link_to  @chapter, chapter_path(@chapter) %>
-              (<%= link_to 'changes', chapter_changes_path(@chapter, format: :atom), class: "feed" %>)
+              <%= link_to  @chapter, chapter_path(@chapter, request.query_parameters.symbolize_keys) %>
+              (<%= link_to 'changes', chapter_changes_path(@chapter, format: :atom), class: "feed", rel: "nofollow" %>)
             </h1>
             <dl class="chapter-headings">
               <%= render @headings %>

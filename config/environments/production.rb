@@ -37,16 +37,27 @@ TradeTariffFrontend::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
-
-  # Prepend all log lines with the following tags
-  # config.log_tags = [ :subdomain, :uuid ]
-
-  # Use a different logger for distributed setups
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-
+  config.log_level = :info
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.lograge.custom_options = lambda do |event|
+    {
+      params: event.payload[:params].except('controller', 'action', 'format', 'utf8'),
+    }.merge(
+      JSON.parse(ENV['VCAP_APPLICATION']).except('application_uris', 'host', 'application_name', 'space_id', 'port', 'uris', 'application_version')
+    )
+  end
+  config.lograge.ignore_actions = ['HealthcheckController#index']
+  
   # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store, nil, {
+    compress: true,
+    expires_in: 1.day,
+    username: ENV["MEMCACHE_USER"],
+    password: ENV["MEMCACHE_PASSWORD"],
+    namespace: ENV["GOVUK_APP_DOMAIN"],
+    pool_size: Integer(ENV["MAX_THREADS"] || 5)
+  }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -57,9 +68,6 @@ TradeTariffFrontend::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :ses
-
-  # Enable threaded mode
-  # config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
@@ -72,9 +80,4 @@ TradeTariffFrontend::Application.configure do
 
   # Host for Trade Tariff API endpoint
   config.api_host = Plek.new.find("tariff-api")
-
-  # Enable JSON-style logging
-  config.logstasher.enabled = true
-  config.logstasher.logger = Logger.new("#{Rails.root}/log/#{Rails.env}.json.log")
-  config.logstasher.supress_app_log = true
 end

@@ -12,14 +12,6 @@ module TradeTariffFrontend
       end
     end
 
-    def host
-      @host.host
-    end
-
-    def port
-      @host.port
-    end
-
     def call(env)
       rackreq = Rack::Request.new(env)
 
@@ -49,7 +41,7 @@ module TradeTariffFrontend
     private
 
     def request_url_for(rackreq)
-      "http://#{host}:#{port}#{request_uri_for(rackreq)}"
+      "#{@host}#{request_uri_for(rackreq)}"
     end
 
     def request_uri_for(rackreq)
