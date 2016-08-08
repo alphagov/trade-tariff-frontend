@@ -28,8 +28,13 @@ class Search
     'trade_tariff'
   end
 
-  def countries(geographical_area_klass = GeographicalArea)
-    @countries ||= geographical_area_klass.countries.sort_by(&:description)
+  def countries
+    @countries ||= Rails.cache.fetch(
+      "search_countries",
+      expires_in: 24.hours
+    ) do
+      GeographicalArea.countries.sort_by(&:description)
+    end
   end
 
   def date
@@ -41,7 +46,7 @@ class Search
   end
 
   def filtered_by_date?
-    date.date != Date.today
+    date.date != Date.current
   end
 
   def filtered_by_country?

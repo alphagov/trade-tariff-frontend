@@ -16,11 +16,7 @@
     <meta name="description" content="<%= @meta_description %>">
   <% end %>
 
-  <% if @artefact %>
-    <% if @artefact.primary_root_section %>
-      <meta name="govuk:section" content="<%= @artefact.primary_root_section["title"].downcase %>">
-    <% end %>
-  <% end %>
+  <meta name="govuk:section" content="business and self-employed">
 
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
 <% end %>

@@ -24,4 +24,5 @@ Rails.application.config.assets.precompile += %w{
   application-ie6.css
   tariff.css
   tariff-print.css
+  gov.uk_logotype_crown.svg
 }

@@ -1,6 +1,5 @@
 require "api_entity"
 require "gds_api/helpers"
-require 'govuk_artefact'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
@@ -9,11 +8,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_last_updated
   before_filter :set_cache
-  before_filter :load_artefact, if: ->{
-    # Can only load artifact if content_api is running
-    Rails.env.production?
-  }
   before_filter :search_query
+  before_filter :maintenance_mode_if_active
   before_filter :bots_no_index_if_historical
 
   layout :set_layout
@@ -44,7 +40,10 @@ class ApplicationController < ActionController::Base
   private
 
   def set_last_updated
-    @tariff_last_updated ||= begin
+    @tariff_last_updated ||= Rails.cache.fetch(
+      "tariff_last_updated",
+      expires_in: 1.hour
+    ) do
       last = TariffUpdate.all.first
       last ? last.updated_at : nil
     end
@@ -76,13 +75,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def load_artefact
-    @artefact = GovukArtefact.new(content_api.artefact(APP_SLUG))
-  end
-
   protected
+
+  def maintenance_mode_if_active
+    if ENV["MAINTENANCE"].present? && action_name != "maintenance"
+      redirect_to "/503"
+    end
+  end
 
   def bots_no_index_if_historical
     response.headers["X-Robots-Tag"] = "none" unless @search.today?
+  end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:user_agent] = request.env["HTTP_USER_AGENT"]
   end
 end

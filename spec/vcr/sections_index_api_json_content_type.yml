@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk//sections
+    uri: http://tariff-api.dev.gov.uk/sections
     body:
       encoding: US-ASCII
       string: ''
@@ -69,6 +69,6 @@ http_interactions:
         and ammunition; parts and accessories thereof","numeral":"XIX","chapter_from":"93","chapter_to":"93","section_note_id":null},{"id":20,"position":20,"title":"Miscellaneous
         manufactured articles","numeral":"XX","chapter_from":"94","chapter_to":"96","section_note_id":null},{"id":21,"position":21,"title":"Works
         of art, collectors'' pieces and antiques","numeral":"XXI","chapter_from":"97","chapter_to":"98","section_note_id":null}]'
-    http_version: 
+    http_version:
   recorded_at: Thu, 19 Dec 2013 08:51:19 GMT
 recorded_with: VCR 2.5.0

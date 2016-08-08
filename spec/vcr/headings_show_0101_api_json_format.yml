@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk//headings/0101.json
+    uri: http://tariff-api.dev.gov.uk/headings/0101.json
     body:
       encoding: US-ASCII
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
         breeding animals","description_plain":"Pure-bred breeding animals","parent_sid":93797},{"description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"goods_nomenclature_sid":93798,"formatted_description":"Other","description_plain":"Other","parent_sid":93797},{"description":"For
         slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"goods_nomenclature_sid":93799,"formatted_description":"For
         slaughter","description_plain":"For slaughter","parent_sid":93798},{"description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"goods_nomenclature_sid":93800,"formatted_description":"Other","description_plain":"Other","parent_sid":93798},{"description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"goods_nomenclature_sid":93801,"formatted_description":"Asses","description_plain":"Asses","parent_sid":null},{"description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"goods_nomenclature_sid":72763,"formatted_description":"Other","description_plain":"Other","parent_sid":null}]}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 19 Dec 2013 08:54:54 GMT
 recorded_with: VCR 2.5.0

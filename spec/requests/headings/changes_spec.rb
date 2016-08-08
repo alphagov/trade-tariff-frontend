@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'GET to #index - getting heading change feed', type: :request do
   let!(:heading)   { Heading.new(attributes_for :heading, goods_nomenclature_item_id: "0101000000") }
 
-  context 'no request format supplied' do
+  pending 'no request format supplied' do
     before do
       VCR.use_cassette("headings_changes#index") do
         get "/trade-tariff/headings/0101/changes"

@@ -42,10 +42,6 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 
-  config.before(type: :request) do
-    stub_content_api_default_artefact
-  end
-
   config.before(:each) do
     allow(TariffUpdate).to receive(:all).and_return([OpenStruct.new(updated_at: Date.today)])
   end
