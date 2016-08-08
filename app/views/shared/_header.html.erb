@@ -1,9 +1,5 @@
-<header class="page-header group">
-  <div>
-    <h1>
-      Trade Tariff
-    </h1>
-  </div>
+<header>
+  <h1 class="heading-large">Find import and export commodity codes, duties, licences and VAT (Trade Tariff)</h1>
 </header>
 
 <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
