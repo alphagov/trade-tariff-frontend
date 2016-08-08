@@ -21,6 +21,7 @@ gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1"
+gem "bootscale", "~> 0.5", require: false
 
 # Logging
 gem "logstash-event"
