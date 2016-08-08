@@ -1,16 +1,18 @@
+// GOV.UK frontend toolkit
+@import "typography";
+@import "conditionals";
+@import "colours";
+@import "shims";
+@import "device-pixels";
+@import "grid_layout";
+@import "design-patterns/buttons";
 
-@import "_typography.scss";
-@import "_conditionals.scss";
-@import "_colours.scss";
-@import "_shims.scss";
-@import "_device-pixels.scss";
-@import "_grid_layout.scss";
-@import "design-patterns/_buttons.scss";
-
-// TODO: PRUNE CSS
+// GOV.UK elements
 @import "govuk-elements";
 
+// Trade Tariff components
 @import "report-a-problem";
+@import "header";
 
 // /* global variables */
 
