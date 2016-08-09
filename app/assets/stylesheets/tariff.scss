@@ -11,8 +11,26 @@
 @import "govuk-elements";
 
 // Trade Tariff components
+@import "variables";
+@import "colors";
 @import "report-a-problem";
 @import "header";
+@import "tariff-breadcrumbs";
+
+// Utility classes
+
+  .desktop-only {
+    display: none;
+  }
+
+@media (min-width: $desktop-min-width) {
+  .mobile-only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
+}
 
 // /* global variables */
 
