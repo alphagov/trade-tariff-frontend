@@ -1,0 +1,4 @@
+// GOV.UK elements style guide specifies that 25% or 50% tints
+@function tint($color) {
+  @return mix($color, #fff, 25%);
+}

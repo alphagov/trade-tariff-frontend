@@ -1,0 +1,83 @@
+.tariff-breadcrumbs {
+  position: relative;
+	padding: 1em;
+	background-color: $grey-4;
+  dt, dd {
+    display: inline;
+  }
+  h1 {
+    display: inline;
+  }
+  ul, li {
+    position: relative;
+  }
+  ul {
+    list-style: none;
+    padding-left: 25px;
+  }
+  .chapter-code {
+    background-color: tint($mauve);
+    width: 25px;
+    display: inline-block;
+    text-align: center;
+  }
+  .heading-code {
+    background-color: tint($light-blue);
+    width: 25px;
+    display: inline-block;
+    text-align: center;
+  }
+  .commodity-code {
+    background-color: tint($turquoise);
+    width: 75px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  li::before, li::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+  }
+  li::before {
+    border-top: 1px solid #000;
+    top: 9px;
+    width: 8px;
+    height: 0;
+  }
+  li {
+    line-height: 25px;
+  }
+  li::after {
+    border-left: 1px solid #000;
+    height: 100%;
+    width: 0px;
+    top: 2px;
+  }
+  ul > li:last-child::after {
+    height: 8px;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    // Adjust code alignment
+    .heading-code, .heading-code ~ a,
+    .commodity-code, .commodity-code ~ h1,
+    .full-code .chapter-code, .full-code ~ h1 {
+      position: relative;
+      left: -25px;
+      margin-top: 10px;
+    }
+
+    // Remove horizontal line from these items
+    .heading-li::before,
+    .commodity-li::before {
+      border-top: 0;
+    }
+    .chapter-code ~ ul ul {
+      padding-left: 0;
+    }
+    .chapter-code ~ ul > li:last-child::after {
+      height: 8px;
+    }
+  }
+}
