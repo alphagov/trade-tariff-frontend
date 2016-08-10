@@ -1,0 +1,53 @@
+.nav-tabs {
+  ol, ul, .tabs-nav {
+    @media (max-width: $mobile-max-width) {
+      margin: 0 -16px;
+    }
+  }
+  li, .tabs-nav li {
+    font-size: 14px;
+    @media (min-width: $desktop-min-width) {
+      font-size: 16px;
+    }
+  }
+  li a, .tabs-nav li a {
+    border: solid 1px $page-colour;
+    border-bottom: none;
+    float: left;
+    line-height: 2.25em;
+    margin-bottom: -1px;
+    padding: 0 1em 0 1em;
+    &:hover {
+      background-color: $border-colour;
+    }
+    @media (max-width: $mobile-max-width) {
+      display: block;
+      float: none;
+      line-height: 3.5em;
+      padding: 0 16px;
+      text-align: left;
+      margin-bottom: 0;
+      border-bottom: 1px solid $border-colour;
+    }
+  }
+  li.active a, .tabs-nav li.active a {
+    background-color: $page-colour;
+    border: solid 1px $border-colour;
+    border-bottom: solid 1px $page-colour;
+    color: $text-colour;
+    position: relative;
+    text-decoration: none;
+    @media (max-width: $mobile-max-width) {
+      border-bottom: 1px solid $border-colour;
+    }
+  }
+}
+.tab-content .tab-pane {
+  padding: 1em 1em 0 1em;
+  border-top: solid 1px $border-colour;
+  clear: both;
+  @media (max-width: $mobile-max-width) {
+    border-top: none;
+    padding: 1em 0 0 0;
+  }
+}

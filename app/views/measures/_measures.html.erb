@@ -1,22 +1,22 @@
-<div class="nav-tabs">
+<div class="js-tabs nav-tabs">
   <ul>
     <li class='active'>
-      <a href="#overview" data-toggle="tab">Overview</a>
+      <a href="#overview">Overview</a>
     </li>
     <li>
-      <a href="#import" data-toggle="tab">Import</a>
+      <a href="#import">Import</a>
     </li>
     <li>
-      <a href="#export" data-toggle="tab">Export</a>
+      <a href="#export">Export</a>
     </li>
     <li>
-      <a href="#footnotes" data-toggle="tab">Footnotes</a>
+      <a href="#footnotes">Footnotes</a>
     </li>
   </ul>
 </div>
 
-<div id="measures-js" class='tab-content'>
-  <article class='tab-pane active' id='overview'>
+<div class="js-tab-content tab-content">
+  <article class="js-tab-pane tab-pane active" id="overview">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <div class="inner">
@@ -52,7 +52,7 @@
       </nav>
     </div>
   </article>
-  <article class='tab-pane' id='import' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+  <article class="js-tab-pane tab-pane" id="import" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <p>The commodity code for importing is <em><%= declarable.code %></em>.</p>
@@ -182,7 +182,7 @@
       </nav>
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
-  <article class='tab-pane' id='export' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+  <article class="js-tab-pane tab-pane" id="export" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <p>The commodity code for exporting and intrastat reporting is <em><%= declarable.display_export_code %></em>.</p>
