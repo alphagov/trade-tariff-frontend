@@ -16,12 +16,13 @@
 @import "report-a-problem";
 @import "header";
 @import "tariff-breadcrumbs";
+@import "sections-list";
 
 // Utility classes
 
-  .desktop-only {
-    display: none;
-  }
+.desktop-only {
+  display: none;
+}
 
 @media (min-width: $desktop-min-width) {
   .mobile-only {
@@ -30,6 +31,11 @@
   .desktop-only {
     display: block;
   }
+}
+
+//Other
+.related-module {
+  margin-top: 30px;
 }
 
 // /* global variables */

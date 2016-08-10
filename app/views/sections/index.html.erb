@@ -2,20 +2,21 @@
   <link rel='alternate' type='application/json' href='<%= sections_url(format: :json) %>' title='Section list in JSON format' />
 <% end %>
 
-<article class="tariff sections">
-  <div class="inner">
-    <dl class="sections">
-      <dt class="heading">
-        <span class='numeral'>
-          Section
-        </span>
-        Chapters
-      </dt>
-      <dd class='title heading'>Title</dd>
+<h2 class="heading-medium">All sections</h2>
+
+<section class="sections">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Section</th>
+        <th scope="col">Chapters</th>
+        <th scope="col">Section title</th>
+      </tr>
       <%= render @sections %>
-    </dl>
-  </div>
-</article>
+    </thead>
+  </table>
+</section>
+
 
 <!--
 Tariff Updates:

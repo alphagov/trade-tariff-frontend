@@ -2,16 +2,10 @@
   <div id="wrapper" class="tariff service">
     <main id="content" role="main">
       <%= render 'shared/header' %>
-      <div class="article-container group">
-        <%= yield %>
-      </div>
-      <section class="related-module">
-        <% if @tariff_last_updated %>
-        <div id="last-updated-at">
-          Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices">View latest amendments</a>
-        </div>
-        <% end %>
-      </section>
+      <%= yield %>
+    <% if @tariff_last_updated %>
+      <div id="last-updated-at" class="related-module font-xsmall">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices">View latest amendments</a></div>
+    <% end %>
     </main>
   </div>
   <%= render :partial => 'layouts/report_a_problem' %>
