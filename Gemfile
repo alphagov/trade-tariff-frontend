@@ -36,6 +36,10 @@ gem "rack-timeout", "~> 0.4"
 gem "dalli", "~> 2.7"
 gem "connection_pool", "~> 2.2"
 
+group :development do
+  gem "web-console"
+end
+
 group :development, :test do
   gem "quiet_assets"
 end

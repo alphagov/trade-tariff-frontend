@@ -60,6 +60,7 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     dalli (2.7.6)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
     domain_name (0.5.24)
@@ -249,6 +250,10 @@ GEM
       unf_ext
     unf_ext (0.0.7.1)
     vcr (2.9.3)
+    web-console (3.3.0)
+      activemodel (>= 4.2)
+      debug_inspector
+      railties (>= 4.2)
     webmock (1.21.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -302,6 +307,7 @@ DEPENDENCIES
   timecop (~> 0.8)
   uglifier (~> 2.7)
   vcr
+  web-console
   webmock (~> 1.21)
   yajl-ruby (~> 1.2)
 
