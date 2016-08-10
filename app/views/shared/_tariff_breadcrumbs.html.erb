@@ -57,7 +57,13 @@ declarable ||= false %>
           <li>
             <a href="#" class="js-show-full-tree-btn">[Show all]</a>
             <ul>
-              <li class="commodity-li"><%= commodity_heading_full(declarable) %></li>
+              <li class="commodity-li">
+                <% if declarable.show_commodity_tree? %>
+                  <%= commodity_heading_full(declarable) %>
+                <% else %>
+                  <%= declarable_heading_full(declarable) %>
+                <% end %>
+              </li>
             </ul>
           </li>
         </ul>

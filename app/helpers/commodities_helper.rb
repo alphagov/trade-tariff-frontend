@@ -29,8 +29,8 @@ module CommoditiesHelper
   end
 
   def format_full_code(commodity)
-    code = commodity.display_short_code.to_s
-    "<span class='chapter-code'>#{commodity.chapter_code}</span><span class='heading-code'>#{commodity.heading_code}</span><span class='commodity-code'>#{code[0..1]}&nbsp;#{code[2..3]}&nbsp;#{code[4..-1]}</span>".html_safe
+    code = commodity.code.to_s
+    "<span class='chapter-code'>#{code[0..1]}</span><span class='heading-code'>#{code[2..3]}</span><span class='commodity-code'>#{code[4..-1]}</span>".html_safe
   end
 
   private
@@ -82,6 +82,16 @@ module CommoditiesHelper
       content_tag(:span, commodity.formatted_description.html_safe,
                           class: 'description',
                           id: "commodity-#{commodity.code}")
+    end
+  end
+
+  def declarable_heading_full(commodity)
+    content_tag(:li, class: 'commodity-li') do
+      content_tag(:span, format_full_code(commodity),
+                         title: "Full tariff code: #{commodity.code}",
+                         class: 'full-code',
+                         'aria-describedby' => "commodity-#{commodity.code}") +
+      content_tag(:h1, commodity.to_s.html_safe)
     end
   end
 end
