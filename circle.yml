@@ -13,7 +13,7 @@ dependencies:
     - yes | cf install-plugin autopilot
 deployment:
   dev:
-    branch: master
+    branch: gds-notification
     commands:
       - CF_SPACE=development CF_APP=tariff-frontend-dev ./bin/deploy:
           timeout: 900
