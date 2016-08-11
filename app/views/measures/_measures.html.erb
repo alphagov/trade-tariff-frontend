@@ -21,37 +21,48 @@
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <div class="inner">
       <h1 class="visuallyhidden">Overview</h1>
-      <h2>Import</h2>
-      <p>The commodity code for importing is <em><%= declarable.code %></em>.</p>
-      <% if declarable.basic_duty_rate.present? %>
-        <p>Importing from outside the EU is subject to a third country duty of <em><%= declarable.basic_duty_rate.html_safe %></em>.</p>
-      <% else %>
-        <p>Importing from outside the EU is subject to <em>variable</em> third country duty.</p>
-      <% end %>
-      <% declarable.import_measures.vat.national.each do |measure| %>
-        <p>Goods are subject to <%= measure.measure_type.description %>.</p>
-      <% end %>
 
-      <% if declarable.meursing_code? %>
-        <h1>Find meursing code</h1>
-        <p><%= link_to "Find the meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> for this commodity. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
-      <% end %>
-
-      <h2>Export</h2>
-      <p>The commodity code for exporting and intrastat reporting is <em><%= declarable.display_export_code %></em>.</p>
-
-      <h2>Binding Tariff Information</h2>
-      <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <em><%= declarable.code %></em>.</p>
-
-      <div class="info-notice">
-        <p> See <a href="#import" data-toggle='tab'>import</a> and <a href="#export" data-toggle='tab'>export</a> tables for country-specific measures and restrictions. See <a href="#footnotes" data-toggle='tab'>footnotes</a> table for specific commodity and measures footnotes.</p>
+      <div class="grid-row import-and-export-boxes">
+      <div class="column-one-half">
+      <div class="import box">
+          <h2 class="heading-medium">Import</h2>
+          <p>The commodity code for importing is <strong><%= declarable.code %></strong>.</p>
+          <% if declarable.basic_duty_rate.present? %>
+            <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures. <a href="#">What does this mean?</a></p>
+          <% else %>
+            <p>Importing from outside the EU is subject to <strong>variable</strong> third country duty.</p>
+          <% end %>
+          <p> Import measures and restrictions for specific countries can be found under the <a href="#import">import</a> tab.</p>
+          <% declarable.import_measures.vat.national.each do |measure| %>
+            <p>Goods are subject to <%= measure.measure_type.description %>.</p>
+          <% end %>
+        </div>
       </div>
 
-      <nav class="part-pagination return-to-top">
-        <a href="#wrapper">Return to top &uarr;</a>
-      </nav>
+      <div class="column-one-half">
+        <div class="export box">
+          <h2 class="heading-medium">Export</h2>
+          <p>The commodity code for exporting and intrastat reporting is <strong><%= declarable.display_export_code %></strong>.</p>
+
+            <p>Export measures and restrictions for specific countries can be found under the <a href="#export">export</a> tab.</p>
+        </div>
+      </div>
     </div>
+    <nav class="part-pagination return-to-top">
+      <a href="#wrapper">Return to top &uarr;</a>
+    </nav>
+    <% if declarable.meursing_code? %>
+      <h2 class="heading-medium">This commodity has a meursing code</h2>
+      <p>Use the <%= link_to "Look up Meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> tool to find the additional code required for importing and exporting. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
+    <% end %>
+    <h2 class="heading-medium">Binding tariff information</h2>
+    <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <strong><%= declarable.code %></strong>.</p>
   </article>
+
+
+
+
+<% #Hey %>
   <article class="js-tab-pane tab-pane" id="import" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
@@ -182,6 +193,11 @@
       </nav>
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
+
+
+
+
+
   <article class="js-tab-pane tab-pane" id="export" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
@@ -324,6 +340,11 @@
       </nav>
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
+
+
+
+
+
   <article class='tab-pane' id='footnotes' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <div class="inner">
       <% if declarable.footnote.present? %>
@@ -360,6 +381,11 @@
       </nav>
     </div><!-- end .inner -->
   </article><!-- end .tab-pane -->
+
+
+
+
+<span style="display: none;">
   <div class="inner">
     <%= render partial: "measures/measure_references", collection: declarable.import_measures.for_all_countries, as: 'measure' %>
     <%= render partial: "measures/measure_references", collection: declarable.import_measures.for_specific_countries, as: 'measure' %>
@@ -368,4 +394,5 @@
     <%= render partial: "measures/measure_references", collection: declarable.export_measures.for_all_countries, as: 'measure' %>
     <%= render partial: "measures/measure_references", collection: declarable.export_measures.for_specific_countries, as: 'measure' %>
   </div>
+  </span>
 </div><!-- end .tab-content -->
