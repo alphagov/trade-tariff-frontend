@@ -50,7 +50,7 @@ describe 'Commodity page', type: :request do
         VCR.use_cassette('commodities#show_8714930019') do
           visit commodity_path("8714930019")
 
-          expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 4.70 %.'
+          expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 4.70 % unless subject to other measures.'
           expect(page).to have_content 'Goods are subject to VAT standard rate.'
         end
       end
