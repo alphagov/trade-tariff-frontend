@@ -1,9 +1,7 @@
 require "api_entity"
-require "gds_api/helpers"
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include GdsApi::Helpers
   include TradeTariffFrontend::ViewContext::Controller
 
   before_filter :set_last_updated
