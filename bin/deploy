@@ -27,10 +27,7 @@ curl -X POST \
 --data-urlencode 'payload={"text": "'"Deployment finished for $CF_APP"'", "channel": "'"#$SLACK_CHANNEL"'", "username": "cf-deploy", "icon_emoji": ":cloud:", "fields": [{"title": "ENV", "value": "'"$CF_SPACE"'", "short": true}, {"title": "SHA1", "value": "'"<https://github.com/bitzesty/trade-tariff-frontend/compare/$GIT_OLD_REVISION...$GIT_REVISION|$GIT_REVISION>"'", "short": true}]}' \
 $SLACK_WEBHOOK
 
-# Notify GDS about new releases in production and staging
-if [ "$CF_SPACE" != "production" ]; then
-  curl -X POST -H 'Content-type: application/json' \
-  -H 'Authorization: Bearer '"$GDS_TOKEN"'' \
-  --data '{"repo": "'"$CIRCLE_REPOSITORY_URL"'", "deployment[version]": "'"$CIRCLE_SHA1"'", "deployment[environment]": "'"$CF_SPACE"'"}' \
-  $GDS_WEBHOOK
-fi
+curl -X POST -H 'Content-type: application/json' \
+-H 'Authorization: Bearer '"$GDS_TOKEN"'' \
+--data '{"repo": "'"$CIRCLE_REPOSITORY_URL"'", "deployment[version]": "'"$CIRCLE_SHA1"'", "deployment[environment]": "'"$CF_SPACE"'"}' \
+$GDS_WEBHOOK
