@@ -1,10 +1,18 @@
 <% if heading.leaf? %>
-<dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
-<dd class="heading-description">
+<tr>
+<td>
+  <div class="heading-code">
+    <div class="code-text">
+      <%= heading.display_short_code %>
+    </div>
+  </div>
+</td>
+<td>
 <% else %>
-<dt class='heading-subtitle'><%= heading %></dt>
-<dd class="subtitle-description">
+<td colspan="2"><%= heading %></td>
+<td>
 <% end %>
+
   <% if heading.leaf? %>
     <%= link_to heading.formatted_description.html_safe, heading_path(heading, request.query_parameters.symbolize_keys) %>
   <% else %>
@@ -12,4 +20,6 @@
     <%= render heading.children %>
   </dl>
   <% end %>
-</dd>
+
+</td>
+</tr>

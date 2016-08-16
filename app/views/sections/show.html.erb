@@ -3,14 +3,16 @@
   <link rel='alternate' type='application/json' href='<%= section_url(@section, format: :json) %>' title='Section information page in JSON format' />
 <% end %>
 
+<h2 class="heading-medium">Choose the chapter that best matches your goods</h2>
+
 <%= render 'shared/tariff_breadcrumbs', section: @section %>
 
-<article class="tariff chapters">
-  <div class="inner">
-    <dl class="tariff-fragments chapters">
+<section class="chapters">
+  <table class="tariff-table">
+    <tbody>
       <%= render @chapters %>
-    </dl>
-  </div>
+    </tbody>
+  </table>
+</section>
 
-  <%= render partial: 'note', locals: { section_note: @section.section_note } %>
-</article>
+<%= render 'shared/notes', section_note: @section.section_note %>

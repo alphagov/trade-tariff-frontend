@@ -1,0 +1,33 @@
+<% section_note ||= false
+chapter_note ||= false %>
+
+<% if section_note || chapter_note %>
+  <article class="notes">
+
+    <% if section_note && chapter_note %>
+      <h2 class="heading-small">There are important <a href="#section-notes">section notes</a> and <a href="#chapter-notes">chapter notes</a> for this part of the tariff:</h2>
+    <% end %>
+
+    <% if chapter_note %>
+      <div id="chapter-notes">
+        <% if section_note %>
+          <h3 class="heading-small">Chapter notes</h3>
+        <% else %>
+          <h2 class="heading-small">There are important chapter notes for this part of the tariff:</h2>
+        <% end %>
+        <%= govspeak(@chapter.chapter_note) %>
+      </div>
+    <% end %>
+    <% if section_note %>
+      <div id="section-notes">
+        <% if chapter_note %>
+          <h3 class="heading-small">Section notes</h3>
+        <% else %>
+          <h2 class="heading-small">There are important section notes for this part of the tariff:</h2>
+        <% end %>
+        <%= govspeak(section_note) %>
+      </div>
+    <% end %>
+
+  </article>
+<% end %>

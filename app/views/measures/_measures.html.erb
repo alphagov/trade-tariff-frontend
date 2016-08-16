@@ -10,18 +10,22 @@
       <a href="#export">Export</a>
     </li>
     <li>
-      <a href="#footnotes">Footnotes</a>
+      <a href="#notes">Chapter notes</a>
     </li>
   </ul>
 </div>
 
+
+
+
+
+<% # Overview tab %>
 <div class="js-tab-content tab-content">
   <article class="js-tab-pane tab-pane active" id="overview">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <div class="inner">
       <h1 class="visuallyhidden">Overview</h1>
-
       <div class="grid-row import-and-export-boxes">
       <div class="column-one-half">
       <div class="import box">
@@ -51,6 +55,20 @@
     <nav class="part-pagination return-to-top">
       <a href="#wrapper">Return to top &uarr;</a>
     </nav>
+    <% if declarable.footnote.present? %>
+      <table class="tariff-table">
+        <caption class="heading-medium">Commodity footnotes</caption>
+        <thead>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%= render declarable.footnote %>
+        </tbody>
+      </table>
+    <% end %>
     <% if declarable.meursing_code? %>
       <h2 class="heading-medium">This commodity has a meursing code</h2>
       <p>Use the <%= link_to "Look up Meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> tool to find the additional code required for importing and exporting. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
@@ -62,32 +80,25 @@
 
 
 
-<% #Hey %>
+
+<% # Import tab %>
   <article class="js-tab-pane tab-pane" id="import" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
-    <p>The commodity code for importing is <em><%= declarable.code %></em>.</p>
+
     <div class="inner">
       <table class='third-country'>
         <caption>Third country measures:</caption>
         <thead>
           <tr>
             <th scope="col">&nbsp;</th>
-
             <th scope="col">Measure type</th>
-
             <th scope="col">Start &amp; end dates</th>
-
             <th scope="col">Duty rates &amp; supplementary units</th>
-
             <th scope="col">Additional codes</th>
-
             <th scope="col">Conditions</th>
-
             <th scope="col">Exclusions</th>
-
-            <th scope="col" class="legal-act external-link" title="Opens in a new window">ECC Regulation</th>
-
+            <th scope="col" class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
             <th scope="col">Footnote</th>
           </tr>
         </thead>
@@ -122,7 +133,7 @@
 
               <th>Exclusions</th>
 
-              <th class="legal-act external-link" title="Opens in a new window">ECC Regulation</th>
+              <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
 
               <th>Footnotes</th>
             </tr>
@@ -167,7 +178,7 @@
 
             <th>Exclusions</th>
 
-            <th class="legal-act external-link" title="Opens in a new window">ECC Regulation</th>
+            <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
 
             <th>Footnotes</th>
           </tr>
@@ -198,6 +209,7 @@
 
 
 
+<% # Export tab %>
   <article class="js-tab-pane tab-pane" id="export" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
@@ -221,7 +233,7 @@
 
             <th scope="col">Exclusions</th>
 
-            <th scope="col" class="legal-act external-link" title="Opens in a new window">ECC Regulation</th>
+            <th scope="col" class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
 
             <th scope="col">Footnote</th>
           </tr>
@@ -269,7 +281,7 @@
 
               <th>Exclusions</th>
 
-              <th class="legal-act external-link" title="Opens in a new window">ECC Regulation</th>
+              <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
 
               <th>Footnotes</th>
             </tr>
@@ -314,7 +326,7 @@
 
             <th>Exclusions</th>
 
-            <th class="legal-act external-link" title="Opens in a new window">ECC Regulation</th>
+            <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
 
             <th>Footnotes</th>
           </tr>
@@ -345,24 +357,9 @@
 
 
 
-  <article class='tab-pane' id='footnotes' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+<% # Notes tab %>
+  <article class='tab-pane' id='notes' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <div class="inner">
-      <% if declarable.footnote.present? %>
-        <table>
-          <caption>Footnotes for commodity:</caption>
-          <thead>
-            <tr>
-              <th scope='col' class='footnote-code'>Code</th>
-              <th scope='col'>Description</th>
-            </tr>
-          </thead>
-
-          <tbody>
-              <%= render declarable.footnote %>
-          </tbody>
-        </table>
-      <% end %>
-
       <table>
         <caption>Footnotes for measures:</caption>
         <thead>

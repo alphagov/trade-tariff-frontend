@@ -3,22 +3,16 @@
   <link rel='alternate' type='application/json' href='<%= chapter_url(@chapter, format: :json) %>' title='Chapter information page in JSON format' />
 <% end %>
 
+<h2 class="heading-medium">Choose the heading that best matches your goods</h2>
+
 <%= render 'shared/tariff_breadcrumbs', chapter: @chapter %>
 
-<article class="tariff">
-  <div class="inner">
-    <dl class="chapter-headings">
+<section class="headings">
+  <table class="tariff-table">
+    <tbody>
       <%= render @headings %>
-    </dl>
+    </tbody>
+  </table>
+</section>
 
-    <%= render 'sections/note', section_note: @chapter.section.section_note %>
-
-    <% if @chapter.chapter_note.present? %>
-      <article class="chapter-notes">
-        <h2>Chapter notes</h2>
-
-        <%= govspeak(@chapter.chapter_note) %>
-      </article>
-    <% end %>
-    </div>
-</article>
+<%= render 'shared/notes', section_note: @chapter.section.section_note, chapter_note: @chapter.chapter_note %>

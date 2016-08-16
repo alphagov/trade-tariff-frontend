@@ -5,15 +5,17 @@
 <h2 class="heading-medium">All sections</h2>
 
 <section class="sections">
-  <table>
+  <table class="tariff-table">
     <thead>
       <tr>
         <th scope="col">Section</th>
         <th scope="col">Chapters</th>
         <th scope="col">Section title</th>
       </tr>
-      <%= render @sections %>
     </thead>
+    <tbody>
+      <%= render @sections %>
+    </tbody>
   </table>
 </section>
 

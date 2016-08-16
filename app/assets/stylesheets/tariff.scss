@@ -18,11 +18,32 @@
 @import "tariff-breadcrumbs";
 @import "sections-list";
 @import "tabs";
+@import "measures";
 
 // Utility classes
 
 .desktop-only {
   display: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.box {
+  background-color: $panel-colour;
+  padding: 1em;
+  margin-bottom: 1.05263em;
+  :first-child {
+    margin-top: 0;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+section, article {
+  margin-bottom: 3em;
 }
 
 @media (min-width: $desktop-min-width) {
@@ -38,6 +59,8 @@
 .related-module {
   margin-top: 30px;
 }
+
+
 
 // /* global variables */
 

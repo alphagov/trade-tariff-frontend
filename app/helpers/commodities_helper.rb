@@ -53,10 +53,12 @@ module CommoditiesHelper
 
   def commodity_heading(commodity)
     content_tag(:li, class: 'commodity-li') do
-      content_tag(:span, format_commodity_code(commodity),
-                         title: "Full tariff code: #{commodity.code}",
-                         class: 'commodity-code',
-                         'aria-describedby' => "commodity-#{commodity.code}") +
+      content_tag(:div,
+                  title: "Full tariff code: #{commodity.code}",
+                  class: 'commodity-code',
+                  'aria-describedby' => "commodity-#{commodity.code}") do
+        content_tag(:div, format_commodity_code(commodity), class: 'code-text')
+      end
       content_tag(:h1, commodity.to_s.html_safe) +
       content_tag(:span, class: 'feed') do
         link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom))
@@ -66,10 +68,12 @@ module CommoditiesHelper
 
   def commodity_heading_full(commodity)
     content_tag(:li, class: 'commodity-li') do
-      content_tag(:span, format_full_code(commodity),
-                         title: "Full tariff code: #{commodity.code}",
-                         class: 'full-code',
-                         'aria-describedby' => "commodity-#{commodity.code}") +
+      content_tag(:div,
+                  title: "Full tariff code: #{commodity.code}",
+                  class: 'full-code',
+                  'aria-describedby' => "commodity-#{commodity.code}") do
+        content_tag(:div, format_full_code(commodity), class: 'code-text')
+      end
       content_tag(:h1, commodity.to_s.html_safe) +
       content_tag(:span, class: 'feed') do
         link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom))
