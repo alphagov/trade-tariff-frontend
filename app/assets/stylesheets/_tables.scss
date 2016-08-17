@@ -1,0 +1,26 @@
+@mixin tariff-table {
+  caption {
+    text-align: left;
+  }
+  td {
+    vertical-align: top;
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+table.tariff-table {
+  @include tariff-table();
+}
+
+table.tariff-zebra {
+  @include tariff-table();
+  td {
+    border-bottom: 0;
+  }
+  tr:nth-child(even) {
+    background-color: $highlight-colour;
+  }
+}

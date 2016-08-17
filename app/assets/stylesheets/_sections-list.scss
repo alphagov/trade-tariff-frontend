@@ -2,7 +2,7 @@
   @media (max-width: $mobile-max-width) {
     tr {
       display: block;
-      padding-top: 0.63158em /* As per 1.05263em 0.47368em 0;*/
+      padding-top: 0.63158em;
     }
     tr:first-child {
       display: none;
@@ -21,7 +21,7 @@
       padding-right: 0;
     }
     td.chapters::before {
-      content: ' – Chapter '
+      content: ' – Chapter ';
     }
     td.title {
       display: block;

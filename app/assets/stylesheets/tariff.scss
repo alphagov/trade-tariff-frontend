@@ -18,14 +18,11 @@
 @import "tariff-breadcrumbs";
 @import "sections-list";
 @import "tabs";
+@import "tables";
 @import "measures";
+@import "a-z-index";
 
 // Utility classes
-
-.desktop-only {
-  display: none;
-}
-
 strong {
   font-weight: bold;
 }
@@ -44,6 +41,10 @@ strong {
 
 section, article {
   margin-bottom: 3em;
+}
+
+.desktop-only {
+  display: none;
 }
 
 @media (min-width: $desktop-min-width) {
