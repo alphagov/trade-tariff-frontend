@@ -183,6 +183,37 @@
           }
       },
       /**
+        @name GOVUK.tariff.breadcrumbs
+        @object
+        @description Adds show/hide behaviour to breadcrumbs on narrow viewports
+      */
+      breadcrumbs : {
+          fullTree: $('.js-tariff-breadcrumbs .js-full-tree'),
+          summaryTree: $('.js-tariff-breadcrumbs .js-summary-tree'),
+          showBtn: $('.js-tariff-breadcrumbs .js-show-full-tree-btn'),
+          /**
+            @name GOVUK.tariff.breadcrumbs.initialize
+            @function
+            @description adds tabbing behaviour
+            @requires jquery.tabs.js
+            @param {String} context Element in which to add behaviours
+          */
+          initialize : function () {
+              this.hideTree();
+              this.showBtn.click(function() {
+                  GOVUK.tariff.breadcrumbs.showTree();
+              });
+          },
+          hideTree : function() {
+              this.fullTree.hide();
+              this.summaryTree.show();
+          },
+          showTree : function() {
+              this.fullTree.show();
+              this.summaryTree.hide();
+          }
+      },
+      /**
         @name GOVUK.tariff.tablePopup
         @object
         @description Adds popup behaviour to tariff table cells
@@ -474,6 +505,7 @@
           this.tabLinkFocuser.initialize(context);
           this.hovers.init(context);
           this.searchForm.initialize();
+          this.breadcrumbs.initialize();
       },
   };
 
