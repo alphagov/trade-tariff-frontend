@@ -1,4 +1,4 @@
-<h1 class="search-heading">Search results for '<mark><%= @search.t %></mark>'</h1>
+<h2 class="heading-medium">Search results for '<%= @search.t %>'</h2>
 <article class="search-results">
   <% if @results.any? %>
     <% if @results.reference_match.sections.any? %>
@@ -74,7 +74,7 @@
       <h2>Headings containing <%= @search %>:</h2>
       <dl class="results-subset">
         <% @results.goods_nomenclature_match.resulting_headings.group_by(&:chapter_code).each do |chapter, headings| %>
-        <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
+        <dt class="chapter-code" title="Chapter code"><%= headings.first.chapter.short_code %></dt>
         <dd>
           <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
           <dl class="results-headings">
@@ -86,5 +86,13 @@
     <% end %>
   <% else %>
     <p>There are no results matching your query.</p>
+    <div class="panel panel-border-wide">
+      <p><strong>Please search again and consider:</strong></p>
+      <ul class="list list-bullet">
+        <li>Checking your spelling</li>
+        <li>Broadening your search criteria</li>
+        <li>Browsing the <%= link_to 'A-Z index', a_z_index_path(letter: 'a') %></li>
+      </ul>
+    </div>
   <% end %>
 </article>
