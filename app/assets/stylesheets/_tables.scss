@@ -24,3 +24,9 @@ table.tariff-zebra {
     background-color: $highlight-colour;
   }
 }
+
+table.small-table {
+  th, td {
+    font-size: 16px;
+  }
+}

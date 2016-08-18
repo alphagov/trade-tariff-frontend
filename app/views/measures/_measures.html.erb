@@ -56,7 +56,7 @@
       <a href="#wrapper">Return to top &uarr;</a>
     </nav>
     <% if declarable.footnote.present? %>
-      <table class="tariff-table">
+      <table class="tariff-zebra small-table">
         <caption class="heading-medium">Commodity footnotes</caption>
         <thead>
           <tr>
@@ -83,114 +83,56 @@
 
 <% # Import tab %>
   <article class="js-tab-pane tab-pane" id="import" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+
+    <h2 class="heading-medium">Import measures and restrictions</h2>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
 
-    <div class="inner">
-      <table class='third-country'>
-        <caption>Third country measures:</caption>
-        <thead>
-          <tr>
-            <th scope="col">&nbsp;</th>
-            <th scope="col">Measure type</th>
-            <th scope="col">Start &amp; end dates</th>
-            <th scope="col">Duty rates &amp; supplementary units</th>
-            <th scope="col">Additional codes</th>
-            <th scope="col">Conditions</th>
-            <th scope="col">Exclusions</th>
-            <th scope="col" class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-            <th scope="col">Footnote</th>
-          </tr>
-        </thead>
+    <table class="tariff-zebra small-table third-country">
+      <caption class="heading-small">Third country measures:</caption>
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Measure type</th>
+          <th scope="col">Start &amp; end dates</th>
+          <th scope="col">Duty rates &amp; supplementary units</th>
+          <th scope="col">Additional codes</th>
+          <th scope="col">Conditions</th>
+          <th scope="col">Exclusions</th>
+          <th scope="col" class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
+          <th scope="col">Footnote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @search.filtered_by_country? %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
+        <% else %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
+        <% end %>
+      </tbody>
+    </table>
 
-        <tbody>
-          <% if @search.filtered_by_country? %>
-            <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
-          <% else %>
-            <%= render partial: "measures/measure", collection: declarable.import_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
-          <% end %>
-        </tbody>
-      </table>
-
-      <% if @search.filtered_by_country? %>
-        <table class='country-filter'>
-          <caption>Measures specific to <%= @search.country_name %>:</caption>
-          <thead>
-            <tr>
-              <th>&nbsp;</th>
-
-              <th>Country</th>
-
-              <th>Measure type</th>
-
-              <th>Start &amp; end dates</th>
-
-              <th>Duty rates &amp; supplementary units</th>
-
-              <th>Additional codes</th>
-
-              <th>Conditions</th>
-
-              <th>Exclusions</th>
-
-              <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-
-              <th>Footnotes</th>
-            </tr>
-          </thead>
-
-          <tbody>
-          <% if declarable.import_measures.except(:third_country).for_country(@search.country).any? %>
-            <%= render partial: "measures/measure", collection: declarable.import_measures.except(:third_country).for_country(@search.country).sort_by(&:specific_country_sort_key) %>
-          <% else %>
-            <tr>
-              <td><span class="flag eu"></span></td>
-              <td colspan="9">There are no EU preference measures for this commodity on this date</td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      <% end %>
-
-      <table class='specific-countries'>
-        <caption>
-          <% if @search.filtered_by_country? %>
-            Measures for other countries and country groups:
-          <% else %>
-            Measures for specific countries and country groups:
-          <% end %>
-        </caption>
+    <% if @search.filtered_by_country? %>
+      <table class="tariff-zebra small-table country-filter">
+        <caption class="heading-small">Measures specific to <%= @search.country_name %>:</caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
-
             <th>Country</th>
-
             <th>Measure type</th>
-
             <th>Start &amp; end dates</th>
-
             <th>Duty rates &amp; supplementary units</th>
-
             <th>Additional codes</th>
-
             <th>Conditions</th>
-
             <th>Exclusions</th>
-
             <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-
             <th>Footnotes</th>
           </tr>
         </thead>
 
         <tbody>
-        <% if declarable.import_measures.for_specific_countries.any? %>
-          <% if @search.filtered_by_country? %>
-            <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
-          <% else %>
-            <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
-          <% end %>
+        <% if declarable.import_measures.except(:third_country).for_country(@search.country).any? %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures.except(:third_country).for_country(@search.country).sort_by(&:specific_country_sort_key) %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -199,10 +141,48 @@
         <% end %>
         </tbody>
       </table>
-      <nav class="part-pagination return-to-top">
-        <a href="#wrapper">Return to top &uarr;</a>
-      </nav>
-    </div><!-- end .inner -->
+    <% end %>
+
+    <table class="tariff-zebra small-table specific-countries">
+      <caption class="heading-small">
+        <% if @search.filtered_by_country? %>
+          Measures for other countries and country groups:
+        <% else %>
+          Measures for specific countries and country groups:
+        <% end %>
+      </caption>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Country</th>
+          <th>Measure type</th>
+          <th>Start &amp; end dates</th>
+          <th>Duty rates &amp; supplementary units</th>
+          <th>Additional codes</th>
+          <th>Conditions</th>
+          <th>Exclusions</th>
+          <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
+          <th>Footnotes</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% if declarable.import_measures.for_specific_countries.any? %>
+        <% if @search.filtered_by_country? %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+        <% else %>
+          <%= render partial: "measures/measure", collection: declarable.import_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+        <% end %>
+      <% else %>
+        <tr>
+          <td><span class="flag eu"></span></td>
+          <td colspan="9">There are no EU preference measures for this commodity on this date</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <nav class="part-pagination return-to-top">
+      <a href="#wrapper">Return to top &uarr;</a>
+    </nav>
   </article><!-- end .tab-pane -->
 
 
@@ -211,134 +191,69 @@
 
 <% # Export tab %>
   <article class="js-tab-pane tab-pane" id="export" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+
+    <h2 class="heading-medium">Export measures and restrictions</h2>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
-    <p>The commodity code for exporting and intrastat reporting is <em><%= declarable.display_export_code %></em>.</p>
-    <div class="inner">
-      <table class='third-country'>
-        <caption>Third country measures:</caption>
-        <thead>
-          <tr>
-            <th scope="col">&nbsp;</th>
 
-            <th scope="col">Measure type</th>
-
-            <th scope="col">Start &amp; end dates</th>
-
-            <th scope="col">Duty rates &amp; supplementary units</th>
-
-            <th scope="col">Additional codes</th>
-
-            <th scope="col">Conditions</th>
-
-            <th scope="col">Exclusions</th>
-
-            <th scope="col" class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-
-            <th scope="col">Footnote</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% if declarable.export_measures.for_all_countries.any? %>
-          <% if @search.filtered_by_country? %>
-            <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
-          <% else %>
-            <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
-          <% end %>
+    <table class="tariff-zebra small-table third-country">
+      <caption class="heading-small">Third country measures:</caption>
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Measure type</th>
+          <th scope="col">Start &amp; end dates</th>
+          <th scope="col">Duty rates &amp; supplementary units</th>
+          <th scope="col">Additional codes</th>
+          <th scope="col">Conditions</th>
+          <th scope="col">Exclusions</th>
+          <th scope="col" class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
+          <th scope="col">Footnote</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% if declarable.export_measures.for_all_countries.any? %>
+        <% if @search.filtered_by_country? %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
         <% else %>
-          <tr>
-            <td><span class="flag eu"></span></td>
-            <td colspan="8">There are no EU third country measures for this commodity on this date</td>
-          </tr>
+          <%= render partial: "measures/measure", collection: declarable.export_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
         <% end %>
-        <% unless declarable.export_measures.for_all_countries.vat.any? %>
-          <tr>
-            <td><span class="flag uk"></span></td>
-            <td colspan="8">No VAT or Excise measures were found for this commodity on this date</td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-
-      <% if @search.filtered_by_country? %>
-        <table class='country-filter'>
-          <caption>Measures specific to <%= @search.country_name %>:</caption>
-          <thead>
-            <tr>
-              <th>&nbsp;</th>
-
-              <th>Country</th>
-
-              <th>Measure type</th>
-
-              <th>Start &amp; end dates</th>
-
-              <th>Duty rates &amp; supplementary units</th>
-
-              <th>Additional codes</th>
-
-              <th>Conditions</th>
-
-              <th>Exclusions</th>
-
-              <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-
-              <th>Footnotes</th>
-            </tr>
-          </thead>
-
-          <tbody>
-          <% if declarable.export_measures.except(:third_country).for_country(@search.country).any? %>
-            <%= render partial: "measures/measure", collection: declarable.export_measures.except(:third_country).for_country(@search.country).sort_by(&:specific_country_sort_key) %>
-          <% else %>
-            <tr>
-              <td><span class="flag eu"></span></td>
-              <td colspan="9">There are no EU preference measures for this commodity on this date</td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+      <% else %>
+        <tr>
+          <td><span class="flag eu"></span></td>
+          <td colspan="8">There are no EU third country measures for this commodity on this date</td>
+        </tr>
       <% end %>
+      <% unless declarable.export_measures.for_all_countries.vat.any? %>
+        <tr>
+          <td><span class="flag uk"></span></td>
+          <td colspan="8">No VAT or Excise measures were found for this commodity on this date</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-      <table class='specific-countries'>
-        <caption>
-          <% if @search.filtered_by_country? %>
-            Measures for other countries and country groups:
-          <% else %>
-            Measures for specific countries and country groups:
-          <% end %>
-        </caption>
+    <% if @search.filtered_by_country? %>
+      <table class="tariff-zebra small-table country-filter">
+        <caption class="heading-small">Measures specific to <%= @search.country_name %>:</caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
-
             <th>Country</th>
-
             <th>Measure type</th>
-
             <th>Start &amp; end dates</th>
-
             <th>Duty rates &amp; supplementary units</th>
-
             <th>Additional codes</th>
-
             <th>Conditions</th>
-
             <th>Exclusions</th>
-
             <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-
             <th>Footnotes</th>
           </tr>
         </thead>
 
         <tbody>
-        <% if declarable.export_measures.for_specific_countries.any? %>
-          <% if @search.filtered_by_country? %>
-            <%= render partial: "measures/measure", collection: declarable.export_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
-          <% else %>
-            <%= render partial: "measures/measure", collection: declarable.export_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
-          <% end %>
+        <% if declarable.export_measures.except(:third_country).for_country(@search.country).any? %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures.except(:third_country).for_country(@search.country).sort_by(&:specific_country_sort_key) %>
         <% else %>
           <tr>
             <td><span class="flag eu"></span></td>
@@ -347,10 +262,49 @@
         <% end %>
         </tbody>
       </table>
-      <nav class="part-pagination return-to-top">
-        <a href="#wrapper">Return to top &uarr;</a>
-      </nav>
-    </div><!-- end .inner -->
+    <% end %>
+
+    <table class="tariff-zebra small-table specific-countries">
+      <caption class="heading-small">
+        <% if @search.filtered_by_country? %>
+          Measures for other countries and country groups:
+        <% else %>
+          Measures for specific countries and country groups:
+        <% end %>
+      </caption>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Country</th>
+          <th>Measure type</th>
+          <th>Start &amp; end dates</th>
+          <th>Duty rates &amp; supplementary units</th>
+          <th>Additional codes</th>
+          <th>Conditions</th>
+          <th>Exclusions</th>
+          <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
+          <th>Footnotes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% if declarable.export_measures.for_specific_countries.any? %>
+        <% if @search.filtered_by_country? %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+        <% else %>
+          <%= render partial: "measures/measure", collection: declarable.export_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+        <% end %>
+      <% else %>
+        <tr>
+          <td><span class="flag eu"></span></td>
+          <td colspan="9">There are no EU preference measures for this commodity on this date</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <nav class="part-pagination return-to-top">
+      <a href="#wrapper">Return to top &uarr;</a>
+    </nav>
   </article><!-- end .tab-pane -->
 
 
@@ -358,25 +312,12 @@
 
 
 <% # Notes tab %>
-  <article class='tab-pane' id='notes' data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
-    <div class="inner">
-      <table>
-        <caption>Footnotes for measures:</caption>
-        <thead>
-          <tr>
-            <th scope='col' class='footnote-code'>Code</th>
-            <th scope='col'>Description</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <%= render declarable.footnotes %>
-        </tbody>
-      </table>
-      <nav class="part-pagination return-to-top">
-        <a href="#wrapper">Return to top &uarr;</a>
-      </nav>
-    </div><!-- end .inner -->
+  <article class="tab-pane" id="notes" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+    <h2 class="heading-medium">Chapter notes</h2>
+    <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
+    <nav class="part-pagination return-to-top">
+      <a href="#wrapper">Return to top &uarr;</a>
+    </nav>
   </article><!-- end .tab-pane -->
 
 
