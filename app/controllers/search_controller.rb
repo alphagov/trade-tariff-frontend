@@ -17,8 +17,14 @@ class SearchController < ApplicationController
           else
             return_to = sections_path
           end
-
-          redirect_to(return_to)
+          anchor = if params[:search][:anchor].present?
+            if params[:search][:anchor] == 'import'
+              '#import'
+            else
+              '#export'
+            end
+          end
+          redirect_to(return_to + anchor)
         end
       }
 

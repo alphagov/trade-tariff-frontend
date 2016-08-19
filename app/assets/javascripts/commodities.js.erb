@@ -406,13 +406,37 @@
           },
 
           initialize : function () {
-            var toggledControls = ['js-date-picker', 'js-country-picker'],
+            var toggledControls = ['js-date-picker'],
                 namespace = this;
 
             $(toggledControls).each(function(idx, element){
               namespace.toggledControl.initialize(element);
             })
           }
+      },
+      /**
+        @name GOVUK.tariff.countryPicker
+        @object
+        @description container for country picker behaviour
+      */
+      countryPicker : {
+        initialize : function () {
+          var control = 'js-country-picker',
+              $controlForm = $('fieldset[class~=' + control + ']');
+
+          // Submit button not needed if JavaScript is enabled
+          $controlForm.find('.search-submit').hide();
+
+          $controlForm.on('change', 'select', function(e) {
+            $controlForm.closest('form').submit();
+          });
+
+          $controlForm.on('click', 'a.reset-country-picker', function (e) {
+            $controlForm.find('select').val('');
+            $controlForm.closest('form').submit();
+            return false;
+          });
+        }
       },
       /**
         @name hovers
@@ -491,7 +515,7 @@
       /**
         @name initialize
         @function
-        @description adds behaviours 
+        @description adds behaviours
         @param {Element} content Element in which to add behaviours
       */
       onLoad : function (context) {
@@ -505,6 +529,7 @@
           this.tabLinkFocuser.initialize(context);
           this.hovers.init(context);
           this.searchForm.initialize();
+          this.countryPicker.initialize();
           this.breadcrumbs.initialize();
       },
   };
