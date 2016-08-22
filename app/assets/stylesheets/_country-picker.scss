@@ -6,19 +6,18 @@
       width: 1%;
       white-space: nowrap;
       vertical-align: bottom;
+      padding-right: 0.5em;
       @media (max-width: $mobile-max-width) {
         display: block;
       }
     }
     select {
-      margin: 0 1em 0 0.5em;
       display: table-cell;
       width: 100%;
       max-width: 440px;
       font-size: 16px;
       @media (max-width: $mobile-max-width) {
         font-size: 14px;
-        margin-left: 0;
       }
     }
     .search-submit {
@@ -26,26 +25,18 @@
       display: block;
     }
     .reset-country-picker {
-      &.long-text, &.short-text {
-        width: 1%;
-        padding-left: 1em;
-        padding-right: 0;
-        white-space: nowrap;
-        vertical-align: bottom;
-      }
-      &.long-text {
+      display: table-cell;
+      width: 1%;
+      padding-left: 1em;
+      padding-right: 0;
+      white-space: nowrap;
+      vertical-align: bottom;
+      .long-text {
         display: none;
         @media (min-width: 360px) {
-          display: table-cell;
-        }
-      }
-      &.short-text {
-        display: table-cell;
-        @media (min-width: 360px) {
-          display: none;
+          display: inline;
         }
       }
     }
   }
 }
-

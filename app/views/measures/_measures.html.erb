@@ -94,8 +94,7 @@
           <%= f.hidden_field :anchor, value: 'import' %>
           <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
           <%= f.button 'Set country', class: 'button search-submit' %>
-          <a class="reset-country-picker short-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset</a>
-          <a class="reset-country-picker long-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset to all countries</a>
+          <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
         </div>
       </fieldset>
     <% end %>
@@ -215,8 +214,7 @@
           <%= f.hidden_field :anchor, value: 'export' %>
           <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
           <%= f.button 'Set country', class: 'button search-submit' %>
-          <a class="reset-country-picker short-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset</a>
-          <a class="reset-country-picker long-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset to all countries</a>
+          <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
         </div>
       </fieldset>
     <% end %>
