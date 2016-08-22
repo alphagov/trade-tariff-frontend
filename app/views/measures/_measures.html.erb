@@ -87,21 +87,13 @@
     <h2 class="heading-medium">Import measures and restrictions</h2>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
-    <%= form_for @search, method: :get, url: perform_search_path do |f| %>
-      <fieldset class="country-picker js-country-picker box font-xsmall">
-        <div class="country-picker-container">
-          <%= f.label :country, 'Trade between the UK and' %>
-          <%= f.hidden_field :anchor, value: 'import' %>
-          <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
-          <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
-        </div>
-        <%= f.button 'Set country', class: 'button search-submit' %>
-      </fieldset>
-    <% end %>
-
+    <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'import' } %>
 
     <table class="tariff-zebra small-table third-country">
-      <caption class="heading-small">Third country measures:</caption>
+      <caption>
+        <h3 class="heading-small">Third country measures</h3>
+        <p>Measures for all countries outside of the EU, subject to any exclusions shown.</p>
+      </caption>
       <thead>
         <tr>
           <th scope="col">&nbsp;</th>
@@ -126,7 +118,7 @@
 
     <% if @search.filtered_by_country? %>
       <table class="tariff-zebra small-table country-filter">
-        <caption class="heading-small">Measures specific to <%= @search.country_name %>:</caption>
+        <caption class="heading-small">Measures specific to <%= @search.country_name %></caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -158,9 +150,9 @@
     <table class="tariff-zebra small-table specific-countries">
       <caption class="heading-small">
         <% if @search.filtered_by_country? %>
-          Measures for other countries and country groups:
+          Measures for other countries and country groups
         <% else %>
-          Measures for specific countries and country groups:
+          Measures for specific countries and country groups
         <% end %>
       </caption>
       <thead>
@@ -207,17 +199,7 @@
     <h2 class="heading-medium">Export measures and restrictions</h2>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
-    <%= form_for @search, method: :get, url: perform_search_path do |f| %>
-      <fieldset class="country-picker js-country-picker box font-xsmall">
-        <div class="country-picker-container">
-          <%= f.label :country, 'Trade between the UK and' %>
-          <%= f.hidden_field :anchor, value: 'export' %>
-          <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
-          <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
-        </div>
-        <%= f.button 'Set country', class: 'button search-submit' %>
-      </fieldset>
-    <% end %>
+    <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'export' } %>
 
     <table class="tariff-zebra small-table third-country">
       <caption class="heading-small">Third country measures:</caption>
@@ -258,7 +240,7 @@
 
     <% if @search.filtered_by_country? %>
       <table class="tariff-zebra small-table country-filter">
-        <caption class="heading-small">Measures specific to <%= @search.country_name %>:</caption>
+        <caption class="heading-small">Measures specific to <%= @search.country_name %></caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -290,9 +272,9 @@
     <table class="tariff-zebra small-table specific-countries">
       <caption class="heading-small">
         <% if @search.filtered_by_country? %>
-          Measures for other countries and country groups:
+          Measures for other countries and country groups
         <% else %>
-          Measures for specific countries and country groups:
+          Measures for specific countries and country groups
         <% end %>
       </caption>
       <thead>

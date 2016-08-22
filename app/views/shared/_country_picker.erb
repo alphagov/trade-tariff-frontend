@@ -1,0 +1,11 @@
+<%= form_for controller, method: :get, url: url do |f| %>
+  <fieldset class="country-picker js-country-picker box font-xsmall">
+    <div class="country-picker-container">
+      <%= f.label :country, 'Trade between the UK and' %>
+      <%= f.hidden_field :anchor, value: anchor %>
+      <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
+      <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
+    </div>
+    <%= f.button 'Set country', class: 'button search-submit' %>
+  </fieldset>
+<% end %>
