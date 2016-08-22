@@ -88,16 +88,17 @@
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= form_for @search, method: :get, url: perform_search_path do |f| %>
-  <div class="box font-xsmall">
-    <fieldset class="country-picker js-country-picker">
-      <strong>Trade between the UK and</strong>
-      <%= f.hidden_field :anchor, value: 'import' %>
-      <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
-      <%= f.button 'Set country', class: 'button search-submit' %>
-      <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset to all countries</a>
-    </fieldset>
-  </div>
-<% end %>
+      <fieldset class="country-picker js-country-picker">
+        <div class="country-picker-container box font-xsmall">
+          <%= f.label :country, 'Trade between the UK and' %>
+          <%= f.hidden_field :anchor, value: 'import' %>
+          <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
+          <%= f.button 'Set country', class: 'button search-submit' %>
+          <a class="reset-country-picker short-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset</a>
+          <a class="reset-country-picker long-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset to all countries</a>
+        </div>
+      </fieldset>
+    <% end %>
 
 
     <table class="tariff-zebra small-table third-country">
@@ -207,6 +208,18 @@
     <h2 class="heading-medium">Export measures and restrictions</h2>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
+    <%= form_for @search, method: :get, url: perform_search_path do |f| %>
+      <fieldset class="country-picker js-country-picker">
+        <div class="country-picker-container box font-xsmall">
+          <%= f.label :country, 'Trade between the UK and' %>
+          <%= f.hidden_field :anchor, value: 'export' %>
+          <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
+          <%= f.button 'Set country', class: 'button search-submit' %>
+          <a class="reset-country-picker short-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset</a>
+          <a class="reset-country-picker long-text" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset to all countries</a>
+        </div>
+      </fieldset>
+    <% end %>
 
     <table class="tariff-zebra small-table third-country">
       <caption class="heading-small">Third country measures:</caption>
