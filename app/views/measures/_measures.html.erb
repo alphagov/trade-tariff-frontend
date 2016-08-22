@@ -88,14 +88,14 @@
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= form_for @search, method: :get, url: perform_search_path do |f| %>
-      <fieldset class="country-picker js-country-picker">
-        <div class="country-picker-container box font-xsmall">
+      <fieldset class="country-picker js-country-picker box font-xsmall">
+        <div class="country-picker-container">
           <%= f.label :country, 'Trade between the UK and' %>
           <%= f.hidden_field :anchor, value: 'import' %>
           <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
-          <%= f.button 'Set country', class: 'button search-submit' %>
           <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
         </div>
+        <%= f.button 'Set country', class: 'button search-submit' %>
       </fieldset>
     <% end %>
 
@@ -208,14 +208,14 @@
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= form_for @search, method: :get, url: perform_search_path do |f| %>
-      <fieldset class="country-picker js-country-picker">
-        <div class="country-picker-container box font-xsmall">
+      <fieldset class="country-picker js-country-picker box font-xsmall">
+        <div class="country-picker-container">
           <%= f.label :country, 'Trade between the UK and' %>
           <%= f.hidden_field :anchor, value: 'export' %>
           <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' } %>
-          <%= f.button 'Set country', class: 'button search-submit' %>
           <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
         </div>
+        <%= f.button 'Set country', class: 'button search-submit' %>
       </fieldset>
     <% end %>
 

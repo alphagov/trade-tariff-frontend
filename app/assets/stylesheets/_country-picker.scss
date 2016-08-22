@@ -1,4 +1,5 @@
 .country-picker {
+  width: auto;
   .country-picker-container {
     display: table;
     label {
@@ -25,10 +26,9 @@
       display: block;
     }
     .reset-country-picker {
-      display: table-cell;
+      display: none; /* JavaScript only */
       width: 1%;
       padding-left: 1em;
-      padding-right: 0;
       white-space: nowrap;
       vertical-align: bottom;
       .long-text {
@@ -38,5 +38,9 @@
         }
       }
     }
+  }
+  .search-submit {
+    width: auto;
+    margin-top: 0.5em;
   }
 }

@@ -428,7 +428,7 @@
           $controlForm.find('.search-submit').hide();
 
           $controlForm.on('change', 'select', function(e) {
-            $controlForm.closest('form').submit();
+            $(this).parents('form:first').submit();
           });
 
           $controlForm.on('click', 'a.reset-country-picker', function (e) {
@@ -436,6 +436,13 @@
             $controlForm.closest('form').submit();
             return false;
           });
+
+          this.showOrHideResetLink($controlForm);
+        },
+        showOrHideResetLink : function ($controlForm) {
+          if ($controlForm.find('select').val() != '') {
+            $('.reset-country-picker').css('display', 'table-cell');
+          }
         }
       },
       /**
