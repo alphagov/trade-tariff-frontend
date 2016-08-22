@@ -432,8 +432,8 @@
           });
 
           $controlForm.on('click', 'a.reset-country-picker', function (e) {
-            $controlForm.find('select').val('');
-            $controlForm.closest('form').submit();
+             $(this).parents('form:first').find('select').val('');
+            $(this).parents('form:first').submit();
             return false;
           });
 
