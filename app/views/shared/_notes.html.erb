@@ -15,7 +15,7 @@ chapter_note ||= false %>
         <% else %>
           <h2 class="heading-small">There are important chapter notes for this part of the tariff:</h2>
         <% end %>
-        <%= govspeak(@chapter.chapter_note) %>
+        <%= govspeak(chapter_note) %>
       </div>
     <% end %>
     <% if section_note %>
