@@ -22,15 +22,15 @@ describe 'Heading page', type: :request do
             VCR.use_cassette('headings#show_declarable') do
               visit heading_path("0501", country: 'ZW')
 
-              within("#import table.specific-countries") do
-                expect(page).to_not     have_content 'Zimbabwe'
-                expect(page).to_not     have_content 'Eastern and Southern Africa States' # Zimbabwe is member of latter
-              end
-
               within("#import table.country-filter") do
                 expect(page).to     have_content 'Zimbabwe'
                 expect(page).to     have_content 'Eastern and Southern Africa States' # Zimbabwe is member of latter
               end
+
+              within("#import table.third-country") do
+                expect(page).to     have_content 'Animal Health Certificate'
+              end
+
             end
           end
         end

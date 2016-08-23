@@ -63,14 +63,13 @@ describe 'Commodity page', type: :request do
         VCR.use_cassette('commodities#show_0101300000') do
           visit commodity_path("0101300000", country: "AD")
 
-          within("#import table.specific-countries") do
-            expect(page).to_not     have_content 'Andorra'
-            expect(page).to have_content 'Albania'
-            expect(page).to have_content 'Chile'
-          end
-
           within("#import table.country-filter") do
             expect(page).to     have_content 'Andorra'
+          end
+
+          within("#import table.third-country") do
+            expect(page).to have_content 'Animal Health Certificate'
+            expect(page).to_not have_content 'Veterinary control'
           end
         end
       end
