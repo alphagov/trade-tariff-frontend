@@ -26,7 +26,24 @@ table.tariff-zebra {
 }
 
 table.small-table {
+  margin: 0 0 60px 0;
   th, td {
-    font-size: 16px;
+    font-size: 12px;
+    @media (min-width: $desktop-min-width) {
+      font-size: 14px;
+    }
+  }
+  th {
+    background-color: $table-header-bg;
+    border: 0;
+    font-weight: normal;
+  }
+  tbody {
+    tr:hover, tr:focus {
+      background-color: $panel-colour;
+    }
+  }
+  a[rel='external']::after {
+    display: none;
   }
 }
