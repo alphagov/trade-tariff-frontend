@@ -1,0 +1,213 @@
+.commodity-tree {
+  .commodity-tree-note:after {
+      content: "";
+      display: block;
+      clear: both;
+  }
+
+  .commodity-tree-note {
+      background: #fff;
+      margin: 0 0 0 -59px;
+      padding: 5px 9.78571em 0 59px;
+      line-height: 1.66667;
+      color: #6f777b;
+      max-width: none;
+  }
+  .commodity-tree-note span {
+      position: absolute;
+      left: -9999em;
+  }
+  .commodity-tree-note span, .commodity-tree-note em {
+      font-size: 0.85714em;
+  }
+
+  .commodity-tree-note em {
+      font-style: normal;
+      float: left;
+  }
+  .commodity-tree-note span, .commodity-tree-note em {
+      font-size: 0.85714em;
+  }
+
+  .commodity-tree-note em.code {
+      float: right;
+      width: 8em;
+      margin-right: -8.9em;
+  }
+
+  .tree-controls {
+    background-color: $panel-colour;
+    padding: 0.5em 1em;
+
+    a {
+      font-size: 14px;
+      margin-right: 1em;
+      display: inline-block;
+      @media (min-width: $desktop-min-width) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  ul.commodities {
+    @include contain-float;
+    font-size: 14px;
+    @media(min-width: $desktop-min-width) {
+      font-size: 16px;
+    }
+    background: #fff;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -1px * ($token-width + $token-space);
+    padding-left: px($token-padding);
+    position:relative; /* to give z-index */
+
+    li {
+      display: block;
+      margin: 0;
+      padding: 0;
+      position:relative;
+      background-image: image-url("commodity-indents.png");
+      background-repeat: no-repeat;
+      background-color: transparent;
+      @include contain-float;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      @include indented-list(13);
+
+      a,
+      ul {
+        border-bottom: solid 1px #eee;
+      }
+
+      &:last-child > a,
+      &:last-child > ul {
+        border-bottom: none;
+      }
+
+      @include ie-lte(8) {
+        &.last-child > a,
+        &.last-child > ul {
+          border-bottom: none;
+        }
+      }
+
+      /* Not ASCII art but CSS to patch IE6's lack of a descendant selector */
+      @include ie(6) {
+        &.last-child ul a,
+        &.last-child ul ul,
+        &.last-child ul li a,
+        &.last-child ul li ul,
+        &.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul {
+          border-bottom: solid 1px #eee;
+        }
+
+        &.last-child a,
+        &.last-child ul,
+        &.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul,
+        &.last-child ul li.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul li.last-child ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
+        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul {
+          border-bottom: none;
+        }
+      }
+
+      a {
+        margin:0;
+        text-decoration:none;
+
+        &:hover span {
+          color: #2E8ACA;
+        }
+      }
+
+      span {
+        float: left;
+        display: inline;
+
+        &.description {
+          padding-right:8.6em;
+          margin-right:px($token-space);
+        }
+
+        &.identifier {
+          @include tariff-identifier-tabular;
+          font-weight:normal;
+          border: 0;
+          padding: 0 0.75em 0 0;
+          float:right;
+          background:#B5DEDB;
+          width:8.5em;
+          text-align:right;
+
+          span {
+            text-align:left;
+            padding:0 em(5, 12) 0 em(7, 14);
+          }
+
+          .heading-code {
+          }
+        }
+
+        &.rate {
+          padding-right:em($token-padding, 14);
+          width:em(60, 14);
+          text-align:right;
+          position:absolute;
+          right:0;
+          bottom:0;
+        }
+      }
+
+      .js-enabled article & a,
+      article & a {
+        display: block;
+        @include contain-float;
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 0;
+      clear: both;
+
+      @include ie-lte(7) {
+        margin-left: -16px;
+      }
+    }
+  }
+}

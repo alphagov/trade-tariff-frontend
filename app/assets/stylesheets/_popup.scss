@@ -1,0 +1,103 @@
+#popup.tariff-info {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30px;
+  bottom: 0;
+  width: 80%;
+  padding:0;
+  zoom:1;
+  z-index: 10;
+  overflow-y: scroll;
+  &:focus {
+    outline: 0;
+  }
+
+  @include ie(6) {
+    position: absolute;
+    width:720px;
+  }
+
+  .close {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    a {
+      background-color: transparent;
+      background-image: image-url('close.png');
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      display: block;
+      margin: 0;
+      height: 2em;
+      width: 2em;
+      text-indent: -9999px;
+
+      &:hover {
+        background-color: rgba(0,0,0,0.25);
+      }
+    }
+  }
+
+  .info-content,
+  article {
+    padding: 0 px($top-level-padding) px($top-level-padding) px($top-level-padding);
+  }
+
+  .info-content {
+    background-color: #f2f2f2;
+    padding: 2.4em px($top-level-padding) px($top-level-padding) px($top-level-padding);
+  }
+
+  /* resets for article styles */
+  article {
+    float:none;
+    margin:0;
+    width:auto;
+    height:auto;
+    min-height:0;
+
+    overflow:hidden;
+
+    .help-link {
+      display: block;
+      margin-top: 1em;
+    }
+
+  }
+
+  .close {
+    padding:0.2em px($top-level-padding) 0.2em 0.5em;
+    text-align:right;
+
+    a {
+      background-position:0.6875em 0.6875em;
+      display:inline-block;
+      text-indent:99999px;
+      overflow:hidden;
+    }
+  }
+
+  table {
+    margin:0;
+    width:100%;
+
+    caption {
+      padding-left: 0;
+      padding-right: 0;
+      :first-child {
+        margin-top: 0;
+      }
+      h2:focus {
+        outline: 0;
+      }
+    }
+
+    p {
+      font-size: 1em;
+      margin-top: 0;
+    }
+  }
+}

@@ -11,21 +11,29 @@
   }
 }
 
-table.tariff-table {
-  @include tariff-table();
-}
-
-table.tariff-zebra {
+@mixin tariff-zebra {
   @include tariff-table();
   td {
     border-bottom: 0;
+  }
+  tr {
+    background-color: $page-colour;
   }
   tr:nth-child(even) {
     background-color: $highlight-colour;
   }
 }
 
+table.tariff-table {
+  @include tariff-table();
+}
+
+table.tariff-zebra {
+  @include tariff-zebra();
+}
+
 table.small-table {
+  @include tariff-zebra();
   margin: 0 0 60px 0;
   th, td {
     font-size: 12px;

@@ -3,13 +3,12 @@
   <link rel='alternate' type='application/json' href='<%= heading_url(@heading, format: :json) %>' title='Heading information page in JSON format' />
 <% end %>
 
-
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading %>
 <% else %>
   <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
   <article class="tariff">
-    <div class="inner">
+    <div class="commodity-tree">
       <dl>
         <p class="commodity-tree-note"><span>The number following each commodity's </span><em>Description</em><span> is its </span><em class="code">Commodity code</em></p>
         <ul class="commodities">

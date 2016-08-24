@@ -112,15 +112,14 @@
               });
 
               if (isCommodityTree) {
-                  $controls = '<p class="tree-controls">' +
-                                  '<a href="#">open all</a> / ' +
-                                  '<a href="#">close all</a>' +
-                              '</p>';
+                  $controls = '<div class="tree-controls">' +
+                                  '<a href="#">Open all headings</a>' +
+                                  '<a href="#">Close all headings</a>' +
+                              '</div>';
                   effectAll = function (ctrlIdx) {
                       $parentNodes.each(function (idx) {
                           var $childList = $(this).children('ul');
-
-                          if (ctrlIdx === 0) {
+                          if (ctrlIdx % 2 == 0) {
                               clickBranch($branchSwitches.eq(idx), $childList, 'open');
                           } else {
                               clickBranch($branchSwitches.eq(idx), $childList, 'close');
@@ -128,8 +127,11 @@
                       });
                   };
 
-                  $parentNodes.closest('div.inner').append($controls);
-                  $('p.tree-controls a', context).each(function (idx) {
+                  effectAll(1); // Close all headings on load
+
+                  $parentNodes.closest('.commodity-tree').prepend($controls);
+                  $parentNodes.closest('.commodity-tree').append($controls);
+                  $('.tree-controls a', context).each(function (idx) {
                     $(this)
                       .on('click', function () {
                           effectAll(idx);
@@ -227,41 +229,14 @@
                       '</div>' +
                   '</div>'],
           /**
-            @name GOVUK.tariff.tablePopup.getDimensions
-            @function
-            @description Returns dimensions to be used to size and position the popup
-          */
-          getDimensions : function ($popup) {
-              var windowWidth = $(window).width(),
-                  popupWidth = $popup.innerWidth(),
-                  scrollLeft = $(document).scrollLeft(),
-                  sidePadding = 0,
-                  dimensions = {};
-
-              if ($popup.css('position') === 'absolute') {
-                  dimensions.top = $(document).scrollTop() + 12 + 'px';
-                  sidePadding = scrollLeft;
-              }
-
-              if (popupWidth < windowWidth) {
-                  dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px';
-              } else {
-                  // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
-                  if (popupWidth > windowWidth) {
-                      dimensions.width = windowWidth - (parseFloat($popup.css('padding-left')) + parseFloat($popup.css('padding-right'))) + 'px';
-                  }
-                  dimensions.left = sidePadding + 'px';
-              }
-
-              return dimensions;
-          },
-          /**
             @name GOVUK.tariff.tablePopup.adapt
             @function
             @description adapts the disclaimer popup for reuse
             @param {Object} $this jQuery-wrapped link that fired the popup
           */
           adapt : function ($linkElm) {
+              var that = this;
+
               var url = $linkElm.attr('href'),
                   $popup = $('#popup'),
                   $popupInner = $popup.find('div.info-inner'),
@@ -293,7 +268,7 @@
                     $popup.fadeOut(400, function(){
                       $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
                     });
-
+                    that.scrollInPopup(false);
                     $linkElm.focus();
               });
 
@@ -327,9 +302,6 @@
 
                   return true;
               });
-
-              popupCSS = this.getDimensions($popup);
-              $popup.css(popupCSS);
           },
           /**
             @name GOVUK.tariff.tablePopup.open
@@ -337,12 +309,20 @@
             @description opens the popup
             @param {Element} $target Target of the click event
           */
+          scrollInPopup : function (scrollPopup) {
+            if (scrollPopup == true) {
+              $('body, html').css('overflow','hidden');
+            } else {
+              $('body, html').css('overflow','');
+            }
+          },
           open : function ($target) {
               var title = this.html[0] + 'Conditions' + this.html[1];
 
               BetaPopup.maskOpacity = 0.2;
               BetaPopup.popup(title, 'tariff-info');
               this.adapt($target);
+              this.scrollInPopup(true);
           },
           /**
             @name GOVUK.tariff.tablePopup.initialize
@@ -355,6 +335,8 @@
                   hash = window.location.hash,
                   $linkElms = $('table td a.reference', context),
                   tabId;
+
+              $('#import-measure-references, #export-measure-references').hide();
 
               $linkElms.each(function (idx, linkElm) {
                   var $linkElm = $(linkElm);

@@ -1,7 +1,10 @@
 <div class='additional-codes' id='<%= additional_code.id %>' data-popup='<%= additional_code.id %>'>
   <article>
-    <table>
-      <caption>Additional code</caption>
+    <table class="small-table">
+      <caption>
+        <h2 class="heading-medium">Additional code</h2>
+        <p>Measure: <%= additional_code.casted_by.measure_type.description %></p>
+      </caption>
       <thead>
         <tr>
           <th>Code</th>
@@ -15,5 +18,6 @@
         </tr>
       </tbody>
     </table>
+    <p><a href="#" class="help-link">What does this mean?</a></p>
   </article>
 </div>

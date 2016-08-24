@@ -12,6 +12,7 @@
 
 // Trade Tariff components
 @import "variables";
+@import "functions";
 @import "colors";
 @import "report-a-problem";
 @import "header";
@@ -23,6 +24,8 @@
 @import "measures";
 @import "a-z-index";
 @import "country-picker";
+@import "commodity-tree";
+@import "popup";
 
 // Utility classes
 strong {

@@ -1,2 +1,8 @@
+/* global variables */
 $desktop-min-width: 641px;
 $mobile-max-width: $desktop-min-width - 1;
+
+$token-width: 27;
+$token-padding: 5;
+$token-space: $token-width + $token-padding; /* Uses above values */
+$top-level-padding: 10;
