@@ -29,7 +29,7 @@
       font-size: 0.85714em;
   }
 
-  .commodity-tree-note em.code {
+  .commodity-tree-note em.commcode {
       float: right;
       width: 8em;
       margin-right: -8.9em;
@@ -174,7 +174,7 @@
 
           span {
             text-align:left;
-            padding:0 em(5, 12) 0 em(7, 14);
+            padding:0 0.2em;
           }
 
           .heading-code {
@@ -208,6 +208,76 @@
       @include ie-lte(7) {
         margin-left: -16px;
       }
+    }
+  }
+}
+
+.js-enabled {
+  li.has_children {
+
+  }
+
+  li.open {
+    background-position: 0 -100px;
+  }
+
+  li.has_children .description {
+    color: #2E3191;
+    padding-left: px($expand-arrow-space);
+    margin-left: -1 * px($expand-arrow-space);
+    background-image: image-url("expand-collapse-transparent.png");
+    background-position: 0 6px;
+    background-repeat: no-repeat;
+    cursor:pointer;
+    position:relative; /* to give z-index */
+  }
+
+  li.has_children .description:hover,
+  li.has_children .description-hover {
+    color: #2E8ACA;
+  }
+
+  li.has_children a .description {
+    margin-left: 0;
+  }
+
+  li.has_children .open {
+    background-position:0 -385px;
+  }
+
+  li.has_children a .description {
+    padding-left:0;
+    background:none;
+  }
+
+  .return-to-top {
+    display:none;
+  }
+
+  .conditions,
+  .footnotes,
+  .additional-codes {
+    display:none;
+    clear:both;
+  }
+
+  .date-filter-search {
+    display:none;
+  }
+
+  .tooltip-description {
+    display:none;
+    position:absolute;
+    width:200px;
+    padding:px($top-level-padding);
+    z-index:1;
+    font-size:em(14, 16);
+    background:#fff;
+    border:solid 1px #bbb;
+
+    p {
+      margin:0;
+      padding:$top-level-padding;
     }
   }
 }
