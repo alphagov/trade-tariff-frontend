@@ -67,6 +67,9 @@
   ul > li:last-child::after {
     height: 8px;
   }
+  .feed {
+    float: right;
+  }
 
   @media (max-width: $mobile-max-width) {
     // Adjust code alignment

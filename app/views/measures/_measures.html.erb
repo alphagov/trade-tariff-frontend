@@ -53,7 +53,7 @@
       </div>
     </div>
     <% if declarable.footnote.present? %>
-      <table class="tariff-zebra small-table">
+      <table class="small-table">
         <caption class="heading-medium">Commodity footnotes</caption>
         <thead>
           <tr>
@@ -87,7 +87,7 @@
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'import' } %>
 
     <% if @search.filtered_by_country? %>
-      <table class="tariff-zebra small-table country-filter">
+      <table class="small-table country-filter">
         <caption class="heading-small">Measures for <%= @search.country_name %> only</caption>
         <thead>
           <tr>

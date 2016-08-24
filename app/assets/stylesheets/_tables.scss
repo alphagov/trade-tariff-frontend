@@ -37,6 +37,7 @@ table.small-table {
   margin: 0 0 60px 0;
   th, td {
     font-size: 12px;
+    padding: 0.63158em 0.526315em 0.47368em 0.526315em;
     @media (min-width: $desktop-min-width) {
       font-size: 14px;
     }
@@ -53,6 +54,27 @@ table.small-table {
   }
   a[rel='external']::after {
     display: none;
+  }
+  &.third-country {
+    tr {
+      td:nth-child(1) { width: 30% }
+      td:nth-child(2) { width: 20% }
+      td:nth-child(3) { width: 9% }
+      td:nth-child(4) { width: 14% }
+      td:nth-child(5) { width: 9% }
+      td:nth-child(6) { width: 10% }
+      td:nth-child(7) { width: 8% }
+    }
+  }
+  &.specific-countries, &.country-filter {
+    td:nth-child(1) { width: 15% }
+    td:nth-child(2) { width: 20% }
+    td:nth-child(3) { width: 15% }
+    td:nth-child(4) { width: 9% }
+    td:nth-child(5) { width: 14% }
+    td:nth-child(6) { width: 9% }
+    td:nth-child(7) { width: 10% }
+    td:nth-child(8) { width: 8% }
   }
 }
 

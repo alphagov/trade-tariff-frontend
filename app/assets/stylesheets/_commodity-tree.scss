@@ -1,4 +1,6 @@
 .commodity-tree {
+  border: 1px solid $panel-colour;
+
   .commodity-tree-note:after {
       content: "";
       display: block;
@@ -7,7 +9,6 @@
 
   .commodity-tree-note {
       background: #fff;
-      margin: 0 0 0 -59px;
       padding: 5px 9.78571em 0 59px;
       line-height: 1.66667;
       color: #6f777b;
@@ -56,9 +57,7 @@
       font-size: 16px;
     }
     background: #fff;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: -1px * ($token-width + $token-space);
+    margin: 1em;
     padding-left: px($token-padding);
     position:relative; /* to give z-index */
 
@@ -147,6 +146,10 @@
       a {
         margin:0;
         text-decoration:none;
+
+        &:hover {
+          background-color: $highlight-colour;
+        }
 
         &:hover span {
           color: #2E8ACA;
