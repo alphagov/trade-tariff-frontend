@@ -90,6 +90,11 @@
 
                   $childList = setMembers($parentNode);
 
+                  // add class to last country group row
+                  if (idx == $parentNodes.length - 1) {
+                    $parentNode.closest('tr').addClass('last-country-group');
+                  }
+
                   // hide all child lists
                   if (!isCommodityTree) {
                       $childList.addClass('visuallyhidden');

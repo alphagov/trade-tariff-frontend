@@ -51,6 +51,9 @@ table.small-table {
     tr:hover, tr:focus {
       background-color: $panel-colour;
     }
+    tr.last-country-group {
+      border-bottom: 2px solid $panel-colour;
+    }
   }
   a[rel='external']::after {
     display: none;
