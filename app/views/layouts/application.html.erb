@@ -4,7 +4,7 @@
       <%= render 'shared/header' %>
       <%= yield %>
     <% if @tariff_last_updated %>
-      <div id="last-updated-at" class="related-module font-xsmall">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices">View latest amendments</a></div>
+      <div id="last-updated-at" class="related-module font-xsmall">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices" target="_blank">View latest amendments</a></div>
     <% end %>
     </main>
   </div>
