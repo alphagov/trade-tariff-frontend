@@ -36,6 +36,7 @@
                   effectAll,
                   setMembers,
                   controlHover,
+                  addDividerLine,
                   clickBranch;
 
               if (!$parentNodes.length) { return; }
@@ -80,6 +81,16 @@
                 }
               };
 
+              addDividerLine = function () {
+                $('table.specific-countries').each(function () {
+                  var $groupRows = $(this).find('.has_children').closest('tr');
+                  if ($groupRows.length > 1) {
+                    $groupRows.eq($groupRows.length - 1).addClass('last-country-group');
+                  }
+                });
+              };
+              addDividerLine();
+
               $parentNodes.each(function (idx) {
                   var $parentNode = $(this),
                       $childList;
@@ -89,11 +100,6 @@
                   }
 
                   $childList = setMembers($parentNode);
-
-                  // add class to last country group row
-                  if (idx == $parentNodes.length - 1) {
-                    $parentNode.closest('tr').addClass('last-country-group');
-                  }
 
                   // hide all child lists
                   if (!isCommodityTree) {
