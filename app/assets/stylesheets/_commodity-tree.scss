@@ -267,7 +267,7 @@ article.tariff {
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
     background-image: image-url("expand-collapse-transparent.png");
-    background-position: 0 6px;
+    background-position: 0 4px;
     background-repeat: no-repeat;
     cursor:pointer;
     position:relative; /* to give z-index */
@@ -283,7 +283,7 @@ article.tariff {
   }
 
   li.has_children .open {
-    background-position:0 -385px;
+    background-position:0 -386px;
   }
 
   li.has_children a .description {
