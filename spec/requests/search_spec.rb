@@ -40,7 +40,7 @@ describe 'Search page', type: :request do
                 click_button 'Search'
               end
 
-              expect(page).to have_content 'Headings containing horses'
+              expect(page).to have_content "Results containing the term 'horses'"
             end
           end
         end
@@ -72,7 +72,7 @@ describe 'Search page', type: :request do
       end
     }
 
-    let(:sections) { all("dt", text: "Section I") }
+    let(:sections) { include("td", text: "Section I") }
 
     it {
       expect(sections.count).to eq(1)

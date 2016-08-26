@@ -7,31 +7,6 @@
   font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-@mixin indented-item($level) {
-  $left-pos: -984px;
-
-  @if $level == 1 {
-    padding-left: px(($token-width - $token-padding) + $token-space);
-    background-position: $left-pos 0.5em;
-    font-weight: 700;
-  } @else {
-    margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
-    padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
-    background-position: $left-pos + (12px * ($level - 1)) 0.5em;
-  }
-}
-
-@mixin indented-list($levels) {
-  $indent-level: 1;
-
-  @while $indent-level < $levels {
-    &.level-#{$indent-level} {
-      @include indented-item($indent-level);
-    }
-    $indent-level: $indent-level + 1;
-  }
-}
-
 @mixin contain-float {
   zoom: 1;
 

@@ -69,7 +69,6 @@ describe 'Commodity page', type: :request do
 
           within("#import table.third-country") do
             expect(page).to have_content 'Animal Health Certificate'
-            expect(page).to_not have_content 'Veterinary control'
           end
         end
       end

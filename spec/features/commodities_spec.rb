@@ -50,7 +50,7 @@ describe "JS behaviour", js: true do
     }
 
     it {
-      expect(page).to have_content("Import control - CITES for ERGA OMNES:")
+      expect(page).to have_content("Import control - CITES for ERGA OMNES")
     }
   end
 end

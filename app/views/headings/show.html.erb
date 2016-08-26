@@ -12,6 +12,15 @@
   <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
 
   <article class="tariff">
+    <div class="tree-key">
+      <div class="chapter-code">
+        <div class="code-text"><%= @heading.chapter_short_code %></div>
+      </div>
+      <div class="heading-code">
+        <div class="code-text"><%= @heading.heading_display_short_code %></div>
+      </div>
+      <div class="key-text">Heading code</div>
+    </div>
     <div class="commodity-tree">
       <dl>
         <p class="commodity-tree-note"><span>The number following each commodity's </span><em>Description</em><span> is its </span><em class="commcode">Commodity code</em></p>

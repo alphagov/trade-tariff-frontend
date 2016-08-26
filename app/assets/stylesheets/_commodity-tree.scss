@@ -1,49 +1,87 @@
+@mixin indented-item($level) {
+  $left-pos: -984px;
+
+  @if $level == 1 {
+    padding-left: px(($token-width - $token-padding) + $token-space);
+    background-position: $left-pos + $token-width 0.5em;
+    font-weight: normal;
+  } @else {
+    margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
+    padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
+    background-position: $left-pos + ($token-width * $level) 0.5em;
+  }
+}
+
+@mixin indented-list($levels) {
+  $indent-level: 1;
+
+  @while $indent-level < $levels {
+    &.level-#{$indent-level} {
+      @include indented-item($indent-level);
+    }
+    $indent-level: $indent-level + 1;
+  }
+}
+
+article.tariff {
+  .tree-key {
+    float:right;
+    font-size: 14px;
+    @media (min-width: $desktop-min-width) {
+      font-size: 16px;
+    }
+    padding: 0.5em 1em;
+    .key-text {
+      position: relative;
+      display: inline-block;
+      line-height: 1.5625em;
+      vertical-align: top;
+      margin-left: 0.5em;
+      font-size: 14px;
+      @media (min-width: $desktop-min-width) {
+        top: 0.35em;
+      }
+    }
+  }
+}
+
 .commodity-tree {
   border: 1px solid $panel-colour;
 
-  .commodity-tree-note:after {
+  .commodity-tree-note {
+    left: 0;
+    right: 0;
+    margin: 15px;
+    color: $secondary-text-colour;
+    font-size: 14px;
+
+    &:after {
       content: "";
       display: block;
       clear: both;
-  }
-
-  .commodity-tree-note {
-      background: #fff;
-      padding: 5px 9.78571em 0 59px;
-      line-height: 1.66667;
-      color: #6f777b;
-      max-width: none;
-  }
-  .commodity-tree-note span {
+    }
+    span {
       position: absolute;
       left: -9999em;
-  }
-  .commodity-tree-note span, .commodity-tree-note em {
-      font-size: 0.85714em;
-  }
-
-  .commodity-tree-note em {
+    }
+    em {
       font-style: normal;
       float: left;
-  }
-  .commodity-tree-note span, .commodity-tree-note em {
-      font-size: 0.85714em;
-  }
-
-  .commodity-tree-note em.commcode {
-      float: right;
-      width: 8em;
-      margin-right: -8.9em;
+      &.commcode {
+        float: right;
+      }
+    }
   }
 
   .tree-controls {
     background-color: $panel-colour;
     padding: 0.5em 1em;
+    vertical-align: top;
 
     a {
-      font-size: 14px;
       margin-right: 1em;
       display: inline-block;
+      font-size: 14px;
       @media (min-width: $desktop-min-width) {
         font-size: 16px;
       }
@@ -56,7 +94,6 @@
     @media(min-width: $desktop-min-width) {
       font-size: 16px;
     }
-    background: #fff;
     margin: 1em;
     padding-left: px($token-padding);
     position:relative; /* to give z-index */
@@ -146,6 +183,7 @@
       a {
         margin:0;
         text-decoration:none;
+        font-weight: bold;
 
         &:hover {
           background-color: $highlight-colour;
@@ -225,7 +263,7 @@
   }
 
   li.has_children .description {
-    color: #2E3191;
+    color: $link-colour;
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
     background-image: image-url("expand-collapse-transparent.png");
@@ -237,7 +275,7 @@
 
   li.has_children .description:hover,
   li.has_children .description-hover {
-    color: #2E8ACA;
+    color: $link-hover-colour;
   }
 
   li.has_children a .description {
