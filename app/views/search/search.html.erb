@@ -61,7 +61,7 @@
     <% end %>
 
     <% if @results.goods_nomenclature_match.resulting_headings.any? %>
-      <h3 class="heading-small">Headings text-matching <%= @search %>:</h3>
+      <h3 class="heading-small">Results containing the term '<%= @search %>'</h3>
       <table class="results-subset">
         <% @results.goods_nomenclature_match.resulting_headings.group_by(&:chapter_code).each do |chapter, headings| %>
           <tr class="chapter">
