@@ -2,4 +2,13 @@
   h2, li {
     margin-bottom: 1em;
   }
+  ul {
+    margin: 1em 0;
+    padding: 0 0 0 2.5em;
+  }
+}
+
+// Match styles to GOV.UK toolkit
+#subheading-notes {
+  @extend .heading-small;
 }
