@@ -40,10 +40,6 @@ class Measure
     @effective_end_date = Date.parse(date) if date.present?
   end
 
-  def condition_list
-    measure_conditions.map(&:document_code).join(",").html_safe
-  end
-
   def excluded_country_list
     excluded_countries.map(&:description).join(", ").html_safe
   end
@@ -56,25 +52,17 @@ class Measure
     !third_country
   end
 
+  def key
+    "#{national? ? 0: 1 }#{vat? ? 0 : 1}#{geographical_area.children_geographical_areas.any? ? 0 : 1 }#{geographical_area.description}#{additional_code_sort}"
+  end
+
   # _999 is the master additional code and should come first
   def additional_code_sort
     if additional_code && additional_code.to_s.include?("999")
       "A000"
     else
-      additional_code.to_s
+      additional_code.code.to_s
     end
-  end
-
-  def sort_key
-    "#{third_country_measure}#{origin}#{!vat}#{geographical_area_description}#{measure_type.description}#{additional_code_sort}"
-  end
-
-  def specific_country_sort_key
-    "#{geographical_area_group_key}#{geographical_area_description}#{additional_code_sort}#{measure_type.description}"
-  end
-
-  def third_country_measure
-    measure_type.description != "Third country duty"
   end
 
   def third_country_duty
@@ -90,12 +78,15 @@ class Measure
   end
 
   def relevant_for_country?(country_code)
-    (geographical_area.id == country_code ||
-    geographical_area.children_geographical_areas.map(&:id).include?(country_code)) &&
-    !excludes_country?(country_code)
+    return true if country_code.blank?
+    ( ( geographical_area.id == country_code ||
+        geographical_area.children_geographical_areas.map(&:id).include?(country_code)
+      ) && !excludes_geographical_area?(country_code)
+    ) ||
+    national?
   end
 
-  def excludes_country?(country_code)
+  def excludes_geographical_area?(country_code)
     excluded_countries.map(&:id).include?(country_code)
   end
 

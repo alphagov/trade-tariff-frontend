@@ -11,11 +11,6 @@ class DeclarablePresenter < TradeTariffFrontend::Presenter
     declarable.formatted_description
   end
 
-  def third_country_duty_measures
-    import_measures.for_all_countries
-                   .sort_by(&:sort_key)
-  end
-
   def meursing_tool_link_for(date)
     MEURSING_TOOL_LINK % { date: date, commodity_code: declarable.code }
   end

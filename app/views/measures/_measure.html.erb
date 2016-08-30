@@ -1,7 +1,6 @@
 <tr id='measure-<%= measure.id %>' class="<%= measure.geo_class %>" tabIndex="-1">
-  <% if measure.for_specific_countries %>
-    <td>
-      <% if measure.has_children_geographical_areas? %>
+  <td>
+    <% if measure.has_children_geographical_areas? %>
       <dl>
         <dt class="has_children">
           <%= measure.geographical_area.description %>
@@ -16,10 +15,9 @@
     <% else %>
       <%= measure.geographical_area.long_description %>
     <% end %>
-    </td>
-  <% end %>
+  </td>
 
-  <td>
+  <td class="<%= measure.measure_type.id %>">
     <%= measure.measure_type.description %>
     <% if measure.order_number.present? %>
     <br />

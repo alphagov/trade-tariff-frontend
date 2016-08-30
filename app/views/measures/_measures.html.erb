@@ -62,7 +62,7 @@
           </tr>
         </thead>
         <tbody>
-            <%= render declarable.footnote %>
+          <%= render declarable.footnote %>
         </tbody>
       </table>
     <% end %>
@@ -86,9 +86,10 @@
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'import' } %>
 
-    <% if @search.filtered_by_country? %>
-      <table class="small-table country-filter">
+    <table class="small-table country-filter">
+      <% if @search.filtered_by_country? %>
         <caption class="heading-small">Measures for <%= @search.country_name %> only</caption>
+      <% end %>
         <thead>
           <tr>
             <th>Country</th>
@@ -103,75 +104,17 @@
         </thead>
 
         <tbody>
-        <% if declarable.import_measures.except(:third_country).for_country(@search.country).any? %>
-          <%= render partial: 'measures/measure', collection: declarable.import_measures.except(:third_country).for_country(@search.country).sort_by(&:specific_country_sort_key) %>
+        <% if declarable.import_measures.for_country(@search.country).any? %>
+          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country).sort_by(&:key) %>
         <% else %>
           <tr>
-            <td colspan="9">There are no EU preference measures for this commodity on this date</td>
+            <td colspan="9">There are no country measures for this commodity on this date.</td>
           </tr>
         <% end %>
         </tbody>
       </table>
-    <% end %>
 
-    <table class="small-table third-country">
-      <caption>
-        <h3 class="heading-small">Third country measures</h3>
-        <p>Measures for all countries outside of the EU, subject to any exclusions shown.</p>
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">Measure</th>
-          <th scope="col">Value</th>
-          <th scope="col">Conditions that apply</th>
-          <th scope="col">Exclusions</th>
-          <th scope="col" class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-          <th scope="col">Start date<br>(End date, if any)</th>
-          <th scope="col">Footnote</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if @search.filtered_by_country? %>
-          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
-        <% else %>
-          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
-        <% end %>
-      </tbody>
-    </table>
 
-    <% if !@search.filtered_by_country? %>
-      <table class="small-table specific-countries">
-        <caption class="heading-small">
-            <h3 class="heading-small">Measures for specific countries and country groups</h3>
-            <p>Conditions and regulations for particular countries, territories and groups.</p>
-        </caption>
-        <thead>
-          <tr>
-            <th>Country</th>
-            <th>Measure</th>
-            <th>Value</th>
-            <th>Conditions that apply</th>
-            <th>Exclusions</th>
-            <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-            <th>Start date<br>(End date, if any)</th>
-            <th>Footnotes</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% if declarable.import_measures.for_specific_countries.any? %>
-          <% if @search.filtered_by_country? %>
-            <%= render partial: 'measures/measure', collection: declarable.import_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
-          <% else %>
-            <%= render partial: 'measures/measure', collection: declarable.import_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
-          <% end %>
-        <% else %>
-          <tr>
-            <td colspan="9">There are no EU preference measures for this commodity on this date</td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% end %>
 
     <nav class="part-pagination return-to-top">
       <a href="#wrapper">Return to top &uarr;</a>
@@ -208,7 +151,7 @@
 
         <tbody>
         <% if declarable.export_measures.except(:third_country).for_country(@search.country).any? %>
-          <%= render partial: 'measures/measure', collection: declarable.export_measures.except(:third_country).for_country(@search.country).sort_by(&:specific_country_sort_key) %>
+          <%= render partial: 'measures/measure', collection: declarable.export_measures.except(:third_country).for_country(@search.country) %>
         <% else %>
           <tr>
             <td colspan="9">There are no EU preference measures for this commodity on this date</td>
@@ -237,9 +180,9 @@
       <tbody>
       <% if declarable.export_measures.for_all_countries.any? %>
         <% if @search.filtered_by_country? %>
-          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_all_countries.reject{|m| m.excludes_country?(@search.country)}.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_all_countries, locals: { declarable: declarable } %>
         <% else %>
-          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_all_countries.sort_by(&:sort_key), locals: { declarable: declarable } %>
+          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_all_countries, locals: { declarable: declarable } %>
         <% end %>
       <% else %>
         <tr>
@@ -275,9 +218,9 @@
         <tbody>
         <% if declarable.export_measures.for_specific_countries.any? %>
           <% if @search.filtered_by_country? %>
-            <%= render partial: 'measures/measure', collection: declarable.export_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+            <%= render partial: 'measures/measure', collection: declarable.export_measures.for_specific_countries.reject{|m| m.relevant_for_country?(@search.country) }, locals: { declarable: declarable } %>
           <% else %>
-            <%= render partial: 'measures/measure', collection: declarable.export_measures.for_specific_countries.sort_by(&:specific_country_sort_key), locals: { declarable: declarable } %>
+            <%= render partial: 'measures/measure', collection: declarable.export_measures.for_specific_countries, locals: { declarable: declarable } %>
           <% end %>
         <% else %>
           <tr>
