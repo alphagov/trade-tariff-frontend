@@ -3,12 +3,13 @@
 
   @if $level == 1 {
     padding-left: px(($token-width - $token-padding) + $token-space);
-    background-position: $left-pos + $token-width 0.5em;
-    font-weight: normal;
+    background-position: $left-pos + $token-width 1em;
+    font-weight: bold;
   } @else {
     margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
     padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
-    background-position: $left-pos + ($token-width * $level) 0.5em;
+    background-position: $left-pos + ($token-width * $level) 1em;
+    font-weight: normal;
   }
 }
 
@@ -16,7 +17,7 @@
   $indent-level: 1;
 
   @while $indent-level < $levels {
-    &.level-#{$indent-level} {
+    &.level-#{$indent-level}, &.level-#{$indent-level} a {
       @include indented-item($indent-level);
     }
     $indent-level: $indent-level + 1;
@@ -101,7 +102,6 @@ article.tariff {
     li {
       display: block;
       margin: 0;
-      padding: 0;
       position:relative;
       background-image: image-url("commodity-indents.png");
       background-repeat: no-repeat;
@@ -114,9 +114,12 @@ article.tariff {
 
       @include indented-list(13);
 
-      a,
-      ul {
+      ul, a {
         border-bottom: solid 1px #eee;
+      }
+
+      &.has_children, a {
+        padding-top: 0.5em;
       }
 
       &:last-child > a,
@@ -183,7 +186,7 @@ article.tariff {
       a {
         margin:0;
         text-decoration:none;
-        font-weight: bold;
+        font-weight: normal;
 
         &:hover {
           background-color: $highlight-colour;
