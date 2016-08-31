@@ -1,4 +1,4 @@
-<tr id='measure-<%= measure.id %>' class="<%= measure.geo_class %>" tabIndex="-1">
+<tr id="measure-<%= measure.id %>" class="<%= measure.geo_class %>" tabIndex="-1">
   <td>
     <% if measure.has_children_geographical_areas? %>
       <dl>
@@ -8,7 +8,7 @@
       <dd>
         <ul>
           <% measure.children_geographical_areas.each do |children_geographical_area| %>
-            <li><%= children_geographical_area.id %> <%= children_geographical_area.description %></li>
+            <li><%= children_geographical_area.description %> (<%= children_geographical_area.id %>)</li>
           <% end %>
         </ul>
       </dd>

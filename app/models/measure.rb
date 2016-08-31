@@ -17,7 +17,7 @@ class Measure
   has_many :measure_conditions
   has_many :footnotes
 
-  delegate :description, :group_key, to: :geographical_area, prefix: true
+  delegate :description, to: :geographical_area, prefix: true
   delegate :code, to: :additional_code, prefix: true, allow_nil: true
 
   def import?
@@ -87,7 +87,7 @@ class Measure
   end
 
   def excludes_geographical_area?(country_code)
-    excluded_countries.map(&:id).include?(country_code)
+    excluded_countries.map(&:geographical_area_id).include?(country_code)
   end
 
   def additional_code
