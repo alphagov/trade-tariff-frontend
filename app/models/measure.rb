@@ -17,7 +17,6 @@ class Measure
   has_many :measure_conditions
   has_many :footnotes
 
-  delegate :description, to: :geographical_area, prefix: true
   delegate :code, to: :additional_code, prefix: true, allow_nil: true
 
   def import?
@@ -53,7 +52,7 @@ class Measure
   end
 
   def key
-    "#{national? ? 0: 1 }#{vat? ? 0 : 1}#{geographical_area.children_geographical_areas.any? ? 0 : 1 }#{geographical_area.description}#{additional_code_sort}"
+    "#{national? ? 0: 1 }#{vat? ? 0 : 1}#{ geographical_area.children_geographical_areas.any? ? 0 : 1 }#{ geographical_area.description }#{ additional_code_sort }"
   end
 
   # _999 is the master additional code and should come first
