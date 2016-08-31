@@ -4,11 +4,14 @@
   }
   ul {
     margin: 1em 0;
-    padding: 0 0 0 2.5em;
+    padding: 0 0 0 1.25em;
+    @media (min-width: $desktop-min-width) {
+      padding: 0 0 0 2.5em;
+    }
   }
 }
 
 // Match styles to GOV.UK toolkit
-#subheading-notes {
+article.notes h2 {
   @extend .heading-small;
 }

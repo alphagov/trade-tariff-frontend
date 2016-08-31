@@ -25,7 +25,7 @@
           this.addDividerLines();
         },
         addDividerLines : function () {
-          $('table.specific-countries').each(function () {
+          $('table.measures').each(function () {
             var $groupRows = $(this).find('.has_children').closest('tr');
             if ($groupRows.length > 1) {
               $groupRows.eq($groupRows.length - 1).addClass('last-country-group');
