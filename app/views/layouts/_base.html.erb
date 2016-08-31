@@ -31,7 +31,7 @@
           <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
           <ul id="proposition-links">
             <li><a href="<%= sections_path %>" class="<%= 'active' if params[:controller] == 'sections' || params[:controller] == 'chapters' ||  params[:controller] == 'headings' ||  params[:controller] == 'commodities' %>">Search the Tariff</li>
-            <li><a href="#">How to use the Tariff</a></li>
+            <!-- <li><a href="#">How to use the Tariff</a></li> -->
             <li><a href="<%= a_z_index_path(letter: 'a') %>" class="<%= 'active' if params[:controller] == 'search_references' %>">A-Z Index</a></li>
           </ul>
         </nav>
@@ -52,19 +52,19 @@
     <div class="footer-category">
       <h2>Help</h2>
       <ul>
-        <li><a href="#">How to use the Tariff</a></li>
-        <li><a href="#">Classification guides</a></li>
-        <li><a href="#">How to classify imports and exports using the UK Trade Tariff</a></li>
-        <li><a href="#">Imports and exports</a></li>
+        <!-- <li><a href="#">How to use the Tariff</a></li> -->
+        <li><a href="https://www.gov.uk/guidance/classification-of-goods">How to classify imports and exports using the UK Trade Tariff</a></li>
+        <li><a href="https://www.gov.uk/government/collections/classification-of-goods">Classification guides</a></li>
+        <li><a href="https://www.gov.uk/topic/business-tax/import-export">Import and export</a></li>
       </ul>
     </div>
 
     <div class="footer-category">
       <h2>Related information</h2>
       <ul>
-        <li><a href="#">UK Trade Tariff: Volume 1 &ndash; background information for importers and exporters</a></li>
-        <li><a href="#">UK Trade Tariff: Volume 3 &ndash; procedures, codes and declaration entry details</a></li>
-        <li><a href="#">Integrated tariff of the European Community (TARIC) database</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-1">UK Trade Tariff: Volume 1 &ndash; background information for importers and exporters</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-3">UK Trade Tariff: Volume 3 &ndash; procedures, codes and declaration entry details</a></li>
+        <li><a rel="external" target="_blank" href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&Screen=0&Expand=true">Integrated tariff of the European Community (TARIC) database</a></li>
       </ul>
     </div>
   </nav>

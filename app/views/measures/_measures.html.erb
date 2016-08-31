@@ -32,7 +32,7 @@
           <h2 class="heading-medium">Import</h2>
           <p>The commodity code for importing is <strong><%= declarable.code %></strong>.</p>
           <% if declarable.basic_duty_rate.present? %>
-            <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures. <a href="#">What does this mean?</a></p>
+            <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures. <!-- <a href="#">What does this mean?</a></p> -->
           <% else %>
             <p>Importing from outside the EU is subject to <strong>variable</strong> third country duty.</p>
           <% end %>
