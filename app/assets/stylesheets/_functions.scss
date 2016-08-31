@@ -2,14 +2,8 @@
   @return $value * 1px;
 }
 
-@mixin tariff-identifier-tabular {
-  color:#000;
-  font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
-}
-
 @mixin contain-float {
   zoom: 1;
-
   &:after {
     content: ".";
     display: block;

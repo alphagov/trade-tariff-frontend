@@ -22,12 +22,10 @@
       <div class="key-text">Heading code</div>
     </div>
     <div class="commodity-tree">
-      <dl>
-        <p class="commodity-tree-note"><span>The number following each commodity's </span><em class="description">Description</em><span> is its </span><em class="commcode">Commodity code</em></p>
-        <ul class="commodities">
-          <%= render @commodities.root_commodities %>
-        </ul>
-      </dl>
+      <p class="commodity-tree-note"><span>The number following each commodity's </span><em class="description">Description</em><span> is its </span><em class="commcode">Commodity code</em></p>
+      <ul class="commodities">
+        <%= render @commodities.root_commodities %>
+      </ul>
     </div>
   </article>
 <% end %>

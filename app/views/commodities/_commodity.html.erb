@@ -6,12 +6,18 @@
 <% else %>
   <li class="<%= commodity_level(commodity)%><%= leaf_position(commodity) %>">
     <%= link_to commodity_path(commodity, request.query_parameters.symbolize_keys), title: "View complete information for this commodity" do %>
-      <span class="description open" id="commodity-<%= commodity.short_code %>"><%= commodity.to_s.html_safe %></span>
-      <span class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
-        <span class="chapter-code"><%= commodity.chapter_code %></span>
-        <span class="heading-code"><%= commodity.heading_code %></span>
-        <%= commodity.display_short_code %>
-      </span>
+      <div class="description open" id="commodity-<%= commodity.short_code %>"><%= commodity.to_s.html_safe %></div>
+      <div class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
+        <div class="chapter-code">
+          <div class="code-text"><%= commodity.chapter_code %></div>
+        </div>
+        <div class="heading-code">
+          <div class="code-text"><%= commodity.heading_code %></div>
+        </div>
+        <div class="commodity-code">
+          <div class="code-text"><%= commodity.display_short_code %></div>
+        </div>
+      </div>
     <% end %>
   </li>
 <% end %>

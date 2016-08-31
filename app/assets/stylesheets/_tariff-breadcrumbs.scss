@@ -16,17 +16,22 @@
 }
 .chapter-code {
   background-color: $chapter-code-bg;
-  width: 25px;
+  width: $chapter-code-width;
+  height: $chapter-code-width;
 }
 .heading-code {
   background-color: $heading-code-bg;
-  width: 25px;
+  width: $heading-code-width;
+  height: $chapter-code-width;
 }
 .commodity-code {
   background-color: $commodity-code-bg;
-  width: 75px;
+  width: $commodity-code-width;
+  @media (min-width: $desktop-min-width) {
+    width: $commodity-code-width-desktop;
+  }
+  height: $chapter-code-width;
 }
-
 .tariff-breadcrumbs {
   position: relative;
   padding: 1em;

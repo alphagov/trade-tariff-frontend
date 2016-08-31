@@ -2,14 +2,21 @@
   $left-pos: -984px;
 
   @if $level == 1 {
-    padding-left: px(($token-width - $token-padding) + $token-space);
-    background-position: $left-pos + $token-width 1em;
+    padding-left: px(($token-width - $token-padding));
     font-weight: bold;
+    @media (min-width: $desktop-min-width) {
+      padding-left: px(($token-width - $token-padding) + $token-space);
+      background-position: $left-pos + $token-width 1em;
+    }
   } @else {
-    margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
-    padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
-    background-position: $left-pos + ($token-width * $level) 1em;
+    margin-left: px(($token-width * 2) + (($token-width / 3) * ($level - 2))) * -1;
+    padding-left: px(($token-width * 2) + (($token-width / 3) * ($level - 1)));
     font-weight: normal;
+    @media (min-width: $desktop-min-width) {
+      margin-left: px(($token-width * 2) + ($token-width * ($level - 2))) * -1;
+      padding-left: px(($token-width * 2) + ($token-width * ($level - 1)));
+      background-position: $left-pos + ($token-width * $level) 1em;
+    }
   }
 }
 
@@ -68,10 +75,12 @@ article.tariff {
     em {
       font-style: normal;
       float: left;
-      &.description::before {
-        content: 'Level';
-        display: inline-block;
-        width: px(($token-width - $token-padding) + $token-space);
+      @media (min-width: $desktop-min-width) {
+        &.description::before {
+          content: 'Level';
+          display: inline-block;
+          width: px(($token-width - $token-padding) + $token-space);
+        }
       }
       &.commcode {
         float: right;
@@ -109,9 +118,10 @@ article.tariff {
       display: block;
       margin: 0;
       position:relative;
-      background-image: image-url("commodity-indents.png");
-      background-repeat: no-repeat;
-      background-color: transparent;
+      @media (min-width: $desktop-min-width) {
+        background-image: image-url("commodity-indents.png");
+        background-repeat: no-repeat;
+      }
 
       &:last-child {
         border-bottom: 0;
@@ -131,51 +141,45 @@ article.tariff {
       }
 
       a {
-        margin:0;
+        margin: 0;
         text-decoration:none;
         font-weight: normal;
+        position: relative;
 
         &:hover {
           background-color: $highlight-colour;
           span {
-            color: #2E8ACA;
+            color: $link-hover-colour;
           }
         }
       }
 
-      span {
-        float: left;
-        display: inline;
-
-        &.description {
-          // padding-right:8.6em;
-          // margin-right:px($token-space);
+      .identifier {
+        font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        display: inline-block;
+        width: $identifier-width;
+        border: 0;
+        padding: 0;
+        @media (min-width: $desktop-min-width) {
+          width: $identifier-width-desktop;
+          position: absolute;
+          right: 0;
+          bottom: 0;
         }
-
-        &.identifier {
-          @include tariff-identifier-tabular;
-          font-weight:normal;
-          border: 0;
-          padding: 0 0.75em 0 0;
-          float:right;
-          background:#B5DEDB;
-          width:8.5em;
-          text-align:right;
-
-          span {
-            text-align:left;
-            padding:0 0.2em;
-          }
+        div {
+          text-align: center;
+          float: left;
         }
+      }
 
-        &.rate {
-          padding-right:em($token-padding, 14);
-          width:em(60, 14);
-          text-align:right;
-          position:absolute;
-          right:0;
-          bottom:0;
-        }
+      .rate {
+        padding-right:em($token-padding, 14);
+        width:em(60, 14);
+        text-align:right;
+        position:absolute;
+        right:0;
+        bottom:0;
       }
 
       article & a, .js-enabled article & a {
@@ -204,6 +208,9 @@ article.tariff {
       color: $link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
+      @media (min-width: $desktop-min-width) {
+        margin-right: $identifier-width-desktop + 15px;
+      }
       background-image: image-url("expand-collapse-transparent.png");
       background-position: 0 4px;
       background-repeat: no-repeat;
