@@ -58,19 +58,8 @@ table.small-table {
   a[rel='external']::after {
     display: none;
   }
-  &.third-country {
-    tr {
-      td:nth-child(1) { width: 30% }
-      td:nth-child(2) { width: 20% }
-      td:nth-child(3) { width: 9% }
-      td:nth-child(4) { width: 14% }
-      td:nth-child(5) { width: 9% }
-      td:nth-child(6) { width: 10% }
-      td:nth-child(7) { width: 8% }
-    }
-  }
-  &.specific-countries, &.country-filter {
-    td:nth-child(1) { width: 15% }
+  &.measures {
+    td:nth-child(1) { width: 15%; }
     td:nth-child(2) { width: 20% }
     td:nth-child(3) { width: 15% }
     td:nth-child(4) { width: 9% }
