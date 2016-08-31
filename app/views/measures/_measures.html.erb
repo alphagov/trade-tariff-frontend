@@ -184,12 +184,10 @@
 
 
   <div id="import-measure-references">
-    <%= render partial: 'measures/measure_references', collection: declarable.import_measures.for_all_countries, as: 'measure' %>
-    <%= render partial: 'measures/measure_references', collection: declarable.import_measures.for_specific_countries, as: 'measure' %>
+    <%= render partial: 'measures/measure_references', collection: declarable.import_measures.for_country(@search.country), as: 'measure' %>
   </div>
   <div id="export-measure-references">
-    <%= render partial: 'measures/measure_references', collection: declarable.export_measures.for_all_countries, as: 'measure' %>
-    <%= render partial: 'measures/measure_references', collection: declarable.export_measures.for_specific_countries, as: 'measure' %>
+    <%= render partial: 'measures/measure_references', collection: declarable.export_measures.for_country(@search.country), as: 'measure' %>
   </div>
 
 </div><!-- end .tab-content -->

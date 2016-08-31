@@ -17,7 +17,30 @@ class Measure
   has_many :measure_conditions
   has_many :footnotes
 
-  delegate :code, to: :additional_code, prefix: true, allow_nil: true
+  def relevant_for_country?(country_code)
+    return true if country_code.blank?
+    ( ( geographical_area.id == country_code ||
+        geographical_area.children_geographical_areas.map(&:id).include?(country_code)
+      ) && !excludes_geographical_area?(country_code)
+    ) ||
+    national?
+  end
+
+  def excludes_geographical_area?(country_code)
+    excluded_countries.map(&:geographical_area_id).include?(country_code)
+  end
+
+  def excluded_country_list
+    excluded_countries.map(&:description).join(", ").html_safe
+  end
+
+  def national?
+    origin == 'uk'
+  end
+
+  def vat?
+    vat
+  end
 
   def import?
     import
@@ -39,20 +62,8 @@ class Measure
     @effective_end_date = Date.parse(date) if date.present?
   end
 
-  def excluded_country_list
-    excluded_countries.map(&:description).join(", ").html_safe
-  end
-
-  def third_country
-    geographical_area.id == '1011'
-  end
-
-  def for_specific_countries
-    !third_country
-  end
-
-  def key
-    "#{national? ? 0: 1 }#{vat? ? 0 : 1}#{ geographical_area.children_geographical_areas.any? ? 0 : 1 }#{ geographical_area.description }#{ additional_code_sort }"
+  def additional_code
+    @additional_code.presence || NullObject.new(code: '')
   end
 
   # _999 is the master additional code and should come first
@@ -64,32 +75,7 @@ class Measure
     end
   end
 
-  def third_country_duty
-    measure_type.id == "103"
-  end
-
-  def national?
-    origin == 'uk'
-  end
-
-  def vat?
-    vat
-  end
-
-  def relevant_for_country?(country_code)
-    return true if country_code.blank?
-    ( ( geographical_area.id == country_code ||
-        geographical_area.children_geographical_areas.map(&:id).include?(country_code)
-      ) && !excludes_geographical_area?(country_code)
-    ) ||
-    national?
-  end
-
-  def excludes_geographical_area?(country_code)
-    excluded_countries.map(&:geographical_area_id).include?(country_code)
-  end
-
-  def additional_code
-    @additional_code.presence || NullObject.new(code: '')
+  def key
+    "#{national? ? 0: 1 }#{vat? ? 0 : 1}#{ geographical_area.children_geographical_areas.any? ? 0 : 1 }#{ geographical_area.description }#{ additional_code_sort }"
   end
 end
