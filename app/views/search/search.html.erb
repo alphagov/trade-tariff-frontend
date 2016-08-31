@@ -7,14 +7,14 @@
         <% @results.reference_match.commodities.group_by(&:chapter_code).each do |chapter_code, chapter_commodities| %>
           <td class="chapter-code" title="Chapter code"><%= chapter_code %></td>
           <td>
-            <%= link_to chapter_commodities.first.chapter.to_s.html_safe, chapter_path(chapter_commodities.first.chapter) %>
+            <%= link_to chapter_commodities.first.chapter.to_s.html_safe, chapter_path(chapter_commodities.first.chapter, { t: @search.t })  %>
 
             <table class="headings">
               <% chapter_commodities.group_by(&:heading_code).each do |heading_code, heading_commodities| %>
                 <td class="heading-code" title="Heading code"><%= heading_code %></td>
 
                 <td>
-                  <%= link_to heading_commodities.first.heading, heading_path(heading_commodities.first.heading) %>
+                  <%= link_to heading_commodities.first.heading, heading_path(heading_commodities.first.heading, { t: @search.t }) %>
 
                   <table class="commodities">
                     <%= render partial: 'search/commodity', collection: heading_commodities.uniq.sort_by(&:code) %>
@@ -46,7 +46,7 @@
               </div>
             </td>
             <td>&nbsp;</td>
-            <td><%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %></td>
+            <td><%= link_to headings.first.chapter, chapter_path(headings.first.chapter, { t: @search.t }) %></td>
           </tr>
           <%= render partial: 'search/heading', collection: headings.uniq.sort_by(&:short_code) %>
         <% end %>
@@ -71,7 +71,7 @@
               </div>
             </td>
             <td>&nbsp;</td>
-            <td><%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %></td>
+            <td><%= link_to headings.first.chapter, chapter_path(headings.first.chapter, { t: @search.t }) %></td>
           </tr>
           <%= render partial: 'search/heading', collection: headings, locals: { search_query: @search.t } %>
         <% end %>

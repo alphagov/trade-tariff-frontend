@@ -6,7 +6,7 @@
     </div>
   </td>
   <td>
-    <%= link_to heading.to_s.html_safe, heading_path(heading) %>
+    <%= link_to heading.to_s.html_safe, heading_path(heading, { t: @search.t }) %>
     <% heading.commodities.uniq(&:description).each do |commodity| %>
       <div><%= truncate(commodity.description_plain, length: 100) %></div>
     <% end %>
