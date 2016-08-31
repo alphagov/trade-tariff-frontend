@@ -27,6 +27,10 @@
 @import "commodity-tree";
 @import "popup";
 
+.phase-banner  {
+  @include phase-banner(beta);
+}
+
 // Utility classes
 strong {
   font-weight: bold;
