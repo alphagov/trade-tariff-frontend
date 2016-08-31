@@ -68,6 +68,11 @@ article.tariff {
     em {
       font-style: normal;
       float: left;
+      &.description::before {
+        content: 'Level';
+        display: inline-block;
+        width: px(($token-width - $token-padding) + $token-space);
+      }
       &.commcode {
         float: right;
       }
@@ -76,7 +81,7 @@ article.tariff {
 
   .tree-controls {
     background-color: $panel-colour;
-    padding: 0.5em 1em;
+    padding: 0.5em 16px;
     vertical-align: top;
 
     a {
@@ -91,35 +96,25 @@ article.tariff {
 
   ul.commodities {
     @include contain-float;
+    margin: 1em;
+    position:relative;
     font-size: 14px;
     @media(min-width: $desktop-min-width) {
       font-size: 16px;
     }
-    margin: 1em;
-    padding-left: px($token-padding);
-    position:relative; /* to give z-index */
 
     li {
+      @include contain-float;
+      @include indented-list(13);
       display: block;
       margin: 0;
       position:relative;
       background-image: image-url("commodity-indents.png");
       background-repeat: no-repeat;
       background-color: transparent;
-      @include contain-float;
 
       &:last-child {
         border-bottom: 0;
-      }
-
-      @include indented-list(13);
-
-      ul, a {
-        border-bottom: solid 1px #eee;
-      }
-
-      &.has_children, a {
-        padding-top: 0.5em;
       }
 
       &:last-child > a,
@@ -127,60 +122,12 @@ article.tariff {
         border-bottom: none;
       }
 
-      @include ie-lte(8) {
-        &.last-child > a,
-        &.last-child > ul {
-          border-bottom: none;
-        }
+      &.has_children, a {
+        padding-top: 0.5em;
       }
 
-      /* Not ASCII art but CSS to patch IE6's lack of a descendant selector */
-      @include ie(6) {
-        &.last-child ul a,
-        &.last-child ul ul,
-        &.last-child ul li a,
-        &.last-child ul li ul,
-        &.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li ul {
-          border-bottom: solid 1px #eee;
-        }
-
-        &.last-child a,
-        &.last-child ul,
-        &.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul,
-        &.last-child ul li.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul li.last-child ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child a,
-        &.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul li.last-child ul {
-          border-bottom: none;
-        }
+      ul, a {
+        border-bottom: solid 1px #eee;
       }
 
       a {
@@ -190,10 +137,9 @@ article.tariff {
 
         &:hover {
           background-color: $highlight-colour;
-        }
-
-        &:hover span {
-          color: #2E8ACA;
+          span {
+            color: #2E8ACA;
+          }
         }
       }
 
@@ -202,8 +148,8 @@ article.tariff {
         display: inline;
 
         &.description {
-          padding-right:8.6em;
-          margin-right:px($token-space);
+          // padding-right:8.6em;
+          // margin-right:px($token-space);
         }
 
         &.identifier {
@@ -220,9 +166,6 @@ article.tariff {
             text-align:left;
             padding:0 0.2em;
           }
-
-          .heading-code {
-          }
         }
 
         &.rate {
@@ -235,8 +178,7 @@ article.tariff {
         }
       }
 
-      .js-enabled article & a,
-      article & a {
+      article & a, .js-enabled article & a {
         display: block;
         @include contain-float;
         margin-left: 0;
@@ -248,54 +190,41 @@ article.tariff {
       margin: 0;
       padding-left: 0;
       clear: both;
-
-      @include ie-lte(7) {
-        margin-left: -16px;
-      }
     }
   }
 }
 
 .js-enabled {
-  li.has_children {
-
-  }
-
   li.open {
     background-position: 0 -100px;
   }
 
-  li.has_children .description {
-    color: $link-colour;
-    padding-left: px($expand-arrow-space);
-    margin-left: -1 * px($expand-arrow-space);
-    background-image: image-url("expand-collapse-transparent.png");
-    background-position: 0 4px;
-    background-repeat: no-repeat;
-    cursor:pointer;
-    position:relative; /* to give z-index */
-  }
+  li.has_children {
+    .description {
+      color: $link-colour;
+      padding-left: px($expand-arrow-space);
+      margin-left: -1 * px($expand-arrow-space);
+      background-image: image-url("expand-collapse-transparent.png");
+      background-position: 0 4px;
+      background-repeat: no-repeat;
+      cursor:pointer;
+      position:relative; /* to give z-index */
+    }
 
-  li.has_children .description:hover,
-  li.has_children .description-hover {
-    color: $link-hover-colour;
-  }
+   .description:hover,
+   .description-hover {
+      color: $link-hover-colour;
+    }
 
-  li.has_children a .description {
-    margin-left: 0;
-  }
+    a .description {
+      margin-left: 0;
+      padding-left:0;
+      background:none;
+    }
 
-  li.has_children .open {
-    background-position:0 -386px;
-  }
-
-  li.has_children a .description {
-    padding-left:0;
-    background:none;
-  }
-
-  .return-to-top {
-    display:none;
+    .open {
+      background-position:0 -386px;
+    }
   }
 
   .conditions,
