@@ -15,11 +15,7 @@
   </ul>
 </div>
 
-
-
-
-
-<% # Overview tab %>
+<!-- Overview tab -->
 <div class="js-tab-content tab-content">
   <article class="js-tab-pane tab-pane active" id="overview">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
@@ -74,11 +70,7 @@
     <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <strong><%= declarable.code %></strong>.</p>
   </article>
 
-
-
-
-
-<% # Import tab %>
+  <!-- Import tab -->
   <article class="js-tab-pane tab-pane" id="import" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
 
     <h2 class="heading-medium">Import measures and restrictions</h2>
@@ -120,11 +112,7 @@
     </nav>
   </article><!-- end .tab-pane -->
 
-
-
-
-
-<% # Export tab %>
+  <!-- Export tab -->
   <article class="js-tab-pane tab-pane" id="export" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
 
     <h2 class="heading-medium">Export measures and restrictions</h2>
@@ -166,11 +154,7 @@
     </nav>
   </article><!-- end .tab-pane -->
 
-
-
-
-
-<% # Notes tab %>
+  <!-- Chapter notes tab -->
   <article class="tab-pane" id="notes" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <h2 class="heading-medium">Chapter notes</h2>
     <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
@@ -179,10 +163,7 @@
     </nav>
   </article><!-- end .tab-pane -->
 
-
-
-
-
+  <!-- Footnote popups -->
   <div id="import-measure-references">
     <%= render partial: 'measures/measure_references', collection: declarable.import_measures.for_country(@search.country), as: 'measure' %>
   </div>
