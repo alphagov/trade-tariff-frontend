@@ -72,10 +72,8 @@ describe 'Search page', type: :request do
       end
     }
 
-    let(:sections) { include("td", text: "Section I") }
-
     it {
-      expect(sections.count).to eq(1)
+      expect(page).to have_content("Section I")
     }
   end
 end

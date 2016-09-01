@@ -23,7 +23,7 @@ class Measure
         geographical_area.children_geographical_areas.map(&:id).include?(country_code)
       ) && !excludes_geographical_area?(country_code)
     ) ||
-    national?
+    ( national? && !excludes_geographical_area?(country_code) )
   end
 
   def excludes_geographical_area?(country_code)

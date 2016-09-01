@@ -41,7 +41,7 @@ describe "JS behaviour", js: true do
         click_on "Import"
       end
       within "#measure-3319435" do
-        click_on "View Conditions"
+        click_on "Conditions"
       end
     }
 
