@@ -31,6 +31,12 @@
   @include phase-banner(beta);
 }
 
+.highlight {
+  background-color: $focus-colour;
+  display: inline;
+  vertical-align: top;
+}
+
 // Utility classes
 strong {
   font-weight: bold;
