@@ -3,7 +3,7 @@
   <% if @results.any? %>
     <% if @results.reference_match.commodities.any? %>
       <h3 class="heading-small">Most popular commodities for <%= @search %>:</h3>
-      <table class="results-subset result-commodities">
+      <table class="results-subset js-results-subset result-commodities">
         <% @results.reference_match.commodities.group_by(&:chapter_code).each do |chapter_code, chapter_commodities| %>
           <td class="chapter-code" title="Chapter code"><%= chapter_code %></td>
           <td>
@@ -30,14 +30,14 @@
 
     <% if @results.reference_match.chapters.any? %>
       <h3 class="heading-small">Results matching '<%= @search %>'</h3>
-      <table class="results-subset">
+      <table class="results-subset js-results-subset">
         <%= render partial: 'search/chapter', collection: @results.reference_match.chapters %>
       </table>
     <% end %>
 
     <% if @results.reference_match.headings.any? %>
       <h3 class="heading-small">Headings tagged <%= @search %>:</h3>
-      <table class="results-subset headings">
+      <table class="results-subset js-results-subset headings">
         <% @results.reference_match.headings.group_by(&:chapter_code).each do |chapter, headings| %>
           <tr class="chapter">
             <td>
@@ -55,14 +55,14 @@
 
     <% if @results.goods_nomenclature_match.chapters.any? %>
       <h3 class="heading-small">Chapters text-matching <%= @search %>:</h3>
-      <table class="results-subset">
+      <table class="results-subset js-results-subset">
         <%= render partial: 'search/chapter', collection: @results.goods_nomenclature_match.chapters %>
       </table>
     <% end %>
 
     <% if @results.goods_nomenclature_match.resulting_headings.any? %>
       <h3 class="heading-small">Results containing the term '<%= @search %>'</h3>
-      <table class="results-subset">
+      <table class="results-subset js-results-subset">
         <% @results.goods_nomenclature_match.resulting_headings.group_by(&:chapter_code).each do |chapter, headings| %>
           <tr class="chapter">
             <td>
@@ -80,14 +80,14 @@
 
     <% if @results.reference_match.sections.any? %>
       <h3 class="heading-small">Sections matching '<%= @search %>'</h3>
-      <table class="results-subset sections">
+      <table class="results-subset js-results-subset sections">
         <%= render partial: 'search/section', collection: @results.reference_match.sections %>
       </table>
     <% end %>
 
     <% if @results.goods_nomenclature_match.sections.any? %>
       <h3 class="heading-small">Sections containing '<%= @search %>'</h3>
-      <table class="results-subset sections">
+      <table class="results-subset js-results-subset sections">
         <%= render partial: 'search/section', collection: @results.goods_nomenclature_match.sections %>
       </table>
     <% end %>

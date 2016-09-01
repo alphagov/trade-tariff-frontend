@@ -14,18 +14,3 @@
 $(function(){
   GOVUK.tariff.onLoad();
 });
-
-$(function(){
-$.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return results[1] || 0;
-    }
-}
-var words = $.urlParam('t').replace(/\+/g, ' ');
-console.log(words);
-  $("body").mark(words, {className: 'highlight'});
-});

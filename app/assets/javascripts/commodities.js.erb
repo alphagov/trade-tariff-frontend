@@ -430,6 +430,21 @@
           }
       },
       /**
+        @name GOVUK.tariff.searchHighlight
+        @object
+        @description highlights search terms
+      */
+      searchHighlight : {
+        initialize : function () {
+          if (GOVUK.tariff.utils.getUrlParam('t')) {
+            var words = GOVUK.tariff.utils.getUrlParam('t').replace(/\+/g, ' ');
+            var passages = '.js-results-subset a,' + // Search results page
+                           '.js-commodities .description'; // Commodity tree (headings) page
+            $(passages).mark(words, {className: 'highlight'});
+          }
+        }
+      },
+      /**
         @name GOVUK.tariff.countryPicker
         @object
         @description container for country picker behaviour
@@ -533,6 +548,11 @@
                this.click();
            }
         },
+        /**
+          @name cookies
+          @object
+          @description controls the getting and setting of cookies
+        */
         cookies : {
           set : function (cname, cvalue, exdays) {
             var d = new Date();
@@ -554,6 +574,19 @@
             }
             return "";
           }
+        },
+        /**
+          @name getUrlParam
+          @function
+          @description gets a variable value from the query string based on its name
+        */
+        getUrlParam : function (name) {
+          var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+          if (results==null) {
+            return null;
+          } else {
+            return results[1] || 0;
+          }
         }
       },
       /**
@@ -573,6 +606,7 @@
           this.tabLinkFocuser.initialize(context);
           this.hovers.init(context);
           this.searchForm.initialize();
+          this.searchHighlight.initialize();
           this.countryPicker.initialize();
           this.breadcrumbs.initialize();
           this.tableEnhancements.initialize();
