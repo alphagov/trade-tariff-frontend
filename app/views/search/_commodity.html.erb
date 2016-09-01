@@ -1,4 +1,1 @@
-<tr>
-  <td class="commodity-code" title="Commodity code"><%= commodity.display_short_code %></td>
-  <td><%= link_to commodity.to_s.html_safe, commodity_path(commodity, { t: @search.t }) %></td>
-</tr>
+<%= commodity.code %>
