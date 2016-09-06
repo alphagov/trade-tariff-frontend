@@ -35,19 +35,17 @@ article.tariff {
   .tree-key {
     float:right;
     font-size: 14px;
+    padding: 6px 16px;
     @media (min-width: $desktop-min-width) {
       font-size: 16px;
+      padding: 8px 16px;
     }
-    padding: 0.5em 1em;
     .key-text {
-      position: relative;
-      display: inline-block;
-      line-height: 1.5625em;
-      vertical-align: top;
-      margin-left: 0.5em;
+      float: right;
+      margin: 5px 0 0 0.5em;
       font-size: 14px;
       @media (min-width: $desktop-min-width) {
-        top: 0.35em;
+        margin: 5px 0 0 0.5em;
       }
     }
   }
@@ -90,7 +88,7 @@ article.tariff {
 
   .tree-controls {
     background-color: $panel-colour;
-    padding: 0.5em 16px;
+    padding: 8px 16px;
     vertical-align: top;
 
     a {
