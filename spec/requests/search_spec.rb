@@ -28,7 +28,7 @@ describe 'Search page', type: :request do
       end
     end
 
-    context 'fuzzy match' do
+    pending 'fuzzy match - when search results page is finished' do
       it 'returns result list' do
         VCR.use_cassette('tariff_updates#index') do
           VCR.use_cassette('geographical_areas#countries') do
@@ -65,7 +65,7 @@ describe 'Search page', type: :request do
     end
   end
 
-  describe "duplicate results" do
+  pending "duplicate results - when search results page is finished" do
     before {
       VCR.use_cassette("search#duplicate_results") do
         visit perform_search_path(t: "synonym 1")
