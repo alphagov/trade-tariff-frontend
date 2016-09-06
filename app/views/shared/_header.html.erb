@@ -41,7 +41,7 @@
   <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
     <div class="grid-row">
       <div class="column-two-thirds">
-        <div class="search-header">
+        <div class="search-header js-search-header">
           <div class="searchfield form-group">
             <fieldset class="search-input">
               <%= f.hidden_field :q, name: 'q' %>

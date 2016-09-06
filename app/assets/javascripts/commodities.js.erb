@@ -400,6 +400,16 @@
             @function
             @description initializes namespace
           */
+          initialize: function () {
+            var toggledControls = ['js-date-picker'],
+                namespace = this;
+
+            $(toggledControls).each(function(idx, element){
+              namespace.toggledControl.initialize(element);
+            });
+
+            this.responsivePlaceholder.initialize();
+          },
           toggledControl: {
             initialize: function(control) {
               var   $controlForm = $('fieldset[class~=' + control + ']'),
@@ -419,14 +429,25 @@
                 });
             }
           },
-
-          initialize : function () {
-            var toggledControls = ['js-date-picker'],
-                namespace = this;
-
-            $(toggledControls).each(function(idx, element){
-              namespace.toggledControl.initialize(element);
-            })
+          responsivePlaceholder: {
+           initialize: function () {
+              var namespace = this;
+              namespace.onResize();
+              $(window).on("debouncedresize", function( event ) {
+                  namespace.onResize();
+              });
+            },
+            onResize: function () {
+              var w = $(window).width(),
+                  placeholderElem = $('.js-search-header').find('input#search_t'),
+                  placeholderText = '';
+              if (w > 440) {
+                placeholderText = 'Enter the name of the goods or commodity code';
+              } else {
+                placeholderText = 'Name of goods or comm code';
+              }
+              $(placeholderElem).attr('placeholder', placeholderText);
+            }
           }
       },
       /**
