@@ -6,6 +6,7 @@ TradeTariffFrontend::Application.routes.draw do
     get "healthcheck" => "healthcheck#check"
     get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
     get "terms", to: "pages#terms"
+    get "cookies", to: "pages#cookies"
     match "/search" => "search#search", via: :get, as: :perform_search
     match "a-z-index/:letter" => "search_references#show",
           via: :get,
