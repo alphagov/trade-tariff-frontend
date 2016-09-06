@@ -45,10 +45,4 @@
 </div>
 <% end %>
 
-<% if measure.has_references? %>
-<nav class="part-pagination return-to-top">
-  <a href="#wrapper">Return to top ↑</a>
-</nav>
-<% end %>
-
 <%= render measure.additional_code if measure.has_additional_code? %>
