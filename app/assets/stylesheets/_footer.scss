@@ -48,4 +48,12 @@
       }
     }
   }
+  a[rel="external"]:after {
+    content: '\A0\A0\A0\A0\A0\A0';
+    background-position: right 1px;
+    @media (min-width: $desktop-min-width) {
+      content: '\A0\A0\A0\A0\A0';
+      background-position: right 3px;
+    }
+  }
 }
