@@ -54,6 +54,14 @@ strong {
   }
 }
 
+.heading-large a {
+  color: $text-colour;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 section, article {
   margin-bottom: 3em;
 }
