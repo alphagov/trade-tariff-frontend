@@ -16,24 +16,6 @@
 
   GOVUK.tariff = {
       /**
-        @name GOVUK.tariff.tableEnhancements
-        @object
-        @description Behaviours for tables
-      */
-      tableEnhancements: {
-        initialize : function () {
-          this.addDividerLines();
-        },
-        addDividerLines : function () {
-          $('table.measures').each(function () {
-            var $groupRows = $(this).find('.has_children').closest('tr');
-            if ($groupRows.length > 1) {
-              $groupRows.eq($groupRows.length - 1).addClass('last-country-group');
-            }
-          });
-        }
-      },
-      /**
         @name GOVUK.tariff.tree
         @object
         @description Behaviours for expandable trees
@@ -630,7 +612,6 @@
           this.searchHighlight.initialize();
           this.countryPicker.initialize();
           this.breadcrumbs.initialize();
-          this.tableEnhancements.initialize();
       },
   };
 
