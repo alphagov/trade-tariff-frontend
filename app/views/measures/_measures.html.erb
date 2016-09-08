@@ -15,39 +15,39 @@
   </ul>
 </div>
 
-<!-- Overview tab -->
 <div class="js-tab-content tab-content">
+<!-- Overview tab -->
   <article class="js-tab-pane tab-pane active" id="overview">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <div class="inner">
       <h1 class="visuallyhidden">Overview</h1>
       <div class="grid-row import-and-export-boxes">
-      <div class="column-one-half">
-      <div class="import box">
-          <h2 class="heading-medium">Import</h2>
-          <p>The commodity code for importing is <strong><%= declarable.code %></strong>.</p>
-          <% if declarable.basic_duty_rate.present? %>
-            <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures. <!-- <a href="#">What does this mean?</a></p> -->
-          <% else %>
-            <p>Importing from outside the EU is subject to <strong>variable</strong> third country duty.</p>
-          <% end %>
-          <p> Import measures and restrictions for specific countries can be found under the <a href="#import">import</a> tab.</p>
-          <% declarable.import_measures.vat.national.each do |measure| %>
-            <p>Goods are subject to <%= measure.measure_type.description %>.</p>
-          <% end %>
+        <div class="column-one-half">
+          <div class="import box">
+            <h2 class="heading-medium">Import</h2>
+            <p>The commodity code for importing is <strong><%= declarable.code %></strong>.</p>
+            <% if declarable.basic_duty_rate.present? %>
+              <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures. <!-- <a href="#">What does this mean?</a></p> -->
+            <% else %>
+              <p>Importing from outside the EU is subject to <strong>variable</strong> third country duty.</p>
+            <% end %>
+            <p> Import measures and restrictions for specific countries can be found under the <a href="#import">import</a> tab.</p>
+            <% declarable.import_measures.vat.national.each do |measure| %>
+              <p>Goods are subject to <%= measure.measure_type.description %>.</p>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="column-one-half">
+          <div class="export box">
+            <h2 class="heading-medium">Export</h2>
+            <p>The commodity code for exporting and intrastat reporting is <strong><%= declarable.display_export_code %></strong>.</p>
+
+              <p>Export measures and restrictions for specific countries can be found under the <a href="#export">export</a> tab.</p>
+          </div>
         </div>
       </div>
-
-      <div class="column-one-half">
-        <div class="export box">
-          <h2 class="heading-medium">Export</h2>
-          <p>The commodity code for exporting and intrastat reporting is <strong><%= declarable.display_export_code %></strong>.</p>
-
-            <p>Export measures and restrictions for specific countries can be found under the <a href="#export">export</a> tab.</p>
-        </div>
-      </div>
-    </div>
     <% if declarable.footnote.code.present? %>
       <table class="small-table">
         <caption class="heading-medium">Commodity footnotes</caption>

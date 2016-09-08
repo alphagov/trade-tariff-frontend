@@ -1,3 +1,19 @@
+.import-and-export-boxes {
+  @media (min-width: $desktop-min-width) {
+    display: flex;
+    .column-one-half {
+      margin-bottom: 45px;
+    }
+  }
+  .import, .export {
+    height: 100%;
+    background-color: $highlight-colour;
+    @media (min-width: $desktop-min-width) {
+      margin-bottom: -30px;
+    }
+  }
+}
+
 .notes {
   h2, li {
     margin-bottom: 1em;
