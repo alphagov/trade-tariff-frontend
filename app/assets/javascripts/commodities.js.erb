@@ -274,18 +274,27 @@
                       'tabindex' : -1,
                       'role' : 'dialog',
                       'aria-labelledby' : 'dialog-title'
+                  })
+                  .on('click', function (e) {
+                      // If the user has clicked outside of the actual popup but not on the mask
+                      // Will switch to CSS when IE11+ support is required
+                      if (e.target.id == 'popup') {
+                          closePopup();
+                      }
                   });
 
               $mask
-                  .width($(document).width())
-                  .height($(document).height())
                   .on('click', function () {
-                    $popup.fadeOut(400, function(){
-                      $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
-                    });
-                    that.scrollInPopup(false);
-                    $linkElm.focus();
+                      closePopup();
               });
+
+              closePopup = function () {
+                  $popup.fadeOut(400, function(){
+                      $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
+                  });
+                  that.scrollInPopup(false);
+                  $linkElm.focus();
+              }
 
               // return focus to the trigger link when the lightbox closes
               $closeBtn.on('click', function (e) {
