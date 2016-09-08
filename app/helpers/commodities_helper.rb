@@ -68,7 +68,7 @@ module CommoditiesHelper
         content_tag(:div, format_commodity_code(commodity), class: 'code-text')
       end
       content_tag(:h1, commodity.to_s.html_safe) +
-      content_tag(:span, class: 'feed') do
+      content_tag(:div, class: 'feed') do
         link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom))
       end
     end
@@ -83,7 +83,7 @@ module CommoditiesHelper
         content_tag(:div, format_full_code(commodity), class: 'code-text')
       end
       content_tag(:h1, commodity.to_s.html_safe) +
-      content_tag(:span, class: 'feed') do
+      content_tag(:div, class: 'feed') do
         link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom))
       end
     end

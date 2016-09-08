@@ -96,7 +96,7 @@ declarable ||= false %>
                       <div class="code-text"><%= heading.heading_display_short_code %></div>
                     </div>
                     <h1><%= heading.formatted_description.html_safe %></h1>
-                    <span class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></span>
+                    <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
                   </li>
                 </ul>
               </li>
@@ -120,7 +120,7 @@ declarable ||= false %>
                       <div class="code-text"><%= heading.heading_display_short_code %></div>
                     </div>
                     <h1><%= heading.formatted_description.html_safe %></h1>
-                    <span class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></span>
+                    <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
                   </li>
                 </ul>
               </li>
@@ -138,7 +138,7 @@ declarable ||= false %>
                   <div class="code-text"><%= heading.heading_display_short_code %></div>
                 </div>
                 <h1><%= heading.formatted_description.html_safe %></h1>
-                <span class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></span>
+                <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
               </li>
             </ul>
           </li>
@@ -155,7 +155,7 @@ declarable ||= false %>
                 <div class="code-text"><%= chapter.short_code %></div>
               </div>
               <h1><%= chapter %></h1>
-              <span class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), class: "feed", rel: "nofollow" %></span>
+              <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), class: "feed", rel: "nofollow" %></div>
             </li>
           </ul>
         </li>

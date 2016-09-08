@@ -3,68 +3,86 @@
   padding: 1em;
   margin: 0 0 30px 0;
   background-color: $grey-4;
-  h1, .feed, a {
-    display: inline;
-    vertical-align: top;
-  }
-  ul, li {
-    position: relative;
-  }
-  ul {
-    list-style: none;
-    padding-left: 25px;
-  }
-
-  li::before, li::after {
-    content: "";
-    position: absolute;
-    left: -12px;
-  }
-  li::before {
-    border-top: 1px solid #000;
-    top: 9px;
-    width: 8px;
-    height: 0;
-  }
-  li {
-    line-height: 25px;
-  }
-  li::after {
-    border-left: 1px solid #000;
-    height: 100%;
-    width: 0px;
-    top: 2px;
-  }
-  ul > li:last-child::after {
-    height: 8px;
-  }
-  .feed {
-    float: right;
-  }
-
-  @media (max-width: $mobile-max-width) {
-    // Adjust code alignment
-    .heading-code, .heading-code ~ h1, .heading-code ~ .feed,
-    .commodity-code, .commodity-code ~ h1,
-    .full-code .chapter-code, .full-code ~ h1 {
-      position: relative;
+  nav {
+    @media (min-width: $desktop-min-width) {
+      margin-right: 70px;
+    }
+    h1, a, .feed {
+      display: inline;
       vertical-align: top;
-      left: -25px;
+    }
+    ul, li {
+      position: relative;
+    }
+    ul {
+      list-style: none;
+      padding-left: 25px;
     }
 
-    .chapter-code + .heading-code, .chapter-code + .heading-code ~ h1, .chapter-code + .heading-code ~ .feed {
-      left: 0;
+    li::before, li::after {
+      content: "";
+      position: absolute;
+      left: -12px;
     }
-
-    // Remove horizontal line from these items
-    .commodity-li::before {
-      border-top: 0;
+    li::before {
+      border-top: 1px solid #000;
+      top: 9px;
+      width: 8px;
+      height: 0;
     }
-    .chapter-code ~ ul ul {
-      padding-left: 0;
+    li {
+      line-height: 25px;
     }
-    .chapter-code ~ ul > li:last-child::after {
+    li::after {
+      border-left: 1px solid #000;
+      height: 100%;
+      width: 0px;
+      top: 2px;
+    }
+    ul > li:last-child::after {
       height: 8px;
+    }
+    .feed {
+      margin-left: 0.5em;
+      &::before {
+        content: '(';
+      }
+      &::after {
+        content: ')';
+      }
+      @media (min-width: $desktop-min-width) {
+        float: right;
+        margin-right: -70px;
+        &::before, &::after {
+          content: '';
+        }
+      }
+    }
+
+    @media (max-width: $mobile-max-width) {
+      // Adjust code alignment
+      .heading-code, .heading-code ~ h1, .heading-code ~ .feed,
+      .commodity-code, .commodity-code ~ h1,
+      .full-code .chapter-code, .full-code ~ h1 {
+        position: relative;
+        vertical-align: top;
+        left: -25px;
+      }
+
+      .chapter-code + .heading-code, .chapter-code + .heading-code ~ h1, .chapter-code + .heading-code ~ .feed {
+        left: 0;
+      }
+
+      // Remove horizontal line from these items
+      .commodity-li::before {
+        border-top: 0;
+      }
+      .chapter-code ~ ul ul {
+        padding-left: 0;
+      }
+      .chapter-code ~ ul > li:last-child::after {
+        height: 8px;
+      }
     }
   }
 }
