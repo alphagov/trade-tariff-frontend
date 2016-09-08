@@ -30,7 +30,15 @@ module CommoditiesHelper
 
   def format_full_code(commodity)
     code = commodity.code.to_s
-    "<span class='chapter-code'>#{code[0..1]}</span><span class='heading-code'>#{code[2..3]}</span><span class='commodity-code'>#{code[4..-1]}</span>".html_safe
+    "<div class='chapter-code'>
+      <div class='code-text'>#{code[0..1]}</div>
+    </div>
+    <div class='heading-code'>
+      <div class='code-text'>#{code[2..3]}</div>
+    </div>
+    <div class='commodity-code'>
+      <div class='code-text'>#{code[4..-1]}</div>
+    </div>".html_safe
   end
 
   private

@@ -93,17 +93,3 @@ table.small-table {
     }
   }
 }
-
-table.results-subset {
-  @include tariff-table();
-  td {
-    border: 0;
-  }
-  tr.chapter {
-    background-color: $highlight-colour;
-  }
-  a {
-    text-decoration: none;
-  }
-}
-

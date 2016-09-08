@@ -1,0 +1,53 @@
+.search-results {
+  .results-subset {
+    position: relative;
+    margin-bottom: 60px;
+    .chapter, .commodity {
+      display: block;
+      min-height: $chapter-code-height;
+      background-color: $highlight-colour;
+      padding: 0.5em $standard-margin;
+      margin: $standard-margin 0;
+      .chapter-code, .heading-code, .commodity-code {
+        float: left;
+      }
+      a {
+        display: block;
+        margin-left: $chapter-code-width + $standard-margin;
+        padding-top: 3px;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .commodity {
+      a {
+        margin-left: $chapter-code-width + $heading-code-width + $commodity-code-width + $standard-margin;
+        @media (min-width: $desktop-min-width) {
+          margin-left: $chapter-code-width + $heading-code-width + $commodity-code-width-desktop + $standard-margin;
+        }
+      }
+    }
+    .heading {
+      display: block;
+      padding: 0 $standard-margin 1em $standard-margin;
+      .heading-code {
+        float: left;
+        margin-left: $chapter-code-width + $standard-margin;
+      }
+      a {
+        display: block;
+        margin-left: ($chapter-code-width + $standard-margin) * 2;
+        padding-top: 3px;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .section {
+      padding: 0.5em $standard-margin;
+    }
+  }
+}

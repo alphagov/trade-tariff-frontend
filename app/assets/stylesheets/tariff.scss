@@ -17,6 +17,7 @@
 @import "report-a-problem";
 @import "header";
 @import "footer";
+@import "commodity-codes";
 @import "tariff-breadcrumbs";
 @import "sections-list";
 @import "tabs";
@@ -26,6 +27,7 @@
 @import "country-picker";
 @import "commodity-tree";
 @import "popup";
+@import "search-results";
 
 .phase-banner  {
   @include phase-banner(beta);
