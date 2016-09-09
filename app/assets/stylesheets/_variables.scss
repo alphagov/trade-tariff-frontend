@@ -3,6 +3,7 @@ $desktop-min-width: 641px;
 $mobile-max-width: $desktop-min-width - 1;
 
 $standard-margin: 16px;
+$small-margin: $standard-margin / 2;
 
 $token-width: 27;
 $token-padding: 5;
@@ -18,6 +19,11 @@ $chapter-code-height: 25px;
 $heading-code-width: $chapter-code-width;
 $commodity-code-width: 66px;
 $commodity-code-width-desktop: 70px;
+
+$breadcrumb-v-margin: 5px;
+$breadcrumb-indent: 15px;
+$breadcrumb-indent-desktop: 25px;
+$breadcrumb-changes-link-width: 70px;
 
 $identifier-width: $chapter-code-width + $heading-code-width + $commodity-code-width;
 $identifier-width-desktop: $chapter-code-width + $heading-code-width + $commodity-code-width-desktop;

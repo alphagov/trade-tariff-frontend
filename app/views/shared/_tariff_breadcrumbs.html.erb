@@ -5,13 +5,13 @@ declarable ||= false %>
 
 <div class="tariff-breadcrumbs js-tariff-breadcrumbs clt font-xsmall">
   <nav>
-    <%= link_to "All sections", sections_path(request.query_parameters.symbolize_keys) %>
+    <%= link_to "All sections", sections_path(request.query_parameters.symbolize_keys), class: "all-sections-link" %>
 
     <% if declarable %>
       <div class="desktop-only">
         <ul>
           <li>
-            <%= link_to "Section #{declarable.section_numeral}: #{declarable.section}", section_path(declarable.section, request.query_parameters.symbolize_keys) %>
+            <%= link_to "Section #{declarable.section_numeral}: #{declarable.section}", section_path(declarable.section, request.query_parameters.symbolize_keys), class: "section-link" %>
             <ul>
               <li class="chapter-li">
                 <div class="chapter-code">
@@ -39,7 +39,7 @@ declarable ||= false %>
       <div class="mobile-only">
         <ul class="js-full-tree">
           <li>
-            <%= link_to "Section #{declarable.section_numeral}: #{declarable.section}", section_path(declarable.section, request.query_parameters.symbolize_keys) %>
+            <%= link_to "Section #{declarable.section_numeral}: #{declarable.section}", section_path(declarable.section, request.query_parameters.symbolize_keys), class: "section-link" %>
             <ul>
               <li class="chapter-li">
                 <div class="chapter-code">
@@ -47,7 +47,7 @@ declarable ||= false %>
                 </div>
                 <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
                 <ul>
-                  <li class="heading-li">
+                  <li class="heading-under-chapter-li">
                     <div class="heading-code">
                       <div class="code-text"><%= declarable.heading_display_short_code %></div>
                     </div>
@@ -65,7 +65,7 @@ declarable ||= false %>
         </ul>
         <ul class="js-summary-tree">
           <li>
-            <a href="#" class="js-show-full-tree-btn">[Show all]</a>
+            <a href="#" class="show-full-tree-link js-show-full-tree-link">[Show all]</a>
             <ul>
               <li class="commodity-li">
                 <% if declarable.show_commodity_tree? %>
@@ -83,7 +83,7 @@ declarable ||= false %>
       <div class="desktop-only">
         <ul>
           <li>
-            <%= link_to "Section #{heading.section.numeral}: #{heading.section.title}", section_path(heading.section, request.query_parameters.symbolize_keys) %>
+            <%= link_to "Section #{heading.section.numeral}: #{heading.section.title}", section_path(heading.section, request.query_parameters.symbolize_keys), class: "section-link" %>
             <ul>
               <li class="chapter-li">
                 <div class="chapter-code">
@@ -107,7 +107,7 @@ declarable ||= false %>
       <div class="mobile-only">
         <ul class="js-full-tree">
           <li>
-            <%= link_to "Section #{heading.section.numeral}: #{heading.section.title}", section_path(heading.section, request.query_parameters.symbolize_keys) %>
+            <%= link_to "Section #{heading.section.numeral}: #{heading.section.title}", section_path(heading.section, request.query_parameters.symbolize_keys), class: "section-link" %>
             <ul>
               <li class="chapter-li">
                 <div class="chapter-code">
@@ -129,9 +129,9 @@ declarable ||= false %>
         </ul>
         <ul class="mobile-only js-summary-tree">
           <li>
-            <a href="#" class="js-show-full-tree-btn">[Show all]</a>
+            <a href="#" class="show-full-tree-link js-show-full-tree-link">[Show all]</a>
             <ul>
-              <li class="heading-li">
+              <li class="chapter-and-heading-li">
                 <div class="chapter-code">
                   <div class="code-text"><%= heading.chapter_short_code  %></div>
                 </div><div class="heading-code">
@@ -148,14 +148,14 @@ declarable ||= false %>
     <% elsif chapter %>
       <ul>
         <li>
-          <%= link_to "Section #{chapter.section_numeral}: #{chapter.section}", section_path(chapter.section, request.query_parameters.symbolize_keys) %>
+          <%= link_to "Section #{chapter.section_numeral}: #{chapter.section}", section_path(chapter.section, request.query_parameters.symbolize_keys), class: "section-link" %>
           <ul>
             <li class="chapter-li">
               <div class="chapter-code">
                 <div class="code-text"><%= chapter.short_code %></div>
               </div>
               <h1><%= chapter %></h1>
-              <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), class: "feed", rel: "nofollow" %></div>
+              <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: "nofollow" %></div>
             </li>
           </ul>
         </li>
