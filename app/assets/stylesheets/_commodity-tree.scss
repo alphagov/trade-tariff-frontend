@@ -116,6 +116,7 @@ article.tariff {
       display: block;
       margin: 0;
       position:relative;
+      word-wrap: break-word;
       @media (min-width: $desktop-min-width) {
         background-image: image-url("commodity-indents.png");
         background-repeat: no-repeat;
