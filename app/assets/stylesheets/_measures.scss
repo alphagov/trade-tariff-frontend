@@ -1,0 +1,33 @@
+.import-and-export-boxes {
+  @media (min-width: $desktop-min-width) {
+    display: flex;
+    .column-one-half {
+      margin-bottom: 45px;
+    }
+  }
+  .import, .export {
+    height: 100%;
+    background-color: $highlight-colour;
+    @media (min-width: $desktop-min-width) {
+      margin-bottom: -30px;
+    }
+  }
+}
+
+.notes {
+  h2, li {
+    margin-bottom: 1em;
+  }
+  ul {
+    margin: 1em 0;
+    padding: 0 0 0 1.25em;
+    @media (min-width: $desktop-min-width) {
+      padding: 0 0 0 2.5em;
+    }
+  }
+}
+
+// Match styles to GOV.UK toolkit
+article.notes h2 {
+  @extend .heading-small;
+}

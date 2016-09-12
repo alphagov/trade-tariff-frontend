@@ -1,56 +1,79 @@
-<header class="page-header group">
-  <div>
-    <h1>
-      Trade Tariff
-    </h1>
-  </div>
-</header>
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag">BETA</strong>
+    <span>We are updating this service – your <a href="mailto:support@bitzesty.com?subject=BETA:%20Trade%20Tariff%20Feedback">feedback</a> will help us to improve it.</span>
+  </p>
+</div>
 
-<%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
-  <fieldset class='search'>
-    <%= f.hidden_field :q, name: 'q' %>
-    <%= f.label :t, "Search the tariff" %>
-    <%= f.text_field :t, required: false,
-                size: 21,
-                placeholder: "name or code",
-                name: 't'  %>
-    <%= f.button 'Search', class: 'button right' %>
-  </fieldset>
+<% if controller_name == 'commodities' && action_name == 'show' || controller_name == 'headings' && action_name == 'show' && @heading.declarable? %>
+  <header>
+    <a class="back-to-previous" href="<%= @back_path %>">Back <span class="visuallyhidden"> to the list of commodities</span></a>
+    <h1 class="heading-large">Commodity information</h1>
+    <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
+        <div class="grid-row">
+          <div class="column-full">
+            <div class="search-header">
+              <fieldset class="js-date-picker date-picker font-xsmall form-group">
+                <span class="fields">This tariff is for
+                  <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
+                  <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
+                  <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
+                  <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
+                  <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
+                  <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>&emsp;
+                  <a class="submit change-date-link" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>
+                </span>
+                <span class="text <%= @section_css %>">
+                  This tariff is for <%= @search.date.to_formatted_s(:long) %>&emsp;
+                  <a href="#change-date" class="change-date-link" title="change date" rel="nofollow">Change date</a>
+                </span>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </header>
+<% else %>
+  <header>
+    <h1 class="heading-large"><a href="<%= sections_path %>">Find import and export commodity codes, licences, duty and VAT rates (Trade Tariff)</a></h1>
+  </header>
+  <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <div class="search-header js-search-header">
+          <div class="searchfield form-group">
+            <fieldset class="search-input">
+              <%= f.hidden_field :q, name: 'q' %>
+              <%= f.label :t, "Search the tariff", class: 'form-label' %>
+              <%= f.text_field :t, required: false,
+                          size: 21,
+                          placeholder: "Enter the name of the goods or commodity code",
+                          name: 't',
+                          class: 'form-control'  %>
+            </fieldset>
+            <fieldset class="search-submit">
+              <%= f.button 'Search', class: 'button' %>
+            </fieldset>
+          </div>
 
-  <fieldset class='date-picker help-notice'>
-    <span class='fields'>This tariff is for
-      <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
-      <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
-      <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
-      <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
-      <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
-      <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>
-      <a class="submit" role='button' href='#set-date' title='set date' rel='nofollow'>set date</a>
-    </span>
-    <span class="text <%= @section_css %>">
-      This tariff is for <%= @search.date.to_formatted_s(:long) %>
-      <a href='#change-date' title='change date' rel='nofollow'>change date</a>
-    </span>
-  </fieldset>
+          <fieldset class="js-date-picker date-picker font-xsmall form-group">
+            <span class="fields">This tariff is for
+              <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
+              <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
+              <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
+              <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
+              <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
+              <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>&emsp;
+              <a class="submit change-date-link" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>
+            </span>
+            <span class="text <%= @section_css %>">
+              This tariff is for <%= @search.date.to_formatted_s(:long) %>&emsp;
+              <a href="#change-date" class="change-date-link" title="change date" rel="nofollow">Change date</a>
+            </span>
+          </fieldset>
 
-  <fieldset class='relevant-links'>
-    <%= link_to "View all sections", sections_path(request.query_parameters.symbolize_keys) %>
-    <%= link_to "A-Z Index", a_z_index_path(letter: "a") %>
-  </fieldset>
-
-  <fieldset class='country-picker help-notice'>
-    <span class='fields'>
-      Trade between the UK and
-      <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' }, name: 'country' %>
-      <a class="submit" role='button' href="#set-country" title='set country' rel='nofollow'>set country</a>
-    </span>
-    <span class='text'>
-      <% if @search.filtered_by_country? %>
-        Trade between the UK and <%= truncate @search.country_name.to_s, length: 30 %>
-      <% else %>
-        Trade between the UK and All countries
-      <% end %>
-      <a href='#change-country' title='change country' rel='nofollow'>change country</a>
-    </span>
-  </fieldset>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>

@@ -1,0 +1,14 @@
+@function px($value) {
+  @return $value * 1px;
+}
+
+@mixin contain-float {
+  zoom: 1;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}

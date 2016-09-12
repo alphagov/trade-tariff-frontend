@@ -11,6 +11,7 @@
   <meta name="x-section-name" content="Business" />
   <meta name="x-section-link" content="/browse/business" />
   <meta name="x-section-format" content="trade-tariff" />
+  <meta name="format-detection" content="telephone=no">
 
   <% if @meta_description %>
     <meta name="description" content="<%= @meta_description %>">
@@ -21,14 +22,61 @@
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
 <% end %>
 
+<% if !current_page?(controller: 'pages', action: 'index') %>
+  <% content_for :header_class, 'with-proposition' %>
+  <% content_for :proposition_header do %>
+    <div class="header-proposition">
+      <div class="content">
+        <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+        <nav id="proposition-menu">
+          <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
+          <ul id="proposition-links">
+            <li><a href="<%= sections_path %>" class="<%= 'active' if params[:controller] == 'sections' || params[:controller] == 'chapters' ||  params[:controller] == 'headings' ||  params[:controller] == 'commodities' %>">Search the Tariff</li>
+            <!-- <li><a href="#">How to use the Tariff</a></li> -->
+            <li><a href="<%= a_z_index_path(letter: 'a') %>" class="<%= 'active' if params[:controller] == 'search_references' %>">A-Z Index</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% content_for :footer_top do %>
+  <nav class="footer-categories">
+    <div class="footer-category">
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="mailto:classification.enquiries@hmrc.gsi.gov.uk?subject=Tariff%20Classification%20Enquiry%20(one%20item%20only)&amp;body=Please%20provide%20all%20of%20the%20information%20below.%0A%0AContact%20name%3A%0ACompany%20name%20(if%20applicable)%3A%0ADirect%20contact%20number%20(no%20switchboards)%3A%0A%0ACommodity%20code%20for%20item%20(or%20possible%20codes%20if%20unsure).%20You%20can%20use%20www.gov.uk%2Ftrade-tariff%20to%20obtain%20this%3A%0A%0APlease%20type%20'1'%20or%20'2'%20to%20indicate%20the%20option%20that%20best%20describes%20your%20item%3A%0A1)%20Agricultural%2FChemical%2FTextiles%2FCeramics%20(including%20food%2C%20drink%2C%20plastics%2C%20cosmetics%2C%0Asports%20equipment%2C%20games%2C%20toys%2C%20clothing%2C%20shoes)%0A2)%20Electrical%2FMechanical%2FMiscellaneous%20(including%20vehicles%2C%20optical%20and%20measuring%20devices%2C%0A%20machinery%2C%20musical%20instruments%2C%20metal%2C%20furniture%2C%20lighting%2C%20paper%2C%20printed%20matter%2C%20straw%2C%20glass%2C%0A%20wood%2C%20jewellery)%0A%0APlease%20include%20a%20detailed%20description%20of%20the%20product%2C%20this%20must%20include%3A%0A-%20what%20the%20product%20is%0A-%20what%20it%20is%20made%20of%2C%20if%20made%20of%20more%20than%20one%20material%20please%20explain%0A-%20what%20it%20is%20used%20for%0A-%20how%20the%20product%20works%2Ffunctions%0A-%20how%20it%20is%20presented%2Fpackaged%0A%0A%5BIf%20footwear%5D%0AInclude%20type%20(shoe%2C%20boot%2C%20slipper%20etc.)%2C%20upper%20material%2C%20outer%20sole%20material%2C%20heel%20height%2C%20for%20men%20%2F%20women.%0A%0A%5BIf%20food%5D%0AInclude%20precise%20composition%20details%20by%20percentage%20weight%20of%20all%20ingredients%20to%20100%25%20and%20method%20of%20manufacture%20or%20process%20undergone%20e.g.%2C%20fresh%2C%20frozen%2C%20dried%2C%20further%20prepared%20%2F%20preserved%20etc.%0A%0A%5BIf%20chemical%5D%0AInclude%20CAS%20No%2C%20liquid%2Fpowder%2Fsolid%20including%20%25%20of%20ingredients.%0A%0A%5BIf%20textiles%5D%0AInclude%20material%20composition%2C%20how%20it%20is%20constructed%20(knitted%2Fwoven)%2C%20name%20of%20fabric.%0A%0A%5BIf%20vehicles%5D%0AInclude%20age%2C%20engine%20type%20(petrol%20or%20diesel)%2C%20engine%20size%2C%20new%20or%20used.%20If%20over%2030%20year%E2%80%99s%20old%2C%20original%20condition%3F%20Everyday%20use%3F">Tariff Classification Service</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-category">
+      <h2>Help</h2>
+      <ul>
+        <!-- <li><a href="#">How to use the Tariff</a></li> -->
+        <li><a target="_blank" href="https://www.gov.uk/guidance/classification-of-goods">How to classify imports and exports using the UK Trade Tariff</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/classification-of-goods">Classification guides</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/topic/business-tax/import-export">Import and export</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-category">
+      <h2>Related information</h2>
+      <ul>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-1">UK Trade Tariff: Volume 1 &ndash; background information for importers and exporters</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-3">UK Trade Tariff: Volume 3 &ndash; procedures, codes and declaration entry details</a></li>
+        <li><a rel="external" target="_blank" href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&Screen=0&Expand=true">Integrated tariff of the European Community (TARIC) database</a></li>
+      </ul>
+    </div>
+  </nav>
+  <hr>
+<% end %>
+
 <% content_for :footer_support_links do %>
   <h2 class="visuallyhidden">Support links</h2>
   <ul>
-    <li><a href="/help">Help</a></li>
-    <li><a href="/help/cookies">Cookies</a></li>
-    <li><a href="/contact">Contact</a></li>
-    <li><a href="/help/terms-conditions">Terms and conditions</a></li>
-    <li><a href="/cymraeg">Rhestr o Wasanaethau Cymraeg</a></li>
+    <li><a href="<%= terms_path %>">Terms and conditions</a></li>
+    <li><a href="<%= cookies_path %>">Cookies</a></li>
     <li>Built by the <a href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service</a>
     </li>
   </ul>

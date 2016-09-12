@@ -1,90 +1,44 @@
-<h1 class="search-heading">Search results for '<mark><%= @search.t %></mark>'</h1>
+<h1 class="heading-medium">Search results for &lsquo;<%= @search.t %>&rsquo;</h1>
 <article class="search-results">
   <% if @results.any? %>
-    <% if @results.reference_match.sections.any? %>
-      <h2>Most popular sections for <%= @search %>:</h2>
-      <dl class="results-subset sections">
-        <%= render partial: 'search/section', collection: @results.reference_match.sections %>
-      </dl>
-    <% end %>
-
-    <% if @results.reference_match.chapters.any? %>
-      <h2>Most popular chapters for <%= @search %>:</h2>
-      <dl class="results-subset">
-        <%= render partial: 'search/chapter', collection: @results.reference_match.chapters %>
-      </dl>
-    <% end %>
-
-    <% if @results.reference_match.headings.any? %>
-      <h2>Most popular headings for <%= @search %>:</h2>
-      <dl class="results-subset headings">
-        <% @results.reference_match.headings.group_by(&:chapter_code).each do |chapter, headings| %>
-        <dt class="chapter-code" title="Chapter code"><%= headings.first.chapter.short_code %></dt>
-        <dd>
-          <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
-          <dl class="results-headings">
-            <%= render partial: 'search/heading', collection: headings.uniq.sort_by(&:short_code) %>
-          </dl>
-        </dd>
-        <% end %>
-      </dl>
-    <% end %>
-
     <% if @results.reference_match.commodities.any? %>
-      <h2>Most popular commodities for <%= @search %>:</h2>
-      <dl class="results-subset result-commodities">
-        <% @results.reference_match.commodities.group_by(&:chapter_code).each do |chapter_code, chapter_commodities| %>
-          <dt class="chapter-code" title="Chapter code"><%= chapter_code %></dt>
-          <dd>
-            <%= link_to chapter_commodities.first.chapter.to_s.html_safe, chapter_path(chapter_commodities.first.chapter) %>
-
-            <dl class="headings">
-              <% chapter_commodities.group_by(&:heading_code).each do |heading_code, heading_commodities| %>
-                <dt class="heading-code" title="Heading code"><%= heading_code %></dt>
-
-                <dd>
-                  <%= link_to heading_commodities.first.heading, heading_path(heading_commodities.first.heading) %>
-
-                  <dl class="commodities">
-                    <%= render partial: 'search/commodity', collection: heading_commodities.uniq.sort_by(&:code) %>
-                  </dl>
-                </dd>
-              <% end %>
-            </dl>
-          </dd>
-        <% end %>
-      </dl>
+      <h2 class="heading-small">Commodities matching &lsquo;<%= @search %>&rsquo;</h2>
+      <ul class="results-subset js-results-subset">
+        <%= render partial: 'search/commodity', collection: @results.reference_match.commodities %>
+      </ul>
     <% end %>
 
-    <% if @results.goods_nomenclature_match.sections.any? %>
-      <h2>Sections containing <%= @search %>:</h2>
-      <dl class="results-subset sections">
-        <%= render partial: 'search/section', collection: @results.goods_nomenclature_match.sections %>
-      </dl>
+    <% if @results.reference_matches_by_chapter.any? %>
+      <h2 class="heading-small">Results matching &lsquo;<%= @search %>&rsquo;</h2>
+      <ul class="results-subset js-results-subset">
+        <%= render partial: 'search/result', collection: @results.reference_matches_by_chapter %>
+      </ul>
     <% end %>
 
-    <% if @results.goods_nomenclature_match.chapters.any? %>
-      <h2>Chapters containing <%= @search %>:</h2>
-      <dl class="results-subset">
-        <%= render partial: 'search/chapter', collection: @results.goods_nomenclature_match.chapters %>
-      </dl>
+    <% if @results.gn_matches_without_duplicates_by_chapter.any? %>
+      <h2 class="heading-small">Other results containing the term &lsquo;<%= @search %>&rsquo;</h2>
+      <ul class="results-subset js-results-subset">
+        <%= render partial: 'search/result', collection: @results.gn_matches_without_duplicates_by_chapter %>
+
+      </ul>
     <% end %>
 
-    <% if @results.goods_nomenclature_match.resulting_headings.any? %>
-      <h2>Headings containing <%= @search %>:</h2>
-      <dl class="results-subset">
-        <% @results.goods_nomenclature_match.resulting_headings.group_by(&:chapter_code).each do |chapter, headings| %>
-        <dt class="chapter-code" ttile="Chapter code"><%= headings.first.chapter.short_code %></dt>
-        <dd>
-          <%= link_to headings.first.chapter, chapter_path(headings.first.chapter) %>
-          <dl class="results-headings">
-            <%= render partial: 'search/heading', collection: headings, locals: { search_query: @search.t } %>
-          </dl>
-        </dd>
-        <% end %>
-      </dl>
+    <% if @results.reference_match.sections.any? %>
+      <h2 class="heading-small">Sections matching &lsquo;<%= @search %>&rsquo;</h2>
+      <ul class="results-subset js-results-subset">
+        <%= render partial: 'search/section', collection: @results.reference_match.sections %>
+      </ul>
     <% end %>
   <% else %>
     <p>There are no results matching your query.</p>
+    <div class="panel panel-border-wide">
+      <p><strong>Please search again and consider:</strong></p>
+      <ul class="list list-bullet">
+        <li>Searching what the item is used for or made from</li>
+        <li>Broadening your search criteria</li>
+        <li>Checking your spelling</li>
+        <li>Browsing the <%= link_to 'A-Z index', a_z_index_path(letter: 'a') %></li>
+      </ul>
+    </div>
   <% end %>
 </article>

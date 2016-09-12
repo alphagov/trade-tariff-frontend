@@ -41,7 +41,7 @@ describe "JS behaviour", js: true do
         click_on "Import"
       end
       within "#measure-3319435" do
-        click_on "View Conditions"
+        click_on "Conditions"
       end
     }
 
@@ -50,7 +50,7 @@ describe "JS behaviour", js: true do
     }
 
     it {
-      expect(page).to have_content("Import control - CITES for ERGA OMNES:")
+      expect(page).to have_content("Import control - CITES for ERGA OMNES")
     }
   end
 end

@@ -3,34 +3,29 @@
   <link rel='alternate' type='application/json' href='<%= heading_url(@heading, format: :json) %>' title='Heading information page in JSON format' />
 <% end %>
 
+  <h2 class="heading-medium">Choose the commodity code that best matches your goods</h2>
+  <p>If your item is not listed by name, it may be shown under what it's used for, what it's made from or 'other.'</p>
+
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading %>
 <% else %>
+  <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
+
   <article class="tariff">
-    <div class="inner">
-      <dl>
-        <dt class="section-number">Section <%= @heading.section.numeral %></dt>
-        <dd class="section-title"><%= link_to @heading.section.title, section_path(@heading.section, request.query_parameters.symbolize_keys) %>
-          <dl class="tariff-fragments">
-            <dt class="chapter-code" title="Chapter code"><%= @heading.chapter_short_code %></dt>
-            <dd><%= link_to @heading.chapter, chapter_path(@heading.chapter, request.query_parameters.symbolize_keys) %>
-              <dl>
-                <dt class="heading-code" title="Heading code"><%= @heading.display_short_code %></dt>
-                <dd>
-                  <h1>
-                    <%= @heading.formatted_description.html_safe %>
-                    (<%= link_to 'changes', heading_changes_path(@heading.declarable, format: :atom), class: "feed", rel: "nofollow" %>)
-                  </h1>
-                <p class="commodity-tree-note"><span>The number following each commodity's </span><em>Description</em><span> is its </span><em class="code">Commodity code</em></p>
-                  <ul class="commodities">
-                    <%= render @commodities.root_commodities %>
-                  </ul>
-                </dd>
-              </dl>
-            </dd>
-          </dl>
-        </dd>
-      </dl>
+    <div class="tree-key">
+      <div class="chapter-code">
+        <div class="code-text"><%= @heading.chapter_short_code %></div>
+      </div>
+      <div class="heading-code">
+        <div class="code-text"><%= @heading.heading_display_short_code %></div>
+      </div>
+      <div class="key-text">Heading code</div>
+    </div>
+    <div class="commodity-tree">
+      <p class="commodity-tree-note"><span>The number following each commodity's </span><em class="description">Description</em><span> is its </span><em class="commcode">Commodity code</em></p>
+      <ul class="commodities js-commodities">
+        <%= render @commodities.root_commodities %>
+      </ul>
     </div>
   </article>
 <% end %>

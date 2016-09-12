@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Commodities::ChangesController, "GET to #index", type: :controller do
-  pending "commodity is valid at given date", vcr: { cassette_name: "commodities_changes#index" }  do
+  describe "commodity is valid at given date", vcr: { cassette_name: "commodities_changes#index" }  do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "0101210000") }
 
     before(:each) do
@@ -13,7 +13,7 @@ describe Commodities::ChangesController, "GET to #index", type: :controller do
     it { expect(assigns(:changes)).to be_a(ChangesPresenter) }
   end
 
-  pending 'commodity has no changes at given date', vcr: { cassette_name: "commodities_changes#index_4302130000_1998-01-01" }, type: :controller do
+  describe 'commodity has no changes at given date', vcr: { cassette_name: "commodities_changes#index_4302130000_1998-01-01" }, type: :controller do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "4302130000") }
 
     before(:each) do
@@ -29,7 +29,7 @@ describe Commodities::ChangesController, "GET to #index", type: :controller do
     end
   end
 
-  pending 'commodity is not valid at given date', vcr: { cassette_name: "commodities_changes#index_4302130000_2013-11-11" } do
+  describe 'commodity is not valid at given date', vcr: { cassette_name: "commodities_changes#index_4302130000_2013-11-11" } do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "4302130000") }
 
     before(:each) do

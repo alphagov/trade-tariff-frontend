@@ -1,0 +1,20 @@
+.a-z {
+  ol.index li {
+    font-size: 24px;
+    display: inline;
+    margin-right: 0.6em;
+    &:nth-child(-n+13) {
+      float:left;
+    }
+    a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+    @media (max-width: 440px) {
+      float:left;
+    }
+  }
+  table.index td:first-child {
+    width: 100%;
+  }
+}

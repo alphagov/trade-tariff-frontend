@@ -51,7 +51,10 @@
                 $childList[listAction]('visuallyhidden');
                 $branch[branchAction]('open')
                     .attr('title',  titleTxt[action]);
+
+                GOVUK.tariff.tree.openCloseCookie(action);
               };
+
 
               setMembers = function ($branchNode) {
                   var defaultTitle,
@@ -112,15 +115,14 @@
               });
 
               if (isCommodityTree) {
-                  $controls = '<p class="tree-controls">' +
-                                  '<a href="#">open all</a> / ' +
-                                  '<a href="#">close all</a>' +
-                              '</p>';
+                  $controls = '<div class="tree-controls">' +
+                                  '<a href="#">Open all headings</a>' +
+                                  '<a href="#">Close all headings</a>' +
+                              '</div>';
                   effectAll = function (ctrlIdx) {
                       $parentNodes.each(function (idx) {
                           var $childList = $(this).children('ul');
-
-                          if (ctrlIdx === 0) {
+                          if (ctrlIdx % 2 == 0) {
                               clickBranch($branchSwitches.eq(idx), $childList, 'open');
                           } else {
                               clickBranch($branchSwitches.eq(idx), $childList, 'close');
@@ -128,8 +130,16 @@
                       });
                   };
 
-                  $parentNodes.closest('div.inner').append($controls);
-                  $('p.tree-controls a', context).each(function (idx) {
+                  // Open/close tree nodes on load based on cookie
+                  if (this.openCloseCookie() == 'open') {
+                    effectAll(0);
+                  } else {
+                    effectAll(1);
+                  }
+
+                  $parentNodes.closest('.commodity-tree').prepend($controls);
+                  $parentNodes.closest('.commodity-tree').append($controls);
+                  $('.tree-controls a', context).each(function (idx) {
                     $(this)
                       .on('click', function () {
                           effectAll(idx);
@@ -137,6 +147,13 @@
                       });
                   });
               }
+          },
+          openCloseCookie : function (action) {
+            if (action) {
+              GOVUK.tariff.utils.cookies.set('commodityTree', action, 28);
+            } else {
+              return GOVUK.tariff.utils.cookies.get('commodityTree');
+            }
           }
       },
       /**
@@ -183,6 +200,37 @@
           }
       },
       /**
+        @name GOVUK.tariff.breadcrumbs
+        @object
+        @description Adds show/hide behaviour to breadcrumbs on narrow viewports
+      */
+      breadcrumbs : {
+          fullTree: $('.js-tariff-breadcrumbs .js-full-tree'),
+          summaryTree: $('.js-tariff-breadcrumbs .js-summary-tree'),
+          showBtn: $('.js-tariff-breadcrumbs .js-show-full-tree-link'),
+          /**
+            @name GOVUK.tariff.breadcrumbs.initialize
+            @function
+            @description adds tabbing behaviour
+            @requires jquery.tabs.js
+            @param {String} context Element in which to add behaviours
+          */
+          initialize : function () {
+              this.hideTree();
+              this.showBtn.click(function() {
+                  GOVUK.tariff.breadcrumbs.showTree();
+              });
+          },
+          hideTree : function() {
+              this.fullTree.hide();
+              this.summaryTree.show();
+          },
+          showTree : function() {
+              this.fullTree.show();
+              this.summaryTree.hide();
+          }
+      },
+      /**
         @name GOVUK.tariff.tablePopup
         @object
         @description Adds popup behaviour to tariff table cells
@@ -196,41 +244,14 @@
                       '</div>' +
                   '</div>'],
           /**
-            @name GOVUK.tariff.tablePopup.getDimensions
-            @function
-            @description Returns dimensions to be used to size and position the popup
-          */
-          getDimensions : function ($popup) {
-              var windowWidth = $(window).width(),
-                  popupWidth = $popup.innerWidth(),
-                  scrollLeft = $(document).scrollLeft(),
-                  sidePadding = 0,
-                  dimensions = {};
-
-              if ($popup.css('position') === 'absolute') {
-                  dimensions.top = $(document).scrollTop() + 12 + 'px';
-                  sidePadding = scrollLeft;
-              }
-
-              if (popupWidth < windowWidth) {
-                  dimensions.left = ((windowWidth - popupWidth) / 2) + sidePadding + 'px';
-              } else {
-                  // scrolled windows need width to be set otherwise the popup will attempt to fit in the space left it
-                  if (popupWidth > windowWidth) {
-                      dimensions.width = windowWidth - (parseFloat($popup.css('padding-left')) + parseFloat($popup.css('padding-right'))) + 'px';
-                  }
-                  dimensions.left = sidePadding + 'px';
-              }
-
-              return dimensions;
-          },
-          /**
             @name GOVUK.tariff.tablePopup.adapt
             @function
             @description adapts the disclaimer popup for reuse
             @param {Object} $this jQuery-wrapped link that fired the popup
           */
           adapt : function ($linkElm) {
+              var that = this;
+
               var url = $linkElm.attr('href'),
                   $popup = $('#popup'),
                   $popupInner = $popup.find('div.info-inner'),
@@ -253,18 +274,27 @@
                       'tabindex' : -1,
                       'role' : 'dialog',
                       'aria-labelledby' : 'dialog-title'
+                  })
+                  .on('click', function (e) {
+                      // If the user has clicked outside of the actual popup but not on the mask
+                      // Will switch to CSS when IE11+ support is required
+                      if (e.target.id == 'popup') {
+                          closePopup();
+                      }
                   });
 
               $mask
-                  .width($(document).width())
-                  .height($(document).height())
                   .on('click', function () {
-                    $popup.fadeOut(400, function(){
-                      $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
-                    });
-
-                    $linkElm.focus();
+                      closePopup();
               });
+
+              closePopup = function () {
+                  $popup.fadeOut(400, function(){
+                      $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
+                  });
+                  that.scrollInPopup(false);
+                  $linkElm.focus();
+              }
 
               // return focus to the trigger link when the lightbox closes
               $closeBtn.on('click', function (e) {
@@ -296,9 +326,6 @@
 
                   return true;
               });
-
-              popupCSS = this.getDimensions($popup);
-              $popup.css(popupCSS);
           },
           /**
             @name GOVUK.tariff.tablePopup.open
@@ -306,12 +333,20 @@
             @description opens the popup
             @param {Element} $target Target of the click event
           */
+          scrollInPopup : function (scrollPopup) {
+            if (scrollPopup == true) {
+              $('body, html').css('overflow','hidden');
+            } else {
+              $('body, html').css('overflow','');
+            }
+          },
           open : function ($target) {
               var title = this.html[0] + 'Conditions' + this.html[1];
 
               BetaPopup.maskOpacity = 0.2;
               BetaPopup.popup(title, 'tariff-info');
               this.adapt($target);
+              this.scrollInPopup(true);
           },
           /**
             @name GOVUK.tariff.tablePopup.initialize
@@ -324,6 +359,8 @@
                   hash = window.location.hash,
                   $linkElms = $('table td a.reference', context),
                   tabId;
+
+              $('#import-measure-references, #export-measure-references').hide();
 
               $linkElms.each(function (idx, linkElm) {
                   var $linkElm = $(linkElm);
@@ -354,6 +391,16 @@
             @function
             @description initializes namespace
           */
+          initialize: function () {
+            var toggledControls = ['js-date-picker'],
+                namespace = this;
+
+            $(toggledControls).each(function(idx, element){
+              namespace.toggledControl.initialize(element);
+            });
+
+            this.responsivePlaceholder.initialize();
+          },
           toggledControl: {
             initialize: function(control) {
               var   $controlForm = $('fieldset[class~=' + control + ']'),
@@ -373,15 +420,72 @@
                 });
             }
           },
-
-          initialize : function () {
-            var toggledControls = ['date-picker', 'country-picker'],
-                namespace = this;
-
-            $(toggledControls).each(function(idx, element){
-              namespace.toggledControl.initialize(element);
-            })
+          responsivePlaceholder: {
+           initialize: function () {
+              var namespace = this;
+              namespace.onResize();
+              $(window).on("debouncedresize", function( event ) {
+                  namespace.onResize();
+              });
+            },
+            onResize: function () {
+              var w = $(window).width(),
+                  placeholderElem = $('.js-search-header').find('input#search_t'),
+                  placeholderText = '';
+              if (w > 440) {
+                placeholderText = 'Enter the name of the goods or commodity code';
+              } else {
+                placeholderText = 'Name of goods or comm code';
+              }
+              $(placeholderElem).attr('placeholder', placeholderText);
+            }
           }
+      },
+      /**
+        @name GOVUK.tariff.searchHighlight
+        @object
+        @description highlights search terms
+      */
+      searchHighlight : {
+        initialize : function () {
+          if (GOVUK.tariff.utils.getUrlParam('t')) {
+            var words = GOVUK.tariff.utils.getUrlParam('t').replace(/\+/g, ' ');
+            var passages = '.js-results-subset a,' + // Search results page
+                           '.js-commodities .description'; // Commodity tree (headings) page
+            $(passages).mark(words, {className: 'highlight'});
+          }
+        }
+      },
+      /**
+        @name GOVUK.tariff.countryPicker
+        @object
+        @description container for country picker behaviour
+      */
+      countryPicker : {
+        initialize : function () {
+          var control = 'js-country-picker',
+              $controlForm = $('fieldset[class~=' + control + ']');
+
+          // Submit button not needed if JavaScript is enabled
+          $controlForm.find('.search-submit').hide();
+
+          $controlForm.on('change', 'select', function(e) {
+            $(this).parents('form:first').submit();
+          });
+
+          $controlForm.on('click', 'a.reset-country-picker', function (e) {
+             $(this).parents('form:first').find('select').val('');
+            $(this).parents('form:first').submit();
+            return false;
+          });
+
+          this.showOrHideResetLink($controlForm);
+        },
+        showOrHideResetLink : function ($controlForm) {
+          if ($controlForm.find('select').val() != '') {
+            $('.reset-country-picker').css('display', 'table-cell');
+          }
+        }
       },
       /**
         @name hovers
@@ -455,12 +559,52 @@
                var evt = document.createEventObject();
                this.click();
            }
+        },
+        /**
+          @name cookies
+          @object
+          @description controls the getting and setting of cookies
+        */
+        cookies : {
+          set : function (cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+          },
+          get : function (cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return "";
+          }
+        },
+        /**
+          @name getUrlParam
+          @function
+          @description gets a variable value from the query string based on its name
+        */
+        getUrlParam : function (name) {
+          var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+          if (results==null) {
+            return null;
+          } else {
+            return results[1] || 0;
+          }
         }
       },
       /**
         @name initialize
         @function
-        @description adds behaviours 
+        @description adds behaviours
         @param {Element} content Element in which to add behaviours
       */
       onLoad : function (context) {
@@ -474,6 +618,9 @@
           this.tabLinkFocuser.initialize(context);
           this.hovers.init(context);
           this.searchForm.initialize();
+          this.searchHighlight.initialize();
+          this.countryPicker.initialize();
+          this.breadcrumbs.initialize();
       },
   };
 
