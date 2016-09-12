@@ -1,4 +1,5 @@
-[![Circle CI](https://circleci.com/gh/bitzesty/trade-tariff-frontend.svg?style=svg)](https://circleci.com/gh/bitzesty/trade-tariff-frontend)
+[![CircleCI](https://circleci.com/gh/bitzesty/trade-tariff-frontend/tree/master.svg?style=svg&circle-token=953ad6f2f468a760cbba9a43c40ebf69fdbdc60c)](https://circleci.com/gh/bitzesty/trade-tariff-frontend/tree/master)
+[![Code Climate](https://codeclimate.com/github/bitzesty/trade-tariff-frontend/badges/gpa.svg)](https://codeclimate.com/github/bitzesty/trade-tariff-frontend)
 
 # Trade Tariff Frontend
 
