@@ -44,12 +44,17 @@
         &:last-child::after {
           height: 8px;
         }
-        .chapter-code, .heading-code {
+        .chapter-code, .heading-code, .commodity-code {
           float: left;
           margin-right: $small-margin;
         }
         &.chapter-and-heading-li {
           .chapter-code {
+            margin-right: 0;
+          }
+        }
+        &.commodity-li {
+          .chapter-code, .heading-code {
             margin-right: 0;
           }
         }

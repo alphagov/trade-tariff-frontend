@@ -10,7 +10,6 @@
     }
   }
 }
-
 @mixin tariff-zebra {
   @include tariff-table();
   td {
@@ -37,9 +36,9 @@ table.small-table {
   margin: 0 0 30px 0;
   th, td {
     font-size: 12px;
-    padding: 0.63158em 0.526315em 0.47368em 0.526315em;
-    @media (min-width: $desktop-min-width) {
+    @media (min-width: $small-table-breakpoint) {
       font-size: 14px;
+      padding: 0.63158em 0.526315em 0.47368em 0.526315em;
     }
   }
   th {
@@ -47,23 +46,68 @@ table.small-table {
     border: 0;
     font-weight: normal;
   }
-  tbody {
-    tr:hover, tr:focus {
+  tr:hover, tr:focus {
+    @media (min-width: $small-table-breakpoint) {
       background-color: $panel-colour;
     }
+  }
+  td {
+    min-height: $table-row-standard-height;
   }
   a[rel='external']::after {
     display: none;
   }
   &.measures {
-    td:nth-child(1) { width: 18%; }
-    td:nth-child(2) { width: 19% }
-    td:nth-child(3) { width: 13% }
-    td:nth-child(4) { width: 9% }
-    td:nth-child(5) { width: 14% }
-    td:nth-child(6) { width: 9% }
-    td:nth-child(7) { width: 10% }
-    td:nth-child(8) { width: 8% }
+    @media (max-width: $small-table-breakpoint - 1) {
+      caption, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        /* Hide table headers but keep them screenreader-accessible */
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      tr {
+        border-width: 0 1px 1px 1px;
+        border-style: solid;
+        border-color: $border-colour;
+        &:first-of-type {
+          border-top-width: 1px;
+        }
+      }
+      td {
+        border-bottom: 1px solid $table-sub-border;
+        position: relative;
+        padding-left: 50%;
+        &:before {
+          position: absolute;
+          top: 8px;
+          left: 8px;
+          width: 45%;
+          padding-right: 5%;
+          white-space: nowrap;
+        }
+      }
+      td:nth-of-type(1):before { content: 'Country'; }
+      td:nth-of-type(2):before { content: 'Measure'; }
+      td:nth-of-type(3):before { content: 'Value'; }
+      td:nth-of-type(4):before { content: 'Conditions that apply'; }
+      td:nth-of-type(5):before { content: 'Exclusions'; }
+      td:nth-of-type(6):before { content: 'Council Regulation (EEC)'; }
+      td:nth-of-type(7):before { content: 'Start date (End date)'; }
+      td:nth-of-type(8):before { content: 'Footnotes'; }
+    }
+    @media (min-width: $small-table-breakpoint) {
+      td:nth-of-type(1) { width: 18%; }
+      td:nth-of-type(2) { width: 19% }
+      td:nth-of-type(3) { width: 13% }
+      td:nth-of-type(4) { width: 9% }
+      td:nth-of-type(5) { width: 14% }
+      td:nth-of-type(6) { width: 9% }
+      td:nth-of-type(7) { width: 10% }
+      td:nth-of-type(8) { width: 8% }
+    }
 
     /* Expanding table-cell content */
     dl {

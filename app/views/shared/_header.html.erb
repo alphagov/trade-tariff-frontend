@@ -13,22 +13,20 @@
         <div class="grid-row">
           <div class="column-full">
             <div class="search-header">
-              <div class="searchfield form-group">
-                <fieldset class="js-date-picker date-picker font-xsmall form-group">
-                  <span class="fields">This tariff is for
-                    <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
-                    <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
-                    <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
-                    <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
-                    <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
-                    <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>
-                    <a class="submit" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>
-                  </span>
-                  <span class="text <%= @section_css %>">
-                    This tariff is for <%= @search.date.to_formatted_s(:long) %><a href="#change-date" title="change date" rel="nofollow">Change</a>
-                  </span>
-              </fieldset>
-            </div>
+              <fieldset class="js-date-picker date-picker font-xsmall form-group">
+                <span class="fields">This tariff is for
+                  <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
+                  <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
+                  <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
+                  <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
+                  <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
+                  <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>
+                  <a class="submit" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>
+                </span>
+                <span class="text <%= @section_css %>">
+                  This tariff is for <%= @search.date.to_formatted_s(:long) %><a href="#change-date" title="change date" rel="nofollow">Change</a>
+                </span>
+            </fieldset>
           </div>
         </div>
       </div>
