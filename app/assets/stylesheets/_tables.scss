@@ -126,6 +126,7 @@ table.small-table {
       dd {
         ul {
           margin-top: 1em;
+          margin-left: px($expand-arrow-space);
           li {
             margin-top: 0.5em;
           }
