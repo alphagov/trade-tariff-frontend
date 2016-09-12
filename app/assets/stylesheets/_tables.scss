@@ -135,3 +135,22 @@ table.small-table {
     }
   }
 }
+table.section-browser {
+  @include tariff-table();
+  tr {
+    &:first-of-type {
+      .heading-subtitle {
+        padding-top: 0;
+      }
+    }
+    .heading-subtitle {
+      padding-top: 2em;
+    }
+    td:nth-of-type(2) {
+      padding: 0.85em 0;
+      @media (min-width: $desktop-min-width) {
+        padding: 0.75em 0;
+      }
+    }
+  }
+}
