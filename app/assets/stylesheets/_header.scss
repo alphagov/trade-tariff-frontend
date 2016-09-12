@@ -29,11 +29,11 @@
     background-repeat: no-repeat;
     background-position: -12.5% 50%;
   }
-  .date-picker a {
-    margin-left: 0.75em;
-  }
   .form-group.searchfield, .form-group.date-picker {
     margin-bottom: 15px;
+  }
+  .change-date-link {
+    white-space: nowrap;
   }
 }
 
