@@ -36,9 +36,9 @@ table.small-table {
   margin: 0 0 30px 0;
   th, td {
     font-size: 12px;
+    padding: 0.63158em 0.526315em 0.47368em 0.526315em;
     @media (min-width: $small-table-breakpoint) {
       font-size: 14px;
-      padding: 0.63158em 0.526315em 0.47368em 0.526315em;
     }
   }
   th {
