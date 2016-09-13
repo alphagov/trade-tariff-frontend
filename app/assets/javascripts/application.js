@@ -10,6 +10,7 @@
 //= require govuk/analytics/error-tracking
 //= require popup
 //= require jquery.mark
+//= require select2
 //= require_tree .
 
 $(function(){

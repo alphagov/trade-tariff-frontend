@@ -10,24 +10,26 @@
     <a class="back-to-previous" href="<%= @back_path %>">Back <span class="visuallyhidden"> to the list of commodities</span></a>
     <h1 class="heading-large">Commodity information</h1>
     <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
-        <div class="grid-row">
-          <div class="column-full">
-            <div class="search-header">
+      <div class="grid-row">
+        <div class="column-full">
+          <div class="search-header">
+            <div class="searchfield form-group">
               <fieldset class="js-date-picker date-picker font-xsmall form-group">
                 <span class="fields">This tariff is for
                   <%= f.label :day, 'Day', { class: 'visuallyhidden' }  %>
-                  <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
+                  <%= select_day(f.object.date, {}, { id: 'tariff_date_day', name: 'day', class: 'js-select' }) %>
                   <%= f.label :month, 'Month', { class: 'visuallyhidden' }  %>
-                  <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
+                  <%= select_month(f.object.date, {}, { id: 'tariff_date_month', name: 'month', class: 'js-select' }) %>
                   <%= f.label :year, 'Year', { class: 'visuallyhidden' }  %>
-                  <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>&emsp;
-                  <a class="submit change-date-link" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>
+                  <%= select_year(f.object.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year', class: 'js-select' }) %>&emsp;
+                  <a class="submit" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>
                 </span>
                 <span class="text <%= @section_css %>">
                   This tariff is for <%= @search.date.to_formatted_s(:long) %>&emsp;
-                  <a href="#change-date" class="change-date-link" title="change date" rel="nofollow">Change date</a>
+                  <a href="#change-date" title="change date" rel="nofollow">Change date</a>
                 </span>
-            </fieldset>
+              </fieldset>
+            </div>
           </div>
         </div>
       </div>

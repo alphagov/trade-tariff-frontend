@@ -538,6 +538,19 @@
         }
       },
       /**
+        @name selectBoxes
+        @object
+        @description configuring the select boxes used within the tariff
+      */
+      selectBoxes : {
+        initialize : function () {
+          $('.js-select').select2();
+          $('.js-country-picker-select').select2({
+            width: '100%'
+          });
+        }
+      },
+      /**
         @name utils
         @namespace
         @description utilities for the GOVUK.tariff namespace
@@ -617,6 +630,7 @@
           this.tablePopup.initialize(context);
           this.tabLinkFocuser.initialize(context);
           this.hovers.init(context);
+          this.selectBoxes.initialize();
           this.searchForm.initialize();
           this.searchHighlight.initialize();
           this.countryPicker.initialize();
