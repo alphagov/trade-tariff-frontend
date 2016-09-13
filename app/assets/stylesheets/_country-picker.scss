@@ -1,5 +1,5 @@
 .country-picker.box {
-  width: auto;
+  width: 100%;
   margin-bottom: 30px;
   .country-picker-container {
     display: table;
@@ -7,19 +7,25 @@
       display: table-cell;
       width: 1%;
       white-space: nowrap;
-      vertical-align: bottom;
+      vertical-align: middle;
       padding-right: 0.5em;
-      @media (max-width: $mobile-max-width) {
-        display: block;
+      float:left;
+      @media (min-width: $desktop-min-width) {
+        float: none;
       }
     }
-    select {
+    select, .select2 {
       display: table-cell;
-      width: 100%;
-      max-width: 440px;
-      font-size: 16px;
-      @media (max-width: $mobile-max-width) {
-        font-size: 14px;
+      width: 100%; /* Also set in JavaScript for Select2 compatibility */
+      font-size: 14px;
+      float:left;
+      @media (min-width: $desktop-min-width) {
+        font-size: 16px;
+        float: none;
+      }
+      .select2-selection__rendered {
+        white-space: normal;
+        height: 28px;
       }
     }
     .search-submit {
@@ -31,10 +37,15 @@
       width: 1%;
       padding-left: 1em;
       white-space: nowrap;
+      padding-bottom: 5px;
       vertical-align: bottom;
+      @media (min-width: $desktop-min-width) {
+        padding-bottom: 0;
+        vertical-align: middle;
+      }
       .long-text {
         display: none;
-        @media (min-width: 360px) {
+        @media (min-width: 540px) {
           display: inline;
         }
       }
