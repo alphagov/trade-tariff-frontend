@@ -1,12 +1,12 @@
-<article class="tariff a-z">
+<section class="a-z">
+<h2 class="heading-medium">A&ndash;Z Index</h2>
   <div class="inner">
     <ol class="index">
       <%= a_z_index(letter) %>
     </ol>
 
-    <table>
-      <caption><%= letter.upcase %></caption>
-
+    <table class="tariff-zebra index">
+      <caption class="heading-medium"><%= letter.upcase %></caption>
       <tbody>
       <% @search_references.each do |search_reference| %>
         <tr>
@@ -24,4 +24,4 @@
       </tbody>
     </table>
   </div>
-</article>
+</section>

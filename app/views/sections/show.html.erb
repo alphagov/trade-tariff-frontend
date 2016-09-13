@@ -3,25 +3,16 @@
   <link rel='alternate' type='application/json' href='<%= section_url(@section, format: :json) %>' title='Section information page in JSON format' />
 <% end %>
 
-<article class="tariff chapters">
-  <div class="inner">
-    <dl>
-      <dt class="section-number">Section <%= @section.numeral %></dt>
-      <dd class="section-title">
-        <h1><%= link_to @section, sections_path(request.query_parameters.symbolize_keys) %></h1>
-        <!--<p class="chapters-intro">Microcopy about what chapters are goes here.</p>-->
-        <dl class="tariff-fragments chapters">
-        <%= render @chapters %>
-        </dl>
-      </dd>
-    </dl>
-  </div>
+<h2 class="heading-medium">Choose the chapter that best matches your goods</h2>
 
-  <%= render partial: 'note', locals: { section_note: @section.section_note } %>
-</article>
+<%= render 'shared/tariff_breadcrumbs', section: @section %>
 
-<script type="text/javascript">
-  $(document).ready(function () {
-    $("#classification-number").hide();
-  });
-</script>
+<section class="chapters">
+  <table class="section-browser">
+    <tbody>
+      <%= render @chapters %>
+    </tbody>
+  </table>
+</section>
+
+<%= render 'shared/notes', section_note: @section.section_note %>

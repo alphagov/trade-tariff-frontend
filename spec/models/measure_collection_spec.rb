@@ -13,26 +13,6 @@ describe MeasureCollection do
     end
   end
 
-  describe '#for_all_countries' do
-    let(:measure1) { Measure.new(attributes_for(:measure, :third_country)) }
-    let(:measure2) { Measure.new(attributes_for(:measure, :specific_country)) }
-    let(:collection) { MeasureCollection.new([measure1, measure2]) }
-
-    it 'filters measures belonging to third country group' do
-      expect(collection.for_all_countries).to_not include measure2
-    end
-  end
-
-  describe '#for_specific_countries' do
-    let(:measure1) { Measure.new(attributes_for(:measure, :third_country)) }
-    let(:measure2) { Measure.new(attributes_for(:measure, :specific_country)) }
-    let(:collection) { MeasureCollection.new([measure1, measure2]) }
-
-    it 'filters measures for specific countries' do
-      expect(collection.for_specific_countries).to_not include measure1
-    end
-  end
-
   describe '#vat' do
     let(:measure1) { Measure.new(attributes_for(:measure, :vat)) }
     let(:measure2) { Measure.new(attributes_for(:measure)) }
@@ -50,18 +30,6 @@ describe MeasureCollection do
 
     it 'filters national measures' do
       expect(collection.national).to_not include measure2
-    end
-  end
-
-  describe '#except' do
-    let(:measure1) { Measure.new(attributes_for(:measure, :third_country)) }
-    let(:measure2) { Measure.new(attributes_for(:measure, :specific_country)) }
-    let(:collection) { MeasureCollection.new([measure1, measure2]) }
-
-    it 'removes matching measures' do
-      expect(
-        collection.except(:third_country)
-      ).to_not include measure1
     end
   end
 

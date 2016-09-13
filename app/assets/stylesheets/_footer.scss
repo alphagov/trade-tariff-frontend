@@ -1,0 +1,59 @@
+#footer {
+  border-top: 10px solid $govuk-blue;
+  @media (min-width: $desktop-min-width) {
+    padding-bottom: 30px;
+  }
+  .footer-categories {
+    margin: 0 -15px;
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    ul {
+      font-size: 14px;
+      line-height: 1.14286;
+      @media (min-width: $desktop-min-width) {
+        font-size: 16px;
+        line-height: 1.25;
+      }
+      li {
+        display: block;
+        padding: 10px 0 0;
+        margin: 0 15px 5px;
+        @media (min-width: $desktop-min-width) {
+          padding: 20px 0 0;
+          margin: 0 15px;
+        }
+      }
+    }
+    hr {
+      clear: both;
+      margin: 0 15px 30px;
+      border: 1px solid #bfc1c3;
+      border-width: 1px 0 0 0;
+    }
+    .footer-category {
+      @media (min-width: $desktop-min-width) {
+        float: left;
+        width: 33.33%;
+      }
+      h2 {
+        margin: 0 15px;
+        padding: 10px 0 0;
+        @media (min-width: $desktop-min-width) {
+          padding: 0 0 20px;
+          border-bottom: 1px solid #bfc1c3;
+        }
+      }
+    }
+  }
+  a[rel="external"]:after {
+    content: '\A0\A0\A0\A0\A0\A0';
+    background-position: right 1px;
+    @media (min-width: $desktop-min-width) {
+      content: '\A0\A0\A0\A0\A0';
+      background-position: right 3px;
+    }
+  }
+}

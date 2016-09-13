@@ -1,0 +1,30 @@
+.sections {
+  @media (max-width: $mobile-max-width) {
+    tr {
+      display: block;
+      padding-top: 0.63158em;
+    }
+    thead tr:first-child {
+      display: none;
+    }
+    th {
+      display: none;
+    }
+    td.numeral, td.chapters {
+      display: inline;
+      border-bottom: 0;
+    }
+    td.numeral::before {
+      content: 'Section ';
+    }
+    td.numeral {
+      padding-right: 0;
+    }
+    td.chapters::before {
+      content: ' – Chapter ';
+    }
+    td.title {
+      display: block;
+    }
+  }
+}

@@ -9,7 +9,7 @@ describe 'Heading page', type: :request do
             VCR.use_cassette('headings#show_declarable') do
               visit heading_path("0501")
 
-              expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 0.00 %.'
+              expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 0.00 % unless subject to other measures.'
               expect(page).to have_content 'Goods are subject to VAT standard rate.'
             end
           end
@@ -22,15 +22,15 @@ describe 'Heading page', type: :request do
             VCR.use_cassette('headings#show_declarable') do
               visit heading_path("0501", country: 'ZW')
 
-              within("#import table.specific-countries") do
-                expect(page).to_not     have_content 'Zimbabwe'
-                expect(page).to_not     have_content 'Eastern and Southern Africa States' # Zimbabwe is member of latter
-              end
-
-              within("#import table.country-filter") do
+              within("#import table.measures") do
                 expect(page).to     have_content 'Zimbabwe'
                 expect(page).to     have_content 'Eastern and Southern Africa States' # Zimbabwe is member of latter
               end
+
+              within("#import table.measures") do
+                expect(page).to     have_content 'Animal Health Certificate'
+              end
+
             end
           end
         end

@@ -1,7 +1,0 @@
-<dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
-<dd>
-  <%= link_to heading.to_s.html_safe, heading_path(heading) %>
-  <% heading.commodities.uniq(&:description).each do |commodity| %>
-    <div><%= truncate(commodity.description_plain, length: 100) %></div>
-  <% end %>
-</dd>

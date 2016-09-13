@@ -1,0 +1,24 @@
+<% chapter = result[1][0] %>
+<% headings = result[1][1] %>
+<li>
+  <div class="chapter">
+    <div class="chapter-code">
+      <div class="code-text"><%= chapter.short_code %></div>
+    </div>
+    <a href="<%= chapter_path(chapter) %>"><%= chapter.description.html_safe %></a>
+  </div>
+  <% if headings.any? %>
+    <ul>
+      <% headings.each do |heading| %>
+        <li>
+          <div class="heading">
+            <div class="heading-code">
+              <div class="code-text"><%= heading.heading_display_short_code %></div>
+            </div>
+            <a href="<%= heading_path(heading) %>"><%= heading.description.html_safe %></a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</li>

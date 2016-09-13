@@ -3,34 +3,16 @@
   <link rel='alternate' type='application/json' href='<%= chapter_url(@chapter, format: :json) %>' title='Chapter information page in JSON format' />
 <% end %>
 
-<article class="tariff">
-  <div class="inner">
-    <dl>
-      <dt class="section-number">Section <%= @chapter.section_numeral %></dt>
-      <dd class="section-title"><%= link_to @chapter.section, section_path(@chapter.section, request.query_parameters.symbolize_keys) %>
-        <dl class="tariff-fragments">
-          <dt class="chapter-code" title="Chapter code"><%= @chapter.short_code %></dt>
-          <dd>
-            <h1>
-              <%= link_to  @chapter, chapter_path(@chapter, request.query_parameters.symbolize_keys) %>
-              (<%= link_to 'changes', chapter_changes_path(@chapter, format: :atom), class: "feed", rel: "nofollow" %>)
-            </h1>
-            <dl class="chapter-headings">
-              <%= render @headings %>
-            </dl>
-          </dd>
-        </dl>
-      </dd>
-    </dl>
+<h2 class="heading-medium">Choose the heading that best matches your goods</h2>
 
-    <%= render partial: 'sections/note', locals: { section_note: @chapter.section.section_note } %>
+<%= render 'shared/tariff_breadcrumbs', chapter: @chapter %>
 
-    <% if @chapter.chapter_note.present? %>
-      <article class="chapter-notes">
-        <h2>Chapter notes</h2>
+<section class="headings">
+  <table class="section-browser">
+    <tbody>
+      <%= render @headings %>
+    </tbody>
+  </table>
+</section>
 
-        <%= govspeak(@chapter.chapter_note) %>
-      </article>
-    <% end %>
-    </div>
-</article>
+<%= render 'shared/notes', section_note: @chapter.section.section_note, chapter_note: @chapter.chapter_note %>

@@ -1,8 +1,10 @@
 <% if measure.has_measure_conditions? %>
   <div class='conditions' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-conditions'>
   <article>
-    <table>
-      <caption><%= measure.measure_type.description %> for <%= measure.geographical_area.description %>:</caption>
+    <table class="small-table">
+      <caption>
+        <h2 class="heading-medium"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
+      </caption>
       <thead>
         <tr>
           <th>Condition</th>
@@ -16,6 +18,7 @@
         <%= render partial: "measure_conditions/measure_condition", collection: measure.measure_conditions, locals: { measure: measure } %>
       </tbody>
     </table>
+    <!-- <p><a href="#" class="help-link">What does this mean?</a></p> -->
   </article>
 </div>
 <% end %>
@@ -23,8 +26,10 @@
 <% measure.footnotes.each do |footnote| %>
 <div class='footnotes' id='<%= footnote.id %>' data-popup='<%= footnote.id %>'>
   <article>
-    <table>
-      <caption>Footnote for measure:</caption>
+    <table class="small-table">
+      <caption>
+        <h2 class="heading-medium">Footnote for measure</h2>
+      </caption>
       <thead>
         <tr>
           <th>Code</th>
@@ -35,14 +40,9 @@
         <%= render footnote %>
       </tbody>
     </table>
+    <!-- <p><a href="#" class="help-link">What does this mean?</a></p> -->
   </article>
 </div>
-<% end %>
-
-<% if measure.has_references? %>
-<nav class="part-pagination return-to-top">
-  <a href="#wrapper">Return to top ↑</a>
-</nav>
 <% end %>
 
 <%= render measure.additional_code if measure.has_additional_code? %>

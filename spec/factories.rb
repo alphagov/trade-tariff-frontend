@@ -80,6 +80,10 @@ FactoryGirl.define do
     trait :national do
       origin { 'uk' }
     end
+
+    trait :eu do
+      origin { 'eu' }
+    end
   end
 
   factory :duty_expression do

@@ -7,14 +7,15 @@ gem "yajl-ruby", "~> 1.2", require: "yajl"
 gem "multi_json", "~> 1.11"
 gem "httparty", "~> 0.13"
 gem "hashie", "~> 3.4"
-gem "govspeak", "~> 3.4"
+gem "govspeak", "~> 3.6"
 
-gem "govuk_template", "~> 0.17"
+gem "govuk_template", "~> 0.18"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
 gem "coffee-rails", "~> 4.1"
-gem "govuk_frontend_toolkit", "~> 4.10"
+gem "govuk_frontend_toolkit", "~> 4.14"
+gem 'govuk_elements_rails', '~> 1.2', '>= 1.2.2'
 gem "jquery-rails", "~> 3.1.3"
 gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0"
@@ -34,8 +35,13 @@ gem "rack-timeout", "~> 0.4"
 gem "dalli", "~> 2.7"
 gem "connection_pool", "~> 2.2"
 
+group :development do
+  gem "web-console"
+end
+
 group :development, :test do
   gem "quiet_assets"
+  gem "pry-rails"
 end
 
 group :test do
