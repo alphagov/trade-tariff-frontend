@@ -78,34 +78,32 @@
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'import' } %>
 
-    <table class="small-table measures">
-      <% if @search.filtered_by_country? %>
-        <caption class="heading-small">Measures for <%= @search.country_name %></caption>
-      <% else %>
-        <caption class="heading-small">Measures for all countries</caption>
-      <% end %>
-      <thead>
-        <tr>
-          <th>Country</th>
-          <th>Measure</th>
-          <th>Value</th>
-          <th>Conditions that apply</th>
-          <th>Exclusions</th>
-          <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-          <th>Start date<br>(End date, if any)</th>
-          <th>Footnotes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if declarable.import_measures.for_country(@search.country).any? %>
-          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country).sort_by(&:key) %>
+    <% if declarable.import_measures.for_country(@search.country).any? %>
+      <table class="small-table measures">
+        <% if @search.filtered_by_country? %>
+          <caption class="heading-small">Measures for <%= @search.country_name %></caption>
         <% else %>
-          <tr>
-            <td colspan="9">There are no country measures for this commodity on this date.</td>
-          </tr>
+          <caption class="heading-small">Measures for all countries</caption>
         <% end %>
-      </tbody>
-    </table>
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Measure</th>
+            <th>Value</th>
+            <th>Conditions that apply</th>
+            <th>Exclusions</th>
+            <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
+            <th>Start date<br>(End date, if any)</th>
+            <th>Footnotes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country).sort_by(&:key) %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>There are no measures for this commodity on this date.</p>
+    <% end %>
 
   </article><!-- end .tab-pane -->
 
@@ -117,34 +115,32 @@
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'export' } %>
 
-    <table class="small-table measures">
-      <% if @search.filtered_by_country? %>
-        <caption class="heading-small">Measures for <%= @search.country_name %></caption>
-      <% else %>
-        <caption class="heading-small">Measures for all countries</caption>
-      <% end %>
-      <thead>
-        <tr>
-          <th>Country</th>
-          <th>Measure</th>
-          <th>Value</th>
-          <th>Conditions that apply</th>
-          <th>Exclusions</th>
-          <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
-          <th>Start date<br>(End date, if any)</th>
-          <th>Footnotes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if declarable.export_measures.for_country(@search.country).any? %>
-          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country).sort_by(&:key) %>
+    <% if declarable.export_measures.for_country(@search.country).any? %>
+      <table class="small-table measures">
+        <% if @search.filtered_by_country? %>
+          <caption class="heading-small">Measures for <%= @search.country_name %></caption>
         <% else %>
-          <tr>
-            <td colspan="9">There are no measures for this commodity on this date</td>
-          </tr>
+          <caption class="heading-small">Measures for all countries</caption>
         <% end %>
-      </tbody>
-    </table>
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Measure</th>
+            <th>Value</th>
+            <th>Conditions that apply</th>
+            <th>Exclusions</th>
+            <th class="legal-act external-link" title="Opens in a new window">Council Regulation (EEC)</th>
+            <th>Start date<br>(End date, if any)</th>
+            <th>Footnotes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country).sort_by(&:key) %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>There are no measures for this commodity on this date.</p>
+    <% end %>
 
   </article><!-- end .tab-pane -->
 
