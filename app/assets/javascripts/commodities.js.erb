@@ -544,7 +544,9 @@
       */
       selectBoxes : {
         initialize : function () {
-          $('.js-select').select2();
+          $('.js-select').select2({
+            width: 'auto'
+          });
           $('.js-country-picker-select').select2({
             width: '100%'
           });
