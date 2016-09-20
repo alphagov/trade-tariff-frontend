@@ -47,6 +47,10 @@ strong {
   font-weight: bold;
 }
 
+.tel {
+  white-space: nowrap;
+}
+
 .box {
   background-color: $panel-colour;
   padding: 15px;
