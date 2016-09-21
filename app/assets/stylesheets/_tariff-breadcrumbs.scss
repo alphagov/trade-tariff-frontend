@@ -78,7 +78,6 @@
 
     .feed {
       display: inline;
-      margin-left: 0.5em;
       &::before {
         content: '(';
       }
@@ -90,6 +89,14 @@
         margin-right: -$breadcrumb-changes-link-width;
         &::before, &::after {
           content: '';
+        }
+      }
+      a {
+        background: image-url('feed-icon-black') 0.2em 0.1em no-repeat;
+        padding-left: 20px;
+        @media (min-width: $desktop-min-width) {
+          background: image-url('feed-icon-black') 0.2em 0.2em no-repeat;
+          padding-left: 25px;
         }
       }
     }
