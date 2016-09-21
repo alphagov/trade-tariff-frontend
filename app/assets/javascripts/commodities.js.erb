@@ -49,10 +49,7 @@
                     branchAction = (action === 'open') ? 'addClass' : 'removeClass';
 
                 $childList[listAction]('visuallyhidden');
-                $branch[branchAction]('open')
-                    .attr('title',  titleTxt[action]);
-
-                GOVUK.tariff.tree.openCloseCookie(action);
+                $branch[branchAction]('open').attr('title',  titleTxt[action]);
               };
 
 
@@ -120,6 +117,8 @@
                                   '<a href="#">Close all headings</a>' +
                               '</div>';
                   effectAll = function (ctrlIdx) {
+                      var action = (ctrlIdx % 2 == 0) ? 'open' : 'close';
+                      GOVUK.tariff.tree.openCloseCookie(action);
                       $parentNodes.each(function (idx) {
                           var $childList = $(this).children('ul');
                           if (ctrlIdx % 2 == 0) {
