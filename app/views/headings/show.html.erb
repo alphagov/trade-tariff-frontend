@@ -3,14 +3,12 @@
   <link rel='alternate' type='application/json' href='<%= heading_url(@heading, format: :json) %>' title='Heading information page in JSON format' />
 <% end %>
 
-  <h2 class="heading-medium">Choose the commodity code that best matches your goods</h2>
-  <p>If your item is not listed by name, it may be shown under what it's used for, what it's made from or 'other.'</p>
-
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading %>
 <% else %>
+  <h2 class="heading-medium">Choose the commodity code that best matches your goods</h2>
+  <p>If your item is not listed by name, it may be shown under what it's used for, what it's made from or 'other.'</p>
   <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
-
   <article class="tariff">
     <div class="tree-key">
       <div class="chapter-code">
