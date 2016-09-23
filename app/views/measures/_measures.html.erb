@@ -28,7 +28,7 @@
             <h2 class="heading-medium">Import</h2>
             <p>The commodity code for importing is <strong><%= declarable.code %></strong>.</p>
             <% declarable.import_measures.vat.national.each do |measure| %>
-              <p>Goods are subject to <%= measure.measure_type.description %>.</p>
+              <p>Goods are subject to <em><%= measure.measure_type.description %></em>.</p>
             <% end %>
             <% if declarable.basic_duty_rate.present? %>
               <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
