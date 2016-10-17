@@ -6,7 +6,7 @@
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading %>
 <% else %>
-  <h2 class="heading-medium">Choose the commodity code that best matches your goods</h2>
+  <h2 class="heading-small">Choose the commodity code that best matches your goods</h2>
   <p>If your item is not listed by name, it may be shown under what it's used for, what it's made from or 'other.'</p>
   <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
   <article class="tariff">
