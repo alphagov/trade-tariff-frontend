@@ -1,10 +1,3 @@
-<div class="phase-banner">
-  <p>
-    <strong class="phase-tag">BETA</strong>
-    <span>We are updating this service – your <a href="mailto:support@bitzesty.com?subject=BETA:%20Trade%20Tariff%20Feedback">feedback</a> will help us to improve it.</span>
-  </p>
-</div>
-
 <% if controller_name == 'commodities' && action_name == 'show' || controller_name == 'headings' && action_name == 'show' && @heading.declarable? %>
   <header>
     <a class="back-to-previous" href="<%= @back_path %>">Back <span class="visuallyhidden"> to the list of commodities</span></a>
