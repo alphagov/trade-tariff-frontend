@@ -33,9 +33,30 @@
   }
 
   .steps {
-    li {
-      padding: 0.75em 0 0.75em 2.2em;
+    overflow: hidden;
+
+    & > li {
       margin: 0.25em 0;
+      padding: 0.75em 0 0.75em 2.2em;
+      background-position: 0 0.87em;
+      background-repeat: no-repeat;
+      list-style-type: decimal;
+
+      @for $i from 1 through 14 {
+        &:nth-child(#{$i}) {
+          background-image: image-url("icon-steps/icon-step-#{$i}.png");
+
+          @include device-pixel-ratio() {
+            background-image: image-url("icon-steps/icon-step-#{$i}-2x.png");
+            background-size: 24px 24px;
+          }
+        }
+      }
+
+      @include ie-lte(8) {
+        margin-left: 1.5em;
+        padding-left: 0;
+      }
 
       p {
         margin: 0;
