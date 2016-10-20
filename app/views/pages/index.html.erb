@@ -5,32 +5,44 @@
 </div>
 <div class="grid-row">
   <div class="column-two-thirds">
-    <p>Use the Trade Tariff to search for commodity codes.</p>
-    <p>Commodity codes classify goods for import and export so that you pay the right tax and duty, and follow regulations.</p>
-    <p>You can also use this tool to find:</p>
-    <ul class="list list-bullet">
-      <li>duty and VAT rates</li>
-      <li>information about tax reliefs</li>
-      <li>import/export licences or any special regulations for your goods (called 'measures')</li>
-    </ul>
+    <section class="intro">
+      <p>Use the Trade Tariff to search for commodity codes.</p>
+      <p>Commodity codes classify goods for import and export so that you pay the right tax and duty, and follow regulations.</p>
+      <p>You can also use this tool to find:</p>
+      <ul class="list list-bullet">
+        <li>duty and VAT rates</li>
+        <li>information about tax reliefs</li>
+        <li>import/export licences or any special regulations for your goods (called 'measures')</li>
+      </ul>
 
-    <a class="button button-start" href="<%= sections_path %>" role="button">Start now</a>
-
-    <h2 class="heading-large">Wrong codes and penalties</h2>
-    <div class="notice">
-      <i class="icon icon-important">
-        <span class="visuallyhidden">Warning</span>
-      </i>
-      <strong class="bold-small">
-        It's your responsibility to get your commodity code and licences right, even if you use an agent.
-      </strong>
-    </div>
-    <p>HM Revenue and Customs (HMRC) can fine you, seize your goods and delay their release from customs if you import or export goods with the wrong codes.</p>
-
-    <h2 class="heading-large">Terms and conditions</h2>
-    <p>Trade Tariff users should be aware that in any case where information in the UK Trade Tariff is at variance with that contained in the appropriate Community legislation published in the Official Journal of the European Communities, the latter will represent the correct legal position.</p>
-    <p>Whilst every effort is made to ensure the accuracy of the Tariff on GOV.UK, the onus remains with the user to consult the Official Journal as necessary and to ensure that the correct duties are paid at importation.</p>
-    <p>In instances where the Customs Authorities are at error, the importer or exporter may still be liable for any additional duty that may be demanded as a result of that error being discovered.</p>
-    <p>You can find the Official Journal on the <%= link_to "European Union Europa website", "http://eur-lex.europa.eu/en/index.htm", rel: "external", target: "_blank", title: "Opens in a new window" %> and on the <a href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&amp;Screen=0&amp;Expand=true" target="_blank" rel="external">Integrated Tariff of the European Community (TARIC) database</a></p>
+      <a class="button button-start" href="<%= sections_path %>" role="button">Start now</a>
+    </section>
+    <section class="more content-block">
+      <h2 id="if-youre-not-sure-how-to-classify-your-goods">If you’re not sure how to classify your goods</h2>
+      <p>Read the <a href="https://www.gov.uk/government/collections/classification-of-goods">product classification guides</a> to help you find the correct commodity code.</p>
+      <h3 id="getting-advice">Getting advice</h3>
+      <p>You can get advice on how to classify your goods by emailing <a href="mailto:classification.enquiries@hmrc.gsi.gov.uk">classification.enquiries@hmrc.gsi.gov.uk</a>.</p>
+      <p>Include a full description of your product - what it’s made from, its use and function, and how it’s presented or packaged.</p>
+      <p>If you need advice about more than one product, send a separate email.</p>
+      <h3 id="apply-for-a-classification-ruling">Apply for a classification ruling</h3>
+      <p>You can apply for a Binding Tariff Information (BTI) ruling to give certainty about the correct classification and how much duty you’ll need to pay when importing your goods into the EU.</p>
+      <p>BTIs are:</p>
+      <ul>
+        <li>legally binding throughout the EU for 3 years</li>
+        <li>free, but you may have to pay costs (for example, for laboratory analysis or expert advice)</li>
+      </ul>
+      <p>You apply for a ruling using the eBTI online service.</p>
+      <ol class="steps">
+        <li>
+          <p>You’ll need an EORI number. How you get one depends on whether you’re <a rel="external" href="https://online.hmrc.gov.uk/shortforms/form/EORIVAT">registered for VAT</a>, <a rel="external" href="https://online.hmrc.gov.uk/shortforms/form/EORINonVATExport">not VAT-registered and you’re exporting</a> or <a rel="external" href="https://online.hmrc.gov.uk/shortforms/form/EORINonVATImport">not VAT-registered and you’re importing</a>.</p>
+        </li>
+        <li>
+          <p>Sign up to use eBTI on the <a rel="external" href="http://www.gateway.gov.uk/">Government Gateway website.</a></p>
+        </li>
+        <li>
+          <p><a rel="external" href="https://secure.hmce.gov.uk/ecom/login/index.html">Sign in to eBTI.</a> and read the <a href="https://www.gov.uk/guidance/binding-tariff-information-rulings">guidance notes on how to make an eBTI application.</a></p>
+        </li>
+      </ol>
+    </section>
   </div>
 </div>
