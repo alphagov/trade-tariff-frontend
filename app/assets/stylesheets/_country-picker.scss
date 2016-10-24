@@ -1,0 +1,58 @@
+.country-picker.box {
+  width: 100%;
+  margin-bottom: 30px;
+  .country-picker-container {
+    display: table;
+    label {
+      display: table-cell;
+      width: 1%;
+      white-space: nowrap;
+      vertical-align: middle;
+      padding-right: 0.5em;
+      float:left;
+      @media (min-width: $desktop-min-width) {
+        float: none;
+      }
+    }
+    select, .select2 {
+      display: table-cell;
+      width: 100%; /* Also set in JavaScript for Select2 compatibility */
+      font-size: 14px;
+      float:left;
+      @media (min-width: $desktop-min-width) {
+        font-size: 16px;
+        float: none;
+      }
+      .select2-selection__rendered {
+        white-space: normal;
+        height: 28px;
+      }
+    }
+    .search-submit {
+      margin-top: 1em;
+      display: block;
+    }
+    .reset-country-picker {
+      display: none; /* JavaScript only */
+      width: 1%;
+      padding-left: 1em;
+      white-space: nowrap;
+      padding-bottom: 5px;
+      vertical-align: bottom;
+      @media (min-width: $desktop-min-width) {
+        padding-bottom: 0;
+        vertical-align: middle;
+      }
+      .long-text {
+        display: none;
+        @media (min-width: 540px) {
+          display: inline;
+        }
+      }
+    }
+  }
+  .search-submit {
+    width: auto;
+    margin-top: 0.5em;
+  }
+}

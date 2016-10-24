@@ -1,31 +1,9 @@
 <% content_for :title, "#{declarable.description_plain} - Trade Tariff - GOV.UK" %>
 
 <article class="tariff commodity">
-  <div class="inner">
-    <nav class="trail">
-      <dl>
-        <dt class="section-number">Section <%= declarable.section_numeral %></dt>
-        <dd class="section-title tariff-fragments"><%= link_to declarable.section, section_path(declarable.section, request.query_parameters.symbolize_keys) %>
-          <dl class="tariff-fragments">
-            <dt class="chapter-code" title="Chapter code"><%= declarable.chapter_short_code %></dt>
-            <dd><%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
-              <dl>
-                <dt class="heading-code" title="Heading code"><%= declarable.heading_display_short_code %></dt>
-                <% if declarable.show_commodity_tree? %>
-                  <dd><%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
-                      <%= commodity_tree(declarable, declarable.ancestors) %>
-                  </dd>
-                <% else %>
-                  <dd class="declarable">
-                    <%= declarable_heading(declarable) %>
-                  </dd>
-                <% end %>
-              </dl>
-            </dd>
-          </dl>
-        </dd>
-      </dl>
-    </nav>
+  <div class="panel panel-border-wide">
+    <p>Check the chapter notes to make sure this code is suitable for your product.</p>
   </div>
+  <%= render 'shared/tariff_breadcrumbs', declarable: declarable %>
   <%= render 'measures/measures', declarable: declarable %>
 </article>

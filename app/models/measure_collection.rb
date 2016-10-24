@@ -15,16 +15,6 @@ class MeasureCollection
     self
   end
 
-  def for_all_countries
-    self.measures = measures.select(&:third_country)
-    self
-  end
-
-  def for_specific_countries
-    self.measures = measures.select(&:for_specific_countries)
-    self
-  end
-
   def vat
     self.measures = measures.select{ |measure| measure.vat? }
     self
@@ -32,11 +22,6 @@ class MeasureCollection
 
   def national
     self.measures = measures.select{ |measure| measure.national? }
-    self
-  end
-
-  def except(condition)
-    self.measures = measures.reject(&condition)
     self
   end
 

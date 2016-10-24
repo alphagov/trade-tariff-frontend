@@ -1,7 +1,7 @@
 /**
   @name BetaPopup
   @namespace
-  @description A set of methods for generating popups and related odds and ends
+  @description A set of methods for generating popups and related odds and ends. Modified with references to the Trade Tariff tablePopup module.
   @requires jquery 1.6.2
 */
 
@@ -36,9 +36,6 @@ var BetaPopup = {
     var winH = $win.height();
     var winW = $win.width();
 
-    //Set the popup window to center
-    $popup.css('left', winW/2-$popup.width()/2);
-
     $popup.delay(100).fadeIn('fast', function(){
       $popup.find("h2").attr("tabindex",-1).focus();
     });
@@ -47,7 +44,7 @@ var BetaPopup = {
            closePopup();
         }
     }).on("click", ".close", function(){
-      closePopup()
+      closePopup();
       return false;
     });
 
@@ -55,6 +52,8 @@ var BetaPopup = {
       $popup.fadeOut(400, function(){
         $mask.fadeOut('fast', function() { $(this).remove(); $popup.remove(); });
       });
+
+      GOVUK.tariff.tablePopup.scrollInPopup(false);
 
       $(source).focus();
     }

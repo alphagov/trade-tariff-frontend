@@ -1,38 +1,11 @@
 <% content_for :content do %>
-  <div id="global-breadcrumb" class="header-context">
-    <%= breadcrumbs %>
-  </div>
   <div id="wrapper" class="tariff service">
-    <main id="content" role="main" class="group">
+    <main id="content" role="main">
       <%= render 'shared/header' %>
-
-      <div class="article-container group">
-        <%= yield %>
-      </div>
-      <section class="related-module">
-        <h1>Further help with classification:</h1>
-        <ul>
-          <li><a href="https://www.gov.uk/browse/business/imports-exports/classification-of-goods">Classification guides</a></li>
-          <li><a href="https://www.gov.uk/finding-commodity-codes">Commodity codes for import and export duty</a></li>
-          <li><a href="https://www.gov.uk/classification-of-goods">Using the Trade Tariff for classifying imports and exports</a></li>
-          <li><a href="https://www.gov.uk/government/collections/integrated-tariff-of-the-united-kingdom">UK Trade Tariff: Volume 1 and 3</a></li>
-          <li><a href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&amp;Screen=0&amp;Expand=true" target="_blank" rel="external">Integrated Tariff of the European Community (TARIC) database</a></li>
-          <li>
-            <address class="vcard">
-              <a class="fn org url" href="http://search2.hmrc.gov.uk/kb5/hmrc/contactus/view.page?record=dMVkEC6liWE" target="_blank" rel="external">
-                HMRC VAT, Excise and Customs Helpline
-              </a>
-              <a href="tel:+443002003700" class="tel">0300 200 3700</a>
-            </address>
-          </li>
-        </ul>
-
-        <% if @tariff_last_updated %>
-        <div id="last-updated-at">
-          Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>
-        </div>
-        <% end %>
-      </section>
+      <%= yield %>
+    <% if @tariff_last_updated %>
+      <div id="last-updated-at" class="related-module font-xsmall">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices" target="_blank">View latest amendments</a></div>
+    <% end %>
     </main>
   </div>
   <%= render :partial => 'layouts/report_a_problem' %>

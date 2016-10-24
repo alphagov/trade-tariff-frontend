@@ -1,2 +1,8 @@
-<dt class="chapter-code" title="Chapter code"><%= chapter.short_code %></dt>
-<dd><%= link_to chapter, chapter_path(chapter, request.query_parameters.symbolize_keys) %></dd>
+<tr>
+  <td>
+    <div class="chapter-code">
+      <span class="code-text"><%= chapter.short_code %></span>
+    </div>
+  </td>
+  <td><%= link_to chapter, chapter_path(chapter, request.query_parameters.symbolize_keys) %></td>
+</tr>

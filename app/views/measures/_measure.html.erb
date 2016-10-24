@@ -1,10 +1,6 @@
-<tr id='measure-<%= measure.id %>' class="<%= measure.geo_class %>" tabIndex="-1">
+<tr id="measure-<%= measure.id %>" class="<%= measure.geo_class %>" tabIndex="-1">
   <td>
-    <span class="flag <%= measure.origin %>"></span>
-  </td>
-  <% if measure.for_specific_countries %>
-    <td>
-      <% if measure.has_children_geographical_areas? %>
+    <% if measure.has_children_geographical_areas? %>
       <dl>
         <dt class="has_children">
           <%= measure.geographical_area.description %>
@@ -12,17 +8,16 @@
       <dd>
         <ul>
           <% measure.children_geographical_areas.each do |children_geographical_area| %>
-            <li><%= children_geographical_area.id %> <%= children_geographical_area.description %></li>
+            <li><%= children_geographical_area.description %> (<%= children_geographical_area.id %>)</li>
           <% end %>
         </ul>
       </dd>
     <% else %>
       <%= measure.geographical_area.long_description %>
     <% end %>
-    </td>
-  <% end %>
+  </td>
 
-  <td>
+  <td class="<%= measure.measure_type.id %>">
     <%= measure.measure_type.description %>
     <% if measure.order_number.present? %>
     <br />
@@ -31,30 +26,15 @@
   </td>
 
   <td class="numerical">
-    <%= measure.effective_start_date %><% if measure.effective_end_date.present? %>&nbsp;-&nbsp;<%= measure.effective_end_date %><% end %>
-    <% if measure.suspension_legal_act.present? %>
-      <br />
-      <a class="suspended" href="<%= measure.suspension_legal_act.url %>" target="_blank">
-        Suspended from <%= measure.suspension_legal_act.validity_start_date %>
-        <% if measure.suspension_legal_act.validity_end_date %>
-          to <%= measure.suspension_legal_act.validity_end_date %>
-        <% end %>
-      </a>
-    <% end %>
-  </td>
-  <td class="numerical">
     <%= measure.duty_expression.to_s.html_safe %>
-  </td>
-
-  <td class="numerical">
     <% if measure.additional_code.present? %>
-      <%= link_to measure.additional_code,  "##{measure.additional_code.id}", class: 'reference', 'data-popup-ref' => "#{measure.additional_code.id}" %>
+      Additional code: <%= link_to measure.additional_code,  "##{measure.additional_code.id}", class: 'reference', 'data-popup-ref' => "#{measure.additional_code.id}" %>
     <% end %>
   </td>
 
   <td>
     <% if measure.measure_conditions.any? %>
-      <%= link_to "View Conditions",  "##{measure.destination}-#{measure.id}-conditions", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.id}-conditions" %>
+      <%= link_to "Conditions",  "##{measure.destination}-#{measure.id}-conditions", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.id}-conditions" %>
     <% end %>
   </td>
 
@@ -63,6 +43,19 @@
   <td class="numerical">
     <% if measure.legal_act.present? %>
       <%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external' %>
+    <% end %>
+  </td>
+
+  <td class="numerical">
+    <%= measure.effective_start_date %><% if measure.effective_end_date.present? %><br>(<%= measure.effective_end_date %>)<% end %>
+    <% if measure.suspension_legal_act.present? %>
+      <br />
+      <a class="suspended" href="<%= measure.suspension_legal_act.url %>" target="_blank">
+        Suspended from <%= measure.suspension_legal_act.validity_start_date %>
+        <% if measure.suspension_legal_act.validity_end_date %>
+          to <%= measure.suspension_legal_act.validity_end_date %>
+        <% end %>
+      </a>
     <% end %>
   </td>
 

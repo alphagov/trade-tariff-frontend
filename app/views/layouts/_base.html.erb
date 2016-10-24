@@ -1,4 +1,4 @@
-<% content_for :page_title, content_for?(:title) ? yield(:title) : "Trade Tariff - GOV.UK" %>
+<% content_for :page_title, content_for?(:title) ? yield(:title) : "Trade Tariff: look up commodity codes, duty and VAT rates - GOV.UK" %>
 
 <% content_for :head do %>
   <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application.css" %><!--<![endif]-->
@@ -11,6 +11,7 @@
   <meta name="x-section-name" content="Business" />
   <meta name="x-section-link" content="/browse/business" />
   <meta name="x-section-format" content="trade-tariff" />
+  <meta name="format-detection" content="telephone=no">
 
   <% if @meta_description %>
     <meta name="description" content="<%= @meta_description %>">
@@ -19,21 +20,92 @@
   <meta name="govuk:section" content="business and self-employed">
 
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
+
+  <script type='text/javascript'>
+    window['_fs_debug'] = false;
+    window['_fs_host'] = 'www.fullstory.com';
+    window['_fs_org'] = '1ZGTD';
+    window['_fs_namespace'] = 'FS';
+    (function(m,n,e,t,l,o,g,y){
+      if (e in m && m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'); return;}
+      g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
+      o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+      y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+      g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};
+      g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+      g.clearUserCookie=function(c,d,i){if(!c || document.cookie.match('fs_uid=[`;`]*`[`;`]*`[`;`]*`')){
+      d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
+      ';path=/;expires='+new Date(0);i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}};
+    })(window,document,window['_fs_namespace'],'script','user');
+  </script>
+<% end %>
+
+<% if !current_page?(controller: 'pages', action: 'index') %>
+  <% content_for :header_class, 'with-proposition' %>
+  <% content_for :proposition_header do %>
+    <div class="header-proposition">
+      <div class="content">
+        <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+        <nav id="proposition-menu">
+          <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
+          <ul id="proposition-links">
+            <li><a href="<%= sections_path %>" class="<%= 'active' if params[:controller] == 'sections' || params[:controller] == 'chapters' ||  params[:controller] == 'headings' ||  params[:controller] == 'commodities' %>">Search the Tariff</li>
+            <!-- <li><a href="#">How to use the Tariff</a></li> -->
+            <li><a href="<%= a_z_index_path(letter: 'a') %>" class="<%= 'active' if params[:controller] == 'search_references' %>">A-Z of Classified Goods</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% content_for :footer_top do %>
+  <nav class="footer-categories">
+    <div class="footer-category">
+      <h2>Contact</h2>
+      <ul>
+        <li><a target="_blank" href="https://www.gov.uk/government/publications/notice-600-classifying-your-imports-or-exports/notice-600-classifying-your-imports-or-exports#using-the-tariff-classification-service-email-service">Tariff Classification Service</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-enquiries">HMRC VAT, Excise and Customs Helpline:</a> <a href="tel:03002003700" class="tel">0300 200 3700</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-category">
+      <h2>Help</h2>
+      <ul>
+        <!-- <li><a href="#">How to use the Tariff</a></li> -->
+        <li><a target="_blank" href="https://www.gov.uk/guidance/classification-of-goods">How to classify imports and exports using the UK Trade Tariff</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/classification-of-goods">Classification guides</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/topic/business-tax/import-export">Import and export</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-category">
+      <h2>Related information</h2>
+      <ul>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-1">UK Trade Tariff: Volume 1 &ndash; background information for importers and exporters</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-3">UK Trade Tariff: Volume 3 &ndash; procedures, codes and declaration entry details</a></li>
+        <li><a rel="external" target="_blank" href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&Screen=0&Expand=true">Integrated tariff of the European Community (TARIC) database</a></li>
+      </ul>
+    </div>
+  </nav>
+  <hr>
 <% end %>
 
 <% content_for :footer_support_links do %>
   <h2 class="visuallyhidden">Support links</h2>
   <ul>
-    <li><a href="/help">Help</a></li>
-    <li><a href="/help/cookies">Cookies</a></li>
-    <li><a href="/contact">Contact</a></li>
-    <li><a href="/help/terms-conditions">Terms and conditions</a></li>
-    <li><a href="/cymraeg">Rhestr o Wasanaethau Cymraeg</a></li>
+    <li><a href="<%= terms_path %>">Terms and conditions</a></li>
+    <li><a href="<%= cookies_path %>">Cookies</a></li>
     <li>Built by the <a href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service</a>
     </li>
   </ul>
 <% end %>
 
 <% content_for :body_end do %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "application" %>
+  <script type="text/javascript" charset="utf-8">
+    $(window).unload(function() {
+      FS.clearUserCookie();
+    });
+  </script>
 <% end %>

@@ -1,4 +1,6 @@
-<dt class="commodity-code" title="Commodity code"><%= commodity.display_short_code %></dt>
-<dd>
-  <%= link_to commodity.to_s.html_safe, commodity_path(commodity) %>
-</dd>
+<li>
+  <div class="commodity">
+    <%= format_full_code(commodity) %>
+    <a href="<%= commodity_path(commodity) %>"><%= commodity.description.html_safe %></a>
+  </div>
+</li>

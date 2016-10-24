@@ -9,7 +9,6 @@ SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 require File.expand_path("../../config/environment", __FILE__)
 
 require 'rspec/rails'
-require 'gds_api/test_helpers/content_api'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -38,7 +37,6 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
 
   config.include FactoryGirl::Syntax::Methods
-  config.include GdsApi::TestHelpers::ContentApi
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 
