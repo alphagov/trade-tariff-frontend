@@ -2,7 +2,7 @@
   <header>
     <a class="back-to-previous" href="<%= @back_path %>">Back <span class="visuallyhidden"> to the list of commodities</span></a>
     <h1 class="heading-large">Commodity information</h1>
-    <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
+    <%= form_for @search, method: :post, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
       <div class="grid-row">
         <div class="column-full">
           <div class="search-header">
@@ -32,7 +32,7 @@
   <header>
     <h1 class="heading-large"><a href="<%= sections_path %>">Trade Tariff: look up commodity codes, duty and VAT rates</a></h1>
   </header>
-  <%= form_for @search, method: :get, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
+  <%= form_for @search, method: :post, url: perform_search_path, html: { class: "tariff-search #{@section_css}", id: "new_search" } do |f| %>
     <div class="grid-row">
       <div class="column-two-thirds">
         <div class="search-header js-search-header">
