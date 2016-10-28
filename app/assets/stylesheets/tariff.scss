@@ -93,3 +93,10 @@ section, article {
 .related-module {
   margin-top: 30px;
 }
+
+.button-start {
+  @media(max-width: $mobile-max-width) {
+    width: auto !important;
+    padding: 0.60em 2em 0.45em 0.67em;
+  }
+}
