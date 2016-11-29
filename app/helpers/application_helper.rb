@@ -12,7 +12,11 @@ module ApplicationHelper
   end
 
   def breadcrumbs
-    crumbs = [ content_tag(:li, link_to( 'Home', '/' )) ]
+    crumbs = [
+      content_tag(:li, link_to( 'Home', '/' )),
+      content_tag(:li, link_to( 'Business and self-employed', 'https://www.gov.uk/browse/business' )),
+      content_tag(:li, link_to( 'Imports and exports', 'https://www.gov.uk/browse/business/imports' ))
+    ]
     content_tag(:ol, crumbs.join('').html_safe, role: "breadcrumbs")
   end
 end
