@@ -81,7 +81,7 @@
     <% if declarable.import_measures.for_country(@search.country).any? %>
       <table class="small-table measures">
         <% if @search.filtered_by_country? %>
-          <caption class="heading-small">Measures for <%= @search.country_name %></caption>
+          <caption class="heading-small">Measures for <%= @search.geographical_area %></caption>
         <% else %>
           <caption class="heading-small">Measures for all countries</caption>
         <% end %>
@@ -118,7 +118,7 @@
     <% if declarable.export_measures.for_country(@search.country).any? %>
       <table class="small-table measures">
         <% if @search.filtered_by_country? %>
-          <caption class="heading-small">Measures for <%= @search.country_name %></caption>
+          <caption class="heading-small">Measures for <%= @search.geographical_area %></caption>
         <% else %>
           <caption class="heading-small">Measures for all countries</caption>
         <% end %>

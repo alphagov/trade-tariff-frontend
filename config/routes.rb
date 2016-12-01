@@ -7,6 +7,7 @@ TradeTariffFrontend::Application.routes.draw do
     get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
     get "terms", to: "pages#terms"
     get "cookies", to: "pages#cookies"
+    get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
     match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
     match "a-z-index/:letter" => "search_references#show",
           via: :get,

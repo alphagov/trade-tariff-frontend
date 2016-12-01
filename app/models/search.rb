@@ -23,17 +23,18 @@ class Search
   def t=(t)
     @t = t.to_s.gsub(/(\[|\])/,'')
   end
-  
+
   def q
     'trade_tariff'
   end
 
   def countries
-    @countries ||= Rails.cache.fetch(
-      "search_countries",
-      expires_in: 24.hours
-    ) do
-      GeographicalArea.countries.sort_by(&:description)
+    return [ geographical_area ].compact
+  end
+
+  def geographical_area
+    GeographicalArea.cached_countries.detect do |country|
+      country.id == attributes['country']
     end
   end
 
@@ -65,10 +66,6 @@ class Search
     { 'day'  => date.day,
       'year' => date.year,
       'month' => date.month }.merge(attributes.slice(:country))
-  end
-
-  def country_name
-    countries.detect { |c| c.id == attributes['country'] }
   end
 
   def to_s
