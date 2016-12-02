@@ -14,7 +14,8 @@ class GeographicalAreasController < ApplicationController
   private
 
   def geographical_areas
-    GeographicalArea.by_long_description(params[:term])
+    search_term = Regexp.escape(params[:term])
+    GeographicalArea.by_long_description(search_term)
                     .sort_by(&:description)
   end
 end
