@@ -16,6 +16,21 @@ class GeographicalArea
        .reject { |country| country.id.in?(excluded_geographical_area_ids) }
   end
 
+  def self.cached_countries
+    Rails.cache.fetch(
+      "cached_countries",
+      expires_in: 24.hours
+    ) do
+      countries
+    end
+  end
+
+  def self.by_long_description(long_description)
+    cached_countries.select do |country|
+      country.long_description =~ /#{long_description}/i
+    end
+  end
+
   def description
     attributes['description'].presence || ''
   end

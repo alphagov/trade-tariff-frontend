@@ -547,7 +547,12 @@
             width: 'auto'
           });
           $('.js-country-picker-select').select2({
-            width: '100%'
+            width: '100%',
+            minimumInputLength: 2,
+            ajax: {
+              delay: 300,
+              url: '<%= Rails.application.routes.url_helpers.geographical_areas_path(format: :json) %>'
+            }
           });
         }
       },
