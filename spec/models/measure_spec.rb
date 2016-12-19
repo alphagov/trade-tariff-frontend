@@ -10,9 +10,9 @@ describe Measure do
       ).to eq true
     end
 
-    it 'returns true if a national measure regardless of the geographical area' do
-      measure = Measure.new(attributes_for(:measure, :national, geographical_area: {id: 'lt',
-                                                                         description: 'Lithuania'}))
+    it 'returns true if a national measure and geographical area code is equal to 1011' do
+      measure = Measure.new(attributes_for(:measure, :national, geographical_area: {id: '1011',
+                                                                         description: 'ERGA OMNES'}))
       expect(
         measure.relevant_for_country?('br')
       ).to eq true
