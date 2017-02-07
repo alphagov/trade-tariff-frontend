@@ -19,4 +19,18 @@ module ApplicationHelper
     ]
     content_tag(:ol, crumbs.join('').html_safe, role: "breadcrumbs")
   end
+
+  def search_active_class
+    active_class_for(controller_methods: %w[sections chapters headings commodities])
+  end
+
+  def a_z_active_class
+    active_class_for(controller_methods: %w[search_references])
+  end
+
+  private
+
+  def active_class_for(controller_methods:)
+    return "active" if controller_methods.include?(params[:controller])
+  end
 end
