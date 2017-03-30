@@ -19,3 +19,5 @@ coverage
 spec/reports
 *manifest.yml
 cf-ssh.yml
+.ruby-gemset
+.idea/*
