@@ -1,4 +1,4 @@
-<% if ENV['GOVUK_APP_DOMAIN'] == "tariff-frontend-production.cloudapps.digital" %>
+<% if TradeTariffFrontend.production? %>
   User-Agent: *
   Allow: /
   Disallow: /*changes$

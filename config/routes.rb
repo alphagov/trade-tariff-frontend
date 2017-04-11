@@ -4,14 +4,14 @@ TradeTariffFrontend::Application.routes.draw do
   get "/robots.:format", to: "pages#robots"
 
   scope path: "#{APP_SLUG}" do
-    get "/", to: "pages#index"
-    get "healthcheck" => "healthcheck#check"
+    get "/", to: TradeTariffFrontend.production? ? redirect("https://www.gov.uk/trade-tariff", status: 302) : "pages#index"
+    get "healthcheck", to: "healthcheck#check"
     get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
     get "terms", to: "pages#terms"
     get "cookies", to: "pages#cookies"
     get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
     match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
-    match "a-z-index/:letter" => "search_references#show",
+    match "a-z-index/:letter", to: "search_references#show",
           via: :get,
           as: :a_z_index,
           constraints: { letter: /[a-z]{1}/i }
