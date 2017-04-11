@@ -5,7 +5,7 @@
 
 __Now maintained at https://github.com/bitzesty/trade-tariff-frontend__
 
-https://www.gov.uk/trade-tariff
+https://www.trade-tariff.service.gov.uk/trade-tariff/sections
 
 This is the front-end application for:
 
