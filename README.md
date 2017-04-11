@@ -3,11 +3,13 @@
 
 # Trade Tariff Frontend
 
+__Now maintained at https://github.com/bitzesty/trade-tariff-frontend__
+
 https://www.gov.uk/trade-tariff
 
 This is the front-end application for:
 
-* [Trade Tariff Backend](https://github.com/alphagov/trade-tariff-backend)
+* [Trade Tariff Backend](https://github.com/bitzesty/trade-tariff-backend)
 
 This application requires the Trade Tariff Backend API to be running and the following env variable set `TARIFF_API_HOST`.
 
