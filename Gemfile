@@ -17,7 +17,7 @@ gem "govuk_frontend_toolkit", "~> 4.18"
 gem 'govuk_elements_rails', '~> 1.2', '>= 1.2.2'
 gem "jquery-rails", "~> 3.1.3"
 gem 'jquery-migrate-rails'
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1"
 gem "bootscale", "~> 0.5", require: false
