@@ -1,6 +1,8 @@
 require 'trade_tariff_frontend'
 
 TradeTariffFrontend::Application.routes.draw do
+  get "/robots.:format", to: "pages#robots"
+
   scope path: "#{APP_SLUG}" do
     get "/", to: "pages#index"
     get "healthcheck" => "healthcheck#check"
