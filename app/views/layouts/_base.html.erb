@@ -23,22 +23,20 @@
 
 <% end %>
 
-<% if !current_page?(controller: 'pages', action: 'index') %>
-  <% content_for :header_class, 'with-proposition' %>
-  <% content_for :proposition_header do %>
-    <div class="header-proposition">
-      <div class="content">
-        <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
-        <nav id="proposition-menu">
-          <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
-          <ul id="proposition-links">
-            <li><%= link_to "Search the Tariff", sections_path, class: search_active_class %></li>
-            <li><%= link_to "A-Z of Classified Goods", a_z_index_path(letter: "a"), class: a_z_active_class %></li>
-          </ul>
-        </nav>
-      </div>
+<% content_for :header_class, 'with-proposition' %>
+<% content_for :proposition_header do %>
+  <div class="header-proposition">
+    <div class="content">
+      <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+      <nav id="proposition-menu">
+        <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
+        <ul id="proposition-links">
+          <li><%= link_to "Search the Tariff", sections_path, class: search_active_class %></li>
+          <li><%= link_to "A-Z of Classified Goods", a_z_index_path(letter: "a"), class: a_z_active_class %></li>
+        </ul>
+      </nav>
     </div>
-  <% end %>
+  </div>
 <% end %>
 
 <% content_for :footer_top do %>
