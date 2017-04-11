@@ -122,7 +122,6 @@ GEM
     newrelic_rpm (3.16.0.318)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
-    plek (1.11.0)
     poltergeist (1.6.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -270,7 +269,6 @@ DEPENDENCIES
   logstash-event
   multi_json (~> 1.11)
   newrelic_rpm
-  plek (~> 1.11)
   poltergeist (~> 1.6)
   pry-rails
   puma

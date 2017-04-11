@@ -10,7 +10,6 @@ gem "hashie", "~> 3.4"
 gem "govspeak", "~> 3.6"
 
 gem "govuk_template", "~> 0.18"
-gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
 gem "coffee-rails", "~> 4.1"

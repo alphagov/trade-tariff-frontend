@@ -48,7 +48,7 @@ TradeTariffFrontend::Application.configure do
     )
   end
   config.lograge.ignore_actions = ['HealthcheckController#index']
-  
+
   # Use a different cache store in production
   config.cache_store = :dalli_store, nil, {
     compress: true,
@@ -60,7 +60,7 @@ TradeTariffFrontend::Application.configure do
   }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = ENV["GOVUK_ASSET_ROOT"]
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( tariff-print.css.scss )
@@ -76,8 +76,6 @@ TradeTariffFrontend::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_controller.asset_host = Plek.new.asset_root
-
   # Host for Trade Tariff API endpoint
-  config.api_host = Plek.new.find("tariff-api")
+  config.api_host = ENV["PLEK_SERVICE_TARIFF_API_URI"]
 end
