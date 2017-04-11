@@ -50,7 +50,7 @@ TradeTariffFrontend::Application.routes.draw do
     end
   end
 
-  root to: redirect("/#{APP_SLUG}", status: 302)
+  root to: redirect("https://www.gov.uk/trade-tariff", status: 302)
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
