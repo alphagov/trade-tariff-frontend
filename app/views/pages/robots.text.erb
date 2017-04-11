@@ -1,0 +1,8 @@
+<% if TradeTariffFrontend.production? %>
+  User-Agent: *
+  Allow: /
+  Disallow: /*changes$
+<% else %>
+  User-Agent: *
+  Disallow: /
+<% end %>

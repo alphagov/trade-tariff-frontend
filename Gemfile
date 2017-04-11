@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.3.3"
 
-gem "rails", "4.2.7.1"
+gem "rails", "4.2.8"
 
 gem "yajl-ruby", "~> 1.2", require: "yajl"
 gem "multi_json", "~> 1.11"
@@ -10,7 +10,6 @@ gem "hashie", "~> 3.4"
 gem "govspeak", "~> 3.6"
 
 gem "govuk_template", "~> 0.18"
-gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
 gem "coffee-rails", "~> 4.1"

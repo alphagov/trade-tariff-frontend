@@ -12,4 +12,8 @@ module TradeTariffFrontend
   def accessible_api_endpoints
     ['sections', 'chapters', 'headings', 'commodities', 'updates']
   end
+
+  def production?
+    ENV["GOVUK_APP_DOMAIN"] == "tariff-frontend-production.cloudapps.digital"
+  end
 end

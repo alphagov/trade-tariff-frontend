@@ -1,15 +1,17 @@
 require 'trade_tariff_frontend'
 
 TradeTariffFrontend::Application.routes.draw do
+  get "/robots.:format", to: "pages#robots"
+
   scope path: "#{APP_SLUG}" do
-    get "/", to: "pages#index"
-    get "healthcheck" => "healthcheck#check"
+    get "/", to: TradeTariffFrontend.production? ? redirect("https://www.gov.uk/trade-tariff", status: 302) : "pages#index"
+    get "healthcheck", to: "healthcheck#check"
     get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
     get "terms", to: "pages#terms"
     get "cookies", to: "pages#cookies"
     get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
     match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
-    match "a-z-index/:letter" => "search_references#show",
+    match "a-z-index/:letter", to: "search_references#show",
           via: :get,
           as: :a_z_index,
           constraints: { letter: /[a-z]{1}/i }
@@ -48,7 +50,7 @@ TradeTariffFrontend::Application.routes.draw do
     end
   end
 
-  root to: redirect("/#{APP_SLUG}", status: 302)
+  root to: redirect("https://www.gov.uk/trade-tariff", status: 302)
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
