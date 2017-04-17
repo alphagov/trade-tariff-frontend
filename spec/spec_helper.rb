@@ -27,6 +27,13 @@ Capybara.register_driver :poltergeist do |app|
 end
 Capybara.javascript_driver = :poltergeist
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 Rails.application.routes.default_url_options[:host] = "test.host"
 
 RSpec.configure do |config|

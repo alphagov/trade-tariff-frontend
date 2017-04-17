@@ -44,17 +44,17 @@ group :development, :test do
 end
 
 group :test do
-  gem "webmock", "~> 1.21"
-  gem "factory_girl_rails"
+  gem "webmock", "~> 3.0.1"
+  gem "factory_girl_rails", "~> 4.8.0"
   gem "forgery"
-  gem "shoulda-matchers"
-  gem "vcr"
-  gem "simplecov", "~> 0.10"
+  gem "shoulda-matchers", "~> 3.1.1"
+  gem "vcr", "~> 3.0.3"
+  gem "simplecov", "~> 0.14.1"
   gem "simplecov-rcov", "~> 0.2.3"
-  gem "rspec-rails", "~> 3.2"
-  gem "capybara", "~> 2.4"
-  gem "poltergeist", "~> 1.6"
-  gem "timecop", "~> 0.8"
+  gem "rspec-rails", "~> 3.5.2"
+  gem "capybara", "~> 2.13.0"
+  gem "poltergeist", "~> 1.14.0"
+  gem "timecop", "~> 0.8.1"
   gem "rspec_junit_formatter"
 end
 
