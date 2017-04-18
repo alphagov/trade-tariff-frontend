@@ -44,7 +44,7 @@ class Search
     end
 
     def all_gn_matches
-      [goods_nomenclature_match.chapters, goods_nomenclature_match.headings].flatten
+      [goods_nomenclature_match.chapters, goods_nomenclature_match.resulting_headings].flatten
     end
 
     def gn_chapters_without_duplicates
@@ -53,7 +53,7 @@ class Search
     end
 
     def gn_headings_without_duplicates
-      goods_nomenclature_match.headings.delete_if { |gh| reference_match.headings.select { |rh| rh.code == gh.code }.any? }
+      goods_nomenclature_match.resulting_headings.delete_if { |gh| reference_match.headings.select { |rh| rh.code == gh.code }.any? }
     end
 
     def matches_by_chapter(chapters, headings)
