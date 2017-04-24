@@ -69,7 +69,7 @@ module CommoditiesHelper
       end
       content_tag(:h1, commodity.to_s.html_safe) +
       content_tag(:div, class: 'feed') do
-        link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom))
+        link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
       end
     end
   end
@@ -84,7 +84,7 @@ module CommoditiesHelper
       end
       content_tag(:h1, commodity.to_s.html_safe) +
       content_tag(:div, class: 'feed') do
-        link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom))
+        link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
       end
     end
   end
