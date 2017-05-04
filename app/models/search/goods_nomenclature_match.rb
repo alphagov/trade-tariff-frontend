@@ -40,7 +40,7 @@ class Search
     end
 
     def resulting_headings
-      (headings + commodity_headings).sort_by(&:goods_nomenclature_item_id)
+      (headings + commodity_headings).sort_by(&:goods_nomenclature_item_id).uniq
     end
 
     def any?
